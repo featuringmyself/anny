@@ -7,20 +7,19 @@ export default function Navbar() {
     return (
         <nav className="flex justify-between items-center p-4">
             {/* logo */}
-            <Link href="/" className="flex items-center gap-2 font-space-grotesk text-2xl font-medium"><Image src={logoImg} alt="logo" width={30} height={30} />Anny</Link>
+            <Link href="/" className="flex items-center gap-2 font-space-grotesk text-2xl font-medium tracking-tight"><Image src={logoImg} alt="logo" width={30} height={30} />Anny</Link>
 
             {/* menu items */}
-            <div className="flex items-center gap-5">
-                <Link href="/">Product</Link>
-                <Link href="/">Pricing</Link>
-                <Link href="/">Careers</Link>
+            <div className="flex items-center gap-12 font-medium text-sm text-zinc-500">
+                <Link href="/" className="hover:text-zinc-900 transition-colors">Product</Link>
+                <Link href="/" className="hover:text-zinc-900 transition-colors">Pricing</Link>
+                <Link href="/" className="hover:text-zinc-900 transition-colors">Careers</Link>
 
             </div>
 
             {/* auth buttons */}
             <div className="flex items-center gap-4">
-                <Button variant="outline">Login</Button>
-                <Button>Signup</Button>
+                <Button className="px-3">Talk to sales</Button>
             </div>
         </nav>
     )
