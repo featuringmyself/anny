@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
     return (
-        <nav className="flex justify-between items-center p-4">
+        <nav className="flex justify-between items-center p-4 border-b">
             {/* logo */}
             <Link href="/" className="flex items-center gap-2 text-2xl font-medium tracking-tight"><Image src={logoImg} alt="logo" width={30} height={30} /><h1>Anny</h1></Link>
 
