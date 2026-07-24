@@ -66,6 +66,25 @@ const domains = [
   { logo: "/brand-logos/google.png", domain: "google.com", type: "Corporate", used: "39%", citations: "34%" },
 ];
 
+// Masking rather than overlaying a gradient dissolves the panel's own borders
+// too, and the eased stops avoid the visible midpoint of a two-stop ramp.
+const bottomFadeMask = `linear-gradient(to bottom, ${[
+  [0, 1],
+  [52, 1],
+  [58, 0.97],
+  [64, 0.92],
+  [70, 0.84],
+  [76, 0.72],
+  [82, 0.57],
+  [87, 0.42],
+  [91, 0.28],
+  [95, 0.15],
+  [98, 0.06],
+  [100, 0],
+]
+  .map(([stop, alpha]) => `rgba(0, 0, 0, ${alpha}) ${stop}%`)
+  .join(", ")})`;
+
 function BrandLogo({
   src,
   alt,
@@ -278,7 +297,10 @@ function DonutPanel() {
 export default function Demo() {
   return (
     <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-20">
-      <div className="relative aspect-[2/1] min-h-[500px] overflow-hidden rounded-xl border border-zinc-200 bg-[#f8f8f8] text-zinc-700 shadow-[0_18px_60px_rgba(0,0,0,0.07)]">
+      <div
+        className="relative aspect-[2/1] min-h-[500px] overflow-hidden rounded-t-xl border border-b-0 border-zinc-200 bg-[#f8f8f8] text-zinc-700"
+        style={{ maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }}
+      >
         <aside className="absolute inset-y-0 left-0 w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3">
           <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
             <BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={22} />
@@ -351,8 +373,6 @@ export default function Demo() {
             <DonutPanel />
           </div>
         </main>
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent via-[#f8f8f8]/85 to-[#f8f8f8]" />
       </div>
     </section>
   );
