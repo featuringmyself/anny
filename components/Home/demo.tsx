@@ -277,7 +277,7 @@ function DonutPanel() {
 
 export default function Demo() {
   return (
-    <section className="mx-auto mt-24 w-full max-w-[1100px] px-4 pb-20">
+    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-20">
       <div className="relative aspect-[2/1] min-h-[500px] overflow-hidden rounded-xl border border-zinc-200 bg-[#f8f8f8] text-zinc-700 shadow-[0_18px_60px_rgba(0,0,0,0.07)]">
         <aside className="absolute inset-y-0 left-0 w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3">
           <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
