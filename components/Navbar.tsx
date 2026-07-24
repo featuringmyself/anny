@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <nav className="flex justify-between items-center p-4">
             {/* logo */}
-            <Link href="/" className="flex items-center gap-2 font-space-grotesk text-2xl font-medium tracking-tight"><Image src={logoImg} alt="logo" width={30} height={30} />Anny</Link>
+            <Link href="/" className="flex items-center gap-2 text-2xl font-medium tracking-tight"><Image src={logoImg} alt="logo" width={30} height={30} /><h1>Anny</h1></Link>
 
             {/* menu items */}
             <div className="flex items-center gap-12 font-medium text-sm text-zinc-500">
