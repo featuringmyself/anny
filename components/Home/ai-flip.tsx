@@ -4,20 +4,28 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const AI_ITEMS = [
-  { name: "Claude", logo: "/ai-logo/claudeLogo.svg" },
-  { name: "ChatGPT", logo: "/ai-logo/chatgptLogo.svg" },
-  { name: "Gemini", logo: "/ai-logo/geminiLogo.svg" },
-  { name: "Grok", logo: "/ai-logo/grokLogo.svg" },
-  { name: "Perplexity", logo: "/ai-logo/perplexityLogo.svg" },
+  { name: "Claude", logo: "/ai-logo/claudeLogo.svg", color: "#D97757" },
+  { name: "ChatGPT", logo: "/ai-logo/chatgptLogo.svg", color: "#000000" },
+  { name: "Gemini", logo: "/ai-logo/geminiLogo.svg", color: "#3186FF" },
+  { name: "Grok", logo: "/ai-logo/grokLogo.svg", color: "#000000" },
+  { name: "Perplexity", logo: "/ai-logo/perplexityLogo.svg", color: "#22B8CD" },
 ] as const;
 
 const INTERVAL_MS = 2200;
 
 // Inline text layout (no flex): the baseline of this span is a real text
 // baseline, and `align-middle` centres the logo on the font's x-height.
-function AiLabel({ name, logo }: { name: string; logo: string }) {
+function AiLabel({
+  name,
+  logo,
+  color,
+}: {
+  name: string;
+  logo: string;
+  color: string;
+}) {
   return (
-    <>
+    <span className="font-semibold" style={{ color }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={logo}
@@ -28,7 +36,7 @@ function AiLabel({ name, logo }: { name: string; logo: string }) {
         draggable={false}
       />
       {name}
-    </>
+    </span>
   );
 }
 
@@ -47,9 +55,9 @@ export default function AiFlip() {
   return (
     // Overflow must stay visible here: an inline-block that clips takes its
     // bottom margin edge as its baseline, which lifts it off the text baseline.
-    <span className="relative inline-block align-baseline whitespace-nowrap text-zinc-800">
+    <span className="relative inline-block align-baseline whitespace-nowrap">
       <span className="invisible" aria-hidden>
-        <AiLabel name={item.name} logo={item.logo} />
+        <AiLabel name={item.name} logo={item.logo} color={item.color} />
       </span>
 
       {/* Clipping happens on this layer, which exactly covers the box above, so
@@ -69,7 +77,7 @@ export default function AiFlip() {
               mass: 0.7,
             }}
           >
-            <AiLabel name={item.name} logo={item.logo} />
+            <AiLabel name={item.name} logo={item.logo} color={item.color} />
           </motion.span>
         </AnimatePresence>
       </span>
