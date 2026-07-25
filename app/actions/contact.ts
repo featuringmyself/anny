@@ -10,11 +10,6 @@ export type ContactActionState = {
   message: string | null;
 };
 
-export const initialContactState: ContactActionState = {
-  status: "idle",
-  message: null,
-};
-
 /**
  * Persists a sales lead from the Talk to sales form.
  * Pair with `useActionState` in the client form.

@@ -4,9 +4,14 @@ import * as React from "react";
 import { useActionState, useId } from "react";
 
 import {
-  initialContactState,
+  type ContactActionState,
   submitContact,
 } from "@/app/actions/contact";
+
+const initialContactState: ContactActionState = {
+  status: "idle",
+  message: null,
+};
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
