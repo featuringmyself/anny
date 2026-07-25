@@ -1,5 +1,7 @@
 import { ArrowUp } from "lucide-react";
 
+import { PatternStrip } from "@/components/pages/shared/pattern-strip";
+
 const mauData = [
   {
     name: "ChatGPT",
@@ -96,7 +98,7 @@ function Googling() {
 export default function SearchIsShifting() {
   return (
     <>
-    <div className="h-20 w-full row-span-full row-start-1 hidden border-x-(--pattern-fg) bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed [--pattern-fg:var(--color-black)]/5 md:col-start-3 md:block dark:[--pattern-fg:var(--color-white)]/10"></div>
+    <PatternStrip bordered={false} />
     <div className="grid grid-cols-1 border-y md:grid-cols-2">
       {/* Left: MAU chart */}
       <div className="flex flex-col border-b md:border-b-0 md:border-r">

@@ -1,4 +1,5 @@
 import AiFlip from "@/components/Home/ai-flip";
+import { Eyebrow } from "@/components/pages/shared/eyebrow";
 import { Button } from "../ui/button";
 
 const globeIcon = (
@@ -8,7 +9,9 @@ const globeIcon = (
 export default function Hero() {
     return (
         <div className="mx-auto mt-20 max-w-3xl">
-            <span className="text-[#2462ff] flex items-center gap-2 justify-center mb-4"><span className="size-5">{globeIcon}</span> Your customers are asking AI instead of Google</span>
+            <Eyebrow icon={globeIcon} className="justify-center mb-4">
+                Your customers are asking AI instead of Google
+            </Eyebrow>
             <h1 className="text-center text-6xl font-medium tracking-tight">
                 AI search analytics <br />
                 <span className="text-zinc-500">for marketing teams</span>

@@ -8,43 +8,43 @@ const columns = [
     title: "Company",
     links: [
       { label: "Home", href: "/" },
-      { label: "Careers", href: "/" },
-      { label: "FAQ", href: "/#faq" },
-      { label: "AI Instructions", href: "/" },
+      { label: "Careers", href: "/careers" },
+      { label: "FAQ", href: "/faq" },
+      { label: "AI Instructions", href: "/ai-instructions" },
     ],
   },
   {
     title: "Product",
     links: [
-      { label: "Docs", href: "/" },
-      { label: "Blog", href: "/" },
-      { label: "Pricing", href: "/" },
-      { label: "Changelog", href: "/" },
+      { label: "Docs", href: "/docs" },
+      { label: "Blog", href: "/blog" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Changelog", href: "/changelog" },
     ],
   },
   {
     title: "Features",
     links: [
-      { label: "ChatGPT visibility tracker", href: "/" },
-      { label: "Gemini visibility tracker", href: "/" },
-      { label: "AI Mode Visibility Tracker", href: "/" },
-      { label: "For agencies", href: "/" },
+      { label: "ChatGPT visibility tracker", href: "/features/chatgpt" },
+      { label: "Gemini visibility tracker", href: "/features/gemini" },
+      { label: "AI Mode Visibility Tracker", href: "/features/ai-mode" },
+      { label: "For agencies", href: "/features/agencies" },
     ],
   },
   {
     title: "Partnership",
     links: [
-      { label: "Agencies", href: "/" },
-      { label: "Creators", href: "/" },
-      { label: "Media", href: "/" },
+      { label: "Agencies", href: "/partnership/agencies" },
+      { label: "Creators", href: "/partnership/creators" },
+      { label: "Media", href: "/partnership/media" },
     ],
   },
   {
     title: "Comparison",
     links: [
-      { label: "Anny vs Ahrefs", href: "/" },
-      { label: "Anny vs Profound", href: "/" },
-      { label: "Anny vs Semrush", href: "/" },
+      { label: "Anny vs Ahrefs", href: "/compare/ahrefs" },
+      { label: "Anny vs Profound", href: "/compare/profound" },
+      { label: "Anny vs Semrush", href: "/compare/semrush" },
     ],
   },
 ] as const;
@@ -80,10 +80,10 @@ const socials = [
 ] as const;
 
 const legal = [
-  { label: "Cookie Settings", href: "/" },
-  { label: "Privacy Policy", href: "/" },
-  { label: "Terms of Services", href: "/" },
-  { label: "Imprint", href: "/" },
+  { label: "Cookie Settings", href: "/cookies" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Services", href: "/terms" },
+  { label: "Imprint", href: "/imprint" },
 ] as const;
 
 export default function Footer() {

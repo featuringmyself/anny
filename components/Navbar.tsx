@@ -11,9 +11,9 @@ export default function Navbar() {
 
             {/* menu items */}
             <div className="flex items-center gap-12 font-medium text-sm text-zinc-500">
-                <Link href="/" className="hover:text-zinc-900 transition-colors">Product</Link>
-                <Link href="/" className="hover:text-zinc-900 transition-colors">Pricing</Link>
-                <Link href="/" className="hover:text-zinc-900 transition-colors">Careers</Link>
+                <Link href="/docs" className="hover:text-zinc-900 transition-colors">Product</Link>
+                <Link href="/pricing" className="hover:text-zinc-900 transition-colors">Pricing</Link>
+                <Link href="/careers" className="hover:text-zinc-900 transition-colors">Careers</Link>
 
             </div>
 
