@@ -42,10 +42,10 @@ export default function VsMatrix({ competitor, rows }: VsMatrixProps) {
           dump.
         </p>
       </div>
-      <div className="overflow-x-auto">
-        <div className="min-w-xl">
-          <div className="grid grid-cols-[1.4fr_1fr_1fr] border-b px-6 py-4 text-xs font-medium tracking-wide text-zinc-400 uppercase md:px-10">
-            <span>Capability</span>
+      <div className="overflow-x-auto overscroll-x-contain">
+        <div className="min-w-[36rem] md:min-w-xl">
+          <div className="grid grid-cols-[1.4fr_1fr_1fr] border-b px-4 py-4 text-xs font-medium tracking-wide text-zinc-400 uppercase md:px-10">
+            <span className="sticky left-0 bg-background pr-4">Capability</span>
             <span className="text-center">Anny</span>
             <span className="text-center">{competitor}</span>
           </div>
@@ -57,9 +57,11 @@ export default function VsMatrix({ competitor, rows }: VsMatrixProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.3, delay: index * 0.04 }}
-                className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b px-6 py-5 last:border-b-0 md:px-10"
+                className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b px-4 py-5 last:border-b-0 md:px-10"
               >
-                <span className="pr-4 font-medium">{row.capability}</span>
+                <span className="sticky left-0 bg-background pr-4 font-medium">
+                  {row.capability}
+                </span>
                 <span className="text-center">
                   <Cell value={row.anny} />
                 </span>

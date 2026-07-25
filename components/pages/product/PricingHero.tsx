@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function PricingHero() {
   return (
-    <section className="border-b px-8 py-16 md:px-12 md:py-20">
+    <section className="border-b px-6 py-14 md:px-12 md:py-20">
       <p className="text-sm font-medium tracking-wide text-[#2462ff]">Pricing</p>
       <h1 className="mt-3 max-w-2xl text-4xl font-medium tracking-tight text-balance md:text-5xl">
         Plans that scale with your AI visibility work

@@ -19,6 +19,8 @@ import {
   Waves,
 } from "lucide-react";
 
+import { cn } from "@/lib/utils";
+
 const brands = [
   { name: "Monday", color: "#f43f5e", logo: "/brand-logos/monday.png", visibility: "65%" },
   { name: "Salesforce", color: "#38a8e0", logo: "/brand-logos/salesforce.png", visibility: "62%" },
@@ -106,9 +108,20 @@ function BrandLogo({
   );
 }
 
-function Chip({ children }: { children: React.ReactNode }) {
+function Chip({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <span className="inline-flex h-7 items-center gap-2 rounded-md bg-[#f1f1f1] px-2.5 text-[11px] font-medium text-zinc-700">
+    <span
+      className={cn(
+        "inline-flex h-7 items-center gap-2 rounded-md bg-[#f1f1f1] px-2.5 text-[11px] font-medium text-zinc-700",
+        className
+      )}
+    >
       {children}
     </span>
   );
@@ -296,83 +309,121 @@ function DonutPanel() {
 
 export default function Demo() {
   return (
-    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-20">
+    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-20">
       <div
-        className="relative aspect-[2/1] min-h-[500px] overflow-hidden rounded-t-xl border border-b-0 border-zinc-200 bg-[#f8f8f8] text-zinc-700"
+        className="overflow-x-auto rounded-t-xl border border-b-0 border-zinc-200 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }}
       >
-        <aside className="absolute inset-y-0 left-0 w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3">
-          <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
-            <BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={22} />
-            Attio&apos;s Dashboard
-          </div>
-          <div className="mt-3 flex h-7 items-center gap-2 rounded-lg border border-zinc-200 bg-white px-2 text-[9px] text-zinc-400">
-            <Search size={12} />
-            Quick Actions
-          </div>
-          <p className="mb-1 mt-3 text-[8px] text-zinc-400">Pages</p>
-          <nav className="space-y-0.5 text-[10px]">
-            {[
-              [House, "Overview", true],
-              [Scan, "Prompts", false],
-              [Circle, "Sources", false],
-              [Box, "Models", false],
-              [Settings, "Settings", false],
-            ].map(([Icon, label, active]) => {
-              const NavIcon = Icon as typeof House;
-              return (
-                <div key={label as string} className={`flex h-7 items-center gap-2 rounded-md px-2 ${active ? "bg-[#e9e9e9] font-medium" : ""}`}>
-                  <NavIcon size={13} strokeWidth={1.5} />
-                  {label as string}
-                </div>
-              );
-            })}
-          </nav>
-        </aside>
-
-        <main className="ml-[145px] min-w-0">
-          <header className="flex h-10 items-center justify-between border-b border-zinc-200 px-2">
-            <div className="flex gap-2">
-              <Chip><BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={14} /> Attio</Chip>
-              <Chip><CalendarDays size={12} /> Last 7 days</Chip>
-              <Chip><Tag size={12} /> All tags</Chip>
-              <Chip><Layers size={12} /> All Models</Chip>
+        <div className="relative min-h-[360px] w-[640px] bg-[#f8f8f8] text-zinc-700 md:aspect-[2/1] md:min-h-[500px] md:w-full">
+          <aside className="absolute inset-y-0 left-0 hidden w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3 md:block">
+            <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
+              <BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={22} />
+              Attio&apos;s Dashboard
             </div>
-            <div className="flex gap-2">
-              <button aria-label="Help" className="grid size-7 place-items-center rounded-full bg-[#f1f1f1] text-zinc-500"><CircleHelp size={13} /></button>
-              <button className="inline-flex h-7 items-center gap-2 rounded-md border border-zinc-200 bg-white px-2.5 text-[9px] text-zinc-500"><Download size={12} /> Export</button>
+            <div className="mt-3 flex h-7 items-center gap-2 rounded-lg border border-zinc-200 bg-white px-2 text-[9px] text-zinc-400">
+              <Search size={12} />
+              Quick Actions
             </div>
-          </header>
+            <p className="mb-1 mt-3 text-[8px] text-zinc-400">Pages</p>
+            <nav className="space-y-0.5 text-[10px]">
+              {[
+                [House, "Overview", true],
+                [Scan, "Prompts", false],
+                [Circle, "Sources", false],
+                [Box, "Models", false],
+                [Settings, "Settings", false],
+              ].map(([Icon, label, active]) => {
+                const NavIcon = Icon as typeof House;
+                return (
+                  <div
+                    key={label as string}
+                    className={`flex h-7 items-center gap-2 rounded-md px-2 ${active ? "bg-[#e9e9e9] font-medium" : ""}`}
+                  >
+                    <NavIcon size={13} strokeWidth={1.5} />
+                    {label as string}
+                  </div>
+                );
+              })}
+            </nav>
+          </aside>
 
-          <div className="flex h-9 items-center justify-between border-b border-zinc-200 px-3 text-[9px]">
-            <span className="inline-flex items-center gap-1.5"><House size={12} /> Overview • Attio&apos;s Visibility trending up by 5.2% this month</span>
-            <span className="flex items-center gap-2 text-zinc-400">
-              Visibility: <b className="font-medium text-zinc-600">3/14</b> <TrendingDown size={10} className="text-rose-400" />
-              • Sentiment: <b className="font-medium text-zinc-600">2/14</b> <ChevronUp size={10} className="text-emerald-500" />
-              Position: <b className="font-medium text-zinc-600">5/14</b> <ChevronUp size={10} className="text-emerald-500" />
-            </span>
-          </div>
-
-          <div className="grid grid-cols-[1.4fr_1fr] gap-1 p-1">
-            <section className="h-[218px] overflow-hidden rounded-xl border border-zinc-200 bg-white">
-              <div className="flex h-[43px] items-center justify-between px-3">
-                <div className="flex items-center gap-3 text-[9px] text-zinc-500">
-                  <span className="inline-flex items-center gap-1 rounded-md border border-zinc-200 bg-white px-2 py-1 shadow-sm"><Eye size={12} /> Visibility</span>
-                  <span className="inline-flex items-center gap-1"><Smile size={12} /> Sentiment</span>
-                  <span className="inline-flex items-center gap-1"><Scan size={12} /> Position</span>
-                </div>
-                <div className="flex rounded-md bg-[#fafafa] p-1 text-zinc-500">
-                  <span className="grid size-6 place-items-center rounded-md border border-zinc-200 bg-white shadow-sm"><Waves size={12} /></span>
-                  <span className="grid size-6 place-items-center"><BarChart3 size={12} /></span>
-                </div>
+          <main className="min-w-0 md:ml-[145px]">
+            <header className="flex h-10 items-center justify-between border-b border-zinc-200 px-2">
+              <div className="flex gap-2">
+                <Chip>
+                  <BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={14} />{" "}
+                  Attio
+                </Chip>
+                <Chip>
+                  <CalendarDays size={12} /> Last 7 days
+                </Chip>
+                <Chip className="hidden sm:inline-flex">
+                  <Tag size={12} /> All tags
+                </Chip>
+                <Chip className="hidden sm:inline-flex">
+                  <Layers size={12} /> All Models
+                </Chip>
               </div>
-              <Chart />
-            </section>
-            <CompetitorTable />
-            <DomainTable />
-            <DonutPanel />
-          </div>
-        </main>
+              <div className="flex gap-2">
+                <button
+                  aria-label="Help"
+                  className="grid size-7 place-items-center rounded-full bg-[#f1f1f1] text-zinc-500"
+                >
+                  <CircleHelp size={13} />
+                </button>
+                <button className="inline-flex h-7 items-center gap-2 rounded-md border border-zinc-200 bg-white px-2.5 text-[9px] text-zinc-500">
+                  <Download size={12} /> Export
+                </button>
+              </div>
+            </header>
+
+            <div className="flex h-9 items-center justify-between gap-2 overflow-hidden border-b border-zinc-200 px-3 text-[9px]">
+              <span className="inline-flex min-w-0 items-center gap-1.5 truncate">
+                <House size={12} className="shrink-0" /> Overview • Attio&apos;s
+                Visibility trending up by 5.2% this month
+              </span>
+              <span className="hidden shrink-0 items-center gap-2 text-zinc-400 md:flex">
+                Visibility:{" "}
+                <b className="font-medium text-zinc-600">3/14</b>{" "}
+                <TrendingDown size={10} className="text-rose-400" />• Sentiment:{" "}
+                <b className="font-medium text-zinc-600">2/14</b>{" "}
+                <ChevronUp size={10} className="text-emerald-500" />
+                Position: <b className="font-medium text-zinc-600">5/14</b>{" "}
+                <ChevronUp size={10} className="text-emerald-500" />
+              </span>
+            </div>
+
+            <div className="grid grid-cols-[1.4fr_1fr] gap-1 p-1">
+              <section className="h-[218px] overflow-hidden rounded-xl border border-zinc-200 bg-white">
+                <div className="flex h-[43px] items-center justify-between px-3">
+                  <div className="flex items-center gap-3 text-[9px] text-zinc-500">
+                    <span className="inline-flex items-center gap-1 rounded-md border border-zinc-200 bg-white px-2 py-1 shadow-sm">
+                      <Eye size={12} /> Visibility
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Smile size={12} /> Sentiment
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Scan size={12} /> Position
+                    </span>
+                  </div>
+                  <div className="flex rounded-md bg-[#fafafa] p-1 text-zinc-500">
+                    <span className="grid size-6 place-items-center rounded-md border border-zinc-200 bg-white shadow-sm">
+                      <Waves size={12} />
+                    </span>
+                    <span className="grid size-6 place-items-center">
+                      <BarChart3 size={12} />
+                    </span>
+                  </div>
+                </div>
+                <Chart />
+              </section>
+              <CompetitorTable />
+              <DomainTable />
+              <DonutPanel />
+            </div>
+          </main>
+        </div>
       </div>
     </section>
   );

@@ -11,7 +11,12 @@ export function Eyebrow({
   children: React.ReactNode;
 }) {
   return (
-    <p className={cn("flex items-center gap-2 text-[#2462ff]", className)}>
+    <p
+      className={cn(
+        "flex flex-wrap items-center gap-2 text-[#2462ff]",
+        className
+      )}
+    >
       {icon ? (
         <span
           className="grid size-5 shrink-0 place-items-center [&_svg]:size-full"

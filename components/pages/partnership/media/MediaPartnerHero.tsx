@@ -6,7 +6,7 @@ export default function MediaPartnerHero() {
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Partnership · Media
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         Press kit & expert quotes{" "}
         <span className="text-zinc-500">on AI search</span>
       </h1>
@@ -14,7 +14,7 @@ export default function MediaPartnerHero() {
         Covering GEO, ChatGPT citations, or the shift from Google to AI answers?
         Grab assets or request a quote.
       </p>
-      <div className="mt-6 flex justify-center gap-3">
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
         <Button className="p-4" size="lg" render={<a href="#press-kit" />}>
           Open press kit
         </Button>

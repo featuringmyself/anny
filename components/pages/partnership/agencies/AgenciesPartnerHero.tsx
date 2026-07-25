@@ -6,7 +6,7 @@ export default function AgenciesPartnerHero() {
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Partnership · Agencies
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         Productize GEO for every client{" "}
         <span className="text-zinc-500">on one retainer</span>
       </h1>

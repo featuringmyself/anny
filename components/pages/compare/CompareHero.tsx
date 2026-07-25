@@ -18,7 +18,7 @@ export default function CompareHero({
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Anny vs {competitor} · {framing}
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         {headline}
       </h1>
       <p className="mt-4 text-center text-lg text-balance text-zinc-500">

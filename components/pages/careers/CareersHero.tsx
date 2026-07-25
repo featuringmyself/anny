@@ -6,7 +6,7 @@ export default function CareersHero() {
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Careers at Anny
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         Help brands get mentioned{" "}
         <span className="text-zinc-500">when people ask AI</span>
       </h1>

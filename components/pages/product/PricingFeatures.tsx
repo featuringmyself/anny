@@ -80,26 +80,32 @@ function Cell({ value }: { value: boolean | string }) {
 export default function PricingFeatures() {
   return (
     <section>
-      <div className="border-b px-8 py-10 md:px-12">
+      <div className="border-b px-6 py-10 md:px-12">
         <h2 className="text-2xl font-medium tracking-tight">Compare features</h2>
         <p className="mt-2 max-w-md text-sm text-zinc-500">
           Everything Anny tracks, lined up by plan — no card chrome, just the checklist.
         </p>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overscroll-x-contain">
         <table className="w-full min-w-[36rem] border-collapse text-left">
           <thead>
             <tr className="border-b">
-              <th className="px-8 py-4 text-sm font-medium text-zinc-500 md:px-12">Feature</th>
+              <th className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-500 md:px-12">
+                Feature
+              </th>
               <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Starter</th>
               <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Growth</th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36 md:pr-12">Agency</th>
+              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36 md:pr-12">
+                Agency
+              </th>
             </tr>
           </thead>
           <tbody>
             {features.map((row) => (
               <tr key={row.name} className="border-b last:border-b-0">
-                <td className="px-8 py-4 text-sm text-zinc-800 md:px-12">{row.name}</td>
+                <td className="sticky left-0 bg-background px-6 py-4 text-sm text-zinc-800 md:px-12">
+                  {row.name}
+                </td>
                 <td className="px-4 py-4">
                   <Cell value={row.starter} />
                 </td>

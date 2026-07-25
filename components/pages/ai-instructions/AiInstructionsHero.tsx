@@ -4,7 +4,7 @@ export default function AiInstructionsHero() {
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         AI Instructions
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         Tell LLMs who you are{" "}
         <span className="text-zinc-500">in one pasteable block</span>
       </h1>

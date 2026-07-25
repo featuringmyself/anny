@@ -6,7 +6,7 @@ export default function CreatorsPartnerHero() {
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Partnership · Creators
       </span>
-      <h1 className="text-center text-5xl font-medium tracking-tight text-balance md:text-6xl">
+      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
         Teach GEO.{" "}
         <span className="text-zinc-500">Earn when your audience tracks.</span>
       </h1>
