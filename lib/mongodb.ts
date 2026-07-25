@@ -19,8 +19,18 @@ function getUri() {
 
 function getClientPromise() {
   if (!globalForMongo._mongoClientPromise) {
-    const client = new MongoClient(getUri());
-    globalForMongo._mongoClientPromise = client.connect();
+    const client = new MongoClient(getUri(), {
+      // Fail fast instead of hanging a form submission for the 30s default.
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 10000,
+    });
+
+    globalForMongo._mongoClientPromise = client.connect().catch((error) => {
+      // Don't cache a rejected connection; let the next request retry.
+      globalForMongo._mongoClientPromise = undefined;
+      throw error;
+    });
   }
   return globalForMongo._mongoClientPromise;
 }

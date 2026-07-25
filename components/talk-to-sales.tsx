@@ -7,11 +7,6 @@ import {
   type ContactActionState,
   submitContact,
 } from "@/app/actions/contact";
-
-const initialContactState: ContactActionState = {
-  status: "idle",
-  message: null,
-};
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -26,6 +21,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+
+const initialContactState: ContactActionState = {
+  status: "idle",
+  message: null,
+};
 
 type TalkToSalesProps = {
   /** Identifies which CTA opened the dialog so leads can be attributed. */
@@ -76,6 +76,22 @@ function SalesDialogContent({ source }: TalkToSalesProps) {
   );
 }
 
+function FieldError({
+  id,
+  messages,
+}: {
+  id: string;
+  messages?: string[];
+}) {
+  if (!messages?.length) return null;
+
+  return (
+    <p id={id} role="alert" className="text-sm text-destructive">
+      {messages[0]}
+    </p>
+  );
+}
+
 // Rendered inside the popup so it unmounts on close, resetting the form.
 function SalesForm({ source }: TalkToSalesProps) {
   const fieldId = useId();
@@ -83,6 +99,12 @@ function SalesForm({ source }: TalkToSalesProps) {
     submitContact,
     initialContactState,
   );
+  const fieldErrors = state.fieldErrors ?? {};
+  // Only the summary is worth showing when the failure isn't field-specific.
+  const showSummary =
+    state.status === "error" &&
+    Boolean(state.message) &&
+    Object.keys(fieldErrors).length === 0;
 
   if (state.status === "success") {
     return (
@@ -122,7 +144,12 @@ function SalesForm({ source }: TalkToSalesProps) {
               autoComplete="name"
               placeholder="Ada Lovelace"
               required
+              aria-invalid={Boolean(fieldErrors.name)}
+              aria-describedby={
+                fieldErrors.name ? `${fieldId}-name-error` : undefined
+              }
             />
+            <FieldError id={`${fieldId}-name-error`} messages={fieldErrors.name} />
           </div>
           <div className="grid gap-2">
             <Label htmlFor={`${fieldId}-email`}>Work email</Label>
@@ -133,6 +160,14 @@ function SalesForm({ source }: TalkToSalesProps) {
               autoComplete="email"
               placeholder="ada@acme.com"
               required
+              aria-invalid={Boolean(fieldErrors.email)}
+              aria-describedby={
+                fieldErrors.email ? `${fieldId}-email-error` : undefined
+              }
+            />
+            <FieldError
+              id={`${fieldId}-email-error`}
+              messages={fieldErrors.email}
             />
           </div>
         </div>
@@ -146,6 +181,14 @@ function SalesForm({ source }: TalkToSalesProps) {
               autoComplete="organization"
               placeholder="Acme"
               required
+              aria-invalid={Boolean(fieldErrors.company)}
+              aria-describedby={
+                fieldErrors.company ? `${fieldId}-company-error` : undefined
+              }
+            />
+            <FieldError
+              id={`${fieldId}-company-error`}
+              messages={fieldErrors.company}
             />
           </div>
           <div className="grid gap-2">
@@ -179,7 +222,7 @@ function SalesForm({ source }: TalkToSalesProps) {
           />
         </div>
 
-        {state.status === "error" && state.message ? (
+        {showSummary ? (
           <p role="alert" aria-live="polite" className="text-sm text-destructive">
             {state.message}
           </p>

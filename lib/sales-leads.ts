@@ -30,30 +30,32 @@ export type NewSalesLead = SalesLeadDocument;
 
 const COLLECTION = "sales_leads";
 
-let indexesReady: Promise<void> | null = null;
+let indexesRequested = false;
 
-async function ensureIndexes(collection: Collection<SalesLeadDocument>) {
-  if (!indexesReady) {
-    indexesReady = collection
-      .createIndexes([
-        { key: { createdAt: -1 }, name: "createdAt_desc" },
-        { key: { email: 1 }, name: "email_asc" },
-        { key: { status: 1, createdAt: -1 }, name: "status_createdAt" },
-      ])
-      .then(() => undefined)
-      .catch((error) => {
-        // Allow retries on the next request if index creation fails once.
-        indexesReady = null;
-        throw error;
-      });
-  }
-  await indexesReady;
+/**
+ * Best-effort index creation. Deliberately not awaited by writes: losing a
+ * lead because an index couldn't be built would be worse than a slow query.
+ */
+function ensureIndexes(collection: Collection<SalesLeadDocument>) {
+  if (indexesRequested) return;
+  indexesRequested = true;
+
+  void collection
+    .createIndexes([
+      { key: { createdAt: -1 }, name: "createdAt_desc" },
+      { key: { email: 1 }, name: "email_asc" },
+      { key: { status: 1, createdAt: -1 }, name: "status_createdAt" },
+    ])
+    .catch((error) => {
+      indexesRequested = false;
+      console.error("[sales-leads] index creation failed", error);
+    });
 }
 
 export async function salesLeadsCollection() {
   const db = await getDb();
   const collection = db.collection<SalesLeadDocument>(COLLECTION);
-  await ensureIndexes(collection);
+  ensureIndexes(collection);
   return collection;
 }
 

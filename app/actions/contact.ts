@@ -1,5 +1,6 @@
 "use server";
 
+import type { ContactFieldErrors } from "@/lib/contact";
 import {
   createSalesLeadFromInput,
   validateContactInput,
@@ -8,6 +9,7 @@ import {
 export type ContactActionState = {
   status: "idle" | "success" | "error";
   message: string | null;
+  fieldErrors?: ContactFieldErrors;
 };
 
 /**
@@ -21,20 +23,27 @@ export async function submitContact(
   const validated = validateContactInput(Object.fromEntries(formData));
 
   if (!validated.ok) {
-    return { status: "error", message: validated.error };
+    return {
+      status: "error",
+      message: validated.error,
+      fieldErrors: validated.fieldErrors,
+    };
   }
 
   try {
     await createSalesLeadFromInput(validated.data);
-    return {
-      status: "success",
-      message: "Thanks — we'll be in touch.",
-    };
+    return { status: "success", message: "Thanks — we'll be in touch." };
   } catch (error) {
-    console.error("[contact] failed to save sales lead", error);
+    const cause = error instanceof Error ? error.message : String(error);
+    console.error("[contact] failed to save sales lead:", cause, error);
+
     return {
       status: "error",
-      message: "We couldn't send that. Please try again.",
+      // Surface the real cause while developing; stay vague in production.
+      message:
+        process.env.NODE_ENV === "production"
+          ? "We couldn't send that. Please try again."
+          : `Couldn't save your details: ${cause}`,
     };
   }
 }
