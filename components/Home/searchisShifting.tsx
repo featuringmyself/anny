@@ -102,11 +102,11 @@ export default function SearchIsShifting() {
     <div className="grid grid-cols-1 border-y md:grid-cols-2">
       {/* Left: MAU chart */}
       <div className="flex flex-col border-b md:border-b-0 md:border-r">
-        <div className="flex flex-1 flex-col gap-4 p-6 sm:gap-5 sm:p-8 md:p-10">
-          <h2 className="text-2xl font-medium tracking-tight text-balance sm:text-3xl md:text-4xl">
+        <div className="flex flex-1 flex-col gap-3 p-6 sm:gap-5 sm:p-8 md:p-10">
+          <h2 className="text-xl font-medium md:leading-normal leading-tight tracking-tight text-balance sm:text-3xl md:text-4xl">
             Search is Shifting from Search Engines to AI.
           </h2>
-          <p className="max-w-md text-lg leading-snug text-zinc-500 text-balance sm:text-xl md:text-2xl">
+          <p className="max-w-md text-sm leading-snug text-zinc-500 text-balance sm:text-xl md:text-2xl">
             Monthly usage of standalone AI tools has grown to well over{" "}
             <span className="text-[#2462ff]">1 billion people</span> by mid-2026.
           </p>
