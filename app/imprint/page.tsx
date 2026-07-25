@@ -19,15 +19,15 @@ export default function ImprintPage() {
         sections={[
           {
             heading: "Operator",
-            body: "Anny — AI search analytics for marketing teams. Website: anny.ai. Email: hello@anny.ai.",
+            body: "Anny — AI search analytics for marketing teams. Website: anny.dodoxhq.com. Email: hello@dodoxhq.com.",
           },
           {
             heading: "Registered address",
-            body: "Company name, registration number, and registered office will appear here once finalized. Until then, contact hello@anny.ai for formal correspondence.",
+            body: "Company name, registration number, and registered office will appear here once finalized. Until then, contact hello@dodoxhq.com for formal correspondence.",
           },
           {
             heading: "Responsible for content",
-            body: "Editorial responsibility for this website rests with the Anny team. Product and marketing inquiries: hello@anny.ai. Legal: legal@anny.ai. Privacy: privacy@anny.ai.",
+            body: "Editorial responsibility for this website rests with the Anny team. Product and marketing inquiries: hello@dodoxhq.com. Legal: legal@dodoxhq.com. Privacy: privacy@dodoxhq.com.",
           },
           {
             heading: "Dispute resolution",

@@ -18,7 +18,7 @@ export default function AgenciesPartnerHero() {
         <Button
           className="p-4"
           size="lg"
-          render={<a href="mailto:partners@anny.ai?subject=Agency%20partnership" />}
+          render={<a href="mailto:partners@dodoxhq.com?subject=Agency%20partnership" />}
         >
           Talk agency partnerships
         </Button>

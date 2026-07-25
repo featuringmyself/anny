@@ -30,10 +30,10 @@ export default function QuoteRequest() {
               className="bg-white text-black hover:bg-white/90"
               size="lg"
               render={
-                <a href="mailto:press@anny.ai?subject=Quote%20request" />
+                <a href="mailto:press@dodoxhq.com?subject=Quote%20request" />
               }
             >
-              Email press@anny.ai
+              Email press@dodoxhq.com
             </Button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 export default function AgenciesHero() {
   return (
@@ -14,9 +14,11 @@ export default function AgenciesHero() {
         clients see Anny as part of your stack — not another login.
       </p>
       <div className="mt-8">
-        <Button size="lg" className="bg-[#2462ff] px-4 hover:bg-[#2462ff]/90">
-          Talk to sales
-        </Button>
+        <TalkToSalesButton
+          size="lg"
+          className="bg-[#2462ff] px-4 hover:bg-[#2462ff]/90"
+          source="agencies-hero"
+        />
       </div>
     </section>
   );

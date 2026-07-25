@@ -40,7 +40,7 @@ export default function TermsPage() {
           },
           {
             heading: "Contact",
-            body: "Questions about these terms? Email legal@anny.ai.",
+            body: "Questions about these terms? Email legal@dodoxhq.com.",
           },
         ]}
       />

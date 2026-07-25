@@ -1,6 +1,6 @@
 type LegalSection = {
   heading: string;
-  body: string;
+  body: string | string[];
 };
 
 type LegalProseProps = {
@@ -31,16 +31,29 @@ export default function LegalProse({
         </p>
 
         <div className="mt-12 space-y-10">
-          {sections.map((section) => (
-            <section key={section.heading}>
-              <h2 className="text-lg font-medium tracking-tight">
-                {section.heading}
-              </h2>
-              <p className="mt-3 text-[15px] leading-relaxed text-zinc-500">
-                {section.body}
-              </p>
-            </section>
-          ))}
+          {sections.map((section) => {
+            const paragraphs = Array.isArray(section.body)
+              ? section.body
+              : [section.body];
+
+            return (
+              <section key={section.heading}>
+                <h2 className="text-lg font-medium tracking-tight">
+                  {section.heading}
+                </h2>
+                <div className="mt-3 space-y-3">
+                  {paragraphs.map((paragraph, index) => (
+                    <p
+                      key={`${section.heading}-${index}`}
+                      className="text-[15px] leading-relaxed text-zinc-500"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
     </article>

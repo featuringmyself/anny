@@ -26,9 +26,9 @@ export default function CareersCulture() {
           <Button
             className="bg-white text-black hover:bg-white/90"
             size="lg"
-            render={<a href="mailto:careers@anny.ai" />}
+            render={<a href="mailto:careers@dodoxhq.com" />}
           >
-            Email careers@anny.ai
+            Email careers@dodoxhq.com
           </Button>
         </div>
       </div>

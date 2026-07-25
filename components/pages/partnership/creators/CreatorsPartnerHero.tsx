@@ -18,7 +18,7 @@ export default function CreatorsPartnerHero() {
         <Button
           className="p-4"
           size="lg"
-          render={<a href="mailto:partners@anny.ai?subject=Creator%20affiliate" />}
+          render={<a href="mailto:partners@dodoxhq.com?subject=Creator%20affiliate" />}
         >
           Join the affiliate program
         </Button>

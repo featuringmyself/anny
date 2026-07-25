@@ -1,6 +1,6 @@
 import AiFlip from "@/components/Home/ai-flip";
 import { Eyebrow } from "@/components/pages/shared/eyebrow";
-import { Button } from "../ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 const globeIcon = (
   <svg
@@ -40,9 +40,7 @@ export default function Hero() {
         and what to do to get mentioned more.
       </div>
       <div className="mt-6 flex justify-center">
-        <Button className="p-4" size="lg">
-          Talk to sales
-        </Button>
+        <TalkToSalesButton className="p-4" size="lg" source="home-hero" />
       </div>
     </div>
   );

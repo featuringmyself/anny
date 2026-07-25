@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
 
@@ -36,7 +37,8 @@ const tiers = [
     period: "",
     description: "Multi-client workspaces with white-label exports.",
     cta: "Talk to sales",
-    href: "/docs",
+    // No href — this tier opens the sales dialog instead of navigating.
+    href: null,
     featured: false,
     highlights: [
       "Unlimited clients",
@@ -101,14 +103,25 @@ function PricingTierColumn({
         </ul>
         <div className="mt-auto pt-10">
           <PricingTierMotion featured={tier.featured}>
-            <Button
-              size="lg"
-              variant={tier.featured ? "default" : "outline"}
-              className="w-full px-5"
-              render={<Link href={tier.href} />}
-            >
-              {tier.cta}
-            </Button>
+            {tier.href ? (
+              <Button
+                size="lg"
+                variant={tier.featured ? "default" : "outline"}
+                className="w-full px-5"
+                render={<Link href={tier.href} />}
+              >
+                {tier.cta}
+              </Button>
+            ) : (
+              <TalkToSalesButton
+                size="lg"
+                variant={tier.featured ? "default" : "outline"}
+                className="w-full px-5"
+                source="pricing-tier-agency"
+              >
+                {tier.cta}
+              </TalkToSalesButton>
+            )}
           </PricingTierMotion>
         </div>
       </div>

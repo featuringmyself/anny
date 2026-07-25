@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 const ACCENT = "#10A37F";
 
@@ -28,9 +28,12 @@ export default function ChatGptHero() {
         score move day by day across ChatGPT responses.
       </p>
       <div className="mt-8">
-        <Button size="lg" className="px-4" style={{ backgroundColor: ACCENT }}>
-          Talk to sales
-        </Button>
+        <TalkToSalesButton
+          size="lg"
+          className="px-4"
+          style={{ backgroundColor: ACCENT }}
+          source="chatgpt-hero"
+        />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 type VsVerdictProps = {
   competitor: string;
@@ -37,9 +37,7 @@ export default function VsVerdict({
             ))}
           </ul>
           <div className="mt-8">
-            <Button className="p-4" size="lg">
-              Talk to sales
-            </Button>
+            <TalkToSalesButton className="p-4" size="lg" source="compare-verdict" />
           </div>
         </div>
         <div className="bg-[#1a1a1a] p-8 text-white md:p-12">

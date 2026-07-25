@@ -6,6 +6,10 @@ import Image from "next/image";
 import { Menu } from "lucide-react";
 
 import logoImg from "@/public/logo.png";
+import {
+  TalkToSalesButton,
+  TalkToSalesDialog,
+} from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -25,6 +29,10 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [salesOpen, setSalesOpen] = useState(false);
+  // The mobile CTA closes the sheet first and opens the dialog only once the
+  // sheet has finished animating out, so the two don't fight over focus.
+  const [salesQueued, setSalesQueued] = useState(false);
 
   return (
     <nav className="border-b">
@@ -50,10 +58,19 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button className="px-3">Talk to sales</Button>
+          <TalkToSalesButton className="px-3" source="navbar-desktop" />
         </div>
 
-        <Sheet open={open} onOpenChange={setOpen}>
+        <Sheet
+          open={open}
+          onOpenChange={setOpen}
+          onOpenChangeComplete={(sheetOpen) => {
+            if (!sheetOpen && salesQueued) {
+              setSalesQueued(false);
+              setSalesOpen(true);
+            }
+          }}
+        >
           <SheetTrigger
             render={
               <Button
@@ -86,12 +103,25 @@ export default function Navbar() {
               ))}
             </nav>
             <SheetFooter>
-              <SheetClose render={<Button className="w-full" size="lg" />}>
+              <Button
+                className="w-full"
+                size="lg"
+                onClick={() => {
+                  setSalesQueued(true);
+                  setOpen(false);
+                }}
+              >
                 Talk to sales
-              </SheetClose>
+              </Button>
             </SheetFooter>
           </SheetContent>
         </Sheet>
+
+        <TalkToSalesDialog
+          open={salesOpen}
+          onOpenChange={setSalesOpen}
+          source="navbar-mobile"
+        />
       </div>
     </nav>
   );

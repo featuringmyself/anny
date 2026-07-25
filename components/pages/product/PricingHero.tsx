@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
 export default function PricingHero() {
@@ -14,9 +15,7 @@ export default function PricingHero() {
         more prompts, seats, or white-label reporting.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Button size="lg" className="px-5" render={<Link href="/docs" />}>
-          Talk to sales
-        </Button>
+        <TalkToSalesButton size="lg" className="px-5" source="pricing-hero" />
         <Button size="lg" variant="outline" className="px-5" render={<Link href="/docs" />}>
           Read the docs
         </Button>

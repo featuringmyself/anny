@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 export default function AiModeHero() {
   return (
@@ -23,9 +23,11 @@ export default function AiModeHero() {
         shows both panels so you know where you appear — and where you disappear.
       </p>
       <div className="mt-8">
-        <Button size="lg" className="bg-[#2462ff] px-4 hover:bg-[#2462ff]/90">
-          Talk to sales
-        </Button>
+        <TalkToSalesButton
+          size="lg"
+          className="bg-[#2462ff] px-4 hover:bg-[#2462ff]/90"
+          source="ai-mode-hero"
+        />
       </div>
     </section>
   );

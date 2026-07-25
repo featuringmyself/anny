@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 const ACCENT = "#4B7BFF";
 
@@ -28,9 +28,12 @@ export default function GeminiHero() {
         get the credit when your brand is named.
       </p>
       <div className="mt-8">
-        <Button size="lg" className="px-4" style={{ backgroundColor: ACCENT }}>
-          Talk to sales
-        </Button>
+        <TalkToSalesButton
+          size="lg"
+          className="px-4"
+          style={{ backgroundColor: ACCENT }}
+          source="gemini-hero"
+        />
       </div>
     </section>
   );

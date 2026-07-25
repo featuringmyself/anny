@@ -6,7 +6,7 @@ import LegalProse from "@/components/pages/LegalProse";
 export const metadata: Metadata = {
   title: "Cookie Settings | Anny",
   description:
-    "How Anny uses cookies and similar technologies on anny.ai.",
+    "How Anny uses cookies and similar technologies on anny.dodoxhq.com.",
 };
 
 export default function CookiesPage() {
@@ -32,7 +32,7 @@ export default function CookiesPage() {
           },
           {
             heading: "Contact",
-            body: "Questions about cookies? Email privacy@anny.ai and we will help.",
+            body: "Questions about cookies? Email privacy@dodoxhq.com and we will help.",
           },
         ]}
       />
