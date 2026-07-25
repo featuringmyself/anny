@@ -44,7 +44,7 @@ export default function Metric() {
     ]
     return (
         <div>
-            <div className="h-20 w-full border-y"></div>
+            <div className="h-20 w-full border-y row-span-full row-start-1 hidden border-x-(--pattern-fg) bg-[repeating-linear-gradient(315deg,var(--pattern-fg)_0,var(--pattern-fg)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] bg-fixed [--pattern-fg:var(--color-black)]/5 md:col-start-3 md:block dark:[--pattern-fg:var(--color-white)]/10"></div>
 
             <div className="grid grid-cols-2">
                 {metricData.map((item, index) => (
