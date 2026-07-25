@@ -4,7 +4,7 @@ const mauData = [
   {
     name: "ChatGPT",
     logo: "/ai-logo/chatgptLogo.svg",
-    value: "600M",
+    value: "1B",
     width: "92%",
     color: "#10A37F",
     invert: true,
@@ -12,40 +12,40 @@ const mauData = [
   {
     name: "Gemini",
     logo: "/ai-logo/geminiLogo.svg",
-    value: "400M",
-    width: "68%",
+    value: "950M",
+    width: "87%",
     color: "#4B7BFF",
-    invert: true,
-  },
-  {
-    name: "DeepSeek",
-    logo: null,
-    value: "97M",
-    width: "28%",
-    color: "#4D6BFE",
-    invert: false,
-  },
-  {
-    name: "Grok",
-    logo: "/ai-logo/grokLogo.svg",
-    value: "35M",
-    width: "14%",
-    color: "#1A1A1A",
     invert: true,
   },
   {
     name: "Claude",
     logo: "/ai-logo/claudeLogo.svg",
-    value: "19M",
-    width: "10%",
+    value: "245M",
+    width: "23%",
     color: "#E8784A",
     invert: true,
   },
   {
+    name: "Grok",
+    logo: "/ai-logo/grokLogo.svg",
+    value: "117M",
+    width: "11%",
+    color: "#1A1A1A",
+    invert: true,
+  },
+  {
+    name: "DeepSeek",
+    logo: null,
+    value: "67M",
+    width: "6%",
+    color: "#4D6BFE",
+    invert: false,
+  },
+  {
     name: "Perplexity",
     logo: "/ai-logo/perplexityLogo.svg",
-    value: "15M",
-    width: "8%",
+    value: "34M",
+    width: "3%",
     color: "#1AA8B8",
     invert: true,
   },
@@ -105,8 +105,8 @@ export default function SearchIsShifting() {
             Search is Shifting from Search Engines to AI.
           </h2>
           <p className="max-w-md text-xl leading-snug text-zinc-500 text-balance md:text-2xl">
-            The monthly active users of AI / LLMs has grown to over{" "}
-            <span className="text-[#2462ff]">1 billion</span> by June 2025.
+            Monthly usage of standalone AI tools has grown to well over{" "}
+            <span className="text-[#2462ff]">1 billion people</span> by mid-2026.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export default function SearchIsShifting() {
             {/* User query bubble */}
             <div className="absolute top-[28%] right-6 left-6 z-10 flex justify-end">
               <div className="max-w-[85%] rounded-2xl bg-[#2462ff] px-4 py-3 text-sm leading-snug text-white shadow-lg">
-                best GEO tool for marketers
+                best CRM for growing B2B teams
               </div>
             </div>
 
@@ -178,12 +178,11 @@ export default function SearchIsShifting() {
               }}
             >
               <p>
-                Here are the 5 best GEO tools for ai search monitoring and
-                optimization:
+                Here are the top CRMs teams recommend for scaling B2B sales:
               </p>
               <p>
-                1. Promptmonitor helps track and optimize your brand&apos;s
-                visibility across ChatGPT, Claude, Gemini and other AI / LLMs.
+                1. Attio is a modern CRM built for startups and sales teams that
+                need flexible pipelines and clean data without the complexity.
               </p>
               <p>…</p>
             </div>
