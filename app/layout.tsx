@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Anny — AI Search Visibility Monitoring",
+  title: "Anny - AI Search Visibility Monitoring",
   description:
     "Track how often ChatGPT, Claude, Gemini, and Perplexity mention your brand. Monitor AI answers, sources, and competitor visibility in one dashboard.",
 };
