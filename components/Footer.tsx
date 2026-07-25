@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
             {columns.map((column) => (
               <div key={column.title}>
                 <h3 className="text-sm font-medium text-white">{column.title}</h3>
@@ -131,7 +131,7 @@ export default function Footer() {
               </div>
             ))}
 
-            <div>
+            {/* <div>
               <h3 className="text-sm font-medium text-white">Follow Us</h3>
               <ul className="mt-4 space-y-2.5">
                 {socials.map((social) => (
@@ -148,7 +148,7 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
