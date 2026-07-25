@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Anny - AI Search Visibility Monitoring",
   description:
-    "Track how often ChatGPT, Claude, Gemini, and Perplexity mention your brand. Monitor AI answers, sources, and competitor visibility in one dashboard.",
+    "Built for agencies and brand studios. Track how often ChatGPT, Claude, Gemini, and Perplexity mention the brands you work on. Monitor AI answers, sources, and competitor visibility in one dashboard.",
 };
 
 export default function RootLayout({
