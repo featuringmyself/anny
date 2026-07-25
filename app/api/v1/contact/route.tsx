@@ -1,26 +1,15 @@
 import { NextResponse } from "next/server";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import {
+  createSalesLeadFromInput,
+  validateContactInput,
+} from "@/lib/contact";
 
-const FIELD_LIMITS = {
-  name: 120,
-  email: 200,
-  company: 120,
-  website: 300,
-  message: 2000,
-  source: 60,
-} as const;
-
-function readField(
-  body: Record<string, unknown>,
-  field: keyof typeof FIELD_LIMITS,
-) {
-  const value = body[field];
-  return typeof value === "string"
-    ? value.trim().slice(0, FIELD_LIMITS[field])
-    : "";
-}
-
+/**
+ * JSON endpoint for the contact / sales form.
+ * Prefer the `submitContact` Server Action from the UI; this route exists for
+ * same-origin programmatic clients and keeps validation + persistence shared.
+ */
 export async function POST(request: Request) {
   let body: unknown;
 
@@ -40,32 +29,20 @@ export async function POST(request: Request) {
     );
   }
 
-  const fields = body as Record<string, unknown>;
-  const lead = {
-    name: readField(fields, "name"),
-    email: readField(fields, "email"),
-    company: readField(fields, "company"),
-    website: readField(fields, "website"),
-    message: readField(fields, "message"),
-    source: readField(fields, "source"),
-  };
+  const validated = validateContactInput(body as Record<string, unknown>);
 
-  if (!lead.name || !lead.company) {
-    return NextResponse.json(
-      { error: "Name and company are required." },
-      { status: 400 },
-    );
+  if (!validated.ok) {
+    return NextResponse.json({ error: validated.error }, { status: 400 });
   }
 
-  if (!EMAIL_PATTERN.test(lead.email)) {
+  try {
+    await createSalesLeadFromInput(validated.data);
+    return NextResponse.json({ message: "Thanks — we'll be in touch." });
+  } catch (error) {
+    console.error("[contact] failed to save sales lead", error);
     return NextResponse.json(
-      { error: "Enter a valid work email." },
-      { status: 400 },
+      { error: "We couldn't send that. Please try again." },
+      { status: 500 },
     );
   }
-
-  // TODO: forward to the CRM / notify sales instead of only logging.
-  console.log("[contact] sales lead", lead);
-
-  return NextResponse.json({ message: "Thanks — we'll be in touch." });
 }

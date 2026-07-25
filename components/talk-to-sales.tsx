@@ -1,8 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { useId, useState } from "react";
+import { useActionState, useId } from "react";
 
+import {
+  initialContactState,
+  submitContact,
+} from "@/app/actions/contact";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,8 +21,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
-const GENERIC_ERROR = "We couldn't send that. Please try again.";
 
 type TalkToSalesProps = {
   /** Identifies which CTA opened the dialog so leads can be attributed. */
@@ -72,38 +74,12 @@ function SalesDialogContent({ source }: TalkToSalesProps) {
 // Rendered inside the popup so it unmounts on close, resetting the form.
 function SalesForm({ source }: TalkToSalesProps) {
   const fieldId = useId();
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "error" | "success"
-  >("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [state, formAction, pending] = useActionState(
+    submitContact,
+    initialContactState,
+  );
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const fields = Object.fromEntries(new FormData(event.currentTarget));
-    setStatus("submitting");
-    setError(null);
-
-    try {
-      const response = await fetch("/api/v1/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...fields, source }),
-      });
-
-      if (!response.ok) {
-        const body = await response.json().catch(() => null);
-        throw new Error(body?.error ?? GENERIC_ERROR);
-      }
-
-      setStatus("success");
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : GENERIC_ERROR);
-      setStatus("error");
-    }
-  }
-
-  if (status === "success") {
+  if (state.status === "success") {
     return (
       <>
         <DialogHeader>
@@ -129,7 +105,9 @@ function SalesForm({ source }: TalkToSalesProps) {
         </DialogDescription>
       </DialogHeader>
 
-      <form onSubmit={handleSubmit} className="grid gap-4">
+      <form action={formAction} className="grid gap-4">
+        <input type="hidden" name="source" value={source} />
+
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
             <Label htmlFor={`${fieldId}-name`}>Full name</Label>
@@ -196,16 +174,16 @@ function SalesForm({ source }: TalkToSalesProps) {
           />
         </div>
 
-        {error ? (
-          <p role="alert" className="text-sm text-destructive">
-            {error}
+        {state.status === "error" && state.message ? (
+          <p role="alert" aria-live="polite" className="text-sm text-destructive">
+            {state.message}
           </p>
         ) : null}
 
         <DialogFooter className="mt-1">
           <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
-          <Button type="submit" disabled={status === "submitting"}>
-            {status === "submitting" ? "Sending…" : "Request a demo"}
+          <Button type="submit" disabled={pending}>
+            {pending ? "Sending…" : "Request a demo"}
           </Button>
         </DialogFooter>
       </form>
