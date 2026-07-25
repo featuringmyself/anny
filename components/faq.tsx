@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   Accordion,
   AccordionContent,
@@ -12,8 +10,8 @@ const faqs = [
     question: "What does Anny actually do?",
     answer: (
       <p>
-        Anny shows you if your brand or your clients get mentioned in AI answers
-        when people ask AI assistants like ChatGPT, Claude, Gemini and more for
+        Anny shows you if your company gets mentioned in AI answers when people
+        ask AI assistants like ChatGPT, Claude, Gemini and more for
         recommendations. It shows you gaps and opportunities to improve your AI
         visibility. Think of it sort of like Ahrefs, but for AI answers.
       </p>
@@ -28,22 +26,6 @@ const faqs = [
         mention your business when people ask for recommendations. Just like SEO
         helps you rank higher on Google, GEO helps you get recommended more often
         by AI/LLMs.
-      </p>
-    ),
-  },
-  {
-    question: "Is Anny for agencies?",
-    answer: (
-      <p>
-        Yes. Agencies use Anny to track multiple brands and report AI visibility
-        to clients. For workspace details, see{" "}
-        <Link
-          href="/features/agencies"
-          className="text-foreground underline underline-offset-2 hover:text-zinc-300"
-        >
-          Anny for agencies
-        </Link>
-        .
       </p>
     ),
   },

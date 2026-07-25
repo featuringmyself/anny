@@ -107,7 +107,7 @@ export default function Footer() {
               Anny
             </Link>
             <p className="mt-4 max-w-44 text-sm leading-snug text-zinc-400">
-              AI search analytics for agencies &amp; brand studios
+              AI search analytics for marketing teams
             </p>
           </div>
 

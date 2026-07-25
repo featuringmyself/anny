@@ -205,8 +205,8 @@ export default function SearchIsShifting() {
             decision.
           </h3>
           <p className="mx-auto mt-4 max-w-sm text-sm text-zinc-400 text-balance">
-            Either your clients get mentioned in AI answers or they lose the
-            sale to competitors.
+            Either you get mentioned in AI answers or lose the sale to your
+            competitors.
           </p>
         </div>
       </div>

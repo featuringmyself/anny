@@ -14,7 +14,7 @@ export default function Metric() {
     {
       title: "Track your AI Visibility",
       description:
-        "One dashboard shows how often ChatGPT, Claude, Gemini, and Perplexity mention each brand you monitor. Tracked daily so you catch changes fast.",
+        "One dashboard shows how often ChatGPT, Claude, Gemini, and Perplexity mention your brand. Tracked daily so you catch changes fast.",
       image: allAiGraph,
     },
     {
@@ -38,13 +38,13 @@ export default function Metric() {
     {
       title: "Compare your AI visibility against competitors",
       description:
-        "See which of your clients' competitors AI mentions for your target queries. Track their visibility score alongside yours and spot the gaps.",
+        "See which competitors AI mentions for your target queries. Track their visibility score alongside yours and spot the gaps.",
       image: aiVisibility,
     },
     {
       title: "Read every word AI says about your brand",
       description:
-        "Most agencies and brands have no idea what AI says about them. Track every mention, read the full response, and understand the sentiment.",
+        "Most businesses have no idea what AI says about them. Track every mention, read the full response, and understand the sentiment.",
       image: brandMonitor,
     },
   ];
