@@ -102,11 +102,11 @@ export default function SearchIsShifting() {
     <div className="grid grid-cols-1 border-y md:grid-cols-2">
       {/* Left: MAU chart */}
       <div className="flex flex-col border-b md:border-b-0 md:border-r">
-        <div className="flex flex-1 flex-col gap-5 p-8 md:p-10">
-          <h2 className="text-3xl font-medium tracking-tight text-balance md:text-4xl">
+        <div className="flex flex-1 flex-col gap-4 p-6 sm:gap-5 sm:p-8 md:p-10">
+          <h2 className="text-2xl font-medium tracking-tight text-balance sm:text-3xl md:text-4xl">
             Search is Shifting from Search Engines to AI.
           </h2>
-          <p className="max-w-md text-xl leading-snug text-zinc-500 text-balance md:text-2xl">
+          <p className="max-w-md text-lg leading-snug text-zinc-500 text-balance sm:text-xl md:text-2xl">
             Monthly usage of standalone AI tools has grown to well over{" "}
             <span className="text-[#2462ff]">1 billion people</span> by mid-2026.
           </p>
@@ -116,36 +116,40 @@ export default function SearchIsShifting() {
           {mauData.map((item) => (
             <div
               key={item.name}
-              className="grid grid-cols-[1fr_3.5rem] items-center border-b last:border-b-0"
+              className="grid grid-cols-[2.75rem_minmax(0,1fr)_3.5rem] items-center border-b last:border-b-0"
             >
-              <div className="min-w-0">
+              <div
+                className="grid h-12 place-items-center"
+                style={{ backgroundColor: item.color, ...stripeStyle }}
+              >
+                <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
+                  {item.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={item.logo}
+                      alt=""
+                      width={14}
+                      height={14}
+                      className={`size-3.5 object-contain ${item.invert ? "brightness-0 invert" : ""}`}
+                      draggable={false}
+                    />
+                  ) : (
+                    <DeepSeekMark />
+                  )}
+                </span>
+                <span className="sr-only">{item.name}</span>
+              </div>
+              <div className="min-w-0 self-stretch">
                 <div
-                  className="relative flex h-12 items-center pl-3"
+                  className="h-full min-h-12"
                   style={{
                     width: item.width,
                     backgroundColor: item.color,
                     ...stripeStyle,
                   }}
-                >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
-                    {item.logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={item.logo}
-                        alt=""
-                        width={14}
-                        height={14}
-                        className={`size-3.5 object-contain ${item.invert ? "brightness-0 invert" : ""}`}
-                        draggable={false}
-                      />
-                    ) : (
-                      <DeepSeekMark />
-                    )}
-                  </span>
-                  <span className="sr-only">{item.name}</span>
-                </div>
+                />
               </div>
-              <span className="pr-4 text-right text-sm text-zinc-500 tabular-nums">
+              <span className="pr-3 text-right text-sm text-zinc-500 tabular-nums sm:pr-4">
                 {item.value}
               </span>
             </div>

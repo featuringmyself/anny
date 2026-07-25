@@ -27,7 +27,7 @@ export default function Hero() {
     <div className="mx-auto mt-14 max-w-3xl px-6 md:mt-20">
       <Eyebrow
         icon={globeIcon}
-        className="mb-4 justify-center text-center text-sm sm:text-base"
+        className="mb-4 text-center text-sm text-balance sm:text-base"
       >
         Your customers are asking AI instead of Google
       </Eyebrow>

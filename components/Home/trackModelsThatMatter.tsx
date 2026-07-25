@@ -44,11 +44,11 @@ export default function TrackModelsThatMatter() {
     },
   ];
   return (
-    <div className="mt-14 flex w-full flex-col items-center justify-center px-6 md:px-0">
-      <h5 className="text-center text-xl font-medium md:text-2xl">
+    <div className="mt-14 flex w-full flex-col items-center justify-center">
+      <h5 className="px-6 text-center text-xl font-medium md:px-0 md:text-2xl">
         Track the models that matter
       </h5>
-      <p className="mt-1 max-w-2xl text-center text-sm text-balance text-gray-500 md:text-base">
+      <p className="mt-1 max-w-2xl px-6 text-center text-sm text-balance text-gray-500 md:px-0 md:text-base">
         Ammy tracks ChatGPT, Claude, Gemini, Deepseek, Grok, Perplexity, Google
         AI Overview and AI Mode for AI visibility
       </p>
