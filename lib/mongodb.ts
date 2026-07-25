@@ -37,5 +37,5 @@ function getClientPromise() {
 
 export async function getDb(): Promise<Db> {
   const client = await getClientPromise();
-  return client.db(process.env.DB_NAME ?? "anny");
+  return client.db(process.env.DB_NAME ?? "anny_landing");
 }
