@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import posthog from "posthog-js";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
@@ -109,6 +112,13 @@ function PricingTierColumn({
                 variant={tier.featured ? "default" : "outline"}
                 className="w-full px-5"
                 render={<Link href={tier.href} />}
+                onClick={() =>
+                  posthog.capture("pricing_tier_cta_clicked", {
+                    tier: tier.name,
+                    cta: tier.cta,
+                    featured: tier.featured,
+                  })
+                }
               >
                 {tier.cta}
               </Button>

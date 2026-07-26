@@ -5,6 +5,7 @@ import {
   createSalesLeadFromInput,
   validateContactInput,
 } from "@/lib/contact";
+import { getPostHogClient } from "@/lib/posthog-server";
 
 export type ContactActionState = {
   status: "idle" | "success" | "error";
@@ -32,10 +33,47 @@ export async function submitContact(
 
   try {
     await createSalesLeadFromInput(validated.data);
+
+    const posthog = getPostHogClient();
+    posthog.capture({
+      distinctId: validated.data.email,
+      event: "sales_demo_requested",
+      properties: {
+        source: validated.data.source,
+        company: validated.data.company,
+        has_website: Boolean(validated.data.website),
+        has_message: Boolean(validated.data.message),
+      },
+    });
+    posthog.identify({
+      distinctId: validated.data.email,
+      properties: {
+        email: validated.data.email,
+        name: validated.data.name,
+        company: validated.data.company,
+      },
+    });
+    await posthog.flush();
+
     return { status: "success", message: "Thanks — we'll be in touch." };
   } catch (error) {
     const cause = error instanceof Error ? error.message : String(error);
     console.error("[contact] failed to save sales lead:", cause, error);
+
+    try {
+      const posthog = getPostHogClient();
+      posthog.capture({
+        distinctId: validated.data.email,
+        event: "contact_submission_failed",
+        properties: {
+          source: validated.data.source,
+          error: cause,
+        },
+      });
+      await posthog.flush();
+    } catch {
+      // Never let PostHog errors surface to the user
+    }
 
     return {
       status: "error",

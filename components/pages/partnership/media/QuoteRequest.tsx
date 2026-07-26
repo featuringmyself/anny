@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 import { Button } from "@/components/ui/button";
 
 export default function QuoteRequest() {
@@ -32,6 +36,7 @@ export default function QuoteRequest() {
               render={
                 <a href="mailto:press@dodoxhq.com?subject=Quote%20request" />
               }
+              onClick={() => posthog.capture("press_email_clicked")}
             >
               Email press@dodoxhq.com
             </Button>
