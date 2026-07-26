@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anny
 
-## Getting Started
+Anny is a modern Next.js app built with Next.js 16, React 19, Tailwind CSS, and shadcn/ui. It includes a landing page, feature pages, AI instruction pages, and an API route for contact form handling.
 
-First, run the development server:
+## Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - start the app in development mode
+- `npm run build` - build the production application
+- `npm run start` - run the production build locally
+- `npm run lint` - run ESLint checks
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` - Next.js app routes and pages
+- `components/` - reusable UI components
+- `lib/` - utility modules and API helpers
+- `public/` - static assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- shadcn/ui
+- MongoDB
+- TypeScript
+- ESLint
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project can be deployed to Vercel or another static hosting provider that supports Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For deployment details, see the Next.js documentation: https://nextjs.org/docs/app/building-your-application/deploying
