@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useActionState, useId } from "react";
+import posthog from "posthog-js";
 
 import {
   type ContactActionState,
@@ -42,7 +43,13 @@ export function TalkToSalesButton({
   ...props
 }: React.ComponentProps<typeof Button> & TalkToSalesProps) {
   return (
-    <Dialog>
+    <Dialog
+      onOpenChange={(open) => {
+        if (open) {
+          posthog.capture("sales_dialog_opened", { source });
+        }
+      }}
+    >
       <DialogTrigger render={<Button {...props} />}>{children}</DialogTrigger>
       <SalesDialogContent source={source} />
     </Dialog>
@@ -62,7 +69,15 @@ export function TalkToSalesDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (nextOpen) {
+          posthog.capture("sales_dialog_opened", { source });
+        }
+        onOpenChange(nextOpen);
+      }}
+    >
       <SalesDialogContent source={source} />
     </Dialog>
   );

@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 import {
   Accordion,
   AccordionContent,
@@ -95,6 +99,18 @@ export default function Faq() {
       <Accordion
         defaultValue={["item-0"]}
         className="mx-auto mt-14 max-w-2xl"
+        onValueChange={(value) => {
+          const opened = Array.isArray(value) ? value : [value];
+          opened.forEach((v) => {
+            const index = parseInt(v.replace("item-", ""), 10);
+            if (!isNaN(index) && faqs[index]) {
+              posthog.capture("faq_item_expanded", {
+                question: faqs[index].question,
+                question_index: index,
+              });
+            }
+          });
+        }}
       >
         {faqs.map((faq, index) => (
           <AccordionItem

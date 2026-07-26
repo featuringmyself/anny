@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 import { Button } from "@/components/ui/button";
 
 export default function AgenciesPartnerHero() {
@@ -19,6 +23,7 @@ export default function AgenciesPartnerHero() {
           className="p-4"
           size="lg"
           render={<a href="mailto:partners@dodoxhq.com?subject=Agency%20partnership" />}
+          onClick={() => posthog.capture("agency_partner_email_clicked")}
         >
           Talk agency partnerships
         </Button>
