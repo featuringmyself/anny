@@ -1,5 +1,7 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
+
 import type { ContactFieldErrors } from "@/lib/contact";
 import {
   createSalesLeadFromInput,
@@ -32,28 +34,29 @@ export async function submitContact(
   }
 
   try {
-    await createSalesLeadFromInput(validated.data);
+    const lead = await createSalesLeadFromInput(validated.data);
 
     const posthog = getPostHogClient();
-    posthog.capture({
-      distinctId: validated.data.email,
-      event: "sales_demo_requested",
-      properties: {
-        source: validated.data.source,
-        company: validated.data.company,
-        has_website: Boolean(validated.data.website),
-        has_message: Boolean(validated.data.message),
-      },
-    });
-    posthog.identify({
-      distinctId: validated.data.email,
-      properties: {
-        email: validated.data.email,
-        name: validated.data.name,
-        company: validated.data.company,
-      },
-    });
-    await posthog.flush();
+    if (posthog) {
+      posthog.identify({
+        distinctId: lead.id,
+        properties: {
+          email: validated.data.email,
+          name: validated.data.name,
+          company: validated.data.company,
+        },
+      });
+      posthog.capture({
+        distinctId: lead.id,
+        event: "sales_demo_requested",
+        properties: {
+          source: validated.data.source,
+          has_website: Boolean(validated.data.website),
+          has_message: Boolean(validated.data.message),
+        },
+      });
+      await posthog.flush();
+    }
 
     return { status: "success", message: "Thanks — we'll be in touch." };
   } catch (error) {
@@ -62,15 +65,18 @@ export async function submitContact(
 
     try {
       const posthog = getPostHogClient();
-      posthog.capture({
-        distinctId: validated.data.email,
-        event: "contact_submission_failed",
-        properties: {
-          source: validated.data.source,
-          error: cause,
-        },
-      });
-      await posthog.flush();
+      if (posthog) {
+        posthog.capture({
+          distinctId: randomUUID(),
+          event: "contact_submission_failed",
+          properties: {
+            source: validated.data.source,
+            error_type: error instanceof Error ? error.name : "UnknownError",
+            $process_person_profile: false,
+          },
+        });
+        await posthog.flush();
+      }
     } catch {
       // Never let PostHog errors surface to the user
     }

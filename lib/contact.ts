@@ -96,5 +96,6 @@ export async function createSalesLeadFromInput(data: ContactInput) {
   if (data.website) document.website = data.website;
   if (data.message) document.message = data.message;
 
-  return insertSalesLead(document);
+  const id = await insertSalesLead(document);
+  return { id: id.toHexString() };
 }

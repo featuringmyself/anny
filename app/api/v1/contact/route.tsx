@@ -37,28 +37,29 @@ export async function POST(request: Request) {
   }
 
   try {
-    await createSalesLeadFromInput(validated.data);
+    const lead = await createSalesLeadFromInput(validated.data);
 
     const posthog = getPostHogClient();
-    posthog.capture({
-      distinctId: validated.data.email,
-      event: "contact_api_submitted",
-      properties: {
-        source: validated.data.source,
-        company: validated.data.company,
-        has_website: Boolean(validated.data.website),
-        has_message: Boolean(validated.data.message),
-      },
-    });
-    posthog.identify({
-      distinctId: validated.data.email,
-      properties: {
-        email: validated.data.email,
-        name: validated.data.name,
-        company: validated.data.company,
-      },
-    });
-    await posthog.flush();
+    if (posthog) {
+      posthog.identify({
+        distinctId: lead.id,
+        properties: {
+          email: validated.data.email,
+          name: validated.data.name,
+          company: validated.data.company,
+        },
+      });
+      posthog.capture({
+        distinctId: lead.id,
+        event: "contact_api_submitted",
+        properties: {
+          source: validated.data.source,
+          has_website: Boolean(validated.data.website),
+          has_message: Boolean(validated.data.message),
+        },
+      });
+      await posthog.flush();
+    }
 
     return NextResponse.json({ message: "Thanks — we'll be in touch." });
   } catch (error) {

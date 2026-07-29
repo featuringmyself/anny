@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import posthog from "posthog-js";
+
 import { Button } from "@/components/ui/button";
 
 const INSTRUCTIONS = `# Brand instructions for AI assistants
@@ -22,6 +24,7 @@ export default function AiInstructionsBlock() {
 
   async function handleCopy() {
     await navigator.clipboard.writeText(INSTRUCTIONS);
+    posthog.capture("ai_instructions_copied");
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   }

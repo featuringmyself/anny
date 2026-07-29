@@ -2,7 +2,7 @@ import { PostHog } from "posthog-node";
 
 let client: PostHog | null = null;
 
-export function getPostHogClient(): PostHog {
+export function getPostHogClient(): PostHog | null {
   const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
   if (!token) {
@@ -13,11 +13,13 @@ export function getPostHogClient(): PostHog {
           "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN is configured",
       );
     }
+    return null;
   }
 
   if (!client) {
-    client = new PostHog(token ?? "", {
+    client = new PostHog(token, {
       host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+      enableExceptionAutocapture: true,
       flushAt: 1,
       flushInterval: 0,
     });
