@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PatternStrip } from "./pages/shared/pattern-strip";
 
 const faqs = [
   {
@@ -86,7 +87,8 @@ const faqs = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="px-6 py-20 md:px-12 md:py-28">
+    <>
+    <section id="faq" className="px-6 pt-20 pb-10 md:px-12 md:pt-28 pb-10">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-4xl font-medium tracking-tight md:text-5xl">
           FAQs
@@ -128,5 +130,7 @@ export default function Faq() {
         ))}
       </Accordion>
     </section>
+    <PatternStrip />
+    </>
   );
 }
