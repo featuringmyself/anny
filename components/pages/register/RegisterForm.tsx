@@ -37,6 +37,8 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   const fieldId = useId();
   const reduce = useReducedMotion();
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
   const [state, formAction, pending] = useActionState(
     submitRegister,
     initialState,
@@ -50,13 +52,22 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   useEffect(() => {
     if (state.status === "success") {
       successHeadingRef.current?.focus();
+      return;
     }
-  }, [state.status]);
+
+    if (state.status === "error") {
+      if (fieldErrors.email) {
+        emailRef.current?.focus();
+      } else if (fieldErrors.company) {
+        companyRef.current?.focus();
+      }
+    }
+  }, [state.status, fieldErrors.email, fieldErrors.company]);
 
   if (state.status === "success") {
     return (
       <motion.div
-        className="flex h-full flex-col justify-center p-8 md:p-12"
+        className="flex min-h-72 flex-col justify-center p-8 md:min-h-96 md:p-12"
         initial={reduce ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -88,7 +99,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   }
 
   return (
-    <div className="flex h-full flex-col justify-center p-8 md:p-12">
+    <div className="flex min-h-72 flex-col justify-center p-8 md:min-h-96 md:p-12">
       <div>
         <p className="text-sm font-medium tracking-wide text-[#2462ff]">
           Create account
@@ -109,18 +120,42 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         </p>
       </div>
 
-      <form action={formAction} className="mt-8 grid gap-4" noValidate>
+      <form
+        action={formAction}
+        className="mt-8 grid gap-4"
+        noValidate
+        aria-busy={pending}
+      >
         {plan ? <input type="hidden" name="plan" value={plan} /> : null}
+
+        {/* Honeypot — hidden from users, filled by many bots */}
+        <div
+          className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <label htmlFor={`${fieldId}-website`}>Website</label>
+          <input
+            id={`${fieldId}-website`}
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
 
         <div className="grid gap-2">
           <Label htmlFor={`${fieldId}-email`}>Work email</Label>
           <Input
+            ref={emailRef}
             id={`${fieldId}-email`}
             name="email"
             type="email"
+            inputMode="email"
             autoComplete="email"
+            spellCheck={false}
             placeholder="ada@acme.com"
             required
+            defaultValue={state.values?.email}
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={
               fieldErrors.email ? `${fieldId}-email-error` : undefined
@@ -135,11 +170,14 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         <div className="grid gap-2">
           <Label htmlFor={`${fieldId}-company`}>Company</Label>
           <Input
+            ref={companyRef}
             id={`${fieldId}-company`}
             name="company"
+            type="text"
             autoComplete="organization"
             placeholder="Acme"
             required
+            defaultValue={state.values?.company}
             aria-invalid={Boolean(fieldErrors.company)}
             aria-describedby={
               fieldErrors.company ? `${fieldId}-company-error` : undefined
@@ -152,7 +190,11 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         </div>
 
         {showSummary ? (
-          <p role="alert" aria-live="polite" className="text-sm text-destructive">
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-sm text-destructive"
+          >
             {state.message}
           </p>
         ) : null}

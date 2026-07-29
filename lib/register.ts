@@ -1,8 +1,9 @@
+import "server-only";
+
 import * as z from "zod";
 
+import { isRegisterPlan } from "@/lib/plans";
 import { upsertSignup } from "@/lib/signups";
-
-const PLANS = ["Starter", "Pro", "Advanced"] as const;
 
 export const registerSchema = z.object({
   email: z
@@ -21,19 +22,29 @@ export const registerSchema = z.object({
     .trim()
     .optional()
     .transform((value) =>
-      value && (PLANS as readonly string[]).includes(value) ? value : undefined,
+      value && isRegisterPlan(value) ? value : undefined,
     ),
+  /**
+   * Honeypot — real users leave this empty. Bots that fill it get a fake
+   * success without a DB write.
+   */
+  website: z.string().optional(),
 });
 
 export type RegisterInput = z.infer<typeof registerSchema>;
 
 export type RegisterFieldErrors = Partial<
-  Record<keyof RegisterInput, string[]>
+  Record<"email" | "company" | "plan", string[]>
 >;
 
 export type RegisterValidation =
-  | { ok: true; data: RegisterInput }
-  | { ok: false; error: string; fieldErrors: RegisterFieldErrors };
+  | { ok: true; data: RegisterInput; isBot: boolean }
+  | {
+      ok: false;
+      error: string;
+      fieldErrors: RegisterFieldErrors;
+      values: { email: string; company: string };
+    };
 
 function asStringFields(fields: Record<string, unknown>) {
   const out: Record<string, string> = {};
@@ -50,25 +61,40 @@ function asStringFields(fields: Record<string, unknown>) {
 export function validateRegisterInput(
   fields: Record<string, FormDataEntryValue | unknown>,
 ): RegisterValidation {
-  const result = registerSchema.safeParse(asStringFields(fields));
+  const strings = asStringFields(fields);
+  const result = registerSchema.safeParse(strings);
 
-  if (result.success) {
-    return { ok: true, data: result.data };
+  if (!result.success) {
+    const { fieldErrors, formErrors } = z.flattenError(result.error);
+    const { website: _honeypot, ...safeFieldErrors } = fieldErrors as Record<
+      string,
+      string[] | undefined
+    > & { website?: string[] };
+
+    return {
+      ok: false,
+      error:
+        Object.values(safeFieldErrors).flat().filter(Boolean)[0] ??
+        formErrors[0] ??
+        "Please check the form and try again.",
+      fieldErrors: safeFieldErrors as RegisterFieldErrors,
+      values: {
+        email: strings.email?.trim() ?? "",
+        company: strings.company?.trim() ?? "",
+      },
+    };
   }
 
-  const { fieldErrors, formErrors } = z.flattenError(result.error);
-
   return {
-    ok: false,
-    error:
-      Object.values(fieldErrors).flat()[0] ??
-      formErrors[0] ??
-      "Please check the form and try again.",
-    fieldErrors: fieldErrors as RegisterFieldErrors,
+    ok: true,
+    data: result.data,
+    isBot: Boolean(result.data.website?.trim()),
   };
 }
 
-export async function createSignupFromInput(data: RegisterInput) {
+export async function createSignupFromInput(
+  data: Pick<RegisterInput, "email" | "company" | "plan">,
+) {
   const id = await upsertSignup({
     email: data.email,
     company: data.company,
