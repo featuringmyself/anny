@@ -4,12 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import logoImg from "@/public/logo.png";
-import {
-  TalkToSalesButton,
-  TalkToSalesDialog,
-} from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -29,11 +26,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [salesOpen, setSalesOpen] = useState(false);
-  // The mobile CTA closes the sheet first and opens the dialog only once the
-  // sheet has finished animating out, so the two don't fight over focus.
-  const [salesQueued, setSalesQueued] = useState(false);
-
+  const router = useRouter();
   return (
     <nav className="border-b">
       <div className="flex items-center justify-between p-4">
@@ -58,16 +51,22 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <TalkToSalesButton className="px-3" source="navbar-desktop" />
+          <Button
+            className="px-3"
+            onClick={() => {
+              router.push("/register");
+            }}
+          >
+            Register
+          </Button>
         </div>
 
         <Sheet
           open={open}
           onOpenChange={setOpen}
           onOpenChangeComplete={(sheetOpen) => {
-            if (!sheetOpen && salesQueued) {
-              setSalesQueued(false);
-              setSalesOpen(true);
+            if (!sheetOpen) {
+              router.push("/register");
             }
           }}
         >
@@ -107,21 +106,14 @@ export default function Navbar() {
                 className="w-full"
                 size="lg"
                 onClick={() => {
-                  setSalesQueued(true);
-                  setOpen(false);
+                  router.push("/register");
                 }}
               >
-                Talk to sales
+                Register
               </Button>
             </SheetFooter>
           </SheetContent>
         </Sheet>
-
-        <TalkToSalesDialog
-          open={salesOpen}
-          onOpenChange={setSalesOpen}
-          source="navbar-mobile"
-        />
       </div>
     </nav>
   );

@@ -1,7 +1,5 @@
-import Link from "next/link";
 
 import RegisterForm from "@/components/pages/register/RegisterForm";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 const perks = [
   "Track ChatGPT, Gemini, and AI Mode in one place",
@@ -41,21 +39,6 @@ export default function RegisterSection({ plan }: { plan?: string }) {
             </ul>
           </div>
 
-          <div className="mt-12 flex flex-wrap items-center gap-3">
-            <TalkToSalesButton
-              size="lg"
-              className="bg-white px-5 text-black hover:bg-white/90"
-              source="register-agency"
-            >
-              Agency? Talk to sales
-            </TalkToSalesButton>
-            <Link
-              href="/pricing"
-              className="text-sm text-zinc-400 transition-colors hover:text-white"
-            >
-              Compare plans
-            </Link>
-          </div>
         </div>
 
         <div className="bg-white">
