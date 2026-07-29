@@ -52,8 +52,8 @@ export default function Metric() {
     <div>
       <PatternStrip />
       <div className="flex flex-col items-center justify-center my-10">
-        <h2 className="text-4xl font-semibold text-center">Everything you need to <br /><span className="text-zinc-400/90">win in AI search</span></h2>
-        <p className="text-center text-zinc-700/90 max-w-lg text-sm mt-6 leading-tight">Understand how AI models talk about your brand and optimise your presence across every prompt and response</p>
+        <h2 className="text-3xl md:text-4xl font-semibold text-center">Everything you need to <br /><span className="text-zinc-400/90">win in AI search</span></h2>
+        <p className="text-center text-zinc-700/90 max-w-lg text-xs md:text-base md:mt-6 mt-4 leading-tight md:px-0 px-4">Understand how AI models talk about your brand and optimise your presence across every prompt and response</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {metricData.map((item, index) => (
