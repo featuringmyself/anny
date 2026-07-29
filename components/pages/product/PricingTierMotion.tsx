@@ -28,7 +28,15 @@ export default function PricingTierMotion({
         size="lg"
         variant={featured ? "default" : "outline"}
         className="w-full px-5"
-        render={<Link href={href} />}
+        render={
+          <Link
+            href={
+              href === "/register"
+                ? `/register?plan=${encodeURIComponent(tier)}`
+                : href
+            }
+          />
+        }
         onClick={() =>
           posthog.capture("pricing_tier_cta_clicked", {
             tier,
