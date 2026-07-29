@@ -2,6 +2,8 @@
 
 > Anny is an AI search visibility and generative engine optimization (GEO) analytics platform for marketing teams. Track how often ChatGPT, Claude, Gemini, Perplexity, and other models mention your brand — plus which sources they cite and how you compare to competitors.
 
+For a long-form expansion of this site (product, pricing, FAQ, features, and comparisons), see [llms-full.txt](https://anny.dodoxhq.com/llms-full.txt).
+
 ## Product
 
 - [Home](https://anny.dodoxhq.com/): Overview of Anny AI search visibility monitoring
