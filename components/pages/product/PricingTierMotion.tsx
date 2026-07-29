@@ -1,14 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
+import posthog from "posthog-js";
+
+import { Button } from "@/components/ui/button";
 
 export default function PricingTierMotion({
-  children,
   featured,
+  href,
+  cta,
+  tier,
 }: {
-  children: ReactNode;
   featured?: boolean;
+  href: string;
+  cta: string;
+  tier: string;
 }) {
   const reduce = useReducedMotion();
 
@@ -17,7 +24,21 @@ export default function PricingTierMotion({
       whileHover={reduce ? undefined : { y: featured ? -2 : -1 }}
       transition={{ type: "spring", stiffness: 420, damping: 28 }}
     >
-      {children}
+      <Button
+        size="lg"
+        variant={featured ? "default" : "outline"}
+        className="w-full px-5"
+        render={<Link href={href} />}
+        onClick={() =>
+          posthog.capture("pricing_tier_cta_clicked", {
+            tier,
+            cta,
+            featured: Boolean(featured),
+          })
+        }
+      >
+        {cta}
+      </Button>
     </motion.div>
   );
 }

@@ -1,9 +1,4 @@
-
-import Link from "next/link";
-import posthog from "posthog-js";
-import { Button } from "@/components/ui/button";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 const tiers = [
   {
@@ -12,7 +7,7 @@ const tiers = [
     period: "/mo",
     description: "For SEO and content managers getting started with AI search visibility.",
     cta: "Get started",
-    href: "/docs",
+    href: "/register",
     featured: false,
     highlights: [
       "ChatGPT, Gemini & AI Mode",
@@ -28,7 +23,7 @@ const tiers = [
     period: "/mo",
     description: "For SEO teams that need sophisticated AI search tracking and insights.",
     cta: "Get started",
-    href: "/docs",
+    href: "/register",
     featured: true,
     highlights: [
       "Everything in Starter",
@@ -44,7 +39,7 @@ const tiers = [
     period: "/mo",
     description: "For marketing teams managing multiple projects with deeper reporting.",
     cta: "Get started",
-    href: "/docs",
+    href: "/register",
     featured: false,
     highlights: [
       "Everything in Pro",
@@ -115,42 +110,12 @@ function PricingTierColumn({
           ))}
         </ul>
         <div className="mt-auto pt-10">
-          <PricingTierMotion featured={tier.featured}>
-            {tier.href ? (
-              <Button
-                size="lg"
-                variant={tier.featured ? "default" : "outline"}
-                className="w-full px-5"
-                render={<Link href={tier.href} />}
-                onClick={() =>
-                  posthog.capture("pricing_tier_cta_clicked", {
-                    tier: tier.name,
-                    cta: tier.cta,
-                    featured: tier.featured,
-                  })
-                }
-              >
-                {tier.cta}
-              </Button>
-            ) : (
-              <TalkToSalesButton
-                size="lg"
-                variant={tier.featured ? "default" : "outline"}
-                className="w-full px-5"
-                source="pricing-tier-agency"
-              >
-                {tier.cta}
-              </TalkToSalesButton>
-            )}
-            <TalkToSalesButton
-              size="lg"
-              variant={tier.featured ? "default" : "outline"}
-              className="w-full px-5"
-              source={`pricing-tier-${tier.name.toLowerCase()}`}
-            >
-              {tier.cta}
-            </TalkToSalesButton>
-          </PricingTierMotion>
+          <PricingTierMotion
+            featured={tier.featured}
+            href={tier.href}
+            cta={tier.cta}
+            tier={tier.name}
+          />
         </div>
       </div>
     </div>
