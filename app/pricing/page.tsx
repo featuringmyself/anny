@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
 import PatternStrip from "@/components/PatternStrip";
+import PricingAgency from "@/components/pages/product/PricingAgency";
+import PricingFeatures from "@/components/pages/product/PricingFeatures";
 import PricingHero from "@/components/pages/product/PricingHero";
 import PricingTiers from "@/components/pages/product/PricingTiers";
-import PricingFeatures from "@/components/pages/product/PricingFeatures";
 
 export const metadata: Metadata = {
   title: "Pricing — Anny",
   description:
-    "Anny plans for AI search visibility: Starter, Growth, and Agency. Track ChatGPT, Gemini, and AI Mode mentions with clear feature checklists.",
+    "Anny plans for brands: Starter, Pro, and Advanced. Agencies get heavily discounted multi-client pricing — talk to sales for a quote.",
 };
 
 export default function PricingPage() {
@@ -16,7 +17,11 @@ export default function PricingPage() {
     <main>
       <PricingHero />
       <PatternStrip />
-      <PricingTiers />
+      <div id="plans">
+        <PricingTiers />
+      </div>
+      <PatternStrip />
+      <PricingAgency />
       <PatternStrip />
       <PricingFeatures />
     </main>

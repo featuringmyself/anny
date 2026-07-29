@@ -1,57 +1,69 @@
 const features = [
   {
-    name: "AI mention tracking",
+    name: "ChatGPT, Gemini & AI Mode",
     starter: true,
-    growth: true,
-    agency: true,
+    pro: true,
+    advanced: true,
+  },
+  {
+    name: "Daily tracking",
+    starter: true,
+    pro: true,
+    advanced: true,
+  },
+  {
+    name: "Projects",
+    starter: "1",
+    pro: "2",
+    advanced: "5",
+  },
+  {
+    name: "Models included",
+    starter: "3",
+    pro: "3",
+    advanced: "3",
+  },
+  {
+    name: "Countries per project",
+    starter: "1",
+    pro: "3",
+    advanced: "3",
+  },
+  {
+    name: "Competitor scorecards",
+    starter: false,
+    pro: true,
+    advanced: true,
   },
   {
     name: "Source & citation map",
     starter: true,
-    growth: true,
-    agency: true,
+    pro: true,
+    advanced: true,
   },
   {
-    name: "Competitor visibility",
+    name: "API & MCP access",
     starter: false,
-    growth: true,
-    agency: true,
+    pro: false,
+    advanced: true,
   },
   {
-    name: "AI Mode / Overview dual panel",
+    name: "Looker / BI exports",
     starter: false,
-    growth: true,
-    agency: true,
+    pro: false,
+    advanced: true,
   },
   {
-    name: "Prompt volume",
-    starter: "500 / mo",
-    growth: "2,500 / mo",
-    agency: "Custom",
-  },
-  {
-    name: "Seats",
-    starter: "3",
-    growth: "10",
-    agency: "Unlimited",
-  },
-  {
-    name: "Slack & email alerts",
+    name: "SSO",
     starter: false,
-    growth: true,
-    agency: true,
+    pro: false,
+    advanced: true,
   },
   {
-    name: "White-label reports",
-    starter: false,
-    growth: false,
-    agency: true,
-  },
-  {
-    name: "SSO & audit logs",
-    starter: false,
-    growth: false,
-    agency: true,
+    name: "Support",
+    starter: "Chat",
+    pro: "Chat + email",
+    advanced: "Chat + email",
   },
 ] as const;
 
@@ -81,9 +93,10 @@ export default function PricingFeatures() {
   return (
     <section>
       <div className="border-b px-6 py-10 md:px-12">
-        <h2 className="text-2xl font-medium tracking-tight">Compare features</h2>
+        <h2 className="text-2xl font-medium tracking-tight">Compare brand plans</h2>
         <p className="mt-2 max-w-md text-sm text-zinc-500">
-          Everything Anny tracks, lined up by plan — no card chrome, just the checklist.
+          Agency packages are quoted separately — see the agency section above for what&apos;s
+          included.
         </p>
       </div>
       <div className="overflow-x-auto overscroll-x-contain">
@@ -94,10 +107,8 @@ export default function PricingFeatures() {
                 Feature
               </th>
               <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Starter</th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Growth</th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36 md:pr-12">
-                Agency
-              </th>
+              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Pro</th>
+              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36 md:pr-12">Advanced</th>
             </tr>
           </thead>
           <tbody>
@@ -110,10 +121,10 @@ export default function PricingFeatures() {
                   <Cell value={row.starter} />
                 </td>
                 <td className="px-4 py-4">
-                  <Cell value={row.growth} />
+                  <Cell value={row.pro} />
                 </td>
                 <td className="px-4 py-4 md:pr-12">
-                  <Cell value={row.agency} />
+                  <Cell value={row.advanced} />
                 </td>
               </tr>
             ))}

@@ -8,17 +8,19 @@ export default function PricingHero() {
     <section className="border-b px-6 py-14 md:px-12 md:py-20">
       <p className="text-sm font-medium tracking-wide text-[#2462ff]">Pricing</p>
       <h1 className="mt-3 max-w-2xl text-4xl font-medium tracking-tight text-balance md:text-5xl">
-        Plans that scale with your AI visibility work
+        Pricing for brands
       </h1>
       <p className="mt-4 max-w-lg text-lg text-zinc-500 text-balance">
-        Start tracking how ChatGPT, Gemini, and AI Mode mention your brand. Upgrade when you need
-        more prompts, seats, or white-label reporting.
+        Track how ChatGPT, Gemini, and AI Mode mention your brand. Agencies get heavily discounted
+        multi-client pricing — talk to sales for a quote.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <TalkToSalesButton size="lg" className="px-5" source="pricing-hero" />
-        <Button size="lg" variant="outline" className="px-5" render={<Link href="/docs" />}>
-          Read the docs
+        <Button size="lg" className="px-5" render={<Link href="#plans" />}>
+          See brand plans
         </Button>
+        <TalkToSalesButton size="lg" variant="outline" className="px-5" source="pricing-hero">
+          Agency? Talk to sales
+        </TalkToSalesButton>
       </div>
     </section>
   );
