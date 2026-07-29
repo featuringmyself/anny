@@ -309,7 +309,7 @@ function DonutPanel() {
 
 export default function Demo() {
   return (
-    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-20">
+    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-0">
       <div
         className="overflow-x-auto rounded-t-xl border border-b-0 border-zinc-200 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }}
