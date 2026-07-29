@@ -1,7 +1,5 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
-
 import type { ContactFieldErrors } from "@/lib/contact";
 import {
   createSalesLeadFromInput,
@@ -67,12 +65,10 @@ export async function submitContact(
       const posthog = getPostHogClient();
       if (posthog) {
         posthog.capture({
-          distinctId: randomUUID(),
           event: "contact_submission_failed",
           properties: {
             source: validated.data.source,
             error_type: error instanceof Error ? error.name : "UnknownError",
-            $process_person_profile: false,
           },
         });
         await posthog.flush();

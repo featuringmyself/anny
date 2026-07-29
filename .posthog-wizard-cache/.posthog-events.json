@@ -1,0 +1,47 @@
+[
+  {
+    "event": "sales_dialog_opened",
+    "description": "Visitor opens the talk-to-sales dialog, attributed to the CTA source.",
+    "file": "components/talk-to-sales.tsx"
+  },
+  {
+    "event": "sales_demo_requested",
+    "description": "Persisted sales lead successfully requests a demo through the server action.",
+    "file": "app/actions/contact.ts"
+  },
+  {
+    "event": "contact_submission_failed",
+    "description": "A valid sales lead submission fails to persist.",
+    "file": "app/actions/contact.ts"
+  },
+  {
+    "event": "contact_api_submitted",
+    "description": "Programmatic client successfully creates a sales lead through the contact API.",
+    "file": "app/api/v1/contact/route.tsx"
+  },
+  {
+    "event": "faq_item_expanded",
+    "description": "Visitor expands a product FAQ item.",
+    "file": "components/faq.tsx"
+  },
+  {
+    "event": "ai_instructions_copied",
+    "description": "Visitor copies the AI assistant brand-instructions template.",
+    "file": "components/pages/ai-instructions/AiInstructionsBlock.tsx"
+  },
+  {
+    "event": "pricing_tier_cta_clicked",
+    "description": "Visitor clicks a pricing-tier call to action.",
+    "file": "components/pages/product/PricingTierMotion.tsx"
+  },
+  {
+    "event": "agency_partner_email_clicked",
+    "description": "Visitor starts an agency partnership email inquiry.",
+    "file": "components/pages/partnership/agencies/AgenciesPartnerHero.tsx"
+  },
+  {
+    "event": "press_email_clicked",
+    "description": "Visitor starts a press quote or mention email inquiry.",
+    "file": "components/pages/partnership/media/QuoteRequest.tsx"
+  }
+]

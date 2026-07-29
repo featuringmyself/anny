@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "runId": "50b512e0-9fae-44ab-a28a-8c62c1175188",
+  "tasks": [
+    {
+      "id": "69af2cbe-ea07-4707-af0d-e75e37a2661b",
+      "type": "install",
+      "label": "Add PostHog SDK",
+      "status": "done",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:13.778Z",
+      "startedAt": "2026-07-29T17:24:02.924Z",
+      "handoff": {
+        "goals": "Install the PostHog client SDK and, when applicable, the server SDK using the project's package manager, preserving resolved manifest and lockfile versions.",
+        "did": "Read package.json and detected Bun as the primary package manager. Both `posthog-js` (`^1.407.2`) and `posthog-node` (`^5.46.1`) are already declared in package.json, matching the reference integration's packages, so no install or edits were needed. No server route files were found during the scoped project check, but the server package is already present for later integration work.",
+        "forNextAgent": "PostHog dependencies are already available in the manifest: import `posthog-js` for browser/client code and `posthog-node` for server code. No files were changed and no package-manager command was run.",
+        "filesTouched": [],
+        "evidence": "package.json contains `posthog-js`: `^1.407.2` and `posthog-node`: `^5.46.1`; detect_package_manager reports Bun as primary.",
+        "assumptions": "The existing lockfile is consistent with the manifest; this task did not modify or regenerate it because both required SDK packages were already installed."
+      },
+      "finishedAt": "2026-07-29T17:24:26.715Z"
+    },
+    {
+      "id": "80467dce-c131-49fe-ae29-0c173bc86ebb",
+      "type": "init",
+      "label": "Initialize PostHog",
+      "status": "done",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:24.448Z",
+      "startedAt": "2026-07-29T17:24:02.928Z",
+      "handoff": {
+        "goals": "Initialize PostHog once for the Next.js App Router, configure the public environment keys, and document them in .env.example.",
+        "did": "The existing `instrumentation-client.ts` already provides the framework init point and was preserved: it imports the browser SDK, reads `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` from environment variables, logs the required development diagnostic when the token is missing, and calls `posthog.init()` once with the `/ingest` proxy, configured UI host, defaults, exception capture, and development debug settings. `.env.example` already documents both public keys with non-secret example values. The actual `.env` keys were configured through wizard tools with the supplied project token and host. Browser call sites should import the singleton `posthog` instance from `posthog-js`, not construct another client.",
+        "forNextAgent": "Initialization and environment setup are complete. No source file needed editing. Continue using the singleton initialized by `instrumentation-client.ts`; do not add a provider or second `posthog.init()`. No CSP headers or meta policy were found in the inspected TypeScript/TSX/MJS source, so `script-src`, `connect-src`, and `worker-src` were left untouched. The existing `next.config.ts` reverse proxy routes `/ingest/static/*`, `/ingest/array/*`, and `/ingest/*` to PostHog.",
+        "filesTouched": [
+          ".env"
+        ],
+        "evidence": "`instrumentation-client.ts` exists and contains the guarded singleton `posthog.init()` call; `.env.example` contains both required key names; `check_env_keys` confirmed both keys present in `.env`; `set_env_values` wrote both configured values. No builds, linters, or tests were run per task instructions.",
+        "assumptions": "The existing initialization and documentation were produced by an earlier workflow step and match the requested target pattern, so changing them would be unnecessary. CSP search was limited to project source files and found no policy.",
+        "conflict": ""
+      },
+      "finishedAt": "2026-07-29T17:24:34.657Z"
+    },
+    {
+      "id": "1ee4de0e-267c-4610-b1f6-59e86600882f",
+      "type": "identify",
+      "label": "Add user identification",
+      "status": "not needed",
+      "dependsOn": [
+        "69af2cbe-ea07-4707-af0d-e75e37a2661b",
+        "80467dce-c131-49fe-ae29-0c173bc86ebb"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:32.335Z",
+      "startedAt": "2026-07-29T17:24:42.391Z",
+      "handoff": {
+        "goals": "Identify authenticated users at the appropriate client or request boundary so analytics and errors inherit a stable, non-PII distinct ID.",
+        "did": "No files were changed. The Next.js application is a public marketing site with no implemented login, registration, session, or authenticated user state. Existing sales-lead submissions already use the persisted lead primary key as the server-side distinct ID and place submitted contact details only in identify person properties.",
+        "forNextAgent": "No client identity boundary exists to wire: browser users remain anonymous by design. If authentication is added later, identify exactly once after its successful login/signup response using the exposed stable user ID, include email/name as person properties, and reset on logout. Server-side captures for the sales form already use lead.id.",
+        "filesTouched": [],
+        "evidence": "Scoped source search found no auth implementation, login/logout handlers, session provider, or user ID available to browser components. app/actions/contact.ts and app/api/v1/contact/route.tsx identify only after createSalesLeadFromInput returns lead.id.",
+        "assumptions": "References to future account registration and Firebase in privacy copy do not constitute an implemented auth flow in this repository."
+      },
+      "finishedAt": "2026-07-29T17:25:12.466Z"
+    },
+    {
+      "id": "2544a73a-d1c8-4202-9881-3ab8abed347f",
+      "type": "error-tracking",
+      "label": "Enable error tracking",
+      "status": "done",
+      "dependsOn": [
+        "69af2cbe-ea07-4707-af0d-e75e37a2661b",
+        "80467dce-c131-49fe-ae29-0c173bc86ebb"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:32.336Z",
+      "startedAt": "2026-07-29T17:24:42.399Z",
+      "handoff": {
+        "goals": "Configure one global Next.js App Router error boundary so uncaught client errors reach PostHog through the SDK exception API.",
+        "did": "The existing app/global-error.tsx already implements the required global boundary: it is a client component, receives the framework-provided error, and calls posthog.captureException(error) from a single effect keyed to that error before rendering the recovery UI. No edit was needed, preserving the existing integration and avoiding duplicated capture paths.",
+        "forNextAgent": "Global error tracking is already wired in app/global-error.tsx. The singleton is imported from posthog-js and initialization remains in instrumentation-client.ts; do not add another provider, init call, or manual exception wrappers.",
+        "filesTouched": [],
+        "evidence": "Read app/global-error.tsx and confirmed the Next.js global boundary calls posthog.captureException(error). Read instrumentation-client.ts and confirmed exception autocapture is enabled during the existing singleton initialization. No dependencies, build, lint, tests, or app startup were run.",
+        "assumptions": "The existing global boundary is part of the intended app structure and is sufficient for uncaught errors handled by Next.js. Server-side route error handling is outside this step and no route files were present in the scoped app search.",
+        "conflict": ""
+      },
+      "finishedAt": "2026-07-29T17:25:19.280Z"
+    },
+    {
+      "id": "8906f25a-e5e1-4505-9aea-7ada26a7b032",
+      "type": "capture",
+      "label": "Instrument key events",
+      "status": "done",
+      "dependsOn": [
+        "1ee4de0e-267c-4610-b1f6-59e86600882f"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:39.254Z",
+      "startedAt": "2026-07-29T17:25:19.056Z",
+      "handoff": {
+        "goals": "Select meaningful marketing-site actions, ensure they are captured at real user or server actions, and record the event contract.",
+        "did": "Reviewed the existing client and server captures and created `.posthog-wizard-cache/.posthog-events.json` with nine core events covering sales intent, lead conversion, failure, FAQ engagement, content copying, pricing CTA intent, and partnership/press inquiries. Existing browser events are all bound to interaction handlers and remain personless because the site has no browser identity. Updated `app/actions/contact.ts` so `contact_submission_failed` is intentionally personless rather than using a generated UUID as a fabricated distinct ID. Added the same personless `contact_submission_failed` capture, with non-PII source and error type properties, to the contact API's persistence-failure path; it flushes before the short-lived request returns.",
+        "forNextAgent": "Client users are anonymous by design, so the browser captures are correctly personless. Successful lead conversion events are attributed server-side to `lead.id` after the lead is created, with contact details confined to identify person properties. `contact_submission_failed` is now emitted personlessly by both the Server Action and JSON API; the event-plan file records the shared contract with the Server Action as its primary file.",
+        "filesTouched": [
+          ".posthog-wizard-cache/.posthog-events.json",
+          "app/actions/contact.ts",
+          "app/api/v1/contact/route.tsx"
+        ],
+        "evidence": "Read all files containing existing capture calls and action handlers. Confirmed captures are placed in dialog, click, clipboard, accordion, server-action, and route-handler actions—not render paths. The updated failure calls carry only `source` and `error_type`, and both server paths await `posthog.flush()`. No builds, linters, or tests were run, per task instructions.",
+        "assumptions": "Existing browser and successful-lead capture calls were already implemented by earlier work and were retained as the chosen core event set; no authentication or stable browser identity exists."
+      },
+      "finishedAt": "2026-07-29T17:26:35.103Z"
+    },
+    {
+      "id": "ad78a0f8-784e-49fe-adfa-86266f2cecc0",
+      "type": "review",
+      "label": "Review integration",
+      "status": "running",
+      "dependsOn": [
+        "69af2cbe-ea07-4707-af0d-e75e37a2661b",
+        "80467dce-c131-49fe-ae29-0c173bc86ebb",
+        "1ee4de0e-267c-4610-b1f6-59e86600882f",
+        "8906f25a-e5e1-4505-9aea-7ada26a7b032",
+        "2544a73a-d1c8-4202-9881-3ab8abed347f"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:46.652Z",
+      "startedAt": "2026-07-29T17:26:42.415Z"
+    },
+    {
+      "id": "b0738b17-65ec-49fc-934b-959c05d29fd2",
+      "type": "dashboard",
+      "label": "Build product insights",
+      "status": "done",
+      "dependsOn": [
+        "8906f25a-e5e1-4505-9aea-7ada26a7b032"
+      ],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:46.653Z",
+      "startedAt": "2026-07-29T17:26:42.419Z",
+      "handoff": {
+        "goals": "Create a starter PostHog dashboard with a handful of insights based on the events instrumented by this integration, using the PostHog MCP.",
+        "did": "Created dashboard `Analytics basics (wizard)` with tag `wizard` and ID 1924836. Added three tagged insights to it: `Sales intent over time (wizard)` covering sales_dialog_opened, pricing_tier_cta_clicked, and sales_demo_requested; `Lead conversion funnel (wizard)` covering sales_dialog_opened → sales_demo_requested; and `Product engagement (wizard)` covering faq_item_expanded, ai_instructions_copied, and contact_api_submitted. All insights use the exact captured event names and are attached to dashboard 1924836.",
+        "forNextAgent": "Dashboard URL: https://us.posthog.com/project/528755/dashboard/1924836. Three insight tiles are attached and will populate as events arrive; no source files were changed.",
+        "filesTouched": [],
+        "evidence": "PostHog MCP returned dashboard ID 1924836 and dashboard URL. It returned successful insight creation responses for IDs 10567745 (nnpB4abU), 10567752 (A9EimjPk), and 10567764 (nF0MjEj1), each showing dashboard_tiles attached to 1924836.",
+        "assumptions": "The intended event contract is the nine-event `.posthog-events.json` produced by the capture step. Three insights were sufficient for the requested starter dashboard."
+      },
+      "finishedAt": "2026-07-29T17:27:41.220Z"
+    },
+    {
+      "id": "7190ede7-21d1-4808-afa2-24be6f549a97",
+      "type": "report",
+      "label": "Write setup report",
+      "status": "pending",
+      "dependsOn": [
+        "b0738b17-65ec-49fc-934b-959c05d29fd2",
+        "ad78a0f8-784e-49fe-adfa-86266f2cecc0"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-07-29T17:23:53.586Z"
+    }
+  ]
+}

@@ -64,6 +64,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Thanks — we'll be in touch." });
   } catch (error) {
     console.error("[contact] failed to save sales lead", error);
+
+    try {
+      const posthog = getPostHogClient();
+      if (posthog) {
+        posthog.capture({
+          event: "contact_submission_failed",
+          properties: {
+            source: validated.data.source,
+            error_type: error instanceof Error ? error.name : "UnknownError",
+          },
+        });
+        await posthog.flush();
+      }
+    } catch {
+      // Never let PostHog errors affect the API response.
+    }
+
     return NextResponse.json(
       { error: "We couldn't send that. Please try again." },
       { status: 500 },
