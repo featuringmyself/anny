@@ -4,7 +4,7 @@ import RegisterForm from "@/components/pages/register/RegisterForm";
 const perks = [
   "Track ChatGPT, Gemini, and AI Mode in one place",
   "Daily prompts, competitor scorecards, and source citations",
-  "No credit card required to create a workspace",
+  "Competitor gaps and citation sources in one dashboard",
 ] as const;
 
 export default function RegisterSection({ plan }: { plan?: string }) {
