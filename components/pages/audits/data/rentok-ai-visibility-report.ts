@@ -17,15 +17,13 @@ export const rentokAiVisibilityReport: VisibilityReport = {
   tagline:
     "Multi-tenant renting as easy as single-tenant: automate every workflow from finding tenants to collecting monthly rent so owners earn higher yield without more work.",
   summary:
-    "RentOk runs 15,000+ rooms and ₹100Cr+ monthly collection, yet on the buyer prompts owners actually type into ChatGPT, RentOk is not cited once. Smaller PG tools and WhatsApp-rent apps take the shortlists. Worse: “is rentok reliable” returns a pest-control company, and “is rentok.com reliable” warns buyers not to trust the domain. This snapshot is ChatGPT; the 90-day sprint expands coverage to Perplexity, Google AI Overview, Gemini, and Claude, with a dashboard to track citations, gaps, and next moves weekly.",
+    "RentOk runs 15,000+ rooms and ₹100Cr+ monthly collection, yet on the buyer prompts owners actually type into ChatGPT, RentOk is not cited once. Smaller PG tools and WhatsApp-rent apps take the shortlists. Worse: “is rentok reliable” returns a pest-control company, and “is rentok.com reliable” warns buyers not to trust the domain. This ChatGPT snapshot is the baseline. A 90-day sprint gets RentOk cited on the prompts that matter, starting with brand and domain trust, then expanding across Perplexity, Google AI Overview, Gemini, and Claude.",
   stats: [
     { label: "Properties", value: "15,000+" },
     { label: "Rooms", value: "3 Lacs+" },
     { label: "Tenants", value: "2.3 Lacs+" },
     { label: "Monthly collection", value: "₹100 Cr+" },
   ],
-  ctaUrl: "https://cal.com/dodox/quick-chat",
-  ctaLabel: "Book a quick chat",
   modelScores: [
     { model: "chatgpt", visibility: 0, cited: 0, total: 11, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -359,16 +357,20 @@ export const rentokAiVisibilityReport: VisibilityReport = {
   sprint: {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
-    headline:
-      "Get RentOk cited when owners ask ChatGPT, and stop losing trust queries to Rentokil",
-    body: "A done-with-you services engagement. We fix the brand-collision and domain-trust failures first, then build citation assets so RentOk shows up on PG, hostel, WhatsApp rent, and Bangalore prompts, across ChatGPT, Perplexity, Google AI Overview, Gemini, and Claude. You get a live dashboard: which models cite you, which don’t, competitor movement, and the next actions each week.",
+    headline: "Get RentOk cited in AI answers within 90 days",
+    body: "The goal of the sprint is simple: when landlords and property managers ask ChatGPT, Perplexity, Google AI Overview, and other models for tools like yours, RentOk shows up. For RentOk we start with the two failures that kill trust before a demo, brand collision with Rentokil and the rentok.com reliability warning, then push citation work on the category and feature prompts in this audit. Alongside the execution work you get a dashboard so you can see which models cite you, where competitors win, your improvement score, and the next actions to take each week.",
     outcomes: [
-      "Priority prompt map for India PG / hostel / co-living buyers (English)",
-      "Brand entity cleanup so “RentOk” stops resolving to Rentokil",
-      "Citation-ready pages and source placements models already trust",
-      "Multi-model coverage: ChatGPT, Perplexity, Google AI Overview, Gemini, Claude",
-      "Dashboard for citation gaps, competitor share, improvement scores, and next steps",
-      "Weekly re-runs of this audit set with screenshot proof of movement",
+      "Cited on priority India PG / hostel / rent prompts across ChatGPT, Perplexity, Google AI Overview, Gemini, and Claude",
+      "Brand and domain trust fixed first so “is rentok reliable” stops returning pest control or a caution flag",
+      "Citation assets and source placements models already pull from (pages, comparisons, directories)",
+      "Weekly re-tests of this prompt set with screenshot proof that citations are moving",
+      "A tracking dashboard for model gaps, competitor share, improvement scores, and clear next actions",
     ],
   },
+  ctaUrl: "https://cal.com/dodox/quick-chat",
+  ctaLabel: "Book a quick chat",
+  ctaEyebrow: "90-day sprint",
+  ctaHeadline: "Ready to get RentOk cited?",
+  ctaBody:
+    "Book a short call and we’ll map the 90-day plan: fix the Rentokil and rentok.com trust failures first, then run the citation work that puts RentOk on the shortlists owners already ask AI for. You’ll also have a dashboard to track progress and know what to do next.",
 };

@@ -338,13 +338,14 @@ export const companyAiVisibilityReport: VisibilityReport = {
   sprint: {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
-    headline: "Get Meridian cited in ChatGPT, Perplexity, and Google AI answers",
-    body: "This is a done-with-you services engagement, not a SaaS seat. We pick the prompts that already move pipeline, build the citation assets models trust, and re-test weekly until Meridian shows up where buyers ask.",
+    headline: "Get Meridian cited in AI answers within 90 days",
+    body: "The goal of the sprint is citations: when buyers ask ChatGPT, Perplexity, Google AI Overview, and other models for tools in your category, Meridian shows up. We pick the prompts that already move pipeline, build the assets models trust, and re-test weekly until you are on the shortlist. Alongside that work you get a dashboard for model gaps, competitor share, improvement scores, and the next actions to take each week.",
     outcomes: [
-      "Prioritized prompt map across ChatGPT, Perplexity, Gemini, Claude, and Google AI Overview / AI Mode",
-      "Citation-ready pages, comparisons, and source placements models already trust",
-      "Weekly re-runs of your audit set with screenshot proof of movement",
+      "Cited on priority prompts across ChatGPT, Perplexity, Gemini, Claude, and Google AI Overview / AI Mode",
+      "Citation-ready pages, comparisons, and source placements models already pull from",
+      "Weekly re-tests of your audit set with screenshot proof that citations are moving",
       "Competitor gap plan focused on Datadog / New Relic conquest queries",
+      "A tracking dashboard for gaps, competitors, improvement scores, and clear next actions",
     ],
   },
 };

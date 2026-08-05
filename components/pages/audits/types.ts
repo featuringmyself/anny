@@ -104,5 +104,8 @@ export type VisibilityReport = {
   /** External booking URL; falls back to Talk to sales dialog. */
   ctaUrl?: string;
   ctaLabel?: string;
+  ctaEyebrow?: string;
+  ctaHeadline?: string;
+  ctaBody?: string;
   private?: boolean;
 };
