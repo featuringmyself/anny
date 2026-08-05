@@ -40,6 +40,8 @@ export const rentokAiVisibilityReport: VisibilityReport = {
     { name: "StayManager", visibility: 48 },
     { name: "RentOk", visibility: 0 },
   ],
+  queriesIntro:
+    "Category and feature prompts owners type when shopping for PG, hostel, and rent tools. RentOk is missing from every shortlist in this set. Brand-trust prompts are covered above.",
   brandCrisis: [
     {
       id: "crisis-rentokil",

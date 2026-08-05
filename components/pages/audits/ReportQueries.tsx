@@ -16,12 +16,14 @@ export default function ReportQueries({ report }: ReportQueriesProps) {
     <section className="border-b">
       <div className="border-b px-6 py-8 md:px-12">
         <h2 className="text-2xl font-medium tracking-tight">
-          Prompt audit · {report.queries.length} queries
+          {report.queriesHeadline ??
+            `Prompt audit · ${report.queries.length} queries`}
         </h2>
         <p className="mt-1 max-w-xl text-sm text-zinc-500">
-          {hasScreenshots
-            ? `Category and feature prompts owners type when shopping for PG, hostel, and rent tools. Real ChatGPT answers below. ${report.company} is missing from every shortlist in this set. Brand-trust prompts are covered in the section above.`
-            : `Each prompt was run across multiple answer engines. Where the same query appears on more than one model, scroll horizontally to compare.`}
+          {report.queriesIntro ??
+            (hasScreenshots
+              ? `These are the prompts buyers type when shopping in ${report.industry}. Screenshots show who gets named. Brand-trust prompts are covered above.`
+              : `Each prompt was run across multiple answer engines. Where the same query appears on more than one model, scroll horizontally to compare.`)}
         </p>
       </div>
 

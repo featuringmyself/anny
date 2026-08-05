@@ -99,6 +99,12 @@ export type VisibilityReport = {
   competitors: CompetitorScore[];
   /** Featured brand-damage exhibits (shown above the full prompt list). */
   brandCrisis?: BrandCrisisFinding[];
+  /** Override default brand-crisis section heading. */
+  brandCrisisHeadline?: string;
+  brandCrisisDek?: string;
+  /** Override default prompt-audit section heading / intro. */
+  queriesHeadline?: string;
+  queriesIntro?: string;
   queries: QueryFinding[];
   sprint: SprintOffer;
   /** External booking URL; falls back to Talk to sales dialog. */

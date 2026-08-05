@@ -17,12 +17,12 @@ export default function ReportBrandCrisis({ report }: ReportBrandCrisisProps) {
           Critical · brand & trust
         </p>
         <h2 className="max-w-2xl text-2xl font-medium tracking-tight text-balance md:text-3xl">
-          When someone checks if {report.company} is real, AI answers the wrong
-          company, or warns them away
+          {report.brandCrisisHeadline ??
+            `When someone checks if ${report.company} is real, AI answers the wrong company, or warns them away`}
         </h2>
         <p className="mt-2 max-w-xl text-sm text-zinc-500">
-          These two prompts matter more than any “best of” list. Trust queries
-          are where demos die before they start.
+          {report.brandCrisisDek ??
+            "These two prompts matter more than any “best of” list."}
         </p>
       </div>
 
