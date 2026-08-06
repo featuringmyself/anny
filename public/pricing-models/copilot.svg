@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" role="img" aria-label="Microsoft Copilot">
+  <defs>
+    <linearGradient id="cp1" x1="0.5" x2="0.5" y1="0" y2="1"><stop offset="0" stop-color="#00AEFF"/><stop offset="1" stop-color="#0736C4"/></linearGradient>
+    <linearGradient id="cp2" x1="0.5" x2="0.5" y1="0" y2="1"><stop offset="0" stop-color="#FFB657"/><stop offset="1" stop-color="#C02B3C"/></linearGradient>
+    <linearGradient id="cp3" x1="0.5" x2="0.5" y1="0" y2="1"><stop offset="0" stop-color="#FFC800"/><stop offset="1" stop-color="#0D91E1"/></linearGradient>
+    <linearGradient id="cp4" x1="0.48" x2="0.52" y1="0" y2="1"><stop offset="0" stop-color="#3DCBFF"/><stop offset="1" stop-color="#FFC801"/></linearGradient>
+    <linearGradient id="cp5" x1="0.5" x2="0.5" y1="0" y2="1"><stop offset="0" stop-color="#8C48FF"/><stop offset="0.52" stop-color="#EE5A8D"/><stop offset="1" stop-color="#FFB152"/></linearGradient>
+  </defs>
+  <rect width="30" height="30" fill="#fff"/>
+  <path fill="url(#cp1)" transform="translate(14.436 5)" d="M6.551 1.516C6.239.609 5.381 0 4.417 0H3.342C2.251 0 1.317.777 1.123 1.845L0 8.056l.437-1.457C.722 5.649 1.6 4.997 2.597 4.997h4.057L8.391 6.004 10.065 4.997H9.361C8.397 4.997 7.54 4.388 7.227 3.481z"/>
+  <path fill="url(#cp2)" transform="translate(7.092 16.917)" d="M3.491 6.557C3.8 7.469 4.66 8.083 5.628 8.083h1.865C8.733 8.083 9.74 7.087 9.747 5.854L9.781 0 9.346 1.474C9.065 2.43 8.183 3.086 7.182 3.086H3.1L1.611 1.949 0 3.086h.696C1.664 3.086 2.523 3.7 2.832 4.612z"/>
+  <path fill="url(#cp4)" transform="translate(4 5)" d="M14.496 0H6.041C3.626 0 2.176 3.145 1.21 6.288.065 10.012-1.433 14.994 2.9 14.994h3.796c1.006 0 1.89-.662 2.169-1.623.628-2.165 1.766-6.068 2.656-9.025C12.0 2.869 12.335 1.602 12.903.813 13.266.296 13.863-.008 14.496 0z"/>
+  <path fill="url(#cp5)" transform="translate(12.504 9.997)" d="M0 14.996h8.455c2.416 0 3.865-3.145 4.832-6.289C14.431 4.982 15.93 0 11.596 0H7.8C6.794 0 5.91.662 5.631 1.623c-.628 2.165-1.766 6.068-2.656 9.027C2.531 12.126 2.161 13.394 1.593 14.182 1.231 14.699.634 15.004 0 14.996z"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" role="img" aria-label="Mistral">
+  <rect width="30" height="30" fill="#fff"/>
+  <g transform="translate(3 6.5)">
+    <path fill="#FFD700" d="M3.536 0h3.429v3.464H3.536zm13.714 0h3.43v3.464h-3.43z"/>
+    <path fill="#FFAF00" d="M3.536 3.573h6.857v3.465H3.537zm10.286 0H20.679v3.465h-6.857z"/>
+    <path fill="#FF8205" d="M3.75 7.024h17.144v3.464H3.75z"/>
+    <path fill="#FA500F" d="M3.536 9.961h3.429v3.465H3.536zm6.858 0h3.429v3.465h-3.429zm6.856 0h3.43v3.465h-3.43z"/>
+    <path fill="#E10500" d="M0 13.535h10.286V17H0zm13.714 0H24V17H13.714z"/>
+  </g>
+</svg>

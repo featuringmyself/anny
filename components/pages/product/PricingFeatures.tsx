@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from "react";
+import Image from "next/image";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
@@ -19,43 +20,67 @@ type FeatureSection = {
 };
 
 const baseModels = [
-  "ChatGPT",
-  "AI Mode",
-  "AI Overviews",
-  "Microsoft Copilot",
-  "Perplexity",
-  "Gemini",
+  { name: "ChatGPT", icon: "/pricing-models/chatgpt.svg" },
+  { name: "AI Mode", icon: "/pricing-models/google.svg" },
+  { name: "AI Overviews", icon: "/pricing-models/google.svg" },
+  { name: "Microsoft Copilot", icon: "/pricing-models/copilot.svg" },
+  { name: "Perplexity", icon: "/pricing-models/perplexity.svg" },
+  { name: "Gemini", icon: "/pricing-models/gemini.svg" },
 ] as const;
 
 const enterpriseExtraModels = [
-  { name: "Claude Sonnet 4", api: true },
-  { name: "GPT 5 Search", api: true },
-  { name: "Deepseek", api: true },
-  { name: "Qwen", api: true },
-  { name: "Mistral", api: true },
+  { name: "Claude Sonnet 4", icon: "/pricing-models/claude.svg", api: true },
+  { name: "GPT 5 Search", icon: "/pricing-models/chatgpt.svg", api: true },
+  { name: "Deepseek", icon: "/pricing-models/deepseek.svg", api: true },
+  { name: "Qwen", icon: "/pricing-models/qwen.svg", api: true },
+  { name: "Mistral", icon: "/pricing-models/mistral.svg", api: true },
 ] as const;
+
+function ModelRow({
+  name,
+  icon,
+  api,
+}: {
+  name: string;
+  icon: string;
+  api?: boolean;
+}) {
+  return (
+    <li className="flex items-center gap-2 text-sm text-zinc-700">
+      <Image
+        src={icon}
+        alt=""
+        width={16}
+        height={16}
+        className="size-4 shrink-0 rounded-[3px] ring-1 ring-zinc-200/80"
+      />
+      <span>{name}</span>
+      {api ? (
+        <span className="rounded bg-zinc-100 px-1 py-0.5 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+          API
+        </span>
+      ) : null}
+    </li>
+  );
+}
 
 function ModelList({
   extras,
 }: {
-  extras?: readonly { name: string; api?: boolean }[];
+  extras?: readonly { name: string; icon: string; api?: boolean }[];
 }) {
   return (
-    <ul className="flex flex-col gap-1.5">
+    <ul className="flex flex-col gap-2">
       {baseModels.map((model) => (
-        <li key={model} className="text-sm text-zinc-700">
-          {model}
-        </li>
+        <ModelRow key={model.name} name={model.name} icon={model.icon} />
       ))}
       {extras?.map((model) => (
-        <li key={model.name} className="flex items-center gap-1.5 text-sm text-zinc-700">
-          {model.name}
-          {model.api ? (
-            <span className="rounded bg-zinc-100 px-1 py-0.5 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
-              API
-            </span>
-          ) : null}
-        </li>
+        <ModelRow
+          key={model.name}
+          name={model.name}
+          icon={model.icon}
+          api={model.api}
+        />
       ))}
     </ul>
   );
