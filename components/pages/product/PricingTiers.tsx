@@ -30,6 +30,17 @@ type Tier = {
   href: "/register" | "sales";
 };
 
+const customHighlights = [
+  "Fully customisable prompt tracking",
+  "Choose from all models",
+  "Daily or weekly tracking frequency",
+  "Unlimited projects",
+  "Custom prompt setup",
+  "API access",
+  "Single Sign-on (SSO)",
+  "Up to 11 LLM models tracked",
+] as const;
+
 const tiers: Tier[] = [
   {
     name: "Starter",
@@ -67,39 +78,12 @@ const tiers: Tier[] = [
     name: "Advanced",
     price: "Custom",
     period: "",
-    description: "For marketing teams managing multiple projects with deeper reporting.",
+    description: "For marketing teams and global brands who need custom coverage, integrations, and dedicated support.",
     cta: "Talk to Sales",
     href: "sales",
     featured: false,
-    highlights: [
-      "350 prompts",
-      "Choose 3 models",
-      "Unlimited users",
-      "Daily tracking frequency",
-      "5 projects",
-      "Multi country",
-      "Looker Studio integration",
-    ],
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "For global brands who need custom coverage, integrations, and dedicated support.",
-    cta: "Talk to Sales",
-    href: "sales",
-    featured: false,
-    highlightsIntro: "Everything in advanced, plus:",
-    highlights: [
-      "Fully customisable prompt tracking",
-      "Choose from all models",
-      "Daily or weekly tracking frequency",
-      "Unlimited projects",
-      "Custom prompt setup",
-      "API access",
-      "Single Sign-on (SSO)",
-      "Up to 11 LLM models tracked",
-    ],
+    highlightsIntro: "Everything in Pro, plus:",
+    highlights: customHighlights,
   },
 ];
 
@@ -114,7 +98,7 @@ export default function PricingTiers() {
           below.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-3">
         {tiers.map((tier, index) => (
           <PricingTierColumn key={tier.name} tier={tier} index={index} />
         ))}
@@ -127,9 +111,8 @@ function PricingTierColumn({ tier, index }: { tier: Tier; index: number }) {
   return (
     <div
       className={[
-        "flex flex-col border-b xl:border-b-0",
-        index % 2 === 0 ? "md:border-r" : "",
-        index < tiers.length - 1 ? "xl:border-r" : "",
+        "flex flex-col border-b md:border-b-0",
+        index < tiers.length - 1 ? "md:border-r" : "",
         tier.featured ? "bg-white" : "",
       ].join(" ")}
     >

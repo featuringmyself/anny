@@ -11,7 +11,6 @@ type FeatureRow = {
   starter: CellValue;
   pro: CellValue;
   advanced: CellValue;
-  enterprise: CellValue;
 };
 
 type FeatureSection = {
@@ -28,7 +27,7 @@ const baseModels = [
   { name: "Gemini", icon: "/pricing-models/gemini.svg" },
 ] as const;
 
-const enterpriseExtraModels = [
+const advancedExtraModels = [
   { name: "Claude Sonnet 4", icon: "/pricing-models/claude.svg", api: true },
   { name: "GPT 5 Search", icon: "/pricing-models/chatgpt.svg", api: true },
   { name: "Deepseek", icon: "/pricing-models/deepseek.svg", api: true },
@@ -101,8 +100,7 @@ const sections: FeatureSection[] = [
         ),
         starter: <ModelList />,
         pro: <ModelList />,
-        advanced: <ModelList />,
-        enterprise: <ModelList extras={enterpriseExtraModels} />,
+        advanced: <ModelList extras={advancedExtraModels} />,
       },
       {
         name: (
@@ -116,35 +114,30 @@ const sections: FeatureSection[] = [
         starter: true,
         pro: true,
         advanced: true,
-        enterprise: true,
       },
       {
         name: "Number of models included",
         starter: "3",
         pro: "3",
-        advanced: "3",
-        enterprise: "unlimited",
+        advanced: "unlimited",
       },
       {
         name: "Projects",
         starter: "1",
         pro: "2",
-        advanced: "5",
-        enterprise: "unlimited",
+        advanced: "unlimited",
       },
       {
         name: "Countries per project",
         starter: "1",
         pro: "3",
-        advanced: "3",
-        enterprise: "unlimited",
+        advanced: "unlimited",
       },
       {
         name: "Daily/Weekly tracking",
         starter: "Daily",
         pro: "Daily",
-        advanced: "Daily",
-        enterprise: "Daily or Weekly",
+        advanced: "Daily or Weekly",
       },
     ],
   },
@@ -156,28 +149,24 @@ const sections: FeatureSection[] = [
         starter: false,
         pro: false,
         advanced: true,
-        enterprise: true,
       },
       {
         name: "API access",
         starter: false,
         pro: false,
-        advanced: false,
-        enterprise: true,
+        advanced: true,
       },
       {
         name: "MCP integration",
         starter: true,
         pro: true,
         advanced: true,
-        enterprise: true,
       },
       {
         name: "Single sign on (SSO)",
         starter: false,
         pro: false,
-        advanced: false,
-        enterprise: true,
+        advanced: true,
       },
     ],
   },
@@ -188,22 +177,19 @@ const sections: FeatureSection[] = [
         name: "Support channels",
         starter: "Chats",
         pro: "Chats + Email",
-        advanced: "Chats + Email",
-        enterprise: "Dedicated Support",
+        advanced: "Dedicated Support",
       },
       {
         name: "Slack community",
         starter: true,
         pro: true,
         advanced: true,
-        enterprise: true,
       },
       {
         name: "Custom onboarding",
         starter: false,
         pro: false,
         advanced: true,
-        enterprise: true,
       },
     ],
   },
@@ -245,7 +231,6 @@ const planHeaders = [
   { name: "Starter", price: "$99/mo", cta: "register" as const },
   { name: "Pro", price: "$249/mo", cta: "register" as const, featured: true },
   { name: "Advanced", price: "Custom", cta: "sales" as const },
-  { name: "Enterprise", price: "Custom", cta: "sales" as const },
 ];
 
 export default function PricingFeatures() {
@@ -259,7 +244,7 @@ export default function PricingFeatures() {
         </p>
       </div>
       <div className="overflow-x-auto overscroll-x-contain">
-        <table className="w-full min-w-[52rem] border-collapse text-left">
+        <table className="w-full min-w-[36rem] border-collapse text-left">
           <thead>
             <tr className="border-b">
               <th className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-500 md:px-12">
@@ -281,7 +266,7 @@ export default function PricingFeatures() {
               <Fragment key={section.title}>
                 <tr className="border-b bg-zinc-50/80">
                   <td
-                    colSpan={5}
+                    colSpan={4}
                     className="sticky left-0 bg-zinc-50/80 px-6 py-3 md:px-12"
                   >
                     <p className="text-sm font-medium text-zinc-800">{section.title}</p>
@@ -298,11 +283,8 @@ export default function PricingFeatures() {
                     <td className="px-4 py-4 align-top">
                       <Cell value={row.pro} />
                     </td>
-                    <td className="px-4 py-4 align-top">
-                      <Cell value={row.advanced} />
-                    </td>
                     <td className="px-4 py-4 align-top md:pr-12">
-                      <Cell value={row.enterprise} />
+                      <Cell value={row.advanced} />
                     </td>
                   </tr>
                 ))}

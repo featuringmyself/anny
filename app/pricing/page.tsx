@@ -9,7 +9,7 @@ import PricingTiers from "@/components/pages/product/PricingTiers";
 export const metadata: Metadata = {
   title: "Pricing — Anny",
   description:
-    "Anny plans for brands: Starter, Pro, Advanced, and Enterprise. Agencies get heavily discounted multi-client pricing — talk to sales for a quote.",
+    "Anny plans for brands: Starter, Pro, and Advanced (custom). Agencies get heavily discounted multi-client pricing — talk to sales for a quote.",
 };
 
 export default function PricingPage() {
