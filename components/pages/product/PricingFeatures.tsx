@@ -118,7 +118,7 @@ const sections: FeatureSection[] = [
       {
         name: "Number of models included",
         starter: "3",
-        pro: "3",
+        pro: "5",
         advanced: "unlimited",
       },
       {
