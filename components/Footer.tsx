@@ -39,14 +39,6 @@ const columns = [
       { label: "Media", href: "/partnership/media" },
     ],
   },
-  {
-    title: "Comparison",
-    links: [
-      { label: "Anny vs Ahrefs", href: "/compare/ahrefs" },
-      { label: "Anny vs Profound", href: "/compare/profound" },
-      { label: "Anny vs Semrush", href: "/compare/semrush" },
-    ],
-  },
 ] as const;
 
 function XIcon() {
@@ -112,7 +104,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:grid-cols-4">
             {columns.map((column) => (
               <div key={column.title}>
                 <h3 className="text-sm font-medium text-white">{column.title}</h3>
