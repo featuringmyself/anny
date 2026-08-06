@@ -6,7 +6,12 @@ import { motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { MODEL_META } from "./models";
-import type { ModelAnswer, QueryFinding, RentokStatus } from "./types";
+import type {
+  ModelAnswer,
+  QueryFinding,
+  QueryScreenshot,
+  RentokStatus,
+} from "./types";
 
 function highlightBrand(text: string, brand: string) {
   const parts = text.split(new RegExp(`(${brand})`, "gi"));
@@ -106,6 +111,50 @@ function AnswerCard({
   );
 }
 
+function ScreenshotCard({ shot }: { shot: QueryScreenshot }) {
+  const meta = MODEL_META[shot.model];
+
+  return (
+    <article className="flex w-[min(100%,420px)] shrink-0 snap-center flex-col sm:w-[480px]">
+      <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-400">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={meta.logo}
+          alt=""
+          width={12}
+          height={12}
+          className="size-3 object-contain"
+          draggable={false}
+        />
+        <span>
+          {shot.label ? (
+            <>
+              <span className="font-medium text-zinc-700">{shot.label}</span>
+              {" · "}
+            </>
+          ) : null}
+          {meta.name}
+        </span>
+        {shot.prompt ? (
+          <span className="w-full font-mono text-[11px] text-zinc-500">
+            “{shot.prompt}”
+          </span>
+        ) : null}
+      </div>
+      <div className="overflow-hidden border border-zinc-200 bg-zinc-950">
+        <Image
+          src={shot.src}
+          alt={shot.alt}
+          width={1200}
+          height={900}
+          className="h-auto w-full"
+          sizes="(max-width: 768px) 100vw, 480px"
+        />
+      </div>
+    </article>
+  );
+}
+
 type ModelAnswerScrollProps = {
   finding: QueryFinding;
   brand: string;
@@ -119,10 +168,18 @@ export default function ModelAnswerScroll({
 }: ModelAnswerScrollProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const multi = finding.answers.length > 1 && !finding.screenshot;
-  const shotMeta = finding.screenshot
-    ? MODEL_META[finding.screenshot.model]
-    : null;
+  // Multi-shot scroll chrome only when explicitly provided as 2+ screenshots
+  // (e.g. Truliv q10). Single `screenshot` keeps the pre-existing full-width UI.
+  const multiShots =
+    finding.screenshots && finding.screenshots.length > 1
+      ? finding.screenshots
+      : null;
+  const singleShot =
+    finding.screenshot ??
+    (finding.screenshots?.length === 1 ? finding.screenshots[0] : undefined);
+  const singleShotMeta = singleShot ? MODEL_META[singleShot.model] : null;
+  const multiAnswers =
+    finding.answers.length > 1 && !multiShots && !singleShot;
   const isCritical = finding.severity === "critical";
 
   function scrollByCard(direction: -1 | 1) {
@@ -202,24 +259,61 @@ export default function ModelAnswerScroll({
         </div>
 
         <div className="min-w-0">
-          {finding.screenshot && shotMeta ? (
+          {multiShots ? (
+            <>
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <p className="text-xs text-zinc-400">
+                  Scroll to compare the same style ask
+                </p>
+                <div className="flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => scrollByCard(-1)}
+                    className="grid size-8 place-items-center border border-zinc-200 text-zinc-600 transition-colors hover:bg-zinc-100"
+                    aria-label="Previous screenshot"
+                  >
+                    <ChevronLeft className="size-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollByCard(1)}
+                    className="grid size-8 place-items-center border border-zinc-200 text-zinc-600 transition-colors hover:bg-zinc-100"
+                    aria-label="Next screenshot"
+                  >
+                    <ChevronRight className="size-4" />
+                  </button>
+                </div>
+              </div>
+              <div
+                ref={scrollerRef}
+                className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {multiShots.map((shot) => (
+                  <ScreenshotCard
+                    key={`${shot.src}-${shot.label ?? shot.alt}`}
+                    shot={shot}
+                  />
+                ))}
+              </div>
+            </>
+          ) : singleShot && singleShotMeta ? (
             <div>
               <div className="mb-3 flex items-center gap-2 text-xs text-zinc-400">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={shotMeta.logo}
+                  src={singleShotMeta.logo}
                   alt=""
                   width={12}
                   height={12}
                   className="size-3 object-contain"
                   draggable={false}
                 />
-                {shotMeta.name} · captured answer
+                {singleShotMeta.name} · captured answer
               </div>
               <div className="overflow-hidden border border-zinc-200 bg-zinc-950">
                 <Image
-                  src={finding.screenshot.src}
-                  alt={finding.screenshot.alt}
+                  src={singleShot.src}
+                  alt={singleShot.alt}
                   width={1200}
                   height={900}
                   className="h-auto w-full"
@@ -229,7 +323,7 @@ export default function ModelAnswerScroll({
             </div>
           ) : (
             <>
-              {multi ? (
+              {multiAnswers ? (
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <p className="text-xs text-zinc-400">
                     Scroll to compare the same prompt across models
@@ -258,7 +352,7 @@ export default function ModelAnswerScroll({
               <div
                 ref={scrollerRef}
                 className={`flex gap-4 overflow-x-auto pb-2 ${
-                  multi
+                  multiAnswers
                     ? "snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     : ""
                 }`}

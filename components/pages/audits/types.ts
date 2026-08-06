@@ -24,6 +24,10 @@ export type QueryScreenshot = {
   src: string;
   alt: string;
   model: AiModelId;
+  /** Card label when scrolling multiple shots (e.g. property contrast). */
+  label?: string;
+  /** Override prompt shown under the label (e.g. competitor phrasing). */
+  prompt?: string;
 };
 
 export type QueryFinding = {
@@ -39,7 +43,10 @@ export type QueryFinding = {
   rentokStatus: RentokStatus;
   /** One-line outcome for the hybrid summary strip. */
   outcome: string;
+  /** Single captured answer (most prompts). */
   screenshot?: QueryScreenshot;
+  /** Multiple shots in one row — e.g. brand vs competitor contrast. */
+  screenshots?: QueryScreenshot[];
   answers: ModelAnswer[];
 };
 

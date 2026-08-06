@@ -10,7 +10,9 @@ export default function ReportQueries({ report }: ReportQueriesProps) {
     report.brandCrisis?.map((item) => item.query) ?? [],
   );
   const findings = report.queries.filter((q) => !brandQueries.has(q.query));
-  const hasScreenshots = findings.some((f) => f.screenshot);
+  const hasScreenshots = findings.some(
+    (f) => f.screenshot || (f.screenshots && f.screenshots.length > 0),
+  );
 
   return (
     <section className="border-b">
