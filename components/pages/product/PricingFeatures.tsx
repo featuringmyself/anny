@@ -1,73 +1,153 @@
-const features = [
+import { Fragment } from "react";
+
+type CellValue = boolean | string;
+
+type FeatureRow = {
+  name: string;
+  starter: CellValue;
+  pro: CellValue;
+  advanced: CellValue;
+};
+
+type FeatureSection = {
+  title: string;
+  note?: string;
+  rows: FeatureRow[];
+};
+
+const sections: FeatureSection[] = [
   {
-    name: "ChatGPT, Gemini & AI Mode",
-    starter: true,
-    pro: true,
-    advanced: true,
+    title: "Available models",
+    note: "Select in the onboarding process",
+    rows: [
+      {
+        name: "ChatGPT",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "AI Mode",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "AI Overviews",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "Microsoft Copilot",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "Perplexity",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "Gemini",
+        starter: true,
+        pro: true,
+        advanced: true,
+      },
+      {
+        name: "AI Shopping",
+        starter: "Included at launch",
+        pro: "Included at launch",
+        advanced: "Included at launch",
+      },
+    ],
   },
   {
-    name: "Daily tracking",
-    starter: true,
-    pro: true,
-    advanced: true,
+    title: "Core features",
+    rows: [
+      {
+        name: "Number of models included",
+        starter: "3",
+        pro: "3",
+        advanced: "3",
+      },
+      {
+        name: "Projects",
+        starter: "1",
+        pro: "2",
+        advanced: "5",
+      },
+      {
+        name: "Countries per project",
+        starter: "1",
+        pro: "3",
+        advanced: "3",
+      },
+      {
+        name: "Daily/Weekly tracking",
+        starter: "Daily",
+        pro: "Daily",
+        advanced: "Daily",
+      },
+    ],
   },
   {
-    name: "Projects",
-    starter: "1",
-    pro: "2",
-    advanced: "5",
+    title: "Integrations & access",
+    rows: [
+      {
+        name: "Looker integration",
+        starter: false,
+        pro: false,
+        advanced: true,
+      },
+      {
+        name: "API access",
+        starter: false,
+        pro: false,
+        advanced: false,
+      },
+      {
+        name: "MCP integration",
+        starter: false,
+        pro: false,
+        advanced: false,
+      },
+      {
+        name: "Single sign on (SSO)",
+        starter: false,
+        pro: false,
+        advanced: false,
+      },
+    ],
   },
   {
-    name: "Models included",
-    starter: "3",
-    pro: "3",
-    advanced: "3",
-  },
-  {
-    name: "Countries per project",
-    starter: "1",
-    pro: "3",
-    advanced: "3",
-  },
-  {
-    name: "Competitor scorecards",
-    starter: false,
-    pro: true,
-    advanced: true,
-  },
-  {
-    name: "Source & citation map",
-    starter: true,
-    pro: true,
-    advanced: true,
-  },
-  {
-    name: "API & MCP access",
-    starter: false,
-    pro: false,
-    advanced: true,
-  },
-  {
-    name: "Looker / BI exports",
-    starter: false,
-    pro: false,
-    advanced: true,
-  },
-  {
-    name: "SSO",
-    starter: false,
-    pro: false,
-    advanced: true,
-  },
-  {
-    name: "Support",
-    starter: "Chat",
-    pro: "Chat + email",
-    advanced: "Chat + email",
+    title: "Support & Community",
+    rows: [
+      {
+        name: "Support channels",
+        starter: "Chats",
+        pro: "Chats + Email",
+        advanced: "Chats + Email",
+      },
+      {
+        name: "Slack community",
+        starter: false,
+        pro: false,
+        advanced: false,
+      },
+      {
+        name: "Custom onboarding",
+        starter: false,
+        pro: false,
+        advanced: false,
+      },
+    ],
   },
 ] as const;
 
-function Cell({ value }: { value: boolean | string }) {
+function Cell({ value }: { value: CellValue }) {
   if (typeof value === "string") {
     return <span className="text-sm text-zinc-700 tabular-nums">{value}</span>;
   }
@@ -96,7 +176,7 @@ export default function PricingFeatures() {
         <h2 className="text-2xl font-medium tracking-tight">Compare brand plans</h2>
         <p className="mt-2 max-w-md text-sm text-zinc-500">
           Agency packages are quoted separately — see the agency section above for what&apos;s
-          included.
+          included. API, MCP, SSO, Slack community, and custom onboarding are available on Enterprise.
         </p>
       </div>
       <div className="overflow-x-auto overscroll-x-contain">
@@ -112,21 +192,36 @@ export default function PricingFeatures() {
             </tr>
           </thead>
           <tbody>
-            {features.map((row) => (
-              <tr key={row.name} className="border-b last:border-b-0">
-                <td className="sticky left-0 bg-background px-6 py-4 text-sm text-zinc-800 md:px-12">
-                  {row.name}
-                </td>
-                <td className="px-4 py-4">
-                  <Cell value={row.starter} />
-                </td>
-                <td className="px-4 py-4">
-                  <Cell value={row.pro} />
-                </td>
-                <td className="px-4 py-4 md:pr-12">
-                  <Cell value={row.advanced} />
-                </td>
-              </tr>
+            {sections.map((section) => (
+              <Fragment key={section.title}>
+                <tr className="border-b bg-zinc-50/80">
+                  <td
+                    colSpan={4}
+                    className="sticky left-0 bg-zinc-50/80 px-6 py-3 md:px-12"
+                  >
+                    <p className="text-sm font-medium text-zinc-800">{section.title}</p>
+                    {section.note ? (
+                      <p className="mt-0.5 text-xs text-zinc-500">{section.note}</p>
+                    ) : null}
+                  </td>
+                </tr>
+                {section.rows.map((row) => (
+                  <tr key={row.name} className="border-b last:border-b-0">
+                    <td className="sticky left-0 bg-background px-6 py-4 text-sm text-zinc-800 md:px-12">
+                      {row.name}
+                    </td>
+                    <td className="px-4 py-4">
+                      <Cell value={row.starter} />
+                    </td>
+                    <td className="px-4 py-4">
+                      <Cell value={row.pro} />
+                    </td>
+                    <td className="px-4 py-4 md:pr-12">
+                      <Cell value={row.advanced} />
+                    </td>
+                  </tr>
+                ))}
+              </Fragment>
             ))}
           </tbody>
         </table>

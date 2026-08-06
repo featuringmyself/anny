@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
 export default function CareersCulture() {
@@ -26,9 +28,9 @@ export default function CareersCulture() {
           <Button
             className="bg-white text-black hover:bg-white/90"
             size="lg"
-            render={<a href="mailto:careers@dodoxhq.com" />}
+            render={<Link href="/careers/open-application" />}
           >
-            Email careers@dodoxhq.com
+            Send an open application
           </Button>
         </div>
       </div>

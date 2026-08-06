@@ -1,32 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 
-const roles = [
-  {
-    role: "Founding Engineer",
-    location: "Remote",
-    type: "Full-time",
-  },
-  {
-    role: "Product Designer",
-    location: "Remote / NYC",
-    type: "Full-time",
-  },
-  {
-    role: "Growth Marketing",
-    location: "Remote",
-    type: "Full-time",
-  },
-  {
-    role: "Customer Success Lead",
-    location: "Remote",
-    type: "Full-time",
-  },
-] as const;
+import { getListedRoles } from "@/components/pages/careers/roles";
 
 export default function CareersBoard() {
   const reduceMotion = useReducedMotion();
+  const roles = getListedRoles();
 
   return (
     <section id="open-roles" className="border-y">
@@ -41,21 +22,30 @@ export default function CareersBoard() {
       <ul>
         {roles.map((item, index) => (
           <motion.li
-            key={item.role}
+            key={item.slug}
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.35, delay: index * 0.06 }}
-            className="flex flex-col gap-1 border-b px-6 py-5 last:border-b-0 md:grid md:grid-cols-[1fr_auto_auto] md:items-center md:gap-0 md:px-10 md:py-6"
+            className="border-b last:border-b-0"
           >
-            <span className="text-lg font-medium md:text-xl">{item.role}</span>
-            <span className="text-sm text-zinc-500 md:w-48 md:text-right">
-              <span className="md:hidden">{item.location} · {item.type}</span>
-              <span className="hidden md:inline">{item.location}</span>
-            </span>
-            <span className="hidden w-28 text-right text-sm text-zinc-500 md:inline md:w-36">
-              {item.type}
-            </span>
+            <Link
+              href={`/careers/${item.slug}`}
+              className="group flex flex-col gap-1 px-6 py-5 md:grid md:grid-cols-[1fr_auto_auto] md:items-center md:gap-0 md:px-10 md:py-6"
+            >
+              <span className="text-lg font-medium group-hover:text-[#2462ff] md:text-xl">
+                {item.role}
+              </span>
+              <span className="text-sm text-zinc-500 md:w-48 md:text-right">
+                <span className="md:hidden">
+                  {item.location} · {item.type}
+                </span>
+                <span className="hidden md:inline">{item.location}</span>
+              </span>
+              <span className="hidden w-28 text-right text-sm text-zinc-500 md:inline md:w-36">
+                {item.type}
+              </span>
+            </Link>
           </motion.li>
         ))}
       </ul>

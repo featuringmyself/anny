@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { getRoleSlugs } from "@/components/pages/careers/roles";
 import { getAllPosts } from "@/components/pages/product/blog/posts";
 import { SITE_URL } from "@/lib/site";
 
@@ -50,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...blogEntries];
+  const careerEntries = getRoleSlugs().map((slug) => ({
+    url: `${SITE_URL}/careers/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.4,
+  }));
+
+  return [...staticEntries, ...blogEntries, ...careerEntries];
 }

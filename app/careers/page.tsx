@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <div>
+    <main>
       <CareersHero />
       <PatternStrip />
       <CareersBoard />
       <PatternStrip />
       <CareersCulture />
-    </div>
+    </main>
   );
 }
