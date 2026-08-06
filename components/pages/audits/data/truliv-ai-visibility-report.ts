@@ -16,9 +16,9 @@ export const trulivAiVisibilityReport: VisibilityReport = {
   scoreLabel: "Poor",
   private: true,
   tagline:
-    "Flexible living — short lock-in, tailored services, deposit refund without ghosting",
+    "Flexible living: short lock-in, tailored services, deposit refund without ghosting",
   summary:
-    "ChatGPT already answers for coliving and flexible stays — demand is being routed now. Truliv runs 30+ properties across 3+ cities with 25K+ tenants and a 4.5 Google rating, yet on 9 of 12 buyer prompts in this snapshot someone else (or a hotel) gets the shortlist. Score 25 is not a soft landing: the deposit USP on truliv.in fails the trust gate before a tour; “is Truliv reliable” and “does truliv refund the deposit timely?” never get a clean yes. Two thin #1s (Hestia on abstract flexible Chennai; Adonia near Bascon via a MagicBricks-style cite) do not hold next door — Kodambakkam PG and 30-day stays skip Truliv, city coliving buries you at #6 under Stanza/Zolo/Colive/StayBro, Bengaluru expansion shelves are empty, and Puducherry holiday homes never appear. This ChatGPT snapshot is the baseline. A 90-day sprint stops the leakage: make deposit answers hold, defend Chennai home turf, open Bengaluru where AI already decides, cite holiday homes — then expand across Perplexity, Google AI Overview, Gemini, and Claude.",
+    "ChatGPT already answers for coliving and flexible stays. Demand is being routed now. Truliv runs 30+ properties across 3+ cities with 25K+ tenants and a 4.5 Google rating, yet on 9 of 12 buyer prompts in this snapshot someone else (or a hotel) gets the shortlist. Score 25 is not a soft landing: the deposit USP on truliv.in fails the trust gate before a tour; “is Truliv reliable” and “does truliv refund the deposit timely?” never get a clean yes. Two thin #1s (Hestia on abstract flexible Chennai; Adonia near Bascon via a MagicBricks-style cite) do not hold next door: Kodambakkam PG and 30-day stays skip Truliv, city coliving buries you at #6 under Stanza/Zolo/Colive/StayBro, Bengaluru expansion shelves are empty, and Puducherry holiday homes never appear. This ChatGPT snapshot is the baseline. A 90-day sprint stops the leakage: make deposit answers hold, defend Chennai home turf, open Bengaluru where AI already decides, cite holiday homes, then expand across Perplexity, Google AI Overview, Gemini, and Claude.",
   stats: [
     { label: "Properties", value: "30+" },
     { label: "Cities", value: "03+" },
@@ -28,7 +28,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
   brandCrisisHeadline:
     "truliv.in sells a 7-day deposit refund. ChatGPT will not vouch for it",
   brandCrisisDek:
-    "Homepage promise: instant confirmation and a fast UPI refund. Ask if Truliv is reliable or if deposits come back on time — the trust gate fails before a tour.",
+    "Homepage promise: instant confirmation and a fast UPI refund. Ask if Truliv is reliable or if deposits come back on time: the trust gate fails before a tour.",
   queriesHeadline: "Prompt audit · 12 queries",
   queriesIntro:
     "Buyer prompts already routing demand: Chennai USP and home turf, Bengaluru expansion, property depth, holiday homes. Two thin #1s do not hold next door. Nine of twelve send the shortlist elsewhere.",
@@ -54,7 +54,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
       id: "crisis-reliable",
       query: "is Truliv reliable",
       title: "Trust gate fails · deposit caution leads",
-      body: "ChatGPT treats Truliv as a real coliving operator — then puts security-deposit delays and disputes near the top of what to watch. App Store coverage around 2.8/5 and mixed resident notes fold into the same caution. A prospect checking trust before booking never gets a clean pass on the promise truliv.in sells.",
+      body: "ChatGPT treats Truliv as a real coliving operator, then puts security-deposit delays and disputes near the top of what to watch. App Store coverage around 2.8/5 and mixed resident notes fold into the same caution. A prospect checking trust before booking never gets a clean pass on the promise truliv.in sells.",
       outcome: "Trust gate fails · deposit caution leads",
       screenshot: {
         src: `${SHOT}/crisis-is-truliv-reliable.png`,
@@ -66,7 +66,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
       id: "crisis-refund",
       query: "does truliv refund the deposit timely?",
       title: "Direct deposit ask · no confident yes",
-      body: "Asked whether Truliv refunds deposits on time, the model says there is not enough independent public data to confirm consistent timely refunds. It repeats the official 7–10 working-day policy from truliv.in and cites thin App Store coverage. The homepage’s sharpest claim — refund without ghosting — stays unanswered. That is booking friction before a tour.",
+      body: "Asked whether Truliv refunds deposits on time, the model says there is not enough independent public data to confirm consistent timely refunds. It repeats the official 7–10 working-day policy from truliv.in and cites thin App Store coverage. The homepage’s sharpest claim, refund without ghosting, stays unanswered. That is booking friction before a tour.",
       outcome: "USP irony · policy cited, proof missing",
       screenshot: {
         src: `${SHOT}/crisis-does-truliv-refund-deposit-timely.png`,
@@ -102,7 +102,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           cited: true,
           position: 1,
           excerpt:
-            "Truliv Hestia (T. Nagar) leads for stays from 30 days onward. Stanza, Colive, Wowlife, and Awwstel follow. Same flexible job on Kodambakkam home turf routes to hotels and serviced apartments — this #1 does not travel.",
+            "Truliv Hestia (T. Nagar) leads for stays from 30 days onward. Stanza, Colive, Wowlife, and Awwstel follow. Same flexible job on Kodambakkam home turf routes to hotels and serviced apartments. This #1 does not travel.",
         },
       ],
     },
@@ -163,7 +163,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           cited: true,
           position: 1,
           excerpt:
-            "Truliv Adonia (Kodambakkam) is #1 for premium managed coliving near Bascon Futura, citing MagicBricks. Local PGs fill the rest. Plain “best pg in Kodambakkam” skips Adonia and Althea entirely — home turf does not follow this cite.",
+            "Truliv Adonia (Kodambakkam) is #1 for premium managed coliving near Bascon Futura, citing MagicBricks. Local PGs fill the rest. Plain “best pg in Kodambakkam” skips Adonia and Althea entirely. Home turf does not follow this cite.",
           sources: ["MagicBricks"],
         },
       ],
@@ -226,7 +226,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Serviced apartments and hotel-style stays take the 30-day work stay. Truliv’s flexible coliving promise never enters the answer — the same job Hestia won as an abstract USP ask, lost on home turf.",
+            "Serviced apartments and hotel-style stays take the 30-day work stay. Truliv’s flexible coliving promise never enters the answer: the same job Hestia won as an abstract USP ask, lost on home turf.",
         },
       ],
     },
@@ -256,7 +256,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Area table names Pro4 Living, Livoza, Skep, AA Premium, OLIVE, and Mio Colive across Marathahalli, Koramangala, Indiranagar, Whitefield, Sarjapur, and BTM. Expansion spend without an AI shelf — paying for beds AI will not recommend.",
+            "Area table names Pro4 Living, Livoza, Skep, AA Premium, OLIVE, and Mio Colive across Marathahalli, Koramangala, Indiranagar, Whitefield, Sarjapur, and BTM. Expansion spend without an AI shelf: paying for beds AI will not recommend.",
         },
       ],
     },
@@ -286,7 +286,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Premium and branded buckets fill with Housr, At Home, Livoza, Zolo, Stanza Living, and Colive. Truliv does not appear on either tier — competitors already own the phrasing buyers type.",
+            "Premium and branded buckets fill with Housr, At Home, Livoza, Zolo, Stanza Living, and Colive. Truliv does not appear on either tier. Competitors already own the phrasing buyers type.",
           sources: ["LBB", "Zolostays", "Economic Times"],
         },
       ],
@@ -317,7 +317,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Pro4 Living, URU, AA Premium, S2, Shree Jaya, and SVL Grand fill Whitefield. MagicBricks-led answers skip Truliv entirely — a micro-market inside the expansion plan with zero AI shelf.",
+            "Pro4 Living, URU, AA Premium, S2, Shree Jaya, and SVL Grand fill Whitefield. MagicBricks-led answers skip Truliv entirely: a micro-market inside the expansion plan with zero AI shelf.",
           sources: ["MagicBricks"],
         },
       ],
@@ -348,7 +348,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "SVL Grand, AA Premium, KOINN, Yello Living, S2, and The Park fill the under-₹25k single-occupancy table. Truliv is not shortlisted — budget buyers in Whitefield never hear the brand.",
+            "SVL Grand, AA Premium, KOINN, Yello Living, S2, and The Park fill the under-₹25k single-occupancy table. Truliv is not shortlisted. Budget buyers in Whitefield never hear the brand.",
         },
       ],
     },
@@ -384,7 +384,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Truliv Adonia is named in Kodambakkam, but almost no resident detail on Wi-Fi speed or reliability — generic peak-hour advice only. Ask the same style question for Settl Douglas and ChatGPT returns use-case breakdowns sourced from Reddit.",
+            "Truliv Adonia is named in Kodambakkam, but almost no resident detail on Wi-Fi speed or reliability: generic peak-hour advice only. Ask the same style question for Settl Douglas and ChatGPT returns use-case breakdowns sourced from Reddit.",
           sources: ["App Store", "Reddit"],
         },
       ],
@@ -408,7 +408,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Thin Luna-specific coverage; the model generalizes from other Truliv properties as mixed. Deposit policies, hidden charges, and room conditions are flagged to verify before committing — not enough independent proof for a clean pass.",
+            "Thin Luna-specific coverage; the model generalizes from other Truliv properties as mixed. Deposit policies, hidden charges, and room conditions are flagged to verify before committing: not enough independent proof for a clean pass.",
           sources: ["Wanderlog", "Reddit"],
         },
       ],
@@ -439,7 +439,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Private villas and beach stays from Airbnb-style listings fill every bucket. Truliv’s holiday-homes vertical never appears — including adjacent under-25k Puducherry phrasing. New vertical, zero AI shelf.",
+            "Private villas and beach stays from Airbnb-style listings fill every bucket. Truliv’s holiday-homes vertical never appears, including adjacent under-25k Puducherry phrasing. New vertical, zero AI shelf.",
           sources: ["Airbnb"],
         },
       ],
@@ -449,10 +449,10 @@ export const trulivAiVisibilityReport: VisibilityReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline: "Stop the leakage where AI already decides the shortlist",
-    body: "When renters ask ChatGPT, Perplexity, Google AI Overview, and other models about Truliv or flexible coliving, truliv.in should clear the trust gate and own the shortlist — not lose 9 of 12 prompts to competitors and hotels. We start with the leaks in this audit: deposit USP unanswered, Chennai fragile outside two thin #1s, Bengaluru and holiday homes empty, property depth thin. You get a dashboard where this prompt set is re-tested daily — model gaps, competitor share, score trend — and daily suggestions on what to do next until the citations move.",
+    body: "When renters ask ChatGPT, Perplexity, Google AI Overview, and other models about Truliv or flexible coliving, truliv.in should clear the trust gate and own the shortlist, not lose 9 of 12 prompts to competitors and hotels. We start with the leaks in this audit: deposit USP unanswered, Chennai fragile outside two thin #1s, Bengaluru and holiday homes empty, property depth thin. You get a dashboard where this prompt set is re-tested daily - model gaps, competitor share, score trend - and daily suggestions on what to do next until the citations move.",
     outcomes: [
-      "Deposit and reliability answers that clear the trust gate — matching the promise on truliv.in",
-      "Chennai defended — Kodambakkam PG and 30-day stays cite Truliv, not only hotels and Zolo; city shortlist no longer buries you at #6",
+      "Deposit and reliability answers that clear the trust gate, matching the promise on truliv.in",
+      "Chennai defended: Kodambakkam PG and 30-day stays cite Truliv, not only hotels and Zolo; city shortlist no longer buries you at #6",
       "Bengaluru city, Whitefield, and under-25k shelves opened so expansion spend is not beds AI will not recommend",
       "Holiday homes in Puducherry cited for the new vertical",
       "This prompt set re-tested daily on the dashboard with screenshot proof, plus daily suggestions on what to do next",
@@ -461,7 +461,7 @@ export const trulivAiVisibilityReport: VisibilityReport = {
   ctaUrl: "https://cal.com/dodox/quick-chat",
   ctaLabel: "Book a quick chat",
   ctaEyebrow: "90-day sprint",
-  ctaHeadline: "Stop leaking Chennai demand — and open Bengaluru where AI already decides",
+  ctaHeadline: "Stop leaking Chennai demand and open Bengaluru where AI already decides",
   ctaBody:
     "Book a short call. We will map the 90-day plan from this audit: clear the deposit trust gate against truliv.in first, defend Chennai home turf, open Bengaluru and holiday homes where demand is already routed. You get a dashboard that re-tests this prompt set daily and suggests daily what to do next as the answers move.",
 };

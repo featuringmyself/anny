@@ -7,8 +7,8 @@ import BlogIndex from "@/components/pages/product/BlogIndex";
 export const metadata: Metadata = {
   title: "Blog — Anny",
   description:
-    "Anny field notes on AI search, GEO, ChatGPT mentions, Gemini sources, and agency visibility retainers.",
-};
+    "Anny field notes on AI search, GEO, ChatGPT mentions, Gemini sources, citations, and agency visibility retainers.",
+}
 
 export default function BlogPage() {
   return (

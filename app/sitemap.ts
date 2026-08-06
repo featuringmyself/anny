@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { getAllPosts } from "@/components/pages/product/blog/posts";
 import { SITE_URL } from "@/lib/site";
 
 const routes: {
@@ -35,10 +36,19 @@ const routes: {
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return routes.map(({ path, changeFrequency, priority }) => ({
+  const staticEntries = routes.map(({ path, changeFrequency, priority }) => ({
     url: path === "/" ? SITE_URL : `${SITE_URL}${path}`,
     lastModified,
     changeFrequency,
     priority,
   }));
+
+  const blogEntries = getAllPosts().map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...blogEntries];
 }
