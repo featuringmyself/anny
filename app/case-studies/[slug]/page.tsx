@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   if (!study) {
     return {
-      title: `Case study — ${SITE_NAME}`,
+      title: `Case study - ${SITE_NAME}`,
       robots: {
         index: false,
         follow: false,
@@ -34,7 +34,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${study.company} case study — ${SITE_NAME}`,
+    title: `${study.company} case study - ${SITE_NAME}`,
     description: study.dek,
     robots: {
       index: false,
