@@ -1,95 +1,125 @@
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
-type CellValue = boolean | string;
+import { TalkToSalesButton } from "@/components/talk-to-sales";
+import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
+
+type CellValue = boolean | string | ReactNode;
 
 type FeatureRow = {
-  name: string;
+  name: ReactNode;
   starter: CellValue;
   pro: CellValue;
   advanced: CellValue;
+  enterprise: CellValue;
 };
 
 type FeatureSection = {
   title: string;
-  note?: string;
   rows: FeatureRow[];
 };
 
+const baseModels = [
+  "ChatGPT",
+  "AI Mode",
+  "AI Overviews",
+  "Microsoft Copilot",
+  "Perplexity",
+  "Gemini",
+] as const;
+
+const enterpriseExtraModels = [
+  { name: "Claude Sonnet 4", api: true },
+  { name: "GPT 5 Search", api: true },
+  { name: "Deepseek", api: true },
+  { name: "Qwen", api: true },
+  { name: "Mistral", api: true },
+] as const;
+
+function ModelList({
+  extras,
+}: {
+  extras?: readonly { name: string; api?: boolean }[];
+}) {
+  return (
+    <ul className="flex flex-col gap-1.5">
+      {baseModels.map((model) => (
+        <li key={model} className="text-sm text-zinc-700">
+          {model}
+        </li>
+      ))}
+      {extras?.map((model) => (
+        <li key={model.name} className="flex items-center gap-1.5 text-sm text-zinc-700">
+          {model.name}
+          {model.api ? (
+            <span className="rounded bg-zinc-100 px-1 py-0.5 text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+              API
+            </span>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 const sections: FeatureSection[] = [
-  {
-    title: "Available models",
-    note: "Select in the onboarding process",
-    rows: [
-      {
-        name: "ChatGPT",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "AI Mode",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "AI Overviews",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "Microsoft Copilot",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "Perplexity",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "Gemini",
-        starter: true,
-        pro: true,
-        advanced: true,
-      },
-      {
-        name: "AI Shopping",
-        starter: "Included at launch",
-        pro: "Included at launch",
-        advanced: "Included at launch",
-      },
-    ],
-  },
   {
     title: "Core features",
     rows: [
+      {
+        name: (
+          <span>
+            Available models
+            <span className="mt-0.5 block text-xs font-normal text-zinc-500">
+              Select in the onboarding process
+            </span>
+          </span>
+        ),
+        starter: <ModelList />,
+        pro: <ModelList />,
+        advanced: <ModelList />,
+        enterprise: <ModelList extras={enterpriseExtraModels} />,
+      },
+      {
+        name: (
+          <span>
+            AI Shopping
+            <span className="mt-0.5 block text-xs font-normal text-emerald-600">
+              Included at launch
+            </span>
+          </span>
+        ),
+        starter: true,
+        pro: true,
+        advanced: true,
+        enterprise: true,
+      },
       {
         name: "Number of models included",
         starter: "3",
         pro: "3",
         advanced: "3",
+        enterprise: "unlimited",
       },
       {
         name: "Projects",
         starter: "1",
         pro: "2",
         advanced: "5",
+        enterprise: "unlimited",
       },
       {
         name: "Countries per project",
         starter: "1",
         pro: "3",
         advanced: "3",
+        enterprise: "unlimited",
       },
       {
         name: "Daily/Weekly tracking",
         starter: "Daily",
         pro: "Daily",
         advanced: "Daily",
+        enterprise: "Daily or Weekly",
       },
     ],
   },
@@ -101,24 +131,28 @@ const sections: FeatureSection[] = [
         starter: false,
         pro: false,
         advanced: true,
+        enterprise: true,
       },
       {
         name: "API access",
         starter: false,
         pro: false,
         advanced: false,
+        enterprise: true,
       },
       {
         name: "MCP integration",
-        starter: false,
-        pro: false,
-        advanced: false,
+        starter: true,
+        pro: true,
+        advanced: true,
+        enterprise: true,
       },
       {
         name: "Single sign on (SSO)",
         starter: false,
         pro: false,
         advanced: false,
+        enterprise: true,
       },
     ],
   },
@@ -130,44 +164,64 @@ const sections: FeatureSection[] = [
         starter: "Chats",
         pro: "Chats + Email",
         advanced: "Chats + Email",
+        enterprise: "Dedicated Support",
       },
       {
         name: "Slack community",
-        starter: false,
-        pro: false,
-        advanced: false,
+        starter: true,
+        pro: true,
+        advanced: true,
+        enterprise: true,
       },
       {
         name: "Custom onboarding",
         starter: false,
         pro: false,
-        advanced: false,
+        advanced: true,
+        enterprise: true,
       },
     ],
   },
-] as const;
+];
 
 function Cell({ value }: { value: CellValue }) {
-  if (typeof value === "string") {
-    return <span className="text-sm text-zinc-700 tabular-nums">{value}</span>;
-  }
-  if (value) {
+  if (typeof value === "boolean") {
+    if (value) {
+      return (
+        <span
+          className="inline-flex size-5 items-center justify-center text-zinc-800"
+          aria-label="Included"
+        >
+          <svg viewBox="0 0 16 16" className="size-4" fill="none" aria-hidden>
+            <path
+              d="M3.5 8.5 6.5 11.5 12.5 4.5"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+      );
+    }
     return (
-      <span className="inline-flex size-5 items-center justify-center text-[#2462ff]" aria-label="Included">
-        <svg viewBox="0 0 16 16" className="size-4" fill="none" aria-hidden>
-          <path
-            d="M3.5 8.5 6.5 11.5 12.5 4.5"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+      <span className="text-sm text-zinc-300" aria-label="Not included">
+        —
       </span>
     );
   }
-  return <span className="text-sm text-zinc-300" aria-label="Not included">—</span>;
+  if (typeof value === "string") {
+    return <span className="text-sm text-zinc-700 tabular-nums">{value}</span>;
+  }
+  return <div>{value}</div>;
 }
+
+const planHeaders = [
+  { name: "Starter", price: "$99/mo", cta: "register" as const },
+  { name: "Pro", price: "$249/mo", cta: "register" as const, featured: true },
+  { name: "Advanced", price: "Custom", cta: "sales" as const },
+  { name: "Enterprise", price: "Custom", cta: "sales" as const },
+];
 
 export default function PricingFeatures() {
   return (
@@ -176,19 +230,25 @@ export default function PricingFeatures() {
         <h2 className="text-2xl font-medium tracking-tight">Compare brand plans</h2>
         <p className="mt-2 max-w-md text-sm text-zinc-500">
           Agency packages are quoted separately — see the agency section above for what&apos;s
-          included. API, MCP, SSO, Slack community, and custom onboarding are available on Enterprise.
+          included.
         </p>
       </div>
       <div className="overflow-x-auto overscroll-x-contain">
-        <table className="w-full min-w-[36rem] border-collapse text-left">
+        <table className="w-full min-w-[52rem] border-collapse text-left">
           <thead>
             <tr className="border-b">
               <th className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-500 md:px-12">
                 Feature
               </th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Starter</th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36">Pro</th>
-              <th className="w-28 px-4 py-4 text-sm font-medium md:w-36 md:pr-12">Advanced</th>
+              {planHeaders.map((plan) => (
+                <th
+                  key={plan.name}
+                  className="w-36 px-4 py-4 align-bottom last:md:pr-12"
+                >
+                  <p className="text-sm font-medium text-zinc-900">{plan.name}</p>
+                  <p className="mt-1 text-xs font-normal text-zinc-500">{plan.price}</p>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -196,33 +256,57 @@ export default function PricingFeatures() {
               <Fragment key={section.title}>
                 <tr className="border-b bg-zinc-50/80">
                   <td
-                    colSpan={4}
+                    colSpan={5}
                     className="sticky left-0 bg-zinc-50/80 px-6 py-3 md:px-12"
                   >
                     <p className="text-sm font-medium text-zinc-800">{section.title}</p>
-                    {section.note ? (
-                      <p className="mt-0.5 text-xs text-zinc-500">{section.note}</p>
-                    ) : null}
                   </td>
                 </tr>
-                {section.rows.map((row) => (
-                  <tr key={row.name} className="border-b last:border-b-0">
-                    <td className="sticky left-0 bg-background px-6 py-4 text-sm text-zinc-800 md:px-12">
+                {section.rows.map((row, rowIndex) => (
+                  <tr key={`${section.title}-${rowIndex}`} className="border-b">
+                    <td className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-800 md:px-12">
                       {row.name}
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-4 py-4 align-top">
                       <Cell value={row.starter} />
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-4 py-4 align-top">
                       <Cell value={row.pro} />
                     </td>
-                    <td className="px-4 py-4 md:pr-12">
+                    <td className="px-4 py-4 align-top">
                       <Cell value={row.advanced} />
+                    </td>
+                    <td className="px-4 py-4 align-top md:pr-12">
+                      <Cell value={row.enterprise} />
                     </td>
                   </tr>
                 ))}
               </Fragment>
             ))}
+            <tr>
+              <td className="sticky left-0 bg-background px-6 py-6 md:px-12" />
+              {planHeaders.map((plan) => (
+                <td key={plan.name} className="px-4 py-6 align-top last:md:pr-12">
+                  {plan.cta === "sales" ? (
+                    <TalkToSalesButton
+                      size="lg"
+                      variant="outline"
+                      className="w-full px-4"
+                      source={`pricing-compare-${plan.name.toLowerCase()}`}
+                    >
+                      Talk to Sales
+                    </TalkToSalesButton>
+                  ) : (
+                    <PricingTierMotion
+                      featured={Boolean(plan.featured)}
+                      href="/register"
+                      cta="Get started"
+                      tier={plan.name}
+                    />
+                  )}
+                </td>
+              ))}
+            </tr>
           </tbody>
         </table>
       </div>
