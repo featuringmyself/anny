@@ -49,9 +49,9 @@ function ModelRow({
       <Image
         src={icon}
         alt=""
-        width={16}
-        height={16}
-        className="size-4 shrink-0 rounded-[3px] ring-1 ring-zinc-200/80"
+        width={20}
+        height={20}
+        className="size-5 shrink-0 rounded-[3px] ring-1 ring-zinc-200/80"
       />
       <span>{name}</span>
       {api ? (
@@ -244,16 +244,18 @@ export default function PricingFeatures() {
         </p>
       </div>
       <div className="overflow-x-auto overscroll-x-contain">
-        <table className="w-full min-w-[36rem] border-collapse text-left">
+        <table className="w-full border-collapse text-left">
           <thead>
             <tr className="border-b">
-              <th className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-500 md:px-12">
+              <th className="sticky left-0 border-r bg-background px-6 py-4 text-sm font-medium text-zinc-500 md:px-12">
                 Feature
               </th>
-              {planHeaders.map((plan) => (
+              {planHeaders.map((plan, index) => (
                 <th
                   key={plan.name}
-                  className="w-36 px-4 py-4 align-bottom last:md:pr-12"
+                  className={`px-6 py-4 align-bottom md:px-8 ${
+                    index < planHeaders.length - 1 ? "border-r" : "md:pr-12"
+                  }`}
                 >
                   <p className="text-sm font-medium text-zinc-900">{plan.name}</p>
                   <p className="mt-1 text-xs font-normal text-zinc-500">{plan.price}</p>
@@ -274,16 +276,16 @@ export default function PricingFeatures() {
                 </tr>
                 {section.rows.map((row, rowIndex) => (
                   <tr key={`${section.title}-${rowIndex}`} className="border-b">
-                    <td className="sticky left-0 bg-background px-6 py-4 text-sm font-medium text-zinc-800 md:px-12">
+                    <td className="sticky left-0 border-r bg-background px-6 py-5 text-sm font-medium text-zinc-800 md:px-12">
                       {row.name}
                     </td>
-                    <td className="px-4 py-4 align-top">
+                    <td className="border-r px-6 py-5 align-top md:px-8">
                       <Cell value={row.starter} />
                     </td>
-                    <td className="px-4 py-4 align-top">
+                    <td className="border-r px-6 py-5 align-top md:px-8">
                       <Cell value={row.pro} />
                     </td>
-                    <td className="px-4 py-4 align-top md:pr-12">
+                    <td className="px-6 py-5 align-top md:px-8 md:pr-12">
                       <Cell value={row.advanced} />
                     </td>
                   </tr>
@@ -291,9 +293,14 @@ export default function PricingFeatures() {
               </Fragment>
             ))}
             <tr>
-              <td className="sticky left-0 bg-background px-6 py-6 md:px-12" />
-              {planHeaders.map((plan) => (
-                <td key={plan.name} className="px-4 py-6 align-top last:md:pr-12">
+              <td className="sticky left-0 border-r bg-background px-6 py-6 md:px-12" />
+              {planHeaders.map((plan, index) => (
+                <td
+                  key={plan.name}
+                  className={`px-6 py-6 align-top md:px-8 ${
+                    index < planHeaders.length - 1 ? "border-r" : "md:pr-12"
+                  }`}
+                >
                   {plan.cta === "sales" ? (
                     <TalkToSalesButton
                       size="lg"
