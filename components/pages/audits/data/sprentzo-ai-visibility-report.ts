@@ -16,9 +16,9 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
   scoreLabel: "Critical",
   private: true,
   tagline:
-    "Community-shaped sports gear + Bengaluru’s sports community — paddles, apparel, and the app that books the court.",
+    "Community-shaped sports gear + Bengaluru’s sports community: paddles, apparel, and the app that books the court.",
   summary:
-    "Sprentzo sells community-tested gear and runs a Bengaluru sports community app with 5,000+ players. On the buyer prompts people type into ChatGPT, AI awards neither lane. Gear shortlists go to JOOLA, Decathlon, Arrowmax, FYNX, FirstEdge, and Amazon. Bengaluru community and “find players” prompts go to Playo, Hudle, and clubs like BPC. Worse: “is Sprentzo reliable” cannot identify the brand, and “are sprentzo products reliable” treats Sprentzo as skincare and cites ScamAdviser. Brand-name asks know the Indian paddle label but lean on self-cites and budget framing versus Selkirk — not shortlist wins. This ChatGPT snapshot is the baseline. A 90-day sprint fixes trust and identity, then cites Sprentzo on India paddle, apparel, and Bengaluru app prompts, expanding across Perplexity, Google AI Overview, Gemini, and Claude.",
+    "Sprentzo sells community-tested gear and runs a Bengaluru sports community app with 5,000+ players. On the buyer prompts people type into ChatGPT, AI awards neither lane. Gear shortlists go to JOOLA, Decathlon, Arrowmax, FYNX, FirstEdge, and Amazon. Bengaluru community and “find players” prompts go to Playo, Hudle, and clubs like BPC. Worse: “is Sprentzo reliable” cannot identify the brand, and “are sprentzo products reliable” treats Sprentzo as skincare and cites ScamAdviser. Brand-name asks know the Indian paddle label but lean on self-cites and budget framing versus Selkirk, not shortlist wins. This ChatGPT snapshot is the baseline. A 90-day sprint fixes trust and identity, then cites Sprentzo on India paddle, apparel, and Bengaluru app prompts, expanding across Perplexity, Google AI Overview, Gemini, and Claude.",
   stats: [
     { label: "Products", value: "13" },
     { label: "Players", value: "5,000+" },
@@ -31,7 +31,7 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
     "“Is Sprentzo reliable” cannot name the sports brand. “Are sprentzo products reliable” answers as skincare and cites ScamAdviser. Trust fails before a paddle or an app install.",
   queriesHeadline: "Prompt audit · 11 queries",
   queriesIntro:
-    "Gear shortlists, Bengaluru community, and app prompts buyers already type. Sprentzo is missing from every recommendation shortlist in this set. Brand-name rows at the end are not wins — self-cited review and budget framing vs Selkirk. Trust prompts are covered above.",
+    "Gear shortlists, Bengaluru community, and app prompts buyers already type. Sprentzo is missing from every recommendation shortlist in this set. Brand-name rows at the end are not wins: self-cited review and budget framing vs Selkirk. Trust prompts are covered above.",
   modelScores: [
     { model: "chatgpt", visibility: 0, cited: 0, total: 11, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -56,7 +56,7 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
     {
       id: "crisis-which-sprentzo",
       query: "is Sprentzo reliable",
-      title: "AI asks which Sprentzo — and cannot find the brand",
+      title: "AI asks which Sprentzo and cannot find the brand",
       body: "ChatGPT asks the buyer to clarify which Sprentzo they mean. It cannot find a well-established consumer brand, cites a single Glassdoor review for Sprentzo Sports Pvt Ltd, and asks for a URL or what they sell. A prospect checking trust before gear or the app never sees community-tested paddles or the Bengaluru sports app.",
       outcome: "Identity failure · brand not recognized",
       screenshot: {
@@ -195,7 +195,7 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
     {
       id: "q5",
       query: "best pickleball apparel under 2k",
-      intent: "Apparel under ₹2k — court kits buyers actually budget for",
+      intent: "Apparel under ₹2k: court kits buyers actually budget for",
       severity: "high",
       citedBrands: ["H&M", "Armisto", "Artengo"],
       rentokStatus: "missing",
@@ -379,7 +379,7 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
       citedBrands: ["Sprentzo", "Selkirk"],
       rentokStatus: "warned",
       outcome:
-        "Knows the name · self-cite review + budget framing vs Selkirk — not a shortlist win",
+        "Knows the name · self-cite review + budget framing vs Selkirk, not a shortlist win",
       screenshots: [
         {
           src: `${SHOT}/11-sprentzo-pickleball-paddle-review.png`,
@@ -411,7 +411,7 @@ export const sprentzoAiVisibilityReport: VisibilityReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline: "Get Sprentzo cited on gear and Bengaluru app prompts within 90 days",
-    body: "When buyers ask ChatGPT, Perplexity, Google AI Overview, and other models for pickleball gear in India or a sports community app in Bengaluru, Sprentzo should show up — not JOOLA on Amazon, not Playo alone. We start with the trust failures that kill the sale before a paddle or an install: “which Sprentzo?” and skincare + ScamAdviser. Then we run citation work on both lanes in one engagement — India paddle and apparel shortlists, and Bengaluru find-players / community prompts. Alongside the execution work you get a dashboard so you can see which models cite you, where competitors win, your improvement score, and the next actions to take each week.",
+    body: "When buyers ask ChatGPT, Perplexity, Google AI Overview, and other models for pickleball gear in India or a sports community app in Bengaluru, Sprentzo should show up, not JOOLA on Amazon, not Playo alone. We start with the trust failures that kill the sale before a paddle or an install: “which Sprentzo?” and skincare + ScamAdviser. Then we run citation work on both lanes in one engagement: India paddle and apparel shortlists, and Bengaluru find-players / community prompts. Alongside the execution work you get a dashboard so you can see which models cite you, where competitors win, your improvement score, and the next actions to take each week.",
     outcomes: [
       "Trust and identity fixed so “is Sprentzo reliable” stops returning “which Sprentzo?” or skincare / ScamAdviser",
       "Cited on priority India paddle and apparel prompts that today route to JOOLA, Decathlon, Arrowmax, and Amazon",
