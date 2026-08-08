@@ -1,32 +1,25 @@
-"use client";
-
-import posthog from "posthog-js";
-
-import { Button } from "@/components/ui/button";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 
 export default function AgenciesPartnerHero() {
   return (
-    <section className="mx-auto mt-20 max-w-3xl px-6 pb-16 md:px-0">
+    <section className="mx-auto mt-20 max-w-5xl px-6 pb-16 md:px-0">
       <span className="mb-4 flex items-center justify-center gap-2 text-[#2462ff]">
         Partnership · Agencies
       </span>
-      <h1 className="text-center text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
-        Productize GEO for every client{" "}
-        <span className="text-zinc-500">on one retainer</span>
+      <h1 className="text-center text-4xl font-medium tracking-tight text-pretty md:text-5xl lg:text-6xl">
+      Turn AI search into billable GEO services for your clients
       </h1>
-      <p className="mt-4 text-center text-lg text-balance text-zinc-500">
-        Give your roster AI visibility reporting that looks like your agency —
-        not another SEO screenshot dump.
+      <p className="mt-4 text-center text-base text-pretty text-zinc-500 max-w-3xl mx-auto">
+      Ammy gives marketing agencies the tools to run AI visibility audits, deliver monthly GEO action plans, and prove ROI to clients — across every major AI engine.
       </p>
       <div className="mt-6 flex justify-center">
-        <Button
+        <TalkToSalesButton
           className="p-4"
           size="lg"
-          render={<a href="mailto:partners@dodoxhq.com?subject=Agency%20partnership" />}
-          onClick={() => posthog.capture("agency_partner_email_clicked")}
+          source="partnership-agencies-hero"
         >
           Talk agency partnerships
-        </Button>
+        </TalkToSalesButton>
       </div>
     </section>
   );
