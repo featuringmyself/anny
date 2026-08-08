@@ -8,7 +8,6 @@ type FeaturePageLayoutProps = {
 export default function FeaturePageLayout({ children }: FeaturePageLayoutProps) {
   return (
     <div className="pb-16 md:pb-24">
-      <PatternStrip />
       {children}
     </div>
   );
