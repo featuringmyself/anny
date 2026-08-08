@@ -14,7 +14,7 @@ export default function ReportScoreStrip({ report }: ReportScoreStripProps) {
         <h2 className="text-2xl font-medium tracking-tight">By model</h2>
         <p className="mt-1 max-w-lg text-sm text-zinc-500">
           {hasUnaudited
-            ? `This snapshot audited ChatGPT across ${report.queries.length} buyer prompts. Perplexity, Google AI Overview, Gemini, Claude, and AI Mode are included in the 90-day sprint with the same prompt set.`
+            ? `This snapshot audited ChatGPT across ${report.queries.length} buyer prompts. Perplexity, Google AI Overview, Gemini, Claude, and AI Mode are in scope with the same prompt set.`
             : `Same prompt set, six answer surfaces. Scores are citation rate across the ${report.queries.length} queries in this audit.`}
         </p>
       </div>

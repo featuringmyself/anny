@@ -1,5 +1,6 @@
 import type { VisibilityReport } from "../types";
 import { companyAiVisibilityReport } from "./company-ai-visibility-report";
+import { hilivingAiVisibilityReport } from "./hiliving-ai-visibility-report";
 import { rentokAiVisibilityReport } from "./rentok-ai-visibility-report";
 import { sprentzoAiVisibilityReport } from "./sprentzo-ai-visibility-report";
 import { trulivAiVisibilityReport } from "./truliv-ai-visibility-report";
@@ -11,6 +12,7 @@ const reports: VisibilityReport[] = [
   zippservAiVisibilityReport,
   trulivAiVisibilityReport,
   sprentzoAiVisibilityReport,
+  hilivingAiVisibilityReport,
 ];
 
 export function getAllReports(): VisibilityReport[] {

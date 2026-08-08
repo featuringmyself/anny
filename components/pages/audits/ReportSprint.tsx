@@ -34,7 +34,7 @@ export default function ReportSprint({ report }: ReportSprintProps) {
 
         <div className="px-6 py-12 md:px-12 md:py-16">
           <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-            Sprint deliverables
+            Deliverables
           </p>
           <ol className="mt-6 space-y-5">
             {sprint.outcomes.map((outcome, i) => (
