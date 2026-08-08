@@ -29,7 +29,7 @@ export default function ChatGptHero() {
           >
             ChatGPT Visibility Tracker
           </h1>
-          <p className="mt-4 max-w-md text-lg text-pretty text-zinc-500">
+          <p className="mt-4 max-w-md text-base leading-tight text-pretty text-zinc-500">
             Anny shows you exactly how your brand appears in ChatGPT, with
             everything you need to track, understand, and improve your
             visibility.
