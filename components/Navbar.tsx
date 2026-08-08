@@ -9,6 +9,7 @@ import {
 } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import logoImg from "@/public/logo.png";
@@ -33,7 +34,7 @@ const navLinks = [
 const TOP_REVEAL_PX = 8;
 const DIRECTION_DELTA_PX = 8;
 
-/** Hide on scroll down, reveal on scroll up. No-ops when reduced motion is preferred. */
+/** Hide on scroll down, reveal on scroll up. Respects prefers-reduced-motion. */
 function useScrollHide() {
   const [hidden, setHidden] = useState(false);
   const lastYRef = useRef(0);
@@ -54,11 +55,14 @@ function useScrollHide() {
     startTransition(() => setHidden(next));
   });
 
-  useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (motion.matches) return;
+  const reveal = useEffectEvent(() => {
+    if (!hiddenRef.current) return;
+    hiddenRef.current = false;
+    startTransition(() => setHidden(false));
+  });
 
-    lastYRef.current = window.scrollY;
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const onScroll = () => {
       cancelAnimationFrame(frameRef.current);
@@ -67,17 +71,38 @@ function useScrollHide() {
       });
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(frameRef.current);
+    const syncMotionPreference = () => {
       window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frameRef.current);
+
+      if (motionQuery.matches) {
+        reveal();
+        return;
+      }
+
+      lastYRef.current = window.scrollY;
+      window.addEventListener("scroll", onScroll, { passive: true });
+    };
+
+    syncMotionPreference();
+    motionQuery.addEventListener("change", syncMotionPreference);
+
+    return () => {
+      motionQuery.removeEventListener("change", syncMotionPreference);
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frameRef.current);
     };
   }, []);
 
   return hidden;
 }
 
+function isActivePath(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const scrollHidden = useScrollHide();
   const hidden = scrollHidden && !open;
@@ -88,7 +113,7 @@ export default function Navbar() {
       className={cn(
         "sticky top-0 z-50 border-b bg-background translate-y-0",
         "transition-transform duration-300 ease-out motion-reduce:transition-none",
-        "data-[hidden]:-translate-y-full data-[hidden]:focus-within:translate-y-0",
+        "data-hidden:-translate-y-full data-hidden:focus-within:translate-y-0",
       )}
     >
       <div className="flex items-center justify-between p-4">
@@ -96,20 +121,33 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-2 text-2xl font-medium tracking-tight"
         >
-          <Image src={logoImg} alt="Anny" width={30} height={30} />
+          <Image
+            src={logoImg}
+            alt="Anny"
+            width={30}
+            height={30}
+            preload
+          />
           <span>Anny</span>
         </Link>
 
-        <div className="hidden items-center gap-12 text-sm font-medium text-zinc-500 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="transition-colors hover:text-zinc-900"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-12 text-sm font-medium md:flex">
+          {navLinks.map((link) => {
+            const active = isActivePath(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "transition-colors hover:text-zinc-900",
+                  active ? "text-zinc-900" : "text-zinc-500",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
@@ -135,21 +173,28 @@ export default function Navbar() {
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col gap-1 px-4">
-              {navLinks.map((link) => (
-                <SheetClose
-                  key={link.href}
-                  render={
-                    <Link
-                      href={link.href}
-                      className="rounded-md px-3 py-3 text-base font-medium text-zinc-700 transition-colors hover:bg-muted hover:text-zinc-900"
-                    />
-                  }
-                >
-                  {link.label}
-                </SheetClose>
-              ))}
-            </nav>
+            <div className="flex flex-col gap-1 px-4">
+              {navLinks.map((link) => {
+                const active = isActivePath(pathname, link.href);
+                return (
+                  <SheetClose
+                    key={link.href}
+                    render={
+                      <Link
+                        href={link.href}
+                        aria-current={active ? "page" : undefined}
+                        className={cn(
+                          "rounded-md px-3 py-3 text-base font-medium transition-colors hover:bg-muted hover:text-zinc-900",
+                          active ? "bg-muted text-zinc-900" : "text-zinc-700",
+                        )}
+                      />
+                    }
+                  >
+                    {link.label}
+                  </SheetClose>
+                );
+              })}
+            </div>
             <SheetFooter>
               <Button
                 className="w-full"
