@@ -3,17 +3,16 @@ import {
   Link2,
   Smile,
   TrendingUp,
-  Users,
   Zap,
   type LucideIcon,
 } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
-import mentionFrequency from "@/public/features/chatgpt/mention-frequency.png";
-import recommendedActions from "@/public/features/chatgpt/recommended-actions.png";
+import mentionFrequency from "@/public/features/chatgpt/mention-frequency.webp";
+import recommendedActions from "@/public/features/chatgpt/recommended-actions.webp";
 
-import { FeatureCard, SectionBadge, SectionIntro } from "./shared";
+import { FeatureCell, SectionEyebrow, SectionIntro } from "./shared";
 
 const visualFeatures = [
   {
@@ -93,20 +92,15 @@ export default function ChatGptTracks() {
       aria-labelledby="chatgpt-tracks-heading"
     >
       <SectionIntro
-        badge={
-          <SectionBadge>
-            <Users className="size-3.5" strokeWidth={1.75} aria-hidden />
-            Overview
-          </SectionBadge>
-        }
+        eyebrow={<SectionEyebrow>Overview</SectionEyebrow>}
         title="What Anny tracks in ChatGPT"
         titleId="chatgpt-tracks-heading"
         description="Query fanouts, opportunity scoring, smart filters, tailored recommendations, and transparent data. All in one place."
       />
 
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
+      <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2">
         {visualFeatures.map((feature) => (
-          <FeatureCard key={feature.title} className="overflow-hidden">
+          <FeatureCell key={feature.title} className="overflow-hidden border-0">
             <FeatureTitle icon={feature.icon}>{feature.title}</FeatureTitle>
             <p className="mt-3 max-w-md text-[15px] leading-relaxed text-pretty text-zinc-500">
               {feature.description}
@@ -122,18 +116,18 @@ export default function ChatGptTracks() {
                 placeholder="blur"
               />
             </div>
-          </FeatureCard>
+          </FeatureCell>
         ))}
       </div>
 
-      <div className="mt-4 grid gap-4 md:grid-cols-3">
+      <div className="mt-px grid gap-px overflow-hidden border border-border border-t-0 bg-border md:grid-cols-3">
         {textFeatures.map((feature) => (
-          <FeatureCard key={feature.title}>
+          <FeatureCell key={feature.title} className="border-0">
             <FeatureTitle icon={feature.icon}>{feature.title}</FeatureTitle>
             <p className="mt-3 text-[15px] leading-relaxed text-pretty text-zinc-500">
               {feature.description}
             </p>
-          </FeatureCard>
+          </FeatureCell>
         ))}
       </div>
 

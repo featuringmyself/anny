@@ -1,12 +1,12 @@
-import { BarChart3, FileText, Link2, Users, type LucideIcon } from "lucide-react";
+import { BarChart3, FileText, Link2, type LucideIcon } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 
-import dataEarned from "@/public/features/chatgpt/data-earned.png";
-import dataImpact from "@/public/features/chatgpt/data-impact.png";
-import dataOwned from "@/public/features/chatgpt/data-owned.png";
+import dataEarned from "@/public/features/chatgpt/data-earned.webp";
+import dataImpact from "@/public/features/chatgpt/data-impact.webp";
+import dataOwned from "@/public/features/chatgpt/data-owned.webp";
 import { cn } from "@/lib/utils";
 
-import { SectionBadge, SectionIntro } from "./shared";
+import { SectionEyebrow, SectionIntro } from "./shared";
 
 const tabs = [
   {
@@ -62,12 +62,7 @@ export default function ChatGptDataToAction() {
       aria-labelledby="chatgpt-data-heading"
     >
       <SectionIntro
-        badge={
-          <SectionBadge>
-            <Users className="size-3.5" strokeWidth={1.75} aria-hidden />
-            Data to Action
-          </SectionBadge>
-        }
+        eyebrow={<SectionEyebrow>Data to Action</SectionEyebrow>}
         title="More than just a monitoring tool"
         titleId="chatgpt-data-heading"
         description="Anny is the complete platform for tracking how your brand shows up in ChatGPT. Monitor visibility, mentions, and competitor performance, with actionable insights to help you improve."
@@ -88,9 +83,9 @@ export default function ChatGptDataToAction() {
                 key={tab.id}
                 htmlFor={inputId}
                 className={cn(
-                  "cursor-pointer rounded-2xl border px-5 py-4 transition-colors",
+                  "cursor-pointer rounded-xl border px-5 py-4 transition-colors",
                   "border-transparent bg-zinc-50/80 opacity-70",
-                  "has-checked:border-zinc-200 has-checked:bg-white has-checked:opacity-100 has-checked:shadow-sm",
+                  "has-checked:border-border has-checked:bg-white has-checked:opacity-100",
                   "has-[:focus-visible]:ring-3 has-[:focus-visible]:ring-ring/50",
                 )}
               >
@@ -121,7 +116,7 @@ export default function ChatGptDataToAction() {
         <div className="min-w-0">
           {tabs.map((tab) => (
             <div key={tab.id} className={tab.panelClassName}>
-              <figure className="overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-50">
+              <figure className="overflow-hidden border border-border bg-zinc-50">
                 <Image
                   src={tab.image}
                   alt={tab.alt}

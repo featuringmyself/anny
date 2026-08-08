@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
-import chatgptLogo from "@/public/ai-logo/chatgptLogo.svg";
-import heroDashboard from "@/public/features/chatgpt/hero-dashboard.png";
+import heroDashboard from "@/public/features/chatgpt/hero-dashboard.webp";
 
 export default function ChatGptHero() {
   return (
@@ -13,13 +12,14 @@ export default function ChatGptHero() {
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] lg:gap-14">
         <div>
           <p className="mb-4 flex items-center gap-2 text-sm font-medium text-[#10A37F]">
-            <Image
-              src={chatgptLogo}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/ai-logo/chatgptLogo.svg"
               alt=""
               width={16}
               height={16}
               className="size-4 object-contain"
-              unoptimized
+              draggable={false}
             />
             ChatGPT
           </p>
@@ -43,7 +43,7 @@ export default function ChatGptHero() {
           </div>
         </div>
 
-        <figure className="relative min-w-0 overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-md">
+        <figure className="relative min-w-0 overflow-hidden border border-border bg-white">
           <Image
             src={heroDashboard}
             alt="Anny ChatGPT visibility dashboard showing brand overview, competitor trends, and sentiment"

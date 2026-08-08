@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import JsonLd from "@/components/JsonLd";
+import ChatGptCta from "@/components/pages/features/chatgpt/ChatGptCta";
 import ChatGptDataToAction from "@/components/pages/features/chatgpt/ChatGptDataToAction";
 import ChatGptFaq, {
   faqs,
@@ -14,7 +15,7 @@ const title = "ChatGPT Visibility Tracker — Anny";
 const description =
   "Anny lets you measure your brand's performance on ChatGPT — visibility, sentiment, citations, and tips on how to improve.";
 const url = `${SITE_URL}/features/chatgpt`;
-const ogImage = `${SITE_URL}/features/chatgpt/hero-dashboard.png`;
+const ogImage = `${SITE_URL}/features/chatgpt/hero-dashboard.webp`;
 
 export const metadata: Metadata = {
   title,
@@ -97,6 +98,7 @@ export default function ChatGptFeaturePage() {
       <ChatGptDataToAction />
       <ChatGptWhyMatters />
       <ChatGptFaq />
+      <ChatGptCta />
     </>
   );
 }

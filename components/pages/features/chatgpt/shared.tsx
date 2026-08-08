@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 
-export function SectionBadge({
+const ACCENT = "#10A37F";
+
+export function SectionEyebrow({
   children,
   className,
 }: {
@@ -10,9 +12,10 @@ export function SectionBadge({
   return (
     <p
       className={cn(
-        "mb-3 inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-2.5 py-1 text-xs font-medium text-zinc-600",
+        "mb-3 flex items-center gap-2 text-sm font-medium",
         className,
       )}
+      style={{ color: ACCENT }}
     >
       {children}
     </p>
@@ -20,12 +23,12 @@ export function SectionBadge({
 }
 
 export function SectionIntro({
-  badge,
+  eyebrow,
   title,
   titleId,
   description,
 }: {
-  badge: React.ReactNode;
+  eyebrow: React.ReactNode;
   title: string;
   titleId: string;
   description: string;
@@ -33,7 +36,7 @@ export function SectionIntro({
   return (
     <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-end md:gap-10">
       <div>
-        {badge}
+        {eyebrow}
         <h2
           id={titleId}
           className="max-w-lg text-3xl font-medium tracking-tight text-balance md:text-4xl"
@@ -48,7 +51,8 @@ export function SectionIntro({
   );
 }
 
-export function FeatureCard({
+/** Border-grid cell for non-interactive feature/stat blocks. */
+export function FeatureCell({
   children,
   className,
 }: {
@@ -56,12 +60,7 @@ export function FeatureCard({
   className?: string;
 }) {
   return (
-    <article
-      className={cn(
-        "rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm md:p-7",
-        className,
-      )}
-    >
+    <article className={cn("border border-border bg-white p-6 md:p-7", className)}>
       {children}
     </article>
   );

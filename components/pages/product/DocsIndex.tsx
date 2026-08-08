@@ -1,71 +1,80 @@
 import Link from "next/link";
 
-const navSections = [
-  {
-    title: "Get started",
-    links: [
-      { label: "Quickstart", href: "#quickstart" },
-      { label: "Connect a brand", href: "#connect-brand" },
-      { label: "First prompt set", href: "#first-prompts" },
-    ],
-  },
-  {
-    title: "Tracking",
-    links: [
-      { label: "Models & engines", href: "#models" },
-      { label: "Mentions & sentiment", href: "#mentions" },
-      { label: "Sources & citations", href: "#sources" },
-    ],
-  },
-  {
-    title: "Workspace",
-    links: [
-      { label: "Teams & seats", href: "#teams" },
-      { label: "Alerts", href: "#alerts" },
-      { label: "Exports", href: "#exports" },
-    ],
-  },
-] as const;
+import {
+  docArticles,
+  navSections,
+} from "@/components/pages/product/docs/articles";
+import type { DocBlock } from "@/components/pages/product/docs/types";
 
-const startHere = [
-  {
-    id: "quickstart",
-    title: "Quickstart",
-    dek: "Create a workspace, add one brand, and see your first AI mentions in under ten minutes.",
-  },
-  {
-    id: "connect-brand",
-    title: "Connect a brand",
-    dek: "Domains, aliases, and competitor seeds Anny uses when scoring visibility.",
-  },
-  {
-    id: "first-prompts",
-    title: "First prompt set",
-    dek: "How to pick buying-intent questions your customers already ask ChatGPT and Gemini.",
-  },
-  {
-    id: "models",
-    title: "Models & engines",
-    dek: "Coverage across ChatGPT, Gemini, Claude, Perplexity, and Google AI Mode.",
-  },
-  {
-    id: "mentions",
-    title: "Mentions & sentiment",
-    dek: "Read every answer where your brand appears — and how the model frames you.",
-  },
-  {
-    id: "sources",
-    title: "Sources & citations",
-    dek: "Map the URLs AI leans on, and spot pages that cite competitors instead of you.",
-  },
-] as const;
+function Block({ block }: { block: DocBlock }) {
+  switch (block.type) {
+    case "p":
+      return (
+        <p className="text-[15px] leading-relaxed text-zinc-500">{block.text}</p>
+      );
+    case "h2":
+      return (
+        <h3 className="mt-10 text-lg font-medium tracking-tight text-zinc-900">
+          {block.text}
+        </h3>
+      );
+    case "h3":
+      return (
+        <h4 className="mt-8 text-base font-medium tracking-tight text-zinc-900">
+          {block.text}
+        </h4>
+      );
+    case "ul":
+      return (
+        <ul className="list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-zinc-500">
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+    case "ol":
+      return (
+        <ol className="list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-zinc-500">
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ol>
+      );
+    case "quote":
+      return (
+        <blockquote className="border-l-2 border-[#2462ff] pl-5 text-[15px] leading-relaxed text-zinc-600 italic">
+          <p>{block.text}</p>
+          {block.cite ? (
+            <cite className="mt-2 block text-sm not-italic text-zinc-400">
+              — {block.cite}
+            </cite>
+          ) : null}
+        </blockquote>
+      );
+    case "callout":
+      return (
+        <aside className="border border-zinc-200 bg-zinc-50/80 px-4 py-3">
+          <p className="text-xs font-medium tracking-wide text-[#2462ff] uppercase">
+            {block.title}
+          </p>
+          <p className="mt-1.5 text-[15px] leading-relaxed text-zinc-600">
+            {block.text}
+          </p>
+        </aside>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function DocsIndex() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-[14rem_1fr] lg:grid-cols-[16rem_1fr]">
       <aside className="border-b md:border-b-0 md:border-r">
         <nav className="sticky top-0 px-8 py-10 md:px-6 lg:px-8" aria-label="Docs outline">
-          <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">Outline</p>
+          <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+            Outline
+          </p>
           <div className="mt-6 flex flex-col gap-8">
             {navSections.map((section) => (
               <div key={section.title}>
@@ -89,25 +98,41 @@ export default function DocsIndex() {
       </aside>
 
       <div className="px-8 py-10 md:px-10 lg:px-12">
-        <h2 className="text-2xl font-medium tracking-tight">Start here</h2>
-        <p className="mt-2 max-w-md text-sm text-zinc-500">
-          Core paths for marketing teams shipping GEO with Anny.
-        </p>
-        <ul className="mt-10">
-          {startHere.map((item) => (
-            <li key={item.id} id={item.id} className="scroll-mt-8 border-t first:border-t-0">
-              <Link
-                href={`#${item.id}`}
-                className="group block py-6 hover:bg-white/60"
-              >
-                <h3 className="text-lg font-medium tracking-tight group-hover:text-[#2462ff]">
-                  {item.title}
-                </h3>
-                <p className="mt-1 max-w-xl text-sm leading-relaxed text-zinc-500">{item.dek}</p>
-              </Link>
-            </li>
+        <header className="max-w-2xl">
+          <h2 className="text-2xl font-medium tracking-tight">Guides</h2>
+          <p className="mt-2 text-sm text-zinc-500">
+            Core paths for marketing teams shipping GEO with Anny. Updated for the
+            Aug 2026 product surface.
+          </p>
+        </header>
+
+        <div className="mt-12 max-w-2xl">
+          {docArticles.map((article) => (
+            <article
+              key={article.id}
+              id={article.id}
+              className="scroll-mt-8 border-t py-12 first:border-t-0 first:pt-0"
+            >
+              <p className="text-xs font-medium tracking-wide text-[#2462ff] uppercase">
+                {article.section}
+              </p>
+              <h2 className="mt-2 text-2xl font-medium tracking-tight text-zinc-900">
+                {article.title}
+              </h2>
+              <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
+                {article.dek}
+              </p>
+              <p className="mt-3 text-xs tabular-nums text-zinc-400">
+                Updated {article.updatedAt}
+              </p>
+              <div className="mt-8 space-y-5">
+                {article.body.map((block, index) => (
+                  <Block key={`${article.id}-${index}`} block={block} />
+                ))}
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

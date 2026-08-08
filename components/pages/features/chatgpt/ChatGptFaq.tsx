@@ -44,19 +44,15 @@ export default function ChatGptFaq() {
       className="border-b border-border px-6 py-14 md:px-12 md:py-20"
       aria-labelledby="chatgpt-faq-heading"
     >
-      <div className="mx-auto max-w-3xl text-center">
-        <h2
-          id="chatgpt-faq-heading"
-          className="text-3xl font-medium tracking-tight md:text-4xl"
-        >
-          FAQs
-        </h2>
-        <p className="mt-3 text-[15px] text-pretty text-zinc-500">
-          Learn more about monitoring visibility in ChatGPT with Anny
-        </p>
-      </div>
+      <p className="text-sm font-medium tracking-wide text-[#10A37F]">FAQs</p>
+      <h2
+        id="chatgpt-faq-heading"
+        className="mt-2 text-2xl font-medium tracking-tight md:text-3xl"
+      >
+        What teams ask about ChatGPT visibility
+      </h2>
 
-      <Accordion defaultValue={["item-0"]} className="mx-auto mt-10 max-w-3xl">
+      <Accordion defaultValue={["item-0"]} className="mt-10 max-w-3xl">
         {faqs.map((faq, index) => (
           <AccordionItem
             key={faq.question}
@@ -67,7 +63,7 @@ export default function ChatGptFaq() {
               {faq.question}
             </AccordionTrigger>
             <AccordionContent className="text-[15px] leading-relaxed text-zinc-500">
-              <p className="max-w-2xl text-left text-pretty">{faq.answer}</p>
+              <p className="max-w-2xl text-pretty">{faq.answer}</p>
             </AccordionContent>
           </AccordionItem>
         ))}

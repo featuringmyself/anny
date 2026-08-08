@@ -5,11 +5,10 @@ import {
   Link2,
   Search,
   TrendingUp,
-  Users,
   type LucideIcon,
 } from "lucide-react";
 
-import { FeatureCard, SectionBadge } from "./shared";
+import { SectionEyebrow } from "./shared";
 
 const stats = [
   {
@@ -58,25 +57,28 @@ const stats = [
 export default function ChatGptWhyMatters() {
   return (
     <section
-      className="border-b border-border bg-zinc-50/80 px-6 py-14 md:px-12 md:py-20"
+      className="border-b border-border"
       aria-labelledby="chatgpt-why-heading"
     >
-      <SectionBadge>
-        <Users className="size-3.5" strokeWidth={1.75} aria-hidden />
-        What We Track
-      </SectionBadge>
-      <h2
-        id="chatgpt-why-heading"
-        className="max-w-2xl text-3xl font-medium tracking-tight text-balance md:text-4xl"
-      >
-        Why ChatGPT visibility matters for your brand
-      </h2>
+      <div className="border-b border-border px-6 py-10 md:px-12">
+        <SectionEyebrow className="mb-0">Why it matters</SectionEyebrow>
+        <h2
+          id="chatgpt-why-heading"
+          className="mt-2 max-w-2xl text-3xl font-medium tracking-tight text-balance md:text-4xl"
+        >
+          Why ChatGPT visibility matters for your brand
+        </h2>
+      </div>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat) => {
           const Icon = stat.icon;
+
           return (
-            <FeatureCard key={stat.title} className="flex flex-col">
+            <div
+              key={stat.title}
+              className="bg-white p-6 sm:p-8 md:p-10"
+            >
               <h3 className="inline-flex items-start gap-2 text-sm font-medium text-zinc-900">
                 <Icon
                   className="mt-0.5 size-4 shrink-0 text-zinc-500"
@@ -91,7 +93,7 @@ export default function ChatGptWhyMatters() {
               <p className="mt-3 text-sm leading-relaxed text-pretty text-zinc-500">
                 {stat.description}
               </p>
-            </FeatureCard>
+            </div>
           );
         })}
       </div>
