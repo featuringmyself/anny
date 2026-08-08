@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const AI_ITEMS = [
-  { name: "Claude", logo: "/ai-logo/claudeLogo.svg", color: "#D97757" },
   { name: "ChatGPT", logo: "/ai-logo/chatgptLogo.svg", color: "#000000" },
+  { name: "Claude", logo: "/ai-logo/claudeLogo.svg", color: "#D97757" },
   { name: "Gemini", logo: "/ai-logo/geminiLogo.svg", color: "#3186FF" },
   { name: "Grok", logo: "/ai-logo/grokLogo.svg", color: "#000000" },
   { name: "Perplexity", logo: "/ai-logo/perplexityLogo.svg", color: "#22B8CD" },
