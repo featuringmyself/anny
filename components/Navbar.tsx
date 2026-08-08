@@ -1,10 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  startTransition,
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 import logoImg from "@/public/logo.png";
 import { Button } from "@/components/ui/button";
@@ -17,6 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/docs", label: "Product" },
@@ -24,39 +30,66 @@ const navLinks = [
   { href: "/careers", label: "Careers" },
 ] as const;
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+const TOP_REVEAL_PX = 8;
+const DIRECTION_DELTA_PX = 8;
+
+/** Hide on scroll down, reveal on scroll up. No-ops when reduced motion is preferred. */
+function useScrollHide() {
   const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
-  const router = useRouter();
+  const lastYRef = useRef(0);
+  const hiddenRef = useRef(false);
+  const frameRef = useRef(0);
+
+  const applyScroll = useEffectEvent((y: number) => {
+    const delta = y - lastYRef.current;
+    lastYRef.current = y;
+
+    let next = hiddenRef.current;
+    if (y <= TOP_REVEAL_PX) next = false;
+    else if (delta > DIRECTION_DELTA_PX) next = true;
+    else if (delta < -DIRECTION_DELTA_PX) next = false;
+
+    if (next === hiddenRef.current) return;
+    hiddenRef.current = next;
+    startTransition(() => setHidden(next));
+  });
 
   useEffect(() => {
-    lastScrollY.current = window.scrollY;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motion.matches) return;
+
+    lastYRef.current = window.scrollY;
 
     const onScroll = () => {
-      const y = window.scrollY;
-      const delta = y - lastScrollY.current;
-
-      if (y < 8) {
-        setHidden(false);
-      } else if (delta > 4) {
-        setHidden(true);
-      } else if (delta < -4) {
-        setHidden(false);
-      }
-
-      lastScrollY.current = y;
+      cancelAnimationFrame(frameRef.current);
+      frameRef.current = requestAnimationFrame(() => {
+        applyScroll(window.scrollY);
+      });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(frameRef.current);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
+
+  return hidden;
+}
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const scrollHidden = useScrollHide();
+  const hidden = scrollHidden && !open;
 
   return (
     <nav
-      className={`sticky top-0 z-50 border-b bg-background transition-transform duration-300 ease-out ${
-        hidden && !open ? "-translate-y-full" : "translate-y-0"
-      }`}
+      data-hidden={hidden ? "" : undefined}
+      className={cn(
+        "sticky top-0 z-50 border-b bg-background translate-y-0",
+        "transition-transform duration-300 ease-out motion-reduce:transition-none",
+        "data-[hidden]:-translate-y-full data-[hidden]:focus-within:translate-y-0",
+      )}
     >
       <div className="flex items-center justify-between p-4">
         <Link
@@ -80,25 +113,12 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button
-            className="px-3"
-            onClick={() => {
-              router.push("/register");
-            }}
-          >
+          <Button className="px-3" render={<Link href="/register" />}>
             Register
           </Button>
         </div>
 
-        <Sheet
-          open={open}
-          onOpenChange={setOpen}
-          onOpenChangeComplete={(sheetOpen) => {
-            if (!sheetOpen) {
-              router.push("/register");
-            }
-          }}
-        >
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             render={
               <Button
@@ -134,9 +154,7 @@ export default function Navbar() {
               <Button
                 className="w-full"
                 size="lg"
-                onClick={() => {
-                  router.push("/register");
-                }}
+                render={<Link href="/register" />}
               >
                 Register
               </Button>
