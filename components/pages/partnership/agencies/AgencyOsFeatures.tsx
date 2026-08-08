@@ -138,10 +138,13 @@ const actionItems = [
 
 export default function AgencyOsFeatures() {
   return (
-    <section className="">
+    <section aria-labelledby="agency-os-heading">
       <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-zinc-900 md:text-4xl lg:text-[2.75rem] lg:leading-tighter">
+          <h2
+            id="agency-os-heading"
+            className="text-3xl font-medium tracking-tight text-zinc-900 md:text-4xl lg:text-[2.75rem] lg:leading-tighter"
+          >
             The AI Search Optimization OS for Marketing Agencies
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-tight text-zinc-700">
@@ -177,13 +180,17 @@ export default function AgencyOsFeatures() {
 
           <FeatureRow
             visual={
-              <Image
-                src={actionPlansImage}
-                alt="Client-ready action plan with objectives, deliverables, and impact"
-                className="h-auto w-full rounded-2xl border border-zinc-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={false}
-              />
+              <figure>
+                <Image
+                  src={actionPlansImage}
+                  alt="Anny GEO action plan table with high-impact objectives, deliverables, and impact ratings for agency clients"
+                  width={900}
+                  height={924}
+                  className="h-auto w-full rounded-2xl border border-zinc-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  placeholder="blur"
+                />
+              </figure>
             }
             copy={
               <FeatureCopy

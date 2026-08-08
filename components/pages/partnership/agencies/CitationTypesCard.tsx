@@ -59,7 +59,11 @@ function DonutChart() {
 
 export default function CitationTypesCard() {
   return (
-    <div className="w-full rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] md:p-6">
+    <div
+      role="img"
+      aria-label="Citation types breakdown for the last 7 days showing 647 URLs across articles, product pages, listicles, guides, and other source types"
+      className="w-full rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] md:p-6"
+    >
       <div>
         <h3 className="text-base font-semibold text-zinc-900">Citation Types</h3>
         <p className="mt-0.5 text-sm text-zinc-400">

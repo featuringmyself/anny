@@ -97,7 +97,11 @@ const brands = [
 
 export default function VisibilityScoreCard() {
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+    <div
+      role="img"
+      aria-label="Visibility score rank leaderboard showing Ordemio highlighted at #5 with a 15.3% score among brands including Intercom, Zendesk, Eesel AI, and Ada CX"
+      className="w-full overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+    >
       <div className="px-5 pt-5 pb-4 md:px-6 md:pt-6">
         <p className="text-sm text-zinc-400">Visibility score rank</p>
         <p className="mt-1 text-4xl font-semibold tracking-tight text-zinc-900">
@@ -125,7 +129,9 @@ export default function VisibilityScoreCard() {
                 {brand.rank}
               </span>
               <div className="flex min-w-0 items-center gap-3">
-                <span className="shrink-0">{brand.logo}</span>
+                <span className="shrink-0" aria-hidden>
+                  {brand.logo}
+                </span>
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold text-zinc-900">
                     {brand.name}
