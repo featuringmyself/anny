@@ -370,7 +370,7 @@ export const hilivingAiVisibilityReport: VisibilityReport = {
     duration: "One-time",
     headline:
       "How AI perceives HiLiving today, where peers win the shelf, why, and what to do about it",
-    body: "A one-time analysis of how ChatGPT and other platforms currently perceive and recommend HiLiving on VGN and G Square switchers, Avadi gated plots, Madhavaram apartments, and branded diligence. We identify where Casagrand, Urbanrise, DAC, Radiance, and G Square win those shortlists instead, explain why (thin presence, peer-shelf gaps, Nexora plot-count conflict, Estates identity leak), and give you a concrete action plan to improve it.",
+    body: "A analysis of how ChatGPT and other platforms currently perceive and recommend HiLiving. We identify where Casagrand, Urbanrise, DAC, Radiance, and G Square win those shortlists instead, explain why (thin presence, peer-shelf gaps, Nexora plot-count conflict, Estates identity leak), and give you a concrete action plan to improve it.",
     outcomes: [
       "Clear read on how AI perceives and recommends HiLiving today vs peers on the audited prompts",
       "Map of where you lose the VGN/G Square switcher and Avadi/Madhavaram shelves, and why those answers look that way",

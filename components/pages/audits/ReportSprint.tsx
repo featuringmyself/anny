@@ -12,7 +12,7 @@ export default function ReportSprint({ report }: ReportSprintProps) {
       <div className="grid md:grid-cols-2">
         <div className="border-b px-6 py-12 md:border-r md:border-b-0 md:px-12 md:py-16">
           <p className="mb-3 text-sm font-medium text-[#2462ff]">
-            Services · not SaaS
+            What now?
           </p>
           <h2 className="max-w-md text-3xl font-medium tracking-tight text-balance md:text-4xl">
             {sprint.headline}
