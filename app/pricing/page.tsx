@@ -24,6 +24,7 @@ export default function PricingPage() {
       <PricingAgency />
       <PatternStrip />
       <PricingFeatures />
+      <PatternStrip />
     </main>
   );
 }
