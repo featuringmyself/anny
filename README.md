@@ -1,49 +1,34 @@
 # Anny
 
-Anny is a modern Next.js app built with Next.js 16, React 19, Tailwind CSS, and shadcn/ui. It includes a landing page, feature pages, AI instruction pages, and an API route for contact form handling.
+**AI search analytics for marketing teams.**
 
-## Setup
+Customers ask ChatGPT, Claude, Gemini, and Perplexity before they ask Google. Anny shows how often those models mention your brand, which sources they cite, how you compare to competitors, and what to do to get mentioned more.
 
-Install dependencies:
+## Product
 
-```bash
-npm install
-```
+- Track brand mentions across major AI answer engines
+- See citation sources and share of voice vs competitors
+- Turn visibility gaps into concrete GEO actions
+- Built for marketing teams and agencies
 
-Start the development server:
+Website: [anny.dodoxhq.com](https://anny.dodoxhq.com)
 
-```bash
-npm run dev
-```
+## Contact
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+| | |
+|---|---|
+| General | [hello@dodoxhq.com](mailto:hello@dodoxhq.com) |
+| Press | [press@dodoxhq.com](mailto:press@dodoxhq.com) |
+| Careers | [careers@dodoxhq.com](mailto:careers@dodoxhq.com) |
+| Legal | [legal@dodoxhq.com](mailto:legal@dodoxhq.com) |
+| Privacy | [privacy@dodoxhq.com](mailto:privacy@dodoxhq.com) |
 
-## Available Scripts
+## Links
 
-- `npm run dev` - start the app in development mode
-- `npm run build` - build the production application
-- `npm run start` - run the production build locally
-- `npm run lint` - run ESLint checks
+- [Pricing](https://anny.dodoxhq.com/pricing)
+- [Docs](https://anny.dodoxhq.com/docs)
+- [Blog](https://anny.dodoxhq.com/blog)
+- [Careers](https://anny.dodoxhq.com/careers)
+- [AI Instructions](https://anny.dodoxhq.com/ai-instructions)
 
-## Project Structure
-
-- `app/` - Next.js app routes and pages
-- `components/` - reusable UI components
-- `lib/` - utility modules and API helpers
-- `public/` - static assets
-
-## Technologies
-
-- Next.js 16
-- React 19
-- Tailwind CSS 4
-- shadcn/ui
-- MongoDB
-- TypeScript
-- ESLint
-
-## Deployment
-
-This project can be deployed to Vercel or another static hosting provider that supports Next.js.
-
-For deployment details, see the Next.js documentation: https://nextjs.org/docs/app/building-your-application/deploying
+© Anny. All rights reserved.
