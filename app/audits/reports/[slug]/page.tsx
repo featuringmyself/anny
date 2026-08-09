@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import ReadinessReportView from "@/components/pages/audits/ReadinessReportView";
 import ReportView from "@/components/pages/audits/ReportView";
 import {
-  getReportBySlug,
+  getReportEntryBySlug,
   getReportSlugs,
 } from "@/components/pages/audits/data";
 import { SITE_NAME } from "@/lib/site";
@@ -20,15 +21,18 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const report = getReportBySlug(slug);
+  const entry = getReportEntryBySlug(slug);
 
-  if (!report) {
+  if (!entry) {
     return { title: `Report — ${SITE_NAME}` };
   }
 
+  const titleKind =
+    entry.kind === "readiness" ? "AI Readiness Report" : "AI Visibility Report";
+
   return {
-    title: `${report.company} AI Visibility Report — ${SITE_NAME}`,
-    description: report.summary,
+    title: `${entry.report.company} ${titleKind} — ${SITE_NAME}`,
+    description: entry.report.summary,
     robots: {
       index: false,
       follow: false,
@@ -38,11 +42,15 @@ export async function generateMetadata({
 
 export default async function AuditReportPage({ params }: PageProps) {
   const { slug } = await params;
-  const report = getReportBySlug(slug);
+  const entry = getReportEntryBySlug(slug);
 
-  if (!report) {
+  if (!entry) {
     notFound();
   }
 
-  return <ReportView report={report} />;
+  if (entry.kind === "readiness") {
+    return <ReadinessReportView report={entry.report} />;
+  }
+
+  return <ReportView report={entry.report} />;
 }

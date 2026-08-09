@@ -139,3 +139,103 @@ export type VisibilityReport = {
   ctaBody?: string;
   private?: boolean;
 };
+
+/** Shared CTA fields for visibility and readiness reports. */
+export type ReportCtaFields = {
+  slug: string;
+  company: string;
+  ctaUrl?: string;
+  ctaLabel?: string;
+  ctaEyebrow?: string;
+  ctaHeadline?: string;
+  ctaBody?: string;
+};
+
+export type ReadinessStatus = "good" | "needs-improvement" | "poor";
+
+export type ReadinessInsight = {
+  id: string;
+  title: string;
+  body: string;
+};
+
+export type ReadinessQuickWin = {
+  id: string;
+  title: string;
+  impact: "High" | "Medium" | "Low";
+  effort: "High" | "Medium" | "Low";
+  body: string;
+};
+
+export type ReadinessCategory = {
+  id: string;
+  title: string;
+  status: ReadinessStatus;
+  body: string;
+  metrics?: ReportStat[];
+};
+
+export type ReadinessAutomationSeverity = "P1" | "P2";
+
+export type ReadinessAutomationGroup = {
+  id: string;
+  severity: ReadinessAutomationSeverity;
+  title: string;
+  count: number;
+  summary: string;
+  examples: string[];
+};
+
+export type ReadinessAutomation = {
+  status: ReadinessStatus;
+  body: string;
+  totalIssues: number;
+  p1Count: number;
+  p2Count: number;
+  groups: ReadinessAutomationGroup[];
+};
+
+export type ReadinessAgentRow = {
+  agent: string;
+  vendor: string;
+  allowed: boolean;
+};
+
+export type ReadinessDiscoverySignal = {
+  id: string;
+  label: string;
+  found: boolean;
+};
+
+export type ReadinessReport = {
+  kind: "readiness";
+  slug: string;
+  company: string;
+  website: string;
+  industry: string;
+  preparedFor: string;
+  role?: string;
+  email?: string;
+  dateLabel: string;
+  /** Score out of 100. */
+  overallScore: number;
+  scoreLabel: string;
+  summary: string;
+  tagline?: string;
+  stats?: ReportStat[];
+  insights: ReadinessInsight[];
+  quickWins: ReadinessQuickWin[];
+  categories: ReadinessCategory[];
+  automation: ReadinessAutomation;
+  agents: ReadinessAgentRow[];
+  agentsIntro: string;
+  llmsTxtFound: boolean;
+  discoverySignals: ReadinessDiscoverySignal[];
+  sprint: SprintOffer;
+  ctaUrl?: string;
+  ctaLabel?: string;
+  ctaEyebrow?: string;
+  ctaHeadline?: string;
+  ctaBody?: string;
+  private?: boolean;
+};

@@ -3,10 +3,10 @@ import Link from "next/link";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
-import type { VisibilityReport } from "./types";
+import type { ReportCtaFields } from "./types";
 
 type ReportCtaProps = {
-  report: VisibilityReport;
+  report: ReportCtaFields;
 };
 
 export default function ReportCta({ report }: ReportCtaProps) {
