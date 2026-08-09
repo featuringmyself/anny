@@ -39,13 +39,13 @@ export default function ReadinessReportView({
       <PatternStrip />
       <ReadinessInsights report={report} mode={mode} />
       <PatternStrip />
-      <ReadinessQuickWins report={report} mode={mode} />
-      <PatternStrip />
       <ReadinessCategories report={report} mode={mode} />
       <PatternStrip />
       <ReadinessAutomation report={report} mode={mode} />
       <PatternStrip />
       <ReadinessAgents report={report} mode={mode} />
+      <PatternStrip />
+      <ReadinessQuickWins report={report} mode={mode} />
       <PatternStrip />
       <ReadinessSprint report={report} />
       <ReportCta report={report} />

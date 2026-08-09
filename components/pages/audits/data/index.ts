@@ -4,6 +4,7 @@ import { hilivingAiVisibilityReport } from "./hiliving-ai-visibility-report";
 import { rentokAiVisibilityReport } from "./rentok-ai-visibility-report";
 import { sprentzoAiReadinessReport } from "./sprentzo-ai-readiness-report";
 import { sprentzoAiVisibilityReport } from "./sprentzo-ai-visibility-report";
+import { trulivAiReadinessReport } from "./truliv-ai-readiness-report";
 import { trulivAiVisibilityReport } from "./truliv-ai-visibility-report";
 import { zippservAiVisibilityReport } from "./zippserv-ai-visibility-report";
 
@@ -19,6 +20,7 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: sprentzoAiVisibilityReport },
   { kind: "visibility", report: hilivingAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
+  { kind: "readiness", report: trulivAiReadinessReport },
 ];
 
 export function getAllReportEntries(): ReportEntry[] {
