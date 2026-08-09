@@ -5,6 +5,11 @@ import {
   createSalesLeadFromInput,
   validateContactInput,
 } from "@/lib/contact";
+import {
+  identifyProperties,
+  personlessProperties,
+  readAnonymousDistinctId,
+} from "@/lib/posthog-identity";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 export type ContactActionState = {
@@ -22,6 +27,7 @@ export async function submitContact(
   formData: FormData,
 ): Promise<ContactActionState> {
   const validated = validateContactInput(Object.fromEntries(formData));
+  const anonymousDistinctId = readAnonymousDistinctId(formData);
 
   if (!validated.ok) {
     return {
@@ -38,11 +44,14 @@ export async function submitContact(
     if (posthog) {
       posthog.identify({
         distinctId: lead.id,
-        properties: {
-          email: validated.data.email,
-          name: validated.data.name,
-          company: validated.data.company,
-        },
+        properties: identifyProperties(
+          {
+            email: validated.data.email,
+            name: validated.data.name,
+            company: validated.data.company,
+          },
+          anonymousDistinctId,
+        ),
       });
       posthog.capture({
         distinctId: lead.id,
@@ -65,11 +74,12 @@ export async function submitContact(
       const posthog = getPostHogClient();
       if (posthog) {
         posthog.capture({
+          distinctId: anonymousDistinctId,
           event: "contact_submission_failed",
-          properties: {
+          properties: personlessProperties({
             source: validated.data.source,
             error_type: error instanceof Error ? error.name : "UnknownError",
-          },
+          }),
         });
         await posthog.flush();
       }
@@ -79,7 +89,6 @@ export async function submitContact(
 
     return {
       status: "error",
-      // Surface the real cause while developing; stay vague in production.
       message:
         process.env.NODE_ENV === "production"
           ? "We couldn't send that. Please try again."

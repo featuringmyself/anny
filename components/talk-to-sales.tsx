@@ -8,6 +8,7 @@ import {
   type ContactActionState,
   submitContact,
 } from "@/app/actions/contact";
+import { PostHogDistinctIdField } from "@/components/posthog-distinct-id-field";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -149,6 +150,7 @@ function SalesForm({ source }: TalkToSalesProps) {
 
       <form action={formAction} className="grid gap-4">
         <input type="hidden" name="source" value={source} />
+        <PostHogDistinctIdField />
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2">

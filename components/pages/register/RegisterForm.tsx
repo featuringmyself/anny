@@ -8,6 +8,7 @@ import {
   type RegisterActionState,
   submitRegister,
 } from "@/app/actions/register";
+import { PostHogDistinctIdField } from "@/components/posthog-distinct-id-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -127,6 +128,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         aria-busy={pending}
       >
         {plan ? <input type="hidden" name="plan" value={plan} /> : null}
+        <PostHogDistinctIdField />
 
         {/* Honeypot — hidden from users, filled by many bots */}
         <div

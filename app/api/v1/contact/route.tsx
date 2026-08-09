@@ -4,6 +4,11 @@ import {
   createSalesLeadFromInput,
   validateContactInput,
 } from "@/lib/contact";
+import {
+  identifyProperties,
+  personlessProperties,
+  readAnonymousDistinctId,
+} from "@/lib/posthog-identity";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 /**
@@ -30,7 +35,9 @@ export async function POST(request: Request) {
     );
   }
 
-  const validated = validateContactInput(body as Record<string, unknown>);
+  const record = body as Record<string, unknown>;
+  const validated = validateContactInput(record);
+  const anonymousDistinctId = readAnonymousDistinctId(record);
 
   if (!validated.ok) {
     return NextResponse.json({ error: validated.error }, { status: 400 });
@@ -43,11 +50,14 @@ export async function POST(request: Request) {
     if (posthog) {
       posthog.identify({
         distinctId: lead.id,
-        properties: {
-          email: validated.data.email,
-          name: validated.data.name,
-          company: validated.data.company,
-        },
+        properties: identifyProperties(
+          {
+            email: validated.data.email,
+            name: validated.data.name,
+            company: validated.data.company,
+          },
+          anonymousDistinctId,
+        ),
       });
       posthog.capture({
         distinctId: lead.id,
@@ -69,11 +79,12 @@ export async function POST(request: Request) {
       const posthog = getPostHogClient();
       if (posthog) {
         posthog.capture({
+          distinctId: anonymousDistinctId,
           event: "contact_submission_failed",
-          properties: {
+          properties: personlessProperties({
             source: validated.data.source,
             error_type: error instanceof Error ? error.name : "UnknownError",
-          },
+          }),
         });
         await posthog.flush();
       }

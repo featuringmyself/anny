@@ -7,6 +7,11 @@ import {
   createSignupFromInput,
   validateRegisterInput,
 } from "@/lib/register";
+import {
+  identifyProperties,
+  personlessProperties,
+  readAnonymousDistinctId,
+} from "@/lib/posthog-identity";
 import { getPostHogClient } from "@/lib/posthog-server";
 
 export type RegisterActionState = {
@@ -28,6 +33,7 @@ export async function submitRegister(
   formData: FormData,
 ): Promise<RegisterActionState> {
   const validated = validateRegisterInput(Object.fromEntries(formData));
+  const anonymousDistinctId = readAnonymousDistinctId(formData);
 
   if (!validated.ok) {
     return {
@@ -51,21 +57,21 @@ export async function submitRegister(
     const signup = await createSignupFromInput(validated.data);
     const { email, company, plan } = validated.data;
 
-    after(() => {
+    after(async () => {
       try {
         const posthog = getPostHogClient();
         if (!posthog) return;
 
         posthog.identify({
           distinctId: signup.id,
-          properties: { email, company },
+          properties: identifyProperties({ email, company }, anonymousDistinctId),
         });
         posthog.capture({
           distinctId: signup.id,
           event: "register_submitted",
           properties: { plan: plan ?? null },
         });
-        void posthog.flush();
+        await posthog.flush();
       } catch (error) {
         console.error("[register] posthog failed", error);
       }
@@ -80,19 +86,20 @@ export async function submitRegister(
     const cause = error instanceof Error ? error.message : String(error);
     console.error("[register] failed to save signup:", cause, error);
 
-    after(() => {
+    after(async () => {
       try {
         const posthog = getPostHogClient();
         if (!posthog) return;
 
         posthog.capture({
+          distinctId: anonymousDistinctId,
           event: "register_submission_failed",
-          properties: {
+          properties: personlessProperties({
             plan: validated.data.plan ?? null,
             error_type: error instanceof Error ? error.name : "UnknownError",
-          },
+          }),
         });
-        void posthog.flush();
+        await posthog.flush();
       } catch {
         // Never let PostHog errors surface to the user
       }

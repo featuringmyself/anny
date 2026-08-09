@@ -1,32 +1,39 @@
 import posthog from "posthog-js";
 
+import { SITE_URL } from "@/lib/site";
+
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
-if (!token) {
-  if (process.env.NODE_ENV === "development") {
-    console.error(
-      "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN is configured",
-    );
+// Only initialize in production builds — never on localhost / `next dev`.
+if (process.env.NODE_ENV === "production" && token) {
+  let siteHostname = "anny.dodoxhq.com";
+  try {
+    siteHostname = new URL(SITE_URL).hostname;
+  } catch {
+    // keep fallback
   }
-} else {
+
   posthog.init(token, {
     api_host: "/ingest",
-    // UI host is the app origin, not the ingest origin.
     ui_host: "https://us.posthog.com",
     defaults: "2026-05-30",
-    capture_exceptions: true,
-    // Next.js /ingest rewrites can exceed the default 3s flags timeout.
-    request_timeout_ms: 10000,
+    person_profiles: "identified_only",
+    capture_exceptions: {
+      capture_unhandled_errors: true,
+      capture_unhandled_rejections: true,
+      capture_console_errors: false,
+    },
+    feature_flag_request_timeout_ms: 10000,
+    tracing_headers: [siteHostname],
     loaded: (ph) => {
       const host = window.location.hostname;
-      const isLocal = host === "localhost" || host === "127.0.0.1";
-      const captureLocalhost =
-        process.env.NEXT_PUBLIC_POSTHOG_CAPTURE_LOCALHOST === "true";
-
-      // Keep local noise out of production analytics unless explicitly enabled.
-      if (isLocal && !captureLocalhost) {
+      if (host === "localhost" || host === "127.0.0.1") {
         ph.opt_out_capturing();
       }
     },
   });
+} else if (process.env.NODE_ENV === "development" && !token) {
+  console.error(
+    "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN is configured",
+  );
 }
