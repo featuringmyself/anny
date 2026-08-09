@@ -22,7 +22,7 @@ export default function VsVerdict({
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="border-b p-8 md:border-r md:border-b-0 md:p-12">
+        <article className="border-b p-8 md:border-r md:border-b-0 md:p-12">
           <h3 className="text-sm font-medium tracking-wide text-[#2462ff] uppercase">
             Choose Anny when
           </h3>
@@ -39,8 +39,11 @@ export default function VsVerdict({
           <div className="mt-8">
             <TalkToSalesButton className="p-4" size="lg" source="compare-verdict" />
           </div>
-        </div>
-        <div className="bg-[#1a1a1a] p-8 text-white md:p-12">
+        </article>
+        <aside
+          aria-label={`When to stick with ${competitor}`}
+          className="bg-[#1a1a1a] p-8 text-white md:p-12"
+        >
           <h3 className="text-sm font-medium tracking-wide text-zinc-400 uppercase">
             Stick with {competitor} when
           </h3>
@@ -54,7 +57,7 @@ export default function VsVerdict({
               </li>
             ))}
           </ul>
-        </div>
+        </aside>
       </div>
     </section>
   );

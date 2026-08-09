@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function CompareProfoundPage() {
   return (
-    <div>
+    <>
       <CompareHero
         competitor="Profound"
         framing="AI visibility peers"
@@ -38,6 +38,6 @@ export default function CompareProfoundPage() {
         pickAnnyWhen={profoundVerdict.pickAnnyWhen}
         pickCompetitorWhen={profoundVerdict.pickCompetitorWhen}
       />
-    </div>
+    </>
   );
 }

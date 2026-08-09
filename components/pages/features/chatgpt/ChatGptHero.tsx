@@ -15,7 +15,7 @@ export default function ChatGptHero() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/ai-logo/chatgptLogo.svg"
-              alt=""
+              alt="ChatGPT logo"
               width={16}
               height={16}
               className="size-4 object-contain"

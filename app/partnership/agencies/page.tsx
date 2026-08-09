@@ -74,7 +74,7 @@ const pageJsonLd = {
 
 export default function AgenciesPartnershipPage() {
   return (
-    <div>
+    <>
       <JsonLd data={pageJsonLd} />
       <AgenciesPartnerHero />
       <PatternStrip />
@@ -83,6 +83,6 @@ export default function AgenciesPartnershipPage() {
       <PatternStrip />
       <WinBrandMentions />
       <PatternStrip />
-    </div>
+    </>
   );
 }

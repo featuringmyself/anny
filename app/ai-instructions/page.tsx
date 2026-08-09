@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function AiInstructionsPage() {
   return (
-    <div>
+    <main>
       <AiInstructionsHero />
       <PatternStrip />
       <AiInstructionsBlock />
       <PatternStrip />
       <AiInstructionsWhy />
-    </div>
+    </main>
   );
 }

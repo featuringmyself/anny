@@ -60,7 +60,7 @@ export default function AiModeDualPanel() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={panel.logo}
-                alt=""
+                alt={`${panel.title} logo`}
                 width={100}
                 height={24}
                 className="h-5 w-auto object-contain"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logoImg from "@/public/logo.png";
+import { SITE_LINKEDIN_URL, SITE_X_URL } from "@/lib/site";
 
 const columns = [
   {
@@ -66,8 +67,8 @@ function YoutubeIcon() {
 }
 
 const socials = [
-  { label: "x.com", href: "https://x.com", icon: <XIcon /> },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: <LinkedInIcon /> },
+  { label: "x.com", href: SITE_X_URL, icon: <XIcon /> },
+  { label: "LinkedIn", href: SITE_LINKEDIN_URL, icon: <LinkedInIcon /> },
   { label: "Youtube", href: "https://youtube.com", icon: <YoutubeIcon /> },
 ] as const;
 
@@ -91,7 +92,7 @@ export default function Footer() {
             >
               <Image
                 src={logoImg}
-                alt=""
+                alt="Anny"
                 width={28}
                 height={28}
                 className="size-7 brightness-0 invert"

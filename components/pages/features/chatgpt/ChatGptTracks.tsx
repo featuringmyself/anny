@@ -105,7 +105,7 @@ export default function ChatGptTracks() {
             <p className="mt-3 max-w-md text-[15px] leading-relaxed text-pretty text-zinc-500">
               {feature.description}
             </p>
-            <div className={feature.wrapClassName}>
+            <figure className={feature.wrapClassName}>
               <Image
                 src={feature.image}
                 alt={feature.alt}
@@ -115,7 +115,8 @@ export default function ChatGptTracks() {
                 sizes="(max-width: 768px) 100vw, 45vw"
                 placeholder="blur"
               />
-            </div>
+              <figcaption className="sr-only">{feature.alt}</figcaption>
+            </figure>
           </FeatureCell>
         ))}
       </div>

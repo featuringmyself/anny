@@ -49,27 +49,36 @@ export default function Metric() {
     },
   ];
   return (
-    <div>
+    <section aria-labelledby="metrics-heading">
       <PatternStrip />
-      <div className="flex flex-col items-center justify-center my-10">
-        <h2 className="text-3xl md:text-4xl font-semibold text-center">Everything you need to <br /><span className="text-zinc-400/90">win in AI search</span></h2>
-        <p className="text-center text-zinc-700/90 max-w-lg text-xs md:text-base md:mt-6 mt-4 leading-tight md:px-0 px-4">Understand how AI models talk about your brand and optimise your presence across every prompt and response</p>
-      </div>
+      <header className="my-10 flex flex-col items-center justify-center">
+        <h2
+          id="metrics-heading"
+          className="text-center text-3xl font-semibold md:text-4xl"
+        >
+          Everything you need to <br />
+          <span className="text-zinc-400/90">win in AI search</span>
+        </h2>
+        <p className="mt-4 max-w-lg px-4 text-center text-xs leading-tight text-zinc-700/90 md:mt-6 md:px-0 md:text-base">
+          Understand how AI models talk about your brand and optimise your
+          presence across every prompt and response
+        </p>
+      </header>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {metricData.map((item, index) => (
-          <div
+          <article
             className={`flex h-full flex-col border-b ${
               index % 2 === 0 ? "md:border-r" : ""
             }`}
             key={item.title}
           >
             <div className="flex-1 p-6 md:p-10">
-              <h4 className="text-xl font-medium md:text-2xl">{item.title}</h4>
+              <h3 className="text-xl font-medium md:text-2xl">{item.title}</h3>
               <p className="mt-2 max-w-full text-sm text-gray-500 md:max-w-[80%]">
                 {item.description}
               </p>
             </div>
-            <div className="relative aspect-16/10 w-full">
+            <figure className="relative aspect-16/10 w-full">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -77,10 +86,11 @@ export default function Metric() {
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
-          </div>
+              <figcaption className="sr-only">{item.description}</figcaption>
+            </figure>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

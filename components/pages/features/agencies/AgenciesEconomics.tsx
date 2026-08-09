@@ -35,7 +35,7 @@ export default function AgenciesEconomics() {
 
       <div className="grid grid-cols-1 md:grid-cols-3">
         {benchmarks.map((item, index) => (
-          <div
+          <article
             key={item.label}
             className={`border-b p-8 last:border-b-0 md:border-b-0 md:p-10 ${
               index < benchmarks.length - 1 ? "md:border-r" : ""
@@ -49,7 +49,7 @@ export default function AgenciesEconomics() {
             </div>
             <h3 className="mt-4 text-lg font-medium tracking-tight">{item.label}</h3>
             <p className="mt-2 text-sm leading-relaxed text-zinc-500">{item.body}</p>
-          </div>
+          </article>
         ))}
       </div>
 

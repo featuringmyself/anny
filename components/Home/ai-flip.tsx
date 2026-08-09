@@ -29,7 +29,7 @@ function AiLabel({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={logo}
-        alt=""
+        alt={`${name} logo`}
         width={16}
         height={16}
         className="mr-1 inline-block size-[1em] align-middle"

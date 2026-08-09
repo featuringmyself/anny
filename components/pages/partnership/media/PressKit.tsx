@@ -40,7 +40,7 @@ export default function PressKit() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {assets.map((asset, index) => (
-          <motion.div
+          <motion.article
             key={asset.title}
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function PressKit() {
             <p className="mt-3 text-sm leading-relaxed text-zinc-500">
               {asset.body}
             </p>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </section>

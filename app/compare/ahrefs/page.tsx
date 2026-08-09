@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CompareAhrefsPage() {
   return (
-    <div>
+    <>
       <CompareHero
         competitor="Ahrefs"
         framing="SEO-first vs AI answers"
@@ -33,6 +33,6 @@ export default function CompareAhrefsPage() {
         pickAnnyWhen={ahrefsVerdict.pickAnnyWhen}
         pickCompetitorWhen={ahrefsVerdict.pickCompetitorWhen}
       />
-    </div>
+    </>
   );
 }

@@ -44,7 +44,10 @@ export default function PricingAgency() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center px-6 py-12 md:px-12 md:py-16">
+        <aside
+          aria-label="What agencies get"
+          className="flex flex-col justify-center px-6 py-12 md:px-12 md:py-16"
+        >
           <p className="text-sm font-medium text-zinc-500">What agencies get</p>
           <ul className="mt-6 flex flex-col gap-4">
             {perks.map((item) => (
@@ -61,7 +64,7 @@ export default function PricingAgency() {
             Volume, client projects, and SSO scale with your book of business — priced for agencies,
             quoted by sales.
           </p>
-        </div>
+        </aside>
       </div>
     </section>
   );

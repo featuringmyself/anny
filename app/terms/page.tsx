@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div>
+    <main>
       <PatternStrip />
       <LegalProse
         title="Terms of Service"
@@ -44,6 +44,6 @@ export default function TermsPage() {
           },
         ]}
       />
-    </div>
+    </main>
   );
 }

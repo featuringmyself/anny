@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function MediaPartnershipPage() {
   return (
-    <div>
+    <>
       <MediaPartnerHero />
       <PatternStrip />
       <PressKit />
       <PatternStrip />
       <QuoteRequest />
-    </div>
+    </>
   );
 }

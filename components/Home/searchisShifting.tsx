@@ -46,8 +46,8 @@ const mauData = [
   {
     name: "Perplexity",
     logo: "/ai-logo/perplexityLogo.svg",
-    value: "34M",
-    width: "3%",
+    value: "45M",
+    width: "4%",
     color: "#1AA8B8",
     invert: true,
   },
@@ -97,124 +97,139 @@ function Googling() {
 
 export default function SearchIsShifting() {
   return (
-    <>
-    <PatternStrip bordered={false} />
-    <div className="grid grid-cols-1 border-y md:grid-cols-2">
-      {/* Left: MAU chart */}
-      <div className="flex flex-col border-b md:border-b-0 md:border-r">
-        <div className="flex flex-1 flex-col gap-3 p-6 sm:gap-5 sm:p-8 md:p-10">
-          <h2 className="text-xl font-medium md:leading-normal leading-tight tracking-tight text-balance sm:text-3xl md:text-4xl">
-            Search is Shifting from Search Engines to AI.
-          </h2>
-          <p className="max-w-md text-sm leading-snug text-zinc-500 text-balance sm:text-xl md:text-2xl">
-            Monthly usage of standalone AI tools has grown to well over{" "}
-            <span className="text-[#2462ff]">1 billion people</span> by mid-2026.
-          </p>
-        </div>
-
-        <div className="mt-auto flex flex-col border-t">
-          {mauData.map((item) => (
-            <div
-              key={item.name}
-              className="grid grid-cols-[2.75rem_minmax(0,1fr)_3.5rem] items-center border-b last:border-b-0"
+    <section aria-labelledby="search-shifting-heading">
+      <PatternStrip bordered={false} />
+      <div className="grid grid-cols-1 border-y md:grid-cols-2">
+        <article className="flex flex-col border-b md:border-r md:border-b-0">
+          <header className="flex flex-1 flex-col gap-3 p-6 sm:gap-5 sm:p-8 md:p-10">
+            <h2
+              id="search-shifting-heading"
+              className="text-xl leading-tight font-medium tracking-tight text-balance sm:text-3xl md:text-4xl md:leading-normal"
             >
+              Search is Shifting from Search Engines to AI.
+            </h2>
+            <p className="max-w-md text-sm leading-snug text-balance text-zinc-500 sm:text-xl md:text-2xl">
+              Monthly usage of standalone AI tools has grown to well over{" "}
+              <span className="text-[#2462ff]">1 billion people</span> as of July
+              2026 — with ChatGPT at 1B MAU and Gemini at 950M.
+            </p>
+            <p className="text-xs tracking-wide text-zinc-400 uppercase">
+              Updated August 2026
+            </p>
+          </header>
+
+          <figure className="mt-auto flex flex-col border-t" aria-label="Monthly active users by AI tool">
+            <figcaption className="sr-only">
+              Monthly active users as of July 2026: ChatGPT 1B, Gemini 950M,
+              Claude 245M, Grok 117M, DeepSeek 67M, Perplexity 45M
+            </figcaption>
+            {mauData.map((item) => (
               <div
-                className="grid h-12 place-items-center"
-                style={{ backgroundColor: item.color, ...stripeStyle }}
+                key={item.name}
+                className="grid grid-cols-[2.75rem_minmax(0,1fr)_3.5rem] items-center border-b last:border-b-0"
               >
-                <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
-                  {item.logo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={item.logo}
-                      alt=""
-                      width={14}
-                      height={14}
-                      className={`size-3.5 object-contain ${item.invert ? "brightness-0 invert" : ""}`}
-                      draggable={false}
-                    />
-                  ) : (
-                    <DeepSeekMark />
-                  )}
-                </span>
-                <span className="sr-only">{item.name}</span>
-              </div>
-              <div className="min-w-0 self-stretch">
                 <div
-                  className="h-full min-h-12"
-                  style={{
-                    width: item.width,
-                    backgroundColor: item.color,
-                    ...stripeStyle,
-                  }}
-                />
+                  className="grid h-12 place-items-center"
+                  style={{ backgroundColor: item.color, ...stripeStyle }}
+                >
+                  <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
+                    {item.logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={item.logo}
+                        alt={`${item.name} logo`}
+                        width={14}
+                        height={14}
+                        className={`size-3.5 object-contain ${item.invert ? "brightness-0 invert" : ""}`}
+                        draggable={false}
+                      />
+                    ) : (
+                      <>
+                        <DeepSeekMark />
+                        <span className="sr-only">{item.name}</span>
+                      </>
+                    )}
+                  </span>
+                </div>
+                <div className="min-w-0 self-stretch">
+                  <div
+                    className="h-full min-h-12"
+                    style={{
+                      width: item.width,
+                      backgroundColor: item.color,
+                      ...stripeStyle,
+                    }}
+                  />
+                </div>
+                <span className="pr-3 text-right text-sm text-zinc-500 tabular-nums sm:pr-4">
+                  {item.value}
+                </span>
               </div>
-              <span className="pr-3 text-right text-sm text-zinc-500 tabular-nums sm:pr-4">
-                {item.value}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </figure>
+        </article>
 
-      {/* Right: GEO pitch */}
-      <div className="flex flex-col bg-[#1a1a1a] px-8 py-10 text-white md:px-12 md:py-12">
-        <h2 className="text-center text-3xl font-medium tracking-tight text-balance md:text-4xl">
-          Your customers aren&apos;t <Googling />{" "}
-          anymore. They&apos;re asking AI for purchase decisions.
-        </h2>
+        <aside className="flex flex-col bg-[#1a1a1a] px-8 py-10 text-white md:px-12 md:py-12">
+          <h2 className="text-center text-3xl font-medium tracking-tight text-balance md:text-4xl">
+            Your customers aren&apos;t <Googling /> anymore. They&apos;re asking
+            AI for purchase decisions.
+          </h2>
 
-        <div className="relative mx-auto my-10 w-full max-w-sm flex-1">
-          <div className="relative flex h-full min-h-80 flex-col overflow-hidden rounded-2xl bg-[#111] ring-1 ring-white/5">
-            {/* User query bubble */}
-            <div className="absolute top-[28%] right-6 left-6 z-10 flex justify-end">
-              <div className="max-w-[85%] rounded-2xl bg-[#2462ff] px-4 py-3 text-sm leading-snug text-white shadow-lg">
-                best CRM for growing B2B teams
+          <figure className="relative mx-auto my-10 w-full max-w-sm flex-1">
+            <figcaption className="sr-only">
+              Example AI answer recommending Attio for the query &quot;best CRM
+              for growing B2B teams&quot;
+            </figcaption>
+            <div className="relative flex h-full min-h-80 flex-col overflow-hidden rounded-2xl bg-[#111] ring-1 ring-white/5">
+              <div className="absolute top-[28%] right-6 left-6 z-10 flex justify-end">
+                <p className="max-w-[85%] rounded-2xl bg-[#2462ff] px-4 py-3 text-sm leading-snug text-white shadow-lg">
+                  best CRM for growing B2B teams
+                </p>
+              </div>
+
+              <div
+                className="absolute inset-x-6 top-[48%] space-y-2 text-[11px] leading-relaxed text-zinc-500"
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, transparent 0%, black 20%, black 55%, transparent 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, transparent 0%, black 20%, black 55%, transparent 100%)",
+                }}
+              >
+                <p>
+                  Here are the top CRMs teams recommend for scaling B2B sales:
+                </p>
+                <p>
+                  1. Attio is a modern CRM built for startups and sales teams
+                  that need flexible pipelines and clean data without the
+                  complexity.
+                </p>
+                <p>…</p>
+              </div>
+
+              <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded-xl bg-[#1f1f1f] px-4 py-3 ring-1 ring-white/5">
+                <span className="flex-1 text-sm text-zinc-500">
+                  Ask me anything...
+                </span>
+                <span className="grid size-7 place-items-center rounded-full bg-[#2a2a2a] text-zinc-400">
+                  <ArrowUp className="size-3.5" strokeWidth={2.5} />
+                </span>
               </div>
             </div>
+          </figure>
 
-            {/* Faded AI reply */}
-            <div
-              className="absolute inset-x-6 top-[48%] space-y-2 text-[11px] leading-relaxed text-zinc-500"
-              style={{
-                maskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 20%, black 55%, transparent 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 20%, black 55%, transparent 100%)",
-              }}
-            >
-              <p>
-                Here are the top CRMs teams recommend for scaling B2B sales:
-              </p>
-              <p>
-                1. Attio is a modern CRM built for startups and sales teams that
-                need flexible pipelines and clean data without the complexity.
-              </p>
-              <p>…</p>
-            </div>
-
-            {/* Input */}
-            <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded-xl bg-[#1f1f1f] px-4 py-3 ring-1 ring-white/5">
-              <span className="flex-1 text-sm text-zinc-500">Ask me anything...</span>
-              <span className="grid size-7 place-items-center rounded-full bg-[#2a2a2a] text-zinc-400">
-                <ArrowUp className="size-3.5" strokeWidth={2.5} />
-              </span>
-            </div>
+          <div className="mt-auto text-center">
+            <h3 className="text-2xl font-medium tracking-tight text-balance md:text-3xl">
+              Generative Engine Optimization puts you at the center of every
+              buying decision.
+            </h3>
+            <p className="mx-auto mt-4 max-w-sm text-sm text-balance text-zinc-400">
+              Either you get mentioned in AI answers or lose the sale to your
+              competitors.
+            </p>
           </div>
-        </div>
-
-        <div className="mt-auto text-center">
-          <h3 className="text-2xl font-medium tracking-tight text-balance md:text-3xl">
-            Generative Engine Optimization puts you at the center of every buying
-            decision.
-          </h3>
-          <p className="mx-auto mt-4 max-w-sm text-sm text-zinc-400 text-balance">
-            Either you get mentioned in AI answers or lose the sale to your
-            competitors.
-          </p>
-        </div>
+        </aside>
       </div>
-    </div>
-    </>
+    </section>
   );
 }

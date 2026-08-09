@@ -51,7 +51,10 @@ export default function ReportHero({ report }: ReportHeroProps) {
           </dl>
         </div>
 
-        <div className="shrink-0 border border-zinc-200 bg-white px-8 py-7 md:min-w-[220px]">
+        <aside
+          aria-label="Visibility score"
+          className="shrink-0 border border-zinc-200 bg-white px-8 py-7 md:min-w-[220px]"
+        >
           <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
             Visibility score
           </p>
@@ -69,7 +72,7 @@ export default function ReportHero({ report }: ReportHeroProps) {
               : " across models"}
             .
           </p>
-        </div>
+        </aside>
       </div>
 
       {report.stats?.length ? (

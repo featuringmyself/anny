@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <div>
+    <main>
       <PatternStrip />
       <LegalProse
         title="Cookie Settings"
@@ -36,6 +36,6 @@ export default function CookiesPage() {
           },
         ]}
       />
-    </div>
+    </main>
   );
 }

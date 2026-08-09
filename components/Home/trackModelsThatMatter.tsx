@@ -44,31 +44,40 @@ export default function TrackModelsThatMatter() {
     },
   ];
   return (
-    <div className="mt-14 flex w-full flex-col items-center justify-center">
-      <h5 className="px-6 text-center text-xl font-medium md:px-0 md:text-2xl">
+    <section
+      aria-labelledby="track-models-heading"
+      className="mt-14 flex w-full flex-col items-center justify-center"
+    >
+      <h2
+        id="track-models-heading"
+        className="px-6 text-center text-xl font-medium md:px-0 md:text-2xl"
+      >
         Track the models that matter
-      </h5>
+      </h2>
       <p className="mt-1 max-w-2xl px-6 text-center text-sm text-balance text-gray-500 md:px-0 md:text-base">
         Ammy tracks ChatGPT, Claude, Gemini, Deepseek, Grok, Perplexity, Google
         AI Overview and AI Mode for AI visibility
       </p>
 
-      <div className="mt-8 grid w-full grid-cols-2 border-y md:grid-cols-4">
+      <ul className="mt-8 grid w-full list-none grid-cols-2 border-y md:grid-cols-4">
         {modelData.map((item) => (
-          <div
+          <li
             key={item.name}
             className="flex h-16 w-full items-center justify-center border-b border-r nth-[2n]:border-r-0 md:h-20 md:nth-[2n]:border-r md:nth-[4n]:border-r-0 nth-last-[-n+2]:border-b-0 md:nth-last-[-n+2]:border-b md:nth-last-[-n+4]:border-b-0"
           >
-            <Image
-              src={item.logo}
-              alt={item.name}
-              width={100}
-              height={100}
-              className="h-7 w-auto max-w-[70%] object-contain md:h-8 md:max-w-full"
-            />
-          </div>
+            <figure className="flex items-center justify-center">
+              <Image
+                src={item.logo}
+                alt={`${item.name} logo`}
+                width={100}
+                height={100}
+                className="h-7 w-auto max-w-[70%] object-contain md:h-8 md:max-w-full"
+              />
+              <figcaption className="sr-only">{item.name}</figcaption>
+            </figure>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }

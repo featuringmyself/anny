@@ -28,10 +28,10 @@ const faqJsonLd = {
 
 export default function FaqPage() {
   return (
-    <div>
+    <main>
       <JsonLd data={faqJsonLd} />
       <PatternStrip />
       <Faq />
-    </div>
+    </main>
   );
 }

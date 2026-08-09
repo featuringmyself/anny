@@ -52,8 +52,8 @@ export default function ReportBrandCrisis({ report }: ReportBrandCrisisProps) {
                 </p>
               </div>
 
-              <div className="border-t bg-zinc-100/80 p-4 md:p-6">
-                <div className="mb-3 flex items-center gap-2 text-xs text-zinc-500">
+              <figure className="border-t bg-zinc-100/80 p-4 md:p-6">
+                <figcaption className="mb-3 flex items-center gap-2 text-xs text-zinc-500">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={meta.logo}
@@ -64,7 +64,7 @@ export default function ReportBrandCrisis({ report }: ReportBrandCrisisProps) {
                     draggable={false}
                   />
                   {meta.name} · live answer
-                </div>
+                </figcaption>
                 <div className="overflow-hidden border border-zinc-200 bg-zinc-950 shadow-sm">
                   <Image
                     src={item.screenshot.src}
@@ -76,7 +76,7 @@ export default function ReportBrandCrisis({ report }: ReportBrandCrisisProps) {
                     priority={index === 0}
                   />
                 </div>
-              </div>
+              </figure>
             </article>
           );
         })}

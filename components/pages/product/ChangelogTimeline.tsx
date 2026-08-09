@@ -49,21 +49,23 @@ export default function ChangelogTimeline() {
               aria-hidden
             />
             <ChangelogEntryMotion delay={index * 0.04}>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <time className="text-sm text-zinc-500 tabular-nums">{entry.date}</time>
-                <span className="border border-zinc-200 px-2 py-0.5 font-mono text-xs text-zinc-700">
-                  {entry.version}
-                </span>
-                {entry.tags.map((tag) => (
-                  <span key={tag} className="text-xs font-medium tracking-wide text-[#2462ff]">
-                    {tag}
+              <article>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <time className="text-sm text-zinc-500 tabular-nums">{entry.date}</time>
+                  <span className="border border-zinc-200 px-2 py-0.5 font-mono text-xs text-zinc-700">
+                    {entry.version}
                   </span>
-                ))}
-              </div>
-              <h2 className="mt-3 text-xl font-medium tracking-tight md:text-2xl">{entry.title}</h2>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-500 md:text-base">
-                {entry.body}
-              </p>
+                  {entry.tags.map((tag) => (
+                    <span key={tag} className="text-xs font-medium tracking-wide text-[#2462ff]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h2 className="mt-3 text-xl font-medium tracking-tight md:text-2xl">{entry.title}</h2>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-500 md:text-base">
+                  {entry.body}
+                </p>
+              </article>
             </ChangelogEntryMotion>
           </li>
         ))}

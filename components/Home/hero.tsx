@@ -24,7 +24,7 @@ const globeIcon = (
 
 export default function Hero() {
   return (
-    <div className="mx-auto mt-14 max-w-3xl px-6 md:mt-20">
+    <header className="mx-auto mt-14 max-w-3xl px-6 md:mt-20">
       <Eyebrow
         icon={globeIcon}
         className="mb-4 text-center text-sm text-balance sm:text-base"
@@ -35,13 +35,13 @@ export default function Hero() {
         AI search analytics{" "}
         <span className="text-zinc-500">for marketing teams</span>
       </h1>
-      <div className="mt-4 text-center text-base text-balance text-zinc-500 sm:text-lg">
+      <p className="mt-4 text-center text-base text-balance text-zinc-500 sm:text-lg">
         See how often <AiFlip /> mentions your brand, which sources it cites,
         and what to do to get mentioned more.
-      </div>
+      </p>
       <div className="mt-6 flex justify-center">
         <TalkToSalesButton className="p-4" size="lg" source="home-hero" />
       </div>
-    </div>
+    </header>
   );
 }

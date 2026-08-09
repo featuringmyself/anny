@@ -48,7 +48,7 @@ function ModelRow({
     <li className="flex items-center gap-2 text-sm text-zinc-700">
       <Image
         src={icon}
-        alt=""
+        alt={`${name} logo`}
         width={20}
         height={20}
         className="size-5 shrink-0 rounded-[3px] ring-1 ring-zinc-200/80"

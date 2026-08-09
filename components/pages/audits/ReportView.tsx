@@ -16,7 +16,7 @@ type ReportViewProps = {
 
 export default function ReportView({ report }: ReportViewProps) {
   return (
-    <div className="pb-16 md:pb-24">
+    <main className="pb-16 md:pb-24">
       {report.private ? <ReportPrivateBanner /> : null}
       <ReportHero report={report} />
       <PatternStrip />
@@ -29,6 +29,6 @@ export default function ReportView({ report }: ReportViewProps) {
       <PatternStrip />
       <ReportSprint report={report} />
       <ReportCta report={report} />
-    </div>
+    </main>
   );
 }

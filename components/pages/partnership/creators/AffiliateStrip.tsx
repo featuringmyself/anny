@@ -36,7 +36,7 @@ export default function AffiliateStrip() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3">
         {steps.map((step, index) => (
-          <motion.div
+          <motion.article
             key={step.label}
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function AffiliateStrip() {
             <p className="mt-2 text-sm leading-relaxed text-zinc-500">
               {step.body}
             </p>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </section>

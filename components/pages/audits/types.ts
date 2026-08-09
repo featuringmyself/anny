@@ -82,6 +82,21 @@ export type SprintOffer = {
   outcomes: string[];
 };
 
+/** On-site structured data / schema.org audit note (optional). */
+export type SchemaFinding = {
+  id: string;
+  /** e.g. Schemas detected */
+  title: string;
+  /** e.g. 3 types found */
+  status: string;
+  /** Schema.org types present when known */
+  types?: string[];
+  body: string;
+  /** Opportunity-level finding: base schemas exist, enrichment still needed. */
+  severity?: "opportunity" | "standard" | "high";
+  suggestedImprovements: string[];
+};
+
 export type ReportStat = {
   label: string;
   value: string;
@@ -113,6 +128,8 @@ export type VisibilityReport = {
   queriesHeadline?: string;
   queriesIntro?: string;
   queries: QueryFinding[];
+  /** Optional on-site schema.org / structured-data finding. */
+  schemaFindings?: SchemaFinding;
   sprint: SprintOffer;
   /** External booking URL; falls back to Talk to sales dialog. */
   ctaUrl?: string;

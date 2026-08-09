@@ -109,7 +109,7 @@ export default function PricingTiers() {
 
 function PricingTierColumn({ tier, index }: { tier: Tier; index: number }) {
   return (
-    <div
+    <article
       className={[
         "flex flex-col border-b md:border-b-0",
         index < tiers.length - 1 ? "md:border-r" : "",
@@ -163,6 +163,6 @@ function PricingTierColumn({ tier, index }: { tier: Tier; index: number }) {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

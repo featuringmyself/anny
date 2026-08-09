@@ -60,7 +60,7 @@ function AnswerCard({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={meta.logo}
-            alt=""
+            alt={`${meta.name} logo`}
             width={16}
             height={16}
             className="size-4 object-contain"
@@ -116,41 +116,43 @@ function ScreenshotCard({ shot }: { shot: QueryScreenshot }) {
 
   return (
     <article className="flex w-[min(100%,420px)] shrink-0 snap-center flex-col sm:w-[480px]">
-      <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-400">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={meta.logo}
-          alt=""
-          width={12}
-          height={12}
-          className="size-3 object-contain"
-          draggable={false}
-        />
-        <span>
-          {shot.label ? (
-            <>
-              <span className="font-medium text-zinc-700">{shot.label}</span>
-              {" · "}
-            </>
-          ) : null}
-          {meta.name}
-        </span>
-        {shot.prompt ? (
-          <span className="w-full font-mono text-[11px] text-zinc-500">
-            “{shot.prompt}”
+      <figure>
+        <figcaption className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-400">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={meta.logo}
+            alt=""
+            width={12}
+            height={12}
+            className="size-3 object-contain"
+            draggable={false}
+          />
+          <span>
+            {shot.label ? (
+              <>
+                <span className="font-medium text-zinc-700">{shot.label}</span>
+                {" · "}
+              </>
+            ) : null}
+            {meta.name}
           </span>
-        ) : null}
-      </div>
-      <div className="overflow-hidden border border-zinc-200 bg-zinc-950">
-        <Image
-          src={shot.src}
-          alt={shot.alt}
-          width={1200}
-          height={900}
-          className="h-auto w-full"
-          sizes="(max-width: 768px) 100vw, 480px"
-        />
-      </div>
+          {shot.prompt ? (
+            <span className="w-full font-mono text-[11px] text-zinc-500">
+              “{shot.prompt}”
+            </span>
+          ) : null}
+        </figcaption>
+        <div className="overflow-hidden border border-zinc-200 bg-zinc-950">
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            width={1200}
+            height={900}
+            className="h-auto w-full"
+            sizes="(max-width: 768px) 100vw, 480px"
+          />
+        </div>
+      </figure>
     </article>
   );
 }
@@ -297,8 +299,8 @@ export default function ModelAnswerScroll({
               </div>
             </>
           ) : singleShot && singleShotMeta ? (
-            <div>
-              <div className="mb-3 flex items-center gap-2 text-xs text-zinc-400">
+            <figure>
+              <figcaption className="mb-3 flex items-center gap-2 text-xs text-zinc-400">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={singleShotMeta.logo}
@@ -309,7 +311,7 @@ export default function ModelAnswerScroll({
                   draggable={false}
                 />
                 {singleShotMeta.name} · captured answer
-              </div>
+              </figcaption>
               <div className="overflow-hidden border border-zinc-200 bg-zinc-950">
                 <Image
                   src={singleShot.src}
@@ -320,7 +322,7 @@ export default function ModelAnswerScroll({
                   sizes="(max-width: 768px) 100vw, 55vw"
                 />
               </div>
-            </div>
+            </figure>
           ) : (
             <>
               {multiAnswers ? (

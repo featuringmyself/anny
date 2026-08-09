@@ -152,13 +152,13 @@ function Chart() {
       </svg>
 
       <div className="absolute bottom-2 left-0 right-0 flex justify-around px-5 text-[9px] text-zinc-400">
-        {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((month) => (
+        {["Mar", "Apr", "May", "Jun", "Jul", "Aug"].map((month) => (
           <span key={month}>{month}</span>
         ))}
       </div>
 
       <div className="absolute right-3 top-5 w-[158px] rounded-lg bg-[#080808] px-3 py-2.5 text-white shadow-xl">
-        <div className="mb-2 text-[10px] font-medium">April 2025</div>
+        <div className="mb-2 text-[10px] font-medium">July 2026</div>
         <div className="space-y-1">
           {brands.map((brand) => (
             <div key={brand.name} className="flex items-center text-[8px]">
@@ -309,11 +309,18 @@ function DonutPanel() {
 
 export default function Demo() {
   return (
-    <section className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-8 lg:pb-0">
-      <div
-        className="overflow-x-auto rounded-t-xl border border-b-0 border-zinc-200 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden overflow-y-hidden"
+    <section aria-labelledby="product-demo-heading" className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-8 lg:pb-0">
+      <h2 id="product-demo-heading" className="sr-only">
+        Product dashboard preview
+      </h2>
+      <figure
+        className="overflow-x-auto overflow-y-hidden rounded-t-xl border border-b-0 border-zinc-200 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }}
       >
+        <figcaption className="sr-only">
+          Anny dashboard showing AI visibility trends, competitor comparison,
+          cited domains, and domain types for Attio
+        </figcaption>
         <div className="relative min-h-[360px] w-[640px] bg-[#f8f8f8] text-zinc-700 md:aspect-[2/1] md:min-h-[500px] md:w-full">
           <aside className="absolute inset-y-0 left-0 hidden w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3 md:block">
             <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
@@ -347,7 +354,7 @@ export default function Demo() {
             </nav>
           </aside>
 
-          <main className="min-w-0 md:ml-[145px]">
+          <div className="min-w-0 md:ml-[145px]">
             <header className="flex h-10 items-center justify-between border-b border-zinc-200 px-2">
               <div className="flex gap-2">
                 <Chip>
@@ -422,9 +429,9 @@ export default function Demo() {
               <DomainTable />
               <DonutPanel />
             </div>
-          </main>
+          </div>
         </div>
-      </div>
+      </figure>
     </section>
   );
 }

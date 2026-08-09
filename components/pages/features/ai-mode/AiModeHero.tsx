@@ -7,7 +7,7 @@ export default function AiModeHero() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/trackModel/ai_mode-logo.svg"
-          alt=""
+          alt="Google AI Mode logo"
           width={16}
           height={16}
           className="size-4 object-contain"

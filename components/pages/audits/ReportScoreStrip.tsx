@@ -24,7 +24,7 @@ export default function ReportScoreStrip({ report }: ReportScoreStripProps) {
           const meta = MODEL_META[score.model];
           const unaudited = score.audited === false;
           return (
-            <div
+            <article
               key={score.model}
               className="flex flex-col gap-4 border-b px-6 py-7 sm:odd:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0 md:px-8 nth-last-[-n+1]:border-b-0 sm:nth-last-[-n+2]:border-b-0 lg:nth-last-[-n+3]:border-b-0"
             >
@@ -33,7 +33,7 @@ export default function ReportScoreStrip({ report }: ReportScoreStripProps) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={meta.logo}
-                    alt=""
+                    alt={`${meta.name} logo`}
                     width={18}
                     height={18}
                     className="size-[18px] object-contain"
@@ -73,7 +73,7 @@ export default function ReportScoreStrip({ report }: ReportScoreStripProps) {
                   }}
                 />
               </div>
-            </div>
+            </article>
           );
         })}
       </div>

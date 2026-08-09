@@ -75,7 +75,7 @@ export default function ChatGptWhyMatters() {
           const Icon = stat.icon;
 
           return (
-            <div
+            <article
               key={stat.title}
               className="bg-white p-6 sm:p-8 md:p-10"
             >
@@ -93,7 +93,7 @@ export default function ChatGptWhyMatters() {
               <p className="mt-3 text-sm leading-relaxed text-pretty text-zinc-500">
                 {stat.description}
               </p>
-            </div>
+            </article>
           );
         })}
       </div>

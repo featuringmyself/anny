@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 export default function CreatorsPartnershipPage() {
   return (
-    <div>
+    <>
       <CreatorsPartnerHero />
       <PatternStrip />
       <AffiliateStrip />
       <PatternStrip />
       <ContentKitStrip />
-    </div>
+    </>
   );
 }

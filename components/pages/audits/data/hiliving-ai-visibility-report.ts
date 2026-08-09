@@ -365,17 +365,31 @@ export const hilivingAiVisibilityReport: VisibilityReport = {
       ],
     },
   ],
+  schemaFindings: {
+    id: "schemas-detected",
+    title: "Schemas detected",
+    status: "3 types found",
+    types: ["Organization", "SoftwareApplication", "FAQPage"],
+    severity: "opportunity",
+    body: "hiliving.in already ships valid structured data for its business, software, and FAQs, which helps search engines and AI crawlers understand the brand. The gap is enrichment: the existing schemas are thin, so rich-result and entity-clarity upside is still on the table.",
+    suggestedImprovements: [
+      "Add `logo` and social links (`sameAs`) to Organization schema",
+      "Include `aggregateRating` and `screenshot` in SoftwareApplication",
+      "Implement `WebSite` schema with `potentialAction` for sitelinks search box",
+    ],
+  },
   sprint: {
     name: "AI Visibility Audit",
     duration: "One-time",
     headline:
       "How AI perceives HiLiving today, where peers win the shelf, why, and what to do about it",
-    body: "A analysis of how ChatGPT and other platforms currently perceive and recommend HiLiving. We identify where Casagrand, Urbanrise, DAC, Radiance, and G Square win those shortlists instead, explain why (thin presence, peer-shelf gaps, Nexora plot-count conflict, Estates identity leak), and give you a concrete action plan to improve it.",
+    body: "A analysis of how ChatGPT and other platforms currently perceive and recommend HiLiving. We identify where Casagrand, Urbanrise, DAC, Radiance, and G Square win those shortlists instead, explain why (thin presence, peer-shelf gaps, Nexora plot-count conflict, Estates identity leak), and give you a concrete action plan to improve it — including schema enrichment on top of the three types already detected.",
     outcomes: [
       "Clear read on how AI perceives and recommends HiLiving today vs peers on the audited prompts",
       "Map of where you lose the VGN/G Square switcher and Avadi/Madhavaram shelves, and why those answers look that way",
       "Root-cause explanation of the Nexora “don’t book” diligence failure and the Estates identity leak",
       "Concrete action plan: peer-shelf presence, geo defense for Nexora and Evita, one canonical Nexora RERA story, and Chennai brand disambiguation",
+      "Schema enrichment on the three types already live (Organization, SoftwareApplication, FAQPage), plus WebSite for sitelinks search",
       "Prioritized next steps across ChatGPT, then Perplexity, Google AI Overview, Gemini, and Claude, with screenshot proof from this audit pack",
     ],
   },

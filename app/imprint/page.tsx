@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ImprintPage() {
   return (
-    <div>
+    <main>
       <PatternStrip />
       <LegalProse
         title="Imprint"
@@ -35,6 +35,6 @@ export default function ImprintPage() {
           },
         ]}
       />
-    </div>
+    </main>
   );
 }

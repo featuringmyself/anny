@@ -14,7 +14,7 @@ export default function CareersCulture() {
           about clarity over ceremony — and about making AI search measurable.
         </p>
       </div>
-      <div className="flex flex-col justify-between bg-[#1a1a1a] p-8 text-white md:p-12">
+      <aside className="flex flex-col justify-between bg-[#1a1a1a] p-8 text-white md:p-12">
         <div>
           <h3 className="text-2xl font-medium tracking-tight md:text-3xl">
             Don&apos;t see a fit?
@@ -33,7 +33,7 @@ export default function CareersCulture() {
             Send an open application
           </Button>
         </div>
-      </div>
+      </aside>
     </section>
   );
 }

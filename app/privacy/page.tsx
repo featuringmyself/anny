@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div>
+    <main>
       <PatternStrip />
       <LegalProse
         title="Privacy Policy"
@@ -107,6 +107,6 @@ export default function PrivacyPage() {
           },
         ]}
       />
-    </div>
+    </main>
   );
 }

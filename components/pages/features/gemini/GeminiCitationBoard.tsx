@@ -46,7 +46,7 @@ export default function GeminiCitationBoard() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/ai-logo/geminiLogo.svg"
-              alt=""
+              alt="Gemini logo"
               width={14}
               height={14}
               className="size-3.5 object-contain"

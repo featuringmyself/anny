@@ -17,9 +17,9 @@ export default function PricingPage() {
     <main>
       <PricingHero />
       <PatternStrip />
-      <div id="plans">
+      <section id="plans" aria-label="Plans">
         <PricingTiers />
-      </div>
+      </section>
       <PatternStrip />
       <PricingAgency />
       <PatternStrip />

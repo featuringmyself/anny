@@ -5,5 +5,5 @@ export default function CompareLayout({
 }: {
   children: ReactNode;
 }) {
-  return <div>{children}</div>;
+  return <main>{children}</main>;
 }

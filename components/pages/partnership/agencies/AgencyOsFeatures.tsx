@@ -190,6 +190,10 @@ export default function AgencyOsFeatures() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   placeholder="blur"
                 />
+                <figcaption className="sr-only">
+                  Anny GEO action plan table with high-impact objectives,
+                  deliverables, and impact ratings for agency clients
+                </figcaption>
               </figure>
             }
             copy={

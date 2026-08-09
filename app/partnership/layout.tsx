@@ -5,5 +5,5 @@ export default function PartnershipLayout({
 }: {
   children: ReactNode;
 }) {
-  return <div>{children}</div>;
+  return <main>{children}</main>;
 }

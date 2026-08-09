@@ -11,7 +11,10 @@ export default function RegisterSection({ plan }: { plan?: RegisterPlan }) {
   return (
     <section className="border-b">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col justify-center border-b bg-zinc-950 p-8 text-white md:border-r md:border-b-0 md:p-12">
+        <aside
+          aria-label="What you get with Anny"
+          className="flex flex-col justify-center border-b bg-zinc-950 p-8 text-white md:border-r md:border-b-0 md:p-12"
+        >
           <p className="text-sm font-medium tracking-wide text-[#7ea1ff]">
             Get started
           </p>
@@ -36,7 +39,7 @@ export default function RegisterSection({ plan }: { plan?: RegisterPlan }) {
               </li>
             ))}
           </ul>
-        </div>
+        </aside>
 
         <div className="relative bg-white">
           <RegisterForm plan={plan} />

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function CompareSemrushPage() {
   return (
-    <div>
+    <>
       <CompareHero
         competitor="Semrush"
         framing="Suite vs purpose-built GEO"
@@ -38,6 +38,6 @@ export default function CompareSemrushPage() {
         pickAnnyWhen={semrushVerdict.pickAnnyWhen}
         pickCompetitorWhen={semrushVerdict.pickCompetitorWhen}
       />
-    </div>
+    </>
   );
 }

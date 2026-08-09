@@ -12,7 +12,7 @@ export default function GeminiHero() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/ai-logo/geminiLogo.svg"
-          alt=""
+          alt="Gemini logo"
           width={16}
           height={16}
           className="size-4 object-contain"
