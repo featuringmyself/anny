@@ -15,9 +15,11 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
   scoreLabel: "Poor",
   private: true,
   tagline:
-    "How ready sprentzo.com is for AI agents: structured data, crawl access, automation, and semantic HTML.",
+    "How ready sprentzo.com is for AI agents — and what to fix inside the 90-day AI Visibility Sprint.",
   summary:
-    "Sprentzo already allows major AI crawlers and ships robots.txt plus llms.txt, but the site is not agent-ready. Invalid Organization JSON-LD (broken contactPoint array) and escaped HTML entities in WebPage schema wipe structured-data value. Fifty automation findings — 28 of them P1 — include CAPTCHA, unlabeled login/OTP fields, and Shopify hidden inputs that agents cannot operate. HTML semantics sit at a 1% ratio (heavy div/span), and there are no agent skill or MCP discovery files. SEO fundamentals, alt text, and internal linking are in good shape; fixing schema syntax, skill files, and form accessibility is the shortest path to a higher readiness score.",
+    "Sprentzo already lets major AI crawlers in and ships the basics (robots.txt and llms.txt), but the site is not ready for agents to understand or act. Broken business markup, fifty automation findings (twenty-eight critical), thin page structure, and missing agent discovery files hold the readiness score at 47/100. SEO fundamentals, image alt text, and internal linking are in good shape. The shortest path up is fixing markup syntax, adding skill files, and making login/newsletter forms agent-usable — all included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
+  summaryTechnical:
+    "Sprentzo already allows major AI crawlers and ships robots.txt plus llms.txt, but the site is not agent-ready. Invalid Organization JSON-LD (broken contactPoint array) and escaped HTML entities in WebPage schema wipe structured-data value. Fifty automation findings — 28 of them P1 — include CAPTCHA, unlabeled login/OTP fields, and Shopify hidden inputs that agents cannot operate. HTML semantics sit at a 1% ratio (heavy div/span), and there are no agent skill or MCP discovery files. SEO fundamentals, alt text, and internal linking are in good shape; fixing schema syntax, skill files, and form accessibility is the shortest path to a higher readiness score — on-site work included in the 90-day AI Visibility Sprint.",
   stats: [
     { label: "Automation issues", value: "50" },
     { label: "P1 blockers", value: "28" },
@@ -28,17 +30,23 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
     {
       id: "insight-schema",
       title: "Critical structured data errors & automation blockers",
-      body: "A missing closing bracket in the Organization schema’s contactPoint array invalidates the entire JSON-LD block. WebPage name and description still carry escaped HTML entities (&amp;, &#39;). Together with 28 P1 automation issues, agents and search engines cannot reliably parse or act on the page.",
+      body: "The site’s business and page markup is broken in a way search engines and AI cannot trust. Combined with twenty-eight critical automation blockers — CAPTCHA, unlabeled login fields, forms agents cannot complete — machines cannot reliably parse or act on the page.",
+      bodyTechnical:
+        "A missing closing bracket in the Organization schema’s contactPoint array invalidates the entire JSON-LD block. WebPage name and description still carry escaped HTML entities (&amp;, &#39;). Together with 28 P1 automation issues, agents and search engines cannot reliably parse or act on the page.",
     },
     {
       id: "insight-semantics",
       title: "Fundamental HTML semantic deficiencies",
-      body: "Semantic ratio is about 1%. The DOM leans on generic div and span wrappers, so agents struggle to map sections, landmarks, and meaning — classic divitis that hurts comprehension and indexing.",
+      body: "Almost none of the page uses meaningful HTML structure. Everything sits in generic wrappers, so AI struggles to tell sections, navigation, and content apart — which hurts comprehension and how the brand shows up in answers.",
+      bodyTechnical:
+        "Semantic ratio is about 1%. The DOM leans on generic div and span wrappers, so agents struggle to map sections, landmarks, and meaning — classic divitis that hurts comprehension and indexing.",
     },
     {
       id: "insight-skills",
       title: "Limited advanced AI interaction capabilities",
-      body: "No skill.md and no /.well-known/agent-skills/index.json means the site does not advertise capabilities to tool-using agents. Client-side Angular rendering can also limit bots that do not execute JavaScript.",
+      body: "Sprentzo does not publish files that tell advanced AI tools what the company offers or how to interact. Without those discovery signals, tool-using agents have nothing to latch onto. Client-side rendering can also hide content from bots that do not run JavaScript.",
+      bodyTechnical:
+        "No skill.md and no /.well-known/agent-skills/index.json means the site does not advertise capabilities to tool-using agents. Client-side Angular rendering can also limit bots that do not execute JavaScript.",
     },
   ],
   quickWins: [
@@ -47,21 +55,27 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       title: "Fix structured data syntax and entities",
       impact: "High",
       effort: "Low",
-      body: "Close the contactPoint array in Organization schema and unescape WebPage name/description so JSON-LD validates and entities resolve cleanly for AI and search.",
+      body: "Repair the broken business markup so AI and search can trust Organization and page details again. Small syntax fixes; outsized impact on how machines read the brand.",
+      bodyTechnical:
+        "Close the contactPoint array in Organization schema and unescape WebPage name/description so JSON-LD validates and entities resolve cleanly for AI and search.",
     },
     {
       id: "win-automation",
       title: "Resolve critical automation blocking issues",
       impact: "High",
       effort: "Medium",
-      body: "Address the 28 P1 issues that block agents — CAPTCHA on agent paths, unlabeled visible inputs, and forms that agents need to complete without hidden-field traps treated as interactive failures.",
+      body: "Clear the twenty-eight critical blockers that stop agents from completing real flows — CAPTCHA on agent paths, unlabeled visible inputs, and forms that need a clear interactive path.",
+      bodyTechnical:
+        "Address the 28 P1 issues that block agents — CAPTCHA on agent paths, unlabeled visible inputs, and forms that agents need to complete without hidden-field traps treated as interactive failures.",
     },
     {
       id: "win-skills",
       title: "Implement AI skill files",
       impact: "High",
       effort: "Medium",
-      body: "Add skill.md and /.well-known/agent-skills/index.json so advanced agents can discover what Sprentzo offers and how to interact with it.",
+      body: "Publish agent skill / discovery files so advanced AI can find what Sprentzo offers and how to interact — included in the same 90-day sprint as citation work.",
+      bodyTechnical:
+        "Add skill.md and /.well-known/agent-skills/index.json so advanced agents can discover what Sprentzo offers and how to interact with it.",
     },
   ],
   categories: [
@@ -69,7 +83,9 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "cat-site-files",
       title: "Site files",
       status: "needs-improvement",
-      body: "robots.txt and llms.txt are in place, and no key AI agents are blocked. Missing skill.md and /.well-known/agent-skills/index.json still leave capability discovery incomplete for advanced agents.",
+      body: "Crawl permission files are in place and no major AI agents are blocked. What is missing are the discovery files that tell advanced agents what Sprentzo can do.",
+      bodyTechnical:
+        "robots.txt and llms.txt are in place, and no key AI agents are blocked. Missing skill.md and /.well-known/agent-skills/index.json still leave capability discovery incomplete for advanced agents.",
       metrics: [
         { label: "robots.txt", value: "Present · agents allowed" },
         { label: "llms.txt", value: "Found" },
@@ -80,13 +96,17 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "cat-seo",
       title: "SEO fundamentals",
       status: "good",
-      body: "Title and meta description are descriptive, keyword-relevant, and carry a clear value proposition — solid foundations for search and AI summarization.",
+      body: "Title and meta description are clear, relevant, and carry a real value proposition — solid foundations for search and AI summarization.",
+      bodyTechnical:
+        "Title and meta description are descriptive, keyword-relevant, and carry a clear value proposition — solid foundations for search and AI summarization.",
     },
     {
       id: "cat-freshness",
       title: "Content freshness",
       status: "good",
-      body: "Primary intent reads as evergreen/reference for a sports brand, products, and philosophy. Blog posts from late May 2026 and a current © 2026 footer show recent activity with no temporal mismatches for an August 2026 audit.",
+      body: "Core pages read as evergreen for a sports brand. Recent blog activity and a current footer year show the site is maintained — no red flags for an August 2026 audit.",
+      bodyTechnical:
+        "Primary intent reads as evergreen/reference for a sports brand, products, and philosophy. Blog posts from late May 2026 and a current © 2026 footer show recent activity with no temporal mismatches for an August 2026 audit.",
       metrics: [
         { label: "Category", value: "Evergreen / reference" },
         { label: "Latest publication", value: "2026-05-29" },
@@ -97,7 +117,9 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "cat-schema",
       title: "Structured data (schema)",
       status: "needs-improvement",
-      body: "Organization, WebSite, and WebPage JSON-LD are present with @id linking and a SearchAction on WebSite — good shape on paper. A missing ] on Organization contactPoint invalidates the whole block; WebPage name/description still contain HTML entities. Address could be richer; foundingDate or review would strengthen the entity.",
+      body: "Business and page markup exist on paper, but a syntax error invalidates the block and some text still carries escaped characters. Fixing validity unlocks the value that is already almost there.",
+      bodyTechnical:
+        "Organization, WebSite, and WebPage JSON-LD are present with @id linking and a SearchAction on WebSite — good shape on paper. A missing ] on Organization contactPoint invalidates the whole block; WebPage name/description still contain HTML entities. Address could be richer; foundingDate or review would strengthen the entity.",
       metrics: [
         { label: "Schema found", value: "Yes" },
         { label: "Types seen", value: "Organization, WebSite, WebPage" },
@@ -108,32 +130,42 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "cat-content",
       title: "Content structure",
       status: "needs-improvement",
-      body: "Headings organize the page for scanning, but there are no Q&A-style headings for direct answers. Average section length is short — easy to skim, thin for deep agent comprehension.",
+      body: "Headings help humans scan, but there are few direct Q&A-style answers. Sections are short — easy to skim, thin for deep AI comprehension.",
+      bodyTechnical:
+        "Headings organize the page for scanning, but there are no Q&A-style headings for direct answers. Average section length is short — easy to skim, thin for deep agent comprehension.",
     },
     {
       id: "cat-linking",
       title: "Internal linking",
       status: "good",
-      body: "A high share of links stay on-site, guiding users through related pages and distributing equity — strong for SEO and crawl paths.",
+      body: "Most links stay on-site, guiding visitors through related pages — strong for SEO and for how crawlers move around the brand.",
+      bodyTechnical:
+        "A high share of links stay on-site, guiding users through related pages and distributing equity — strong for SEO and crawl paths.",
     },
     {
       id: "cat-images",
       title: "Image accessibility",
       status: "good",
-      body: "All 56 images have alt text, which helps screen readers and gives models usable image context for indexing and answers.",
+      body: "Every image has alt text — good for accessibility and for giving AI usable image context.",
+      bodyTechnical:
+        "All 56 images have alt text, which helps screen readers and gives models usable image context for indexing and answers.",
       metrics: [{ label: "Missing alt", value: "None" }],
     },
     {
       id: "cat-semantics",
       title: "HTML semantics",
       status: "poor",
-      body: "Semantic ratio around 1% — minimal HTML5 landmarks and content tags. Heavy div/span usage makes structure and meaning hard for agents to infer.",
+      body: "Meaningful HTML structure is almost absent. Heavy generic wrappers make it hard for agents to infer what each region of the page is for.",
+      bodyTechnical:
+        "Semantic ratio around 1% — minimal HTML5 landmarks and content tags. Heavy div/span usage makes structure and meaning hard for agents to infer.",
       metrics: [{ label: "Semantic ratio", value: "1%" }],
     },
   ],
   automation: {
     status: "poor",
-    body: "Fifty issues affect automation: 28 critical P1 blockers and 22 high-priority P2 reliability gaps. Grouped below by pattern — not every selector.",
+    body: "Fifty issues affect whether AI can complete real flows: twenty-eight critical blockers and twenty-two reliability gaps. Grouped below by pattern — impact first, not every technical detail.",
+    bodyTechnical:
+      "Fifty issues affect automation: 28 critical P1 blockers and 22 high-priority P2 reliability gaps. Grouped below by pattern — not every selector.",
     totalIssues: 50,
     p1Count: 28,
     p2Count: 22,
@@ -144,6 +176,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
         title: "CAPTCHA detected",
         count: 1,
         summary:
+          "A CAPTCHA on the page will stop agents from finishing forms or multi-step flows. Prefer bot controls that still allow legitimate automation or API paths.",
+        summaryTechnical:
           "A CAPTCHA on the page body will stop agents from completing forms or multi-step flows. Prefer bot controls that still allow authenticated or API access for legitimate automation.",
         examples: ["Page body · CAPTCHA present"],
       },
@@ -153,6 +187,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
         title: "Hidden / non-interactive inputs treated as blockers",
         count: 10,
         summary:
+          "Checkout and OTP flows use hidden fields that the audit flags as non-interactive. Agents need clear visible fields for real user data; background chrome should stay out of the interactive contract.",
+        summaryTechnical:
           "Shopify and OTP flows use type=hidden fields (form_type, utf8, tags, return_url, otp). The audit flags these as non-interactive; agents need clear visible fields for real user data, with hidden chrome left out of the interactive contract.",
         examples: [
           '<input type="hidden" name="form_type" value="customer">',
@@ -166,6 +202,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
         title: "Missing programmatic labels on real inputs",
         count: 17,
         summary:
+          "Visible email, password, phone, WhatsApp, name, and OTP boxes lack proper labels. Without them, agents and assistive tech cannot reliably tell what each field is for.",
+        summaryTechnical:
           "Visible email, password, phone, WhatsApp, name, and OTP boxes lack associated <label> elements. Without for/id links, agents and assistive tech cannot reliably name the field purpose.",
         examples: [
           '<input type="email" id="otp-original-email" name="customer[email]">',
@@ -179,6 +217,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
         title: "Missing autocomplete on real form fields",
         count: 10,
         summary:
+          "Newsletter, login, recovery, phone, and name fields lack standard autocomplete hints, which weakens reliable agent form-filling.",
+        summaryTechnical:
           "Newsletter, login, recovery, phone, and name fields lack standard autocomplete tokens (email, current-password, tel, given-name, etc.), which weakens reliable agent form-filling.",
         examples: [
           '<input type="email" name="contact[email]" class="newsletter-form__email-input">',
@@ -192,6 +232,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
         title: "Autocomplete noise on chrome / hidden controls",
         count: 12,
         summary:
+          "Nav toggles, search, and background fields are also flagged. Lower priority than real form fields; clean up when those templates are touched.",
+        summaryTechnical:
           "Navigation checkboxes, submenu toggles, search with autocomplete=off, and hidden Shopify fields are also flagged. Lower priority than real form fields; clean up when touching those templates.",
         examples: [
           '<input class="navigation__control-input" type="checkbox" id="navigation-control">',
@@ -202,6 +244,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
     ],
   },
   agentsIntro:
+    "Major AI crawlers are allowed, and llms.txt is present. What is still missing is capability discovery — no MCP or agent-skill files for advanced tools to learn what Sprentzo offers.",
+  agentsIntroTechnical:
     "Major AI crawlers are allowed in robots.txt and llms.txt is present. Capability discovery is still thin: no MCP link, no well-known MCP cards, and no agent-skills index.",
   llmsTxtFound: true,
   discoverySignals: [
@@ -249,23 +293,23 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
     { agent: "MistralAI-User", vendor: "Mistral", allowed: true },
   ],
   sprint: {
-    name: "AI Readiness Fix Pack",
-    duration: "One-time",
+    name: "90-day AI Visibility Sprint",
+    duration: "90 days",
     headline:
-      "Make sprentzo.com parseable and operable for AI agents — then keep it that way",
-    body: "This is the on-site twin of the visibility sprint: fix broken JSON-LD, ship agent skill files, label real forms, and raise semantic HTML so crawlers and agents can understand and act. Citation work elsewhere still needs a site that validates and exposes capabilities.",
+      "Get Sprentzo cited on gear and Bengaluru app prompts within 90 days",
+    body: "When buyers ask ChatGPT, Perplexity, Google AI Overview, and other models for pickleball gear in India or a sports community app in Bengaluru, Sprentzo should show up — not JOOLA on Amazon, not Playo alone. We start with the trust failures that kill the sale before a paddle or an install: “which Sprentzo?” and skincare + ScamAdviser. Then we run citation work on both lanes in one engagement. On-site readiness from this audit — valid schema, skill files, labeled forms, clearer HTML — is included in that same 90-day sprint so citation gains land on a site agents can parse. Not a separate product. You also get a dashboard for model gaps, competitor share, improvement score, and next actions each week.",
     outcomes: [
-      "Valid Organization / WebSite / WebPage JSON-LD with unescaped text and a complete contactPoint array",
-      "Agent skill files at /.well-known/agent-skills/ plus an index agents can fetch",
-      "P1 automation cleanup: labels and autocomplete on visible login, newsletter, and OTP fields; clearer agent path around CAPTCHA",
-      "Semantic HTML landmarks on key templates so structure is not buried in div/span trees",
-      "Re-test checklist for robots, llms.txt, discovery signals, and schema validators with a scored before/after",
+      "Trust and identity fixed so “is Sprentzo reliable” stops returning “which Sprentzo?” or skincare / ScamAdviser",
+      "Cited on priority India paddle and apparel prompts that today route to JOOLA, Decathlon, Arrowmax, and Amazon",
+      "Sprentzo app cited on Bengaluru “find players / sports community” prompts Playo and Hudle own today",
+      "On-site readiness included: valid Organization / WebSite / WebPage markup, agent skill files, P1 form cleanup, and clearer HTML structure",
+      "Weekly re-tests of this prompt set with screenshot proof, plus a tracking dashboard for model gaps, competitor share, and clear next actions",
     ],
   },
   ctaUrl: "https://cal.com/dodox/quick-chat",
   ctaLabel: "Book a quick chat",
-  ctaEyebrow: "Readiness fix pack",
-  ctaHeadline: "Ready to make Sprentzo agent-readable?",
+  ctaEyebrow: "90-day sprint",
+  ctaHeadline: "Ready to get Sprentzo cited on gear and the app?",
   ctaBody:
-    "Book a short call and we’ll walk the 47/100 readiness snapshot: broken schema, missing skill files, and the P1 form blockers — then map the one-time fix pack alongside your visibility work.",
+    "Book a short call and we’ll map the 90-day plan: clear the reliability and skincare collision first, then run citation work on India paddle / apparel shortlists and Bengaluru find-players prompts — with on-site readiness (schema, skill files, forms) included in the same engagement. You’ll also have a dashboard to track progress and know what to do next.",
 };

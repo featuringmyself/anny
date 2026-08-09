@@ -153,10 +153,16 @@ export type ReportCtaFields = {
 
 export type ReadinessStatus = "good" | "needs-improvement" | "poor";
 
+/** Audience mode for readiness report copy and technical detail. */
+export type ReadinessAudienceMode = "non-technical" | "technical";
+
 export type ReadinessInsight = {
   id: string;
   title: string;
+  /** Plain / default body. Used for both modes when bodyTechnical is absent. */
   body: string;
+  /** Technical-mode body when wording differs. */
+  bodyTechnical?: string;
 };
 
 export type ReadinessQuickWin = {
@@ -165,6 +171,7 @@ export type ReadinessQuickWin = {
   impact: "High" | "Medium" | "Low";
   effort: "High" | "Medium" | "Low";
   body: string;
+  bodyTechnical?: string;
 };
 
 export type ReadinessCategory = {
@@ -172,6 +179,7 @@ export type ReadinessCategory = {
   title: string;
   status: ReadinessStatus;
   body: string;
+  bodyTechnical?: string;
   metrics?: ReportStat[];
 };
 
@@ -183,12 +191,16 @@ export type ReadinessAutomationGroup = {
   title: string;
   count: number;
   summary: string;
+  /** Technical-mode summary when wording differs. */
+  summaryTechnical?: string;
+  /** Selector / markup examples — shown in technical mode only. */
   examples: string[];
 };
 
 export type ReadinessAutomation = {
   status: ReadinessStatus;
   body: string;
+  bodyTechnical?: string;
   totalIssues: number;
   p1Count: number;
   p2Count: number;
@@ -221,6 +233,8 @@ export type ReadinessReport = {
   overallScore: number;
   scoreLabel: string;
   summary: string;
+  /** Technical-mode hero summary when wording differs. */
+  summaryTechnical?: string;
   tagline?: string;
   stats?: ReportStat[];
   insights: ReadinessInsight[];
@@ -229,6 +243,7 @@ export type ReadinessReport = {
   automation: ReadinessAutomation;
   agents: ReadinessAgentRow[];
   agentsIntro: string;
+  agentsIntroTechnical?: string;
   llmsTxtFound: boolean;
   discoverySignals: ReadinessDiscoverySignal[];
   sprint: SprintOffer;

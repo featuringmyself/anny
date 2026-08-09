@@ -1,10 +1,15 @@
-import type { ReadinessReport } from "./types";
+import { readinessCopy } from "./readiness-copy";
+import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessQuickWinsProps = {
   report: ReadinessReport;
+  mode: ReadinessAudienceMode;
 };
 
-export default function ReadinessQuickWins({ report }: ReadinessQuickWinsProps) {
+export default function ReadinessQuickWins({
+  report,
+  mode,
+}: ReadinessQuickWinsProps) {
   return (
     <section className="border-b">
       <div className="px-6 pt-12 md:px-12 md:pt-16">
@@ -19,7 +24,8 @@ export default function ReadinessQuickWins({ report }: ReadinessQuickWinsProps) 
         </h2>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500">
           High-impact, mostly low-to-medium effort work that unblocks agents and
-          search engines before deeper HTML or form refactors.
+          search engines before deeper HTML or form refactors — included in the
+          90-day AI Visibility Sprint.
         </p>
       </div>
       <ol className="mt-10 border-t">
@@ -36,7 +42,7 @@ export default function ReadinessQuickWins({ report }: ReadinessQuickWinsProps) 
                 {win.title}
               </h3>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
-                {win.body}
+                {readinessCopy(mode, win.body, win.bodyTechnical)}
               </p>
             </div>
             <dl className="flex gap-6 text-sm md:flex-col md:gap-3 md:text-right">

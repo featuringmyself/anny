@@ -2,16 +2,20 @@ import {
   readinessStatusClass,
   readinessStatusLabel,
 } from "./readiness-status";
-import type { ReadinessReport } from "./types";
+import { readinessCopy } from "./readiness-copy";
+import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessAutomationProps = {
   report: ReadinessReport;
+  mode: ReadinessAudienceMode;
 };
 
 export default function ReadinessAutomation({
   report,
+  mode,
 }: ReadinessAutomationProps) {
   const { automation } = report;
+  const isTechnical = mode === "technical";
 
   return (
     <section className="border-b">
@@ -30,7 +34,7 @@ export default function ReadinessAutomation({
           Agents hit walls before they can act
         </h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
-          {automation.body}
+          {readinessCopy(mode, automation.body, automation.bodyTechnical)}
         </p>
         <dl className="mt-8 flex flex-wrap gap-8 text-sm">
           <div>
@@ -69,9 +73,9 @@ export default function ReadinessAutomation({
               </h3>
             </div>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600">
-              {group.summary}
+              {readinessCopy(mode, group.summary, group.summaryTechnical)}
             </p>
-            {group.examples.length ? (
+            {isTechnical && group.examples.length ? (
               <ul className="mt-5 space-y-2">
                 {group.examples.map((example) => (
                   <li

@@ -2,14 +2,17 @@ import {
   readinessStatusClass,
   readinessStatusLabel,
 } from "./readiness-status";
-import type { ReadinessReport } from "./types";
+import { readinessCopy } from "./readiness-copy";
+import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessCategoriesProps = {
   report: ReadinessReport;
+  mode: ReadinessAudienceMode;
 };
 
 export default function ReadinessCategories({
   report,
+  mode,
 }: ReadinessCategoriesProps) {
   return (
     <section className="border-b">
@@ -38,7 +41,7 @@ export default function ReadinessCategories({
               </p>
             </div>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600">
-              {category.body}
+              {readinessCopy(mode, category.body, category.bodyTechnical)}
             </p>
             {category.metrics?.length ? (
               <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-4 text-sm">

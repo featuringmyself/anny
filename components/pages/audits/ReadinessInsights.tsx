@@ -1,10 +1,15 @@
-import type { ReadinessReport } from "./types";
+import { readinessCopy } from "./readiness-copy";
+import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessInsightsProps = {
   report: ReadinessReport;
+  mode: ReadinessAudienceMode;
 };
 
-export default function ReadinessInsights({ report }: ReadinessInsightsProps) {
+export default function ReadinessInsights({
+  report,
+  mode,
+}: ReadinessInsightsProps) {
   return (
     <section className="border-b">
       <div className="px-6 pt-12 md:px-12 md:pt-16">
@@ -28,7 +33,7 @@ export default function ReadinessInsights({ report }: ReadinessInsightsProps) {
               {insight.title}
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-              {insight.body}
+              {readinessCopy(mode, insight.body, insight.bodyTechnical)}
             </p>
           </article>
         ))}
