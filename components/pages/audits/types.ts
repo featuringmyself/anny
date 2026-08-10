@@ -217,6 +217,8 @@ export type ReadinessDiscoverySignal = {
   id: string;
   label: string;
   found: boolean;
+  /** Extra detail (e.g. SPA HTML false positive). Shown in technical mode. */
+  note?: string;
 };
 
 export type ReadinessReport = {

@@ -17,13 +17,13 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
   tagline:
     "How ready sprentzo.com is for AI agents — and what to fix inside the 90-day AI Visibility Sprint.",
   summary:
-    "Sprentzo already lets major AI crawlers in and ships the basics (robots.txt and llms.txt), but the site is not ready for agents to understand or act. Broken business markup, fifty automation findings (twenty-eight critical), thin page structure, and missing agent discovery files hold the readiness score at 47/100. SEO fundamentals, image alt text, and internal linking are in good shape. The shortest path up is fixing markup syntax, adding skill files, and making login/newsletter forms agent-usable — all included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
+    "Sprentzo already lets major AI crawlers in and ships real agent docs (llms.txt, agents.md, UCP discovery) — but the site is not ready for agents to trust the markup or operate forms cleanly. Broken Organization JSON-LD, HTML entities in WebPage schema, fifty automation findings (twenty-eight critical), and thin HTML semantics hold the readiness score at 47/100. SEO fundamentals, image alt text, and internal linking are in good shape. The shortest path up is fixing schema syntax, cleaning form accessibility, and filling the agent-skills gap — all included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
   summaryTechnical:
-    "Sprentzo already allows major AI crawlers and ships robots.txt plus llms.txt, but the site is not agent-ready. Invalid Organization JSON-LD (broken contactPoint array) and escaped HTML entities in WebPage schema wipe structured-data value. Fifty automation findings — 28 of them P1 — include CAPTCHA, unlabeled login/OTP fields, and Shopify hidden inputs that agents cannot operate. HTML semantics sit at a 1% ratio (heavy div/span), and there are no agent skill or MCP discovery files. SEO fundamentals, alt text, and internal linking are in good shape; fixing schema syntax, skill files, and form accessibility is the shortest path to a higher readiness score — on-site work included in the 90-day AI Visibility Sprint.",
+    "Sprentzo allows major AI crawlers and ships robots.txt, a real /llms.txt, /agents.md, and /.well-known/ucp (Shopify/UCP). Organization JSON-LD is invalid: contactPoint array is closed but a comma is missing before sameAs. WebPage name/description still contain HTML entities (&amp;, &#39;). WebSite JSON-LD is valid. Fifty automation findings — 28 P1 — include CAPTCHA-related fields, unlabeled login/OTP inputs, and Shopify hidden inputs. HTML semantics ≈1–2% (heavy div/span). /.well-known/agent-skills/index.json and /skill.md 404. SEO fundamentals, alt text, and internal linking are strong; fix Org JSON syntax, entities, forms, and skills index inside the 90-day AI Visibility Sprint.",
   stats: [
     { label: "Automation issues", value: "50" },
     { label: "P1 blockers", value: "28" },
-    { label: "Semantic ratio", value: "1%" },
+    { label: "Semantic ratio", value: "~1–2%" },
     { label: "Images with alt", value: "56/56" },
   ],
   insights: [
@@ -32,21 +32,21 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       title: "Critical structured data errors & automation blockers",
       body: "The site’s business and page markup is broken in a way search engines and AI cannot trust. Combined with twenty-eight critical automation blockers — CAPTCHA, unlabeled login fields, forms agents cannot complete — machines cannot reliably parse or act on the page.",
       bodyTechnical:
-        "A missing closing bracket in the Organization schema’s contactPoint array invalidates the entire JSON-LD block. WebPage name and description still carry escaped HTML entities (&amp;, &#39;). Together with 28 P1 automation issues, agents and search engines cannot reliably parse or act on the page.",
+        "A missing comma after the Organization schema’s contactPoint array (before sameAs) invalidates the Organization JSON-LD block. WebPage name and description still carry escaped HTML entities (&amp;, &#39;). Together with 28 P1 automation issues, agents and search engines cannot reliably parse or act on the page.",
     },
     {
       id: "insight-semantics",
       title: "Fundamental HTML semantic deficiencies",
       body: "Almost none of the page uses meaningful HTML structure. Everything sits in generic wrappers, so AI struggles to tell sections, navigation, and content apart — which hurts comprehension and how the brand shows up in answers.",
       bodyTechnical:
-        "Semantic ratio is about 1%. The DOM leans on generic div and span wrappers, so agents struggle to map sections, landmarks, and meaning — classic divitis that hurts comprehension and indexing.",
+        "Semantic ratio ≈1–2%. Some landmarks exist, but the DOM still leans on generic div/span, so agents struggle to map sections and meaning.",
     },
     {
       id: "insight-skills",
-      title: "Limited advanced AI interaction capabilities",
-      body: "Sprentzo does not publish files that tell advanced AI tools what the company offers or how to interact. Without those discovery signals, tool-using agents have nothing to latch onto. Client-side rendering can also hide content from bots that do not run JavaScript.",
+      title: "Partial agent discovery — skills index still missing",
+      body: "Sprentzo already publishes useful agent instructions and commerce discovery, but it still lacks a standard agent-skills index. Advanced tools that look for that path get a dead end.",
       bodyTechnical:
-        "No skill.md and no /.well-known/agent-skills/index.json means the site does not advertise capabilities to tool-using agents. Client-side Angular rendering can also limit bots that do not execute JavaScript.",
+        "/llms.txt and /agents.md are real; /.well-known/ucp is live. /skill.md and /.well-known/agent-skills/index.json return 404. Standard MCP link / well-known MCP JSON cards are also absent.",
     },
   ],
   quickWins: [
@@ -57,7 +57,7 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       effort: "Low",
       body: "Repair the broken business markup so AI and search can trust Organization and page details again. Small syntax fixes; outsized impact on how machines read the brand.",
       bodyTechnical:
-        "Close the contactPoint array in Organization schema and unescape WebPage name/description so JSON-LD validates and entities resolve cleanly for AI and search.",
+        "Add the missing comma after the Organization contactPoint array (before sameAs) and unescape WebPage name/description so JSON-LD validates and entities resolve cleanly.",
     },
     {
       id: "win-automation",
@@ -70,12 +70,12 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
     },
     {
       id: "win-skills",
-      title: "Implement AI skill files",
+      title: "Add agent-skills index",
       impact: "High",
       effort: "Medium",
-      body: "Publish agent skill / discovery files so advanced AI can find what Sprentzo offers and how to interact — included in the same 90-day sprint as citation work.",
+      body: "You already have agent instructions and UCP discovery. Add the standard agent-skills index so tools that look for that path can find Sprentzo — included in the same 90-day sprint as citation work.",
       bodyTechnical:
-        "Add skill.md and /.well-known/agent-skills/index.json so advanced agents can discover what Sprentzo offers and how to interact with it.",
+        "Add /.well-known/agent-skills/index.json (and optional skill.md) pointing at existing /agents.md / llms.txt / UCP capabilities.",
     },
   ],
   categories: [
@@ -83,13 +83,14 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "cat-site-files",
       title: "Site files",
       status: "needs-improvement",
-      body: "Crawl permission files are in place and no major AI agents are blocked. What is missing are the discovery files that tell advanced agents what Sprentzo can do.",
+      body: "Crawl permission is fine, and Sprentzo already ships real llms.txt, agents.md, and UCP discovery. The gap is the standard agent-skills index — tools that only look there still see nothing.",
       bodyTechnical:
-        "robots.txt and llms.txt are in place, and no key AI agents are blocked. Missing skill.md and /.well-known/agent-skills/index.json still leave capability discovery incomplete for advanced agents.",
+        "robots.txt present; agents allowed. Real: /llms.txt, /agents.md, /.well-known/ucp. Missing (404): /skill.md, /.well-known/agent-skills/index.json. No <link rel=\"mcp\"> or well-known MCP JSON cards.",
       metrics: [
         { label: "robots.txt", value: "Present · agents allowed" },
-        { label: "llms.txt", value: "Found" },
-        { label: "Agent skills", value: "Not found" },
+        { label: "llms.txt / agents.md", value: "Found · real" },
+        { label: "UCP", value: "/.well-known/ucp · found" },
+        { label: "Agent skills index", value: "404" },
       ],
     },
     {
@@ -119,11 +120,11 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       status: "needs-improvement",
       body: "Business and page markup exist on paper, but a syntax error invalidates the block and some text still carries escaped characters. Fixing validity unlocks the value that is already almost there.",
       bodyTechnical:
-        "Organization, WebSite, and WebPage JSON-LD are present with @id linking and a SearchAction on WebSite — good shape on paper. A missing ] on Organization contactPoint invalidates the whole block; WebPage name/description still contain HTML entities. Address could be richer; foundingDate or review would strengthen the entity.",
+        "Organization, WebSite, and WebPage JSON-LD are present with @id linking and a SearchAction on WebSite — good shape on paper. Organization JSON fails parse: missing comma after contactPoint ] before sameAs. WebSite is valid; WebPage parses but contains HTML entities. Enrich with Product/Article/FAQPage where relevant.",
       metrics: [
         { label: "Schema found", value: "Yes" },
         { label: "Types seen", value: "Organization, WebSite, WebPage" },
-        { label: "Validity", value: "Broken · contactPoint array" },
+        { label: "Validity", value: "Broken · missing comma" },
       ],
     },
     {
@@ -157,8 +158,8 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       status: "poor",
       body: "Meaningful HTML structure is almost absent. Heavy generic wrappers make it hard for agents to infer what each region of the page is for.",
       bodyTechnical:
-        "Semantic ratio around 1% — minimal HTML5 landmarks and content tags. Heavy div/span usage makes structure and meaning hard for agents to infer.",
-      metrics: [{ label: "Semantic ratio", value: "1%" }],
+        "Semantic ratio ≈1–2% of (landmarks + div + span). Some header/nav/main/section/footer exist, but div/span still dominate.",
+      metrics: [{ label: "Semantic ratio", value: "~1–2%" }],
     },
   ],
   automation: {
@@ -244,9 +245,9 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
     ],
   },
   agentsIntro:
-    "Major AI crawlers are allowed, and llms.txt is present. What is still missing is capability discovery — no MCP or agent-skill files for advanced tools to learn what Sprentzo offers.",
+    "Major AI crawlers are allowed. Real llms.txt, agents.md, and UCP discovery are already live. The remaining gap is the standard agent-skills index (and MCP link cards).",
   agentsIntroTechnical:
-    "Major AI crawlers are allowed in robots.txt and llms.txt is present. Capability discovery is still thin: no MCP link, no well-known MCP cards, and no agent-skills index.",
+    "robots.txt allows major AI agents. Real: /llms.txt, /agents.md, /.well-known/ucp. Missing: <link rel=\"mcp\">, well-known MCP JSON cards, /skill.md, /.well-known/agent-skills/index.json (404).",
   llmsTxtFound: true,
   discoverySignals: [
     { id: "sig-mcp-link", label: '<link rel="mcp">', found: false },
@@ -265,6 +266,19 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       id: "sig-skills",
       label: "/.well-known/agent-skills/index.json",
       found: false,
+      note: "HTTP 404",
+    },
+    {
+      id: "sig-agents-md",
+      label: "/agents.md",
+      found: true,
+      note: "Real markdown agent instructions",
+    },
+    {
+      id: "sig-ucp",
+      label: "/.well-known/ucp",
+      found: true,
+      note: "Shopify UCP merchant profile",
     },
   ],
   agents: [
@@ -302,7 +316,7 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
       "Trust and identity fixed so “is Sprentzo reliable” stops returning “which Sprentzo?” or skincare / ScamAdviser",
       "Cited on priority India paddle and apparel prompts that today route to JOOLA, Decathlon, Arrowmax, and Amazon",
       "Sprentzo app cited on Bengaluru “find players / sports community” prompts Playo and Hudle own today",
-      "On-site readiness included: valid Organization / WebSite / WebPage markup, agent skill files, P1 form cleanup, and clearer HTML structure",
+      "On-site readiness included: valid Organization JSON (comma + unescaped WebPage), agent-skills index on top of existing agents.md/UCP, P1 form cleanup, and clearer HTML structure",
       "Weekly re-tests of this prompt set with screenshot proof, plus a tracking dashboard for model gaps, competitor share, and clear next actions",
     ],
   },
@@ -311,5 +325,5 @@ export const sprentzoAiReadinessReport: ReadinessReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "Ready to get Sprentzo cited on gear and the app?",
   ctaBody:
-    "Book a short call and we’ll map the 90-day plan: clear the reliability and skincare collision first, then run citation work on India paddle / apparel shortlists and Bengaluru find-players prompts — with on-site readiness (schema, skill files, forms) included in the same engagement. You’ll also have a dashboard to track progress and know what to do next.",
+    "Book a short call and we’ll map the 90-day plan: clear the reliability and skincare collision first, then run citation work on India paddle / apparel shortlists and Bengaluru find-players prompts — with on-site readiness (schema fix, agent-skills index, forms) included in the same engagement. You’ll also have a dashboard to track progress and know what to do next.",
 };

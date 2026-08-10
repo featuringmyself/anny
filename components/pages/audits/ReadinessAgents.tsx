@@ -21,7 +21,9 @@ export default function ReadinessAgents({
       <div className="px-6 pt-12 md:px-12 md:pt-16">
         <p className="mb-3 text-sm font-medium text-[#2462ff]">Site files</p>
         <h2 className="max-w-xl text-3xl font-medium tracking-tight text-balance md:text-4xl">
-          Crawlers are welcome. Capability files are missing.
+          {report.discoverySignals.some((s) => s.found)
+            ? "Crawlers are welcome. Discovery is incomplete."
+            : "Crawlers are welcome. Capability files are missing."}
         </h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
           {readinessCopy(
@@ -75,6 +77,11 @@ export default function ReadinessAgents({
                   <span className="mt-0.5 block font-mono text-xs text-zinc-500 break-all">
                     {signal.label}
                   </span>
+                  {signal.note ? (
+                    <span className="mt-1 block text-xs leading-relaxed text-zinc-500">
+                      {signal.note}
+                    </span>
+                  ) : null}
                 </span>
               </li>
             ))}
