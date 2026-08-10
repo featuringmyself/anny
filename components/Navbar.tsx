@@ -34,54 +34,118 @@ const navLinks = [
 const TOP_REVEAL_PX = 8;
 const DIRECTION_DELTA_PX = 8;
 
-/** Hide on scroll down, reveal on scroll up. Respects prefers-reduced-motion. */
+const SCROLL_DOWN_KEYS = new Set([
+  "ArrowDown",
+  "PageDown",
+  "End",
+  " ",
+]);
+const SCROLL_UP_KEYS = new Set(["ArrowUp", "PageUp", "Home"]);
+
+/**
+ * Hide on scroll down, reveal on scroll up.
+ * Driven by user gestures (wheel / touch / keys) so layout reflow
+ * (e.g. readiness mode toggle) never toggles the bar.
+ * Respects prefers-reduced-motion.
+ */
 function useScrollHide() {
   const [hidden, setHidden] = useState(false);
-  const lastYRef = useRef(0);
   const hiddenRef = useRef(false);
   const frameRef = useRef(0);
+  const touchYRef = useRef<number | null>(null);
 
-  const applyScroll = useEffectEvent((y: number) => {
-    const delta = y - lastYRef.current;
-    lastYRef.current = y;
-
-    let next = hiddenRef.current;
-    if (y <= TOP_REVEAL_PX) next = false;
-    else if (delta > DIRECTION_DELTA_PX) next = true;
-    else if (delta < -DIRECTION_DELTA_PX) next = false;
-
+  const commit = useEffectEvent((next: boolean) => {
+    if (window.scrollY <= TOP_REVEAL_PX) next = false;
     if (next === hiddenRef.current) return;
     hiddenRef.current = next;
     startTransition(() => setHidden(next));
   });
 
-  const reveal = useEffectEvent(() => {
-    if (!hiddenRef.current) return;
-    hiddenRef.current = false;
-    startTransition(() => setHidden(false));
+  const onUserDelta = useEffectEvent((deltaY: number) => {
+    if (Math.abs(deltaY) < DIRECTION_DELTA_PX) return;
+    cancelAnimationFrame(frameRef.current);
+    frameRef.current = requestAnimationFrame(() => {
+      // Positive deltaY = content moving up = user scrolling down → hide
+      commit(deltaY > 0);
+    });
   });
 
   useEffect(() => {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const passive = { passive: true } as const;
 
+    const onWheel = (event: WheelEvent) => {
+      onUserDelta(event.deltaY);
+    };
+
+    const onTouchStart = (event: TouchEvent) => {
+      touchYRef.current = event.touches[0]?.clientY ?? null;
+    };
+
+    const onTouchMove = (event: TouchEvent) => {
+      const y = event.touches[0]?.clientY;
+      if (y == null || touchYRef.current == null) return;
+      // Finger moving up → page scrolls down → positive delta
+      onUserDelta(touchYRef.current - y);
+      touchYRef.current = y;
+    };
+
+    const onTouchEnd = () => {
+      touchYRef.current = null;
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) {
+        return;
+      }
+      const target = event.target;
+      if (
+        target instanceof HTMLElement &&
+        (target.isContentEditable ||
+          target.closest(
+            "input, textarea, select, button, a, [role='button'], [role='switch']",
+          ))
+      ) {
+        return;
+      }
+      if (event.key === " " && event.shiftKey) {
+        onUserDelta(-(DIRECTION_DELTA_PX + 1));
+      } else if (SCROLL_DOWN_KEYS.has(event.key)) {
+        onUserDelta(DIRECTION_DELTA_PX + 1);
+      } else if (SCROLL_UP_KEYS.has(event.key)) {
+        onUserDelta(-(DIRECTION_DELTA_PX + 1));
+      }
+    };
+
+    // Layout / anchoring scroll: only reveal when back at the top
     const onScroll = () => {
+      if (window.scrollY <= TOP_REVEAL_PX) commit(false);
+    };
+
+    const clearListeners = () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frameRef.current);
-      frameRef.current = requestAnimationFrame(() => {
-        applyScroll(window.scrollY);
-      });
     };
 
     const syncMotionPreference = () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frameRef.current);
+      clearListeners();
 
       if (motionQuery.matches) {
-        reveal();
+        commit(false);
         return;
       }
 
-      lastYRef.current = window.scrollY;
-      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("wheel", onWheel, passive);
+      window.addEventListener("touchstart", onTouchStart, passive);
+      window.addEventListener("touchmove", onTouchMove, passive);
+      window.addEventListener("touchend", onTouchEnd, passive);
+      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener("scroll", onScroll, passive);
     };
 
     syncMotionPreference();
@@ -89,8 +153,7 @@ function useScrollHide() {
 
     return () => {
       motionQuery.removeEventListener("change", syncMotionPreference);
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(frameRef.current);
+      clearListeners();
     };
   }, []);
 

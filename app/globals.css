@@ -84,6 +84,11 @@
   color-scheme: light;
 }
 
+/* Prevent scroll jump when mode toggle changes content height */
+@utility overflow-anchor-none {
+  overflow-anchor: none;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

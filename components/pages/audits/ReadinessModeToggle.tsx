@@ -67,7 +67,9 @@ export function ReadinessModeBar({ mode, onChange }: ReadinessModeBarProps) {
     if (!sentinel) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setStuck(!entry.isIntersecting),
+      ([entry]) => {
+        setStuck(!entry.isIntersecting);
+      },
       { threshold: 0 },
     );
 
@@ -80,6 +82,7 @@ export function ReadinessModeBar({ mode, onChange }: ReadinessModeBarProps) {
       <div ref={sentinelRef} className="h-px w-full" aria-hidden />
       <div
         className={cn(
+          // Under the site nav (z-50); fills the top edge once nav hides on scroll
           "sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-sm",
           "transition-shadow duration-200",
           stuck && "shadow-[0_1px_3px_rgba(0,0,0,0.06)]",

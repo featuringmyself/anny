@@ -29,7 +29,7 @@ export default function ReadinessReportView({
   const [mode, setMode] = useState<ReadinessAudienceMode>("non-technical");
 
   return (
-    <main className="pb-16 md:pb-24">
+    <main className="overflow-anchor-none pb-16 md:pb-24">
       {report.private ? <ReportPrivateBanner /> : null}
       <ReadinessHeroLead report={report} />
       <ReadinessModeBar mode={mode} onChange={setMode} />
