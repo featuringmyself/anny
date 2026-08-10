@@ -1,6 +1,7 @@
 import type { ReadinessReport, VisibilityReport } from "../types";
 import { companyAiVisibilityReport } from "./company-ai-visibility-report";
 import { hilivingAiVisibilityReport } from "./hiliving-ai-visibility-report";
+import { rentokAiReadinessReport } from "./rentok-ai-readiness-report";
 import { rentokAiVisibilityReport } from "./rentok-ai-visibility-report";
 import { sprentzoAiReadinessReport } from "./sprentzo-ai-readiness-report";
 import { sprentzoAiVisibilityReport } from "./sprentzo-ai-visibility-report";
@@ -21,6 +22,7 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: hilivingAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
   { kind: "readiness", report: trulivAiReadinessReport },
+  { kind: "readiness", report: rentokAiReadinessReport },
 ];
 
 export function getAllReportEntries(): ReportEntry[] {
