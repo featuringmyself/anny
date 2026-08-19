@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import JsonLd from "@/components/JsonLd";
 import CareersRoleView from "@/components/pages/careers/CareersRoleView";
 import {
   getRoleBySlug,
   getRoleSlugs,
 } from "@/components/pages/careers/roles";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 import { SITE_NAME } from "@/lib/site";
 
 type PageProps = {
@@ -26,10 +28,11 @@ export async function generateMetadata({
     return { title: `Careers — ${SITE_NAME}` };
   }
 
-  return {
+  return pageMetadata({
+    path: `/careers/${slug}`,
     title: `${role.role} — Careers — ${SITE_NAME}`,
     description: role.summary,
-  };
+  });
 }
 
 export default async function CareerRolePage({ params }: PageProps) {
@@ -40,8 +43,17 @@ export default async function CareerRolePage({ params }: PageProps) {
     notFound();
   }
 
+  const title = `${role.role} — Careers — ${SITE_NAME}`;
+
   return (
     <main>
+      <JsonLd
+        data={webpageJsonLd({
+          path: `/careers/${slug}`,
+          title,
+          description: role.summary,
+        })}
+      />
       <CareersRoleView role={role} />
     </main>
   );
