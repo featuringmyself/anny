@@ -2,51 +2,51 @@ export const READINESS_BANDS = [
   {
     from: 0,
     to: 29,
-    label: "Not ready",
-    copy: "Agents will struggle to crawl, name, or understand this site.",
+    label: "Blocked",
+    copy: "AI crawlers probably cannot fetch or name this site yet.",
   },
   {
     from: 30,
     to: 49,
-    label: "Early",
-    copy: "Some signals exist, but discovery files or markup are still thin.",
+    label: "Weak identity",
+    copy: "Some access exists, but the brand is still hard for models to pin down.",
   },
   {
     from: 50,
     to: 69,
-    label: "Getting ready",
-    copy: "A usable baseline. A few high-impact files would lift this fast.",
+    label: "Crawlable",
+    copy: "Bots can get in. A few homepage fixes would make the brand obvious.",
   },
   {
     from: 70,
     to: 84,
-    label: "Ready",
-    copy: "Crawlers and agents can parse the site with confidence.",
+    label: "Identifiable",
+    copy: "Crawlers can fetch the site and attach a name to it.",
   },
   {
     from: 85,
     to: 100,
-    label: "Agent-native",
-    copy: "Discovery files, schema, and HTML are in good shape for AI agents.",
+    label: "Citation-ready",
+    copy: "On-site basics are in place. Next: whether models actually mention you.",
   },
 ] as const;
 
 export const CATEGORY_META = {
   crawl: {
-    label: "Crawl access",
-    copy: "robots.txt exists, and major AI crawlers are allowed in.",
+    label: "Can AI fetch it?",
+    copy: "robots.txt plus OpenAI, Claude, and Perplexity bots — training, search, and live answers.",
   },
-  discovery: {
-    label: "Agent discovery",
-    copy: "llms.txt, skill files, and MCP cards agents can actually read.",
+  identity: {
+    label: "Can AI name it?",
+    copy: "Title, description, H1, and Organization markup so models know who the page belongs to.",
   },
-  schema: {
-    label: "Structured data",
-    copy: "JSON-LD so models can name the brand, product, and page.",
+  cite: {
+    label: "Can AI cite it?",
+    copy: "Sitemap, canonical URL, and optional FAQ/sameAs signals that help with clean citations.",
   },
-  semantics: {
-    label: "HTML semantics",
-    copy: "Landmarks and a real heading so the page isn’t a wall of divs.",
+  extras: {
+    label: "Agent extras",
+    copy: "llms.txt and skill files help coding agents. They do not decide ChatGPT rankings.",
   },
 } as const;
 

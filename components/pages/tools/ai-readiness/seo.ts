@@ -10,56 +10,56 @@ export const AI_READINESS_URL = absoluteUrl(AI_READINESS_PATH);
 
 export const AI_READINESS_TITLE = "Free AI Readiness Checker";
 export const AI_READINESS_DESCRIPTION =
-  "See how ready a website is for ChatGPT, Claude, and other AI agents. We check robots.txt, llms.txt, JSON-LD, and HTML semantics. Free, no signup.";
+  "See if ChatGPT can crawl and name a website. Get a 0–100 score plus copy-paste robots.txt, JSON-LD, and sitemap fixes. Free, no signup.";
 
 export const aiReadinessFaqs = [
   {
     question: "What is AI readiness?",
     answer:
-      "How easy it is for AI crawlers and agents to fetch, name, and understand a site. That means crawl access, discovery files like llms.txt, structured data, and real HTML landmarks — not whether ChatGPT already mentions the brand.",
+      "Whether AI crawlers can fetch the site and attach a brand to it. That means robots.txt for training, search, and live-answer bots; a clear title and description; and Organization structured data. It is not whether ChatGPT already mentions you.",
   },
   {
     question: "Is this the same as Anny’s AI visibility score?",
     answer:
-      "No. This checker looks at on-site signals. Anny’s product tracks whether ChatGPT, Gemini, and other models mention a brand in answers. You can be technically ready and still invisible in AI search.",
+      "No. This checker is on-site: can models reach and identify the domain. Anny tracks whether ChatGPT, Gemini, and other models actually mention the brand in answers. You can be technically ready and still invisible.",
   },
   {
-    question: "What does a good score look like?",
+    question: "Does missing llms.txt tank the score?",
     answer:
-      "Under 30 is not ready, 30–49 is early, 50–69 is a workable baseline, 70–84 is ready, and 85+ is agent-native. Compare with sites in the same category — a brochure site and a SaaS app have different bars.",
+      "No. llms.txt and skill files are optional extras. They help coding agents. They are not a proven lever for ChatGPT or Perplexity rankings — we do not treat them as failures.",
   },
   {
-    question: "Why does llms.txt returning HTML fail the check?",
+    question: "What should I do with the snippets?",
     answer:
-      "Many SPAs serve the app shell at every path. Agents need a real markdown or text file, not a 200 with <html>. Same for JSON skill indexes that come back as HTML.",
+      "Copy them onto the live site: append the robots rules, paste JSON-LD in the homepage head, and point robots.txt at sitemap.xml. Then re-run the scan. After that, use Anny to see if models cite you.",
   },
   {
-    question: "Does this replace a full AI readiness audit?",
+    question: "Does this replace a full audit?",
     answer:
-      "No. This is a fast public scan of the homepage and a handful of well-known files. A full Anny audit also covers automation, forms, alt text, internal linking, and citation work.",
+      "No. This is a homepage-level scan with files you can paste today. A full Anny engagement also covers citation gaps, competitor prompts, and content that actually gets mentioned.",
   },
   {
     question: "Is the AI readiness checker free?",
-    answer: "Yes. No account, no credit card. Paste a domain and read the score.",
+    answer: "Yes. No account, no credit card. Paste a domain and copy the fixes.",
   },
 ] as const;
 
 export const aiReadinessHowTo = {
   name: "How to check AI readiness",
   description:
-    "Scan any public website in a few seconds. You do not need an Anny account.",
+    "Scan a public site, then copy the missing files. You do not need an Anny account.",
   steps: [
     {
       name: "Enter a domain",
       text: "Paste something like example.com. A full URL is fine — we use the host.",
     },
     {
-      name: "Run the scan",
-      text: "We fetch the homepage, robots.txt, llms.txt, skill files, and schema.",
+      name: "Read the three questions",
+      text: "Can AI fetch it, name it, and cite it? Optional agent files are scored separately.",
     },
     {
-      name: "Read the score",
-      text: "You get a 0–100 score, four category bars, and a pass/fail on each check.",
+      name: "Copy the fixes",
+      text: "Each gap includes a snippet — robots.txt rules, Organization JSON-LD, or a sitemap pointer.",
     },
   ],
 } as const;

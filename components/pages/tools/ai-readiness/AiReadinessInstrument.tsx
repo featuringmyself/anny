@@ -15,7 +15,7 @@ type AiReadinessInstrumentProps = {
 export function AiReadinessInstrumentIdle() {
   return (
     <InstrumentShell>
-      <GaugeBlock value={null} label="—" caption="Enter a domain to scan" />
+      <GaugeBlock value={null} label="—" caption="Paste a domain for fixes" />
       <CategoryBars categories={idleCategories()} />
       <InstrumentMeta domain="—" passed={null} />
     </InstrumentShell>
@@ -84,6 +84,7 @@ export async function AiReadinessInstrument({
         passed={result.passed}
         warned={result.warned}
         failed={result.failed}
+        actionCount={result.actions.length}
         band={band.label}
       />
       <GaugeBlock
@@ -95,7 +96,11 @@ export async function AiReadinessInstrument({
       <CategoryBars categories={result.categories} />
       <InstrumentMeta
         domain={result.domain}
-        passed={`${result.passed}/${result.checks.length}`}
+        passed={
+          result.actions.length
+            ? `${result.actions.length} to copy`
+            : "No critical fixes"
+        }
       />
     </InstrumentShell>
   );
@@ -103,10 +108,10 @@ export async function AiReadinessInstrument({
 
 function idleCategories(): ReadinessCategoryScore[] {
   return [
-    { id: "crawl", label: "Crawl access", score: 0, max: 24 },
-    { id: "discovery", label: "Agent discovery", score: 0, max: 32 },
-    { id: "schema", label: "Structured data", score: 0, max: 22 },
-    { id: "semantics", label: "HTML semantics", score: 0, max: 22 },
+    { id: "crawl", label: "Can AI fetch it?", score: 0, max: 35 },
+    { id: "identity", label: "Can AI name it?", score: 0, max: 35 },
+    { id: "cite", label: "Can AI cite it?", score: 0, max: 20 },
+    { id: "extras", label: "Agent extras", score: 0, max: 10 },
   ];
 }
 
@@ -228,7 +233,7 @@ function InstrumentMeta({
       </div>
       <div className="px-6 py-5 md:px-8">
         <dt className="text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
-          Checks passed
+          Next steps
         </dt>
         <dd className="mt-1 text-sm font-medium tabular-nums">
           {passed == null ? (

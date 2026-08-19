@@ -67,9 +67,8 @@ export default function AiReadinessCheckerPage({
               Free AI readiness checker
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-zinc-500 text-balance">
-              Paste a domain to see how ready the site is for ChatGPT, Claude,
-              and other agents — crawl access, llms.txt, schema, and HTML. No
-              signup.
+              See if ChatGPT can crawl and name this site. You get a score plus
+              copy-paste robots.txt, JSON-LD, and sitemap fixes. No signup.
             </p>
 
             <Suspense fallback={<AiReadinessForm defaultDomain="" />}>

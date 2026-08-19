@@ -1,3 +1,4 @@
+import { CopySnippet } from "@/components/pages/tools/ai-readiness/CopySnippet";
 import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
 import { getAiReadiness, type CheckStatus } from "@/lib/ai-readiness";
 
@@ -11,14 +12,19 @@ const STATUS: Record<
     pip: "bg-[#1ec97a]",
   },
   warn: {
-    label: "Warn",
+    label: "Partial",
     className: "text-amber-700",
     pip: "bg-amber-400",
   },
   fail: {
-    label: "Fail",
+    label: "Fix",
     className: "text-zinc-500",
     pip: "bg-zinc-300",
+  },
+  skip: {
+    label: "Optional",
+    className: "text-zinc-400",
+    pip: "bg-zinc-200",
   },
 };
 
@@ -30,25 +36,50 @@ export async function AiReadinessFindings({ domain }: { domain: string }) {
     <section className="border-b" aria-labelledby="ar-findings-heading">
       <div className="border-b px-6 py-10 md:px-12 md:py-14">
         <p className="text-sm font-medium tracking-wide text-[#2462ff]">
-          Scan results
+          What to do next
         </p>
         <h2
           id="ar-findings-heading"
           className="mt-2 text-3xl font-medium tracking-tight md:text-4xl"
         >
-          {result.passed} passed · {result.failed} failed
-          {result.warned ? ` · ${result.warned} warn` : ""}
+          {result.actions.length
+            ? `${result.actions.length} fix${result.actions.length === 1 ? "" : "es"} that add real value`
+            : "On-site basics look solid"}
         </h2>
-        <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Homepage and well-known agent files for {result.domain}. This is a
-          public scan, not a full audit.
+        <p className="mt-3 max-w-2xl text-lg text-zinc-500 text-balance">
+          {result.summary}
         </p>
       </div>
+
+      {result.actions.length ? (
+        <ol className="grid border-b md:grid-cols-3">
+          {result.actions.map((action, index) => (
+            <li
+              key={action.id}
+              className="border-b px-6 py-8 last:border-b-0 md:border-r md:border-b-0 md:last:border-r-0 md:px-8 md:py-10"
+            >
+              <p className="text-[11px] font-medium tracking-wide text-[#2462ff] uppercase">
+                {action.impact} impact · {index + 1}
+              </p>
+              <h3 className="mt-2 text-lg font-medium">{action.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+                {action.why}
+              </p>
+              {action.snippet ? (
+                <CopySnippet
+                  filename={action.snippet.filename}
+                  code={action.snippet.code}
+                />
+              ) : null}
+            </li>
+          ))}
+        </ol>
+      ) : null}
 
       <div className="grid md:grid-cols-2">
         {result.categories.map((category, index) => {
           const items = result.checks.filter(
-            (check) => check.category === category.id,
+            (item) => item.category === category.id,
           );
           const lastCol = index % 2 === 1;
           const lastRow = index >= result.categories.length - 2;
@@ -107,9 +138,10 @@ export function AiReadinessFindingsPending() {
     <section className="border-b px-6 py-14 md:px-12" aria-hidden>
       <div className="h-4 w-24 animate-pulse bg-zinc-200" />
       <div className="mt-4 h-10 w-full max-w-md animate-pulse bg-zinc-200" />
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <div className="h-40 animate-pulse bg-zinc-100" />
-        <div className="h-40 animate-pulse bg-zinc-100" />
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="h-48 animate-pulse bg-zinc-100" />
+        <div className="h-48 animate-pulse bg-zinc-100" />
+        <div className="h-48 animate-pulse bg-zinc-100" />
       </div>
     </section>
   );

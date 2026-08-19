@@ -10,6 +10,7 @@ type AiReadinessLookupCaptureProps = {
   passed?: number;
   warned?: number;
   failed?: number;
+  actionCount?: number;
   band?: string;
   errorType?: "invalid_domain" | "lookup_failed";
 };
@@ -21,6 +22,7 @@ export function AiReadinessLookupCapture({
   passed,
   warned,
   failed,
+  actionCount,
   band,
   errorType,
 }: AiReadinessLookupCaptureProps) {
@@ -44,12 +46,13 @@ export function AiReadinessLookupCapture({
               passed,
               warned,
               failed,
+              action_count: actionCount,
               band,
             }
           : { error_type: errorType }),
       },
     );
-  }, [band, domain, errorType, failed, passed, score, success, warned]);
+  }, [actionCount, band, domain, errorType, failed, passed, score, success, warned]);
 
   return null;
 }

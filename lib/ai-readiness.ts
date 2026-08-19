@@ -1,19 +1,17 @@
 import "server-only";
 
 import { cache } from "react";
+import { after } from "next/server";
 
 import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
 import { domainInputSchema, parseDomainParam } from "@/lib/domain-input";
+import { recordAiReadinessLookup } from "@/lib/ai-readiness-lookups";
 
 export { parseDomainParam };
 
-export type CheckStatus = "pass" | "warn" | "fail";
+export type CheckStatus = "pass" | "warn" | "fail" | "skip";
 
-export type ReadinessCategoryId =
-  | "crawl"
-  | "discovery"
-  | "schema"
-  | "semantics";
+export type ReadinessCategoryId = "crawl" | "identity" | "cite" | "extras";
 
 export type ReadinessCheck = {
   id: string;
@@ -32,15 +30,30 @@ export type ReadinessCategoryScore = {
   max: number;
 };
 
+export type ReadinessSnippet = {
+  filename: string;
+  code: string;
+};
+
+export type ReadinessAction = {
+  id: string;
+  title: string;
+  why: string;
+  impact: "High" | "Medium";
+  snippet?: ReadinessSnippet;
+};
+
 export type AiReadinessReport = {
   domain: string;
   origin: string;
   score: number;
+  summary: string;
   passed: number;
   warned: number;
   failed: number;
   checks: ReadinessCheck[];
   categories: ReadinessCategoryScore[];
+  actions: ReadinessAction[];
 };
 
 const USER_AGENT =
@@ -51,30 +64,19 @@ const MAX_HTML_BYTES = 400_000;
 const MAX_TEXT_BYTES = 80_000;
 const MAX_REDIRECTS = 4;
 
-const USEFUL_SCHEMA_TYPES = new Set([
+const BRAND_SCHEMA_TYPES = new Set([
   "organization",
+  "corporation",
   "localbusiness",
   "website",
-  "webpage",
   "softwareapplication",
-  "product",
-  "faqpage",
-  "article",
   "person",
-  "breadcrumblist",
 ]);
 
-const AI_AGENTS = [
-  { id: "gptbot", label: "GPTBot", vendor: "OpenAI", weight: 3 },
-  { id: "oai-searchbot", label: "OAI-SearchBot", vendor: "OpenAI", weight: 3 },
-  { id: "claudebot", label: "ClaudeBot", vendor: "Anthropic", weight: 3 },
-  {
-    id: "perplexitybot",
-    label: "PerplexityBot",
-    vendor: "Perplexity",
-    weight: 3,
-  },
-] as const;
+const CITE_SCHEMA_TYPES = new Set(["faqpage", "howto", "article"]);
+
+const OPENAI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User"] as const;
+const OTHER_BOTS = ["ClaudeBot", "PerplexityBot"] as const;
 
 type Probe = {
   url: string;
@@ -295,8 +297,9 @@ function isPathAllowed(groups: RobotsGroup[], agent: string) {
   return best ? best.allow : true;
 }
 
-function collectJsonLdTypes(html: string) {
+function collectJsonLd(html: string) {
   const types = new Set<string>();
+  let sameAs = false;
   const re =
     /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
   let match: RegExpExecArray | null;
@@ -309,20 +312,26 @@ function collectJsonLdTypes(html: string) {
     if (!raw) continue;
 
     try {
-      walkTypes(JSON.parse(raw), types);
+      walkJsonLd(JSON.parse(raw), types, () => {
+        sameAs = true;
+      });
     } catch {
       // Invalid JSON-LD still counts as a block if the tag exists.
     }
   }
 
-  return types;
+  return { types, sameAs };
 }
 
-function walkTypes(value: unknown, types: Set<string>) {
+function walkJsonLd(
+  value: unknown,
+  types: Set<string>,
+  onSameAs: () => void,
+) {
   if (!value || typeof value !== "object") return;
 
   if (Array.isArray(value)) {
-    for (const item of value) walkTypes(item, types);
+    for (const item of value) walkJsonLd(item, types, onSameAs);
     return;
   }
 
@@ -336,24 +345,45 @@ function walkTypes(value: unknown, types: Set<string>) {
     }
   }
 
-  if (record["@graph"]) walkTypes(record["@graph"], types);
+  if (record.sameAs != null) onSameAs();
+  if (record["@graph"]) walkJsonLd(record["@graph"], types, onSameAs);
 }
 
-function countTag(html: string, tag: string) {
-  const re = new RegExp(`<${tag}\\b`, "gi");
-  return html.match(re)?.length ?? 0;
+function decodeEntities(value: string) {
+  return value
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-function hasTag(html: string, tag: string) {
-  return countTag(html, tag) > 0;
+function extractTitle(html: string) {
+  const match = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  return match ? decodeEntities(match[1].replace(/<[^>]+>/g, "")) : "";
 }
 
-function hasH1(html: string) {
-  return /<h1\b/i.test(html);
+function extractMeta(html: string, key: string) {
+  const name = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp(
+    `<meta\\b[^>]*(?:name|property)=["']${name}["'][^>]*content=["']([^"']*)["'][^>]*>|<meta\\b[^>]*content=["']([^"']*)["'][^>]*(?:name|property)=["']${name}["'][^>]*>`,
+    "i",
+  );
+  const match = html.match(re);
+  return decodeEntities(match?.[1] || match?.[2] || "");
 }
 
-function hasMcpLink(html: string) {
-  return /<link\b[^>]*rel=["'][^"']*\bmcp\b[^"']*["']/i.test(html);
+function extractCanonical(html: string) {
+  return /<link\b[^>]*rel=["']canonical["'][^>]*>/i.test(html);
+}
+
+function extractH1(html: string) {
+  const match = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!match) return "";
+  return decodeEntities(match[1].replace(/<[^>]+>/g, ""));
 }
 
 function jsonLdBlockCount(html: string) {
@@ -364,6 +394,10 @@ function jsonLdBlockCount(html: string) {
   );
 }
 
+function botLine(allowed: boolean, name: string) {
+  return allowed ? `${name} allowed` : `${name} blocked`;
+}
+
 function check(
   id: string,
   category: ReadinessCategoryId,
@@ -371,9 +405,143 @@ function check(
   weight: number,
   status: CheckStatus,
   detail: string,
-  score = status === "pass" ? weight : status === "warn" ? Math.round(weight / 2) : 0,
+  score?: number,
 ): ReadinessCheck {
-  return { id, category, label, status, detail, weight, score };
+  const awarded =
+    score ??
+    (status === "pass"
+      ? weight
+      : status === "warn"
+        ? Math.round(weight / 2)
+        : 0);
+  return { id, category, label, status, detail, weight, score: awarded };
+}
+
+function buildSummary(
+  domain: string,
+  crawlOpen: boolean,
+  brandNamed: boolean,
+  actions: ReadinessAction[],
+) {
+  if (!crawlOpen) {
+    return `${domain} is blocking at least one major AI crawler. Until those bots can fetch the site, ChatGPT and similar tools cannot reliably use it as a source.`;
+  }
+  if (!brandNamed) {
+    return `Crawlers can reach ${domain}, but the homepage does not clearly name the brand in structured data. Models may crawl the page and still not know who it belongs to.`;
+  }
+  if (actions.length === 0) {
+    return `${domain} is set up for AI crawlers to fetch and identify the brand. On-site readiness is in good shape — the next question is whether models actually mention you.`;
+  }
+  return `${domain} can be crawled. The highest-leverage on-site gaps are listed below — copy the snippets onto the site, then track whether ChatGPT cites the brand.`;
+}
+
+function buildActions({
+  origin,
+  domain,
+  title,
+  description,
+  blockedBots,
+  missingBrandSchema,
+  missingLlms,
+  missingMeta,
+  missingSitemap,
+}: {
+  origin: string;
+  domain: string;
+  title: string;
+  description: string;
+  blockedBots: string[];
+  missingBrandSchema: boolean;
+  missingLlms: boolean;
+  missingMeta: boolean;
+  missingSitemap: boolean;
+}): ReadinessAction[] {
+  const brand = title || domain;
+  const dek =
+    description ||
+    `${brand} — add a one-sentence description of what the company does.`;
+  const actions: ReadinessAction[] = [];
+
+  if (blockedBots.length > 0) {
+    actions.push({
+      id: "allow-bots",
+      title: "Allow AI crawlers in robots.txt",
+      why: "Training, search, and live-answer bots each need access. If they are blocked, no amount of content work helps.",
+      impact: "High",
+      snippet: {
+        filename: "robots.txt (append)",
+        code: blockedBots
+          .map((bot) => `User-agent: ${bot}\nAllow: /`)
+          .join("\n\n"),
+      },
+    });
+  }
+
+  if (missingBrandSchema) {
+    actions.push({
+      id: "org-jsonld",
+      title: "Add Organization JSON-LD",
+      why: "Answer engines use structured data to attach a name, URL, and entity to the page. Paste this in the homepage <head>.",
+      impact: "High",
+      snippet: {
+        filename: "homepage <head>",
+        code: `<script type="application/ld+json">
+${JSON.stringify(
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: brand,
+    url: origin,
+    description: dek,
+  },
+  null,
+  2,
+)}
+</script>`,
+      },
+    });
+  }
+
+  if (missingMeta) {
+    actions.push({
+      id: "meta",
+      title: "Write a clear meta description",
+      why: "If the page has no summary, models and crawlers have to guess what the company does from the rest of the HTML.",
+      impact: "Medium",
+      snippet: {
+        filename: "homepage <head>",
+        code: `<meta name="description" content="${dek.replace(/"/g, "'")}" />`,
+      },
+    });
+  }
+
+  if (missingSitemap) {
+    actions.push({
+      id: "sitemap",
+      title: "Publish a sitemap",
+      why: "A sitemap.xml is the map crawlers use after the homepage. Without it they often stop at /.",
+      impact: "Medium",
+      snippet: {
+        filename: "robots.txt (append)",
+        code: `Sitemap: ${origin}/sitemap.xml`,
+      },
+    });
+  }
+
+  if (missingLlms && actions.length < 3) {
+    actions.push({
+      id: "llms",
+      title: "Optional: add a short llms.txt",
+      why: "This does not rank you in ChatGPT. It does help coding agents and tool-using LLMs find the pages you actually want them to read.",
+      impact: "Medium",
+      snippet: {
+        filename: "llms.txt",
+        code: `# ${brand}\n\n> ${dek}\n\n## Site\n\n- [Home](${origin}/): Overview\n`,
+      },
+    });
+  }
+
+  return actions.slice(0, 3);
 }
 
 export const getAiReadiness = cache(async function getAiReadiness(
@@ -397,32 +565,26 @@ export const getAiReadiness = cache(async function getAiReadiness(
     homepage,
     robots,
     llms,
-    llmsFull,
     skillsIndex,
-    skillMd,
     agentsMd,
-    mcpJson,
-    mcpCard,
+    sitemap,
   ] = await Promise.all([
     probe(`${origin}/`, MAX_HTML_BYTES),
     probe(`${origin}/robots.txt`, MAX_TEXT_BYTES),
     probe(`${origin}/llms.txt`, MAX_TEXT_BYTES),
-    probe(`${origin}/llms-full.txt`, MAX_TEXT_BYTES),
     probe(`${origin}/.well-known/agent-skills/index.json`, MAX_TEXT_BYTES),
-    probe(`${origin}/skill.md`, MAX_TEXT_BYTES),
     probe(`${origin}/agents.md`, MAX_TEXT_BYTES),
-    probe(`${origin}/.well-known/mcp.json`, MAX_TEXT_BYTES),
-    probe(`${origin}/.well-known/mcp/server-card.json`, MAX_TEXT_BYTES),
+    probe(`${origin}/sitemap.xml`, MAX_TEXT_BYTES),
   ]);
 
-  const reached =
-    homepage.status > 0 ||
-    robots.status > 0 ||
-    llms.status > 0 ||
-    skillsIndex.status > 0;
+  const reached = homepage.status > 0 || robots.status > 0;
 
   if (!reached) {
-    return { error: "Couldn’t reach that site. Try again in a moment." };
+    const result = {
+      error: "Couldn’t reach that site. Try again in a moment.",
+    };
+    scheduleLookupRecord(parsed.data, origin, result);
+    return result;
   }
 
   const html = homepage.ok && homepage.html ? homepage.body : "";
@@ -430,270 +592,327 @@ export const getAiReadiness = cache(async function getAiReadiness(
   const robotsGroups = robotsReal ? parseRobots(robots.body) : [];
   const starAllowed = robotsReal ? isPathAllowed(robotsGroups, "*") : true;
 
+  const openai = OPENAI_BOTS.map((name) => ({
+    name,
+    allowed: robotsReal ? isPathAllowed(robotsGroups, name) : true,
+  }));
+  const others = OTHER_BOTS.map((name) => ({
+    name,
+    allowed: robotsReal ? isPathAllowed(robotsGroups, name) : true,
+  }));
+  const openaiAllowed = openai.filter((bot) => bot.allowed).length;
+  const othersAllowed = others.filter((bot) => bot.allowed).length;
+  const blockedBots = [...openai, ...others]
+    .filter((bot) => !bot.allowed)
+    .map((bot) => bot.name);
+
+  const title = html ? extractTitle(html) : "";
+  const description = html
+    ? extractMeta(html, "description") || extractMeta(html, "og:description")
+    : "";
+  const h1 = html ? extractH1(html) : "";
+  const canonical = html ? extractCanonical(html) : false;
+  const ldCount = html ? jsonLdBlockCount(html) : 0;
+  const jsonLd = html ? collectJsonLd(html) : { types: new Set<string>(), sameAs: false };
+  const brandType = [...jsonLd.types].find((type) =>
+    BRAND_SCHEMA_TYPES.has(type.toLowerCase()),
+  );
+  const citeType = [...jsonLd.types].find((type) =>
+    CITE_SCHEMA_TYPES.has(type.toLowerCase()),
+  );
+  const sitemapReal =
+    isRealDocument(sitemap, "text") ||
+    (sitemap.ok && /<urlset|<sitemapindex/i.test(sitemap.body));
+  const llmsReal = isRealDocument(llms, "text");
+  const skillsReal =
+    isRealDocument(skillsIndex, "json") || isRealDocument(agentsMd, "text");
+
   const checks: ReadinessCheck[] = [];
 
-  if (!robotsReal) {
-    checks.push(
-      check(
-        "robots",
-        "crawl",
-        "robots.txt",
-        8,
-        robots.html && robots.status === 200 ? "warn" : "fail",
-        robots.html && robots.status === 200
-          ? "That URL returns HTML, not a robots file."
-          : "No robots.txt — crawlers get no explicit map.",
-        robots.html && robots.status === 200 ? 2 : 0,
-      ),
-    );
-  } else {
-    checks.push(
-      check(
-        "robots",
-        "crawl",
-        "robots.txt",
-        8,
-        "pass",
-        "A real robots.txt is live.",
-      ),
-    );
-  }
+  checks.push(
+    robotsReal
+      ? check(
+          "robots",
+          "crawl",
+          "robots.txt",
+          8,
+          "pass",
+          "A real robots.txt is live — crawlers have an explicit map.",
+        )
+      : check(
+          "robots",
+          "crawl",
+          "robots.txt",
+          8,
+          robots.html && robots.status === 200 ? "warn" : "fail",
+          robots.html && robots.status === 200
+            ? "That URL returns HTML, not a robots file."
+            : "No robots.txt. Add one so AI bots know they are allowed.",
+          robots.html && robots.status === 200 ? 2 : 0,
+        ),
+  );
 
   checks.push(
     check(
       "star-allow",
       "crawl",
-      "Default crawl (*)",
-      4,
+      "Site is crawlable",
+      8,
       starAllowed ? "pass" : "fail",
       starAllowed
-        ? "The catch-all user-agent is allowed at /."
-        : "User-agent * disallows the whole site.",
+        ? "User-agent * can fetch the homepage."
+        : "User-agent * disallows the whole site — most crawlers will stop.",
     ),
   );
 
-  for (const agent of AI_AGENTS) {
-    const allowed = robotsReal
-      ? isPathAllowed(robotsGroups, agent.label)
-      : true;
-    checks.push(
-      check(
-        agent.id,
-        "crawl",
-        agent.label,
-        agent.weight,
-        allowed ? "pass" : "fail",
-        allowed
-          ? `${agent.vendor} can fetch the homepage.`
-          : `${agent.vendor} is disallowed at /.`,
-      ),
-    );
-  }
-
-  const llmsReal = isRealDocument(llms, "text");
   checks.push(
     check(
-      "llms",
-      "discovery",
-      "llms.txt",
+      "openai-bots",
+      "crawl",
+      "OpenAI bots (training, search, live fetch)",
       12,
-      llmsReal ? "pass" : llms.html && llms.status === 200 ? "warn" : "fail",
-      llmsReal
-        ? "A real llms.txt is available for agents."
-        : llms.html && llms.status === 200
-          ? "HTTP 200 but the body is HTML — a SPA shell, not a file."
-          : "No llms.txt. Agents have no curated map of the site.",
-      llmsReal ? 12 : 0,
+      openaiAllowed === OPENAI_BOTS.length
+        ? "pass"
+        : openaiAllowed === 0
+          ? "fail"
+          : "warn",
+      openai.map((bot) => botLine(bot.allowed, bot.name)).join(" · "),
+      Math.round((openaiAllowed / OPENAI_BOTS.length) * 12),
     ),
   );
 
-  const llmsFullReal = isRealDocument(llmsFull, "text");
   checks.push(
     check(
-      "llms-full",
-      "discovery",
-      "llms-full.txt",
-      4,
-      llmsFullReal ? "pass" : "fail",
-      llmsFullReal
-        ? "Long-form agent brief is present."
-        : "No llms-full.txt (optional, but useful).",
+      "other-bots",
+      "crawl",
+      "Claude & Perplexity",
+      7,
+      othersAllowed === OTHER_BOTS.length
+        ? "pass"
+        : othersAllowed === 0
+          ? "fail"
+          : "warn",
+      others.map((bot) => botLine(bot.allowed, bot.name)).join(" · "),
+      Math.round((othersAllowed / OTHER_BOTS.length) * 7),
     ),
   );
 
-  const skillsReal = isRealDocument(skillsIndex, "json");
   checks.push(
     check(
-      "agent-skills",
-      "discovery",
-      "Agent skills index",
+      "title",
+      "identity",
+      "Page title",
       8,
-      skillsReal ? "pass" : skillsIndex.html && skillsIndex.status === 200 ? "warn" : "fail",
-      skillsReal
-        ? "/.well-known/agent-skills/index.json is real JSON."
-        : skillsIndex.html && skillsIndex.status === 200
-          ? "Skills URL returns HTML, not JSON."
-          : "No agent-skills index.",
-      skillsReal ? 8 : 0,
-    ),
-  );
-
-  const skillFile =
-    isRealDocument(skillMd, "text") || isRealDocument(agentsMd, "text");
-  checks.push(
-    check(
-      "skill-md",
-      "discovery",
-      "skill.md / agents.md",
-      4,
-      skillFile ? "pass" : "fail",
-      skillFile
-        ? "A markdown skill or agents file is present."
-        : "No /skill.md or /agents.md.",
-    ),
-  );
-
-  const mcp =
-    hasMcpLink(html) ||
-    isRealDocument(mcpJson, "json") ||
-    isRealDocument(mcpCard, "json");
-  checks.push(
-    check(
-      "mcp",
-      "discovery",
-      "MCP discovery",
-      4,
-      mcp ? "pass" : "fail",
-      mcp
-        ? "An MCP link or well-known card was found."
-        : "No MCP link or well-known server card.",
-    ),
-  );
-
-  const ldCount = html ? jsonLdBlockCount(html) : 0;
-  const types = html ? collectJsonLdTypes(html) : new Set<string>();
-  const usefulType = [...types].some((type) =>
-    USEFUL_SCHEMA_TYPES.has(type.toLowerCase()),
-  );
-
-  checks.push(
-    check(
-      "jsonld",
-      "schema",
-      "JSON-LD",
-      12,
-      ldCount > 0 ? "pass" : "fail",
-      ldCount > 0
-        ? `${ldCount} JSON-LD block${ldCount === 1 ? "" : "s"} on the homepage.`
-        : homepage.ok
-          ? "Homepage has no JSON-LD."
-          : "Couldn’t read the homepage HTML.",
+      title.length >= 8 ? "pass" : "fail",
+      title
+        ? title.length > 70
+          ? `${title.slice(0, 70)}…`
+          : title
+        : "No <title>. Crawlers and models get no brand name from the tab.",
     ),
   );
 
   checks.push(
     check(
-      "schema-type",
-      "schema",
-      "Useful schema types",
-      10,
-      usefulType ? "pass" : ldCount > 0 ? "warn" : "fail",
-      usefulType
-        ? [...types].slice(0, 4).join(", ")
-        : ldCount > 0
-          ? "JSON-LD is present, but not a common entity type."
-          : "No Organization, WebSite, or WebPage markup.",
-    ),
-  );
-
-  const main = hasTag(html, "main");
-  const headerOrNav = hasTag(html, "header") || hasTag(html, "nav");
-  const footer = hasTag(html, "footer");
-  const sectionOrArticle = hasTag(html, "section") || hasTag(html, "article");
-
-  checks.push(
-    check(
-      "main",
-      "semantics",
-      "<main> landmark",
+      "meta",
+      "identity",
+      "Meta description",
       6,
-      main ? "pass" : "fail",
-      main ? "A main landmark is present." : "No <main> on the homepage.",
+      description.length >= 40
+        ? "pass"
+        : description
+          ? "warn"
+          : "fail",
+      description
+        ? description.length > 140
+          ? `${description.slice(0, 140)}…`
+          : description
+        : "No meta description — add a one-line “what we do.”",
     ),
   );
-  checks.push(
-    check(
-      "header",
-      "semantics",
-      "Header / nav",
-      4,
-      headerOrNav ? "pass" : "fail",
-      headerOrNav ? "Header or nav landmark found." : "No <header> or <nav>.",
-    ),
-  );
-  checks.push(
-    check(
-      "footer",
-      "semantics",
-      "<footer>",
-      4,
-      footer ? "pass" : "fail",
-      footer ? "A footer landmark is present." : "No <footer>.",
-    ),
-  );
-  checks.push(
-    check(
-      "sections",
-      "semantics",
-      "Sections / articles",
-      4,
-      sectionOrArticle ? "pass" : "fail",
-      sectionOrArticle
-        ? "Section or article tags are in use."
-        : "No <section> or <article> — likely a div-heavy tree.",
-    ),
-  );
+
   checks.push(
     check(
       "h1",
-      "semantics",
+      "identity",
       "H1 heading",
-      4,
-      hasH1(html) ? "pass" : "fail",
-      hasH1(html) ? "An H1 is present." : "No H1 on the homepage.",
+      6,
+      h1 ? "pass" : "fail",
+      h1 ? h1.slice(0, 120) : "No H1 on the homepage.",
     ),
   );
 
-  const score = Math.min(
-    100,
-    checks.reduce((sum, item) => sum + item.score, 0),
+  checks.push(
+    check(
+      "brand-schema",
+      "identity",
+      "Brand structured data",
+      15,
+      brandType ? "pass" : ldCount > 0 ? "warn" : "fail",
+      brandType
+        ? `${brandType} markup is present.`
+        : ldCount > 0
+          ? "JSON-LD exists, but not Organization / WebSite / SoftwareApplication."
+          : "No Organization JSON-LD. Models have no machine-readable brand name.",
+    ),
   );
+
+  checks.push(
+    check(
+      "sitemap",
+      "cite",
+      "Sitemap",
+      6,
+      sitemapReal ? "pass" : "fail",
+      sitemapReal
+        ? "sitemap.xml is reachable."
+        : "No sitemap.xml — crawlers often never leave the homepage.",
+    ),
+  );
+
+  checks.push(
+    check(
+      "canonical",
+      "cite",
+      "Canonical URL",
+      5,
+      canonical ? "pass" : "fail",
+      canonical
+        ? "A canonical link is present."
+        : "No rel=canonical — duplicate URLs confuse citation.",
+    ),
+  );
+
+  checks.push(
+    check(
+      "cite-schema",
+      "cite",
+      "FAQ / HowTo / Article schema",
+      4,
+      citeType ? "pass" : "skip",
+      citeType
+        ? `${citeType} markup can help answer engines reuse the page.`
+        : "Optional. FAQ or HowTo schema helps when the page actually answers a question.",
+    ),
+  );
+
+  checks.push(
+    check(
+      "sameas",
+      "cite",
+      "sameAs profile links",
+      5,
+      jsonLd.sameAs ? "pass" : "skip",
+      jsonLd.sameAs
+        ? "JSON-LD includes sameAs links to confirm the entity."
+        : "Optional. sameAs (LinkedIn, Wikipedia, Crunchbase) helps disambiguate the brand.",
+    ),
+  );
+
+  checks.push(
+    check(
+      "llms",
+      "extras",
+      "llms.txt",
+      6,
+      llmsReal ? "pass" : llms.html && llms.status === 200 ? "warn" : "skip",
+      llmsReal
+        ? "A real llms.txt is live. Useful for agents — not a ChatGPT ranking lever."
+        : llms.html && llms.status === 200
+          ? "HTTP 200 but the body is HTML, not a text file."
+          : "Optional. A short llms.txt helps coding agents; it does not buy AI search traffic.",
+      llmsReal ? 6 : 0,
+    ),
+  );
+
+  checks.push(
+    check(
+      "agent-docs",
+      "extras",
+      "Agent docs",
+      4,
+      skillsReal ? "pass" : "skip",
+      skillsReal
+        ? "Agent-skills index or agents.md is present."
+        : "Optional. Skill files help tool-using agents, not classic GEO.",
+    ),
+  );
+
+  const counted = checks.filter((item) => item.status !== "skip");
+  const available = counted.reduce((sum, item) => sum + item.weight, 0);
+  const earned = counted.reduce((sum, item) => sum + item.score, 0);
+  const score =
+    available === 0 ? 0 : Math.min(100, Math.round((earned / available) * 100));
 
   const categoryIds: ReadinessCategoryId[] = [
     "crawl",
-    "discovery",
-    "schema",
-    "semantics",
+    "identity",
+    "cite",
+    "extras",
   ];
 
   const categories = categoryIds.map((id) => {
-    const items = checks.filter((item) => item.category === id);
+    const items = checks.filter(
+      (item) => item.category === id && item.status !== "skip",
+    );
+    const skipped = checks.filter(
+      (item) => item.category === id && item.status === "skip",
+    );
+    const max =
+      items.reduce((sum, item) => sum + item.weight, 0) ||
+      skipped.reduce((sum, item) => sum + item.weight, 0);
     return {
       id,
       label: CATEGORY_META[id].label,
       score: items.reduce((sum, item) => sum + item.score, 0),
-      max: items.reduce((sum, item) => sum + item.weight, 0),
+      max,
     };
   });
 
-  return {
+  const actions = buildActions({
+    origin,
+    domain: parsed.data,
+    title,
+    description,
+    blockedBots,
+    missingBrandSchema: !brandType,
+    missingLlms: !llmsReal,
+    missingMeta: description.length < 40,
+    missingSitemap: !sitemapReal,
+  });
+
+  const report: AiReadinessReport = {
     domain: parsed.data,
     origin,
     score,
-    passed: checks.filter((item) => item.status === "pass").length,
-    warned: checks.filter((item) => item.status === "warn").length,
-    failed: checks.filter((item) => item.status === "fail").length,
+    summary: buildSummary(
+      parsed.data,
+      starAllowed && openaiAllowed > 0,
+      Boolean(brandType),
+      actions,
+    ),
+    passed: counted.filter((item) => item.status === "pass").length,
+    warned: counted.filter((item) => item.status === "warn").length,
+    failed: counted.filter((item) => item.status === "fail").length,
     checks,
     categories,
+    actions,
   };
+
+  scheduleLookupRecord(parsed.data, origin, report);
+  return report;
 });
+
+function scheduleLookupRecord(
+  domain: string,
+  origin: string,
+  result: AiReadinessReport | { error: string },
+) {
+  after(async () => {
+    try {
+      await recordAiReadinessLookup(domain, origin, result);
+    } catch (error) {
+      console.error("[ai-readiness] failed to store lookup", error);
+    }
+  });
+}

@@ -39,6 +39,7 @@ export async function captureAiReadinessLookup({
             passed: result.passed,
             warned: result.warned,
             failed: result.failed,
+            action_count: result.actions.length,
             band: bandForScore(result.score).label,
           }
         : {

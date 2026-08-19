@@ -18,8 +18,8 @@ export function AiReadinessChecks() {
           What we scan
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Four buckets, scored from the homepage and a small set of well-known
-          agent files. We ignore login walls and the rest of the site.
+          Four buckets, scored from the homepage. Optional agent files never
+          tank the number — they only add.
         </p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">

@@ -101,7 +101,7 @@ Free Ahrefs Domain Rating (DR) lookup. Paste a domain, get a 0–100 backlink-st
 
 ### AI readiness checker — https://anny.dodoxhq.com/tools/ai-readiness-checker
 
-Free on-site AI readiness scan. Paste a domain to score crawl access (robots.txt / GPTBot / ClaudeBot / PerplexityBot), agent discovery (llms.txt, agent-skills, MCP), JSON-LD, and HTML landmarks. No account. This is not Anny’s AI visibility / mention score.
+Free on-site AI readiness scan. Paste a domain to see if ChatGPT-class crawlers can fetch and identify the brand, then copy robots.txt, Organization JSON-LD, and sitemap snippets. llms.txt is optional and does not tank the score. This is not Anny’s AI visibility / mention score.
 
 ## Features
 
