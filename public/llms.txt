@@ -20,7 +20,7 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://anny.dodoxhq.c
 
 ## Free tools
 
-- [Domain Rating checker](https://anny.dodoxhq.com/tools/domain-rating-checker): Free Ahrefs Domain Rating (DR) lookup, 0–100, no signup. Not Moz Domain Authority and not Semrush Authority Score. Ahrefs does not define a universal “good” score — compare similar sites.
+- [Domain Rating checker](https://anny.dodoxhq.com/tools/domain-rating-checker): Free Ahrefs Domain Rating (DR) lookup, 0–100, no signup.
 
 ## Features
 

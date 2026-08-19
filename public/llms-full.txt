@@ -97,7 +97,7 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 
 ### Domain Rating checker — https://anny.dodoxhq.com/tools/domain-rating-checker
 
-Free Ahrefs Domain Rating lookup. DR is Ahrefs’ 0–100 score for how strong a site’s backlinks are compared with other sites in Ahrefs’ index. It is not Moz Domain Authority (DA, 1–100, ranking-likelihood model) and not Semrush Authority Score (links + traffic + spam checks). Ahrefs says DR is relative, logarithmic, based on unique followed referring domains, and does not include traffic, spam, or domain age. Google does not use it. Paste a domain (full URLs are fine). No account. Anny is the GEO product; this page is a public utility. Scores are Domain Rating by Ahrefs.
+Free Ahrefs Domain Rating (DR) lookup. Paste a domain, get a 0–100 backlink-strength score. No account. Anny is the GEO product; this page is a public utility. Scores are Domain Rating by Ahrefs.
 
 ## Features
 
