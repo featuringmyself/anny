@@ -62,6 +62,34 @@ type SerpOverviewResponse = {
   error?: string;
 };
 
+async function messageForAhrefsStatus(response: Response): Promise<string> {
+  if (response.status === 401 || response.status === 403) {
+    return "This Ahrefs API key can’t access SERP Overview. The public Domain Rating key isn’t enough — use a paid-plan key from Ahrefs Account settings → API keys, or set AHREF_SERP_API_KEY.";
+  }
+  if (response.status === 429) {
+    return "Ahrefs rate-limited this lookup. Try again in a moment.";
+  }
+
+  try {
+    const body: unknown = await response.json();
+    if (Array.isArray(body) && typeof body[1] === "string") {
+      return body[1];
+    }
+    if (
+      body &&
+      typeof body === "object" &&
+      "error" in body &&
+      typeof body.error === "string"
+    ) {
+      return body.error;
+    }
+  } catch {
+    // Fall through.
+  }
+
+  return "Failed to load SERP overview";
+}
+
 function normalizePosition(row: Partial<SerpPosition>): SerpPosition | null {
   if (typeof row.position !== "number") return null;
 
@@ -107,10 +135,12 @@ export async function getSerpOverview(
     };
   }
 
-  const apiKey = process.env.AHREF_API_KEY;
+  const apiKey = (
+    process.env.AHREF_SERP_API_KEY ?? process.env.AHREF_API_KEY ?? ""
+  ).trim();
 
   if (!apiKey) {
-    throw new Error("Failed to load SERP overview");
+    return { error: "SERP Overview isn’t configured." };
   }
 
   const url = new URL("https://api.ahrefs.com/v3/serp-overview/serp-overview");
@@ -120,27 +150,32 @@ export async function getSerpOverview(
   url.searchParams.set("top_positions", String(TOP_ORGANIC_POSITIONS));
   url.searchParams.set("output", "json");
 
-  const response = await fetch(url, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    next: {
-      revalidate: 3600,
-      tags: [
-        `serp-overview:${parsedCountry.data}:${parsedKeyword.data.toLowerCase()}`,
-      ],
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to load SERP overview");
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      cache: "no-store",
+    });
+  } catch {
+    return { error: "Failed to load SERP overview" };
   }
 
-  const data = (await response.json()) as SerpOverviewResponse;
+  if (!response.ok) {
+    return { error: await messageForAhrefsStatus(response) };
+  }
+
+  let data: SerpOverviewResponse;
+  try {
+    data = (await response.json()) as SerpOverviewResponse;
+  } catch {
+    return { error: "Failed to load SERP overview" };
+  }
 
   if (!Array.isArray(data.positions)) {
-    throw new Error("Failed to load SERP overview");
+    return { error: data.error ?? "Failed to load SERP overview" };
   }
 
   const positions = data.positions

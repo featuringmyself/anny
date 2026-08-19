@@ -74,7 +74,13 @@ export async function SerpOverviewResults({
           keyword={keyword}
           country={country}
           success={false}
-          errorType="invalid_keyword"
+          errorType={
+            result.error === "Enter a keyword." ||
+            result.error === "Keep the keyword under 200 characters." ||
+            result.error === "Pick a supported country."
+              ? "invalid_keyword"
+              : "lookup_failed"
+          }
         />
         <QueryHeader keyword={keyword} country={country} checkedAt={null} />
         <div className="py-12 md:py-16">

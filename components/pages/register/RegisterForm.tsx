@@ -71,32 +71,6 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         className="flex min-h-72 flex-col justify-center p-8 md:min-h-96 md:p-12"
         initial={reduce ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        // #region agent log
-        onAnimationStart={() => {
-          fetch(
-            "http://127.0.0.1:7528/ingest/8ea49b12-3acb-4483-906d-aeed4e36bee6",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "X-Debug-Session-Id": "c31750",
-              },
-              body: JSON.stringify({
-                sessionId: "c31750",
-                runId: "pre-fix",
-                hypothesisId: "B",
-                location: "RegisterForm.tsx:success",
-                message: "register success motion animate opacity",
-                data: {
-                  reduce: Boolean(reduce),
-                  initialIsFalse: Boolean(reduce),
-                },
-                timestamp: Date.now(),
-              }),
-            },
-          ).catch(() => {});
-        }}
-        // #endregion
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         aria-live="polite"
       >
