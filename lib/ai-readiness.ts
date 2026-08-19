@@ -4,8 +4,11 @@ import { cache } from "react";
 import { after } from "next/server";
 
 import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
+import {
+  recordAiReadinessLookup,
+  type AiReadinessLookupWrite,
+} from "@/lib/ai-readiness-lookups";
 import { domainInputSchema, parseDomainParam } from "@/lib/domain-input";
-import { recordAiReadinessLookup } from "@/lib/ai-readiness-lookups";
 
 export { parseDomainParam };
 
@@ -903,14 +906,41 @@ export const getAiReadiness = cache(async function getAiReadiness(
   return report;
 });
 
+function toLookupWrite(
+  domain: string,
+  origin: string,
+  result: AiReadinessReport | { error: string },
+): AiReadinessLookupWrite {
+  if ("error" in result) {
+    return { domain, origin, status: "failed", error: result.error };
+  }
+
+  return {
+    domain,
+    origin,
+    status: "success",
+    score: result.score,
+    summary: result.summary,
+    actionIds: result.actions.map((action) => action.id),
+    failedCheckIds: result.checks
+      .filter((item) => item.status === "fail")
+      .map((item) => item.id),
+    passed: result.passed,
+    warned: result.warned,
+    failed: result.failed,
+  };
+}
+
 function scheduleLookupRecord(
   domain: string,
   origin: string,
   result: AiReadinessReport | { error: string },
 ) {
+  const write = toLookupWrite(domain, origin, result);
+
   after(async () => {
     try {
-      await recordAiReadinessLookup(domain, origin, result);
+      await recordAiReadinessLookup(write);
     } catch (error) {
       console.error("[ai-readiness] failed to store lookup", error);
     }

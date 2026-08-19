@@ -3,16 +3,38 @@ import "server-only";
 import { MongoServerError, type Collection, type WithId } from "mongodb";
 
 import { bandForScore } from "@/components/pages/tools/ai-readiness/bands";
-import type { AiReadinessReport } from "@/lib/ai-readiness";
 import { getDb } from "@/lib/mongodb";
 
-type LookupResult = AiReadinessReport | { error: string };
+/**
+ * Minimal write shape for the AI readiness Data Access Layer.
+ * Do not pass the full scan (snippets, HTML-derived checks) into Mongo.
+ */
+export type AiReadinessLookupWrite =
+  | {
+      domain: string;
+      origin: string;
+      status: "success";
+      score: number;
+      summary: string;
+      actionIds: string[];
+      failedCheckIds: string[];
+      passed: number;
+      warned: number;
+      failed: number;
+    }
+  | {
+      domain: string;
+      origin: string;
+      status: "failed";
+      error: string;
+    };
 
 /**
  * Domains scanned through the AI readiness checker.
  * Collection: `ai_readiness_lookups` — one document per domain.
  *
- * Access pattern: upsert on each check; look up by `domain`.
+ * Access pattern: upsert on each check; look up by `domain`;
+ * list recent activity by `lastSeenAt`.
  */
 export type AiReadinessLookupDocument = {
   domain: string;
@@ -45,7 +67,10 @@ function ensureIndexes(collection: Collection<AiReadinessLookupDocument>) {
   indexesRequested = true;
 
   void collection
-    .createIndexes([{ key: { domain: 1 }, name: "domain_unique", unique: true }])
+    .createIndexes([
+      { key: { domain: 1 }, name: "domain_unique", unique: true },
+      { key: { lastSeenAt: -1 }, name: "lastSeenAt_desc" },
+    ])
     .catch((error) => {
       indexesRequested = false;
       console.error("[ai-readiness-lookups] index creation failed", error);
@@ -61,46 +86,40 @@ async function lookupsCollection({
   return collection;
 }
 
-export async function recordAiReadinessLookup(
-  domain: string,
-  origin: string,
-  result: LookupResult,
-) {
+export async function recordAiReadinessLookup(write: AiReadinessLookupWrite) {
   const collection = await lookupsCollection({ withIndexes: true });
   const now = new Date();
-  const success = !("error" in result);
+  const success = write.status === "success";
 
   const $set: Partial<AiReadinessLookupDocument> = {
-    origin,
+    origin: write.origin,
     lastSeenAt: now,
-    lastStatus: success ? "success" : "failed",
+    lastStatus: write.status,
   };
 
   if (success) {
-    $set.lastScore = result.score;
-    $set.lastBand = bandForScore(result.score).label;
-    $set.lastSummary = result.summary;
-    $set.lastActionCount = result.actions.length;
-    $set.lastActionIds = result.actions.map((action) => action.id);
-    $set.lastFailedChecks = result.checks
-      .filter((check) => check.status === "fail")
-      .map((check) => check.id);
-    $set.lastPassed = result.passed;
-    $set.lastWarned = result.warned;
-    $set.lastFailed = result.failed;
+    $set.lastScore = write.score;
+    $set.lastBand = bandForScore(write.score).label;
+    $set.lastSummary = write.summary;
+    $set.lastActionCount = write.actionIds.length;
+    $set.lastActionIds = write.actionIds;
+    $set.lastFailedChecks = write.failedCheckIds;
+    $set.lastPassed = write.passed;
+    $set.lastWarned = write.warned;
+    $set.lastFailed = write.failed;
     $set.lastFetchedAt = now;
   } else {
-    $set.lastError = result.error;
+    $set.lastError = write.error;
   }
 
   try {
     await collection.updateOne(
-      { domain },
+      { domain: write.domain },
       {
         $set,
         $inc: { lookupCount: 1 },
         $setOnInsert: {
-          domain,
+          domain: write.domain,
           firstSeenAt: now,
         },
         ...(success ? { $unset: { lastError: "" } } : {}),
@@ -110,7 +129,7 @@ export async function recordAiReadinessLookup(
   } catch (error) {
     if (error instanceof MongoServerError && error.code === 11000) {
       await collection.updateOne(
-        { domain },
+        { domain: write.domain },
         { $set, $inc: { lookupCount: 1 } },
       );
       return;
