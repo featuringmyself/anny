@@ -21,8 +21,7 @@ export function DomainRatingFaq() {
         Common questions
       </h2>
       <p className="mt-3 max-w-xl text-base text-zinc-500 text-balance">
-        Straight answers for DR, DA, and “website authority” lookups — using
-        what Ahrefs, Moz, and Semrush actually say.
+        Short answers for the questions people actually type.
       </p>
 
       <Accordion defaultValue={["item-0"]} className="mt-10 max-w-3xl">

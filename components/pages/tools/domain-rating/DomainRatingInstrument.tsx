@@ -89,8 +89,8 @@ export async function DomainRatingInstrument({
       <GaugeBlock
         value={result.domain_rating}
         label={formatDr(result.domain_rating)}
-        caption="out of 100"
-        hint="Higher means a stronger backlink profile than most other sites in Ahrefs’ index."
+        caption={band.label}
+        hint={band.copy}
       />
       <InstrumentMeta domain={domain} rank={result.ahrefs_rank} />
     </InstrumentShell>

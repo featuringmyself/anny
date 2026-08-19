@@ -33,7 +33,7 @@ export const drCheckerFaqs = [
   {
     question: "What is a good Domain Rating?",
     answer:
-      "Ahrefs says you should not treat 30, 50, or 70 as “good” on its own. Moz says the same about Domain Authority, and Semrush says the same about Authority Score: compare similar sites, not the whole web. Check a few competitors here and see where you sit.",
+      "As a rough guide: under 30 is early, 30–49 is growing, 50–69 is a solid established site, 70–89 is strong, and 90+ is rare (big publishers and platforms). Always check a few competitors too — a 40 can be plenty in a small niche, and a 60 can be average in a crowded one.",
   },
   {
     question: "How is DR different from Moz DA and Semrush Authority Score?",

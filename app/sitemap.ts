@@ -18,6 +18,7 @@ const routes: {
   { path: "/changelog", changeFrequency: "weekly", priority: 0.6 },
   { path: "/careers", changeFrequency: "monthly", priority: 0.5 },
   { path: "/ai-instructions", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/tools/ai-readiness-checker", changeFrequency: "monthly", priority: 0.8 },
   { path: "/tools/domain-rating-checker", changeFrequency: "monthly", priority: 0.7 },
   { path: "/features/agencies", changeFrequency: "monthly", priority: 0.8 },
   { path: "/features/chatgpt", changeFrequency: "monthly", priority: 0.7 },
