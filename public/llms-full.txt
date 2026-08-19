@@ -97,7 +97,7 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 
 ### Domain Rating checker — https://anny.dodoxhq.com/tools/domain-rating-checker
 
-Free Ahrefs Domain Rating lookup. Paste a domain, no signup.
+Free Ahrefs Domain Rating (DR) lookup. DR is Ahrefs’ 0–100 estimate of backlink strength — not Moz Domain Authority, not Google PageRank, and not whether ChatGPT cites the site. Paste a domain (URLs with https:// are accepted). No account. Anny is the GEO product; this page is a public utility.
 
 ### SERP overview — https://anny.dodoxhq.com/tools/serp-overview-checker
 

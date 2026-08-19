@@ -46,6 +46,7 @@ const PUBLIC_AI_ALLOW = [
   "/llms.txt",
   "/llms-full.txt",
   "/ai-instructions",
+  "/tools/",
   "/.well-known/agent-skills/",
 ] as const;
 

@@ -1,26 +1,63 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
+import JsonLd from "@/components/JsonLd";
 import PatternStrip from "@/components/PatternStrip";
 import { DomainRatingCta } from "@/components/pages/tools/domain-rating/DomainRatingCta";
 import { DomainRatingExplain } from "@/components/pages/tools/domain-rating/DomainRatingExplain";
+import { DomainRatingFaq } from "@/components/pages/tools/domain-rating/DomainRatingFaq";
 import { DomainRatingForm } from "@/components/pages/tools/domain-rating/DomainRatingForm";
+import { DomainRatingHowTo } from "@/components/pages/tools/domain-rating/DomainRatingHowTo";
 import {
   DomainRatingInstrument,
   DomainRatingInstrumentPending,
 } from "@/components/pages/tools/domain-rating/DomainRatingInstrument";
 import { DomainRatingScale } from "@/components/pages/tools/domain-rating/DomainRatingScale";
+import {
+  DR_CHECKER_DESCRIPTION,
+  DR_CHECKER_TITLE,
+  DR_CHECKER_URL,
+  drCheckerAppJsonLd,
+  drCheckerBreadcrumbJsonLd,
+  drCheckerFaqJsonLd,
+  drCheckerHowToJsonLd,
+  drCheckerWebPageJsonLd,
+} from "@/components/pages/tools/domain-rating/seo";
 import { parseDomainParam } from "@/lib/domain-input";
-
-export const metadata: Metadata = {
-  title: "Free Domain Rating Checker — Anny",
-  description:
-    "Check any website’s Ahrefs Domain Rating for free. No signup, no login — paste a domain and see the 0–100 score.",
-};
+import { SITE_NAME } from "@/lib/site";
 
 type DomainRatingCheckerPageProps = {
   searchParams: Promise<{ domain?: string | string[] }>;
 };
+
+export async function generateMetadata({
+  searchParams,
+}: DomainRatingCheckerPageProps): Promise<Metadata> {
+  const domain = parseDomainParam((await searchParams).domain);
+
+  return {
+    title: DR_CHECKER_TITLE,
+    description: DR_CHECKER_DESCRIPTION,
+    alternates: {
+      canonical: DR_CHECKER_URL,
+    },
+    robots: domain
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+    openGraph: {
+      title: DR_CHECKER_TITLE,
+      description: DR_CHECKER_DESCRIPTION,
+      url: DR_CHECKER_URL,
+      siteName: SITE_NAME,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: DR_CHECKER_TITLE,
+      description: DR_CHECKER_DESCRIPTION,
+    },
+  };
+}
 
 export default async function DomainRatingCheckerPage({
   searchParams,
@@ -29,6 +66,12 @@ export default async function DomainRatingCheckerPage({
 
   return (
     <main>
+      <JsonLd data={drCheckerWebPageJsonLd()} />
+      <JsonLd data={drCheckerAppJsonLd()} />
+      <JsonLd data={drCheckerBreadcrumbJsonLd()} />
+      <JsonLd data={drCheckerFaqJsonLd()} />
+      <JsonLd data={drCheckerHowToJsonLd()} />
+
       <section>
         <div className="grid md:grid-cols-2">
           <div className="flex flex-col justify-center border-b px-6 py-14 md:border-r md:border-b-0 md:px-12 md:py-20">
@@ -36,11 +79,11 @@ export default async function DomainRatingCheckerPage({
               Free tool
             </p>
             <h1 className="mt-3 max-w-lg text-4xl font-medium tracking-tight text-balance md:text-5xl">
-              Check any site’s Domain Rating
+              Free Ahrefs Domain Rating checker
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-zinc-500 text-balance">
-              Paste a domain and see its Ahrefs score from 0 to 100. No
-              account. No paywall. Completely free.
+              Domain Rating (DR) is Ahrefs’ 0–100 estimate of a site’s
+              backlink strength. Paste a domain, get the score. No signup.
             </p>
 
             <DomainRatingForm defaultDomain={domain} />
@@ -59,9 +102,13 @@ export default async function DomainRatingCheckerPage({
       </section>
 
       <PatternStrip />
+      <DomainRatingHowTo />
+      <PatternStrip />
       <DomainRatingScale />
       <PatternStrip />
       <DomainRatingExplain />
+      <PatternStrip />
+      <DomainRatingFaq />
       <PatternStrip />
       <DomainRatingCta />
     </main>

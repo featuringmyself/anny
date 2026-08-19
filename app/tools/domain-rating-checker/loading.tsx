@@ -1,6 +1,8 @@
 import PatternStrip from "@/components/PatternStrip";
 import { DomainRatingCta } from "@/components/pages/tools/domain-rating/DomainRatingCta";
 import { DomainRatingExplain } from "@/components/pages/tools/domain-rating/DomainRatingExplain";
+import { DomainRatingFaq } from "@/components/pages/tools/domain-rating/DomainRatingFaq";
+import { DomainRatingHowTo } from "@/components/pages/tools/domain-rating/DomainRatingHowTo";
 import { DomainRatingInstrumentPending } from "@/components/pages/tools/domain-rating/DomainRatingInstrument";
 import { DomainRatingScale } from "@/components/pages/tools/domain-rating/DomainRatingScale";
 
@@ -20,9 +22,13 @@ export default function Loading() {
         </div>
       </section>
       <PatternStrip />
+      <DomainRatingHowTo />
+      <PatternStrip />
       <DomainRatingScale />
       <PatternStrip />
       <DomainRatingExplain />
+      <PatternStrip />
+      <DomainRatingFaq />
       <PatternStrip />
       <DomainRatingCta />
     </main>

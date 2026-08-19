@@ -212,14 +212,12 @@ function QueryHeader({
 function MetaItem({
   label,
   value,
-  className,
 }: {
   label: string;
   value: string;
-  className?: string;
 }) {
   return (
-    <div className={className}>
+    <div>
       <dt className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
         {label}
       </dt>
