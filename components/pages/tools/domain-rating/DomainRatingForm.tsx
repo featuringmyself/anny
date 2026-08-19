@@ -54,7 +54,7 @@ function CheckRatingButton() {
 
   return (
     <Button type="submit" size="lg" className="mt-5 px-5" disabled={pending}>
-      {pending ? "Checking…" : "Check rating"}
+      {pending ? "Checking…" : "Check Domain Rating"}
     </Button>
   );
 }

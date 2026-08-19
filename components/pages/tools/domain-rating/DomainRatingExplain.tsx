@@ -1,15 +1,15 @@
 const notes = [
   {
-    title: "What it measures",
-    body: "How strong a website’s backlink profile is, according to Ahrefs. More quality links usually means a higher score.",
+    title: "Compare with competitors",
+    body: "Check a few sites that already rank for the same topics. If their Domain Rating is higher, they have stronger link popularity in Ahrefs’ index.",
   },
   {
-    title: "What it doesn’t",
-    body: "It is not Google’s ranking. It is not traffic, revenue, or whether ChatGPT mentions the brand.",
+    title: "Vet a link or guest post",
+    body: "Ahrefs uses DR as a quick proxy when you size up a site to earn a link from. Still look at relevance, traffic, and whether the site is likely to last.",
   },
   {
-    title: "Why it’s free",
-    body: "You shouldn’t need an Ahrefs login to check one domain. Paste it here and read the dial.",
+    title: "Don’t stop at one number",
+    body: "Ahrefs says Domain Rating is not a good standalone sign of quality. Pair it with the page, the topic, and — if you care about AI answers — whether models actually mention the brand.",
   },
 ] as const;
 
@@ -18,11 +18,11 @@ export function DomainRatingExplain() {
     <section className="border-b">
       <div className="border-b px-6 py-10 md:px-12 md:py-14">
         <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
-          A quick check, not a full audit
+          What this number is for
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Use this when someone sends you a site, a guest-post offer, or a
-          competitor — and you want the number in a few seconds.
+          Use it as a fast check — a competitor, a guest-post offer, or your
+          own site — not as a full SEO audit.
         </p>
       </div>
       <ul className="grid md:grid-cols-3">

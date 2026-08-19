@@ -6,6 +6,7 @@ import {
   bandForScore,
   formatDr,
 } from "@/components/pages/tools/domain-rating/bands";
+import { AHREFS_HOME_URL } from "@/components/pages/tools/domain-rating/seo";
 import { getDomainRating } from "@/lib/domain-rating";
 
 type DomainRatingInstrumentProps = {
@@ -88,8 +89,8 @@ export async function DomainRatingInstrument({
       <GaugeBlock
         value={result.domain_rating}
         label={formatDr(result.domain_rating)}
-        caption={band.label}
-        hint={band.copy}
+        caption="out of 100"
+        hint="Higher means a stronger backlink profile than most other sites in Ahrefs’ index."
       />
       <InstrumentMeta domain={domain} rank={result.ahrefs_rank} />
     </InstrumentShell>
@@ -104,7 +105,14 @@ function InstrumentShell({ children }: { children: ReactNode }) {
     >
       <header className="flex items-center justify-between border-b border-white/10 px-6 py-4 md:px-8">
         <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase">
-          Ahrefs Domain Rating
+          <a
+            href={AHREFS_HOME_URL}
+            className="text-zinc-400 underline-offset-2 hover:text-white hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Domain Rating by Ahrefs
+          </a>
         </p>
         <p className="text-xs font-medium tracking-wide text-[#7ea1ff] uppercase">
           Free

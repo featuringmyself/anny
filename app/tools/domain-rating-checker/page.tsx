@@ -15,16 +15,12 @@ import {
 import { DomainRatingScale } from "@/components/pages/tools/domain-rating/DomainRatingScale";
 import {
   DR_CHECKER_DESCRIPTION,
+  DR_CHECKER_PATH,
   DR_CHECKER_TITLE,
-  DR_CHECKER_URL,
-  drCheckerAppJsonLd,
-  drCheckerBreadcrumbJsonLd,
-  drCheckerFaqJsonLd,
-  drCheckerHowToJsonLd,
-  drCheckerWebPageJsonLd,
+  drCheckerJsonLd,
 } from "@/components/pages/tools/domain-rating/seo";
 import { parseDomainParam } from "@/lib/domain-input";
-import { SITE_NAME } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
 type DomainRatingCheckerPageProps = {
   searchParams: Promise<{ domain?: string | string[] }>;
@@ -35,28 +31,14 @@ export async function generateMetadata({
 }: DomainRatingCheckerPageProps): Promise<Metadata> {
   const domain = parseDomainParam((await searchParams).domain);
 
-  return {
+  return pageMetadata({
+    path: DR_CHECKER_PATH,
     title: DR_CHECKER_TITLE,
     description: DR_CHECKER_DESCRIPTION,
-    alternates: {
-      canonical: DR_CHECKER_URL,
-    },
     robots: domain
       ? { index: false, follow: true }
       : { index: true, follow: true },
-    openGraph: {
-      title: DR_CHECKER_TITLE,
-      description: DR_CHECKER_DESCRIPTION,
-      url: DR_CHECKER_URL,
-      siteName: SITE_NAME,
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: DR_CHECKER_TITLE,
-      description: DR_CHECKER_DESCRIPTION,
-    },
-  };
+  });
 }
 
 export default async function DomainRatingCheckerPage({
@@ -66,11 +48,7 @@ export default async function DomainRatingCheckerPage({
 
   return (
     <main>
-      <JsonLd data={drCheckerWebPageJsonLd()} />
-      <JsonLd data={drCheckerAppJsonLd()} />
-      <JsonLd data={drCheckerBreadcrumbJsonLd()} />
-      <JsonLd data={drCheckerFaqJsonLd()} />
-      <JsonLd data={drCheckerHowToJsonLd()} />
+      <JsonLd data={drCheckerJsonLd()} />
 
       <section>
         <div className="grid md:grid-cols-2">
@@ -79,11 +57,11 @@ export default async function DomainRatingCheckerPage({
               Free tool
             </p>
             <h1 className="mt-3 max-w-lg text-4xl font-medium tracking-tight text-balance md:text-5xl">
-              Free Ahrefs Domain Rating checker
+              Check any site’s Domain Rating
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-zinc-500 text-balance">
-              Domain Rating (DR) is Ahrefs’ 0–100 estimate of a site’s
-              backlink strength. Paste a domain, get the score. No signup.
+              Paste a domain to see Ahrefs’ 0–100 score for how strong its
+              backlinks are, compared with other sites. No signup.
             </p>
 
             <DomainRatingForm defaultDomain={domain} />

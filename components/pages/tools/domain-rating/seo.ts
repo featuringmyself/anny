@@ -1,163 +1,137 @@
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  webpageJsonLd,
+} from "@/lib/seo";
 
 export const DR_CHECKER_PATH = "/tools/domain-rating-checker";
-export const DR_CHECKER_URL = `${SITE_URL}${DR_CHECKER_PATH}`;
+export const DR_CHECKER_URL = absoluteUrl(DR_CHECKER_PATH);
 
-export const DR_CHECKER_TITLE = "Free Ahrefs Domain Rating Checker — Anny";
+export const DR_CHECKER_TITLE = "Free Domain Rating Checker — Ahrefs DR";
 export const DR_CHECKER_DESCRIPTION =
-  "Check any website’s Ahrefs Domain Rating (DR) for free. Paste a domain, get a 0–100 score. No signup, no Ahrefs login.";
+  "Check any website’s Ahrefs Domain Rating for free. Paste a domain, get a 0–100 score. No signup, no Ahrefs login.";
+
+export const AHREFS_HOME_URL = "https://ahrefs.com/";
 
 export const drCheckerFaqs = [
   {
     question: "What is Domain Rating?",
     answer:
-      "Domain Rating (DR) is an Ahrefs metric from 0 to 100 that estimates how strong a website’s backlink profile is. It is based on the quantity and quality of referring domains, not on traffic or Google rankings.",
+      "Domain Rating (DR) is Ahrefs’ score for how strong a website’s backlinks are, compared with other sites in Ahrefs’ index. It runs from 0 to 100. Ahrefs looks at how many unique websites link to the domain, how strong those sites are, and how widely they link out. It does not include traffic, spam, or domain age.",
   },
   {
-    question: "Is this the same as Ahrefs Domain Rating?",
+    question: "Is this the same number as in Ahrefs?",
     answer:
-      "Yes. This checker uses Ahrefs’ public Domain Rating API. The number you see is Ahrefs DR, not Moz Domain Authority, Semrush Authority Score, or a score Anny invented.",
+      "Yes. This page looks up Ahrefs’ public Domain Rating API. You get Ahrefs DR — not Moz Domain Authority, Semrush Authority Score, or a score Anny made up.",
   },
   {
     question: "What is a good Domain Rating?",
     answer:
-      "There is no universal “good” DR. New sites often sit under 30. Established brands commonly land between 50 and 70. Scores above 70 usually take years of links. Compare against competitors in the same niche rather than chasing 90+.",
+      "Ahrefs says you should not treat 30, 50, or 70 as “good” on its own. DR is relative. A score is useful if it is higher than, or close to, similar sites in your space. Check a few competitors with this tool and compare.",
   },
   {
     question: "Is Domain Rating the same as Domain Authority?",
     answer:
-      "No. Domain Authority (DA) is Moz’s metric. Domain Rating is Ahrefs’. They both try to describe link strength on a 0–100 scale, but they are calculated differently and should not be mixed in a report.",
+      "No. Domain Authority (DA) is Moz’s metric. Domain Rating is Ahrefs’. Both use a 0–100 scale, but they use different indexes and formulas, so the numbers will not match. Pick one and stick with it when you compare sites.",
   },
   {
-    question: "Does Domain Rating decide whether ChatGPT cites a site?",
+    question: "Does a higher Domain Rating mean better Google rankings?",
     answer:
-      "No. DR is a backlink estimate. ChatGPT, Gemini, and other models choose sources from their own retrieval. High-DR sites appear often in citations, but a DR score is not an AI ranking factor. Anny tracks whether models mention a brand; this tool only checks DR.",
+      "Not directly. Google does not use Ahrefs DR as a ranking factor. Ahrefs has found that DR often lines up with rankings, but that is a correlation, not proof. Use DR to compare link strength — then look at content, relevance, and the page itself.",
   },
   {
-    question: "Is the Domain Rating checker free?",
+    question: "Why did my Domain Rating drop if I didn’t lose links?",
     answer:
-      "Yes. No account, no credit card, no lookup quota on this page. Paste a domain and read the score.",
+      "Ahrefs explains this as a relative scale: if other sites gain a lot of links, scores can shift even when yours stayed the same. There is no DR 101, so some sites get pushed down as the index changes.",
+  },
+  {
+    question: "Does Domain Rating affect whether ChatGPT mentions a brand?",
+    answer:
+      "This tool only checks Ahrefs Domain Rating. ChatGPT, Gemini, and other models pick sources their own way. If you want to know whether they mention your brand, Anny tracks that separately.",
+  },
+  {
+    question: "Is this checker free?",
+    answer:
+      "Yes. No account, no credit card, and no lookup limit on this page. Paste a domain and read the score.",
   },
 ] as const;
 
 export const drCheckerHowTo = {
-  name: "How to check a website’s Domain Rating",
+  name: "How to check Domain Rating",
   description:
-    "Look up Ahrefs Domain Rating for any domain in a few seconds, without an Ahrefs account.",
+    "Look up any domain in a few seconds. You do not need an Ahrefs account.",
   steps: [
     {
       name: "Enter a domain",
-      text: "Paste a hostname such as example.com. URLs with https:// or a path are fine — the checker normalizes them.",
+      text: "Paste something like example.com. A full URL is fine — we use the domain.",
     },
     {
-      name: "Check the rating",
-      text: "Submit the form. The page looks up Ahrefs Domain Rating for that host.",
+      name: "Check Domain Rating",
+      text: "Submit the form. We ask Ahrefs for that site’s Domain Rating.",
     },
     {
-      name: "Read the 0–100 score",
-      text: "The dial shows Domain Rating out of 100, plus Ahrefs Rank when Ahrefs returns it.",
+      name: "Read the score",
+      text: "You’ll see a 0–100 Domain Rating. If Ahrefs also returns Ahrefs Rank, we show that too — it is a finer ranking of the same idea.",
     },
   ],
 } as const;
 
-export function drCheckerWebPageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: DR_CHECKER_TITLE,
-    description: DR_CHECKER_DESCRIPTION,
-    url: DR_CHECKER_URL,
-    isPartOf: {
-      "@type": "WebSite",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
-    about: {
-      "@type": "WebApplication",
-      name: "Free Domain Rating Checker",
-      url: DR_CHECKER_URL,
-    },
-  };
+function withoutContext<T extends { "@context": string }>(node: T) {
+  const { "@context": _context, ...rest } = node;
+  return rest;
 }
 
-export function drCheckerAppJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Free Domain Rating Checker",
-    description: DR_CHECKER_DESCRIPTION,
-    url: DR_CHECKER_URL,
-    applicationCategory: "BrowserApplication",
-    operatingSystem: "Web",
-    isAccessibleForFree: true,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
-    isPartOf: {
-      "@type": "SoftwareApplication",
-      name: SITE_NAME,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
-      url: SITE_URL,
-    },
-  };
-}
+export function drCheckerJsonLd() {
+  const webpage = withoutContext(
+    webpageJsonLd({
+      path: DR_CHECKER_PATH,
+      title: DR_CHECKER_TITLE,
+      description: DR_CHECKER_DESCRIPTION,
+    }),
+  );
+  const breadcrumb = withoutContext(
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Domain Rating checker", path: DR_CHECKER_PATH },
+    ]),
+  );
+  const faq = withoutContext(faqJsonLd(drCheckerFaqs));
 
-export function drCheckerBreadcrumbJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    "@graph": [
+      webpage,
       {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_URL,
+        "@type": "WebApplication",
+        "@id": `${DR_CHECKER_URL}#webapp`,
+        name: "Free Domain Rating Checker",
+        description: DR_CHECKER_DESCRIPTION,
+        url: DR_CHECKER_URL,
+        applicationCategory: "UtilitiesApplication",
+        operatingSystem: "Web",
+        isAccessibleForFree: true,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
       },
+      breadcrumb,
+      faq,
       {
-        "@type": "ListItem",
-        position: 2,
-        name: "Domain Rating checker",
-        item: DR_CHECKER_URL,
+        "@type": "HowTo",
+        "@id": `${DR_CHECKER_URL}#howto`,
+        name: drCheckerHowTo.name,
+        description: drCheckerHowTo.description,
+        url: DR_CHECKER_URL,
+        step: drCheckerHowTo.steps.map((step, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: step.name,
+          text: step.text,
+        })),
       },
     ],
-  };
-}
-
-export function drCheckerFaqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: drCheckerFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-}
-
-export function drCheckerHowToJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: drCheckerHowTo.name,
-    description: drCheckerHowTo.description,
-    url: DR_CHECKER_URL,
-    step: drCheckerHowTo.steps.map((step, index) => ({
-      "@type": "HowToStep",
-      position: index + 1,
-      name: step.name,
-      text: step.text,
-    })),
   };
 }

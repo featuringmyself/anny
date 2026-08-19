@@ -18,11 +18,11 @@ export function DomainRatingFaq() {
         id="dr-faq-heading"
         className="mt-2 text-2xl font-medium tracking-tight md:text-3xl"
       >
-        Domain Rating, answered plainly
+        Common questions
       </h2>
       <p className="mt-3 max-w-xl text-base text-zinc-500 text-balance">
-        Short answers for the questions people actually type — and the ones
-        AI assistants quote.
+        Short answers based on how Ahrefs defines Domain Rating — not made-up
+        score bands.
       </p>
 
       <Accordion defaultValue={["item-0"]} className="mt-10 max-w-3xl">
