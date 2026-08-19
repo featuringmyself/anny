@@ -10,7 +10,7 @@ export const DR_CHECKER_URL = absoluteUrl(DR_CHECKER_PATH);
 
 export const DR_CHECKER_TITLE = "Free Domain Rating Checker — Ahrefs DR";
 export const DR_CHECKER_DESCRIPTION =
-  "Check any website’s Ahrefs Domain Rating for free. Paste a domain, get a 0–100 score. No signup, no Ahrefs login.";
+  "Check any website’s Ahrefs Domain Rating for free. Paste a domain, get a 0–100 DR score. No signup. This is Ahrefs DR, not Moz Domain Authority.";
 
 export const AHREFS_HOME_URL = "https://ahrefs.com/";
 
@@ -21,24 +21,34 @@ export const drCheckerFaqs = [
       "Domain Rating (DR) is Ahrefs’ score for how strong a website’s backlinks are, compared with other sites in Ahrefs’ index. It runs from 0 to 100. Ahrefs looks at how many unique websites link to the domain, how strong those sites are, and how widely they link out. It does not include traffic, spam, or domain age.",
   },
   {
-    question: "Is this the same number as in Ahrefs?",
+    question: "How do I check a website’s Domain Rating?",
     answer:
-      "Yes. This page looks up Ahrefs’ public Domain Rating API. You get Ahrefs DR — not Moz Domain Authority, Semrush Authority Score, or a score Anny made up.",
+      "Paste the domain in the box at the top of this page and click Check Domain Rating. You do not need an Ahrefs login. We look up Ahrefs’ public Domain Rating API and show the 0–100 score, plus Ahrefs Rank when they return it.",
+  },
+  {
+    question: "Is this a Domain Authority checker?",
+    answer:
+      "No. This is a Domain Rating lookup. Domain Authority (DA) is Moz’s metric. Semrush has Authority Score. People often type “DA checker” or “website authority” when they want a quick strength number — this page only returns Ahrefs DR.",
   },
   {
     question: "What is a good Domain Rating?",
     answer:
-      "Ahrefs says you should not treat 30, 50, or 70 as “good” on its own. DR is relative. A score is useful if it is higher than, or close to, similar sites in your space. Check a few competitors with this tool and compare.",
+      "Ahrefs says you should not treat 30, 50, or 70 as “good” on its own. Moz says the same about Domain Authority, and Semrush says the same about Authority Score: compare similar sites, not the whole web. Check a few competitors here and see where you sit.",
   },
   {
-    question: "Is Domain Rating the same as Domain Authority?",
+    question: "How is DR different from Moz DA and Semrush Authority Score?",
     answer:
-      "No. Domain Authority (DA) is Moz’s metric. Domain Rating is Ahrefs’. Both use a 0–100 scale, but they use different indexes and formulas, so the numbers will not match. Pick one and stick with it when you compare sites.",
+      "Ahrefs DR is backlink strength only. Moz DA is a machine-learning guess at ranking likelihood from Moz’s link data. Semrush Authority Score mixes links, estimated organic traffic, and spam checks. The numbers will not match. Pick one metric and use it consistently.",
   },
   {
-    question: "Does a higher Domain Rating mean better Google rankings?",
+    question: "How do I increase Domain Rating?",
     answer:
-      "Not directly. Google does not use Ahrefs DR as a ranking factor. Ahrefs has found that DR often lines up with rankings, but that is a correlation, not proof. Use DR to compare link strength — then look at content, relevance, and the page itself.",
+      "Ahrefs says DR rises when more unique websites send followed links to your domain. Extra links from the same site do not help. They also say chasing the score should not be the main goal — earn links from real, relevant pages to the URLs you want to rank.",
+  },
+  {
+    question: "Does Domain Rating affect Google rankings?",
+    answer:
+      "No. Google does not use Ahrefs DR, Moz DA, or Semrush Authority Score. Ahrefs has found DR often lines up with rankings, but that is correlation, not proof. Use the score to compare link strength, then look at content and relevance.",
   },
   {
     question: "Why did my Domain Rating drop if I didn’t lose links?",
@@ -46,14 +56,14 @@ export const drCheckerFaqs = [
       "Ahrefs explains this as a relative scale: if other sites gain a lot of links, scores can shift even when yours stayed the same. There is no DR 101, so some sites get pushed down as the index changes.",
   },
   {
-    question: "Does Domain Rating affect whether ChatGPT mentions a brand?",
-    answer:
-      "This tool only checks Ahrefs Domain Rating. ChatGPT, Gemini, and other models pick sources their own way. If you want to know whether they mention your brand, Anny tracks that separately.",
-  },
-  {
     question: "Is this checker free?",
     answer:
       "Yes. No account, no credit card, and no lookup limit on this page. Paste a domain and read the score.",
+  },
+  {
+    question: "Does this tell me if ChatGPT mentions a brand?",
+    answer:
+      "No. This tool only checks Ahrefs Domain Rating. If you want to know whether ChatGPT, Gemini, or AI Mode mention your brand, Anny tracks that separately.",
   },
 ] as const;
 
@@ -106,6 +116,11 @@ export function drCheckerJsonLd() {
         "@type": "WebApplication",
         "@id": `${DR_CHECKER_URL}#webapp`,
         name: "Free Domain Rating Checker",
+        alternateName: [
+          "DR Checker",
+          "Ahrefs Domain Rating Checker",
+          "Free Ahrefs DR Checker",
+        ],
         description: DR_CHECKER_DESCRIPTION,
         url: DR_CHECKER_URL,
         applicationCategory: "UtilitiesApplication",

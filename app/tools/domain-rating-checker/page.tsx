@@ -3,9 +3,11 @@ import { Suspense } from "react";
 
 import JsonLd from "@/components/JsonLd";
 import PatternStrip from "@/components/PatternStrip";
+import { DomainRatingCompare } from "@/components/pages/tools/domain-rating/DomainRatingCompare";
 import { DomainRatingCta } from "@/components/pages/tools/domain-rating/DomainRatingCta";
 import { DomainRatingExplain } from "@/components/pages/tools/domain-rating/DomainRatingExplain";
 import { DomainRatingFaq } from "@/components/pages/tools/domain-rating/DomainRatingFaq";
+import { DomainRatingGrow } from "@/components/pages/tools/domain-rating/DomainRatingGrow";
 import { DomainRatingForm } from "@/components/pages/tools/domain-rating/DomainRatingForm";
 import { DomainRatingHowTo } from "@/components/pages/tools/domain-rating/DomainRatingHowTo";
 import {
@@ -57,11 +59,12 @@ export default async function DomainRatingCheckerPage({
               Free tool
             </p>
             <h1 className="mt-3 max-w-lg text-4xl font-medium tracking-tight text-balance md:text-5xl">
-              Check any site’s Domain Rating
+              Free Domain Rating checker
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-zinc-500 text-balance">
-              Paste a domain to see Ahrefs’ 0–100 score for how strong its
-              backlinks are, compared with other sites. No signup.
+              Paste a domain to see Ahrefs’ 0–100 DR score — how strong its
+              backlinks are versus other sites. Not Moz Domain Authority. No
+              signup.
             </p>
 
             <DomainRatingForm defaultDomain={domain} />
@@ -84,7 +87,11 @@ export default async function DomainRatingCheckerPage({
       <PatternStrip />
       <DomainRatingScale />
       <PatternStrip />
+      <DomainRatingCompare />
+      <PatternStrip />
       <DomainRatingExplain />
+      <PatternStrip />
+      <DomainRatingGrow />
       <PatternStrip />
       <DomainRatingFaq />
       <PatternStrip />

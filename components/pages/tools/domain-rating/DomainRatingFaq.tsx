@@ -21,8 +21,8 @@ export function DomainRatingFaq() {
         Common questions
       </h2>
       <p className="mt-3 max-w-xl text-base text-zinc-500 text-balance">
-        Short answers based on how Ahrefs defines Domain Rating — not made-up
-        score bands.
+        Straight answers for DR, DA, and “website authority” lookups — using
+        what Ahrefs, Moz, and Semrush actually say.
       </p>
 
       <Accordion defaultValue={["item-0"]} className="mt-10 max-w-3xl">

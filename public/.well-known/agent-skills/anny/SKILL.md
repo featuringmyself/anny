@@ -81,7 +81,7 @@ Deep links: `/compare/ahrefs`, `/compare/semrush`, `/compare/profound`
 
 ## Free tools
 
-- Domain Rating checker (free Ahrefs DR, 0–100, not Moz DA): https://anny.dodoxhq.com/tools/domain-rating-checker
+- Domain Rating checker (free Ahrefs DR, 0–100; relative, not Moz DA): https://anny.dodoxhq.com/tools/domain-rating-checker
 
 ## Feature deep links
 
