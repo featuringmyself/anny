@@ -27,8 +27,12 @@ import {
 import { parseDomainParam } from "@/lib/domain-input";
 import { pageMetadata } from "@/lib/seo";
 
+export const maxDuration = 30;
+
+type SearchParams = Promise<{ domain?: string | string[] }>;
+
 type AiReadinessCheckerPageProps = {
-  searchParams: Promise<{ domain?: string | string[] }>;
+  searchParams: SearchParams;
 };
 
 export async function generateMetadata({
@@ -46,11 +50,9 @@ export async function generateMetadata({
   });
 }
 
-export default async function AiReadinessCheckerPage({
+export default function AiReadinessCheckerPage({
   searchParams,
 }: AiReadinessCheckerPageProps) {
-  const domain = parseDomainParam((await searchParams).domain);
-
   return (
     <main>
       <JsonLd data={aiReadinessJsonLd()} />
@@ -70,29 +72,20 @@ export default async function AiReadinessCheckerPage({
               signup.
             </p>
 
-            <AiReadinessForm defaultDomain={domain} />
+            <Suspense fallback={<AiReadinessForm defaultDomain="" />}>
+              <FormFromSearchParams searchParams={searchParams} />
+            </Suspense>
           </div>
 
-          {domain ? (
-            <Suspense
-              fallback={<AiReadinessInstrumentPending domain={domain} />}
-            >
-              <AiReadinessInstrument domain={domain} />
-            </Suspense>
-          ) : (
-            <AiReadinessInstrument />
-          )}
+          <Suspense fallback={<AiReadinessInstrumentPending domain="—" />}>
+            <InstrumentFromSearchParams searchParams={searchParams} />
+          </Suspense>
         </div>
       </section>
 
-      {domain ? (
-        <>
-          <PatternStrip />
-          <Suspense fallback={<AiReadinessFindingsPending />}>
-            <AiReadinessFindings domain={domain} />
-          </Suspense>
-        </>
-      ) : null}
+      <Suspense>
+        <FindingsFromSearchParams searchParams={searchParams} />
+      </Suspense>
 
       <PatternStrip />
       <AiReadinessHowTo />
@@ -107,5 +100,50 @@ export default async function AiReadinessCheckerPage({
       <PatternStrip />
       <AiReadinessCta />
     </main>
+  );
+}
+
+async function FormFromSearchParams({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const domain = parseDomainParam((await searchParams).domain);
+  return <AiReadinessForm defaultDomain={domain} />;
+}
+
+async function InstrumentFromSearchParams({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const domain = parseDomainParam((await searchParams).domain);
+
+  if (!domain) {
+    return <AiReadinessInstrument />;
+  }
+
+  return (
+    <Suspense fallback={<AiReadinessInstrumentPending domain={domain} />}>
+      <AiReadinessInstrument domain={domain} />
+    </Suspense>
+  );
+}
+
+async function FindingsFromSearchParams({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const domain = parseDomainParam((await searchParams).domain);
+  if (!domain) return null;
+
+  return (
+    <>
+      <PatternStrip />
+      <Suspense fallback={<AiReadinessFindingsPending />}>
+        <AiReadinessFindings domain={domain} />
+      </Suspense>
+    </>
   );
 }

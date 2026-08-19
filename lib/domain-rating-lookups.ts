@@ -45,7 +45,6 @@ function ensureIndexes(collection: Collection<DomainRatingLookupDocument>) {
   void collection
     .createIndexes([
       { key: { domain: 1 }, name: "domain_unique", unique: true },
-      { key: { lastSeenAt: -1 }, name: "lastSeenAt_desc" },
     ])
     .catch((error) => {
       indexesRequested = false;
@@ -53,10 +52,12 @@ function ensureIndexes(collection: Collection<DomainRatingLookupDocument>) {
     });
 }
 
-async function lookupsCollection() {
+async function lookupsCollection({
+  withIndexes = false,
+}: { withIndexes?: boolean } = {}) {
   const db = await getDb();
   const collection = db.collection<DomainRatingLookupDocument>(COLLECTION);
-  ensureIndexes(collection);
+  if (withIndexes) ensureIndexes(collection);
   return collection;
 }
 
@@ -64,12 +65,10 @@ export async function findFreshDomainRating(domain: string) {
   try {
     const collection = await lookupsCollection();
     const doc = await collection.findOne(
-      {
-        domain,
-        lastDomainRating: { $type: "number" },
-      },
+      { domain },
       {
         projection: {
+          _id: 0,
           lastDomainRating: 1,
           lastAhrefsRank: 1,
           lastFetchedAt: 1,
@@ -81,7 +80,7 @@ export async function findFreshDomainRating(domain: string) {
     if (doc?.lastDomainRating == null) return null;
 
     const fetchedAt = doc.lastFetchedAt ?? doc.lastSeenAt;
-    if (Date.now() - fetchedAt.getTime() >= DOMAIN_RATING_CACHE_MS) {
+    if (!fetchedAt || Date.now() - fetchedAt.getTime() >= DOMAIN_RATING_CACHE_MS) {
       return null;
     }
 
@@ -106,7 +105,7 @@ export async function recordDomainRatingLookup(
   domain: string,
   result: LookupResult,
 ) {
-  const collection = await lookupsCollection();
+  const collection = await lookupsCollection({ withIndexes: true });
   const now = new Date();
   const success = !("error" in result);
 

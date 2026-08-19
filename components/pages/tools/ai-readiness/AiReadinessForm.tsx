@@ -1,13 +1,9 @@
-"use client";
-
 import Form from "next/form";
-import { useFormStatus } from "react-dom";
-import posthog from "posthog-js";
 
-import { Button } from "@/components/ui/button";
+import { AiReadinessSubmit } from "@/components/pages/tools/ai-readiness/AiReadinessSubmit";
+import { AI_READINESS_PATH } from "@/components/pages/tools/ai-readiness/seo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { parseDomainParam } from "@/lib/domain-input";
 
 export function AiReadinessForm({
   defaultDomain,
@@ -16,17 +12,9 @@ export function AiReadinessForm({
 }) {
   return (
     <Form
-      action=""
+      action={AI_READINESS_PATH}
       scroll={false}
       className="mt-10 max-w-md"
-      onSubmit={(event) => {
-        const raw = new FormData(event.currentTarget).get("domain");
-        const domain = parseDomainParam(
-          typeof raw === "string" ? raw : undefined,
-        );
-        if (!domain) return;
-        posthog.capture("ai_readiness_check_submitted", { domain });
-      }}
     >
       <Label htmlFor="domain" className="text-zinc-600">
         Domain
@@ -44,17 +32,7 @@ export function AiReadinessForm({
         spellCheck="false"
         required
       />
-      <CheckButton />
+      <AiReadinessSubmit />
     </Form>
-  );
-}
-
-function CheckButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button type="submit" size="lg" className="mt-5 px-5" disabled={pending}>
-      {pending ? "Scanning…" : "Check AI readiness"}
-    </Button>
   );
 }

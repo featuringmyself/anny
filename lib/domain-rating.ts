@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { after } from "next/server";
 
 import {
@@ -24,9 +25,9 @@ type DomainRatingResponse = {
   error?: string;
 };
 
-export async function getDomainRating(
+export const getDomainRating = cache(async (
   domain: string,
-): Promise<DomainRating | { error: string }> {
+): Promise<DomainRating | { error: string }> => {
   const parsed = domainInputSchema.safeParse(domain);
 
   if (!parsed.success) {
@@ -44,7 +45,7 @@ export async function getDomainRating(
   const result = await fetchDomainRating(parsed.data);
   scheduleLookupRecord(parsed.data, result);
   return result;
-}
+});
 
 async function fetchDomainRating(
   domain: string,
@@ -62,6 +63,7 @@ async function fetchDomainRating(
   try {
     const response = await fetch(url, {
       cache: "no-store",
+      signal: AbortSignal.timeout(8000),
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${apiKey}`,

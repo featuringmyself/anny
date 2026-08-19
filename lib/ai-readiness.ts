@@ -168,8 +168,12 @@ async function probe(url: string, maxBytes: number): Promise<Probe> {
             "text/html, text/plain, text/markdown, application/json, */*",
           "User-Agent": USER_AGENT,
         },
+        cache: "force-cache",
         signal: AbortSignal.timeout(FETCH_MS),
-        next: { revalidate: 3600 },
+        next: {
+          revalidate: 3600,
+          tags: ["ai-readiness"],
+        },
       });
 
       if ([301, 302, 303, 307, 308].includes(response.status)) {

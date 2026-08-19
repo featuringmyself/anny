@@ -1,5 +1,3 @@
-"use client";
-
 import { useId, type CSSProperties } from "react";
 
 import styles from "@/components/pages/tools/ai-readiness/AiReadinessGauge.module.css";

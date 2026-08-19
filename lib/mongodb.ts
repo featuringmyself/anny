@@ -22,7 +22,12 @@ function getUri() {
 function getClientPromise() {
   if (!globalForMongo._mongoClientPromise) {
     const client = new MongoClient(getUri(), {
-      // Fail fast instead of hanging a form submission for the 30s default.
+      // Reuse one client per process (Next.js / serverless).
+      // https://www.mongodb.com/docs/drivers/node/current/connect/mongoclient/
+      // https://www.mongodb.com/docs/atlas/manage-connections-aws-lambda/
+      maxPoolSize: 5,
+      minPoolSize: 0,
+      maxIdleTimeMS: 60_000,
       serverSelectionTimeoutMS: 8000,
       connectTimeoutMS: 8000,
       socketTimeoutMS: 10000,
