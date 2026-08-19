@@ -30,17 +30,30 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
+    images: [
+      {
+        url: SITE_SCREENSHOT_URL,
+        alt: "Anny ChatGPT visibility dashboard overview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Anny - AI Search Visibility Monitoring",
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: SITE_SCREENSHOT_URL,
+        alt: "Anny ChatGPT visibility dashboard overview",
+      },
+    ],
   },
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}#organization`,
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
@@ -55,6 +68,7 @@ const organizationJsonLd = {
 const softwareJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
+  "@id": `${SITE_URL}#software`,
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
@@ -77,19 +91,14 @@ const softwareJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}#website`,
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
   datePublished: SITE_DATE_PUBLISHED,
   dateModified: SITE_DATE_MODIFIED,
   publisher: {
-    "@type": "Organization",
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: SITE_LOGO_URL,
-    },
+    "@id": `${SITE_URL}#organization`,
   },
   // potentialAction / SearchAction omitted: no on-site search URL or /search route.
 };

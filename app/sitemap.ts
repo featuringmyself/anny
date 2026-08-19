@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getRoleSlugs } from "@/components/pages/careers/roles";
 import { getAllPosts } from "@/components/pages/product/blog/posts";
-import { SITE_URL } from "@/lib/site";
+import { SITE_DATE_MODIFIED, SITE_URL } from "@/lib/site";
 
 const routes: {
   path: string;
@@ -37,7 +37,7 @@ const routes: {
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date(SITE_DATE_MODIFIED);
 
   const staticEntries = routes.map(({ path, changeFrequency, priority }) => ({
     url: path === "/" ? SITE_URL : `${SITE_URL}${path}`,

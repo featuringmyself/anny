@@ -86,7 +86,8 @@ Deep links: `/compare/ahrefs`, `/compare/semrush`, `/compare/profound`
 
 ## Feature deep links
 
-- Agencies: https://anny.dodoxhq.com/partnership/agencies
+- Agencies: https://anny.dodoxhq.com/features/agencies
+- Agency partnership: https://anny.dodoxhq.com/partnership/agencies
 - ChatGPT tracking: https://anny.dodoxhq.com/features/chatgpt
 - Gemini tracking: https://anny.dodoxhq.com/features/gemini
 - Google AI Mode: https://anny.dodoxhq.com/features/ai-mode

@@ -41,7 +41,13 @@ const CASE_STUDY_DISALLOW = [
   "/case-studies/winn-dixie",
 ] as const;
 
-const PUBLIC_AI_ALLOW = [
+const DISALLOW = ["/api/", "/audits/", ...CASE_STUDY_DISALLOW] as const;
+
+/**
+ * Extra Allow prefixes for AI bots are signals (GEO / citation surfaces), not a
+ * whitelist. The real crawl policy is Allow: / plus the shared disallows.
+ */
+const AI_BOT_ALLOW_SIGNALS = [
   "/",
   "/llms.txt",
   "/llms-full.txt",
@@ -55,13 +61,13 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: [...PUBLIC_AI_ALLOW],
-        disallow: [...CASE_STUDY_DISALLOW],
+        allow: "/",
+        disallow: [...DISALLOW],
       },
       ...AI_BOTS.map((userAgent) => ({
         userAgent,
-        allow: [...PUBLIC_AI_ALLOW],
-        disallow: [...CASE_STUDY_DISALLOW],
+        allow: [...AI_BOT_ALLOW_SIGNALS],
+        disallow: [...DISALLOW],
       })),
     ],
     host: SITE_URL,

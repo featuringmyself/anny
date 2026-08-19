@@ -18,4 +18,4 @@ export const SITE_SAME_AS = [SITE_X_URL, SITE_LINKEDIN_URL] as const;
 
 /** ISO dates for WebPage / SoftwareApplication freshness signals */
 export const SITE_DATE_PUBLISHED = "2026-07-24";
-export const SITE_DATE_MODIFIED = "2026-08-09";
+export const SITE_DATE_MODIFIED = "2026-08-20";
