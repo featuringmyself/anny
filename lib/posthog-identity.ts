@@ -41,6 +41,25 @@ export function readAnonymousDistinctId(
   return value;
 }
 
+export function readAnonymousDistinctIdFromHeaders(
+  headers: Headers,
+): string | undefined {
+  const raw =
+    headers.get("x-posthog-distinct-id") ??
+    headers.get("X-POSTHOG-DISTINCT-ID");
+  return readAnonymousDistinctId({ ph_distinct_id: raw ?? undefined });
+}
+
+export function readPostHogSessionId(headers: Headers): string | undefined {
+  const raw =
+    headers.get("x-posthog-session-id") ??
+    headers.get("X-POSTHOG-SESSION-ID");
+  if (typeof raw !== "string") return undefined;
+  const value = raw.trim();
+  if (!value || value.length > 200) return undefined;
+  return value;
+}
+
 /** Person properties for identify(), optionally linking the browser anonymous id. */
 export function identifyProperties(
   properties: Record<string, string | number | boolean | null | undefined>,

@@ -43,5 +43,20 @@
     "event": "press_email_clicked",
     "description": "Visitor starts a press quote or mention email inquiry.",
     "file": "components/pages/partnership/media/QuoteRequest.tsx"
+  },
+  {
+    "event": "domain_rating_checked",
+    "description": "Visitor successfully looks up Ahrefs Domain Rating from the free tool or API.",
+    "file": "lib/domain-rating-analytics.ts"
+  },
+  {
+    "event": "domain_rating_check_failed",
+    "description": "A Domain Rating lookup fails validation or the Ahrefs request.",
+    "file": "lib/domain-rating-analytics.ts"
+  },
+  {
+    "event": "domain_rating_pricing_clicked",
+    "description": "Visitor opens pricing from the Domain Rating checker CTA.",
+    "file": "components/pages/tools/domain-rating/DomainRatingCta.tsx"
   }
 ]
