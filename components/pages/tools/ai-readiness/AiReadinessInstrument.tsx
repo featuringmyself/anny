@@ -192,7 +192,7 @@ function CategoryBars({
             </div>
             <div className="mt-2 h-1 overflow-hidden bg-white/10">
               <div
-                className="h-full bg-gradient-to-r from-[#2462ff] to-[#9dffd4] transition-[width] duration-500"
+                className="h-full bg-linear-to-r from-[#2462ff] to-[#9dffd4] transition-[width] duration-500"
                 style={{ width: pending ? "18%" : `${pct}%` }}
               />
             </div>

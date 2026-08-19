@@ -31,6 +31,25 @@ export const READINESS_BANDS = [
   },
 ] as const;
 
+export const CATEGORY_META = {
+  crawl: {
+    label: "Crawl access",
+    copy: "robots.txt exists, and major AI crawlers are allowed in.",
+  },
+  discovery: {
+    label: "Agent discovery",
+    copy: "llms.txt, skill files, and MCP cards agents can actually read.",
+  },
+  schema: {
+    label: "Structured data",
+    copy: "JSON-LD so models can name the brand, product, and page.",
+  },
+  semantics: {
+    label: "HTML semantics",
+    copy: "Landmarks and a real heading so the page isn’t a wall of divs.",
+  },
+} as const;
+
 export function bandForScore(score: number) {
   return (
     READINESS_BANDS.find((band) => score >= band.from && score <= band.to) ??

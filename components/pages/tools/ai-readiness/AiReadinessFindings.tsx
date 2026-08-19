@@ -1,5 +1,5 @@
-import { CATEGORY_META, getAiReadiness } from "@/lib/ai-readiness";
-import type { CheckStatus } from "@/lib/ai-readiness";
+import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
+import { getAiReadiness, type CheckStatus } from "@/lib/ai-readiness";
 
 const STATUS: Record<
   CheckStatus,

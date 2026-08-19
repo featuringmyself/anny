@@ -2,6 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 
+import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
 import { domainInputSchema, parseDomainParam } from "@/lib/domain-input";
 
 export { parseDomainParam };
@@ -74,28 +75,6 @@ const AI_AGENTS = [
     weight: 3,
   },
 ] as const;
-
-export const CATEGORY_META: Record<
-  ReadinessCategoryId,
-  { label: string; copy: string }
-> = {
-  crawl: {
-    label: "Crawl access",
-    copy: "robots.txt exists, and major AI crawlers are allowed in.",
-  },
-  discovery: {
-    label: "Agent discovery",
-    copy: "llms.txt, skill files, and MCP cards agents can actually read.",
-  },
-  schema: {
-    label: "Structured data",
-    copy: "JSON-LD so models can name the brand, product, and page.",
-  },
-  semantics: {
-    label: "HTML semantics",
-    copy: "Landmarks and a real heading so the page isn’t a wall of divs.",
-  },
-};
 
 type Probe = {
   url: string;

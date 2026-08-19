@@ -1,4 +1,4 @@
-import { CATEGORY_META } from "@/lib/ai-readiness";
+import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
 
 const items = (
   Object.entries(CATEGORY_META) as [
