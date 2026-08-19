@@ -43,6 +43,35 @@ export function DomainRatingGauge({
   pending = false,
 }: DomainRatingGaugeProps) {
   const reduce = useReducedMotion();
+  // #region agent log
+  const animateOpacity =
+    pending && !reduce ? [0.28, 0.85, 0.28] : pending ? 0.4 : 1;
+  if (typeof window !== "undefined") {
+    fetch("http://127.0.0.1:7528/ingest/8ea49b12-3acb-4483-906d-aeed4e36bee6", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Debug-Session-Id": "c31750",
+      },
+      body: JSON.stringify({
+        sessionId: "c31750",
+        runId: "pre-fix",
+        hypothesisId: "A",
+        location: "DomainRatingGauge.tsx:mount",
+        message: "gauge motion.line animate opacity without initial",
+        data: {
+          path: window.location.pathname,
+          pending,
+          reduce: Boolean(reduce),
+          tickCount: SEGMENTS,
+          animateOpacity,
+          hasInitial: false,
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+  }
+  // #endregion
   const gradientId = `dr-meter-${useId().replace(/:/g, "")}`;
   const clamped =
     value == null ? null : Math.min(100, Math.max(0, value));

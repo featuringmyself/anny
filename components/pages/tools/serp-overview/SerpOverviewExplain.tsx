@@ -1,15 +1,15 @@
 const notes = [
   {
     title: "What it shows",
-    body: "Who currently ranks organically for a keyword in one country, plus each result’s Domain Rating and URL Rating from Ahrefs.",
+    body: "Ahrefs’ last snapshot of the Google SERP for a keyword in one country: organic rankings, paid ads, and SERP features, with DR, UR, backlinks, and page type when Ahrefs has them.",
   },
   {
     title: "What it doesn’t",
-    body: "It is not live Google, not paid ads, and not whether ChatGPT would cite those pages. It is the last Ahrefs snapshot of page one.",
+    body: "It is not live Google. It is not whether ChatGPT would cite those pages. Traffic and dollar-value columns are omitted so a lookup stays cheap.",
   },
   {
     title: "When to use it",
-    body: "Before you write the page, pitch the guest post, or pick a competitor to watch — so you know whose links and titles you are up against.",
+    body: "Before you write the page or pick a competitor — so you see ads, featured snippets, and local packs sitting above the blue links you hoped to win.",
   },
 ] as const;
 
@@ -21,8 +21,8 @@ export function SerpOverviewExplain() {
           A snapshot, not a rank tracker
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Domain Rating is one number for one site. A SERP is ten pages fighting
-          over the same query. This tool is for that fight.
+          SERP Overview is the layout of the results page. Use it to see who
+          already occupies the query — and with which features.
         </p>
       </div>
       <ul className="grid md:grid-cols-3">

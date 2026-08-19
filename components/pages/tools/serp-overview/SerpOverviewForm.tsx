@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import {
   parseCountryParam,
   parseKeywordParam,
+  SERP_CHECKER_PATH,
   SERP_COUNTRIES,
   type SerpCountryCode,
 } from "@/lib/serp-input";
@@ -24,7 +25,7 @@ export function SerpOverviewForm({
 }) {
   return (
     <Form
-      action=""
+      action={SERP_CHECKER_PATH}
       scroll={false}
       className="mt-10"
       onSubmit={(event) => {
@@ -102,7 +103,7 @@ function CheckSerpButton() {
       className="h-12 px-6 lg:mb-px"
       disabled={pending}
     >
-      {pending ? "Checking…" : "Show page one"}
+      {pending ? "Checking…" : "Show SERP"}
     </Button>
   );
 }

@@ -1,10 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
+import { captureSerpOverviewLookup } from "@/lib/serp-overview-analytics";
+import { getSerpOverview } from "@/lib/serp-overview";
+import { parseCountryParam, parseKeywordParam } from "@/lib/serp-input";
 import {
-  getSerpOverview,
-  parseCountryParam,
-  parseKeywordParam,
-} from "@/lib/serp-overview";
+  readAnonymousDistinctIdFromHeaders,
+  readPostHogSessionId,
+} from "@/lib/posthog-identity";
 
 export async function GET(request: NextRequest) {
   const keyword = parseKeywordParam(
@@ -13,17 +15,38 @@ export async function GET(request: NextRequest) {
   const country = parseCountryParam(
     request.nextUrl.searchParams.get("country") ?? undefined,
   );
+  const distinctId = readAnonymousDistinctIdFromHeaders(request.headers);
+  const sessionId = readPostHogSessionId(request.headers);
 
   if (!keyword) {
-    return NextResponse.json({ error: "Keyword is required" }, { status: 400 });
+    return Response.json({ error: "Keyword is required" }, { status: 400 });
   }
 
-  const result = await getSerpOverview(keyword, country);
+  try {
+    const result = await getSerpOverview(keyword, country);
 
-  if ("error" in result) {
-    const status = result.error.startsWith("Failed") ? 500 : 400;
-    return NextResponse.json({ error: result.error }, { status });
+    try {
+      await captureSerpOverviewLookup({
+        distinctId,
+        sessionId,
+        keyword,
+        country,
+        result,
+        source: "api",
+      });
+    } catch {
+      // Never let PostHog errors fail the lookup
+    }
+
+    if ("error" in result) {
+      return Response.json({ error: result.error }, { status: 400 });
+    }
+
+    return Response.json(result);
+  } catch {
+    return Response.json(
+      { error: "Failed to load SERP overview" },
+      { status: 500 },
+    );
   }
-
-  return NextResponse.json(result);
 }

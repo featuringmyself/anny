@@ -1,6 +1,10 @@
 import "server-only";
 
 import {
+  groupIdForTypes,
+  type SerpGroupId,
+} from "@/lib/serp-features";
+import {
   countryInputSchema,
   keywordInputSchema,
   type SerpCountryCode,
@@ -23,9 +27,13 @@ const SERP_COLUMNS = [
   "url_rating",
   "ahrefs_rank",
   "update_date",
+  "page_type",
+  "keywords",
+  "backlinks",
+  "top_keyword",
 ] as const;
 
-export const TOP_ORGANIC_POSITIONS = 10;
+const TOP_ORGANIC_POSITIONS = 10;
 
 export type SerpPosition = {
   position: number;
@@ -36,6 +44,10 @@ export type SerpPosition = {
   url_rating: number | null;
   ahrefs_rank: number | null;
   update_date: string | null;
+  page_type: string | null;
+  keywords: number | null;
+  backlinks: number | null;
+  top_keyword: string | null;
 };
 
 export type SerpOverview = {
@@ -46,9 +58,35 @@ export type SerpOverview = {
 };
 
 type SerpOverviewResponse = {
-  positions?: SerpPosition[];
+  positions?: Partial<SerpPosition>[];
   error?: string;
 };
+
+function normalizePosition(row: Partial<SerpPosition>): SerpPosition | null {
+  if (typeof row.position !== "number") return null;
+
+  return {
+    position: row.position,
+    type: Array.isArray(row.type) ? row.type : [],
+    url: row.url ?? null,
+    title: row.title ?? null,
+    domain_rating: row.domain_rating ?? null,
+    url_rating: row.url_rating ?? null,
+    ahrefs_rank: row.ahrefs_rank ?? null,
+    update_date: row.update_date ?? null,
+    page_type: row.page_type ?? null,
+    keywords: row.keywords ?? null,
+    backlinks: row.backlinks ?? null,
+    top_keyword: row.top_keyword ?? null,
+  };
+}
+
+export function positionsInGroup(
+  positions: SerpPosition[],
+  group: SerpGroupId,
+): SerpPosition[] {
+  return positions.filter((row) => groupIdForTypes(row.type) === group);
+}
 
 export async function getSerpOverview(
   keyword: string,
@@ -72,14 +110,13 @@ export async function getSerpOverview(
   const apiKey = process.env.AHREF_API_KEY;
 
   if (!apiKey) {
-    return { error: "Failed to load SERP overview" };
+    throw new Error("Failed to load SERP overview");
   }
 
   const url = new URL("https://api.ahrefs.com/v3/serp-overview/serp-overview");
   url.searchParams.set("select", SERP_COLUMNS.join(","));
   url.searchParams.set("keyword", parsedKeyword.data);
   url.searchParams.set("country", parsedCountry.data);
-  url.searchParams.set("type", "organic");
   url.searchParams.set("top_positions", String(TOP_ORGANIC_POSITIONS));
   url.searchParams.set("output", "json");
 
@@ -88,22 +125,28 @@ export async function getSerpOverview(
       Accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
+    next: {
+      revalidate: 3600,
+      tags: [
+        `serp-overview:${parsedCountry.data}:${parsedKeyword.data.toLowerCase()}`,
+      ],
+    },
   });
 
   if (!response.ok) {
-    return { error: "Failed to load SERP overview" };
+    throw new Error("Failed to load SERP overview");
   }
 
   const data = (await response.json()) as SerpOverviewResponse;
 
   if (!Array.isArray(data.positions)) {
-    return { error: data.error ?? "Failed to load SERP overview" };
+    throw new Error("Failed to load SERP overview");
   }
 
   const positions = data.positions
-    .filter((row) => typeof row.position === "number")
-    .sort((a, b) => a.position - b.position)
-    .slice(0, TOP_ORGANIC_POSITIONS);
+    .map(normalizePosition)
+    .filter((row): row is SerpPosition => row != null)
+    .sort((a, b) => a.position - b.position);
 
   return {
     keyword: parsedKeyword.data,

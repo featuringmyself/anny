@@ -1,5 +1,7 @@
 import * as z from "zod";
 
+export const SERP_CHECKER_PATH = "/tools/serp-overview-checker";
+
 export const SERP_COUNTRIES = [
   { code: "us", label: "United States" },
   { code: "gb", label: "United Kingdom" },

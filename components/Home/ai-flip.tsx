@@ -52,6 +52,34 @@ export default function AiFlip() {
 
   const item = AI_ITEMS[index];
 
+  // #region agent log
+  if (typeof window !== "undefined") {
+    fetch("http://127.0.0.1:7528/ingest/8ea49b12-3acb-4483-906d-aeed4e36bee6", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Debug-Session-Id": "c31750",
+      },
+      body: JSON.stringify({
+        sessionId: "c31750",
+        runId: "pre-fix",
+        hypothesisId: "C",
+        location: "ai-flip.tsx:render",
+        message: "AiFlip AnimatePresence motion.span",
+        data: {
+          path: window.location.pathname,
+          index,
+          name: item.name,
+          initialOpacity: 0,
+          animateOpacity: 1,
+          presenceInitialFalse: true,
+        },
+        timestamp: Date.now(),
+      }),
+    }).catch(() => {});
+  }
+  // #endregion
+
   return (
     // Overflow must stay visible here: an inline-block that clips takes its
     // bottom margin edge as its baseline, which lifts it off the text baseline.

@@ -29,6 +29,22 @@ export function displayUrl(url: string | null): string {
   }
 }
 
+export function formatCount(value: number | null | undefined): string {
+  if (value == null) return "—";
+  return value.toLocaleString("en-US");
+}
+
+export function formatPageType(pageType: string | null): string | null {
+  if (!pageType) return null;
+  const first = pageType.split(",")[0]?.trim();
+  if (!first) return null;
+  return first
+    .split("/")
+    .filter(Boolean)
+    .map((part) => part.replace(/_/g, " "))
+    .join(" / ");
+}
+
 export function formatScore(score: number | null | undefined): string {
   if (score == null) return "—";
   return Number.isInteger(score) ? String(score) : score.toFixed(1);
