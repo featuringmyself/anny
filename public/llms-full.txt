@@ -99,6 +99,10 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 
 Free Ahrefs Domain Rating (DR) lookup. Paste a domain, get a 0–100 backlink-strength score. No account. Anny is the GEO product; this page is a public utility. Scores are Domain Rating by Ahrefs.
 
+### AI readiness checker — https://anny.dodoxhq.com/tools/ai-readiness-checker
+
+Free on-site AI readiness scan. Paste a domain to score crawl access (robots.txt / GPTBot / ClaudeBot / PerplexityBot), agent discovery (llms.txt, agent-skills, MCP), JSON-LD, and HTML landmarks. No account. This is not Anny’s AI visibility / mention score.
+
 ## Features
 
 ### Agencies — https://anny.dodoxhq.com/features/agencies

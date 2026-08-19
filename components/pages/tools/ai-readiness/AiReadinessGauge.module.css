@@ -1,0 +1,59 @@
+@keyframes ar-gauge-pending {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes ar-gauge-tick-in {
+  from {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ar-scan {
+  0% {
+    transform: rotate(-40deg);
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: rotate(220deg);
+    opacity: 0.15;
+  }
+}
+
+.pending line {
+  animation: ar-gauge-pending 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--tick) * 30ms);
+}
+
+.scored line[data-on="true"] {
+  animation: ar-gauge-tick-in 0.18s ease-out both;
+  animation-delay: calc(var(--tick) * 12ms);
+}
+
+.scan {
+  transform-origin: 140px 138px;
+  animation: ar-scan 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pending line,
+  .scan {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  .scored line[data-on="true"] {
+    animation: none;
+  }
+}

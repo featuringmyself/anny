@@ -1,7 +1,7 @@
-import { after, type NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-import { captureDomainRatingLookup } from "@/lib/domain-rating-analytics";
-import { getDomainRating, parseDomainParam } from "@/lib/domain-rating";
+import { captureAiReadinessLookup } from "@/lib/ai-readiness-analytics";
+import { getAiReadiness, parseDomainParam } from "@/lib/ai-readiness";
 import {
   readAnonymousDistinctIdFromHeaders,
   readPostHogSessionId,
@@ -18,31 +18,30 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Domain is required" }, { status: 400 });
   }
 
-  const result = await getDomainRating(domain);
+  const result = await getAiReadiness(domain);
 
-  after(async () => {
-    try {
-      await captureDomainRatingLookup({
-        distinctId,
-        sessionId,
-        domain,
-        result,
-        source: "api",
-      });
-    } catch {
-      // Never let PostHog errors fail the lookup
-    }
-  });
+  try {
+    await captureAiReadinessLookup({
+      distinctId,
+      sessionId,
+      domain,
+      result,
+      source: "api",
+    });
+  } catch {
+    // Never let PostHog errors fail the scan
+  }
 
   if ("error" in result) {
     const status =
       result.error === "Domain is required" ||
       result.error === "Enter a domain." ||
-      result.error === "Enter a valid domain."
+      result.error === "Enter a valid domain." ||
+      result.error === "Enter a public website."
         ? 400
-        : 500;
+        : 502;
     return NextResponse.json({ error: result.error }, { status });
   }
 
-  return NextResponse.json({ domain_rating: result });
+  return NextResponse.json({ readiness: result });
 }

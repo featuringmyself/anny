@@ -44,6 +44,7 @@ const columns = [
     title: "Free tools",
     links: [
       { label: "Domain Rating checker", href: "/tools/domain-rating-checker" },
+      { label: "AI readiness checker", href: "/tools/ai-readiness-checker" },
     ],
   },
 ] as const;

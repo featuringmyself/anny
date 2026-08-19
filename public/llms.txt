@@ -21,6 +21,7 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://anny.dodoxhq.c
 ## Free tools
 
 - [Domain Rating checker](https://anny.dodoxhq.com/tools/domain-rating-checker): Free Ahrefs Domain Rating (DR) lookup, 0–100, no signup.
+- [AI readiness checker](https://anny.dodoxhq.com/tools/ai-readiness-checker): Free on-site scan for AI agents — robots.txt, llms.txt, JSON-LD, HTML semantics. No signup.
 
 ## Features
 
