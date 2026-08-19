@@ -93,6 +93,16 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 - 20-39%: Poor — Limited AI visibility.
 - 0-19%: Critical — Your brand rarely appears in AI responses.
 
+## Free tools
+
+### Domain Rating checker — https://anny.dodoxhq.com/tools/domain-rating-checker
+
+Free Ahrefs Domain Rating lookup. Paste a domain, no signup.
+
+### SERP overview — https://anny.dodoxhq.com/tools/serp-overview-checker
+
+Free top-10 organic Google snapshot for a keyword and country, with Ahrefs Domain Rating and URL Rating on each result.
+
 ## Features
 
 ### Agencies — https://anny.dodoxhq.com/features/agencies

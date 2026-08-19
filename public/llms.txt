@@ -17,6 +17,11 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://anny.dodoxhq.c
 - [Blog](https://anny.dodoxhq.com/blog): Notes on AI search and GEO
 - [Changelog](https://anny.dodoxhq.com/changelog): Product updates
 
+## Free tools
+
+- [Domain Rating checker](https://anny.dodoxhq.com/tools/domain-rating-checker): Free Ahrefs Domain Rating lookup
+- [SERP overview](https://anny.dodoxhq.com/tools/serp-overview-checker): Free top-10 organic SERP snapshot with DR and UR
+
 ## Features
 
 - [Agencies](https://anny.dodoxhq.com/features/agencies): Multi-client AI visibility reporting for agencies

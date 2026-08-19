@@ -45,9 +45,14 @@
     "file": "components/pages/partnership/media/QuoteRequest.tsx"
   },
   {
+    "event": "domain_rating_check_submitted",
+    "description": "Visitor submits a domain on the free Domain Rating checker (GET search form).",
+    "file": "components/pages/tools/domain-rating/DomainRatingForm.tsx"
+  },
+  {
     "event": "domain_rating_checked",
-    "description": "Visitor successfully looks up Ahrefs Domain Rating from the free tool or API.",
-    "file": "lib/domain-rating-analytics.ts"
+    "description": "Ahrefs Domain Rating lookup succeeded on the tool page or API.",
+    "file": "components/pages/tools/domain-rating/DomainRatingLookupCapture.tsx"
   },
   {
     "event": "domain_rating_check_failed",

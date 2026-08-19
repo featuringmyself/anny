@@ -79,6 +79,11 @@ Annual billing available. Agencies get a separate multi-client rate (talk to sal
 
 Deep links: `/compare/ahrefs`, `/compare/semrush`, `/compare/profound`
 
+## Free tools
+
+- Domain Rating checker: https://anny.dodoxhq.com/tools/domain-rating-checker
+- SERP overview: https://anny.dodoxhq.com/tools/serp-overview-checker
+
 ## Feature deep links
 
 - Agencies: https://anny.dodoxhq.com/partnership/agencies

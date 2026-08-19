@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { DomainRatingGauge } from "@/components/pages/tools/domain-rating/DomainRatingGauge";
+import { DomainRatingLookupCapture } from "@/components/pages/tools/domain-rating/DomainRatingLookupCapture";
 import {
   bandForScore,
   formatDr,
@@ -50,6 +51,16 @@ export async function DomainRatingInstrument({
   if ("error" in result) {
     return (
       <InstrumentShell>
+        <DomainRatingLookupCapture
+          domain={domain}
+          success={false}
+          errorType={
+            result.error === "Enter a domain." ||
+            result.error === "Enter a valid domain."
+              ? "invalid_domain"
+              : "lookup_failed"
+          }
+        />
         <div className="flex flex-1 flex-col justify-center px-8 py-12">
           <p className="text-sm font-medium tracking-wide text-[#ff8b8b]">
             Couldn’t read that domain
@@ -67,6 +78,13 @@ export async function DomainRatingInstrument({
 
   return (
     <InstrumentShell>
+      <DomainRatingLookupCapture
+        domain={domain}
+        success
+        domainRating={result.domain_rating}
+        hasAhrefsRank={result.ahrefs_rank != null}
+        band={band.label}
+      />
       <GaugeBlock
         value={result.domain_rating}
         label={formatDr(result.domain_rating)}

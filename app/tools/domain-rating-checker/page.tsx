@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
-import Form from "next/form";
 import { Suspense } from "react";
 
 import PatternStrip from "@/components/PatternStrip";
-import { PostHogDistinctIdField } from "@/components/posthog-distinct-id-field";
 import { DomainRatingCta } from "@/components/pages/tools/domain-rating/DomainRatingCta";
 import { DomainRatingExplain } from "@/components/pages/tools/domain-rating/DomainRatingExplain";
+import { DomainRatingForm } from "@/components/pages/tools/domain-rating/DomainRatingForm";
 import {
   DomainRatingInstrument,
   DomainRatingInstrumentPending,
 } from "@/components/pages/tools/domain-rating/DomainRatingInstrument";
 import { DomainRatingScale } from "@/components/pages/tools/domain-rating/DomainRatingScale";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { checkDomainRating } from "@/app/actions/domain-rating";
-import { parseDomainParam } from "@/lib/domain-rating";
+import { parseDomainParam } from "@/lib/domain-input";
 
 export const metadata: Metadata = {
   title: "Free Domain Rating Checker — Anny",
@@ -48,26 +43,7 @@ export default async function DomainRatingCheckerPage({
               account. No paywall. Completely free.
             </p>
 
-            <Form action={checkDomainRating} className="mt-10 max-w-md">
-              <PostHogDistinctIdField />
-              <Label htmlFor="domain" className="text-zinc-600">
-                Domain
-              </Label>
-              <Input
-                id="domain"
-                type="text"
-                name="domain"
-                placeholder="example.com"
-                defaultValue={domain}
-                className="mt-2 h-11 bg-white px-3"
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck="false"
-              />
-              <Button type="submit" size="lg" className="mt-5 px-5">
-                Check rating
-              </Button>
-            </Form>
+            <DomainRatingForm defaultDomain={domain} />
           </div>
 
           {domain ? (
