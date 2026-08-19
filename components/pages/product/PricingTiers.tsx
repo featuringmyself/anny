@@ -41,7 +41,7 @@ const customHighlights = [
   "Up to 11 LLM models tracked",
 ] as const;
 
-const tiers: Tier[] = [
+export const pricingTiers: Tier[] = [
   {
     name: "Starter",
     price: "$99",
@@ -99,7 +99,7 @@ export default function PricingTiers() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3">
-        {tiers.map((tier, index) => (
+        {pricingTiers.map((tier, index) => (
           <PricingTierColumn key={tier.name} tier={tier} index={index} />
         ))}
       </div>
@@ -112,7 +112,7 @@ function PricingTierColumn({ tier, index }: { tier: Tier; index: number }) {
     <article
       className={[
         "flex flex-col border-b md:border-b-0",
-        index < tiers.length - 1 ? "md:border-r" : "",
+        index < pricingTiers.length - 1 ? "md:border-r" : "",
         tier.featured ? "bg-white" : "",
       ].join(" ")}
     >

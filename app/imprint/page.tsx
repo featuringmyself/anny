@@ -1,16 +1,21 @@
-import type { Metadata } from "next";
-
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Imprint | Anny",
-  description: "Legal imprint and company contact information for Anny (India).",
-};
+const title = "Imprint | Anny";
+const description = "Legal imprint and company contact information for Anny (India).";
+
+export const metadata = pageMetadata({
+  path: "/imprint",
+  title,
+  description,
+});
 
 export default function ImprintPage() {
   return (
     <main>
+      <JsonLd data={webpageJsonLd({ path: "/imprint", title, description })} />
       <PatternStrip />
       <LegalProse
         title="Imprint"

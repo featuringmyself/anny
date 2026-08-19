@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import JsonLd from "@/components/JsonLd";
 import BlogPostView from "@/components/pages/product/BlogPostView";
 import {
   getPostBySlug,
   getPostSlugs,
 } from "@/components/pages/product/blog/posts";
-import { SITE_NAME } from "@/lib/site";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -26,9 +28,18 @@ export async function generateMetadata({
     return { title: `Blog — ${SITE_NAME}` };
   }
 
-  return {
+  const metadata = pageMetadata({
+    path: `/blog/${slug}`,
     title: `${post.title} — ${SITE_NAME}`,
     description: post.dek,
+  });
+
+  return {
+    ...metadata,
+    openGraph: {
+      ...metadata.openGraph,
+      type: "article",
+    },
   };
 }
 
@@ -42,6 +53,17 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.dek,
+          datePublished: post.publishedAt,
+          url: absoluteUrl(`/blog/${slug}`),
+          publisher: { "@id": `${SITE_URL}#organization` },
+        }}
+      />
       <BlogPostView post={post} />
     </main>
   );

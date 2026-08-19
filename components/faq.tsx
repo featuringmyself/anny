@@ -11,14 +11,20 @@ import {
 import { PatternStrip } from "./pages/shared/pattern-strip";
 import { faqs } from "@/lib/faqs";
 
-export default function Faq() {
+export default function Faq({
+  headingLevel = "h2",
+}: {
+  headingLevel?: "h1" | "h2";
+}) {
+  const Heading = headingLevel;
+
   return (
     <>
       <section id="faq" className="px-6 pt-20 pb-10 md:px-12 md:pt-28 pb-10">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-medium tracking-tight md:text-5xl">
+          <Heading className="text-4xl font-medium tracking-tight md:text-5xl">
             FAQs
-          </h2>
+          </Heading>
           <p className="mx-auto mt-4 max-w-md text-lg leading-snug text-zinc-400 text-balance md:text-xl">
             Get answers to the most common questions about AI search and Anny.
           </p>

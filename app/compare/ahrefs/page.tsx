@@ -1,19 +1,27 @@
-import type { Metadata } from "next";
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import CompareHero from "@/components/pages/compare/CompareHero";
 import VsMatrix from "@/components/pages/compare/VsMatrix";
 import VsVerdict from "@/components/pages/compare/VsVerdict";
 import { ahrefsMatrix, ahrefsVerdict } from "@/components/pages/compare/data/ahrefs";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Anny vs Ahrefs — AI visibility comparison",
-  description:
-    "Ahrefs is SEO-first. Anny is built for AI answer visibility, citations, and GEO across ChatGPT, Claude, Gemini, and more.",
-};
+const title = "Anny vs Ahrefs — AI visibility comparison";
+const description =
+  "Ahrefs is SEO-first. Anny is built for AI answer visibility, citations, and GEO across ChatGPT, Claude, Gemini, and more.";
+
+export const metadata = pageMetadata({
+  path: "/compare/ahrefs",
+  title,
+  description,
+});
 
 export default function CompareAhrefsPage() {
   return (
     <>
+      <JsonLd
+        data={webpageJsonLd({ path: "/compare/ahrefs", title, description })}
+      />
       <CompareHero
         competitor="Ahrefs"
         framing="SEO-first vs AI answers"

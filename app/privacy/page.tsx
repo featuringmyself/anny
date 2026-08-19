@@ -1,17 +1,22 @@
-import type { Metadata } from "next";
-
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Anny",
-  description:
-    "How Anny collects, uses, and protects personal data for AI search analytics.",
-};
+const title = "Privacy Policy | Anny";
+const description =
+  "How Anny collects, uses, and protects personal data for AI search analytics.";
+
+export const metadata = pageMetadata({
+  path: "/privacy",
+  title,
+  description,
+});
 
 export default function PrivacyPage() {
   return (
     <main>
+      <JsonLd data={webpageJsonLd({ path: "/privacy", title, description })} />
       <PatternStrip />
       <LegalProse
         title="Privacy Policy"

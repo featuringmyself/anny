@@ -22,8 +22,8 @@ const SEGMENTS = 48;
 function polar(r: number, deg: number) {
   const rad = (deg * Math.PI) / 180;
   return {
-    x: CX + Math.cos(rad) * r,
-    y: CY + Math.sin(rad) * r,
+    x: (CX + Math.cos(rad) * r).toFixed(3),
+    y: (CY + Math.sin(rad) * r).toFixed(3),
   };
 }
 
@@ -35,6 +35,13 @@ const ticks = Array.from({ length: SEGMENTS }, (_, i) => {
   return { i, major, a, b };
 });
 
+const railStart = polar(97, START_DEG);
+const railEnd = polar(97, START_DEG + SWEEP_DEG);
+const rail = `M ${railStart.x} ${railStart.y} A 97 97 0 1 1 ${railEnd.x} ${railEnd.y}`;
+const zero = polar(124, START_DEG);
+const fifty = polar(124, START_DEG + SWEEP_DEG / 2);
+const hundred = polar(124, START_DEG + SWEEP_DEG);
+
 export function DomainRatingGauge({
   value,
   label,
@@ -45,13 +52,6 @@ export function DomainRatingGauge({
     value == null ? null : Math.min(100, Math.max(0, value));
   const litThrough =
     clamped == null ? -1 : Math.round((clamped / 100) * (SEGMENTS - 1));
-
-  const railStart = polar(97, START_DEG);
-  const railEnd = polar(97, START_DEG + SWEEP_DEG);
-  const rail = `M ${railStart.x} ${railStart.y} A 97 97 0 1 1 ${railEnd.x} ${railEnd.y}`;
-  const zero = polar(124, START_DEG);
-  const fifty = polar(124, START_DEG + SWEEP_DEG / 2);
-  const hundred = polar(124, START_DEG + SWEEP_DEG);
 
   const tickGroupClass = pending
     ? styles.pending

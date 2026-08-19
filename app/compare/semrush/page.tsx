@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import CompareHero from "@/components/pages/compare/CompareHero";
 import VsMatrix from "@/components/pages/compare/VsMatrix";
 import VsVerdict from "@/components/pages/compare/VsVerdict";
@@ -7,16 +7,24 @@ import {
   semrushMatrix,
   semrushVerdict,
 } from "@/components/pages/compare/data/semrush";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Anny vs Semrush — AI visibility comparison",
-  description:
-    "Semrush is an all-in-one marketing suite. Anny is purpose-built for AI answer visibility and GEO.",
-};
+const title = "Anny vs Semrush — AI visibility comparison";
+const description =
+  "Semrush is an all-in-one marketing suite. Anny is purpose-built for AI answer visibility and GEO.";
+
+export const metadata = pageMetadata({
+  path: "/compare/semrush",
+  title,
+  description,
+});
 
 export default function CompareSemrushPage() {
   return (
     <>
+      <JsonLd
+        data={webpageJsonLd({ path: "/compare/semrush", title, description })}
+      />
       <CompareHero
         competitor="Semrush"
         framing="Suite vs purpose-built GEO"

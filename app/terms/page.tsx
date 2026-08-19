@@ -1,17 +1,22 @@
-import type { Metadata } from "next";
-
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | Anny",
-  description:
-    "Terms governing use of the Anny website and AI search analytics product.",
-};
+const title = "Terms of Service | Anny";
+const description =
+  "Terms governing use of the Anny website and AI search analytics product.";
+
+export const metadata = pageMetadata({
+  path: "/terms",
+  title,
+  description,
+});
 
 export default function TermsPage() {
   return (
     <main>
+      <JsonLd data={webpageJsonLd({ path: "/terms", title, description })} />
       <PatternStrip />
       <LegalProse
         title="Terms of Service"

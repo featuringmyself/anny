@@ -1,17 +1,22 @@
-import type { Metadata } from "next";
-
 import PatternStrip from "@/components/PatternStrip";
+import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
+import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cookie Settings | Anny",
-  description:
-    "How Anny uses cookies and similar technologies on anny.dodoxhq.com.",
-};
+const title = "Cookie Settings | Anny";
+const description =
+  "How Anny uses cookies and similar technologies on anny.dodoxhq.com.";
+
+export const metadata = pageMetadata({
+  path: "/cookies",
+  title,
+  description,
+});
 
 export default function CookiesPage() {
   return (
     <main>
+      <JsonLd data={webpageJsonLd({ path: "/cookies", title, description })} />
       <PatternStrip />
       <LegalProse
         title="Cookie Settings"
