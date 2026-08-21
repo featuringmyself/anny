@@ -1,319 +1,420 @@
 import type { VisibilityReport } from "../types";
 
-/** Private outreach report for 2gethr. Multi-model favorability snapshot, August 2026. */
+const SHOT = "/audits/2gethr";
+
+/** Private outreach report for 2gethr. ChatGPT snapshot, August 2026. */
 export const gethrAiVisibilityReport: VisibilityReport = {
   slug: "2gethr-ai-visibility-report",
   company: "2gethr",
   website: "2gethr.com",
-  industry: "Managed offices & GCC workspaces",
+  industry: "Managed offices & GCC workspaces · Bangalore & Hyderabad",
   preparedFor: "Amit Prakash",
   role: "Cofounder",
   email: "sales@2gethr.co.in",
   dateLabel: "August 2026",
-  overallScore: 39,
-  scoreLabel: "Lukewarm",
+  overallScore: 0,
+  scoreLabel: "Critical",
   private: true,
   tagline:
-    "How positively AI describes 2gethr when it mentions you — separate from how often.",
+    "Premium managed workspaces for enterprises and GCCs — design, build, and operate end to end.",
   summary:
-    "When AI engines mention 2gethr they are lukewarm: favorability 39/100, average rank #5, recommended on only 24% of runs. Mention depth is deep when it happens — Grok, Gemini, and Claude will praise pricing transparency and short lock-ins — but they almost always write “2gether,” not 2gethr. ChatGPT buries you at #8.8 with a generic India coworking note. Perplexity says public data is too thin to rank. Google AI Mode cites BookMyCoworking and Flexo (including a Mumbai URL) instead of 2gethr.com. AI Overviews skips you and benchmarks WeWork India and IndiQube. Strengths cluster on transparent, flexible, startup-friendly terms. Gaps cluster on enterprise ownership, customisation, and GCC-grade governance. On-site readiness is the other half of this: if the owned site has no schema, no FAQ, and no prices, models will keep quoting directories and the wrong spelling. Same 90-day sprint as the readiness audit.",
+    "ChatGPT already answers for managed offices, GCC workspaces, and enterprise fit-outs in Bangalore. Demand is being routed now. On 12 of 12 discovery prompts in this snapshot — category shelves, HSR and Richmond Road home turf, 200-seat RFPs, WeWork/Awfis conquest, turnkey GCC, even “Scapia-like startups” — 2gethr is never shortlisted. Table Space, WeWork India, Smartworks, IndiQube, Awfis, GoodWorks, BHIVE, and Clayworks take those answers. Ask “together workspaces Bangalore” and the model does not find you. Ask by the correct brand and it will describe the 75-day / zero-CapEx pitch — then still leave you off every competitive shelf above. This ChatGPT snapshot is the baseline. A 90-day sprint gets 2gethr cited on the GCC and managed-office prompts that already create tours, then expands across Perplexity, Google AI Overview, Gemini, and Claude.",
   stats: [
-    { label: "Favorability", value: "39/100" },
-    { label: "Recommended", value: "24%" },
-    { label: "Avg rank", value: "#5" },
-    { label: "Mention depth", value: "Deep" },
+    { label: "Sq ft designed", value: "8M+" },
+    { label: "Members", value: "11.5K" },
+    { label: "Cities", value: "BLR · HYD" },
+    { label: "Centers", value: "CBD · ORR · HSR" },
   ],
-  queriesHeadline: "What AI says · 5 themes",
+  brandCrisisHeadline:
+    "Wrong name finds nothing. Right name describes you — then never shortlists you.",
+  brandCrisisDek:
+    "Phonetic “together workspaces” fails identity. Branded diligence repeats your USP. Neither puts 2gethr on the shelves buyers actually ask for.",
+  queriesHeadline: "Prompt audit · 12 queries",
   queriesIntro:
-    "48-run favorability snapshot across Grok, Gemini, Claude, ChatGPT, Perplexity, Google AI Mode, and AI Overviews. This is how positively they describe 2gethr when they mention you — not a raw mention count. Strengths 50%. Recommended 24%. Average rank #5.",
+    "Buyer prompts already routing managed-office and GCC demand in Bangalore (and Hyderabad). Zero of twelve cite 2gethr. Table Space, WeWork, Smartworks, IndiQube, and peers take the shortlists — including on HSR and Richmond Road, where 2gethr@HSR and 2gethr@CBD should compete.",
   modelScores: [
-    { model: "grok", visibility: 80, cited: 4, total: 5, audited: true },
-    { model: "gemini", visibility: 60, cited: 3, total: 5, audited: true },
-    { model: "claude", visibility: 60, cited: 3, total: 5, audited: true },
-    { model: "ai-mode", visibility: 60, cited: 3, total: 5, audited: true },
-    { model: "chatgpt", visibility: 40, cited: 2, total: 5, audited: true },
-    { model: "perplexity", visibility: 40, cited: 2, total: 5, audited: true },
-    { model: "ai-overview", visibility: 0, cited: 0, total: 5, audited: true },
+    { model: "chatgpt", visibility: 0, cited: 0, total: 12, audited: true },
+    { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
+    { model: "ai-overview", visibility: 0, cited: 0, total: 0, audited: false },
+    { model: "gemini", visibility: 0, cited: 0, total: 0, audited: false },
+    { model: "claude", visibility: 0, cited: 0, total: 0, audited: false },
+    { model: "ai-mode", visibility: 0, cited: 0, total: 0, audited: false },
   ],
   competitors: [
+    { name: "Table Space", visibility: 78 },
     { name: "WeWork India", visibility: 72 },
+    { name: "Smartworks", visibility: 68 },
     { name: "IndiQube", visibility: 64 },
-    { name: "2gethr", visibility: 24 },
+    { name: "Awfis", visibility: 58 },
+    { name: "GoodWorks", visibility: 52 },
+    { name: "BHIVE", visibility: 44 },
+    { name: "Clayworks", visibility: 40 },
+    { name: "2gethr", visibility: 0 },
   ],
-  schemaFindings: {
-    id: "schema-gethr",
-    title: "Owned site is not the source models quote",
-    status: "0 types on 2gethr.com",
-    types: [],
-    severity: "high",
-    body: "The favorability snapshot cites BookMyCoworking and Flexo for 2gethr pricing, not 2gethr.com. The on-site readiness audit found zero JSON-LD, so there is no Organization @id to stop engines writing “2gether,” and no Product/Offer/Service markup for per-seat rates. Grok claims all-inclusive pricing is on the website; Perplexity and ChatGPT say public data is thin. Until schema and visible prices live on the owned domain, directories and the misspelling will keep winning.",
-    suggestedImprovements: [
-      "Organization JSON-LD with legal name 2gethr, alternateName, and a stable @id",
-      "Service / Offer markup for GCC, managed office, and coworking with public per-seat bands",
-      "LocalBusiness on CBD / ORR / HSR so Flexo and BookMyCoworking are not the only NAP",
-      "FAQPage answering lock-in, all-inclusive inclusions, and GCC vs coworking",
-    ],
-  },
+  brandCrisis: [
+    {
+      id: "crisis-identity",
+      query: "together workspaces Bangalore",
+      title: "Phonetic brand ask · ChatGPT cannot find 2gethr",
+      body: "Asked “together workspaces Bangalore,” ChatGPT says it cannot find a clearly identifiable Bangalore coworking operator by that name and asks for an area instead. The phonetic path buyers type when they heard the brand out loud never lands on 2gethr.com.",
+      outcome: "Identity miss · no operator found",
+      screenshot: {
+        src: `${SHOT}/crisis-together-workspaces-bangalore.png`,
+        alt: "ChatGPT failing to identify 2gethr from “together workspaces Bangalore”",
+        model: "chatgpt",
+      },
+    },
+    {
+      id: "crisis-branded",
+      query: "should my company take a managed office with 2gethr",
+      title: "Known on brand · still absent from every shortlist above",
+      body: "Asked by name, ChatGPT repeats the 75 working-day / zero-CapEx managed-office story and gives a careful yes-if / caution-if frame, citing third-party seat pricing around ₹12k–₹18k+. That is diligence after the shortlist — and on every discovery prompt in this audit, 2gethr never made the shortlist.",
+      outcome: "Branded cite · discovery shelves empty",
+      screenshot: {
+        src: `${SHOT}/crisis-should-my-company-take-managed-office-2gethr.png`,
+        alt: "ChatGPT answering whether to take a managed office with 2gethr",
+        model: "chatgpt",
+      },
+    },
+  ],
   queries: [
     {
-      id: "q-spelling",
-      query: "2gethr vs 2gether",
-      intent:
-        "Brand identity: do engines use the legal/domain spelling, or a phonetic stand-in?",
+      id: "q1",
+      query: "best managed office providers Bangalore",
+      intent: "Category shelf — first shortlist enterprise buyers build",
       severity: "critical",
-      tag: "Wrong spelling",
-      citedBrands: ["2gether"],
-      rentokStatus: "confused",
-      outcome:
-        "Wrong brand string · Grok, Gemini, Claude, ChatGPT, Perplexity write “2gether”",
-      answers: [
-        {
-          model: "grok",
-          cited: true,
-          position: 2,
-          excerpt:
-            "Grok’s most favorable read still names the operator “2gether” — very high pricing transparency, all-inclusive per-seat rates, 3/6/12-month contracts. The domain is 2gethr.com. The model is describing you under the wrong string.",
-        },
-        {
-          model: "gemini",
-          cited: true,
-          excerpt:
-            "Gemini: “2gether: Transparency Rating: High (Value-Driven)” and an all-inclusive per-desk model. Same misspelling. Recommended, but not as 2gethr.",
-        },
-        {
-          model: "claude",
-          cited: true,
-          position: 5,
-          excerpt:
-            "Claude: “2gether - Most transparent pricing structure” and “Month-to-month contracts standard.” Rank #4.6, recommended — under 2gether.",
-        },
-        {
-          model: "chatgpt",
-          cited: true,
-          position: 9,
-          excerpt:
-            "ChatGPT: “2gether (India)” plus a generic note that Indian coworking players mix hot desk, dedicated desk, and private offices, with public price lists often sales-led. Buried at #8.8, and still the wrong spelling.",
-        },
-        {
-          model: "perplexity",
-          cited: true,
-          position: 5,
-          excerpt:
-            "Perplexity: “2gether = insufficient public data in the search results to rank confidently.” Mentions the misspelling, then declines to stand behind you.",
-        },
-        {
-          model: "ai-mode",
-          cited: true,
-          position: 7,
-          excerpt:
-            "AI Mode is the one surface that writes “2gethr Workspaces,” then immediately cites BookMyCoworking and Flexo Outer Ring Road — not 2gethr.com. Identity is closer; the source of truth is still a directory.",
-          sources: [
-            "bookmycoworking.com",
-            "flexospaces.com",
-          ],
-        },
-        {
-          model: "ai-overview",
-          cited: false,
-          excerpt:
-            "No direct excerpt about 2gethr or 2gether. The response benchmarks WeWork India and IndiQube. The spelling collision does not even get that far: you are not in the answer.",
-        },
-      ],
-    },
-    {
-      id: "q-pricing",
-      query: "most transparent coworking pricing India",
-      intent:
-        "Buyer ask this snapshot is built on: who publishes a clean all-inclusive per-seat rate.",
-      severity: "high",
-      tag: "Top strength",
-      citedBrands: ["WeWork India", "IndiQube"],
-      rentokStatus: "cited",
-      outcome:
-        "Grok #1.6 and Claude treat 2gether as the transparency pick · ChatGPT #8.8 · Perplexity will not rank",
-      answers: [
-        {
-          model: "grok",
-          cited: true,
-          position: 2,
-          excerpt:
-            "Very high pricing transparency. They publish clear per-seat pricing on their website and WhatsApp. No hidden service charges in most cases. Clean all-inclusive rate (power, AC, high-speed internet, pantry, meeting rooms as per plan). Easy to get instant quotes.",
-        },
-        {
-          model: "gemini",
-          cited: true,
-          excerpt:
-            "Transparency rating: High (Value-Driven). All-inclusive cost model with minimal hidden fees. Utility bills, basic internet, cleaning, and tea/coffee bundled into the per-desk rate.",
-        },
-        {
-          model: "claude",
-          cited: true,
-          position: 5,
-          excerpt:
-            "Most transparent pricing structure. Recommended. Rank #4.6 among the set.",
-        },
-        {
-          model: "ai-mode",
-          cited: true,
-          position: 7,
-          excerpt:
-            "Transparency: High (regional/boutique clarity). Private office and dedicated desk starting benchmarks relatively open via flex-space partners, broadly ₹12,000 to ₹18,000+ per seat depending on city and tier. Hidden/extra costs: low. Parking may incur extra monthly charges. Sources are BookMyCoworking and Flexo — including a Mumbai coworking URL that is not 2gethr’s market.",
-          sources: [
-            "bookmycoworking.com/spaces/2gethr-outer-ring-road",
-            "flexospaces.com/coworking-space/2gethr-outer-ring-road-908",
-            "flexospaces.com/in/coworking/mumbai",
-          ],
-        },
-        {
-          model: "chatgpt",
-          cited: true,
-          position: 9,
-          excerpt:
-            "Many Indian coworking players offer a mix of hot desk, dedicated desk, and private offices. Public price lists are sometimes limited (sales-led quotes) vs visible on the site. Look for: — then it trails off. Rank #8.8. Not a transparency win.",
-        },
-        {
-          model: "perplexity",
-          cited: true,
-          position: 5,
-          excerpt:
-            "Insufficient public data in the search results to rank confidently. The model will not put a number on 2gether pricing. That is the opposite of Grok’s “very high transparency” claim — and it matches the on-site audit: no Offer schema, no FAQ, thin owned copy.",
-        },
-        {
-          model: "ai-overview",
-          cited: false,
-          excerpt:
-            "No direct excerpt. AI Overviews uses WeWork India and IndiQube as the pricing/benchmark names. 2gethr is not in the answer that Google shows on the results page.",
-        },
-      ],
-    },
-    {
-      id: "q-flex",
-      query: "flexible coworking contracts India startups",
-      intent:
-        "Lock-in and exit: the second strength cluster (and a contradiction in the improve list).",
-      severity: "standard",
-      tag: "Contract flexibility",
-      citedBrands: [],
-      rentokStatus: "cited",
-      outcome:
-        "Grok and Claude sell 3–12 month and month-to-month · improve-list also flags lighter flexibility",
-      answers: [
-        {
-          model: "grok",
-          cited: true,
-          position: 2,
-          excerpt:
-            "Most flexible. Offers 3-month, 6-month, and 12-month contracts with minimal or no lock-in for many centres. Easy exit clauses and month-to-month options in select buildings. Very startup and mid-size team friendly.",
-        },
-        {
-          model: "claude",
-          cited: true,
-          position: 5,
-          excerpt:
-            "Month-to-month contracts standard. Recommended. Combined with the transparency line, Claude’s 2gether is a boutique flex operator — not a GCC buildout firm.",
-        },
-        {
-          model: "gemini",
-          cited: true,
-          excerpt:
-            "Associations: flexible, faster onboarding, straightforward terms, smaller teams, lighter customisation. Gemini’s 2gether is easy to move into, not an enterprise workplace platform.",
-        },
-        {
-          model: "chatgpt",
-          cited: false,
-          excerpt:
-            "ChatGPT does not land a lock-in or exit story. It stays on product mix (hot desk / dedicated / private office) and sales-led quotes.",
-        },
-        {
-          model: "perplexity",
-          cited: false,
-          excerpt:
-            "No contract terms. Insufficient public data — the flexibility claim is not sourced well enough for Perplexity to repeat it.",
-        },
-      ],
-    },
-    {
-      id: "q-category",
-      query: "best managed office or GCC workspace India",
-      intent:
-        "Category shortlist: who Google and the big flex names put on the enterprise/GCC shelf.",
-      severity: "high",
       tag: "Category miss",
-      citedBrands: ["WeWork India", "IndiQube"],
+      citedBrands: [
+        "IndiQube",
+        "Smartworks",
+        "WeWork India",
+        "Awfis",
+        "GoodWorks",
+        "Enzyme",
+        "Novel Office",
+        "Regus",
+        "Table Space",
+      ],
       rentokStatus: "missing",
-      outcome:
-        "AI Overviews: WeWork India + IndiQube · 2gethr not in the excerpt",
+      outcome: "Category shelf · 2gethr absent",
+      screenshot: {
+        src: `${SHOT}/01-best-managed-office-providers-bangalore.png`,
+        alt: "ChatGPT Bangalore managed office providers without 2gethr",
+        model: "chatgpt",
+      },
       answers: [
         {
-          model: "ai-overview",
+          model: "chatgpt",
           cited: false,
           excerpt:
-            "No direct excerpt about 2gether is present; the response focuses on WeWork India and IndiQube as benchmarks. That is the shelf GCC buyers see first.",
-        },
-        {
-          model: "ai-mode",
-          cited: true,
-          position: 7,
-          excerpt:
-            "2gethr Workspaces appears as regional/boutique clarity at #7.3 — not as a GCC or managed-office category lead. Pricing is framed through flex-space partners, not an owned GCC page.",
-          sources: ["bookmycoworking.com", "flexospaces.com"],
-        },
-        {
-          model: "grok",
-          cited: true,
-          position: 2,
-          excerpt:
-            "Grok’s #1.6 win is on transparency and startup-friendly lock-in, not on enterprise GCC governance. The improve list flags less enterprise ownership and lighter customisation — the opposite of the GCC story 2gethr.com sells.",
-        },
-        {
-          model: "chatgpt",
-          cited: true,
-          position: 9,
-          excerpt:
-            "Filed under generic Indian coworking. No GCC, no Bangalore/Hyderabad managed office, no named centres. Rank #8.8.",
+            "ChatGPT shortlists IndiQube, Smartworks, WeWork India, Awfis, GoodWorks, Enzyme, Novel Office, Regus, and Table Space for fully managed offices in Bengaluru. 2gethr is not named.",
         },
       ],
     },
     {
-      id: "q-sources",
-      query: "2gethr outer ring road pricing",
-      intent:
-        "Where the numbers come from: owned site vs directories.",
-      severity: "high",
-      tag: "Directory cite",
-      citedBrands: ["Flexo", "BookMyCoworking"],
-      rentokStatus: "cited",
-      outcome:
-        "AI Mode quotes Flexo and BookMyCoworking · even a Mumbai Flexo URL · not 2gethr.com",
+      id: "q2",
+      query: "best office space providers for GCCs in Bangalore",
+      intent: "Core wedge — GCC workspace shortlist in Bengaluru",
+      severity: "critical",
+      tag: "GCC miss",
+      citedBrands: [
+        "Table Space",
+        "Smartworks",
+        "WeWork India",
+        "IndiQube",
+        "Awfis",
+        "GoodWorks",
+      ],
+      rentokStatus: "missing",
+      outcome: "GCC Bangalore shelf · 2gethr absent",
+      screenshot: {
+        src: `${SHOT}/04-best-office-space-providers-gccs-bangalore.png`,
+        alt: "ChatGPT GCC office providers Bangalore without 2gethr",
+        model: "chatgpt",
+      },
       answers: [
         {
-          model: "ai-mode",
-          cited: true,
-          position: 7,
+          model: "chatgpt",
+          cited: false,
           excerpt:
-            "Private office and dedicated desk starting benchmarks open via transparent flex-space partners (₹12,000–₹18,000+ per seat). Links: 2gethr Outer Ring Road on BookMyCoworking and Flexo. A follow-on cite is Flexo coworking in Mumbai — the wrong city for a Bangalore/Hyderabad operator. Hidden costs called low; parking extra.",
-          sources: [
-            "bookmycoworking.com",
-            "flexospaces.com",
-          ],
+            "For GCCs, ChatGPT ranks Table Space, Smartworks, WeWork India, IndiQube, Awfis, and GoodWorks on capacity, IT/security, and scale. 2gethr does not appear.",
         },
-        {
-          model: "grok",
-          cited: true,
-          excerpt:
-            "Grok says per-seat pricing is on the website and WhatsApp, all-inclusive, instant quotes. The on-site audit did not find Offer schema or a public price table. If Grok is right, that page is not machine-readable. If Grok is rounding up, Perplexity’s “insufficient public data” is the safer read.",
-        },
-        {
-          model: "perplexity",
-          cited: true,
-          excerpt:
-            "Insufficient public data in the search results to rank confidently. Directory pages are not enough for Perplexity to stand behind a 2gether price.",
-        },
+      ],
+    },
+    {
+      id: "q3",
+      query: "premium managed workspace Bangalore for enterprises",
+      intent: "Premium enterprise positioning 2gethr sells on-site",
+      severity: "critical",
+      tag: "Premium miss",
+      citedBrands: [
+        "Table Space",
+        "Clayworks",
+        "WeWork India",
+        "Aurbis",
+        "BuzzWorks",
+        "GoodWorks",
+      ],
+      rentokStatus: "missing",
+      outcome: "Premium enterprise shelf · 2gethr absent",
+      screenshot: {
+        src: `${SHOT}/03-premium-managed-workspace-bangalore-enterprises.png`,
+        alt: "ChatGPT premium managed workspace Bangalore without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
         {
           model: "chatgpt",
-          cited: true,
+          cited: false,
           excerpt:
-            "Public price lists are sometimes limited (sales-led quotes) vs visible on the site. ChatGPT will not treat 2gether as a published-rate operator.",
+            "Premium enterprise shortlist: Table Space, Clayworks, WeWork India, Aurbis, BuzzWorks, GoodWorks. No 2gethr.",
+        },
+      ],
+    },
+    {
+      id: "q4",
+      query: "turnkey office for Global Capability Center Bangalore",
+      intent: "Turnkey / GCC-as-a-service buyer job",
+      severity: "critical",
+      tag: "Turnkey GCC",
+      citedBrands: [
+        "GoodWorks GCC Nexus",
+        "Sansovi",
+        "Clayworks",
+        "WeWork India",
+        "VMG",
+      ],
+      rentokStatus: "missing",
+      outcome: "Turnkey GCC · GoodWorks / Clayworks / WeWork win",
+      screenshot: {
+        src: `${SHOT}/09-turnkey-office-gcc-bangalore.png`,
+        alt: "ChatGPT turnkey GCC Bangalore options without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "Strong options named: GoodWorks GCC Nexus, Sansovi, Clayworks Enterprise & GCC, WeWork India GCC, VMG. 2gethr is missing.",
+        },
+      ],
+    },
+    {
+      id: "q5",
+      query: "managed office for 200 employees Bangalore",
+      intent: "High-intent seat-count RFP — mid-enterprise deal size",
+      severity: "critical",
+      tag: "200 seats",
+      citedBrands: [
+        "Table Space",
+        "GoodWorks",
+        "WeWork India",
+        "EBC Space",
+      ],
+      rentokStatus: "missing",
+      outcome: "200-seat RFP · Table Space / GoodWorks / WeWork",
+      screenshot: {
+        src: `${SHOT}/10-managed-office-200-employees-bangalore.png`,
+        alt: "ChatGPT 200-employee managed office Bangalore without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "Shortlist centers on Table Space (Embassy Onyx, Senate, Bren Optimus), GoodWorks Whitefield, WeWork Manyata, and EBC HSR. 2gethr never appears.",
+        },
+      ],
+    },
+    {
+      id: "q6",
+      query: "managed offices HSR Layout Bangalore",
+      intent: "Home turf — 2gethr@HSR should compete here",
+      severity: "critical",
+      tag: "Home turf",
+      citedBrands: [
+        "BHIVE",
+        "Urban Vault",
+        "Cocktail",
+        "EBC Space",
+        "Enzyme",
+        "Honeykomb",
+      ],
+      rentokStatus: "missing",
+      outcome: "HSR home turf · BHIVE / Urban Vault / EBC — not 2gethr@HSR",
+      screenshot: {
+        src: `${SHOT}/06-managed-offices-hsr-layout-bangalore.png`,
+        alt: "ChatGPT managed offices HSR Layout without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "HSR options named: BHIVE Premium, Urban Vault, Cocktail, EBC, Enzyme, Honeykomb. 2gethr@HSR is not on the list.",
+        },
+      ],
+    },
+    {
+      id: "q7",
+      query: "premium office space Richmond Road Bangalore",
+      intent: "Home turf — 2gethr@CBD / Richmond Road",
+      severity: "critical",
+      tag: "Home turf",
+      citedBrands: ["IndiQube Penta", "Awfis", "Aurbis Concord", "Clayworks"],
+      rentokStatus: "missing",
+      outcome: "Richmond Road · IndiQube / Awfis / Aurbis — not 2gethr@CBD",
+      screenshot: {
+        src: `${SHOT}/07-premium-office-space-richmond-road-bangalore.png`,
+        alt: "ChatGPT premium office Richmond Road without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "ChatGPT shortlists IndiQube Penta, Awfis Skav 909, Aurbis Concord, and Clayworks on Richmond Road. 2gethr@CBD is absent.",
+        },
+      ],
+    },
+    {
+      id: "q8",
+      query: "better than WeWork for GCC Bangalore",
+      intent: "Conquest — GCC buyers comparing off WeWork",
+      severity: "high",
+      tag: "Conquest",
+      citedBrands: [
+        "Table Space",
+        "GoodWorks",
+        "Smartworks",
+        "IndiQube",
+        "BHIVE",
+      ],
+      rentokStatus: "missing",
+      outcome: "WeWork GCC conquest · 2gethr absent",
+      screenshot: {
+        src: `${SHOT}/14-better-than-wework-for-gcc-bangalore.png`,
+        alt: "ChatGPT better than WeWork for GCC Bangalore without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "Alternatives named: Table Space, GoodWorks GCC Nexus, Smartworks, IndiQube, BHIVE. 2gethr is not offered as a WeWork alternative.",
+        },
+      ],
+    },
+    {
+      id: "q9",
+      query: "alternatives to WeWork Bangalore for enterprises",
+      intent: "Enterprise WeWork switcher shelf",
+      severity: "high",
+      tag: "Conquest",
+      citedBrands: [
+        "Smartworks",
+        "IndiQube",
+        "Awfis",
+        "Table Space",
+        "BHIVE",
+        "91springboard",
+        "CorporatEdge",
+      ],
+      rentokStatus: "missing",
+      outcome: "WeWork enterprise alternatives · 2gethr absent",
+      screenshot: {
+        src: `${SHOT}/13-alternatives-to-wework-bangalore-enterprises.png`,
+        alt: "ChatGPT WeWork alternatives Bangalore enterprises without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "Enterprise WeWork alternatives: Smartworks, IndiQube, Awfis, Table Space, BHIVE, 91springboard, CorporatEdge. No 2gethr.",
+        },
+      ],
+    },
+    {
+      id: "q10",
+      query: "fit out and managed workplace for enterprise Bangalore",
+      intent: "Design-build-operate job 2gethr markets as end-to-end",
+      severity: "high",
+      tag: "Fit-out",
+      citedBrands: ["Table Space", "GoodWorks", "Clayworks"],
+      rentokStatus: "missing",
+      outcome: "Fit-out + managed · Table Space / GoodWorks / Clayworks",
+      screenshot: {
+        src: `${SHOT}/11-fit-out-managed-workplace-enterprise-bangalore.png`,
+        alt: "ChatGPT enterprise fit-out managed workplace without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "Enterprise fit-out + managed shortlist is dominated by Table Space campuses and GoodWorks / Clayworks. 2gethr’s design-build-operate story is not cited.",
+        },
+      ],
+    },
+    {
+      id: "q11",
+      query: "best office operator for Scapia-like startups Bangalore",
+      intent: "Client-adjacent irony — Scapia is on 2gethr’s client wall",
+      severity: "critical",
+      tag: "Portfolio irony",
+      citedBrands: [
+        "IndiQube",
+        "WeWork India",
+        "Smartworks",
+        "Awfis",
+        "BHIVE",
+        "Table Space",
+      ],
+      rentokStatus: "missing",
+      outcome: "Scapia-like startups · BHIVE map + IndiQube — not 2gethr",
+      screenshot: {
+        src: `${SHOT}/15-best-office-operator-scapia-like-startups-bangalore.png`,
+        alt: "ChatGPT Scapia-like startup office operators without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "For VC-backed ~30–150 person startups, ChatGPT maps BHIVE HSR and shortlists IndiQube, WeWork, Smartworks, Awfis, BHIVE, Table Space. 2gethr — which lists Scapia among clients — is never named.",
+        },
+      ],
+    },
+    {
+      id: "q12",
+      query: "office space for MNC capability center Hyderabad",
+      intent: "Hyderabad expansion — second city on 2gethr.com",
+      severity: "high",
+      tag: "Hyderabad",
+      citedBrands: ["Cushman & Wakefield"],
+      rentokStatus: "missing",
+      outcome: "Hyderabad GCC · corridors only · no 2gethr operator cite",
+      screenshot: {
+        src: `${SHOT}/12-office-space-mnc-capability-center-hyderabad.png`,
+        alt: "ChatGPT Hyderabad MNC GCC office areas without 2gethr",
+        model: "chatgpt",
+      },
+      answers: [
+        {
+          model: "chatgpt",
+          cited: false,
+          excerpt:
+            "ChatGPT answers with Gachibowli, Financial District, HITEC City, and Raidurg — citing Cushman & Wakefield — and names no managed-office operator. 2gethr’s Hyderabad story is invisible.",
+          sources: ["Cushman & Wakefield", "Times of India"],
         },
       ],
     },
@@ -322,21 +423,20 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline:
-      "Make 2gethr the spelling, the source, and the GCC shortlist — not a lukewarm “2gether”",
-    body: "Favorability is 39 because engines like the boutique story (transparent, flexible, small-team) and then will not recommend you for the enterprise/GCC job 2gethr.com actually sells. Recommended only 24% of the time; average rank #5. We start with identity: Organization schema and consistent 2gethr spelling so Grok/Claude/Gemini stop writing 2gether. Then we move prices, lock-in, and inclusions onto 2gethr.com so AI Mode stops quoting Flexo and BookMyCoworking — including Mumbai. Then citation work so AI Overviews names 2gethr next to WeWork India and IndiQube on Bangalore/Hyderabad managed-office and GCC prompts, not only as a startup coworking footnote. On-site readiness from the companion audit (schema, one H1, FAQ, alt/transcripts, tour form) is included in the same 90 days. You get a dashboard that re-tests this prompt set.",
+      "Get 2gethr on the managed-office and GCC shortlists ChatGPT already builds",
+    body: "This is a done-with-you services engagement — not another SaaS seat. We pick the prompts already routing tours (GCC Bangalore, 200-seat RFPs, HSR/Richmond home turf, WeWork conquest), fix the “together → 2gethr” identity leak, build citation assets models trust, and re-test weekly until 2gethr appears next to Table Space, WeWork, and IndiQube — then expand to Perplexity, Google AI Overview, Gemini, and Claude.",
     outcomes: [
-      "Engines write 2gethr, not 2gether, with a stable Organization entity and sameAs",
-      "Owned per-seat bands and lock-in FAQ on 2gethr.com so Flexo / BookMyCoworking are not the price source",
-      "Favorability up from lukewarm 39: keep transparency, add GCC / managed-office / enterprise governance language models can quote",
-      "AI Overviews and ChatGPT shortlists include 2gethr next to WeWork India and IndiQube on Bangalore / Hyderabad prompts — not rank #8.8 generic coworking",
-      "Weekly re-tests of this 48-run set plus the readiness fixes, with a dashboard for model gaps and next actions",
+      "2gethr cited on Bangalore managed-office, GCC, and premium enterprise shortlists across ChatGPT first, then Perplexity / AI Overview / Gemini / Claude",
+      "Home-turf wins: HSR and Richmond Road / CBD prompts name 2gethr@HSR and 2gethr@CBD",
+      "Phonetic and brand strings resolve to 2gethr — not “no operator found”",
+      "WeWork / Awfis / IndiQube conquest prompts include 2gethr as a serious alternative",
+      "Weekly re-runs of this audit set with screenshot proof, plus a dashboard for gaps and next actions",
     ],
   },
   ctaUrl: "https://cal.com/dodox/quick-chat",
   ctaLabel: "Book a quick chat",
   ctaEyebrow: "90-day sprint",
-  ctaHeadline:
-    "Ready to stop showing up as a lukewarm “2gether”?",
+  ctaHeadline: "Ready to get 2gethr on those shortlists?",
   ctaBody:
-    "Book a short call. We will map the 90-day plan from this favorability snapshot and the on-site readiness audit: lock the 2gethr spelling, put prices and GCC proof on the owned domain, then run citation work so AI Overviews and ChatGPT stop handing the category to WeWork and IndiQube. You get a dashboard that re-tests this set.",
+    "Book a short call. We will walk this ChatGPT snapshot: zero of twelve discovery cites, identity leak on “together,” home-turf misses on HSR and Richmond Road, and the 90-day plan to change the answers. You get weekly proof and a dashboard.",
 };
