@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Check, Download, LoaderCircle } from "lucide-react";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +16,110 @@ type DownloadReportPdfButtonProps = {
 
 type Status = "idle" | "pending" | "done" | "error";
 
+function DownloadGlyph({
+  active,
+  reduceMotion,
+}: {
+  active: boolean;
+  reduceMotion: boolean | null;
+}) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className="size-3.5"
+      fill="none"
+      aria-hidden
+    >
+      <motion.path
+        d="M3 11.5v1.25c0 .69.56 1.25 1.25 1.25h7.5c.69 0 1.25-.56 1.25-1.25V11.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <motion.g
+        animate={
+          reduceMotion || !active
+            ? { y: 0 }
+            : { y: [0, 2.5, 0] }
+        }
+        transition={
+          reduceMotion || !active
+            ? { duration: 0.2 }
+            : { duration: 0.85, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
+        }
+      >
+        <path
+          d="M8 2.5v7"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M5.25 7.25 8 10l2.75-2.75"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </motion.g>
+    </svg>
+  );
+}
+
+function SpinnerGlyph() {
+  return (
+    <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
+      <motion.g
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 0.7,
+          ease: "linear",
+          repeat: Number.POSITIVE_INFINITY,
+        }}
+        style={{ transformOrigin: "8px 8px" }}
+      >
+        <circle
+          cx="8"
+          cy="8"
+          r="5.5"
+          fill="none"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+          strokeWidth="1.5"
+        />
+        <circle
+          cx="8"
+          cy="8"
+          r="5.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeDasharray="10 24"
+        />
+      </motion.g>
+    </svg>
+  );
+}
+
+function CheckGlyph({ reduceMotion }: { reduceMotion: boolean | null }) {
+  return (
+    <svg viewBox="0 0 16 16" className="size-3.5" fill="none" aria-hidden>
+      <motion.path
+        d="M3.5 8.25 6.75 11.5 12.5 4.5"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      />
+    </svg>
+  );
+}
+
 export default function DownloadReportPdfButton({
   slug,
   company,
@@ -25,6 +128,7 @@ export default function DownloadReportPdfButton({
 }: DownloadReportPdfButtonProps) {
   const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<Status>("idle");
+  const [hovered, setHovered] = useState(false);
 
   async function handleDownload() {
     if (status === "pending") return;
@@ -56,7 +160,7 @@ export default function DownloadReportPdfButton({
 
       posthog.capture("audit_pdf_download_succeeded", { slug, company, kind });
       setStatus("done");
-      window.setTimeout(() => setStatus("idle"), 1800);
+      window.setTimeout(() => setStatus("idle"), 2200);
     } catch (err) {
       console.error(err);
       posthog.capture("audit_pdf_download_failed", {
@@ -66,15 +170,15 @@ export default function DownloadReportPdfButton({
         message: err instanceof Error ? err.message : "unknown",
       });
       setStatus("error");
-      window.setTimeout(() => setStatus("idle"), 2800);
+      window.setTimeout(() => setStatus("idle"), 3000);
     }
   }
 
   const label =
     status === "pending"
-      ? "Preparing…"
+      ? "Preparing PDF"
       : status === "done"
-        ? "Downloaded"
+        ? "Saved"
         : status === "error"
           ? "Try again"
           : "Download PDF";
@@ -83,73 +187,114 @@ export default function DownloadReportPdfButton({
     <div className={cn("relative inline-flex shrink-0", className)}>
       <motion.button
         type="button"
+        layout
         onClick={handleDownload}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
         disabled={status === "pending"}
         aria-busy={status === "pending"}
         aria-label={status === "idle" ? "Download PDF report" : label}
+        initial={false}
+        animate={
+          reduceMotion
+            ? undefined
+            : status === "done"
+              ? { scale: [1, 1.06, 1] }
+              : status === "error"
+                ? { x: [0, -4, 4, -3, 3, 0] }
+                : { scale: 1 }
+        }
         whileHover={
           reduceMotion || status === "pending"
             ? undefined
-            : { y: -1, scale: 1.02 }
+            : { y: -2, scale: 1.03 }
         }
         whileTap={
-          reduceMotion || status === "pending" ? undefined : { scale: 0.97 }
+          reduceMotion || status === "pending"
+            ? undefined
+            : { scale: 0.94, y: 0 }
         }
-        transition={{ type: "spring", stiffness: 520, damping: 28 }}
+        transition={
+          status === "error"
+            ? { duration: 0.35 }
+            : status === "done"
+              ? { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+              : { type: "spring", stiffness: 480, damping: 22, mass: 0.6 }
+        }
         className={cn(
-          "relative inline-flex h-8 min-w-[8.5rem] items-center justify-center gap-1.5 overflow-hidden rounded-md px-3 text-xs font-medium text-white select-none",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2462ff]/40 focus-visible:ring-offset-2",
+          "relative inline-flex h-8 items-center justify-center gap-2 overflow-hidden rounded-md px-3 text-xs font-medium text-white select-none",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2462ff]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F7]",
           "disabled:cursor-wait",
           status === "error"
-            ? "bg-red-600 hover:bg-red-600/90"
+            ? "bg-red-600"
             : status === "done"
               ? "bg-emerald-600"
-              : "bg-[#2462ff] hover:bg-[#2462ff]/90",
+              : "bg-[#2462ff]",
         )}
       >
-        {status === "pending" && !reduceMotion ? (
+        {/* Soft sweep on idle hover */}
+        {status === "idle" && hovered && !reduceMotion ? (
           <motion.span
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
-            initial={{ x: "-100%" }}
-            animate={{ x: "100%" }}
-            transition={{
-              duration: 1.1,
-              ease: "linear",
-              repeat: Number.POSITIVE_INFINITY,
-            }}
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            initial={{ x: "-120%" }}
+            animate={{ x: "120%" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           />
         ) : null}
 
-        <AnimatePresence mode="wait" initial={false}>
+        {/* Progress rail while generating */}
+        {status === "pending" ? (
+          <motion.span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 origin-left bg-white/70"
+            initial={{ scaleX: 0 }}
+            animate={
+              reduceMotion
+                ? { scaleX: 0.6 }
+                : { scaleX: [0.08, 0.72, 0.4, 0.92, 0.55] }
+            }
+            transition={
+              reduceMotion
+                ? { duration: 0.3 }
+                : {
+                    duration: 2.4,
+                    ease: "easeInOut",
+                    repeat: Number.POSITIVE_INFINITY,
+                  }
+            }
+          />
+        ) : null}
+
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.span
             key={status}
-            className="relative inline-flex items-center gap-1.5"
+            layout
+            className="relative inline-flex items-center gap-2"
             initial={
-              reduceMotion ? false : { opacity: 0, y: 6, filter: "blur(2px)" }
+              reduceMotion ? false : { opacity: 0, y: 8, filter: "blur(4px)" }
             }
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={
               reduceMotion
                 ? undefined
-                : { opacity: 0, y: -6, filter: "blur(2px)" }
+                : { opacity: 0, y: -8, filter: "blur(4px)" }
             }
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
             {status === "pending" ? (
-              <LoaderCircle className="size-3.5 animate-spin" aria-hidden />
+              <SpinnerGlyph />
             ) : status === "done" ? (
-              <Check className="size-3.5" strokeWidth={2.5} aria-hidden />
+              <CheckGlyph reduceMotion={reduceMotion} />
             ) : (
-              <motion.span
-                aria-hidden
-                className="inline-flex"
-                whileHover={reduceMotion ? undefined : { y: 1 }}
-              >
-                <Download className="size-3.5" />
-              </motion.span>
+              <DownloadGlyph
+                active={hovered && status === "idle"}
+                reduceMotion={reduceMotion}
+              />
             )}
-            {label}
+            <motion.span layout className="tabular-nums">
+              {label}
+            </motion.span>
           </motion.span>
         </AnimatePresence>
       </motion.button>
@@ -158,9 +303,9 @@ export default function DownloadReportPdfButton({
         {status === "error" ? (
           <motion.p
             role="alert"
-            initial={reduceMotion ? false : { opacity: 0, y: -4 }}
+            initial={reduceMotion ? false : { opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, y: -4 }}
             className="absolute top-full right-0 mt-1.5 text-[11px] whitespace-nowrap text-red-600"
           >
             Couldn’t generate. Try again.
