@@ -1,3 +1,4 @@
+import DownloadReportPdfButton from "@/components/pages/audits/DownloadReportPdfButton";
 import { readinessCopy } from "./readiness-copy";
 import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
@@ -8,69 +9,80 @@ type ReadinessHeroProps = {
 
 export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
   return (
-    <div className="flex flex-col gap-10 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-12 md:py-20">
-      <div className="max-w-2xl">
-        <p className="mb-4 text-sm font-medium text-[#2462ff]">
+    <div className="px-6 pt-14 md:px-12 md:pt-20">
+      <div className="mb-4 flex items-center justify-between gap-4">
+        <p className="text-sm font-medium text-[#2462ff]">
           Anny · AI readiness audit
         </p>
-        <h1 className="text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
-          {report.company}
-        </h1>
-        <p className="mt-3 text-lg text-zinc-500 text-balance md:text-xl">
-          {report.tagline ??
-            `How ready ${report.company} is for AI agents: structured data, crawl access, automation, and semantic HTML.`}
-        </p>
-        <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
-          <div>
-            <dt className="text-zinc-400">Prepared for</dt>
-            <dd className="mt-1 font-medium">
-              {report.preparedFor}
-              {report.role ? (
-                <span className="block font-normal text-zinc-500">
-                  {report.role}
-                </span>
-              ) : null}
-              {report.email ? (
-                <span className="block font-normal text-zinc-500">
-                  {report.email}
-                </span>
-              ) : null}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-zinc-400">Company</dt>
-            <dd className="mt-1 font-medium">{report.website}</dd>
-          </div>
-          <div>
-            <dt className="text-zinc-400">Industry</dt>
-            <dd className="mt-1 font-medium">{report.industry}</dd>
-          </div>
-          <div>
-            <dt className="text-zinc-400">Snapshot</dt>
-            <dd className="mt-1 font-medium">{report.dateLabel}</dd>
-          </div>
-        </dl>
+        <DownloadReportPdfButton
+          slug={report.slug}
+          company={report.company}
+          kind="readiness"
+          className="shrink-0"
+        />
       </div>
 
-      <aside
-        aria-label="Readiness score"
-        className="shrink-0 border border-zinc-200 bg-white px-8 py-7 md:min-w-[220px]"
-      >
-        <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-          Readiness score
-        </p>
-        <p className="mt-2 text-5xl font-medium tracking-tight tabular-nums">
-          {report.overallScore}
-          <span className="text-2xl text-zinc-400">/100</span>
-        </p>
-        <p className="mt-2 text-sm font-medium text-[#2462ff]">
-          {report.scoreLabel}
-        </p>
-        <p className="mt-3 max-w-[14rem] text-xs leading-relaxed text-zinc-500">
-          On-site readiness for AI agents: schema, crawl signals, automation,
-          and HTML semantics.
-        </p>
-      </aside>
+      <div className="flex flex-col gap-10 pb-14 md:flex-row md:items-end md:justify-between md:pb-20">
+        <div className="max-w-2xl">
+          <h1 className="text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
+            {report.company}
+          </h1>
+          <p className="mt-3 text-lg text-zinc-500 text-balance md:text-xl">
+            {report.tagline ??
+              `How ready ${report.company} is for AI agents: structured data, crawl access, automation, and semantic HTML.`}
+          </p>
+          <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
+            <div>
+              <dt className="text-zinc-400">Prepared for</dt>
+              <dd className="mt-1 font-medium">
+                {report.preparedFor}
+                {report.role ? (
+                  <span className="block font-normal text-zinc-500">
+                    {report.role}
+                  </span>
+                ) : null}
+                {report.email ? (
+                  <span className="block font-normal text-zinc-500">
+                    {report.email}
+                  </span>
+                ) : null}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-zinc-400">Company</dt>
+              <dd className="mt-1 font-medium">{report.website}</dd>
+            </div>
+            <div>
+              <dt className="text-zinc-400">Industry</dt>
+              <dd className="mt-1 font-medium">{report.industry}</dd>
+            </div>
+            <div>
+              <dt className="text-zinc-400">Snapshot</dt>
+              <dd className="mt-1 font-medium">{report.dateLabel}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside
+          aria-label="Readiness score"
+          className="shrink-0 border border-zinc-200 bg-white px-8 py-7 md:min-w-[220px]"
+        >
+          <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+            Readiness score
+          </p>
+          <p className="mt-2 text-5xl font-medium tracking-tight tabular-nums">
+            {report.overallScore}
+            <span className="text-2xl text-zinc-400">/100</span>
+          </p>
+          <p className="mt-2 text-sm font-medium text-[#2462ff]">
+            {report.scoreLabel}
+          </p>
+          <p className="mt-3 max-w-[14rem] text-xs leading-relaxed text-zinc-500">
+            On-site readiness for AI agents: schema, crawl signals, automation,
+            and HTML semantics.
+          </p>
+        </aside>
+      </div>
     </div>
   );
 }

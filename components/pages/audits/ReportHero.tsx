@@ -1,3 +1,4 @@
+import DownloadReportPdfButton from "@/components/pages/audits/DownloadReportPdfButton";
 import type { VisibilityReport } from "./types";
 
 type ReportHeroProps = {
@@ -7,11 +8,21 @@ type ReportHeroProps = {
 export default function ReportHero({ report }: ReportHeroProps) {
   return (
     <section className="border-b">
-      <div className="flex flex-col gap-10 px-6 py-14 md:flex-row md:items-end md:justify-between md:px-12 md:py-20">
-        <div className="max-w-2xl">
-          <p className="mb-4 text-sm font-medium text-[#2462ff]">
+      <div className="px-6 pt-14 md:px-12 md:pt-20">
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <p className="text-sm font-medium text-[#2462ff]">
             Anny · AI visibility audit
           </p>
+          <DownloadReportPdfButton
+            slug={report.slug}
+            company={report.company}
+            className="shrink-0"
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-10 px-6 pb-14 md:flex-row md:items-end md:justify-between md:px-12 md:pb-20">
+        <div className="max-w-2xl">
           <h1 className="text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
             {report.company}
           </h1>
