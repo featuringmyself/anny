@@ -4,7 +4,8 @@ export type AiModelId =
   | "ai-overview"
   | "gemini"
   | "claude"
-  | "ai-mode";
+  | "ai-mode"
+  | "grok";
 
 export type ModelAnswer = {
   model: AiModelId;

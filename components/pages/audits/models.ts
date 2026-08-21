@@ -40,4 +40,10 @@ export const MODEL_META: Record<
     logo: "/trackModel/ai_mode-logo.svg",
     accent: "#1A73E8",
   },
+  grok: {
+    name: "Grok",
+    shortName: "Grok",
+    logo: "/ai-logo/grokLogo.svg",
+    accent: "#1A1A1A",
+  },
 };
