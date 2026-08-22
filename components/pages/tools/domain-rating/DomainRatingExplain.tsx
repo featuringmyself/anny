@@ -1,7 +1,7 @@
 const notes = [
   {
     title: "What it measures",
-    body: "How strong a website’s backlink profile is, according to Ahrefs. More quality links usually means a higher score.",
+    body: "How strong a website’s backlink profile is. More quality links usually means a higher score.",
   },
   {
     title: "What it doesn’t",
@@ -9,7 +9,7 @@ const notes = [
   },
   {
     title: "Why it’s free",
-    body: "You shouldn’t need an Ahrefs login to check one domain. Paste it here and read the dial.",
+    body: "You shouldn’t need an account to check one domain. Paste it here and read the dial.",
   },
 ] as const;
 

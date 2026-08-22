@@ -54,11 +54,16 @@ export default function ReadinessModeToggle({
 }
 
 type ReadinessModeBarProps = {
+  company: string;
   mode: ReadinessAudienceMode;
   onChange: (mode: ReadinessAudienceMode) => void;
 };
 
-export function ReadinessModeBar({ mode, onChange }: ReadinessModeBarProps) {
+export function ReadinessModeBar({
+  company,
+  mode,
+  onChange,
+}: ReadinessModeBarProps) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [stuck, setStuck] = useState(false);
 
@@ -88,7 +93,12 @@ export function ReadinessModeBar({ mode, onChange }: ReadinessModeBarProps) {
           stuck && "shadow-[0_1px_3px_rgba(0,0,0,0.06)]",
         )}
       >
-        <div className="flex items-center justify-end px-6 py-3 md:px-12">
+        <div className="flex items-center justify-between gap-4 px-6 py-3 md:px-12">
+          <p className="min-w-0 truncate text-xs font-medium tracking-wide text-zinc-500">
+            <span className="text-zinc-900">{company}</span>
+            <span className="text-zinc-300"> · </span>
+            <span>AI readiness report</span>
+          </p>
           <ReadinessModeToggle mode={mode} onChange={onChange} />
         </div>
       </div>

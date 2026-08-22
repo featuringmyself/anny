@@ -174,7 +174,7 @@ function InstrumentMeta({
       </div>
       <div className="px-6 py-5 md:px-8">
         <dt className="text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
-          Ahrefs Rank
+          Rank
         </dt>
         <dd className="mt-1 text-sm font-medium tabular-nums">
           {rank == null ? (

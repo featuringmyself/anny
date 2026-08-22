@@ -60,7 +60,7 @@ export default async function DomainRatingCheckerPage({
               Free Domain Rating checker
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-zinc-500 text-balance">
-              Paste a domain to see Ahrefs’ 0–100 score for how strong its
+              Paste a domain to see its 0–100 Domain Rating for how strong its
               backlinks are. No signup.
             </p>
 

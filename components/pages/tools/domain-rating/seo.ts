@@ -8,9 +8,9 @@ import {
 export const DR_CHECKER_PATH = "/tools/domain-rating-checker";
 export const DR_CHECKER_URL = absoluteUrl(DR_CHECKER_PATH);
 
-export const DR_CHECKER_TITLE = "Free Domain Rating Checker — Ahrefs DR";
+export const DR_CHECKER_TITLE = "Free Domain Rating Checker";
 export const DR_CHECKER_DESCRIPTION =
-  "Check any website’s Ahrefs Domain Rating for free. Paste a domain, get a 0–100 score. No signup.";
+  "Check any website’s Domain Rating for free. Paste a domain, get a 0–100 score. No signup.";
 
 export const AHREFS_HOME_URL = "https://ahrefs.com/";
 
@@ -18,12 +18,12 @@ export const drCheckerFaqs = [
   {
     question: "What is Domain Rating?",
     answer:
-      "Domain Rating (DR) is Ahrefs’ 0–100 score for how strong a website’s backlinks are. It looks at how many other sites link to the domain and how strong those sites are — not traffic or Google rankings.",
+      "Domain Rating (DR) is a 0–100 score for how strong a website’s backlinks are. It looks at how many other sites link to the domain and how strong those sites are — not traffic or Google rankings.",
   },
   {
-    question: "Is this the same as Ahrefs Domain Rating?",
+    question: "Is this a real Domain Rating score?",
     answer:
-      "Yes. This checker uses Ahrefs’ public Domain Rating API. The number you see is Ahrefs DR, not Moz Domain Authority or a score Anny invented.",
+      "Yes. The number comes from the public Domain Rating API — not Moz Domain Authority or a score Anny invented.",
   },
   {
     question: "What is a good Domain Rating?",
@@ -33,7 +33,7 @@ export const drCheckerFaqs = [
   {
     question: "Is Domain Rating the same as Domain Authority?",
     answer:
-      "No. Domain Authority (DA) is Moz’s metric. Domain Rating is Ahrefs’. Both use a 0–100 scale, but they are calculated differently, so don’t mix them in a report.",
+      "No. Domain Authority (DA) is Moz’s metric. Domain Rating is a separate 0–100 backlink score. Don’t mix them in a report.",
   },
   {
     question: "Does Domain Rating decide whether ChatGPT cites a site?",
@@ -49,8 +49,7 @@ export const drCheckerFaqs = [
 
 export const drCheckerHowTo = {
   name: "How to check Domain Rating",
-  description:
-    "Look up any domain in a few seconds. You do not need an Ahrefs account.",
+  description: "Look up any domain in a few seconds. No account needed.",
   steps: [
     {
       name: "Enter a domain",
@@ -58,11 +57,11 @@ export const drCheckerHowTo = {
     },
     {
       name: "Check Domain Rating",
-      text: "Submit the form. We ask Ahrefs for that site’s Domain Rating.",
+      text: "Submit the form. We’ll look up that site’s Domain Rating.",
     },
     {
       name: "Read the score",
-      text: "The dial shows Domain Rating out of 100, plus Ahrefs Rank when Ahrefs returns it.",
+      text: "The dial shows Domain Rating out of 100, plus rank when it’s available.",
     },
   ],
 } as const;
