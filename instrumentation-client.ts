@@ -4,8 +4,17 @@ import { SITE_URL } from "@/lib/site";
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
+// Local production builds (`next build && next start`) also run with
+// NODE_ENV === "production", so guard on the hostname before init. This stops
+// early-hydration exceptions from reaching PostHog before the `loaded` opt-out
+// installs.
+const isLocalhost =
+  typeof window !== "undefined" &&
+  (window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1");
+
 // Only initialize in production builds — never on localhost / `next dev`.
-if (process.env.NODE_ENV === "production" && token) {
+if (process.env.NODE_ENV === "production" && token && !isLocalhost) {
   let siteHostname = "anny.dodoxhq.com";
   try {
     siteHostname = new URL(SITE_URL).hostname;
