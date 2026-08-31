@@ -3,6 +3,8 @@ import { companyAiVisibilityReport } from "./company-ai-visibility-report";
 import { hilivingAiVisibilityReport } from "./hiliving-ai-visibility-report";
 import { gethrAiReadinessReport } from "./gethr-ai-readiness-report";
 import { gethrAiVisibilityReport } from "./gethr-ai-visibility-report";
+import { linkrunnerAiReadinessReport } from "./linkrunner-ai-readiness-report";
+import { linkrunnerAiVisibilityReport } from "./linkrunner-ai-visibility-report";
 import { rentokAiReadinessReport } from "./rentok-ai-readiness-report";
 import { rentokAiVisibilityReport } from "./rentok-ai-visibility-report";
 import { sprentzoAiReadinessReport } from "./sprentzo-ai-readiness-report";
@@ -29,10 +31,12 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: praataAiVisibilityReport },
   { kind: "visibility", report: zipfreshAiVisibilityReport },
   { kind: "visibility", report: gethrAiVisibilityReport },
+  { kind: "visibility", report: linkrunnerAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
   { kind: "readiness", report: trulivAiReadinessReport },
   { kind: "readiness", report: rentokAiReadinessReport },
   { kind: "readiness", report: gethrAiReadinessReport },
+  { kind: "readiness", report: linkrunnerAiReadinessReport },
 ];
 
 export function getAllReportEntries(): ReportEntry[] {
