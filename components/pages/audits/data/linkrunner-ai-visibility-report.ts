@@ -17,7 +17,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
   tagline:
     "Turn installs into insights with an AI driven MMP — 250+ growth teams, 25k free attributed installs, published per-install pricing.",
   summary:
-    "Linkrunner has done more AEO work than almost any site we audit: llms.txt with markdown twins for 329 pages, robots.txt explicitly allowlisting nine AI crawlers, one H1, Organization and SoftwareApplication schema, FAQPage on pricing, and lastmod on every sitemap URL. On-site readiness scores 82/100. It bought 2 of 14 shortlists. On the twelve prompts Linkrunner loses, the loss is on Linkrunner's own claims: “MMP with transparent per-install pricing” returns Tenjin, Singular, AppsFlyer and Airbridge — the one differentiator Linkrunner publishes and legacy MMPs hide. “MMP with fraud protection included, not as an add-on” returns AppsFlyer, Adjust and Singular, the exact three whose fraud is an upsell. “cheap MMP for startups” returns Singular and Tenjin, not the tool with 25,000 free installs. Ask for the best MMP for Indian apps and ChatGPT answers “For most Indian consumer apps: AppsFlyer.” Ask which MMP Playo uses — the flagship case study, 34% CPI cut, on the homepage — and it checks AppsFlyer, Adjust, Singular, Branch and Kochava, then says it cannot find one. Ask for a “Linkrunner review” and it reviews a NetAlly cable tester, 9/10. The site is not the bottleneck. Third-party authority is, and that is what the 90-day AI Visibility Sprint builds.",
+    "Paste linkrunner.io into ChatGPT and the answer is accurate: a mobile attribution and marketing analytics platform, channels named, positioning intact. The AEO work is real — llms.txt with markdown twins for 329 pages, robots.txt explicitly allowlisting nine AI crawlers, one H1, Organization and SoftwareApplication schema, FAQPage on pricing, lastmod on every sitemap URL. On-site readiness scores 82/100. It bought 2 of 14 shortlists. On the twelve prompts Linkrunner loses, the loss is on Linkrunner's own claims: “MMP with transparent per-install pricing” returns Tenjin, Singular, AppsFlyer and Airbridge — the one differentiator Linkrunner publishes and legacy MMPs hide. “MMP with fraud protection included, not as an add-on” returns AppsFlyer, Adjust and Singular, the exact three whose fraud is an upsell. “cheap MMP for startups” returns Singular and Tenjin, not the tool with 25,000 free installs. Ask for the best MMP for Indian apps and ChatGPT answers “For most Indian consumer apps: AppsFlyer.” Ask which MMP Playo uses — the flagship case study, 34% CPI cut, on the homepage — and it checks AppsFlyer, Adjust, Singular, Branch and Kochava, then says it cannot find one. Ask for a “Linkrunner review” and it reviews a NetAlly cable tester, 9/10. Even the friendly prompts hedge: asked whether Linkrunner is reliable, the model confirms the company, SOC 2 and ISO 27001, then brakes on thin independent proof — Gartner 5.0 from a single rating, one published G2 review. Understanding was never the gap. Being recommended is, and that is what the 90-day AI Visibility Sprint builds.",
   stats: [
     { label: "Growth teams", value: "250+" },
     { label: "Readiness score", value: "82/100" },
@@ -28,9 +28,9 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     "The model reads the site perfectly. It still will not vouch for you.",
   brandCrisisDek:
     "Paste the domain and ChatGPT explains the product correctly — the markdown twins work. Ask for a review, a customer, or a switch verdict and it returns a cable tester, a shrug, and AppsFlyer.",
-  queriesHeadline: "Prompt audit · 14 queries",
+  queriesHeadline: "Prompt audit · 10 of 14 queries",
   queriesIntro:
-    "Buyer prompts growth teams already type when they shop for an MMP, plus the four positioning claims Linkrunner sells on: rupee pricing, published per-install rates, fraud included, and no annual lock-in. Two of fourteen cite Linkrunner. AppsFlyer appears in thirteen.",
+    "Fourteen prompts were audited and two cite Linkrunner; the ten that decide deals are below. They cover the shortlists growth teams build when shopping for an MMP, plus the four positioning claims Linkrunner sells on: rupee pricing, published per-install rates, fraud included, and no annual lock-in. AppsFlyer appears in thirteen of the fourteen. The four omitted here — best MMP for startups, Adjust alternatives, SKAN 4.0, and React Native deep linking — repeat the same pattern: absent, with AppsFlyer, Adjust, Singular or Branch taking the shelf.",
   modelScores: [
     { model: "chatgpt", visibility: 14, cited: 2, total: 14, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -75,18 +75,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       },
     },
     {
-      id: "crisis-reliable",
-      query: "Is Linkrunner reliable",
-      title: "Legitimate, but the proof is one review deep",
-      body: "The model gets this right and still hedges: an active Indian company, SOC 2 Type II, ISO 27001, GDPR, 250+ growth teams including Playo, BukuWarung and Fold Money. Then the brake — independent review evidence is thin. Gartner shows 5.0/5 from a single rating, G2 has one published review. Its verdict is to be cautious about treating Linkrunner as proven next to AppsFlyer or Adjust. Two review profiles are the difference between a clean yes and a hedge.",
-      outcome: "Trust partial · thin third-party proof, cautious verdict",
-      screenshot: {
-        src: `${SHOT}/crisis-is-linkrunner-reliable.jpg`,
-        alt: "ChatGPT calling Linkrunner legitimate but young with thin independent reviews",
-        model: "chatgpt",
-      },
-    },
-    {
       id: "crisis-switch-appsflyer",
       query: "should I switch from AppsFlyer to Linkrunner",
       title: "Branded switch prompt · the model defends AppsFlyer",
@@ -95,18 +83,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       screenshot: {
         src: `${SHOT}/crisis-should-i-switch-from-appsflyer.jpg`,
         alt: "ChatGPT advising against switching from AppsFlyer to Linkrunner",
-        model: "chatgpt",
-      },
-    },
-    {
-      id: "crisis-what-does-it-do",
-      query: "What does linkrunner.io do?",
-      title: "Comprehension is perfect — which is the point",
-      body: "Paste the domain and the answer is accurate and well-sourced: a mobile attribution and marketing analytics platform, with the Google Ads, Meta, TikTok, influencer and QR channels named and the core question framed exactly as the site frames it. The markdown twins, llms.txt and schema are working. Understanding was never the gap. Being recommended is.",
-      outcome: "Brand comprehension clean · recommendation still absent",
-      screenshot: {
-        src: `${SHOT}/crisis-what-does-linkrunner-do.jpg`,
-        alt: "ChatGPT accurately describing what linkrunner.io does",
         model: "chatgpt",
       },
     },
@@ -132,29 +108,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
           cited: false,
           excerpt:
             "ChatGPT shortlists AppsFlyer (best for scale), Adjust (best for fraud prevention), Singular, Airbridge and Branch, then recommends AppsFlyer outright for most Indian consumer apps. Linkrunner — built in Bengaluru for exactly this buyer — is not named.",
-        },
-      ],
-    },
-    {
-      id: "q2",
-      query: "best mobile measurement partner for startups",
-      intent: "Seed / Series A buyer, the core Linkrunner ICP",
-      severity: "critical",
-      tag: "ICP miss",
-      citedBrands: ["AppsFlyer", "Adjust", "Branch", "Singular", "Tenjin"],
-      rentokStatus: "missing",
-      outcome: "Startup shelf · AppsFlyer “best overall”",
-      screenshot: {
-        src: `${SHOT}/02-best-mmp-for-startups.jpg`,
-        alt: "ChatGPT best MMP for startups shortlist without Linkrunner",
-        model: "chatgpt",
-      },
-      answers: [
-        {
-          model: "chatgpt",
-          cited: false,
-          excerpt:
-            "AppsFlyer is marked best overall, Adjust best for cost-conscious growth teams, Branch for deep linking, Singular for performance analytics, Tenjin for very early mobile gaming startups. The tool with 25,000 free installs and a 1.5-hour SDK is absent.",
         },
       ],
     },
@@ -189,37 +142,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       ],
     },
     {
-      id: "q4",
-      query: "Adjust MMP alternatives",
-      intent: "Second conquest lane — Adjust's annual lock-in is Linkrunner's wedge",
-      severity: "high",
-      tag: "Conquest",
-      citedBrands: [
-        "AppsFlyer",
-        "Adjust",
-        "Branch",
-        "Singular",
-        "Kochava",
-        "Airbridge",
-        "Firebase Analytics",
-      ],
-      rentokStatus: "missing",
-      outcome: "Adjust switcher shelf · Firebase named, Linkrunner not",
-      screenshot: {
-        src: `${SHOT}/04-adjust-mmp-alternatives.jpg`,
-        alt: "ChatGPT Adjust alternatives list without Linkrunner",
-        model: "chatgpt",
-      },
-      answers: [
-        {
-          model: "chatgpt",
-          cited: false,
-          excerpt:
-            "AppsFlyer, Adjust, Branch, Singular, Kochava, Airbridge and even Firebase Analytics are offered. Firebase is caveated as not a full MMP replacement and still ranks; Linkrunner does not appear.",
-        },
-      ],
-    },
-    {
       id: "q5",
       query: "OneLink alternatives",
       intent: "Deep-link conquest — Linkrunner ships /onelink-alternative",
@@ -235,11 +157,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       ],
       rentokStatus: "missing",
       outcome: "OneLink shelf · Ulinkly cited for “lower-cost deep linking”",
-      screenshot: {
-        src: `${SHOT}/05-onelink-alternatives.jpg`,
-        alt: "ChatGPT OneLink alternatives table without Linkrunner",
-        model: "chatgpt",
-      },
       answers: [
         {
           model: "chatgpt",
@@ -265,11 +182,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       ],
       rentokStatus: "missing",
       outcome: "FDL migration · Branch / AppsFlyer / Adjust / Airbridge take it",
-      screenshot: {
-        src: `${SHOT}/06-firebase-dynamic-links-replacement.jpg`,
-        alt: "ChatGPT Firebase Dynamic Links replacement options without Linkrunner",
-        model: "chatgpt",
-      },
       answers: [
         {
           model: "chatgpt",
@@ -299,57 +211,6 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
           cited: false,
           excerpt:
             "Singular is recommended first on a 15,000 free attributed conversion tier, then AppsFlyer's 12,000. Linkrunner's 25,000 free attributed installs is the largest free tier on the market and does not appear in the comparison.",
-        },
-      ],
-    },
-    {
-      id: "q8",
-      query: "best MMP with SKAN 4.0",
-      intent: "iOS / ATT buyer — SKAN Studio is on every Linkrunner plan",
-      severity: "high",
-      tag: "Feature miss",
-      citedBrands: ["AppsFlyer", "Adjust", "Singular", "Airbridge"],
-      rentokStatus: "missing",
-      outcome: "SKAN shelf · AppsFlyer picked on Conversion Studio maturity",
-      screenshot: {
-        src: `${SHOT}/08-best-mmp-skan-4.jpg`,
-        alt: "ChatGPT best MMP with SKAN 4.0 shortlist without Linkrunner",
-        model: "chatgpt",
-      },
-      answers: [
-        {
-          model: "chatgpt",
-          cited: false,
-          excerpt:
-            "AppsFlyer, Adjust and Singular are marked strong on SKAN 4, Airbridge included, and AppsFlyer is picked for its mature Conversion Studio. Linkrunner's dedicated SKAN dashboard with automated conversion-value mapping — included on the free plan — is absent.",
-        },
-      ],
-    },
-    {
-      id: "q9",
-      query: "best deep linking platform for React Native",
-      intent: "Developer entry point — React Native is the flagship SDK",
-      severity: "high",
-      tag: "SDK miss",
-      citedBrands: [
-        "Branch",
-        "AppsFlyer OneLink",
-        "React Navigation",
-        "Adjust",
-      ],
-      rentokStatus: "missing",
-      outcome: "React Native shelf · Branch “best overall” on its RN SDK",
-      screenshot: {
-        src: `${SHOT}/09-best-deep-linking-react-native.jpg`,
-        alt: "ChatGPT best deep linking platform for React Native without Linkrunner",
-        model: "chatgpt",
-      },
-      answers: [
-        {
-          model: "chatgpt",
-          cited: false,
-          excerpt:
-            "Branch is picked best overall, explicitly because it ships an official React Native SDK. Linkrunner leads with React Native in its SDK line-up and every link being dynamic and deferred by default, and is not considered.",
         },
       ],
     },
