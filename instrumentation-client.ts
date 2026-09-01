@@ -4,8 +4,13 @@ import { SITE_URL } from "@/lib/site";
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
+const host = window.location.hostname;
+const isLocalhost = host === "localhost" || host === "127.0.0.1";
+
 // Only initialize in production builds — never on localhost / `next dev`.
-if (process.env.NODE_ENV === "production" && token) {
+// The hostname check must run before init, because posthog.init() attaches the
+// exception handlers immediately. A later opt-out ships the first errors first.
+if (process.env.NODE_ENV === "production" && token && !isLocalhost) {
   let siteHostname = "anny.dodoxhq.com";
   try {
     siteHostname = new URL(SITE_URL).hostname;
@@ -25,12 +30,6 @@ if (process.env.NODE_ENV === "production" && token) {
     },
     feature_flag_request_timeout_ms: 10000,
     tracing_headers: [siteHostname],
-    loaded: (ph) => {
-      const host = window.location.hostname;
-      if (host === "localhost" || host === "127.0.0.1") {
-        ph.opt_out_capturing();
-      }
-    },
   });
 } else if (process.env.NODE_ENV === "development" && !token) {
   console.error(
