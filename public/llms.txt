@@ -9,7 +9,9 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://anny.dodoxhq.c
 ## Product
 
 - [Home](https://anny.dodoxhq.com/): Overview of Anny AI search visibility monitoring
+- [Services](https://anny.dodoxhq.com/services): Managed GEO/AEO engagements — done-for-you AI visibility (distinct from self-serve Anny at /pricing)
 - [Pricing](https://anny.dodoxhq.com/pricing): Starter, Pro, Advanced, and agency plans
+- [Services](https://anny.dodoxhq.com/services): Done-for-you managed GEO / AEO program
 - [Create account](https://anny.dodoxhq.com/register): Start tracking AI brand mentions
 - [FAQ](https://anny.dodoxhq.com/faq): Common questions about Anny, GEO, and response tracking
 - [Docs](https://anny.dodoxhq.com/docs): Product documentation for shipping GEO with Anny
