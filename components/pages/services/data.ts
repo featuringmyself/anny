@@ -32,6 +32,7 @@ export const servicesCopy = {
     source: "Source: Gartner",
   },
   features: {
+    eyebrow: "What we ship every week",
     h2: "What we ship every week",
     sub: "Citation outreach, answer-ready content, and visibility reporting, executed by your dedicated team, not another dashboard.",
   },
@@ -169,25 +170,28 @@ export const outcomeTabs: OutcomeTab[] = [
 
 export const featureCards = [
   {
-    title: "Earn the citations ChatGPT already trusts",
+    icon: "target" as const,
+    titleLead: "Earn the citations",
+    titleRest: "ChatGPT already trusts",
     description:
       "We audit which sources models cite in your category, then run outreach and content work to earn those placements. You get named, not outranked by competitors.",
     image: aiSources,
-    icon: "target" as const,
   },
   {
-    title: "Close content gaps before competitors do",
+    icon: "gap" as const,
+    titleLead: "Close content gaps",
+    titleRest: "before competitors do",
     description:
       "We find the questions AI can't answer about you, write answer-ready pages, and publish them. No backlog in a spreadsheet. Shipped every week.",
     image: searchQueries,
-    icon: "gap" as const,
   },
   {
-    title: "Track every engine. Report what moved.",
+    icon: "monitor" as const,
+    titleLead: "Track every engine.",
+    titleRest: "Report what moved.",
     description:
       "Mentions, citations, and competitor shifts across ChatGPT, Gemini, Perplexity, and AI Overviews. A weekly brief: what changed, what we're executing next.",
     image: brandMonitor,
-    icon: "monitor" as const,
   },
 ] as const;
 

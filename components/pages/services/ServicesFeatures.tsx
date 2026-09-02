@@ -24,7 +24,7 @@ export default function ServicesFeatures() {
 
       <div className="mx-auto mt-10 grid max-w-6xl gap-12 md:grid-cols-2 md:gap-14 lg:gap-16">
         {featureCards.map((card) => (
-          <article key={card.titleLead} className="group">
+          <article key={card.icon} className="group">
             <figure
               className={`${cardBase} relative aspect-[5/4] w-full overflow-hidden transition-shadow group-hover:shadow-md`}
             >
