@@ -13,7 +13,7 @@ export const servicesCopy = {
     eyebrow: "Managed GEO & AEO",
     h1Lead: "Be the brand",
     h1Accent: "AI recommends.",
-    sub: "Your buyers ask AI who to trust. We run GEO until you're the answer.",
+    sub: "Buyers research with AI before they reach your site. We run a managed GEO and AEO program so your brand earns those recommendations.",
   },
   logos: {
     label: "Trusted by marketing teams at",
