@@ -6,41 +6,42 @@ import aiVisibility from "@/public/metrics/aiVisibility.webp";
 import brandMonitor from "@/public/metrics/brandMonitor.webp";
 import searchQueries from "@/public/metrics/searchQueries.webp";
 import chatgptVisibility from "@/public/case-studies/winn-dixie/chatgpt-visibility.jpg";
+import lifeProBsrRank from "@/public/case-studies/life-pro-fitness/bsr-rank.webp";
 
 export const servicesCopy = {
   hero: {
     eyebrow: "Managed GEO & AEO",
     h1Lead: "Be the brand",
     h1Accent: "AI recommends.",
-    sub: "We run GEO end to end. You're in the answer when buyers ask AI who to trust.",
+    sub: "Your buyers ask AI who to trust. We run GEO until you're the answer.",
   },
   logos: {
     label: "Trusted by marketing teams at",
   },
   outcomes: {
-    h2: "How teams win on AI search with Anny",
-    sub: "Every stakeholder gets a managed program built for their role — we execute the work, you get the outcomes.",
+    h2: "Win AI search without adding headcount",
+    sub: "A managed program for every stakeholder. We execute weekly, you get the outcomes.",
   },
   platforms: {
-    h2: "Every engine that influences purchase decisions",
-    sub: "Control how AI perceives your brand across the platforms buyers use today.",
+    h2: "Every engine shaping purchase decisions",
+    sub: "We track and optimize how AI talks about you across every platform buyers use.",
   },
   quote: {
-    stat: "50% of traditional search traffic will be replaced with generative AI by 2028.",
-    prompt: "Is your brand ready?",
+    stat: "50% of traditional search traffic will be replaced with generative AI by 2027.",
+    prompt: "Will buyers find you?",
     source: "Source: Gartner",
   },
   features: {
-    h2: "What we deliver for you",
-    sub: "Find the sources AI trusts, close the content gaps costing you citations, and get weekly proof it's working — all run by your dedicated team.",
+    h2: "What we ship every week",
+    sub: "Citation outreach, answer-ready content, and visibility reporting, executed by your dedicated team, not another dashboard.",
   },
   results: {
-    h2: "Proven across industries, trusted by leaders",
-    sub: "Metric-forward outcomes from brands that handed us the program and watched AI visibility compound.",
+    h2: "Results you can put in a board deck",
+    sub: "Real lift from brands that handed us the program and stopped guessing.",
   },
   cta: {
-    h2: "Ready to lead on AI search?",
-    sub: "We'll benchmark your AI visibility, map a 90-day managed program, and show you exactly where you're losing to competitors.",
+    h2: "Your category will have three names AI recommends.",
+    sub: "We'll benchmark where you stand today, map a 90-day program, and show you exactly where competitors are winning.",
     footer: "A Dodox Studio company",
   },
 } as const;
@@ -77,35 +78,35 @@ export const outcomeTabs: OutcomeTab[] = [
   {
     id: "geo",
     label: "GEO / AEO",
-    title: "Your GEO & AEO command center — fully managed",
+    title: "Your full GEO program: we run it",
     description:
-      "The complete program for teams that need AI search wins, not another dashboard to babysit. We own and execute your entire AI search strategy — prompt mapping, citation building, and weekly iteration across every engine.",
+      "Prompt mapping, citation building, weekly iteration across every engine. We own the work so your team doesn't babysit another tool.",
     bullets: [
-      "Run end-to-end GEO workflows on your behalf",
-      "Track AI visibility across ChatGPT, Gemini, Perplexity, and 5+ engines",
-      "Ship content and citation work from weekly gap analysis",
-      "Deliver reporting with clear next actions every week",
+      "Execute end-to-end GEO workflows on your behalf",
+      "Track visibility across ChatGPT, Gemini, Perplexity, and 5+ engines",
+      "Ship content and citations from weekly gap analysis",
+      "Report what moved and what we're doing next",
     ],
-    before: "Scattered tools, manual tracking, no one owning the work",
-    after: "One managed program with weekly proof of progress",
+    before: "Scattered tools. Nobody owns execution.",
+    after: "One team runs GEO. Weekly reports on what moved.",
     metric: "50%",
-    metricLabel: "reduction in time your team spends on AI visibility tracking",
+    metricLabel: "less time your team spends tracking AI visibility",
     image: allAiGraph,
   },
   {
     id: "leadership",
     label: "Leadership",
-    title: "Executive visibility reporting — without the overhead",
+    title: "Board-ready AI visibility without the lift",
     description:
-      "Strategic proof that AI search is a growth channel worth funding. We deliver executive-level insights so you can defend budget, track ROI, and steer investment with confidence.",
+      "Proof that AI search is a growth channel worth funding. We translate visibility into ROI metrics you can defend in every budget conversation.",
     bullets: [
-      "Quantify ROI from AI visibility lift and citation growth",
-      "Deliver board-ready briefs with share-of-voice benchmarks",
-      "Summarize competitive shifts across priority buyer prompts",
-      "Translate visibility data into investment decisions",
+      "Quantify ROI from visibility lift and citation growth",
+      "Deliver executive briefs with share-of-voice benchmarks",
+      "Flag competitive shifts on priority buyer prompts",
+      "Turn data into clear investment decisions",
     ],
-    before: "No line of sight into the AI channel",
-    after: "Clear ROI metrics for AI search investment",
+    before: "AI channel is a black box.",
+    after: "Clear ROI on every dollar spent.",
     metric: "5×",
     metricLabel: "average visibility lift within 90 days",
     image: aiVisibility,
@@ -113,17 +114,17 @@ export const outcomeTabs: OutcomeTab[] = [
   {
     id: "seo",
     label: "SEO",
-    title: "AI search optimization — we close the SEO gap",
+    title: "Close the gap between Google rank and AI answers",
     description:
-      "Ranking on Google doesn't guarantee AI answer share. We optimize for how models retrieve and cite — mapping prompts, fixing gaps, and aligning your search program with generative discovery.",
+      "Ranking on Google doesn't mean models cite you. We optimize for how LLMs retrieve and recommend, and align SEO and GEO in one cadence.",
     bullets: [
       "Track brand mentions across every major LLM in your category",
-      "Identify the questions AI can't answer about your business",
-      "Monitor competitor AI visibility and citation share weekly",
-      "Align SEO and GEO in one managed operating cadence",
+      "Find the questions AI can't answer about you",
+      "Monitor competitor citation share every week",
+      "Run SEO and GEO as one managed program",
     ],
-    before: "Invisible when buyers ask AI for recommendations",
-    after: "Top positions in AI-generated answers",
+    before: "Rank on Google. Invisible to AI.",
+    after: "Named in AI-generated answers.",
     metric: "2.5×",
     metricLabel: "increase in AI-referred organic traffic",
     image: searchQueries,
@@ -131,17 +132,17 @@ export const outcomeTabs: OutcomeTab[] = [
   {
     id: "content",
     label: "Content",
-    title: "Citation and content program — published for you",
+    title: "Answer-ready content: written and published",
     description:
-      "Content that models retrieve, cite, and recommend. We map buyer prompts, write answer-ready pages, and earn the sources AI trusts — so you're the brand named in the answer.",
+      "We map buyer prompts, write pages models retrieve and cite, and earn placements on the sources AI already trusts.",
     bullets: [
-      "Analyze content gaps against high-intent AI queries",
-      "Write and publish answer-ready pages on your behalf",
-      "Run citation outreach to the sources models already trust",
+      "Audit content gaps against high-intent AI queries",
+      "Write and publish answer-ready pages for you",
+      "Run citation outreach to sources models trust",
       "Iterate as models update and new prompts emerge",
     ],
-    before: "Great content that AI never cites",
-    after: "Primary source models pull from and recommend",
+    before: "Great pages AI never cites.",
+    after: "Primary source models recommend.",
     metric: "3×",
     metricLabel: "increase in AI content citation rate",
     image: aiSources,
@@ -149,17 +150,17 @@ export const outcomeTabs: OutcomeTab[] = [
   {
     id: "brand",
     label: "Brand Marketing",
-    title: "Brand presence in AI answers — we protect the narrative",
+    title: "Own the narrative in AI answers",
     description:
-      "When buyers ask AI about your category, competitors shouldn't be the default. We monitor mentions, sentiment, and share of voice across every engine — and act before the narrative shifts against you.",
+      "When buyers ask AI about your category, competitors shouldn't be the default. We monitor mentions, sentiment, and share of voice, then act before the narrative shifts.",
     bullets: [
-      "Monitor brand mentions and competitor citations in real time",
-      "Track share of voice on category-defining buyer prompts",
-      "Flag sentiment shifts and narrative risks before they spread",
-      "Execute proactive reputation work in AI-generated answers",
+      "Monitor brand mentions and competitor citations daily",
+      "Track share of voice on category-defining prompts",
+      "Flag sentiment shifts before they spread",
+      "Execute proactive reputation work in AI answers",
     ],
-    before: "Competitors cited while you're unknown to AI",
-    after: "Category leader in AI mentions and recommendations",
+    before: "Competitors cited. You're invisible.",
+    after: "Category leader in AI mentions.",
     metric: "32%",
     metricLabel: "share-of-voice gain in AI answers within 90 days",
     image: brandMonitor,
@@ -168,23 +169,23 @@ export const outcomeTabs: OutcomeTab[] = [
 
 export const featureCards = [
   {
-    title: "Pinpoint the sites ChatGPT cites in your category",
+    title: "Earn the citations ChatGPT already trusts",
     description:
-      "We audit which sources models trust when buyers ask about you — then run outreach and content work to earn those placements. You're in the answer, not watching competitors get cited instead.",
+      "We audit which sources models cite in your category, then run outreach and content work to earn those placements. You get named, not outranked by competitors.",
     image: aiSources,
     icon: "target" as const,
   },
   {
-    title: "Identify content gaps and take action",
+    title: "Close content gaps before competitors do",
     description:
-      "We find the questions AI can't answer about your business, then write and ship answer-ready pages until you're the brand models name. No backlog sitting in a spreadsheet — we publish.",
+      "We find the questions AI can't answer about you, write answer-ready pages, and publish them. No backlog in a spreadsheet. Shipped every week.",
     image: searchQueries,
     icon: "gap" as const,
   },
   {
-    title: "Monitor every engine and report what moved",
+    title: "Track every engine. Report what moved.",
     description:
-      "We track mentions, citations, and competitor shifts across ChatGPT, Gemini, Perplexity, and AI Overviews. You get a weekly brief with what changed and what we're executing next.",
+      "Mentions, citations, and competitor shifts across ChatGPT, Gemini, Perplexity, and AI Overviews. A weekly brief: what changed, what we're executing next.",
     image: brandMonitor,
     icon: "monitor" as const,
   },
@@ -211,7 +212,7 @@ export const resultCards: ResultCard[] = [
     metric: "5×",
     metricLabel: "AI visibility lift",
     quote:
-      "We handed GEO to Anny's team and stopped guessing. ChatGPT visibility climbed 5× with consistent month-over-month growth across every engine that influences grocery discovery — managed end to end.",
+      "We handed GEO to the team and stopped guessing. Visibility climbed 5× with month-over-month growth across every engine that influences grocery discovery, fully managed, no dashboards to babysit.",
     name: "Marketing leadership",
     title: "Winn-Dixie",
     image: chatgptVisibility,
@@ -224,9 +225,11 @@ export const resultCards: ResultCard[] = [
     metric: "#7 → #2",
     metricLabel: "Best Sellers Rank on Amazon",
     quote:
-      "Anny rebuilt our PDPs for Rufus interpretability and ran the optimization program. Best Seller Rank moved from #7 to #2 in three weeks as Amazon surfaced us in more intent-driven recommendations.",
+      "They rebuilt our PDPs for Rufus interpretability and ran the program end to end. Best Seller Rank went from #7 to #2 in three weeks as Amazon surfaced us in more intent-driven recommendations.",
     name: "E-commerce leadership",
     title: "LifePro Fitness",
+    image: lifeProBsrRank,
+    alt: "Chart showing LifePro Fitness Best Sellers Rank improving from #7 to #2 over three weeks",
   },
 ];
 
@@ -245,42 +248,42 @@ export const servicesFaqs = [
   {
     question: "What is a managed GEO / AEO program?",
     answer:
-      "We run your generative engine optimization program end to end — benchmarking how AI models talk about your brand, building citations and answer-ready content, and reporting weekly. You get a dedicated team executing the work, not another dashboard to babysit. Anny powers the intelligence; our strategists run the playbook.",
+      "We run your entire AI search program: benchmarking how models talk about your brand, building citations, shipping answer-ready content, and reporting weekly. You get a dedicated team doing the work, not a dashboard to log into. Anny powers the data; our strategists run the playbook.",
   },
   {
     question: "How is this different from buying Anny and running it ourselves?",
     answer:
-      "Anny is the platform; managed service is the team. Self-serve gives you data and workflows — we bring strategists who map buyer prompts, ship content, run citation outreach, and iterate every week. Most marketing teams don't have GEO headcount. This is that function, fully staffed and accountable to outcomes.",
+      "Anny is the intelligence layer. Managed service is the team that acts on it. Self-serve gives you visibility data; we map buyer prompts, publish content, run citation outreach, and iterate every week. Most teams don't have GEO headcount. This is that function, fully staffed and accountable to outcomes.",
   },
   {
     question: "How is this different from traditional SEO?",
     answer:
-      "SEO fights for blue links. GEO fights for AI answers — whether models mention you, cite your sources, and recommend you over competitors. The signals overlap, but AI visibility requires prompt mapping, citation building, and answer-ready content that classic SEO audits don't cover. We handle both in one managed program.",
+      "SEO fights for blue links. GEO fights for AI answers: whether models mention you, cite your sources, and recommend you over competitors. The signals overlap, but AI visibility needs prompt mapping, citation building, and answer-ready content that SEO audits miss. We run both in one program.",
   },
   {
     question: "What does the first 90 days look like?",
     answer:
-      "Weeks 1–2: we benchmark your visibility, competitors, and citation gaps across priority prompts. Weeks 3–8: we ship content and earned-media work against the highest-impact gaps. Weeks 9–12: we measure lift, expand to new personas and engines, and lock in a repeatable operating cadence you can scale.",
+      "Weeks 1–2: benchmark your visibility, competitors, and citation gaps across priority prompts. Weeks 3–8: ship content and earned-media work against the highest-impact gaps. Weeks 9–12: measure lift, expand to new personas and engines, and lock in a repeatable cadence.",
   },
   {
     question: "Which AI engines do you cover?",
     answer:
-      "ChatGPT, Claude, Gemini, Perplexity, Grok, DeepSeek, Google AI Overviews, and AI Mode — tracked continuously in Anny and acted on by our team. As new models gain share in your category, we extend coverage. You don't manage the list; we do.",
+      "ChatGPT, Claude, Gemini, Perplexity, Grok, DeepSeek, Google AI Overviews, and AI Mode, tracked continuously and acted on by our team. As new models gain share in your category, we extend coverage. You don't manage the list; we do.",
   },
   {
     question: "How is pricing structured?",
     answer:
-      "Every program is scoped on a call based on your category complexity, number of brands or markets, and how much content and outreach you need. We quote a monthly retainer with clear deliverables — no published tiers, no surprise add-ons. Platform access is included.",
+      "Scoped on a call based on category complexity, number of brands or markets, and content volume. We quote a monthly retainer with clear deliverables, with no published tiers and no surprise add-ons. Platform access is included.",
   },
   {
     question: "What results should we expect?",
     answer:
-      "Most brands see measurable visibility lift within 60–90 days — more mentions, more citations, better share of voice on priority prompts. Winn-Dixie hit a 5× visibility increase; LifePro moved from #7 to #2 on Amazon after PDP optimization. Results compound when we run the program consistently, not as a one-off project.",
+      "Most brands see measurable lift within 60–90 days: more mentions, more citations, better share of voice on priority prompts. Winn-Dixie hit 5× visibility growth; LifePro moved from #7 to #2 on Amazon in three weeks. Results compound when we run the program consistently, not as a one-off.",
   },
   {
     question: "Do we need a separate Anny subscription?",
     answer:
-      "No. Platform access, dashboards, and exports are included in your managed program. Anny powers the intelligence behind every deliverable; our team runs the execution. One engagement, one team, one weekly report.",
+      "No. Platform access, dashboards, and exports are included. Anny powers the intelligence behind every deliverable; our team runs execution. One engagement, one team, one weekly report.",
   },
 ] as const;
 

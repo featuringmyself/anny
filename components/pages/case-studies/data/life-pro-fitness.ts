@@ -104,6 +104,14 @@ export const lifeProFitnessCaseStudy: CaseStudy = {
         value: "#7 → #2",
         label: "Best Sellers Rank",
         detail: "BSR improvement within three weeks of implementation",
+        figure: {
+          src: "/case-studies/life-pro-fitness/bsr-rank.webp",
+          alt: "Chart showing LifePro Fitness Best Sellers Rank improving from #7 to #2 over three weeks",
+          caption:
+            "Best Sellers Rank improved from #7 to #2 within three weeks of Rufus optimisation",
+          width: 1024,
+          height: 661,
+        },
       },
       {
         value: "3 weeks",

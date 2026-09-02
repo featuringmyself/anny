@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 
 import { outcomeTabs, servicesCopy } from "./data";
 import { BeforeAfterCard } from "./shared/BeforeAfterCard";
-import { BrowserFrame } from "./shared/BrowserFrame";
 import { DashboardScreenshot } from "./shared/DashboardScreenshot";
 import {
   sectionHeading,
@@ -113,18 +112,12 @@ export default function ServicesOutcomes() {
                 aria-hidden
                 className="pointer-events-none absolute -inset-4 rounded-2xl bg-gradient-to-br from-zinc-100/80 to-transparent"
               />
-              <BrowserFrame
-                title="anny.dodoxhq.com/dashboard"
-                size="large"
-                className="relative"
-              >
-                <DashboardScreenshot
-                  src={active.image}
-                  alt={`${active.title} dashboard screenshot`}
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  caption={`${active.title} — product screenshot`}
-                />
-              </BrowserFrame>
+              <DashboardScreenshot
+                src={active.image}
+                alt={`Anny ${active.label} product view`}
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                caption={`${active.label}: ${active.title}`}
+              />
             </div>
           </motion.div>
         </AnimatePresence>

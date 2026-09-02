@@ -59,10 +59,30 @@ export default function ServicesResults() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <figcaption className="sr-only">
-                  {card.company} — {card.metric} {card.metricLabel}
+                  {card.company}: {card.metric} {card.metricLabel}
                 </figcaption>
               </figure>
-            ) : null}
+            ) : (
+              <figure
+                aria-hidden
+                className="relative aspect-[16/10] w-full overflow-hidden border-t border-border bg-[#f4f6fb]"
+              >
+                <div className="flex h-full flex-col items-center justify-center px-6 text-center">
+                  <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+                    {card.category}
+                  </p>
+                  <p className="mt-3 text-5xl font-semibold tracking-tight text-[#2462ff] tabular-nums md:text-6xl">
+                    {card.metric}
+                  </p>
+                  <p className="mt-2 max-w-[16rem] text-sm font-medium text-zinc-600 text-pretty">
+                    {card.metricLabel}
+                  </p>
+                </div>
+                <figcaption className="sr-only">
+                  {card.company}: {card.metric} {card.metricLabel}
+                </figcaption>
+              </figure>
+            )}
             <p className="border-t border-border px-6 py-3.5 text-sm font-medium text-[#2462ff] md:px-7">
               <span className="inline-flex items-center gap-1.5">
                 Read the full story
