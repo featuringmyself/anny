@@ -11,7 +11,7 @@ export const edukemyAiVisibilityReport: VisibilityReport = {
   slug: "edukemy-ai-visibility-report",
   company: "Edukemy",
   website: "edukemy.com",
-  industry: "UPSC CSE coaching · GS, Geography Optional, Essay · ORN + online",
+  industry: "UPSC CSE coaching · ORN + online",
   preparedFor: "Shabbir A. Bashir",
   role: "Co-founder & CEO",
   dateLabel: "September 2026",
