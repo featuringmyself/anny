@@ -10,7 +10,7 @@ export const AI_READINESS_URL = absoluteUrl(AI_READINESS_PATH);
 
 export const AI_READINESS_TITLE = "Free AI Readiness Checker";
 export const AI_READINESS_DESCRIPTION =
-  "See if ChatGPT can crawl and name a website. Get a 0–100 score plus copy-paste robots.txt, JSON-LD, and sitemap fixes. Free, no signup.";
+  "See if ChatGPT can crawl and name a website. Get a 0–100 score plus copy-paste robots.txt, JSON-LD, and sitemap fixes. Quick scan is free; full dossier unlocks with email.";
 
 export const aiReadinessFaqs = [
   {
@@ -40,7 +40,8 @@ export const aiReadinessFaqs = [
   },
   {
     question: "Is the AI readiness checker free?",
-    answer: "Yes. No account, no credit card. Paste a domain and copy the fixes.",
+    answer:
+      "Yes. The quick scan is free — no account or credit card. The full dossier unlocks with your email on-site.",
   },
 ] as const;
 

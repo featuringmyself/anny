@@ -1,3 +1,4 @@
+import ReportSectionHeader from "./ReportSectionHeader";
 import {
   readinessStatusClass,
   readinessStatusLabel,
@@ -18,69 +19,69 @@ export default function ReadinessAutomation({
   const isTechnical = mode === "technical";
 
   return (
-    <section className="border-b">
-      <div className="px-6 pt-12 md:px-12 md:pt-16">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <p className="text-sm font-medium text-[#2462ff]">
-            Automation readiness
-          </p>
+    <section className="border-t border-zinc-200">
+      <ReportSectionHeader
+        index="03"
+        label="Automation"
+        title="Form and action blockers"
+        status={
           <p
-            className={`text-xs font-medium tracking-wide uppercase ${readinessStatusClass(automation.status)}`}
+            className={`text-[11px] font-medium tracking-wide uppercase ${readinessStatusClass(automation.status)}`}
           >
             {readinessStatusLabel(automation.status)}
           </p>
-        </div>
-        <h2 className="mt-2 max-w-xl text-3xl font-medium tracking-tight text-balance md:text-4xl">
-          Agents hit walls before they can act
-        </h2>
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
-          {readinessCopy(mode, automation.body, automation.bodyTechnical)}
-        </p>
-        <dl className="mt-8 flex flex-wrap gap-8 text-sm">
-          <div>
-            <dt className="text-zinc-400">Total issues</dt>
-            <dd className="mt-1 text-2xl font-medium tabular-nums">
-              {automation.totalIssues}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-zinc-400">P1 blockers</dt>
-            <dd className="mt-1 text-2xl font-medium tabular-nums">
-              {automation.p1Count}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-zinc-400">P2 reliability</dt>
-            <dd className="mt-1 text-2xl font-medium tabular-nums">
-              {automation.p2Count}
-            </dd>
-          </div>
-        </dl>
-      </div>
+        }
+        description={readinessCopy(
+          mode,
+          automation.body,
+          automation.bodyTechnical,
+        )}
+      />
 
-      <ul className="mt-10 border-t">
+      <dl className="grid grid-cols-3 border-b border-zinc-200 text-sm">
+        <div className="border-r border-zinc-200 px-6 py-5 md:px-10">
+          <dt className="text-xs text-zinc-400">Total issues</dt>
+          <dd className="mt-1 text-xl font-medium tabular-nums">
+            {automation.totalIssues}
+          </dd>
+        </div>
+        <div className="border-r border-zinc-200 px-6 py-5 md:px-10">
+          <dt className="text-xs text-zinc-400">P1 blockers</dt>
+          <dd className="mt-1 text-xl font-medium tabular-nums">
+            {automation.p1Count}
+          </dd>
+        </div>
+        <div className="px-6 py-5 md:px-10">
+          <dt className="text-xs text-zinc-400">P2 reliability</dt>
+          <dd className="mt-1 text-xl font-medium tabular-nums">
+            {automation.p2Count}
+          </dd>
+        </div>
+      </dl>
+
+      <ul>
         {automation.groups.map((group) => (
           <li
             key={group.id}
-            className="border-b px-6 py-10 last:border-b-0 md:px-12 md:py-12"
+            className="border-b border-zinc-200 px-6 py-7 last:border-b-0 md:px-10 md:py-8"
           >
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+              <span className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
                 {group.severity} · {group.count}
               </span>
-              <h3 className="text-lg font-medium tracking-tight">
+              <h3 className="text-base font-medium tracking-tight">
                 {group.title}
               </h3>
             </div>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600">
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">
               {readinessCopy(mode, group.summary, group.summaryTechnical)}
             </p>
             {isTechnical && group.examples.length ? (
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-4 space-y-2">
                 {group.examples.map((example) => (
                   <li
                     key={example}
-                    className="max-w-3xl overflow-x-auto border border-zinc-200 bg-zinc-50 px-3 py-2 font-mono text-xs leading-relaxed text-zinc-700"
+                    className="max-w-3xl overflow-x-auto border border-zinc-200 bg-white px-3 py-2 font-mono text-xs leading-relaxed text-zinc-700"
                   >
                     {example}
                   </li>

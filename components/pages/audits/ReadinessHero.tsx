@@ -9,11 +9,16 @@ type ReadinessHeroProps = {
 
 export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
   return (
-    <div className="px-6 pt-14 md:px-12 md:pt-20">
-      <div className="mb-4 flex items-center justify-between gap-4">
-        <p className="text-sm font-medium text-[#2462ff]">
-          Anny · AI readiness audit
-        </p>
+    <div className="px-6 pt-10 md:px-10 md:pt-12">
+      <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+            Private report · AI readiness
+          </p>
+          <p className="mt-1 text-sm text-zinc-500">
+            Prepared {report.dateLabel} · not a public Anny page
+          </p>
+        </div>
         <DownloadReportPdfButton
           slug={report.slug}
           company={report.company}
@@ -22,18 +27,18 @@ export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
         />
       </div>
 
-      <div className="flex flex-col gap-10 pb-14 md:flex-row md:items-end md:justify-between md:pb-20">
+      <div className="flex flex-col gap-8 pb-10 md:flex-row md:items-end md:justify-between md:pb-12">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-medium tracking-tight text-balance md:text-5xl lg:text-6xl">
+          <h1 className="text-3xl font-medium tracking-tight text-balance md:text-4xl">
             {report.company}
           </h1>
-          <p className="mt-3 text-lg text-zinc-500 text-balance md:text-xl">
-            {report.tagline ??
-              `How ready ${report.company} is for AI agents: structured data, crawl access, automation, and semantic HTML.`}
+          <p className="mt-2 text-base text-zinc-500 text-balance">
+            On-site readiness for AI agents — schema, crawl access, automation,
+            and HTML semantics.
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
             <div>
-              <dt className="text-zinc-400">Prepared for</dt>
+              <dt className="text-xs text-zinc-400">Prepared for</dt>
               <dd className="mt-1 font-medium">
                 {report.preparedFor}
                 {report.role ? (
@@ -49,15 +54,15 @@ export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
               </dd>
             </div>
             <div>
-              <dt className="text-zinc-400">Company</dt>
+              <dt className="text-xs text-zinc-400">Website</dt>
               <dd className="mt-1 font-medium">{report.website}</dd>
             </div>
             <div>
-              <dt className="text-zinc-400">Industry</dt>
+              <dt className="text-xs text-zinc-400">Industry</dt>
               <dd className="mt-1 font-medium">{report.industry}</dd>
             </div>
             <div>
-              <dt className="text-zinc-400">Snapshot</dt>
+              <dt className="text-xs text-zinc-400">Snapshot</dt>
               <dd className="mt-1 font-medium">{report.dateLabel}</dd>
             </div>
           </dl>
@@ -65,21 +70,17 @@ export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
 
         <aside
           aria-label="Readiness score"
-          className="shrink-0 border border-zinc-200 bg-white px-8 py-7 md:min-w-[220px]"
+          className="shrink-0 border border-zinc-300 bg-white px-6 py-5 md:min-w-[200px]"
         >
-          <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-            Readiness score
+          <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+            Score
           </p>
-          <p className="mt-2 text-5xl font-medium tracking-tight tabular-nums">
+          <p className="mt-1 text-4xl font-medium tracking-tight tabular-nums">
             {report.overallScore}
-            <span className="text-2xl text-zinc-400">/100</span>
+            <span className="text-xl text-zinc-400">/100</span>
           </p>
-          <p className="mt-2 text-sm font-medium text-[#2462ff]">
+          <p className="mt-1 text-sm font-medium text-zinc-800">
             {report.scoreLabel}
-          </p>
-          <p className="mt-3 max-w-[14rem] text-xs leading-relaxed text-zinc-500">
-            On-site readiness for AI agents: schema, crawl signals, automation,
-            and HTML semantics.
           </p>
         </aside>
       </div>
@@ -100,17 +101,17 @@ export function ReadinessHeroBody({
   return (
     <>
       {report.stats?.length ? (
-        <div className="grid grid-cols-2 border-t md:grid-cols-4">
+        <div className="grid grid-cols-2 border-t border-zinc-200 md:grid-cols-4">
           {report.stats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`px-6 py-6 md:px-8 ${
-                index % 2 === 0 ? "border-r" : ""
-              } ${index < 2 ? "border-b md:border-b-0" : ""} ${
-                index < report.stats!.length - 1 ? "md:border-r" : ""
+              className={`px-6 py-5 md:px-8 ${
+                index % 2 === 0 ? "border-r border-zinc-200" : ""
+              } ${index < 2 ? "border-b border-zinc-200 md:border-b-0" : ""} ${
+                index < report.stats!.length - 1 ? "md:border-r md:border-zinc-200" : ""
               }`}
             >
-              <p className="text-lg font-medium tracking-tight tabular-nums">
+              <p className="text-base font-medium tracking-tight tabular-nums">
                 {stat.value}
               </p>
               <p className="mt-1 text-xs text-zinc-400">{stat.label}</p>
@@ -119,8 +120,11 @@ export function ReadinessHeroBody({
         </div>
       ) : null}
 
-      <div className="border-t px-6 py-8 md:px-12">
-        <p className="max-w-3xl text-base leading-relaxed text-zinc-600 text-balance">
+      <div className="border-t border-zinc-200 px-6 py-7 md:px-10">
+        <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+          Executive summary
+        </p>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-600">
           {summary}
         </p>
       </div>

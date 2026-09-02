@@ -10,7 +10,7 @@ type ReportCtaProps = {
 };
 
 export default function ReportCta({ report }: ReportCtaProps) {
-  const eyebrow = report.ctaEyebrow ?? "Next step";
+  const eyebrow = report.ctaEyebrow ?? "Talk to Anny";
   const headline =
     report.ctaHeadline ?? `Get ${report.company} cited in 90 days`;
   const body =
@@ -19,8 +19,10 @@ export default function ReportCta({ report }: ReportCtaProps) {
   const label = report.ctaLabel ?? "Book a call";
 
   return (
-    <section className="border-b bg-zinc-950 px-6 py-14 text-white md:px-12 md:py-20">
-      <p className="mb-3 text-sm font-medium text-[#7a9fff]">{eyebrow}</p>
+    <section className="border-b bg-zinc-950 px-6 py-12 text-white md:px-10 md:py-14">
+      <p className="mb-2 font-mono text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
+        {eyebrow}
+      </p>
       <h2 className="max-w-2xl text-3xl font-medium tracking-tight text-balance md:text-4xl">
         {headline}
       </h2>

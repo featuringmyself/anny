@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
+import { MarketingChrome } from "@/components/MarketingChrome";
 import JsonLd from "@/components/JsonLd";
 import {
   SITE_DATE_MODIFIED,
@@ -118,10 +119,14 @@ export default function RootLayout({
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={softwareJsonLd} />
         <div className="flex flex-col max-w-7xl mx-auto border-l border-r">
-          <Navbar />
+          <MarketingChrome>
+            <Navbar />
+          </MarketingChrome>
           {children}
         </div>
-        <Footer />
+        <MarketingChrome>
+          <Footer />
+        </MarketingChrome>
       </body>
     </html>
   );

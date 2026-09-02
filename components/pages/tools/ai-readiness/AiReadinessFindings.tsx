@@ -1,5 +1,9 @@
 import { CopySnippet } from "@/components/pages/tools/ai-readiness/CopySnippet";
-import { CATEGORY_META } from "@/components/pages/tools/ai-readiness/bands";
+import { AiReadinessSeeFullReport } from "@/components/pages/tools/ai-readiness/AiReadinessSeeFullReport";
+import {
+  bandForScore,
+  CATEGORY_META,
+} from "@/components/pages/tools/ai-readiness/bands";
 import { getAiReadiness, type CheckStatus } from "@/lib/ai-readiness";
 
 const STATUS: Record<
@@ -32,7 +36,10 @@ export async function AiReadinessFindings({ domain }: { domain: string }) {
   const result = await getAiReadiness(domain);
   if ("error" in result) return null;
 
+  const band = bandForScore(result.score).label;
+
   return (
+    <>
     <section className="border-b" aria-labelledby="ar-findings-heading">
       <div className="border-b px-6 py-10 md:px-12 md:py-14">
         <p className="text-sm font-medium tracking-wide text-[#2462ff]">
@@ -130,6 +137,14 @@ export async function AiReadinessFindings({ domain }: { domain: string }) {
         })}
       </div>
     </section>
+
+    <AiReadinessSeeFullReport
+      domain={result.domain}
+      origin={result.origin}
+      score={result.score}
+      band={band}
+    />
+    </>
   );
 }
 
