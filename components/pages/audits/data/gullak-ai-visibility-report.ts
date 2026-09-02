@@ -13,7 +13,7 @@ export const gullakAiVisibilityReport: VisibilityReport = {
   company: "Gullak",
   website: "gullak.money",
   industry: "Digital gold · daily savings · India",
-  preparedFor: "Manthan Shah",
+  preparedFor: "Dilip Jain",
   role: "Co-founder",
   dateLabel: "September 2026",
   overallScore: 0,
