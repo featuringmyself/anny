@@ -8,13 +8,19 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import { clientLogos, servicesCopy } from "./data";
-import { heroPadding, sectionLight } from "./shared/section-styles";
+import { sectionLight, sectionPadding } from "./shared/section-styles";
 
 const proofLogos = clientLogos.slice(0, 5);
 
+/** Demo's inner dashboard is authored at this width; scale down when the hero column is narrower. */
+const DEMO_DESIGN_WIDTH = 640;
+const DEMO_DESIGN_HEIGHT = 500;
+
 const demoEmbedOverrides = cn(
   "[&>section]:mx-0 [&>section]:mt-0 [&>section]:max-w-none [&>section]:px-0 [&>section]:pb-0",
-  "[&_figure]:overflow-hidden [&_figure]:rounded-none [&_figure]:border-0",
+  "[&_figure]:overflow-visible [&_figure]:rounded-none [&_figure]:border-0",
+  "[&_figure>div]:!aspect-auto [&_figure>div]:!w-[640px] [&_figure>div]:!min-h-[500px]",
+  "[&_figure_aside]:!block",
 );
 
 export default function ServicesHero() {
@@ -22,7 +28,7 @@ export default function ServicesHero() {
     <section
       className={cn(
         sectionLight,
-        heroPadding,
+        sectionPadding,
         "py-12 sm:py-16 md:py-24 lg:py-28",
         "pb-8 sm:pb-10 md:pb-14 lg:pb-16",
       )}
@@ -81,14 +87,22 @@ export default function ServicesHero() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm sm:rounded-2xl">
-              <div className="relative h-50 overflow-hidden sm:h-70 md:h-auto md:overflow-visible">
+          <div className="relative mx-auto w-full min-w-0 max-w-2xl lg:mx-0 lg:max-w-none">
+            <div className="rounded-xl border border-border bg-white shadow-sm sm:rounded-2xl">
+              <div
+                className="@container relative w-full overflow-hidden"
+                style={{
+                  height: `calc(${DEMO_DESIGN_HEIGHT}px * min(1, 100cqw / ${DEMO_DESIGN_WIDTH}px))`,
+                }}
+              >
                 <div
                   className={cn(
-                    "absolute left-1/2 top-0 w-160 -translate-x-1/2 origin-top scale-[0.52] sm:scale-[0.78] md:static md:w-full md:translate-x-0 md:scale-100",
+                    "absolute top-0 left-0 w-160 origin-top-left",
                     demoEmbedOverrides,
                   )}
+                  style={{
+                    transform: `scale(min(1, calc(100cqw / ${DEMO_DESIGN_WIDTH}px)))`,
+                  }}
                 >
                   <Demo />
                 </div>

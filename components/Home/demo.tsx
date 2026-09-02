@@ -307,21 +307,51 @@ function DonutPanel() {
   );
 }
 
-export default function Demo() {
+type DemoProps = {
+  variant?: "full" | "embed";
+};
+
+export default function Demo({ variant = "full" }: DemoProps) {
+  const isEmbed = variant === "embed";
+
   return (
-    <section aria-labelledby="product-demo-heading" className="mx-auto mt-10 w-full max-w-[1200px] px-4 pb-16 md:pb-8 lg:pb-0">
+    <section
+      aria-labelledby="product-demo-heading"
+      className={cn(
+        "mx-auto w-full",
+        isEmbed
+          ? "max-w-none px-0 pb-0"
+          : "mt-10 max-w-[1200px] px-4 pb-16 md:pb-8 lg:pb-0",
+      )}
+    >
       <h2 id="product-demo-heading" className="sr-only">
         Product dashboard preview
       </h2>
       <figure
-        className="overflow-x-auto overflow-y-hidden rounded-t-xl border border-b-0 border-zinc-200 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        style={{ maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }}
+        className={cn(
+          "overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          isEmbed
+            ? "rounded-none border-0"
+            : "rounded-t-xl border border-b-0 border-zinc-200",
+        )}
+        style={
+          isEmbed
+            ? undefined
+            : { maskImage: bottomFadeMask, WebkitMaskImage: bottomFadeMask }
+        }
       >
         <figcaption className="sr-only">
           Anny dashboard showing AI visibility trends, competitor comparison,
           cited domains, and domain types for Attio
         </figcaption>
-        <div className="relative min-h-[360px] w-[640px] bg-[#f8f8f8] text-zinc-700 md:aspect-[2/1] md:min-h-[500px] md:w-full">
+        <div
+          className={cn(
+            "relative bg-[#f8f8f8] text-zinc-700",
+            isEmbed
+              ? "min-h-[320px] w-full sm:min-h-[360px]"
+              : "min-h-[360px] w-[640px] md:aspect-[2/1] md:min-h-[500px] md:w-full",
+          )}
+        >
           <aside className="absolute inset-y-0 left-0 hidden w-[145px] border-r border-zinc-200 bg-[#f7f7f7] p-3 md:block">
             <div className="flex h-7 items-center gap-2 text-[10px] font-semibold text-zinc-800">
               <BrandLogo src="/brand-logos/attio.svg" alt="Attio" size={22} />
@@ -400,8 +430,13 @@ export default function Demo() {
               </span>
             </div>
 
-            <div className="grid grid-cols-[1.4fr_1fr] gap-1 p-1">
-              <section className="h-[218px] overflow-hidden rounded-xl border border-zinc-200 bg-white">
+            <div className={cn("p-1", isEmbed ? "" : "grid grid-cols-[1.4fr_1fr] gap-1")}>
+              <section
+                className={cn(
+                  "overflow-hidden rounded-xl border border-zinc-200 bg-white",
+                  isEmbed ? "min-h-[220px] sm:min-h-[240px]" : "h-[218px]",
+                )}
+              >
                 <div className="flex h-[43px] items-center justify-between px-3">
                   <div className="flex items-center gap-3 text-[9px] text-zinc-500">
                     <span className="inline-flex items-center gap-1 rounded-md border border-zinc-200 bg-white px-2 py-1 shadow-sm">
@@ -425,9 +460,13 @@ export default function Demo() {
                 </div>
                 <Chart />
               </section>
-              <CompetitorTable />
-              <DomainTable />
-              <DonutPanel />
+              {!isEmbed && (
+                <>
+                  <CompetitorTable />
+                  <DomainTable />
+                  <DonutPanel />
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ export function DashboardScreenshot({
   caption,
 }: DashboardScreenshotProps) {
   return (
-    <figure className="relative aspect-16/10 w-full overflow-hidden bg-[#fafafa]">
+    <figure className="relative aspect-16/10 w-full overflow-hidden rounded-xl border border-border bg-[#fafafa] shadow-sm">
       <Image
         src={src}
         alt={alt}

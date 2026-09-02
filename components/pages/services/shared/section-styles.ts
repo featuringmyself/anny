@@ -1,39 +1,34 @@
-export const servicesAccent = "#2462ff" as const;
+/** AthenaHQ-aligned visual tokens for /services (layout/system only). */
+export const servicesAccent = "#4F39F6" as const;
+export const servicesAccentSoft = "#615FFF" as const;
+export const servicesViolet = "#8D51FF" as const;
+export const servicesInk = "#080808" as const;
 
 export const sectionLight =
-  "relative overflow-hidden border-b border-border bg-white";
+  "relative overflow-hidden border-b border-zinc-200/80 bg-white";
 
 export const sectionMuted =
-  "relative overflow-hidden border-b border-border bg-[#fafafa]";
+  "relative overflow-hidden border-b border-zinc-200/80 bg-[#f7f7f8]";
 
-export const sectionPadding = "px-6 py-14 md:px-12 md:py-20";
+export const sectionPadding = "px-5 py-16 sm:px-8 md:px-12 md:py-24 lg:py-28";
 
-export const heroPadding = "px-6 py-16 md:px-12 md:py-24 lg:py-28";
-
-export const heroAmbient =
-  "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_15%_-5%,rgba(36,98,255,0.09),transparent_52%),radial-gradient(ellipse_55%_45%_at_92%_8%,rgba(36,98,255,0.06),transparent_48%)]";
-
-export const heroGridTexture =
-  "pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.022)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.022)_1px,transparent_1px)] bg-size-[72px_72px] [mask-image:radial-gradient(ellipse_85%_70%_at_50%_0%,black_10%,transparent_72%)]";
-
-export const heroDemoGlow =
-  "pointer-events-none absolute -inset-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_60%_40%,rgba(36,98,255,0.16),transparent_68%)] blur-3xl";
-
-export const sectionPaddingNarrow = "px-6 py-10 md:px-12 md:py-14";
+export const sectionPaddingNarrow = "px-5 py-12 sm:px-8 md:px-12 md:py-16";
 
 export const sectionHeading =
-  "text-center text-3xl font-semibold tracking-tight text-balance md:text-4xl";
+  "text-center text-[1.75rem] font-bold tracking-tight text-balance text-[#080808] sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]";
 
 export const sectionSubtext =
-  "mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-balance text-zinc-500";
+  "mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-balance text-zinc-500 md:text-lg";
 
 export const cardBase =
-  "rounded-2xl border border-border bg-white shadow-sm";
+  "rounded-2xl border border-zinc-200/90 bg-white shadow-[0_1px_2px_rgba(8,8,8,0.04)]";
 
 export const marqueeFadeMask =
-  "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]";
+  "[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]";
 
-/** Keeps Next.js Image aspect ratio when sizing via Tailwind h-* / w-auto. */
+export const accentButton =
+  "bg-[#4F39F6] text-white hover:bg-[#4F39F6]/90 shadow-[0_8px_24px_-8px_rgba(79,57,246,0.55)]";
+
 export const responsiveImageStyle = {
   width: "auto",
   height: "auto",

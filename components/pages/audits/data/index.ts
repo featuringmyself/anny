@@ -15,6 +15,7 @@ import { zippservAiVisibilityReport } from "./zippserv-ai-visibility-report";
 import { spurgeAiVisibilityReport } from "./spurge-ai-visibility-report";
 import { praataAiVisibilityReport } from "./praata-ai-visibility-report";
 import { zipfreshAiVisibilityReport } from "./zipfresh-ai-visibility-report";
+import { edukemyAiVisibilityReport } from "./edukemy-ai-visibility-report";
 
 export type ReportEntry =
   | { kind: "visibility"; report: VisibilityReport }
@@ -32,6 +33,7 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: zipfreshAiVisibilityReport },
   { kind: "visibility", report: gethrAiVisibilityReport },
   { kind: "visibility", report: linkrunnerAiVisibilityReport },
+  { kind: "visibility", report: edukemyAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
   { kind: "readiness", report: trulivAiReadinessReport },
   { kind: "readiness", report: rentokAiReadinessReport },
