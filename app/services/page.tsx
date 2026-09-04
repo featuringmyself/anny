@@ -32,8 +32,8 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesNewEra />
       <ServicesAheadOfCurve />
-      <ServicesSearchIsChanging />
       <ServicesGraphics />
+      <ServicesSearchIsChanging />
     </main>
   );
 }
