@@ -3,6 +3,7 @@ import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 import ServicesNewEra from "@/components/pages/services/ServicesNewEra";
 import ServicesAheadOfCurve from "@/components/pages/services/ServicesAheadOfCurve";
+import ServicesGraphics from "@/components/pages/services/ServicesGraphics";
 
 const title = "Services: Managed AI Visibility & GEO | Anny";
 const description =
@@ -30,6 +31,7 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesNewEra />
       <ServicesAheadOfCurve />
+      <ServicesGraphics />
     </main>
   );
 }
