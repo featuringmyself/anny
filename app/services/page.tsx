@@ -5,6 +5,7 @@ import ServicesNewEra from "@/components/pages/services/ServicesNewEra";
 import ServicesAheadOfCurve from "@/components/pages/services/ServicesAheadOfCurve";
 import ServicesSearchIsChanging from "@/components/pages/services/ServicesSearchIsChanging";
 import ServicesGraphics from "@/components/pages/services/ServicesGraphics";
+import ServicesPutOnAIMap from "@/components/pages/services/ServicesPutOnAIMap";
 
 const title = "Services: Managed AI Visibility & GEO | Anny";
 const description =
@@ -34,6 +35,7 @@ export default function ServicesPage() {
       <ServicesAheadOfCurve />
       <ServicesGraphics />
       <ServicesSearchIsChanging />
+      <ServicesPutOnAIMap />
     </main>
   );
 }
