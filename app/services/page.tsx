@@ -1,15 +1,8 @@
-import JsonLd from "@/components/JsonLd";
-import { servicesFaqs } from "@/components/pages/services/data";
-import ServicesCta from "@/components/pages/services/ServicesCta";
-import ServicesFaq from "@/components/pages/services/ServicesFaq";
-import ServicesFeatures from "@/components/pages/services/ServicesFeatures";
 import ServicesHero from "@/components/pages/services/ServicesHero";
-import ServicesLogos from "@/components/pages/services/ServicesLogos";
-import ServicesOutcomes from "@/components/pages/services/ServicesOutcomes";
-import ServicesPlatforms from "@/components/pages/services/ServicesPlatforms";
-import ServicesQuote from "@/components/pages/services/ServicesQuote";
-import ServicesResults from "@/components/pages/services/ServicesResults";
-import { absoluteUrl, faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
+import ServicesNewEra from "@/components/pages/services/ServicesNewEra";
+import ServicesAheadOfCurve from "@/components/pages/services/ServicesAheadOfCurve";
 
 const title = "Services: Managed AI Visibility & GEO | Anny";
 const description =
@@ -34,16 +27,9 @@ export default function ServicesPage() {
           image: ogImage,
         })}
       />
-      <JsonLd data={faqJsonLd(servicesFaqs)} />
       <ServicesHero />
-      <ServicesLogos />
-      <ServicesOutcomes />
-      <ServicesPlatforms />
-      <ServicesQuote />
-      <ServicesFeatures />
-      <ServicesResults />
-      <ServicesFaq />
-      <ServicesCta />
+      <ServicesNewEra />
+      <ServicesAheadOfCurve />
     </main>
   );
 }

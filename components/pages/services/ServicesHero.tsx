@@ -1,114 +1,144 @@
+import type { CSSProperties } from "react";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
-import Demo from "@/components/Home/demo";
-import { Eyebrow } from "@/components/pages/shared/eyebrow";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
+import AiFlip from "@/components/Home/ai-flip";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import { clientLogos, servicesCopy } from "./data";
-import { sectionLight, sectionPadding } from "./shared/section-styles";
+import chatgptLogo from "@/public/services/orbit/chatgpt.webp";
+import copilotLogo from "@/public/services/orbit/copilot.webp";
+import deepseekLogo from "@/public/services/orbit/deepseek.webp";
+import geminiLogo from "@/public/services/orbit/gemini.webp";
+import grokLogo from "@/public/services/orbit/grok.webp";
+import perplexityLogo from "@/public/services/orbit/perplexity.webp";
 
-const proofLogos = clientLogos.slice(0, 5);
+const CAL_BOOKING_URL = "https://cal.com/dodox/quick-chat";
+const AI_READINESS_HREF = "/tools/ai-readiness-checker";
 
-/** Demo's inner dashboard is authored at this width; scale down when the hero column is narrower. */
-const DEMO_DESIGN_WIDTH = 640;
-const DEMO_DESIGN_HEIGHT = 500;
+const RING_SIZES = [
+  "size-[min(45rem,88vw)]",
+  "size-[min(60rem,115vw)]",
+  "size-[min(77.5rem,145vw)]",
+] as const;
 
-const demoEmbedOverrides = cn(
-  "[&>section]:mx-0 [&>section]:mt-0 [&>section]:max-w-none [&>section]:px-0 [&>section]:pb-0",
-  "[&_figure]:overflow-visible [&_figure]:rounded-none [&_figure]:border-0",
-  "[&_figure>div]:!aspect-auto [&_figure>div]:!w-[640px] [&_figure>div]:!min-h-[500px]",
-  "[&_figure_aside]:!block",
-);
+/** Polar placement on the dashed rings (0° = top, clockwise). */
+const ORBIT_LOGOS: {
+  name: string;
+  src: StaticImageData;
+  radius: number;
+  angle: number;
+}[] = [
+  { name: "Grok", src: grokLogo, radius: 520, angle: -150 },
+  { name: "ChatGPT", src: chatgptLogo, radius: 360, angle: -48 },
+  { name: "Copilot", src: copilotLogo, radius: 480, angle: -100 },
+  { name: "Perplexity", src: perplexityLogo, radius: 500, angle: 95 },
+  { name: "DeepSeek", src: deepseekLogo, radius: 480, angle: 145 },
+  { name: "Gemini", src: geminiLogo, radius: 500, angle: 38 },
+];
+
+function HeroMist() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden bg-[#f6f7f4]"
+      aria-hidden
+    >
+      <div className="absolute top-[-18%] right-[-14%] h-95 w-115 rounded-full bg-[#c5f247]/20 blur-[130px] sm:h-120 sm:w-140 sm:blur-[160px]" />
+      <div className="absolute bottom-[-22%] left-[-16%] h-85 w-105 rounded-full bg-[#b6ef3a]/15 blur-[130px] sm:h-110 sm:w-130 sm:blur-[160px]" />
+      <div className="absolute top-[-22%] left-[-18%] h-80 w-100 rounded-full bg-[#b6e4f6]/25 blur-[140px] sm:h-105 sm:w-125 sm:blur-[170px]" />
+      <div className="absolute right-[-16%] bottom-[-24%] h-75 w-95 rounded-full bg-[#c5ebf8]/20 blur-[140px] sm:h-100 sm:w-120 sm:blur-[170px]" />
+    </div>
+  );
+}
+
+function OrbitField() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 hidden lg:block"
+      aria-hidden
+    >
+      {RING_SIZES.map((size) => (
+        <div
+          key={size}
+          className={cn(
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-zinc-300/80",
+            size,
+          )}
+        />
+      ))}
+
+      {ORBIT_LOGOS.map((logo) => (
+        <div
+          key={logo.name}
+          className="absolute top-1/2 left-1/2 size-14"
+          style={
+            {
+              "--orbit-angle": `${logo.angle}deg`,
+              "--orbit-radius": `${logo.radius}px`,
+              transform:
+                "translate(-50%, -50%) rotate(var(--orbit-angle)) translateY(calc(var(--orbit-radius) * -1)) rotate(calc(var(--orbit-angle) * -1))",
+            } as CSSProperties
+          }
+        >
+          <Image
+            src={logo.src}
+            alt=""
+            width={56}
+            height={56}
+            className="size-14 object-contain"
+            sizes="56px"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function ServicesHero() {
   return (
     <section
-      className={cn(
-        sectionLight,
-        sectionPadding,
-        "py-12 sm:py-16 md:py-24 lg:py-28",
-        "pb-8 sm:pb-10 md:pb-14 lg:pb-16",
-      )}
+      className="relative isolate flex min-h-175 w-full items-center justify-center overflow-hidden py-24 lg:min-h-[90svh] lg:py-28 rounded-2xl"
       aria-labelledby="services-hero-heading"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 xl:gap-20">
-          <div className="max-w-xl lg:max-w-none">
-            <Eyebrow className="mb-4 text-sm font-medium sm:mb-5">
-              {servicesCopy.hero.eyebrow}
-            </Eyebrow>
+      <HeroMist />
+      <OrbitField />
 
-            <h1
-              id="services-hero-heading"
-              className="text-[1.875rem] leading-[1.12] font-semibold tracking-tight text-balance sm:text-4xl sm:leading-tight md:text-5xl lg:text-[3.5rem] lg:leading-[1.06]"
-            >
-              {servicesCopy.hero.h1Lead}{" "}
-              <span className="text-[#2462ff]">{servicesCopy.hero.h1Accent}</span>
-            </h1>
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 text-center">
+        <h1
+          id="services-hero-heading"
+          className="text-6xl font-bold text-balance text-[#225864]"
+        >
+          Monitor &amp; Boost Your Brand&apos;s Visibility on <AiFlip />
+        </h1>
 
-            <p className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-pretty text-zinc-600 sm:mt-6 sm:text-base md:text-lg md:leading-8">
-              {servicesCopy.hero.sub}
-            </p>
+        <p className="max-w-4xl text-lg leading-tight font-semibold text-balance text-zinc-800">
+          Anny is an award-winning AEO agency and the creator of the #1
+          open-source AI search optimization tool — a powerful alternative to
+          Profound, Semrush AI Toolkit, and Otterly AI.
+        </p>
 
-            <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-              <TalkToSalesButton
-                size="lg"
-                className="w-full bg-[#2462ff] px-5 hover:bg-[#2462ff]/90 sm:w-auto"
-                source="services-hero"
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Button
+            size="lg"
+            className="h-12 rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-brand/90"
+            render={<Link href={AI_READINESS_HREF} />}
+          >
+            Free AI Visibility Audit
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold"
+            render={
+              <Link
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
               />
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full px-5 sm:w-auto"
-                render={<Link href="/tools/ai-readiness-checker" />}
-              >
-                AI Readiness Checker
-                <ArrowRight className="size-4 opacity-60" aria-hidden />
-              </Button>
-            </div>
-
-            <div className="mt-8 border-t border-border pt-6 sm:mt-10 sm:pt-8">
-              <p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase sm:text-xs">
-                {servicesCopy.logos.label}
-              </p>
-              <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:mt-4 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3 md:gap-x-8">
-                {proofLogos.map((name) => (
-                  <li
-                    key={name}
-                    className="text-xs font-semibold tracking-tight text-zinc-400 sm:text-sm"
-                  >
-                    {name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full min-w-0 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="rounded-xl border border-border bg-white shadow-sm sm:rounded-2xl">
-              <div
-                className="@container relative w-full overflow-hidden"
-                style={{
-                  height: `calc(${DEMO_DESIGN_HEIGHT}px * min(1, 100cqw / ${DEMO_DESIGN_WIDTH}px))`,
-                }}
-              >
-                <div
-                  className={cn(
-                    "absolute top-0 left-0 w-160 origin-top-left",
-                    demoEmbedOverrides,
-                  )}
-                  style={{
-                    transform: `scale(min(1, calc(100cqw / ${DEMO_DESIGN_WIDTH}px)))`,
-                  }}
-                >
-                  <Demo />
-                </div>
-              </div>
-            </div>
-          </div>
+            }
+          >
+            Book a call
+          </Button>
         </div>
       </div>
     </section>
