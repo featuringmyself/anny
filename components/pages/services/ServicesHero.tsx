@@ -106,12 +106,12 @@ export default function ServicesHero() {
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 text-center">
         <h1
           id="services-hero-heading"
-          className="text-6xl font-bold text-balance text-[#225864]"
+          className="md:text-6xl text-4xl font-bold text-balance text-[#225864]"
         >
           Monitor &amp; Boost Your Brand&apos;s Visibility on <AiFlip />
         </h1>
 
-        <p className="max-w-4xl text-lg leading-tight font-semibold text-balance text-zinc-800">
+        <p className="max-w-4xl md:text-lg text-base leading-tight font-semibold text-balance text-zinc-800">
           Anny is an award-winning AEO agency and the creator of the #1
           open-source AI search optimization tool — a powerful alternative to
           Profound, Semrush AI Toolkit, and Otterly AI.

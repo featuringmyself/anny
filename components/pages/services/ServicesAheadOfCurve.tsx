@@ -5,7 +5,7 @@ const BODY = "#5c6b73";
 export default function ServicesAheadOfCurve() {
   return (
     <section
-      className="w-full bg-white"
+      className="w-full bg-white rounded-2xl"
       aria-labelledby="services-ahead-heading"
     >
       <div className="mx-auto flex max-w-4xl flex-col items-center px-6 py-20 text-center sm:py-24 lg:py-28">

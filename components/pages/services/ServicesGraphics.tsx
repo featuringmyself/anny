@@ -128,21 +128,21 @@ export default function ServicesGraphics() {
             >
               <h2
                 id={`services-graphics-${feature.id}`}
-                className="max-w-md text-3xl leading-tight font-bold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.15] text-pretty"
+                className="max-w-md text-3xl leading-tight font-bold tracking-tight sm:text-3xl md:text-[2.75rem] md:leading-[1.15] text-pretty"
                 style={{ color: HEADING }}
               >
                 {feature.heading}
               </h2>
 
               <p
-                className="mt-3 text-base font-medium sm:text-lg"
+                className="mt-3 text-base font-medium sm:text-base"
                 style={{ color: HEADING }}
               >
                 {feature.subheading}
               </p>
 
               <p
-                className="mt-6 max-w-md text-base leading-relaxed font-medium sm:text-[17px] sm:leading-relaxed"
+                className="mt-3 max-w-md text-base leading-relaxed font-medium sm:text-[13px] sm:leading-relaxed"
                 style={{ color: BODY }}
               >
                 {feature.body}
