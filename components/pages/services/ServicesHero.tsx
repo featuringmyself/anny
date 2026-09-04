@@ -120,7 +120,7 @@ export default function ServicesHero() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button
             size="lg"
-            className="h-12 rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-brand/90"
+            className="h-12 rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
             render={<Link href={AI_READINESS_HREF} />}
           >
             Free AI Visibility Audit
@@ -128,7 +128,7 @@ export default function ServicesHero() {
           <Button
             size="lg"
             variant="outline"
-            className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold"
+            className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold hover:bg-zinc-900 hover:text-white"
             render={
               <Link
                 href={CAL_BOOKING_URL}
