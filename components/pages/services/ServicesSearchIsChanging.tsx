@@ -8,40 +8,40 @@ const SOURCE = "#225864";
 
 const quotes = [
   {
-    text: "Comprehensive answers by Gemini AI are attracting users who are frustrated with Google's ad-clogged search results.",
+    text: "Google users who encounter an AI summary clicked a traditional result just 8% of the time — nearly half the rate without one.",
+    source: "Pew Research",
+    date: "Jul 22, 2025",
+    logo: "/services/press/pew.png",
+  },
+  {
+    text: "Generative AI solutions are becoming substitute answer engines, replacing queries that previously ran through traditional search.",
+    source: "Gartner",
+    date: "Feb 19, 2024",
+    logo: "/services/press/gartner.png",
+  },
+  {
+    text: "Google search is \"no longer a meaningful driver\" of traffic — Condé Nast's CEO called AI summaries \"another sort of death blow.\"",
+    source: "Financial Times",
+    date: "Feb 27, 2026",
+    logo: "/services/press/ft.png",
+  },
+  {
+    text: "AI Overviews correlate with a 58% reduction in click-through rates for top-ranking pages — nearly double the hit measured a year earlier.",
+    source: "Ahrefs",
+    date: "Feb 2026",
+    logo: "/services/press/ahrefs.png",
+  },
+  {
+    text: "Travel publishers told Bloomberg traffic fell by half after AI Overviews launched — then cratered as much as 90%.",
     source: "Bloomberg",
-    date: "Jan 07, 2025",
+    date: "Apr 07, 2025",
     logo: "/services/press/bloomberg.png",
   },
   {
-    text: "Despite fewer clicks, copyright fights, and sometimes iffy answers, AI means the end of internet search as we've known it.",
-    source: "MIT Technology Review",
-    date: "Jan 06, 2025",
-    logo: "/services/press/mit.png",
-  },
-  {
-    text: "People reading AI summaries on Google search instead of news stories, media experts warn",
-    source: "CBC Canada",
-    date: "Aug 14, 2025",
-    logo: "/services/press/cbc.png",
-  },
-  {
-    text: "Study claims sites previously ranked first can lose 79% of traffic if results appear below Google Overview.",
-    source: "The Guardian",
-    date: "Jul 24, 2025",
-    logo: "/services/press/guardian.png",
-  },
-  {
-    text: "Generative AI has already caused shifts in the search engine ecosystem. Is OpenAI's Search tool Google's Killer?",
-    source: "The Week",
-    date: "Nov 05, 2024",
-    logo: "/services/press/theweek.png",
-  },
-  {
-    text: "ChatGPT search feels like a helpful friend. It is \"all the things early Google was before it started monetizing our eyeballs.\"",
-    source: "Tech Radar",
-    date: "Nov 01, 2024",
-    logo: "/services/press/techradar.png",
+    text: "AI chatbots drive 95.7% less traffic to publishers than traditional Google search — the promised upside hasn't materialized.",
+    source: "Digiday",
+    date: "Dec 2025",
+    logo: "/services/press/digiday.jpg",
   },
 ] as const;
 
