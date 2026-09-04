@@ -39,7 +39,7 @@ export default function ServicesAheadOfCurve() {
           <p>
             We began with a simple idea: growth shouldn&apos;t be complicated.
             Most businesses choose between hiring an agency for strategy or using
-            a tool for data. With GetCito, you don&apos;t have to. We bring
+            a tool for data. With Anny, you don&apos;t have to. We bring
             together the expertise of an agency and the precision of AI
             technology, delivering smarter insights, stronger visibility, and a
             future-proof digital strategy in one place.
@@ -48,7 +48,7 @@ export default function ServicesAheadOfCurve() {
             While others focus only on Google optimization, we&apos;re already
             helping clients get referenced and recommended by AI search platforms
             like ChatGPT and Google AI Overview. The result? Businesses working
-            with GetCito grow 47% faster, not because we keep up with change, but
+            with Anny grow 47% faster, not because we keep up with change, but
             because we stay ahead of it.
           </p>
         </div>

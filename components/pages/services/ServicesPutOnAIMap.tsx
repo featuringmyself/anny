@@ -28,7 +28,7 @@ const services = [
   },
   {
     title: "Team Training & Workshops",
-    body: "Empower your in-house team with customized training on Generative Engine Optimization (GEO) and how to leverage the GetCito platform.",
+    body: "Empower your in-house team with customized training on Generative Engine Optimization (GEO) and how to leverage the Anny platform.",
     icon: "/services/icons/team-training.svg",
   },
 ] as const;
@@ -67,7 +67,7 @@ export default function ServicesPutOnAIMap() {
             className="mt-8 max-w-2xl text-base leading-[1.65] font-medium tracking-tight sm:mt-10 sm:text-lg sm:leading-normal text-center"
             style={{ color: BODY }}
           >
-            GetCito team provides the winning strategy. We partner with you to
+            Anny team provides the winning strategy. We partner with you to
             turn raw data into a powerful action plan, ensuring your brand
             doesn&apos;t just appear in AI answers, it dominates them.
           </p>
