@@ -37,16 +37,41 @@ const ORBIT_LOGOS: {
   { name: "Gemini", src: geminiLogo, radius: 500, angle: 38 },
 ];
 
+const MOBILE_LOGOS = [
+  { name: "ChatGPT", src: chatgptLogo },
+  { name: "Gemini", src: geminiLogo },
+  { name: "Perplexity", src: perplexityLogo },
+  { name: "Grok", src: grokLogo },
+  { name: "Copilot", src: copilotLogo },
+  { name: "DeepSeek", src: deepseekLogo },
+] as const;
+
 function HeroMist() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden bg-[#f6f7f4]"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden
     >
-      <div className="absolute top-[-18%] right-[-14%] h-95 w-115 rounded-full bg-[#c5f247]/20 blur-[130px] sm:h-120 sm:w-140 sm:blur-[160px]" />
-      <div className="absolute bottom-[-22%] left-[-16%] h-85 w-105 rounded-full bg-[#b6ef3a]/15 blur-[130px] sm:h-110 sm:w-130 sm:blur-[160px]" />
-      <div className="absolute top-[-22%] left-[-18%] h-80 w-100 rounded-full bg-[#b6e4f6]/25 blur-[140px] sm:h-105 sm:w-125 sm:blur-[170px]" />
-      <div className="absolute right-[-16%] bottom-[-24%] h-75 w-95 rounded-full bg-[#c5ebf8]/20 blur-[140px] sm:h-100 sm:w-120 sm:blur-[170px]" />
+      {/* Mobile mist — exact mesh sampled from the reference screenshot */}
+      <div className="absolute inset-0 lg:hidden">
+        <Image
+          src="/services/hero-mobile-mist.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute top-1/2 left-1/2 size-[min(42rem,145vw)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#c5cbc8]/80" />
+      </div>
+
+      {/* Desktop mist — unchanged */}
+      <div className="absolute inset-0 hidden bg-[#f6f7f4] lg:block">
+        <div className="absolute top-[-18%] right-[-14%] h-120 w-140 rounded-full bg-[#c5f247]/20 blur-[160px]" />
+        <div className="absolute bottom-[-22%] left-[-16%] h-110 w-130 rounded-full bg-[#b6ef3a]/15 blur-[160px]" />
+        <div className="absolute top-[-22%] left-[-18%] h-105 w-125 rounded-full bg-[#b6e4f6]/25 blur-[170px]" />
+        <div className="absolute right-[-16%] bottom-[-24%] h-100 w-120 rounded-full bg-[#c5ebf8]/20 blur-[170px]" />
+      </div>
     </div>
   );
 }
@@ -94,10 +119,32 @@ function OrbitField() {
   );
 }
 
+function MobileLogoRow() {
+  return (
+    <ul
+      className="grid w-full max-w-xs grid-cols-3 items-center justify-items-center gap-x-8 gap-y-5 pt-1 sm:max-w-sm sm:gap-x-10 lg:hidden"
+      aria-label="AI platforms we optimize for"
+    >
+      {MOBILE_LOGOS.map((logo) => (
+        <li key={logo.name} className="flex size-11 items-center justify-center">
+          <Image
+            src={logo.src}
+            alt={logo.name}
+            width={44}
+            height={44}
+            className="size-10 object-contain"
+            sizes="40px"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function ServicesHero() {
   return (
     <section
-      className="relative isolate flex min-h-175 w-full items-center justify-center overflow-hidden py-24 lg:min-h-[90svh] lg:py-28 rounded-2xl"
+      className="relative isolate flex min-h-175 w-full items-center justify-center overflow-hidden rounded-2xl py-24 lg:min-h-[90svh] lg:py-28"
       aria-labelledby="services-hero-heading"
     >
       <HeroMist />
@@ -106,12 +153,12 @@ export default function ServicesHero() {
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 text-center">
         <h1
           id="services-hero-heading"
-          className="md:text-6xl text-4xl font-bold text-balance text-[#225864]"
+          className="text-4xl font-bold text-balance text-[#225864] md:text-6xl"
         >
           Monitor &amp; Boost Your Brand&apos;s Visibility on <AiFlip />
         </h1>
 
-        <p className="max-w-4xl md:text-lg text-base leading-tight font-semibold text-balance text-zinc-800">
+        <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">
           Anny is an award-winning AEO agency and the creator of the #1
           open-source AI search optimization tool — a powerful alternative to
           Profound, Semrush AI Toolkit, and Otterly AI.
@@ -140,6 +187,8 @@ export default function ServicesHero() {
             Book a call
           </Button>
         </div>
+
+        <MobileLogoRow />
       </div>
     </section>
   );
