@@ -1,11 +1,4 @@
-import PatternStrip from "@/components/PatternStrip";
-import { AiReadinessChecks } from "@/components/pages/tools/ai-readiness/AiReadinessChecks";
-import { AiReadinessCta } from "@/components/pages/tools/ai-readiness/AiReadinessCta";
-import { AiReadinessExplain } from "@/components/pages/tools/ai-readiness/AiReadinessExplain";
-import { AiReadinessFaq } from "@/components/pages/tools/ai-readiness/AiReadinessFaq";
-import { AiReadinessHowTo } from "@/components/pages/tools/ai-readiness/AiReadinessHowTo";
 import { AiReadinessInstrumentPending } from "@/components/pages/tools/ai-readiness/AiReadinessInstrument";
-import { AiReadinessScale } from "@/components/pages/tools/ai-readiness/AiReadinessScale";
 
 export default function Loading() {
   return (
@@ -22,18 +15,6 @@ export default function Loading() {
           <AiReadinessInstrumentPending domain="—" />
         </div>
       </section>
-      <PatternStrip />
-      <AiReadinessHowTo />
-      <PatternStrip />
-      <AiReadinessChecks />
-      <PatternStrip />
-      <AiReadinessScale />
-      <PatternStrip />
-      <AiReadinessExplain />
-      <PatternStrip />
-      <AiReadinessFaq />
-      <PatternStrip />
-      <AiReadinessCta />
     </main>
   );
 }

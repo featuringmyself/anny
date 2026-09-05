@@ -1,3 +1,4 @@
+import PatternStrip from "@/components/PatternStrip";
 import { CopySnippet } from "@/components/pages/tools/ai-readiness/CopySnippet";
 import { AiReadinessSeeFullReport } from "@/components/pages/tools/ai-readiness/AiReadinessSeeFullReport";
 import {
@@ -138,6 +139,7 @@ export async function AiReadinessFindings({ domain }: { domain: string }) {
       </div>
     </section>
 
+    <PatternStrip />
     <AiReadinessSeeFullReport
       domain={result.domain}
       origin={result.origin}

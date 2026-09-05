@@ -86,18 +86,9 @@ export default function AiReadinessCheckerPage({
         <FindingsFromSearchParams searchParams={searchParams} />
       </Suspense>
 
-      <PatternStrip />
-      <AiReadinessHowTo />
-      <PatternStrip />
-      <AiReadinessChecks />
-      <PatternStrip />
-      <AiReadinessScale />
-      <PatternStrip />
-      <AiReadinessExplain />
-      <PatternStrip />
-      <AiReadinessFaq />
-      <PatternStrip />
-      <AiReadinessCta />
+      <Suspense>
+        <BodyFromSearchParams searchParams={searchParams} />
+      </Suspense>
     </main>
   );
 }
@@ -143,6 +134,32 @@ async function FindingsFromSearchParams({
       <Suspense fallback={<AiReadinessFindingsPending />}>
         <AiReadinessFindings domain={domain} />
       </Suspense>
+    </>
+  );
+}
+
+async function BodyFromSearchParams({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const domain = parseDomainParam((await searchParams).domain);
+  if (domain) return null;
+
+  return (
+    <>
+      <PatternStrip />
+      <AiReadinessHowTo />
+      <PatternStrip />
+      <AiReadinessChecks />
+      <PatternStrip />
+      <AiReadinessScale />
+      <PatternStrip />
+      <AiReadinessExplain />
+      <PatternStrip />
+      <AiReadinessFaq />
+      <PatternStrip />
+      <AiReadinessCta />
     </>
   );
 }
