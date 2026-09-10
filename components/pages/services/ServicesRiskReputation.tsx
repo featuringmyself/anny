@@ -25,7 +25,7 @@ const RING_SIZES = [
   "size-[min(80rem,155vw)]",
 ] as const;
 
-/** Percentage placement matching getcito.com CTA orbits (lg+). */
+/** Percentage placement matching anny.dodoxhq.com CTA orbits (lg+). */
 const ORBIT_LOGOS: {
   name: string;
   src: StaticImageData;
@@ -175,7 +175,7 @@ export default function ServicesRiskReputation() {
           style={{ color: BODY }}
         >
           Don&apos;t wait for a crisis. Proactively manage your brand&apos;s
-          reputation in the age of AI. Join GetCito, the #1 rated GEO experts,
+          reputation in the age of AI. Join Anny, the #1 rated GEO experts,
           and see what AI is saying about you.
         </p>
 
