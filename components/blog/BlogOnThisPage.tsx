@@ -8,6 +8,12 @@ import {
   useSpring,
 } from "motion/react";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
 export type TocHeading = {
@@ -132,54 +138,107 @@ function useTocState(ids: string[]) {
   };
 }
 
+function TocList({
+  headings,
+  activeId,
+  progress,
+  maskStyle,
+  onNavigate,
+}: {
+  headings: TocHeading[];
+  activeId: string;
+  progress: ReturnType<typeof useSpring>;
+  maskStyle: CSSProperties;
+  onNavigate?: () => void;
+}) {
+  return (
+    <div className="relative">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 bg-zinc-200"
+        style={maskStyle}
+      >
+        <motion.div
+          className="absolute inset-0 origin-top bg-[#2462ff]"
+          style={{ scaleY: progress }}
+        />
+      </div>
+      <ol>
+        {headings.map((heading) => {
+          const active = heading.id === activeId;
+          return (
+            <li key={heading.id} className="h-7">
+              <a
+                href={`#${heading.id}`}
+                aria-current={active ? "location" : undefined}
+                onClick={onNavigate}
+                className={cn(
+                  "flex h-full items-center text-sm transition-colors",
+                  heading.style === "h3" ? "pl-8" : "pl-6",
+                  active
+                    ? "font-medium text-[#2462ff]"
+                    : "text-zinc-400 hover:text-zinc-700",
+                )}
+              >
+                <span className="truncate">{heading.text}</span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
 export default function BlogOnThisPage({ headings }: { headings: TocHeading[] }) {
   const ids = useMemo(() => headings.map((heading) => heading.id), [headings]);
   const maskStyle = useMemo(() => circuitMaskStyle(headings), [headings]);
   const { progress, activeId } = useTocState(ids);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   if (headings.length === 0) return null;
 
   return (
     <nav
       aria-label="On this page"
-      className="hidden lg:sticky lg:top-24 lg:block lg:self-start"
+      className="sticky top-16 z-20 -mx-5 mb-8 border-y bg-background/95 px-5 backdrop-blur-sm lg:static lg:top-24 lg:z-auto lg:col-start-2 lg:row-start-1 lg:mx-0 lg:mb-0 lg:self-start lg:border-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none"
     >
-      <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-        On this page
-      </p>
-      <div className="relative mt-4">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute top-0 left-0 bg-zinc-200"
-          style={maskStyle}
+      <div className="lg:hidden">
+        <Accordion
+          value={mobileOpen ? ["toc"] : []}
+          onValueChange={(value) =>
+            setMobileOpen(Array.isArray(value) ? value.includes("toc") : value === "toc")
+          }
         >
-          <motion.div
-            className="absolute inset-0 origin-top bg-[#2462ff]"
-            style={{ scaleY: progress }}
+          <AccordionItem value="toc" className="border-0">
+            <AccordionTrigger className="py-3.5 text-xs font-medium tracking-wide text-zinc-400 uppercase hover:no-underline hover:text-zinc-700">
+              On this page
+            </AccordionTrigger>
+            <AccordionContent className="max-h-[min(22rem,55vh)] overflow-y-auto overscroll-contain pb-4 [&_a]:no-underline">
+              <TocList
+                headings={headings}
+                activeId={activeId}
+                progress={progress}
+                maskStyle={maskStyle}
+                onNavigate={() => setMobileOpen(false)}
+              />
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+
+      <div className="hidden lg:block">
+        <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+          On this page
+        </p>
+        <div className="mt-4">
+          <TocList
+            headings={headings}
+            activeId={activeId}
+            progress={progress}
+            maskStyle={maskStyle}
           />
         </div>
-        <ol>
-          {headings.map((heading) => {
-            const active = heading.id === activeId;
-            return (
-              <li key={heading.id} className="h-7">
-                <a
-                  href={`#${heading.id}`}
-                  aria-current={active ? "location" : undefined}
-                  className={cn(
-                    "flex h-full items-center text-sm transition-colors",
-                    heading.style === "h3" ? "pl-8" : "pl-6",
-                    active
-                      ? "font-medium text-[#2462ff]"
-                      : "text-zinc-400 hover:text-zinc-700",
-                  )}
-                >
-                  <span className="truncate">{heading.text}</span>
-                </a>
-              </li>
-            );
-          })}
-        </ol>
       </div>
     </nav>
   );

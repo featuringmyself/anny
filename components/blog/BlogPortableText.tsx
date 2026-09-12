@@ -10,7 +10,7 @@ const components: PortableTextComponents = {
       return (
         <h2
           id={slugify(text)}
-          className="mt-12 scroll-mt-24 text-xl font-medium tracking-tight text-zinc-900 md:text-2xl"
+          className="mt-10 scroll-mt-28 text-xl font-medium tracking-tight text-zinc-900 md:mt-12 md:scroll-mt-24 md:text-2xl"
         >
           {children}
         </h2>
@@ -21,7 +21,7 @@ const components: PortableTextComponents = {
       return (
         <h3
           id={slugify(text)}
-          className="mt-8 scroll-mt-24 text-lg font-medium tracking-tight text-zinc-900"
+          className="mt-7 scroll-mt-28 text-lg font-medium tracking-tight text-zinc-900 md:mt-8 md:scroll-mt-24"
         >
           {children}
         </h3>
@@ -33,7 +33,9 @@ const components: PortableTextComponents = {
       </blockquote>
     ),
     normal: ({ children }) => (
-      <p className="text-[15px] leading-relaxed text-zinc-500">{children}</p>
+      <p className="text-[15px] leading-relaxed wrap-break-word text-zinc-500">
+        {children}
+      </p>
     ),
   },
   types: {
@@ -75,12 +77,12 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-zinc-500">
+      <ul className="list-disc space-y-2 pl-5 text-[15px] leading-relaxed wrap-break-word text-zinc-500">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-zinc-500">
+      <ol className="list-decimal space-y-2 pl-5 text-[15px] leading-relaxed wrap-break-word text-zinc-500">
         {children}
       </ol>
     ),

@@ -17,7 +17,7 @@ export default function BlogFaqs({ faqs }: { faqs: Faq[] }) {
   if (faqs.length === 0) return null;
 
   return (
-    <section className="mt-14 border-t pt-10" aria-labelledby="faq-heading">
+    <section className="mt-10 border-t pt-8 md:mt-14 md:pt-10" aria-labelledby="faq-heading">
       <h2
         id="faq-heading"
         className="text-xl font-medium tracking-tight text-zinc-900 md:text-2xl"
