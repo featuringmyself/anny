@@ -155,7 +155,7 @@ function TocList({
     <div className="relative">
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-0 bg-zinc-200"
+        className="pointer-events-none absolute top-0 left-0 hidden bg-zinc-200 lg:block"
         style={maskStyle}
       >
         <motion.div
@@ -167,20 +167,20 @@ function TocList({
         {headings.map((heading) => {
           const active = heading.id === activeId;
           return (
-            <li key={heading.id} className="h-7">
+            <li key={heading.id} className="py-1.5 lg:h-7 lg:py-0">
               <a
                 href={`#${heading.id}`}
                 aria-current={active ? "location" : undefined}
                 onClick={onNavigate}
                 className={cn(
-                  "flex h-full items-center text-sm transition-colors",
-                  heading.style === "h3" ? "pl-8" : "pl-6",
+                  "flex h-full items-center text-sm leading-snug transition-colors",
+                  heading.style === "h3" ? "pl-4 lg:pl-8" : "pl-0 lg:pl-6",
                   active
                     ? "font-medium text-[#2462ff]"
                     : "text-zinc-400 hover:text-zinc-700",
                 )}
               >
-                <span className="truncate">{heading.text}</span>
+                <span className="text-pretty lg:truncate">{heading.text}</span>
               </a>
             </li>
           );
@@ -214,14 +214,16 @@ export default function BlogOnThisPage({ headings }: { headings: TocHeading[] })
             <AccordionTrigger className="py-3.5 text-xs font-medium tracking-wide text-zinc-400 uppercase hover:no-underline hover:text-zinc-700">
               On this page
             </AccordionTrigger>
-            <AccordionContent className="max-h-[min(22rem,55vh)] overflow-y-auto overscroll-contain pb-4 [&_a]:no-underline">
-              <TocList
-                headings={headings}
-                activeId={activeId}
-                progress={progress}
-                maskStyle={maskStyle}
-                onNavigate={() => setMobileOpen(false)}
-              />
+            <AccordionContent className="[&_a]:no-underline">
+              <div className="max-h-[min(22rem,55vh)] overflow-y-auto overscroll-contain">
+                <TocList
+                  headings={headings}
+                  activeId={activeId}
+                  progress={progress}
+                  maskStyle={maskStyle}
+                  onNavigate={() => setMobileOpen(false)}
+                />
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
