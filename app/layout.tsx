@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import { MarketingChrome } from "@/components/MarketingChrome";
 import JsonLd from "@/components/JsonLd";
+import { SanityLive } from "@/lib/sanity/live";
 import {
   SITE_DATE_MODIFIED,
   SITE_DATE_PUBLISHED,
@@ -104,11 +107,13 @@ const websiteJsonLd = {
   // potentialAction / SearchAction omitted: no on-site search URL or /search route.
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isEnabled: isDraftMode } = await draftMode();
+
   return (
     <html
       lang="en"
@@ -127,6 +132,8 @@ export default function RootLayout({
         <MarketingChrome>
           <Footer />
         </MarketingChrome>
+        <SanityLive />
+        {isDraftMode ? <VisualEditing /> : null}
       </body>
     </html>
   );

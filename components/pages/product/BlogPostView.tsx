@@ -1,9 +1,17 @@
 import Link from "next/link";
 
-import type { BlogBlock, BlogPost } from "@/components/pages/product/blog/types";
+import BlogFaqs from "@/components/blog/BlogFaqs";
+import {
+  BlogPortableText,
+  headingsFromBody,
+} from "@/components/blog/BlogPortableText";
+import SanityImage from "@/components/blog/SanityImage";
+import type { BlogBlock } from "@/components/pages/product/blog/types";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
+import type { BlogPostArticle } from "@/lib/blog/types";
+import { formatBlogDate, readingTimeMinutes } from "@/lib/blog/types";
 
-function Block({ block }: { block: BlogBlock }) {
+function LegacyBlock({ block }: { block: BlogBlock }) {
   switch (block.type) {
     case "p":
       return (
@@ -53,7 +61,29 @@ function Block({ block }: { block: BlogBlock }) {
   }
 }
 
-export default function BlogPostView({ post }: { post: BlogPost }) {
+function isLegacyBody(
+  body: unknown,
+): body is { __legacy: true; blocks: BlogBlock[] } {
+  return Boolean(
+    body &&
+      typeof body === "object" &&
+      "__legacy" in body &&
+      Array.isArray((body as { blocks?: unknown }).blocks),
+  );
+}
+
+export default function BlogPostView({ post }: { post: BlogPostArticle }) {
+  const { date, year, long } = formatBlogDate(post.publishedAt);
+  const category = post.categories?.[0]?.title || "GEO";
+  const minutes = readingTimeMinutes(post.bodyText || post.excerpt);
+  const faqs = (post.faqs || []).filter((faq) => faq.question && faq.answer);
+  const related =
+    (post.related && post.related.length > 0 ? post.related : post.morePosts) ||
+    [];
+  const headings = isLegacyBody(post.body)
+    ? []
+    : headingsFromBody(post.body);
+
   return (
     <article>
       <header className="border-b px-8 py-14 md:px-12 md:py-16">
@@ -64,51 +94,159 @@ export default function BlogPostView({ post }: { post: BlogPost }) {
           ← Blog
         </Link>
         <p className="mt-6 text-sm font-medium tracking-wide text-[#2462ff]">
-          {post.category}
+          {category}
         </p>
         <h1 className="mt-3 max-w-3xl text-3xl font-medium tracking-tight text-balance md:text-5xl">
           {post.title}
         </h1>
-        <p className="mt-4 max-w-2xl text-lg text-zinc-500 text-balance">
-          {post.dek}
-        </p>
-        <p className="mt-6 text-sm tabular-nums text-zinc-400">
-          {post.date} {post.year}
-        </p>
+        {post.excerpt ? (
+          <p className="mt-4 max-w-2xl text-lg text-zinc-500 text-balance">
+            {post.excerpt}
+          </p>
+        ) : null}
+        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-zinc-400">
+          <time dateTime={post.publishedAt || undefined}>
+            {long || `${date} ${year}`}
+          </time>
+          <span aria-hidden>·</span>
+          <span>{minutes} min read</span>
+          {post.author?.name ? (
+            <>
+              <span aria-hidden>·</span>
+              <span>
+                By {post.author.name}
+                {post.author.role ? ` · ${post.author.role}` : ""}
+              </span>
+            </>
+          ) : null}
+        </div>
       </header>
 
-      <div className="px-8 py-12 md:px-12 md:py-16">
-        <div className="mx-auto max-w-2xl space-y-5">
-          {post.body.map((block, index) => (
-            <Block key={`${post.slug}-${index}`} block={block} />
-          ))}
-
-          <aside className="mt-16 border-t pt-10">
-            <p className="text-lg font-medium tracking-tight">
-              See what AI says about your brand
-            </p>
-            <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
-              Anny tracks visibility, answer position, sentiment, and sources
-              across ChatGPT, Gemini, AI Mode, and more — so you can close the
-              gaps that cost you recommendations.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/register"
-                className="inline-flex h-10 items-center rounded-md bg-[#2462ff] px-4 text-sm font-medium text-white hover:bg-[#1d4ed8]"
-              >
-                Start free trial
-              </Link>
-              <TalkToSalesButton
-                source={`blog-${post.slug}`}
-                variant="outline"
-                className="h-10"
-              >
-                Talk to sales
-              </TalkToSalesButton>
-            </div>
-          </aside>
+      {post.coverImage?.asset ? (
+        <div className="border-b px-8 py-8 md:px-12">
+          <SanityImage
+            value={post.coverImage}
+            width={1600}
+            className="aspect-[16/8] w-full"
+            sizes="(min-width: 1280px) 1280px, 100vw"
+            priority
+          />
         </div>
+      ) : null}
+
+      <div className="px-8 py-12 md:px-12 md:py-16">
+        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[minmax(0,1fr)_200px]">
+          <div className="mx-auto w-full max-w-2xl space-y-5">
+            {isLegacyBody(post.body) ? (
+              post.body.blocks.map((block, index) => (
+                <LegacyBlock key={`${post.slug}-${index}`} block={block} />
+              ))
+            ) : (
+              <BlogPortableText value={post.body} />
+            )}
+
+            <BlogFaqs faqs={faqs} />
+
+            {post.author?.bio ? (
+              <aside className="mt-14 border border-zinc-200 bg-zinc-50/80 p-6">
+                <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+                  Author
+                </p>
+                <p className="mt-2 text-lg font-medium tracking-tight">
+                  {post.author.name}
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
+                  {post.author.bio}
+                </p>
+              </aside>
+            ) : null}
+
+            <aside className="mt-16 border-t pt-10">
+              <p className="text-lg font-medium tracking-tight">
+                See what AI says about your brand
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
+                Anny tracks visibility, answer position, sentiment, and sources
+                across ChatGPT, Gemini, AI Mode, and more — so you can close the
+                gaps that cost you recommendations.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/register"
+                  className="inline-flex h-10 items-center rounded-md bg-[#2462ff] px-4 text-sm font-medium text-white hover:bg-[#1d4ed8]"
+                >
+                  Start free trial
+                </Link>
+                <TalkToSalesButton
+                  source={`blog-${post.slug}`}
+                  variant="outline"
+                  className="h-10"
+                >
+                  Talk to sales
+                </TalkToSalesButton>
+              </div>
+            </aside>
+          </div>
+
+          {headings.length > 0 ? (
+            <nav aria-label="On this page" className="hidden lg:block">
+              <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+                On this page
+              </p>
+              <ol className="mt-4 space-y-2 text-sm">
+                {headings.map((heading) => (
+                  <li
+                    key={heading.id}
+                    className={heading.style === "h3" ? "pl-3" : ""}
+                  >
+                    <a
+                      href={`#${heading.id}`}
+                      className="text-zinc-400 hover:text-[#2462ff]"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
+        </div>
+
+        {related.length > 0 ? (
+          <section className="mx-auto mt-20 max-w-5xl border-t pt-12" aria-labelledby="related-heading">
+            <h2
+              id="related-heading"
+              className="text-xl font-medium tracking-tight md:text-2xl"
+            >
+              Keep reading
+            </h2>
+            <ul className="mt-8 grid gap-8 md:grid-cols-3">
+              {related.map((item) => {
+                const itemDate = formatBlogDate(item.publishedAt);
+                return (
+                  <li key={item._id}>
+                    <Link href={`/blog/${item.slug}`} className="group block">
+                      <p className="text-xs font-medium tracking-wide text-zinc-400">
+                        {item.categories?.[0]?.title || "GEO"}
+                      </p>
+                      <h3 className="mt-2 text-lg font-medium tracking-tight group-hover:text-[#2462ff]">
+                        {item.title}
+                      </h3>
+                      {item.excerpt ? (
+                        <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+                          {item.excerpt}
+                        </p>
+                      ) : null}
+                      <p className="mt-3 text-xs tabular-nums text-zinc-400">
+                        {itemDate.date} {itemDate.year}
+                      </p>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : null}
       </div>
     </article>
   );

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getRoleSlugs } from "@/components/pages/careers/roles";
-import { getAllPosts } from "@/components/pages/product/blog/posts";
+import { getBlogSitemapEntries } from "@/lib/blog/content";
 import { SITE_DATE_MODIFIED, SITE_URL } from "@/lib/site";
 
 const routes: {
@@ -12,11 +12,10 @@ const routes: {
   { path: "/", changeFrequency: "weekly", priority: 1 },
   { path: "/pricing", changeFrequency: "weekly", priority: 0.9 },
   { path: "/services", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/services", changeFrequency: "monthly", priority: 0.9 },
   { path: "/register", changeFrequency: "monthly", priority: 0.8 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
   { path: "/docs", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "/changelog", changeFrequency: "weekly", priority: 0.6 },
   { path: "/careers", changeFrequency: "monthly", priority: 0.5 },
   { path: "/ai-instructions", changeFrequency: "monthly", priority: 0.8 },
@@ -38,7 +37,7 @@ const routes: {
   { path: "/imprint", changeFrequency: "yearly", priority: 0.3 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date(SITE_DATE_MODIFIED);
 
   const staticEntries = routes.map(({ path, changeFrequency, priority }) => ({
@@ -48,11 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  const blogEntries = getAllPosts().map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
+  const blogEntries = (await getBlogSitemapEntries()).map((entry) => ({
+    url: `${SITE_URL}${entry.href}`,
+    lastModified: new Date(entry._updatedAt || entry.publishedAt || SITE_DATE_MODIFIED),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
   }));
 
   const careerEntries = getRoleSlugs().map((slug) => ({

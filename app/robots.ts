@@ -52,6 +52,8 @@ const AI_BOT_ALLOW_SIGNALS = [
   "/llms.txt",
   "/llms-full.txt",
   "/ai-instructions",
+  "/blog",
+  "/rss.xml",
   "/tools/",
   "/.well-known/agent-skills/",
 ] as const;
