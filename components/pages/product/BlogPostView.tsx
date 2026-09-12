@@ -2,6 +2,9 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, User } from "lucide-react";
 
 import BlogFaqs from "@/components/blog/BlogFaqs";
+import BlogOnThisPage, {
+  type TocHeading,
+} from "@/components/blog/BlogOnThisPage";
 import {
   BlogPortableText,
   headingsFromBody,
@@ -10,7 +13,7 @@ import SanityImage from "@/components/blog/SanityImage";
 import type { BlogBlock } from "@/components/pages/product/blog/types";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import type { BlogPostArticle } from "@/lib/blog/types";
-import { formatBlogDate, readingTimeMinutes } from "@/lib/blog/types";
+import { formatBlogDate, readingTimeMinutes, slugify } from "@/lib/blog/types";
 
 function LegacyBlock({ block }: { block: BlogBlock }) {
   switch (block.type) {
@@ -20,13 +23,19 @@ function LegacyBlock({ block }: { block: BlogBlock }) {
       );
     case "h2":
       return (
-        <h2 className="mt-12 text-xl font-medium tracking-tight text-zinc-900 md:text-2xl">
+        <h2
+          id={slugify(block.text)}
+          className="mt-12 scroll-mt-24 text-xl font-medium tracking-tight text-zinc-900 md:text-2xl"
+        >
           {block.text}
         </h2>
       );
     case "h3":
       return (
-        <h3 className="mt-8 text-lg font-medium tracking-tight text-zinc-900">
+        <h3
+          id={slugify(block.text)}
+          className="mt-8 scroll-mt-24 text-lg font-medium tracking-tight text-zinc-900"
+        >
           {block.text}
         </h3>
       );
@@ -72,6 +81,13 @@ function isLegacyBody(
   );
 }
 
+function headingsFromLegacy(blocks: BlogBlock[]): TocHeading[] {
+  return blocks.flatMap((block) => {
+    if (block.type !== "h2" && block.type !== "h3") return [];
+    return [{ id: slugify(block.text), text: block.text, style: block.type }];
+  });
+}
+
 export default function BlogPostView({ post }: { post: BlogPostArticle }) {
   const { date, year, long } = formatBlogDate(post.publishedAt);
   const category = post.categories?.[0]?.title || "GEO";
@@ -81,7 +97,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
     (post.related && post.related.length > 0 ? post.related : post.morePosts) ||
     [];
   const headings = isLegacyBody(post.body)
-    ? []
+    ? headingsFromLegacy(post.body.blocks)
     : headingsFromBody(post.body);
 
   return (
@@ -140,7 +156,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
       ) : null}
 
       <div className="px-8 py-12 md:px-12 md:py-16">
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[minmax(0,1fr)_200px]">
+        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
           <div className="mx-auto w-full max-w-2xl space-y-5">
             {isLegacyBody(post.body) ? (
               post.body.blocks.map((block, index) => (
@@ -193,28 +209,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
             </aside>
           </div>
 
-          {headings.length > 0 ? (
-            <nav aria-label="On this page" className="hidden lg:block">
-              <p className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-                On this page
-              </p>
-              <ol className="mt-4 space-y-2 text-sm">
-                {headings.map((heading) => (
-                  <li
-                    key={heading.id}
-                    className={heading.style === "h3" ? "pl-3" : ""}
-                  >
-                    <a
-                      href={`#${heading.id}`}
-                      className="text-zinc-400 hover:text-[#2462ff]"
-                    >
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
-          ) : null}
+          <BlogOnThisPage headings={headings} />
         </div>
 
         {related.length > 0 ? (
