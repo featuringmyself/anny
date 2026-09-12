@@ -68,7 +68,7 @@ export function deriveCategoryScores(
     cite:
       "Sitemap coverage, canonical tags, and FAQ signals affect whether models can find stable URLs to reference.",
     extras:
-      "llms.txt and agent skill files help coding agents discover capabilities — they do not decide ChatGPT rankings.",
+      "llms.txt and agent skill files help coding agents discover capabilities, they do not decide ChatGPT rankings.",
   };
 
   return ids.map((id, index) => ({
@@ -111,22 +111,22 @@ export function executiveSummary(
   band: string,
 ): string {
   if (score < 30) {
-    return `${company} scores ${score}/100 — ${band.toLowerCase()}. Crawlers may be blocked or the homepage lacks the basics models need to fetch and name the site. The sections below group findings across crawl access, brand identity, citation signals, and agent discovery files.`;
+    return `${company} scores ${score}/100, ${band.toLowerCase()}. Crawlers may be blocked or the homepage lacks the basics models need to fetch and name the site. The sections below group findings across crawl access, brand identity, citation signals, and agent discovery files.`;
   }
 
   if (score < 50) {
-    return `${company} scores ${score}/100 — ${band.toLowerCase()}. Some crawl access exists, but brand identity and citation signals are still thin. Fixing robots.txt gaps, structured data, and sitemap discovery would move the score quickly.`;
+    return `${company} scores ${score}/100, ${band.toLowerCase()}. Some crawl access exists, but brand identity and citation signals are still thin. Fixing robots.txt gaps, structured data, and sitemap discovery would move the score quickly.`;
   }
 
   if (score < 70) {
-    return `${company} scores ${score}/100 — ${band.toLowerCase()}. Bots can fetch the site, but a few homepage and site-file gaps still make the brand harder to pin down than it needs to be. The category breakdown shows where effort will pay off first.`;
+    return `${company} scores ${score}/100, ${band.toLowerCase()}. Bots can fetch the site, but a few homepage and site-file gaps still make the brand harder to pin down than it needs to be. The category breakdown shows where effort will pay off first.`;
   }
 
   if (score < 85) {
-    return `${company} scores ${score}/100 — ${band.toLowerCase()}. Crawlers can fetch the site and attach a name to it. Remaining gaps are mostly citation polish and optional agent discovery files.`;
+    return `${company} scores ${score}/100, ${band.toLowerCase()}. Crawlers can fetch the site and attach a name to it. Remaining gaps are mostly citation polish and optional agent discovery files.`;
   }
 
-  return `${company} scores ${score}/100 — ${band.toLowerCase()}. On-site basics are in place for AI agents to fetch, name, and cite the site. The next question is whether models actually mention ${company} in answers.`;
+  return `${company} scores ${score}/100, ${band.toLowerCase()}. On-site basics are in place for AI agents to fetch, name, and cite the site. The next question is whether models actually mention ${company} in answers.`;
 }
 
 export function deriveAgentTeaser(domain: string) {

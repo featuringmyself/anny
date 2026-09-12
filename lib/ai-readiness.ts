@@ -433,9 +433,9 @@ function buildSummary(
     return `Crawlers can reach ${domain}, but the homepage does not clearly name the brand in structured data. Models may crawl the page and still not know who it belongs to.`;
   }
   if (actions.length === 0) {
-    return `${domain} is set up for AI crawlers to fetch and identify the brand. On-site readiness is in good shape — the next question is whether models actually mention you.`;
+    return `${domain} is set up for AI crawlers to fetch and identify the brand. On-site readiness is in good shape, the next question is whether models actually mention you.`;
   }
-  return `${domain} can be crawled. The highest-leverage on-site gaps are listed below — copy the snippets onto the site, then track whether ChatGPT cites the brand.`;
+  return `${domain} can be crawled. The highest-leverage on-site gaps are listed below, copy the snippets onto the site, then track whether ChatGPT cites the brand.`;
 }
 
 function buildActions({
@@ -462,7 +462,7 @@ function buildActions({
   const brand = title || domain;
   const dek =
     description ||
-    `${brand} — add a one-sentence description of what the company does.`;
+    `${brand}, add a one-sentence description of what the company does.`;
   const actions: ReadinessAction[] = [];
 
   if (blockedBots.length > 0) {
@@ -640,7 +640,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
           "robots.txt",
           8,
           "pass",
-          "A real robots.txt is live — crawlers have an explicit map.",
+          "A real robots.txt is live, crawlers have an explicit map.",
         )
       : check(
           "robots",
@@ -664,7 +664,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
       starAllowed ? "pass" : "fail",
       starAllowed
         ? "User-agent * can fetch the homepage."
-        : "User-agent * disallows the whole site — most crawlers will stop.",
+        : "User-agent * disallows the whole site, most crawlers will stop.",
     ),
   );
 
@@ -730,7 +730,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
         ? description.length > 140
           ? `${description.slice(0, 140)}…`
           : description
-        : "No meta description — add a one-line “what we do.”",
+        : "No meta description, add a one-line “what we do.”",
     ),
   );
 
@@ -769,7 +769,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
       sitemapReal ? "pass" : "fail",
       sitemapReal
         ? "sitemap.xml is reachable."
-        : "No sitemap.xml — crawlers often never leave the homepage.",
+        : "No sitemap.xml, crawlers often never leave the homepage.",
     ),
   );
 
@@ -782,7 +782,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
       canonical ? "pass" : "fail",
       canonical
         ? "A canonical link is present."
-        : "No rel=canonical — duplicate URLs confuse citation.",
+        : "No rel=canonical, duplicate URLs confuse citation.",
     ),
   );
 
@@ -820,7 +820,7 @@ export const getAiReadiness = cache(async function getAiReadiness(
       6,
       llmsReal ? "pass" : llms.html && llms.status === 200 ? "warn" : "skip",
       llmsReal
-        ? "A real llms.txt is live. Useful for agents — not a ChatGPT ranking lever."
+        ? "A real llms.txt is live. Useful for agents, not a ChatGPT ranking lever."
         : llms.html && llms.status === 200
           ? "HTTP 200 but the body is HTML, not a text file."
           : "Optional. A short llms.txt helps coding agents; it does not buy AI search traffic.",

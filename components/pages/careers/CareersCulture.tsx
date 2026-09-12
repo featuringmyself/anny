@@ -11,7 +11,7 @@ export default function CareersCulture() {
         </h2>
         <p className="mt-4 max-w-md text-lg leading-snug text-zinc-500 text-balance">
           High ownership, async by default, and a bias toward shipping. We care
-          about clarity over ceremony — and about making AI search measurable.
+          about clarity over ceremony, and about making AI search measurable.
         </p>
       </div>
       <aside className="flex flex-col justify-between bg-[#1a1a1a] p-8 text-white md:p-12">

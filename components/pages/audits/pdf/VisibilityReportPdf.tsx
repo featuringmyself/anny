@@ -64,14 +64,14 @@ function CoverPage({ report }: { report: VisibilityReport }) {
       <Text style={pdfStyles.h1}>{report.company}</Text>
       <Text style={{ ...pdfStyles.body, marginTop: 10, maxWidth: 420, fontSize: 11 }}>
         {report.tagline ??
-          `How often AI answers cite ${report.company} when buyers ask for recommendations — and where competitors win instead.`}
+          `How often AI answers cite ${report.company} when buyers ask for recommendations, and where competitors win instead.`}
       </Text>
 
       <View style={{ ...pdfStyles.row, marginTop: 28, gap: 10 }}>
         <MetaCell label="Prepared for" value={report.preparedFor} />
         <MetaCell
           label="Role"
-          value={report.role ?? "—"}
+          value={report.role ?? "-"}
         />
         <MetaCell label="Website" value={report.website} />
         <MetaCell label="Snapshot" value={report.dateLabel} />

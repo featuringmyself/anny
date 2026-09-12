@@ -21,7 +21,7 @@ export default function GeminiSourceChips() {
         <h2 className="text-2xl font-medium tracking-tight">Source chips</h2>
         <p className="mt-3 max-w-sm text-sm text-zinc-500 text-balance">
           Every Gemini citation resolves to a domain chip. Spot which sources
-          name you — and which high-authority pages Gemini trusts that still
+          name you, and which high-authority pages Gemini trusts that still
           skip your brand.
         </p>
       </div>

@@ -74,8 +74,8 @@ function buildBaseReport(ctx: FullScanContext): ReadinessReport {
     slug,
     company,
     website: ctx.domain,
-    industry: "—",
-    preparedFor: ctx.email ?? "—",
+    industry: "-",
+    preparedFor: ctx.email ?? "-",
     email: ctx.email,
     dateLabel: formatDateLabel(),
     overallScore: ctx.quickScore ?? 50,
@@ -118,7 +118,7 @@ function buildBaseReport(ctx: FullScanContext): ReadinessReport {
     ctaEyebrow: "90-day sprint",
     ctaHeadline: `Ready to improve ${company}'s AI readiness?`,
     ctaBody:
-      "Book a short call and we'll map the 90-day plan from this audit — on-site fixes and citation work in one engagement.",
+      "Book a short call and we'll map the 90-day plan from this audit, on-site fixes and citation work in one engagement.",
   };
 }
 
@@ -142,13 +142,13 @@ function buildSiteFilesCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (!ctx.robotsReal) {
-    body = `No robots.txt at ${ctx.domain} — crawlers lack explicit permission rules and the sitemap is harder to discover.`;
+    body = `No robots.txt at ${ctx.domain}, crawlers lack explicit permission rules and the sitemap is harder to discover.`;
   } else if (agentsBlocked > 0) {
     body = `robots.txt is live, but ${agentsBlocked} major AI crawlers appear blocked. The sitemap lists ${ctx.sitemapUrlCount || "no"} ${plural(ctx.sitemapUrlCount || 0, "URL")}${ctx.sitemapLastmod ? "" : " with no last-updated dates"}.`;
   } else {
     body = `robots.txt allows major AI crawlers. The sitemap lists ${ctx.sitemapUrlCount} ${plural(ctx.sitemapUrlCount, "page")}${ctx.sitemapLastmod ? ` (lastmod ${ctx.sitemapLastmod})` : ", but none carry a last-updated date"}.`;
     if (!ctx.llmsReal && !skillsFound) {
-      body += " llms.txt and agent-skills paths 404 — tools that look for those files get nothing.";
+      body += " llms.txt and agent-skills paths 404, tools that look for those files get nothing.";
     } else if (discoveryCount < 3) {
       body += ` Only ${discoveryCount} of 4 agent discovery files are present.`;
     }
@@ -209,13 +209,13 @@ function buildSeoCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (!hasTitle) {
-    body = "Homepage lacks a clear title tag — models struggle to name what the page is about.";
+    body = "Homepage lacks a clear title tag, models struggle to name what the page is about.";
   } else if (!hasDescription) {
     body = `Title is present (${titleLen} chars), but the meta description is missing or too short for models to summarize the page.`;
   } else if (titleLong || descLong) {
-    body = `Title and description say what ${ctx.company} sells, but both run long (${titleLen}-char title, ${descLen}-char description) — the line AI would quote gets cut.`;
+    body = `Title and description say what ${ctx.company} sells, but both run long (${titleLen}-char title, ${descLen}-char description), the line AI would quote gets cut.`;
   } else {
-    body = `Title (${titleLen} chars) and meta description (${descLen} chars) are in range — solid foundations for search and AI summarization.`;
+    body = `Title (${titleLen} chars) and meta description (${descLen} chars) are in range, solid foundations for search and AI summarization.`;
   }
 
   return {
@@ -256,7 +256,7 @@ function buildFreshnessCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (staleFooter) {
-    body = `Footer shows © ${ctx.footerYear} — two or more years behind ${currentYear}. Models may treat the site as unmaintained even if content changed.`;
+    body = `Footer shows © ${ctx.footerYear}, two or more years behind ${currentYear}. Models may treat the site as unmaintained even if content changed.`;
   } else if (hasLastmod) {
     body = `Sitemap lastmod (${ctx.sitemapLastmod}) and visible dates suggest the site is actively maintained.`;
   } else {
@@ -301,11 +301,11 @@ function buildSchemaCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (types.length === 0) {
-    body = `No JSON-LD on the ${ctx.pages.length} pages we checked — search and AI lack explicit entity markup for ${ctx.company}.`;
+    body = `No JSON-LD on the ${ctx.pages.length} pages we checked, search and AI lack explicit entity markup for ${ctx.company}.`;
   } else if (!ctx.jsonLdValid) {
-    body = `${ctx.jsonLdBlocks} JSON-LD block${ctx.jsonLdBlocks === 1 ? "" : "s"} exist but at least one failed to parse — fix syntax before models can trust the markup.`;
+    body = `${ctx.jsonLdBlocks} JSON-LD block${ctx.jsonLdBlocks === 1 ? "" : "s"} exist but at least one failed to parse, fix syntax before models can trust the markup.`;
   } else if (!brandType) {
-    body = `${types.length} schema type${types.length === 1 ? "" : "s"} found (${types.slice(0, 3).join(", ")}) but no Organization or brand entity — models cannot attach ${ctx.company} to the page.`;
+    body = `${types.length} schema type${types.length === 1 ? "" : "s"} found (${types.slice(0, 3).join(", ")}) but no Organization or brand entity, models cannot attach ${ctx.company} to the page.`;
   } else {
     body = `Structured data is present (${brandType}${citeType ? `, ${citeType}` : ""}). Enrich with FAQPage and Service where relevant.`;
   }
@@ -343,11 +343,11 @@ function buildContentCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (h1 === 0) {
-    body = "No H1 on the homepage — agents cannot identify the primary topic.";
+    body = "No H1 on the homepage, agents cannot identify the primary topic.";
   } else if (h1 > 1) {
-    body = `${h1} H1 tags on the homepage — competing headings make the primary topic unclear. Demote section titles to H2/H3.`;
+    body = `${h1} H1 tags on the homepage, competing headings make the primary topic unclear. Demote section titles to H2/H3.`;
   } else if (!hasQuestions) {
-    body = `One H1, but only ${ctx.questionHeadings} question-style headings across ${ctx.pages.length} pages — models have little quotable Q&A copy.`;
+    body = `One H1, but only ${ctx.questionHeadings} question-style headings across ${ctx.pages.length} pages, models have little quotable Q&A copy.`;
   } else {
     body = `Heading hierarchy is sane (${h1} H1, ${ctx.h2Count} H2, ${ctx.h3Count} H3) with ${ctx.questionHeadings} question-style headings agents can lift.`;
   }
@@ -379,13 +379,13 @@ function buildLinkingCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (total === 0) {
-    body = "Few crawlable links on scanned pages — discovery may stop at the homepage.";
+    body = "Few crawlable links on scanned pages, discovery may stop at the homepage.";
   } else if (internalPct >= 0.6) {
-    body = `${ctx.internalLinks} internal vs ${ctx.externalLinks} external links (${pct(internalPct)} on-site) — a usable map for crawlers.`;
+    body = `${ctx.internalLinks} internal vs ${ctx.externalLinks} external links (${pct(internalPct)} on-site), a usable map for crawlers.`;
   } else if (internalPct >= 0.4) {
-    body = `${ctx.internalLinks} internal and ${ctx.externalLinks} external links (${pct(internalPct)} on-site) — usable, but deeper topical linking would help.`;
+    body = `${ctx.internalLinks} internal and ${ctx.externalLinks} external links (${pct(internalPct)} on-site), usable, but deeper topical linking would help.`;
   } else {
-    body = `Only ${pct(internalPct)} of ${total} links stay on-site — crawlers may not discover key pages beyond the homepage.`;
+    body = `Only ${pct(internalPct)} of ${total} links stay on-site, crawlers may not discover key pages beyond the homepage.`;
   }
 
   return {
@@ -393,11 +393,11 @@ function buildLinkingCategory(ctx: FullScanContext): ReadinessCategory {
     title: "Internal linking",
     status,
     body,
-    bodyTechnical: `Internal ${ctx.internalLinks} · external ${ctx.externalLinks} · share ${total ? pct(internalPct) : "—"}.`,
+    bodyTechnical: `Internal ${ctx.internalLinks} · external ${ctx.externalLinks} · share ${total ? pct(internalPct) : "-"}.`,
     metrics: [
       { label: "Internal links", value: String(ctx.internalLinks) },
       { label: "External links", value: String(ctx.externalLinks) },
-      { label: "Internal share", value: total ? pct(internalPct) : "—" },
+      { label: "Internal share", value: total ? pct(internalPct) : "-" },
     ],
   };
 }
@@ -412,11 +412,11 @@ function buildImagesCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (scope.total === 0) {
-    body = "No images on scanned pages — nothing to evaluate for alt text.";
+    body = "No images on scanned pages, nothing to evaluate for alt text.";
   } else if (scope.missing === 0 && scope.generic === 0) {
     body = `All ${scope.total} ${scope.label} images include descriptive alt text.`;
   } else if (scope.missing > 0) {
-    body = `Of ${scope.total} ${scope.label} images, ${scope.missing} have no alt and ${scope.generic} use generic labels — only ~${usable} carry usable context for AI and screen readers.`;
+    body = `Of ${scope.total} ${scope.label} images, ${scope.missing} have no alt and ${scope.generic} use generic labels, only ~${usable} carry usable context for AI and screen readers.`;
   } else {
     body = `${scope.generic} of ${scope.total} ${scope.label} images use generic alt text (logo, image, photo) that does not describe the content.`;
   }
@@ -450,11 +450,11 @@ function buildSemanticsCategory(ctx: FullScanContext): ReadinessCategory {
 
   let body: string;
   if (ratio >= 0.08) {
-    body = `Semantic ratio ${ratioLabel} — landmarks (${ctx.semanticLandmarks}) give agents a readable page structure.`;
+    body = `Semantic ratio ${ratioLabel}, landmarks (${ctx.semanticLandmarks}) give agents a readable page structure.`;
   } else if (ratio >= 0.03) {
-    body = `Semantic ratio ${ratioLabel} — some landmarks, but ${ctx.semanticDivs} divs and ${ctx.semanticSpans} spans still dominate the DOM.`;
+    body = `Semantic ratio ${ratioLabel}, some landmarks, but ${ctx.semanticDivs} divs and ${ctx.semanticSpans} spans still dominate the DOM.`;
   } else {
-    body = `Meaningful structure is almost absent (semantic ratio ${ratioLabel}). The page is mostly div/span wrappers — agents struggle to map sections.`;
+    body = `Meaningful structure is almost absent (semantic ratio ${ratioLabel}). The page is mostly div/span wrappers, agents struggle to map sections.`;
   }
 
   return {
@@ -499,19 +499,19 @@ function buildAutomation(ctx: FullScanContext): ReadinessAutomation {
     let summaryTechnical: string;
 
     if (id === "auto-captcha") {
-      summary = "CAPTCHA blocks unattended agents from completing the form — humans must intervene.";
+      summary = "CAPTCHA blocks unattended agents from completing the form, humans must intervene.";
       summaryTechnical = "g-recaptcha, hCaptcha, or Turnstile detected in page HTML.";
     } else if (id === "auto-labels") {
-      summary = `${count} visible input${count === 1 ? "" : "s"} lack labels or aria-label — agents and screen readers cannot name field purpose.`;
+      summary = `${count} visible input${count === 1 ? "" : "s"} lack labels or aria-label, agents and screen readers cannot name field purpose.`;
       summaryTechnical = `${count} inputs without <label>, for/id, or aria-label across ${ctx.pages.length} scanned page${ctx.pages.length === 1 ? "" : "s"}.`;
     } else if (id === "auto-autocomplete") {
-      summary = `${count} field${count === 1 ? "" : "s"} missing autocomplete tokens — browsers and agents cannot fill reliably.`;
+      summary = `${count} field${count === 1 ? "" : "s"} missing autocomplete tokens, browsers and agents cannot fill reliably.`;
       summaryTechnical = `No autocomplete on ${count} text/email/tel inputs. Expected: given-name, family-name, email, tel, organization.`;
     } else {
       summary =
         group.severity === "P1"
           ? `${count} critical blocker${count === 1 ? "" : "s"} on scanned forms.`
-          : `${count} reliability gap${count === 1 ? "" : "s"} — fix when touching those templates.`;
+          : `${count} reliability gap${count === 1 ? "" : "s"}, fix when touching those templates.`;
       summaryTechnical = `${count} instances across scanned pages.`;
     }
 
@@ -545,7 +545,7 @@ function buildAutomation(ctx: FullScanContext): ReadinessAutomation {
   if (total === 0) {
     body = `No form automation blockers detected across ${ctx.pages.length} scanned page${ctx.pages.length === 1 ? "" : "s"}.`;
   } else {
-    body = `${total} form issue${total === 1 ? "" : "s"} on ${ctx.pages.length} scanned page${ctx.pages.length === 1 ? "" : "s"} — ${p1.length} critical, ${p2.length} reliability gaps. Grouped below by pattern.`;
+    body = `${total} form issue${total === 1 ? "" : "s"} on ${ctx.pages.length} scanned page${ctx.pages.length === 1 ? "" : "s"}, ${p1.length} critical, ${p2.length} reliability gaps. Grouped below by pattern.`;
   }
 
   return {
@@ -586,11 +586,11 @@ function buildAgentsPartial(ctx: FullScanContext): Partial<ReadinessReport> {
 
   let agentsIntro: string;
   if (!ctx.robotsReal) {
-    agentsIntro = `robots.txt is missing on ${ctx.domain} — crawl permission is implicit, but ${blockedCount > 0 ? `${blockedCount} agents may still be blocked if rules appear elsewhere.` : "major crawlers can fetch public pages."}`;
+    agentsIntro = `robots.txt is missing on ${ctx.domain}, crawl permission is implicit, but ${blockedCount > 0 ? `${blockedCount} agents may still be blocked if rules appear elsewhere.` : "major crawlers can fetch public pages."}`;
   } else if (blockedCount > 0) {
     agentsIntro = `${blockedCount} of ${agents.length} AI crawlers appear blocked in robots.txt. ${ctx.llmsReal ? "llms.txt is live." : "llms.txt 404."}`;
   } else {
-    agentsIntro = `All ${allowedCount} major AI crawlers are allowed via robots.txt. ${discoveryFound === 0 ? "Discovery stops there — llms.txt, skill files, and MCP cards all 404." : `${discoveryFound} discovery signal${discoveryFound === 1 ? "" : "s"} found beyond robots.txt.`}`;
+    agentsIntro = `All ${allowedCount} major AI crawlers are allowed via robots.txt. ${discoveryFound === 0 ? "Discovery stops there, llms.txt, skill files, and MCP cards all 404." : `${discoveryFound} discovery signal${discoveryFound === 1 ? "" : "s"} found beyond robots.txt.`}`;
   }
 
   return {
@@ -695,7 +695,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-media",
       title: "Product story trapped in images",
-      body: `${scope.total} ${scope.label} images vs ~${ctx.homepageWords || "few"} words — ${scope.missing} missing alt, ${scope.generic} generic. AI reads text, not pictures, so key offers stay invisible until alt and captions carry the same facts.`,
+      body: `${scope.total} ${scope.label} images vs ~${ctx.homepageWords || "few"} words, ${scope.missing} missing alt, ${scope.generic} generic. AI reads text, not pictures, so key offers stay invisible until alt and captions carry the same facts.`,
       bodyTechnical: `${scope.total} images · ${scope.missing} missing alt · ${scope.generic} generic/short alt · ~${usableAltCount(ctx)} usable.`,
     });
   }
@@ -704,7 +704,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-crawl",
       title: "AI crawlers blocked in robots.txt",
-      body: `${blocked.length} major agents (${blocked.slice(0, 3).map((b) => b.agent).join(", ")}${blocked.length > 3 ? "…" : ""}) appear blocked — models may skip ${ctx.company} until Allow rules are added.`,
+      body: `${blocked.length} major agents (${blocked.slice(0, 3).map((b) => b.agent).join(", ")}${blocked.length > 3 ? "…" : ""}) appear blocked, models may skip ${ctx.company} until Allow rules are added.`,
       bodyTechnical: `Blocked: ${blocked.map((b) => b.agent).join(", ")}.`,
     });
   }
@@ -715,8 +715,8 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
       id: "insight-schema",
       title: "No machine-readable business layer",
       body: ctx.jsonLdBlocks === 0
-        ? `Zero JSON-LD on ${ctx.pages.length} scanned pages — search and AI have no explicit markup for ${ctx.company} as a company or service.`
-        : "JSON-LD parse errors or missing brand types — models cannot attach the entity to page content.",
+        ? `Zero JSON-LD on ${ctx.pages.length} scanned pages, search and AI have no explicit markup for ${ctx.company} as a company or service.`
+        : "JSON-LD parse errors or missing brand types, models cannot attach the entity to page content.",
       bodyTechnical: ctx.jsonLdValid
         ? `${ctx.jsonLdBlocks} blocks; types: ${[...ctx.jsonLdTypes].slice(0, 5).join(", ") || "none"}; brand: ${getBrandSchemaType(ctx.jsonLdTypes) ?? "none"}.`
         : `${ctx.jsonLdBlocks} blocks with parse errors.`,
@@ -727,7 +727,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-forms",
       title: "Forms agents cannot complete",
-      body: `${automation.p1Count} critical form issue${automation.p1Count === 1 ? "" : "s"}${ctx.captchaDetected ? " including CAPTCHA" : ""} — unlabeled inputs stop agents and assistive tech from finishing real flows.`,
+      body: `${automation.p1Count} critical form issue${automation.p1Count === 1 ? "" : "s"}${ctx.captchaDetected ? " including CAPTCHA" : ""}, unlabeled inputs stop agents and assistive tech from finishing real flows.`,
       bodyTechnical: `${automation.totalIssues} total · ${automation.p1Count} P1 · ${automation.p2Count} P2 across ${ctx.pages.length} pages.`,
     });
   }
@@ -738,7 +738,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-headings",
       title: "Heading hierarchy blocks extraction",
-      body: `${h1} H1 tags and ${ctx.questionHeadings} question headings — agents cannot tell what the page is about or quote a clean answer.`,
+      body: `${h1} H1 tags and ${ctx.questionHeadings} question headings, agents cannot tell what the page is about or quote a clean answer.`,
       bodyTechnical: `H1 ${h1} / H2 ${ctx.h2Count} / H3 ${ctx.h3Count}; question headings ${ctx.questionHeadings}.`,
     });
   }
@@ -747,7 +747,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-cite",
       title: "Nothing for answer engines to quote",
-      body: `No llms.txt and almost no question-and-answer copy across ${ctx.pages.length} pages — AI can crawl the site and still have no self-contained paragraph to lift.`,
+      body: `No llms.txt and almost no question-and-answer copy across ${ctx.pages.length} pages, AI can crawl the site and still have no self-contained paragraph to lift.`,
       bodyTechnical: "/llms.txt 404; question headings 0.",
     });
   }
@@ -757,7 +757,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-semantics",
       title: "HTML semantics are thin",
-      body: `Semantic ratio ~${pct(semanticRatio(ctx))} — heavy div/span usage makes it hard for agents to map sections, navigation, and content.`,
+      body: `Semantic ratio ~${pct(semanticRatio(ctx))}, heavy div/span usage makes it hard for agents to map sections, navigation, and content.`,
       bodyTechnical: `Landmarks ${ctx.semanticLandmarks}; div ${ctx.semanticDivs}; span ${ctx.semanticSpans}.`,
     });
   }
@@ -766,7 +766,7 @@ function buildInsights(ctx: FullScanContext, categories: ReadinessCategory[]): R
     insights.push({
       id: "insight-robots",
       title: "Missing robots.txt",
-      body: `No robots.txt at ${ctx.domain} — crawlers lack explicit rules and sitemap discovery is weaker.`,
+      body: `No robots.txt at ${ctx.domain}, crawlers lack explicit rules and sitemap discovery is weaker.`,
     });
   }
 
@@ -805,7 +805,7 @@ function buildQuickWins(ctx: FullScanContext, categories: ReadinessCategory[]): 
       title: "Fix missing image alt text",
       impact: "High",
       effort: "Medium",
-      body: `Add descriptive alt to ${scope.missing} ${scope.label} images — ${scope.generic} more still use generic labels.`,
+      body: `Add descriptive alt to ${scope.missing} ${scope.label} images, ${scope.generic} more still use generic labels.`,
       bodyTechnical: `${scope.total} images · ${scope.missing} missing · ${scope.generic} generic.`,
     });
   }
@@ -900,7 +900,7 @@ function buildSynthesis(ctx: FullScanContext): Partial<ReadinessReport> {
   const citeType = getCiteSchemaType(ctx.jsonLdTypes);
 
   const parts: string[] = [
-    `Across ${ctx.pages.length} page${ctx.pages.length === 1 ? "" : "s"}, ${ctx.company} scores ${overallScore}/100 — ${band.label.toLowerCase()}.`,
+    `Across ${ctx.pages.length} page${ctx.pages.length === 1 ? "" : "s"}, ${ctx.company} scores ${overallScore}/100, ${band.label.toLowerCase()}.`,
   ];
 
   if (scope.total > 0) {

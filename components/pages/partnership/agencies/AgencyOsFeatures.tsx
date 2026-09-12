@@ -1,4 +1,4 @@
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -18,15 +18,7 @@ function CheckIcon() {
       className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border border-zinc-900"
       aria-hidden
     >
-      <svg viewBox="0 0 12 12" className="size-3" fill="none">
-        <path
-          d="M2.5 6.2 4.8 8.5 9.5 3.5"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Check className="size-3" strokeWidth={1.6} />
     </span>
   );
 }
@@ -149,7 +141,7 @@ export default function AgencyOsFeatures() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-tight text-zinc-700">
             We help SEO and marketing agencies win new clients, grow existing
-            accounts, and retain revenue — by making AI search a service you can
+            accounts, and retain revenue, by making AI search a service you can
             sell, deliver, and prove.
           </p>
         </div>
@@ -160,7 +152,7 @@ export default function AgencyOsFeatures() {
             copy={
               <FeatureCopy
                 title="Show every client where they stand in AI search"
-                description="Track AI visibility across all your client brands from one dashboard. See who’s cited, who’s missing, and what to fix — by client, by market, by engine."
+                description="Track AI visibility across all your client brands from one dashboard. See who’s cited, who’s missing, and what to fix, by client, by market, by engine."
                 items={visibilityItems}
               />
             }

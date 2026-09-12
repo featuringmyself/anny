@@ -15,7 +15,7 @@ export const spurgeAiVisibilityReport: VisibilityReport = {
   overallScore: 30,
   scoreLabel: "Poor",
   summary:
-    "On general business-laptop category prompts (India-wide, Bangalore, B2B startups, and MacBook/remote/ onboarding use-cases), ChatGPT does not shortlist SPURGE Rentals. It does show up on more operational + finance-aware prompts: “renewed laptop rental for corporate fleet India”, “laptop rental company with reconciliation ready rental logs India” (ranked #1), and “doorstep delivery and pickup for laptop rentals India”. Brand trust checks are mixed but directional: the model treats SPURGE as a real entity yet still cautions about limited independent proof before paying—so the sprint should convert operational citations into trust-safe positioning.",
+    "On general business-laptop category prompts (India-wide, Bangalore, B2B startups, and MacBook/remote/ onboarding use-cases), ChatGPT does not shortlist SPURGE Rentals. It does show up on more operational + finance-aware prompts: “renewed laptop rental for corporate fleet India”, “laptop rental company with reconciliation ready rental logs India” (ranked #1), and “doorstep delivery and pickup for laptop rentals India”. Brand trust checks are mixed but directional: the model treats SPURGE as a real entity yet still cautions about limited independent proof before paying-so the sprint should convert operational citations into trust-safe positioning.",
   stats: [
     { label: "ICP", value: "IT admin & HR / Admin" },
     { label: "Geo baseline", value: "Bengaluru (multi-city list)" },
@@ -61,7 +61,7 @@ export const spurgeAiVisibilityReport: VisibilityReport = {
       query: "is spurge.rentals reliable",
       title: "Real operator, still cautions before expensive rental pay",
       body:
-        "The model says SPURGE Rentals appears to be a real operating business, but recommends caution before paying—especially for an expensive laptop rental. It points to a physical Bengaluru office address, LinkedIn presence, and detailed rental terms (including upfront payment and deposit/PDC cheque language), while also noting that the strongest searchable info comes mainly from SPURGE’s own website and LinkedIn rather than a large body of independent customer reviews.",
+        "The model says SPURGE Rentals appears to be a real operating business, but recommends caution before paying-especially for an expensive laptop rental. It points to a physical Bengaluru office address, LinkedIn presence, and detailed rental terms (including upfront payment and deposit/PDC cheque language), while also noting that the strongest searchable info comes mainly from SPURGE’s own website and LinkedIn rather than a large body of independent customer reviews.",
       outcome: "Trust partial · cautious before payment",
       screenshot: {
         src: `${SHOT}/02-is-spurge-rentals-reliable.png`,

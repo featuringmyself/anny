@@ -4,7 +4,7 @@ import DocsHero from "@/components/pages/product/DocsHero";
 import DocsIndex from "@/components/pages/product/DocsIndex";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Docs — Anny";
+const title = "Docs · Anny";
 const description =
   "Anny documentation: quickstart, brand setup, prompt sets, model coverage, mentions, sources, and workspace guides.";
 

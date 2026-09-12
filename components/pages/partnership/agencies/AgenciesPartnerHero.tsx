@@ -17,7 +17,7 @@ export default function AgenciesPartnerHero() {
       </h1>
       <p className="mx-auto mt-4 max-w-3xl text-center text-base text-pretty text-zinc-500">
         Anny gives marketing agencies the tools to run AI visibility audits,
-        deliver monthly GEO action plans, and prove ROI to clients — across
+        deliver monthly GEO action plans, and prove ROI to clients, across
         every major AI engine.
       </p>
       <div className="mt-6 flex justify-center">

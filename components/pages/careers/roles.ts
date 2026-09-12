@@ -20,7 +20,7 @@ export const roles: CareerRole[] = [
     type: "Full-time",
     team: "Engineering",
     summary:
-      "Own the product end to end — from prompt evaluation pipelines to the dashboard marketing teams live in.",
+      "Own the product end to end, from prompt evaluation pipelines to the dashboard marketing teams live in.",
     about:
       "You'll ship features that make AI search measurable: tracking mentions across ChatGPT, Gemini, and AI Mode, surfacing sources, and turning noisy model output into clear competitor ladders. Small team, high ownership, production code from week one.",
     responsibilities: [
@@ -42,9 +42,9 @@ export const roles: CareerRole[] = [
     type: "Full-time",
     team: "Design",
     summary:
-      "Shape how marketers see AI visibility — dashboards, reports, and workflows that feel inevitable.",
+      "Shape how marketers see AI visibility, dashboards, reports, and workflows that feel inevitable.",
     about:
-      "Anny turns opaque model behavior into decisions. You'll design the surfaces that make mention share, answer position, and citation gaps obvious — without looking like a BI tool from 2014.",
+      "Anny turns opaque model behavior into decisions. You'll design the surfaces that make mention share, answer position, and citation gaps obvious, without looking like a BI tool from 2014.",
     responsibilities: [
       "Own product design from exploration through polished UI",
       "Prototype report and dashboard patterns for multi-engine data",
@@ -64,7 +64,7 @@ export const roles: CareerRole[] = [
     type: "Full-time",
     team: "Go-to-market",
     summary:
-      "Help brands discover Anny the same way buyers discover brands in AI search — with evidence, not slogans.",
+      "Help brands discover Anny the same way buyers discover brands in AI search, with evidence, not slogans.",
     about:
       "You'll run experiments across content, partnerships, and paid that turn GEO curiosity into trials. You understand SEO and modern AI search well enough to speak the customer's language.",
     responsibilities: [
@@ -86,7 +86,7 @@ export const roles: CareerRole[] = [
     type: "Full-time",
     team: "Customer",
     summary:
-      "Make sure every customer turns visibility data into a weekly action backlog — not another ignored dashboard.",
+      "Make sure every customer turns visibility data into a weekly action backlog, not another ignored dashboard.",
     about:
       "You'll be the bridge between Anny's product and marketing teams who need to win mentions. Onboarding, QBRs, and playbooks that turn reports into outreach, content, and competitive moves.",
     responsibilities: [
@@ -108,13 +108,13 @@ export const roles: CareerRole[] = [
     type: "Full-time / Contract",
     team: "General",
     summary:
-      "Don't see a listed role? Tell us what you'd build at Anny — we hire for judgment and taste.",
+      "Don't see a listed role? Tell us what you'd build at Anny, we hire for judgment and taste.",
     about:
       "We're a small team. If you have a sharp take on AI search, analytics, design, or GTM and want to work on Anny, send an open application. We'll route it to the right person.",
     responsibilities: [
       "Describe the problem you'd own in your first 90 days",
       "Share work that shows how you think, not only where you've worked",
-      "Be specific about why Anny — and AI search — interests you",
+      "Be specific about why Anny, and AI search, interests you",
     ],
     niceToHaves: [
       "A link to something you shipped",

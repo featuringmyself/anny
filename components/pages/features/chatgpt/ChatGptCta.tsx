@@ -7,7 +7,7 @@ export default function ChatGptCta() {
         See how your brand shows up in ChatGPT
       </h2>
       <p className="mt-4 max-w-lg text-sm leading-relaxed text-zinc-400 text-balance">
-        Track visibility, sentiment, and citations — then act on ranked
+        Track visibility, sentiment, and citations, then act on ranked
         recommendations that improve how ChatGPT talks about you.
       </p>
       <div className="mt-8">

@@ -5,7 +5,7 @@ const notes = [
   },
   {
     title: "What you leave with",
-    body: "A 0–100 score and copy-paste snippets — robots.txt allow rules, JSON-LD, a meta description, or a sitemap pointer — not just a pass/fail list.",
+    body: "A 0–100 score and copy-paste snippets, robots.txt allow rules, JSON-LD, a meta description, or a sitemap pointer, not just a pass/fail list.",
   },
   {
     title: "What it doesn’t",
@@ -22,7 +22,7 @@ export function AiReadinessExplain() {
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
           Most “AI ready” checklists fail you for missing MCP cards. This one
-          scores what actually gates retrieval — then hands you the file.
+          scores what actually gates retrieval, then hands you the file.
         </p>
       </div>
       <ul className="grid md:grid-cols-3">

@@ -88,7 +88,7 @@ function legacyToArticle(post: BlogPost): BlogPostArticle {
       .slice(0, 3)
       .map(legacyToCard),
     seo: {
-      title: `${post.title} — Anny`,
+      title: `${post.title} · Anny`,
       description: post.dek,
       noIndex: false,
     },

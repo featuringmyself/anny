@@ -12,7 +12,7 @@ export default function CareersHero() {
       </h1>
       <p className="mt-4 text-center text-lg text-balance text-zinc-500">
         We&apos;re building the analytics layer for generative engine
-        optimization — small team, sharp product, remote-first.
+        optimization, small team, sharp product, remote-first.
       </p>
       <div className="mt-6 flex justify-center">
         <Button className="p-4" size="lg" render={<a href="#open-roles" />}>

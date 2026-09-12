@@ -262,7 +262,7 @@ export function AiReadinessReportExperience({
 
     source.onerror = () => {
       if (source.readyState === EventSource.CLOSED) return;
-      setScanError("Connection lost — tap Retry to continue.");
+      setScanError("Connection lost, tap Retry to continue.");
       setScanStatus("failed");
       source.close();
       eventSourceRef.current = null;

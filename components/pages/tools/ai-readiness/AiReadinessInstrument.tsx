@@ -15,9 +15,9 @@ type AiReadinessInstrumentProps = {
 export function AiReadinessInstrumentIdle() {
   return (
     <InstrumentShell>
-      <GaugeBlock value={null} label="—" caption="Paste a domain for fixes" />
+      <GaugeBlock value={null} label="-" caption="Paste a domain for fixes" />
       <CategoryBars categories={idleCategories()} />
-      <InstrumentMeta domain="—" passed={null} />
+      <InstrumentMeta domain="-" passed={null} />
     </InstrumentShell>
   );
 }
@@ -28,7 +28,7 @@ export function AiReadinessInstrumentPending({ domain }: { domain: string }) {
       <GaugeBlock
         value={null}
         pending
-        label="—"
+        label="-"
         caption="Reading the site…"
       />
       <CategoryBars categories={idleCategories()} pending />
@@ -192,7 +192,7 @@ function CategoryBars({
                   pending ? "text-zinc-600" : "text-zinc-300"
                 }`}
               >
-                {pending ? "—" : `${category.score}/${category.max}`}
+                {pending ? "-" : `${category.score}/${category.max}`}
               </p>
             </div>
             <div className="mt-2 h-1 overflow-hidden bg-white/10">
@@ -237,7 +237,7 @@ function InstrumentMeta({
         </dt>
         <dd className="mt-1 text-sm font-medium tabular-nums">
           {passed == null ? (
-            <span className="text-zinc-600">—</span>
+            <span className="text-zinc-600">-</span>
           ) : (
             passed
           )}

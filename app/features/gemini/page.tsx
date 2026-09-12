@@ -4,9 +4,9 @@ import GeminiCitationBoard from "@/components/pages/features/gemini/GeminiCitati
 import GeminiSourceChips from "@/components/pages/features/gemini/GeminiSourceChips";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Gemini Citation Tracking — Anny";
+const title = "Gemini Citation Tracking · Anny";
 const description =
-  "Track multi-turn Gemini answers, inline citations, and the sources that mention — or skip — your brand.";
+  "Track multi-turn Gemini answers, inline citations, and the sources that mention or skip your brand.";
 
 export const metadata = pageMetadata({
   path: "/features/gemini",

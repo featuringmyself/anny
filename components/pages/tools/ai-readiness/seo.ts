@@ -26,7 +26,7 @@ export const aiReadinessFaqs = [
   {
     question: "Does missing llms.txt tank the score?",
     answer:
-      "No. llms.txt and skill files are optional extras. They help coding agents. They are not a proven lever for ChatGPT or Perplexity rankings — we do not treat them as failures.",
+      "No. llms.txt and skill files are optional extras. They help coding agents. They are not a proven lever for ChatGPT or Perplexity rankings, we do not treat them as failures.",
   },
   {
     question: "What should I do with the snippets?",
@@ -41,7 +41,7 @@ export const aiReadinessFaqs = [
   {
     question: "Is the AI readiness checker free?",
     answer:
-      "Yes. The quick scan is free — no account or credit card. The full dossier unlocks with your email on-site.",
+      "Yes. The quick scan is free, no account or credit card. The full dossier unlocks with your email on-site.",
   },
 ] as const;
 
@@ -52,7 +52,7 @@ export const aiReadinessHowTo = {
   steps: [
     {
       name: "Enter a domain",
-      text: "Paste something like example.com. A full URL is fine — we use the host.",
+      text: "Paste something like example.com. A full URL is fine, we use the host.",
     },
     {
       name: "Read the three questions",
@@ -60,7 +60,7 @@ export const aiReadinessHowTo = {
     },
     {
       name: "Copy the fixes",
-      text: "Each gap includes a snippet — robots.txt rules, Organization JSON-LD, or a sitemap pointer.",
+      text: "Each gap includes a snippet, robots.txt rules, Organization JSON-LD, or a sitemap pointer.",
     },
   ],
 } as const;

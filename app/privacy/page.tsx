@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <LegalProse
         title="Privacy Policy"
         lastUpdated="July 26, 2026"
-        intro='This Privacy Policy is issued by Anny (“Anny”, “we”, or “us”). For privacy questions, email privacy@dodoxhq.com. Formal notices should use the address on our Imprint page. We process data only as needed to provide and improve Anny, in a privacy-friendly way and in compliance with the EU General Data Protection Regulation (“GDPR”). This policy covers website visits, signup and onboarding, product use, communications, payments, and internal operations — including purposes, legal bases (Art. 6 GDPR), processors (Art. 28 GDPR), international transfers (Arts. 44 ff. GDPR), and your rights (Arts. 12–22 GDPR).'
+        intro='This Privacy Policy is issued by Anny (“Anny”, “we”, or “us”). For privacy questions, email privacy@dodoxhq.com. Formal notices should use the address on our Imprint page. We process data only as needed to provide and improve Anny, in a privacy-friendly way and in compliance with the EU General Data Protection Regulation (“GDPR”). This policy covers website visits, signup and onboarding, product use, communications, payments, and internal operations, including purposes, legal bases (Art. 6 GDPR), processors (Art. 28 GDPR), international transfers (Arts. 44 ff. GDPR), and your rights (Arts. 12–22 GDPR).'
         sections={[
           {
             heading: "(1) When you visit our website",
@@ -36,10 +36,10 @@ export default function PrivacyPage() {
           {
             heading: "(2) When you sign up or onboard",
             body: [
-              "In brief: When you register for an Anny account or join a waitlist or partner program (e.g. Agency & Creator Partner Program), we collect what we need to create and manage your account — typically email and an organization or team name. Authentication and account storage may use Firebase (Google Cloud). We keep registration data secure and only use it to provide the service.",
+              "In brief: When you register for an Anny account or join a waitlist or partner program (e.g. Agency & Creator Partner Program), we collect what we need to create and manage your account, typically email and an organization or team name. Authentication and account storage may use Firebase (Google Cloud). We keep registration data secure and only use it to provide the service.",
               "Purpose: To create your account, authenticate you, set up your workspace, and manage waitlists.",
               "Data collected: Email (verified via login link or confirmation), name and/or organization name, an internal user ID, and technical data such as IP address and device/browser info used to deliver login verification and detect suspicious access.",
-              "Legal basis: Contract (Art. 6(1)(b) GDPR) — we need this data to provide the account and platform access you request.",
+              "Legal basis: Contract (Art. 6(1)(b) GDPR), we need this data to provide the account and platform access you request.",
               "Processors: Firebase Auth and Google Cloud Firestore (Google Ireland Ltd.) for authentication and account storage; DocuSign where contracts include names. Some processors may transfer data to third countries (see section 7).",
               "Storage: We retain registration data while your account is active. Incomplete registrations or inactive waitlist entries may be deleted after a reasonable period. After account deletion, limited data may remain briefly in backups or logs, or as required by law.",
             ],
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           {
             heading: "(5) When you make a payment",
             body: [
-              "In brief: For paid plans we process billing information. We do not store full card numbers ourselves — Stripe is our payment processor.",
+              "In brief: For paid plans we process billing information. We do not store full card numbers ourselves, Stripe is our payment processor.",
               "Purpose: To charge for the service, manage billing, and keep transaction histories for accounting and tax compliance.",
               "Data collected: Payment details entered into Stripe (card number, expiry, CVC, billing name/address), optional VAT/tax IDs, and Stripe tokens or truncated card references (e.g. last four digits) for invoices and renewals.",
               "Legal basis: Contract (Art. 6(1)(b) GDPR) for payment processing; legal obligation (Art. 6(1)(c) GDPR) for retaining financial records (often up to 10 years under applicable tax law).",
@@ -79,11 +79,11 @@ export default function PrivacyPage() {
           {
             heading: "(6) Internal operations and recruiting",
             body: [
-              "In brief: We process personal data internally for administration — team communications, document storage, contracts, and job applications — primarily via Google Workspace and related tools.",
+              "In brief: We process personal data internally for administration, team communications, document storage, contracts, and job applications, primarily via Google Workspace and related tools.",
               "Purpose: Service delivery coordination, records, collaboration, and recruitment (applications, interviews, evaluation, and documentation).",
               "Data collected: Emails and chats with us; meeting content; customer/lead lists and contracts; recruitment materials (CV, cover letter, interview notes); and internal support notes.",
               "Legal basis: Contract (Art. 6(1)(b) GDPR) and/or legitimate interests (Art. 6(1)(f) GDPR).",
-              "Processors: Google Workspace, document collaboration tools (e.g. Microsoft SharePoint), applicant tracking (e.g. Ashby), and Slack for internal chat — each under processing agreements. See section 7 for transfers.",
+              "Processors: Google Workspace, document collaboration tools (e.g. Microsoft SharePoint), applicant tracking (e.g. Ashby), and Slack for internal chat, each under processing agreements. See section 7 for transfers.",
               "Storage: Kept only as long as needed. Contracts and tax-relevant records may be retained for statutory periods (often up to 10 years). Unsuccessful job applications are typically deleted within 6 months after the process ends unless you consent to longer retention for future roles.",
             ],
           },
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
               "Automated decisions: We do not use personal data for automated decision-making (including profiling) with legal or similarly significant effects (Art. 22 GDPR).",
               "Children’s data: Anny is not directed to children under 16. We do not knowingly collect their data. If we learn we have, we will delete it.",
               "Changes: We may update this policy to reflect product or legal changes. Material changes will be announced by email or a prominent notice. The “Last updated” date always reflects the latest revision. Continued use after a change means you accept the revised policy.",
-              "Contact: Questions about this Privacy Policy or how Anny handles data — privacy@dodoxhq.com.",
+              "Contact: Questions about this Privacy Policy or how Anny handles data, privacy@dodoxhq.com.",
             ],
           },
         ]}

@@ -27,7 +27,7 @@ const features: Feature[] = [
   {
     title: "Multi-geo and multi-language coverage",
     description:
-      "Serving clients in multiple geos? Track AI search performance by country and language so you can coordinate content, PR, and localisation by market — not guesswork.",
+      "Serving clients in multiple geos? Track AI search performance by country and language so you can coordinate content, PR, and localisation by market, not guesswork.",
     image: multiGeoImage,
     alt: "Grid of eight country flags for multi-geo coverage: United States, India, Spain, United Kingdom, Canada, Germany, France, and Brazil",
     caption: "Supported markets across major geos",

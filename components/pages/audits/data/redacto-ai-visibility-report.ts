@@ -4,7 +4,7 @@ const SHOT = "/audits/redacto";
 
 /**
  * Private outreach report for Redacto. ChatGPT snapshot, September 2026.
- * Sell: 3/10 baseline with one DPIA shortlist win — Consent, DSAR, bank/fintech,
+ * Sell: 3/10 baseline with one DPIA shortlist win, Consent, DSAR, bank/fintech,
  * and India-first DPDPA shelves still route to Privy, OneTrust, Securiti.
  */
 export const redactoAiVisibilityReport: VisibilityReport = {
@@ -26,7 +26,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
     "Privacy and compliance buyers are likely to encounter established global platforms first on generic evaluation queries, while brand-specific trust queries create a separate credibility gate.",
   queriesHeadline: "Prompt audit · 10 queries",
   queriesIntro:
-    "Buy-intent prompts for Consent, DSAR, DPIA, vendor risk, bank/fintech privacy, India-first DPDPA, healthcare, audits, and pricing. Redacto is cited on 3 of 10 — strongest on DPIA and healthcare; absent on most Consent, DSAR, bank, fintech, and India-first shelves.",
+    "Buy-intent prompts for Consent, DSAR, DPIA, vendor risk, bank/fintech privacy, India-first DPDPA, healthcare, audits, and pricing. Redacto is cited on 3 of 10, strongest on DPIA and healthcare; absent on most Consent, DSAR, bank, fintech, and India-first shelves.",
   modelScores: [
     { model: "chatgpt", visibility: 30, cited: 3, total: 10, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -119,7 +119,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
       id: "q2",
       query: "best DSAR automation software India",
       intent:
-        "DSAR automation shelf — who gets the top-three evaluation for Indian buyers",
+        "DSAR automation shelf, who gets the top-three evaluation for Indian buyers",
       severity: "critical",
       tag: "Competitor Conquest",
       citedBrands: [
@@ -184,7 +184,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
       id: "q4",
       query: "best vendor risk management software India",
       intent:
-        "Vendor governance shelf — India-focused privacy workflows vs global GRC shortlists",
+        "Vendor governance shelf, India-focused privacy workflows vs global GRC shortlists",
       severity: "high",
       tag: "Competitor Conquest",
       citedBrands: [
@@ -208,7 +208,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: true,
           excerpt:
-            "Redacto / Indian-focused platforms — DPDPA-focused vendor governance — ★★★★★; worth evaluating if India-specific privacy workflows are central. The RFP shortlist instead names OneTrust, MetricStream, ServiceNow, UpGuard and Vanta.",
+            "Redacto / Indian-focused platforms, DPDPA-focused vendor governance, ★★★★★; worth evaluating if India-specific privacy workflows are central. The RFP shortlist instead names OneTrust, MetricStream, ServiceNow, UpGuard and Vanta.",
         },
       ],
     },
@@ -334,7 +334,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: true,
           excerpt:
-            "Redacto — healthcare companies wanting broader privacy automation; consent, DPIA, vendor risk and data discovery; specifically positioned for Indian healthcare. Mid-sized hospital / health-tech: Sammati or Redacto.",
+            "Redacto, healthcare companies wanting broader privacy automation; consent, DPIA, vendor risk and data discovery; specifically positioned for Indian healthcare. Mid-sized hospital / health-tech: Sammati or Redacto.",
         },
       ],
     },
@@ -342,7 +342,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
       id: "q9",
       query: "best privacy platform for DPDPA audits",
       intent:
-        "Audit-readiness shelf — three-vendor shortlist for Indian DPDPA preparation",
+        "Audit-readiness shelf, three-vendor shortlist for Indian DPDPA preparation",
       severity: "high",
       tag: "Competitor Conquest",
       citedBrands: ["OneTrust", "Privy by IDfy", "Securiti"],
@@ -401,7 +401,7 @@ export const redactoAiVisibilityReport: VisibilityReport = {
     duration: "90 days",
     headline:
       "From this 3/10 baseline to cited on the enrolment prompts named below",
-    body: "We work the buy-intent set in this audit — DPDPA consent, DSAR automation, bank and fintech privacy, India-first DPDPA, audit readiness, and pricing — while protecting the DPIA and healthcare citations already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
+    body: "We work the buy-intent set in this audit, DPDPA consent, DSAR automation, bank and fintech privacy, India-first DPDPA, audit readiness, and pricing, while protecting the DPIA and healthcare citations already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
     outcomes: [
       "Get named on DPDPA consent-management prompts that today list OneTrust, Securiti, Privy by IDfy and Consentin by Leegality",
       "Get named on DSAR automation prompts that today list Neostra, Privy by IDfy and Consentin by Leegality",
@@ -413,5 +413,5 @@ export const redactoAiVisibilityReport: VisibilityReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "Ready to get Redacto on those shortlists?",
   ctaBody:
-    "Book a short call. We map the 90-day plan from this audit: Consent, DSAR, bank/fintech, and India-first DPDPA shelves — plus the brand-identity confusion on “redacto review” — with weekly screenshot proof and a dashboard.",
+    "Book a short call. We map the 90-day plan from this audit: Consent, DSAR, bank/fintech, and India-first DPDPA shelves, plus the brand-identity confusion on “redacto review”, with weekly screenshot proof and a dashboard.",
 };

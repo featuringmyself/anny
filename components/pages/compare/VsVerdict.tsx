@@ -18,7 +18,7 @@ export default function VsVerdict({
           When to pick Anny
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Honest framing — use the right tool for the job.
+          Honest framing, use the right tool for the job.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2">

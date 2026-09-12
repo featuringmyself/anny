@@ -1,5 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
@@ -203,21 +204,12 @@ function Cell({ value }: { value: CellValue }) {
           className="inline-flex size-5 items-center justify-center text-zinc-800"
           aria-label="Included"
         >
-          <svg viewBox="0 0 16 16" className="size-4" fill="none" aria-hidden>
-            <path
-              d="M3.5 8.5 6.5 11.5 12.5 4.5"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Check className="size-4" strokeWidth={1.75} aria-hidden />
         </span>
       );
     }
     return (
-      <span className="text-sm text-zinc-300" aria-label="Not included">
-        —
+      <span className="text-sm text-zinc-300" aria-label="Not included">-
       </span>
     );
   }
@@ -239,7 +231,7 @@ export default function PricingFeatures() {
       <div className="border-b px-6 py-10 md:px-12">
         <h2 className="text-2xl font-medium tracking-tight">Compare brand plans</h2>
         <p className="mt-2 max-w-md text-sm text-zinc-500">
-          Agency packages are quoted separately — see the agency section above for what&apos;s
+          Agency packages are quoted separately. See the agency section above for what&apos;s
           included.
         </p>
       </div>

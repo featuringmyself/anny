@@ -5,9 +5,9 @@ import AiInstructionsBlock from "@/components/pages/ai-instructions/AiInstructio
 import AiInstructionsWhy from "@/components/pages/ai-instructions/AiInstructionsWhy";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "AI Instructions — Anny";
+const title = "AI Instructions · Anny";
 const description =
-  "Pasteable LLM instructions so AI assistants describe Anny accurately — plus why structured brand copy matters for GEO.";
+  "Pasteable LLM instructions so AI assistants describe Anny accurately, plus why structured brand copy matters for GEO.";
 
 export const metadata = pageMetadata({
   path: "/ai-instructions",

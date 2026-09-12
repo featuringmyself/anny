@@ -44,7 +44,7 @@ export async function submitRegister(
     };
   }
 
-  // Honeypot filled — pretend success without writing.
+  // Honeypot filled, pretend success without writing.
   if (validated.isBot) {
     return {
       status: "success",

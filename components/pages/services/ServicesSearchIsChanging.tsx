@@ -8,7 +8,7 @@ const SOURCE = "#225864";
 
 const quotes = [
   {
-    text: "Google users who encounter an AI summary clicked a traditional result just 8% of the time — nearly half the rate without one.",
+    text: "Google users who encounter an AI summary clicked a traditional result just 8% of the time, nearly half the rate without one.",
     source: "Pew Research",
     date: "Jul 22, 2025",
     logo: "/services/press/pew.png",
@@ -20,25 +20,25 @@ const quotes = [
     logo: "/services/press/gartner.png",
   },
   {
-    text: "Google search is \"no longer a meaningful driver\" of traffic — Condé Nast's CEO called AI summaries \"another sort of death blow.\"",
+    text: "Google search is \"no longer a meaningful driver\" of traffic, Condé Nast's CEO called AI summaries \"another sort of death blow.\"",
     source: "Financial Times",
     date: "Feb 27, 2026",
     logo: "/services/press/ft.png",
   },
   {
-    text: "AI Overviews correlate with a 58% reduction in click-through rates for top-ranking pages — nearly double the hit measured a year earlier.",
+    text: "AI Overviews correlate with a 58% reduction in click-through rates for top-ranking pages, nearly double the hit measured a year earlier.",
     source: "Ahrefs",
     date: "Feb 2026",
     logo: "/services/press/ahrefs.png",
   },
   {
-    text: "Travel publishers told Bloomberg traffic fell by half after AI Overviews launched — then cratered as much as 90%.",
+    text: "Travel publishers told Bloomberg traffic fell by half after AI Overviews launched, then cratered as much as 90%.",
     source: "Bloomberg",
     date: "Apr 07, 2025",
     logo: "/services/press/bloomberg.png",
   },
   {
-    text: "AI chatbots drive 95.7% less traffic to publishers than traditional Google search — the promised upside hasn't materialized.",
+    text: "AI chatbots drive 95.7% less traffic to publishers than traditional Google search, the promised upside hasn't materialized.",
     source: "Digiday",
     date: "Dec 2025",
     logo: "/services/press/digiday.jpg",

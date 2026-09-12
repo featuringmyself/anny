@@ -12,7 +12,7 @@ export default function PricingHero() {
       </h1>
       <p className="mt-4 max-w-lg text-lg text-zinc-500 text-balance">
         Track how ChatGPT, Gemini, and AI Mode mention your brand. Agencies get heavily discounted
-        multi-client pricing — talk to sales for a quote.
+        multi-client pricing, talk to sales for a quote.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         <Button size="lg" className="px-5" render={<Link href="#plans" />}>

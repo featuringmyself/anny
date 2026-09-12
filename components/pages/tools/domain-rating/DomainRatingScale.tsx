@@ -9,7 +9,7 @@ export function DomainRatingScale() {
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
           Domain Rating is 0 to 100. Higher means a stronger backlink profile.
-          Use this as a quick read — then compare with sites in the same space.
+          Use this as a quick read, then compare with sites in the same space.
         </p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-5">

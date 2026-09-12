@@ -16,9 +16,9 @@ export const gethrAiVisibilityReport: VisibilityReport = {
   scoreLabel: "Critical",
   private: true,
   tagline:
-    "Premium managed workspaces for enterprises and GCCs — design, build, and operate end to end.",
+    "Premium managed workspaces for enterprises and GCCs, design, build, and operate end to end.",
   summary:
-    "ChatGPT already answers for managed offices, GCC workspaces, and enterprise fit-outs in Bangalore. Demand is being routed now. On 12 of 12 discovery prompts in this snapshot — category shelves, HSR and Richmond Road home turf, 200-seat RFPs, WeWork/Awfis conquest, turnkey GCC, even “Scapia-like startups” — 2gethr is never shortlisted. Table Space, WeWork India, Smartworks, IndiQube, Awfis, GoodWorks, BHIVE, and Clayworks take those answers. Ask “together workspaces Bangalore” and the model does not find you. Ask by the correct brand and it will describe the 75-day / zero-CapEx pitch — then still leave you off every competitive shelf above. This ChatGPT snapshot is the baseline. A 90-day sprint gets 2gethr cited on the GCC and managed-office prompts that already create tours, then expands across Perplexity, Google AI Overview, Gemini, and Claude.",
+    "ChatGPT already answers for managed offices, GCC workspaces, and enterprise fit-outs in Bangalore. Demand is being routed now. On 12 of 12 discovery prompts in this snapshot, category shelves, HSR and Richmond Road home turf, 200-seat RFPs, WeWork/Awfis conquest, turnkey GCC, even “Scapia-like startups”, 2gethr is never shortlisted. Table Space, WeWork India, Smartworks, IndiQube, Awfis, GoodWorks, BHIVE, and Clayworks take those answers. Ask “together workspaces Bangalore” and the model does not find you. Ask by the correct brand and it will describe the 75-day / zero-CapEx pitch, then still leave you off every competitive shelf above. This ChatGPT snapshot is the baseline. A 90-day sprint gets 2gethr cited on the GCC and managed-office prompts that already create tours, then expands across Perplexity, Google AI Overview, Gemini, and Claude.",
   stats: [
     { label: "Sq ft designed", value: "8M+" },
     { label: "Members", value: "11.5K" },
@@ -26,12 +26,12 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     { label: "Centers", value: "CBD · ORR · HSR" },
   ],
   brandCrisisHeadline:
-    "Wrong name finds nothing. Right name describes you — then never shortlists you.",
+    "Wrong name finds nothing. Right name describes you, then never shortlists you.",
   brandCrisisDek:
     "Phonetic “together workspaces” fails identity. Branded diligence repeats your USP. Neither puts 2gethr on the shelves buyers actually ask for.",
   queriesHeadline: "Prompt audit · 12 queries",
   queriesIntro:
-    "Buyer prompts already routing managed-office and GCC demand in Bangalore (and Hyderabad). Zero of twelve cite 2gethr. Table Space, WeWork, Smartworks, IndiQube, and peers take the shortlists — including on HSR and Richmond Road, where 2gethr@HSR and 2gethr@CBD should compete.",
+    "Buyer prompts already routing managed-office and GCC demand in Bangalore (and Hyderabad). Zero of twelve cite 2gethr. Table Space, WeWork, Smartworks, IndiQube, and peers take the shortlists, including on HSR and Richmond Road, where 2gethr@HSR and 2gethr@CBD should compete.",
   modelScores: [
     { model: "chatgpt", visibility: 0, cited: 0, total: 12, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -68,7 +68,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
       id: "crisis-branded",
       query: "should my company take a managed office with 2gethr",
       title: "Known on brand · still absent from every shortlist above",
-      body: "Asked by name, ChatGPT repeats the 75 working-day / zero-CapEx managed-office story and gives a careful yes-if / caution-if frame, citing third-party seat pricing around ₹12k–₹18k+. That is diligence after the shortlist — and on every discovery prompt in this audit, 2gethr never made the shortlist.",
+      body: "Asked by name, ChatGPT repeats the 75 working-day / zero-CapEx managed-office story and gives a careful yes-if / caution-if frame, citing third-party seat pricing around ₹12k–₹18k+. That is diligence after the shortlist, and on every discovery prompt in this audit, 2gethr never made the shortlist.",
       outcome: "Branded cite · discovery shelves empty",
       screenshot: {
         src: `${SHOT}/crisis-should-my-company-take-managed-office-2gethr.png`,
@@ -81,7 +81,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q1",
       query: "best managed office providers Bangalore",
-      intent: "Category shelf — first shortlist enterprise buyers build",
+      intent: "Category shelf, first shortlist enterprise buyers build",
       severity: "critical",
       tag: "Category miss",
       citedBrands: [
@@ -114,7 +114,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q2",
       query: "best office space providers for GCCs in Bangalore",
-      intent: "Core wedge — GCC workspace shortlist in Bengaluru",
+      intent: "Core wedge, GCC workspace shortlist in Bengaluru",
       severity: "critical",
       tag: "GCC miss",
       citedBrands: [
@@ -203,7 +203,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q5",
       query: "managed office for 200 employees Bangalore",
-      intent: "High-intent seat-count RFP — mid-enterprise deal size",
+      intent: "High-intent seat-count RFP, mid-enterprise deal size",
       severity: "critical",
       tag: "200 seats",
       citedBrands: [
@@ -231,7 +231,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q6",
       query: "managed offices HSR Layout Bangalore",
-      intent: "Home turf — 2gethr@HSR should compete here",
+      intent: "Home turf, 2gethr@HSR should compete here",
       severity: "critical",
       tag: "Home turf",
       citedBrands: [
@@ -243,7 +243,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
         "Honeykomb",
       ],
       rentokStatus: "missing",
-      outcome: "HSR home turf · BHIVE / Urban Vault / EBC — not 2gethr@HSR",
+      outcome: "HSR home turf · BHIVE / Urban Vault / EBC, not 2gethr@HSR",
       screenshot: {
         src: `${SHOT}/06-managed-offices-hsr-layout-bangalore.png`,
         alt: "ChatGPT managed offices HSR Layout without 2gethr",
@@ -261,12 +261,12 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q7",
       query: "premium office space Richmond Road Bangalore",
-      intent: "Home turf — 2gethr@CBD / Richmond Road",
+      intent: "Home turf, 2gethr@CBD / Richmond Road",
       severity: "critical",
       tag: "Home turf",
       citedBrands: ["IndiQube Penta", "Awfis", "Aurbis Concord", "Clayworks"],
       rentokStatus: "missing",
-      outcome: "Richmond Road · IndiQube / Awfis / Aurbis — not 2gethr@CBD",
+      outcome: "Richmond Road · IndiQube / Awfis / Aurbis, not 2gethr@CBD",
       screenshot: {
         src: `${SHOT}/07-premium-office-space-richmond-road-bangalore.png`,
         alt: "ChatGPT premium office Richmond Road without 2gethr",
@@ -284,7 +284,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q8",
       query: "better than WeWork for GCC Bangalore",
-      intent: "Conquest — GCC buyers comparing off WeWork",
+      intent: "Conquest, GCC buyers comparing off WeWork",
       severity: "high",
       tag: "Conquest",
       citedBrands: [
@@ -367,7 +367,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     {
       id: "q11",
       query: "best office operator for Scapia-like startups Bangalore",
-      intent: "Client-adjacent irony — Scapia is on 2gethr’s client wall",
+      intent: "Client-adjacent irony, Scapia is on 2gethr’s client wall",
       severity: "critical",
       tag: "Portfolio irony",
       citedBrands: [
@@ -379,7 +379,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
         "Table Space",
       ],
       rentokStatus: "missing",
-      outcome: "Scapia-like startups · BHIVE map + IndiQube — not 2gethr",
+      outcome: "Scapia-like startups · BHIVE map + IndiQube, not 2gethr",
       screenshot: {
         src: `${SHOT}/15-best-office-operator-scapia-like-startups-bangalore.png`,
         alt: "ChatGPT Scapia-like startup office operators without 2gethr",
@@ -390,14 +390,14 @@ export const gethrAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "For VC-backed ~30–150 person startups, ChatGPT maps BHIVE HSR and shortlists IndiQube, WeWork, Smartworks, Awfis, BHIVE, Table Space. 2gethr — which lists Scapia among clients — is never named.",
+            "For VC-backed ~30–150 person startups, ChatGPT maps BHIVE HSR and shortlists IndiQube, WeWork, Smartworks, Awfis, BHIVE, Table Space. 2gethr, which lists Scapia among clients, is never named.",
         },
       ],
     },
     {
       id: "q12",
       query: "office space for MNC capability center Hyderabad",
-      intent: "Hyderabad expansion — second city on 2gethr.com",
+      intent: "Hyderabad expansion, second city on 2gethr.com",
       severity: "high",
       tag: "Hyderabad",
       citedBrands: ["Cushman & Wakefield"],
@@ -413,7 +413,7 @@ export const gethrAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "ChatGPT answers with Gachibowli, Financial District, HITEC City, and Raidurg — citing Cushman & Wakefield — and names no managed-office operator. 2gethr’s Hyderabad story is invisible.",
+            "ChatGPT answers with Gachibowli, Financial District, HITEC City, and Raidurg, citing Cushman & Wakefield, and names no managed-office operator. 2gethr’s Hyderabad story is invisible.",
           sources: ["Cushman & Wakefield", "Times of India"],
         },
       ],
@@ -424,11 +424,11 @@ export const gethrAiVisibilityReport: VisibilityReport = {
     duration: "90 days",
     headline:
       "Get 2gethr on the managed-office and GCC shortlists ChatGPT already builds",
-    body: "This is a done-with-you services engagement — not another SaaS seat. We pick the prompts already routing tours (GCC Bangalore, 200-seat RFPs, HSR/Richmond home turf, WeWork conquest), fix the “together → 2gethr” identity leak, build citation assets models trust, and re-test weekly until 2gethr appears next to Table Space, WeWork, and IndiQube — then expand to Perplexity, Google AI Overview, Gemini, and Claude.",
+    body: "This is a done-with-you services engagement, not another SaaS seat. We pick the prompts already routing tours (GCC Bangalore, 200-seat RFPs, HSR/Richmond home turf, WeWork conquest), fix the “together → 2gethr” identity leak, build citation assets models trust, and re-test weekly until 2gethr appears next to Table Space, WeWork, and IndiQube, then expand to Perplexity, Google AI Overview, Gemini, and Claude.",
     outcomes: [
       "2gethr cited on Bangalore managed-office, GCC, and premium enterprise shortlists across ChatGPT first, then Perplexity / AI Overview / Gemini / Claude",
       "Home-turf wins: HSR and Richmond Road / CBD prompts name 2gethr@HSR and 2gethr@CBD",
-      "Phonetic and brand strings resolve to 2gethr — not “no operator found”",
+      "Phonetic and brand strings resolve to 2gethr, not “no operator found”",
       "WeWork / Awfis / IndiQube conquest prompts include 2gethr as a serious alternative",
       "Weekly re-runs of this audit set with screenshot proof, plus a dashboard for gaps and next actions",
     ],

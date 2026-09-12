@@ -42,7 +42,7 @@ export const ahrefsMatrix: readonly MatrixRow[] = [
 export const ahrefsVerdict = {
   pickAnnyWhen: [
     "Your buyers ask ChatGPT or Gemini before they Google.",
-    "You need to know which articles AI cites — and whether you appear.",
+    "You need to know which articles AI cites, and whether you appear.",
     "Marketing owns AI visibility as a channel, not a side metric in SEO.",
   ],
   pickCompetitorWhen: [

@@ -46,7 +46,7 @@ export type QueryFinding = {
   outcome: string;
   /** Single captured answer (most prompts). */
   screenshot?: QueryScreenshot;
-  /** Multiple shots in one row — e.g. brand vs competitor contrast. */
+  /** Multiple shots in one row, e.g. brand vs competitor contrast. */
   screenshots?: QueryScreenshot[];
   answers: ModelAnswer[];
 };
@@ -194,7 +194,7 @@ export type ReadinessAutomationGroup = {
   summary: string;
   /** Technical-mode summary when wording differs. */
   summaryTechnical?: string;
-  /** Selector / markup examples — shown in technical mode only. */
+  /** Selector / markup examples, shown in technical mode only. */
   examples: string[];
 };
 

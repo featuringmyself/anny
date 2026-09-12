@@ -44,7 +44,7 @@ const INSIGHTS = [
   },
   {
     title: "Semantic HTML could better support agent parsing",
-    body: "Heading hierarchy, landmarks, and labeled forms improve how automated agents interpret page structure — especially for product and contact flows.",
+    body: "Heading hierarchy, landmarks, and labeled forms improve how automated agents interpret page structure, especially for product and contact flows.",
   },
 ] as const;
 
@@ -108,7 +108,7 @@ export function AiReadinessReportPlaceholder({
                 {company}
               </h1>
               <p className="mt-2 text-base text-zinc-500 text-balance">
-                On-site readiness for AI agents — schema, crawl access, automation,
+                On-site readiness for AI agents, schema, crawl access, automation,
                 and HTML semantics.
               </p>
               <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-3">
@@ -294,7 +294,7 @@ export function AiReadinessReportPlaceholder({
             </p>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
               {agents.missingDiscovery === agents.totalDiscovery
-                ? `MCP / agent-skill discovery files are missing — advanced agents have no advertised way to learn what ${company} can do.`
+                ? `MCP / agent-skill discovery files are missing, advanced agents have no advertised way to learn what ${company} can do.`
                 : `${agents.missingDiscovery} of ${agents.totalDiscovery} MCP / agent-skill discovery signals are missing.`}
             </p>
           </div>
@@ -305,7 +305,7 @@ export function AiReadinessReportPlaceholder({
             index="04"
             label="Recommended fixes"
             title="Highest-leverage changes from this audit"
-            description="Prioritized by impact versus effort. These are findings from the scan — not a product pitch."
+            description="Prioritized by impact versus effort. These are findings from the scan, not a product pitch."
           />
           <ol>
             {QUICK_WINS.map((win, index) => (

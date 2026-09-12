@@ -9,7 +9,7 @@ export const faqs = [
   {
     question: "How is agency pricing different from brand pricing?",
     answer:
-      "Agencies get a separate, heavily discounted rate built around a roster instead of a single brand. Unlimited client workspaces, unlimited seats, all models, white-label reporting, and API access are included at every tier — only volume scales. We quote it on a call rather than publishing it.",
+      "Agencies get a separate, heavily discounted rate built around a roster instead of a single brand. Unlimited client workspaces, unlimited seats, all models, white-label reporting, and API access are included at every tier, only volume scales. We quote it on a call rather than publishing it.",
   },
   {
     question: "Can I resell Anny under my own brand?",
@@ -24,7 +24,7 @@ export const faqs = [
   {
     question: "How many clients can I run in one account?",
     answer:
-      "As many as your plan volume covers. Each client is an isolated project with its own prompts, competitors, and markets, and account managers switch between them in one click — no separate logins, no cross-contaminated reports.",
+      "As many as your plan volume covers. Each client is an isolated project with its own prompts, competitors, and markets, and account managers switch between them in one click, no separate logins, no cross-contaminated reports.",
   },
   {
     question: "Do I pay per seat as my team grows?",
@@ -39,7 +39,7 @@ export const faqs = [
   {
     question: "How fast can we launch the service?",
     answer:
-      "Same week. Onboarding covers workspace setup, prompt libraries for your clients' categories, branded report templates, and the pricing playbook — no hiring and no internal tooling build.",
+      "Same week. Onboarding covers workspace setup, prompt libraries for your clients' categories, branded report templates, and the pricing playbook, no hiring and no internal tooling build.",
   },
 ] as const;
 

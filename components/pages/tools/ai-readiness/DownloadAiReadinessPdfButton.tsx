@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { Loader2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -15,39 +16,7 @@ type DownloadAiReadinessPdfButtonProps = {
 type Status = "idle" | "pending" | "done" | "error";
 
 function SpinnerGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
-      <motion.g
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 0.7,
-          ease: "linear",
-          repeat: Number.POSITIVE_INFINITY,
-        }}
-        style={{ transformOrigin: "8px 8px" }}
-      >
-        <circle
-          cx="8"
-          cy="8"
-          r="5.5"
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity="0.25"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="8"
-          cy="8"
-          r="5.5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeDasharray="10 24"
-        />
-      </motion.g>
-    </svg>
-  );
+  return <Loader2 className="size-3.5 animate-spin" strokeWidth={1.5} aria-hidden />;
 }
 
 export function DownloadAiReadinessPdfButton({
@@ -56,7 +25,6 @@ export function DownloadAiReadinessPdfButton({
   ready,
   className,
 }: DownloadAiReadinessPdfButtonProps) {
-  const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleDownload() {

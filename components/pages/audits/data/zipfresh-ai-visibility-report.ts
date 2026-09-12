@@ -16,7 +16,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
   private: true,
   tagline: "The neighbourhood mill, reinvented",
   summary:
-    "When someone asks how zipfresh.in works, ChatGPT can read the site: hyperlocal mill, stone-ground, 4 km hub, hours-old flour, spices and batter as later phases. When they paste the same URL and ask if it is legit, whether to order atta, or whether ZipFresh delivers in Mumbai, the answer is still pouches, laundry, Zappfresh meat, or “couldn’t verify — here are other mills.” That is the hire. Missing “best chakki Mumbai” is expected for a new mill. The buyer who already has zipfresh.in still gets the wrong answer. About 70% of searches are moving from Google to chatbots; brands the model can name and trust convert about 4.4x. A 90-day sprint makes the mill the answer on those URL prompts, then makes spices and batter AI-ready so Phase 2 and 3 are not a second cold start.",
+    "When someone asks how zipfresh.in works, ChatGPT can read the site: hyperlocal mill, stone-ground, 4 km hub, hours-old flour, spices and batter as later phases. When they paste the same URL and ask if it is legit, whether to order atta, or whether ZipFresh delivers in Mumbai, the answer is still pouches, laundry, Zappfresh meat, or “couldn’t verify, here are other mills.” That is the hire. Missing “best chakki Mumbai” is expected for a new mill. The buyer who already has zipfresh.in still gets the wrong answer. About 70% of searches are moving from Google to chatbots; brands the model can name and trust convert about 4.4x. A 90-day sprint makes the mill the answer on those URL prompts, then makes spices and batter AI-ready so Phase 2 and 3 are not a second cold start.",
   stats: [
     { label: "Preservatives", value: "0" },
     { label: "Mill-to-door", value: "<4 hrs" },
@@ -67,7 +67,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
       id: "crisis-order",
       query: "should I order atta from zipfresh.in",
       title: "Don’t order. Pouches in search. Packaged atta has the proof.",
-      body: "Asked whether to order atta from zipfresh.in, ChatGPT says be cautious about ordering right now. Search mostly hits an unrelated Zipfresh packaging company, not a mill. It sends the buyer to Aashirvaad, Pillsbury, Patanjali, and Shakti Bhog — brands with BIS/FSSAI testing coverage. The mill never appears.",
+      body: "Asked whether to order atta from zipfresh.in, ChatGPT says be cautious about ordering right now. Search mostly hits an unrelated Zipfresh packaging company, not a mill. It sends the buyer to Aashirvaad, Pillsbury, Patanjali, and Shakti Bhog, brands with BIS/FSSAI testing coverage. The mill never appears.",
       outcome: "Don’t order · pouches + packaged atta",
       screenshot: {
         src: `${SHOT}/03-should-i-order-atta-from-zipfresh-in.png`,
@@ -81,7 +81,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
       id: "q1",
       query: "is zipfresh.in legit",
       intent:
-        "Trust check after someone already has the URL — the mill should clear, not zipfresh.com pouches",
+        "Trust check after someone already has the URL, the mill should clear, not zipfresh.com pouches",
       severity: "critical",
       tag: "URL fail",
       citedBrands: ["zipfresh.com", "Vishakha Polyfab"],
@@ -97,7 +97,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "I’d be cautious with zipfresh.in. Not enough independent evidence to call it a legitimate store. Domain created March 2026. zipfresh.com is the established brand. Do not pay in advance — COD only.",
+            "I’d be cautious with zipfresh.in. Not enough independent evidence to call it a legitimate store. Domain created March 2026. zipfresh.com is the established brand. Do not pay in advance, COD only.",
           sources: ["Registry", "Zipfresh"],
         },
       ],
@@ -137,7 +137,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
     {
       id: "q3",
       query: "should I order atta from zipfresh.in",
-      intent: "Buy decision with the URL in the prompt — hours-old mill atta vs pouched brands",
+      intent: "Buy decision with the URL in the prompt, hours-old mill atta vs pouched brands",
       severity: "critical",
       tag: "Don’t order",
       citedBrands: ["Aashirvaad", "Pillsbury", "Patanjali", "Shakti Bhog"],
@@ -178,7 +178,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "If you mean Zipfresh the food-storage bag brand, it is not a delivery service. If you meant Zappfresh the meat service, yes — Mumbai is a delivery city. zipfresh.in is never checked.",
+            "If you mean Zipfresh the food-storage bag brand, it is not a delivery service. If you meant Zappfresh the meat service, yes, Mumbai is a delivery city. zipfresh.in is never checked.",
           sources: ["Zipfresh", "zappfresh.com"],
         },
       ],
@@ -212,7 +212,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
       id: "q6",
       query: "how does zipfresh.in work",
       intent:
-        "The one prompt where ChatGPT reads the mill correctly — thin win, same energy as a single launch cite",
+        "The one prompt where ChatGPT reads the mill correctly, thin win, same energy as a single launch cite",
       severity: "standard",
       tag: "Fragile win",
       citedBrands: ["ZipFRESH"],
@@ -259,7 +259,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Satvik Annapurna, Urban Chakki, ChakkiOnFresh, and ShuddhOra fill the Mumbai freshly milled atta list. ZipFRESH is not named. Normal for a mill this new — the sprint still needs this shelf after the URL prompts clear.",
+            "Satvik Annapurna, Urban Chakki, ChakkiOnFresh, and ShuddhOra fill the Mumbai freshly milled atta list. ZipFRESH is not named. Normal for a mill this new, the sprint still needs this shelf after the URL prompts clear.",
         },
       ],
     },
@@ -289,7 +289,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "GW Khamkar, Satvik Annapurna, Shreeji Foods, Grand Masala, and Lalbaug Masalawale own freshly ground spices delivery in Mumbai. ZipFRESH spices are not live — the sprint makes Phase 2 cited at launch.",
+            "GW Khamkar, Satvik Annapurna, Shreeji Foods, Grand Masala, and Lalbaug Masalawale own freshly ground spices delivery in Mumbai. ZipFRESH spices are not live, the sprint makes Phase 2 cited at launch.",
         },
       ],
     },
@@ -297,7 +297,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
       id: "q9",
       query: "idli dosa batter freshly ground Mumbai",
       intent:
-        "Phase 3 shelf: same as spices — AI-ready at launch, including Goregaon East already on this list",
+        "Phase 3 shelf: same as spices, AI-ready at launch, including Goregaon East already on this list",
       severity: "high",
       tag: "Coming soon",
       citedBrands: [
@@ -327,7 +327,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
       id: "q10",
       query: "atta mill near Goregaon Mumbai",
       intent:
-        "Home-turf walk-in shelf, including Bangur Nagar — shows the mill list AI already uses, not a brand fail",
+        "Home-turf walk-in shelf, including Bangur Nagar, shows the mill list AI already uses, not a brand fail",
       severity: "standard",
       tag: "Home turf shelf",
       citedBrands: [
@@ -350,7 +350,7 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Azad Flour Mill, Online Chakkiwala, Jani Flour Mill in Bangur Nagar, Suryaa Atta, Jay Hanuman Flour Mill, and Mahesh flour mill fill Goregaon. Jani is the same neighbourhood as the listed mill address. Expected walk-in shelf — not a scare.",
+            "Azad Flour Mill, Online Chakkiwala, Jani Flour Mill in Bangur Nagar, Suryaa Atta, Jay Hanuman Flour Mill, and Mahesh flour mill fill Goregaon. Jani is the same neighbourhood as the listed mill address. Expected walk-in shelf, not a scare.",
         },
       ],
     },
@@ -359,10 +359,10 @@ export const zipfreshAiVisibilityReport: VisibilityReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline:
-      "Make zipfresh.in resolve to the mill — then cite atta, spices, and batter at launch",
-    body: "This is a 90-day citation sprint, not a SaaS login. About 70% of searches are moving from Google to chatbots. Brands the model can name and trust convert about 4.4x — outreach math for why these answers matter, not a ZipFRESH KPI from this snapshot. We start with the URL fails: legit, order, and deliver still answer pouches, laundry, or Zappfresh. Then we put the mill on Mumbai hours-old atta asks, and strap spices and batter so Phase 2 and 3 launch already cited. Weekly re-tests of this prompt set, with a dashboard for model gaps, competitor share, score, and the next action each week.",
+      "Make zipfresh.in resolve to the mill, then cite atta, spices, and batter at launch",
+    body: "This is a 90-day citation sprint, not a SaaS login. About 70% of searches are moving from Google to chatbots. Brands the model can name and trust convert about 4.4x, outreach math for why these answers matter, not a ZipFRESH KPI from this snapshot. We start with the URL fails: legit, order, and deliver still answer pouches, laundry, or Zappfresh. Then we put the mill on Mumbai hours-old atta asks, and strap spices and batter so Phase 2 and 3 launch already cited. Weekly re-tests of this prompt set, with a dashboard for model gaps, competitor share, score, and the next action each week.",
     outcomes: [
-      "zipfresh.in resolves to the mill on legit, should-I-order, and Mumbai-deliver prompts — not pouches, laundry, or Zappfresh",
+      "zipfresh.in resolves to the mill on legit, should-I-order, and Mumbai-deliver prompts, not pouches, laundry, or Zappfresh",
       "Cited on Mumbai hours-old / freshly milled atta asks that today name Satvik Annapurna, Urban Chakki, and Origgo",
       "Spices and batter AI-ready at Phase 2 and 3 launch so those shelves are not a second cold start",
       "This prompt set re-tested weekly, with screenshots proving movement, plus a dashboard for model gaps, competitor share, score trend, and next actions",

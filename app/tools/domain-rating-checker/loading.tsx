@@ -18,7 +18,7 @@ export default function Loading() {
             <div className="mt-10 h-11 w-full max-w-md animate-pulse bg-zinc-200" />
             <div className="mt-5 h-10 w-36 animate-pulse bg-zinc-200" />
           </div>
-          <DomainRatingInstrumentPending domain="—" />
+          <DomainRatingInstrumentPending domain="-" />
         </div>
       </section>
       <PatternStrip />

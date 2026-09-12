@@ -11,7 +11,7 @@ type ReportSectionHeaderProps = {
   status?: ReactNode;
 };
 
-/** Document-style section header — not marketing eyebrows / hero H2s. */
+/** Document-style section header, not marketing eyebrows / hero H2s. */
 export default function ReportSectionHeader({
   index,
   label,

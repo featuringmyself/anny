@@ -7,7 +7,7 @@ export default function BlogHero() {
       </h1>
       <p className="mt-4 max-w-lg text-lg text-zinc-500 text-balance">
         Field notes from Anny on GEO, citations, fanouts, sentiment, and how brands
-        show up — or disappear — inside AI answers.
+        show up or disappear inside AI answers.
       </p>
     </section>
   );

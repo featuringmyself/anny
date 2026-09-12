@@ -33,10 +33,10 @@ export async function generateMetadata({
   const { post } = await getBlogPost(slug);
 
   if (!post) {
-    return { title: `Blog — ${SITE_NAME}` };
+    return { title: `Blog · ${SITE_NAME}` };
   }
 
-  const title = post.seo?.title || `${post.title} — ${SITE_NAME}`;
+  const title = post.seo?.title || `${post.title} · ${SITE_NAME}`;
   const description = post.seo?.description || post.excerpt || "";
   const image = ogImageUrl(post.seo?.image || post.coverImage, post.title);
   const canonicalPath = post.seo?.canonicalUrl || `/blog/${post.slug}`;

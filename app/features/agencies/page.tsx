@@ -12,9 +12,9 @@ import AgenciesFaq, {
 import AgenciesCta from "@/components/pages/features/agencies/AgenciesCta";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Anny for Agencies — Resell AI Visibility on Agency Pricing";
+const title = "Anny for Agencies, Resell AI Visibility on Agency Pricing";
 const description =
-  "Run AI search visibility for every client in one workspace. White-label reports, unlimited seats, pitch workspaces, and heavily discounted agency pricing — quoted by sales.";
+  "Run AI search visibility for every client in one workspace. White-label reports, unlimited seats, pitch workspaces, and heavily discounted agency pricing, quoted by sales.";
 
 export const metadata = pageMetadata({
   path: "/features/agencies",

@@ -1,7 +1,7 @@
 const kitItems = [
   {
     title: "Demo walkthrough script",
-    body: "5-minute path from brand URL to first visibility score — timestamps included.",
+    body: "5-minute path from brand URL to first visibility score, timestamps included.",
   },
   {
     title: "B-roll & UI stills",

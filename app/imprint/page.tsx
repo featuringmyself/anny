@@ -24,7 +24,7 @@ export default function ImprintPage() {
         sections={[
           {
             heading: "Operator",
-            body: "Anny — AI search analytics for marketing teams, operated from India. Website: anny.dodoxhq.com. Email: hello@dodoxhq.com.",
+            body: "Anny, AI search analytics for marketing teams, operated from India. Website: anny.dodoxhq.com. Email: hello@dodoxhq.com.",
           },
           {
             heading: "Registered address",

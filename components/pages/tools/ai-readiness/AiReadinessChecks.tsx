@@ -19,7 +19,7 @@ export function AiReadinessChecks() {
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
           Four buckets, scored from the homepage. Optional agent files never
-          tank the number — they only add.
+          tank the number, they only add.
         </p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">

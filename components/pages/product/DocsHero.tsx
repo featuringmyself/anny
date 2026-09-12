@@ -6,7 +6,7 @@ export default function DocsHero() {
         Anny documentation
       </h1>
       <p className="mt-4 max-w-lg text-lg text-zinc-500 text-balance">
-        Static guides to connect brands, run prompts, and read AI visibility — start here.
+        Static guides to connect brands, run prompts, and read AI visibility, start here.
       </p>
     </section>
   );

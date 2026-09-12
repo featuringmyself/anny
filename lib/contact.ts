@@ -60,7 +60,7 @@ function asStringFields(fields: Record<string, unknown>) {
 
 /**
  * Shared server-side validation for contact / sales-lead submissions.
- * Call from Server Actions and Route Handlers — never trust the client alone.
+ * Call from Server Actions and Route Handlers, never trust the client alone.
  */
 export function validateContactInput(
   fields: Record<string, FormDataEntryValue | unknown>,

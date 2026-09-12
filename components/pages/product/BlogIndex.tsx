@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import BlogRowMotion from "@/components/pages/product/BlogRowMotion";
 import { formatBlogDate } from "@/lib/blog/types";
@@ -54,8 +55,13 @@ export default async function BlogIndex() {
                           {post.excerpt}
                         </p>
                       ) : null}
-                      <span className="mt-4 inline-block text-sm font-medium text-zinc-400 group-hover:text-[#2462ff]">
-                        Read note →
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400 group-hover:text-[#2462ff]">
+                        Read note
+                        <ArrowRight
+                          className="size-3.5 transition-transform group-hover:translate-x-0.5"
+                          strokeWidth={2}
+                          aria-hidden
+                        />
                       </span>
                     </div>
                   </Link>

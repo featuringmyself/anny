@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const report = await getAiReadinessReportById(id);
 
   if (!report) {
-    return { title: `Report — ${SITE_NAME}` };
+    return { title: `Report · ${SITE_NAME}` };
   }
 
   const company = report.domain.replace(/^www\./, "");
 
   return {
-    title: `${company} AI Readiness Report — ${SITE_NAME}`,
+    title: `${company} AI Readiness Report · ${SITE_NAME}`,
     description: `Full AI readiness dossier for ${report.domain}.`,
     robots: {
       index: false,

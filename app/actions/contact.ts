@@ -65,7 +65,7 @@ export async function submitContact(
       await posthog.flush();
     }
 
-    return { status: "success", message: "Thanks — we'll be in touch." };
+    return { status: "success", message: "Thanks, we'll be in touch." };
   } catch (error) {
     const cause = error instanceof Error ? error.message : String(error);
     console.error("[contact] failed to save sales lead:", cause, error);

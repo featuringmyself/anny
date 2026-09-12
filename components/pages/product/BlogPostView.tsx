@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft, ArrowRight, Clock, User } from "lucide-react";
 
 import BlogFaqs from "@/components/blog/BlogFaqs";
 import {
@@ -50,8 +51,7 @@ function LegacyBlock({ block }: { block: BlogBlock }) {
         <blockquote className="border-l-2 border-[#2462ff] pl-5 text-[15px] leading-relaxed text-zinc-600 italic">
           <p>{block.text}</p>
           {block.cite ? (
-            <cite className="mt-2 block text-sm not-italic text-zinc-400">
-              — {block.cite}
+            <cite className="mt-2 block text-sm not-italic text-zinc-400">- {block.cite}
             </cite>
           ) : null}
         </blockquote>
@@ -89,9 +89,10 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
       <header className="border-b px-8 py-14 md:px-12 md:py-16">
         <Link
           href="/blog"
-          className="text-sm font-medium text-zinc-400 hover:text-[#2462ff]"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-400 hover:text-[#2462ff]"
         >
-          ← Blog
+          <ArrowLeft className="size-3.5" strokeWidth={2} aria-hidden />
+          Blog
         </Link>
         <p className="mt-6 text-sm font-medium tracking-wide text-[#2462ff]">
           {category}
@@ -109,12 +110,16 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
             {long || `${date} ${year}`}
           </time>
           <span aria-hidden>·</span>
-          <span>{minutes} min read</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Clock className="size-3.5" strokeWidth={1.75} aria-hidden />
+            {minutes} min read
+          </span>
           {post.author?.name ? (
             <>
               <span aria-hidden>·</span>
-              <span>
-                By {post.author.name}
+              <span className="inline-flex items-center gap-1.5">
+                <User className="size-3.5" strokeWidth={1.75} aria-hidden />
+                {post.author.name}
                 {post.author.role ? ` · ${post.author.role}` : ""}
               </span>
             </>
@@ -167,7 +172,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
               </p>
               <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
                 Anny tracks visibility, answer position, sentiment, and sources
-                across ChatGPT, Gemini, AI Mode, and more — so you can close the
+                across ChatGPT, Gemini, AI Mode, and more, so you can close the
                 gaps that cost you recommendations.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
@@ -240,6 +245,14 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
                       <p className="mt-3 text-xs tabular-nums text-zinc-400">
                         {itemDate.date} {itemDate.year}
                       </p>
+                      <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-zinc-400 group-hover:text-[#2462ff]">
+                        Read
+                        <ArrowRight
+                          className="size-3.5 transition-transform group-hover:translate-x-0.5"
+                          strokeWidth={2}
+                          aria-hidden
+                        />
+                      </span>
                     </Link>
                   </li>
                 );

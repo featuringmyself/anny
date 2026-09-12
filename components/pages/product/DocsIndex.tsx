@@ -45,8 +45,7 @@ function Block({ block }: { block: DocBlock }) {
         <blockquote className="border-l-2 border-[#2462ff] pl-5 text-[15px] leading-relaxed text-zinc-600 italic">
           <p>{block.text}</p>
           {block.cite ? (
-            <cite className="mt-2 block text-sm not-italic text-zinc-400">
-              — {block.cite}
+            <cite className="mt-2 block text-sm not-italic text-zinc-400">- {block.cite}
             </cite>
           ) : null}
         </blockquote>

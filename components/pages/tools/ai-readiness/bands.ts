@@ -34,7 +34,7 @@ export const READINESS_BANDS = [
 export const CATEGORY_META = {
   crawl: {
     label: "Can AI fetch it?",
-    copy: "robots.txt plus OpenAI, Claude, and Perplexity bots — training, search, and live answers.",
+    copy: "robots.txt plus OpenAI, Claude, and Perplexity bots, training, search, and live answers.",
   },
   identity: {
     label: "Can AI name it?",

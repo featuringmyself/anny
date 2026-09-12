@@ -20,7 +20,7 @@ export default function AgenciesHero() {
         </h1>
         <p className="mt-4 max-w-xl text-lg text-zinc-500 text-balance">
           Every client in one workspace, reported under your brand, on agency pricing that stays
-          flat while your book of business grows. Clients ask why they never show up in ChatGPT —
+          flat while your book of business grows. Clients ask why they never show up in ChatGPT -
           you answer with data and an invoice.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

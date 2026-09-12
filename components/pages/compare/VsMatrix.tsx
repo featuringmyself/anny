@@ -38,7 +38,7 @@ export default function VsMatrix({ competitor, rows }: VsMatrixProps) {
           Capability matrix
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
-          Side-by-side on GEO, citations, and model coverage — not a feature
+          Side-by-side on GEO, citations, and model coverage, not a feature
           dump.
         </p>
       </div>

@@ -22,8 +22,8 @@ export default function RegisterSection({ plan }: { plan?: RegisterPlan }) {
             Create your Anny account
           </h1>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400 text-balance">
-            See how often AI answers mention your brand — and which sources
-            they cite — before you commit to a plan.
+            See how often AI answers mention your brand, and which sources
+            they cite, before you commit to a plan.
           </p>
           <ul className="mt-10 space-y-4">
             {perks.map((perk) => (

@@ -24,7 +24,7 @@ export default function GeminiHero() {
         Follow multi-turn Gemini answers and every source they cite
       </h1>
       <p className="mt-4 max-w-xl text-lg text-zinc-500 text-balance">
-        See how Gemini builds recommendations across turns — and which domains
+        See how Gemini builds recommendations across turns, and which domains
         get the credit when your brand is named.
       </p>
       <div className="mt-8">

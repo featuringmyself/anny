@@ -1,21 +1,10 @@
+import { Check } from "lucide-react";
+
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
 
 const CheckIcon = () => (
-  <svg
-    viewBox="0 0 16 16"
-    className="mt-0.5 size-4 shrink-0 text-zinc-400"
-    fill="none"
-    aria-hidden
-  >
-    <path
-      d="M3.5 8.5 6.5 11.5 12.5 4.5"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <Check className="mt-0.5 size-4 shrink-0 text-zinc-400" strokeWidth={1.75} aria-hidden />
 );
 
 type Tier = {
@@ -94,7 +83,7 @@ export default function PricingTiers() {
         <p className="text-sm font-medium tracking-wide text-[#2462ff]">For brands</p>
         <h2 className="mt-2 text-2xl font-medium tracking-tight">Pick a plan that fits your team</h2>
         <p className="mt-2 max-w-lg text-sm text-zinc-500">
-          Annual billing available. Agencies get a separate, heavily discounted rate — talk to sales
+          Annual billing available. Agencies get a separate, heavily discounted rate, talk to sales
           below.
         </p>
       </div>

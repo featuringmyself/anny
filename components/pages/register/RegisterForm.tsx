@@ -87,7 +87,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-500">
           Noted on{" "}
           <span className="font-medium text-zinc-800">{state.email}</span>.
-          We&apos;re accepting limited signups due to high demand — our sales
+          We&apos;re accepting limited signups due to high demand, our sales
           team will reach out soon.
         </p>
         <div className="mt-8">
@@ -130,7 +130,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         {plan ? <input type="hidden" name="plan" value={plan} /> : null}
         <PostHogDistinctIdField />
 
-        {/* Honeypot — hidden from users, filled by many bots */}
+        {/* Honeypot, hidden from users, filled by many bots */}
         <div
           className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
           aria-hidden="true"

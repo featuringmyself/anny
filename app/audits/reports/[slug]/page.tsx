@@ -24,14 +24,14 @@ export async function generateMetadata({
   const entry = getReportEntryBySlug(slug);
 
   if (!entry) {
-    return { title: `Report — ${SITE_NAME}` };
+    return { title: `Report · ${SITE_NAME}` };
   }
 
   const titleKind =
     entry.kind === "readiness" ? "AI Readiness Report" : "AI Visibility Report";
 
   return {
-    title: `${entry.report.company} ${titleKind} — ${SITE_NAME}`,
+    title: `${entry.report.company} ${titleKind} · ${SITE_NAME}`,
     description: entry.report.summary,
     robots: {
       index: false,

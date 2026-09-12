@@ -27,7 +27,7 @@ export const DR_BANDS = [
     from: 90,
     to: 100,
     label: "Top-tier",
-    copy: "The strongest sites on the web — big publishers and platforms.",
+    copy: "The strongest sites on the web, big publishers and platforms.",
   },
 ] as const;
 

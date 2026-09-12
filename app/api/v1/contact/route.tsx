@@ -71,7 +71,7 @@ export async function POST(request: Request) {
       await posthog.flush();
     }
 
-    return NextResponse.json({ message: "Thanks — we'll be in touch." });
+    return NextResponse.json({ message: "Thanks, we'll be in touch." });
   } catch (error) {
     console.error("[contact] failed to save sales lead", error);
 

@@ -5,7 +5,7 @@ const SHOT = "/audits/edukemy";
 /**
  * Private outreach report for Edukemy. ChatGPT snapshot, September 2026.
  * Catalog: GS Foundation / Integrated / Mains mentorship, Geography Optional,
- * Essay, test series, ORN + online — see edukemy.com/upsc/guided-courses.
+ * Essay, test series, ORN + online, see edukemy.com/upsc/guided-courses.
  */
 export const edukemyAiVisibilityReport: VisibilityReport = {
   slug: "edukemy-ai-visibility-report",
@@ -20,7 +20,7 @@ export const edukemyAiVisibilityReport: VisibilityReport = {
   private: true,
   tagline: "GS Foundation · Integrated Mentorship · Geography · Essay · ORN",
   summary:
-    "ChatGPT snapshot across 10 buy-intent prompts tied to Edukemy’s course list (GS Foundation, Integrated Mentorship, GS Mains, Essay, Geography Optional, test series, ORN). Edukemy is cited on 0 of 10. Who appears instead: NEXT IAS, Vision IAS, ForumIAS, Vajiram, and others by prompt. Separately, Shabbir Sir ranks #1 when asked for best Geography Optional teachers. This report is the baseline — not a brief on what to prioritise.",
+    "ChatGPT snapshot across 10 buy-intent prompts tied to Edukemy’s course list (GS Foundation, Integrated Mentorship, GS Mains, Essay, Geography Optional, test series, ORN). Edukemy is cited on 0 of 10. Who appears instead: NEXT IAS, Vision IAS, ForumIAS, Vajiram, and others by prompt. Separately, Shabbir Sir ranks #1 when asked for best Geography Optional teachers. This report is the baseline, not a brief on what to prioritise.",
   
   brandCrisisHeadline: "How ChatGPT currently describes Edukemy",
   brandCrisisDek:
@@ -391,7 +391,7 @@ export const edukemyAiVisibilityReport: VisibilityReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline: "From this 0/10 baseline to cited on the prompts that drive enrolments",
-    body: "We work the buy-intent set in this audit — GS Foundation, integrated mentorship, ORN, Essay, GS Mains answer writing, Geography Optional, test series — plus the branded review. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard. Which lines we weight first is decided with you.",
+    body: "We work the buy-intent set in this audit, GS Foundation, integrated mentorship, ORN, Essay, GS Mains answer writing, Geography Optional, test series, plus the branded review. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard. Which lines we weight first is decided with you.",
     outcomes: [
       "Edukemy named on priority GS Foundation, integrated mentorship, and ORN prompts that today list NEXT, Vision, ForumIAS, and Vajiram",
       "Essay and GS Mains answer-writing / mentorship prompts cite Edukemy programmes, not only ForumIAS / Vision / Insights",
@@ -407,5 +407,5 @@ export const edukemyAiVisibilityReport: VisibilityReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "Ready to get Edukemy on those shortlists?",
   ctaBody:
-    "Book a short call. We map the 90-day plan from this audit: GS Foundation and mentorship, ORN, Essay and answer writing, Geography Optional — the 0 of 10 buy-intent set — plus the branded review. Weekly screenshot proof and a dashboard included.",
+    "Book a short call. We map the 90-day plan from this audit: GS Foundation and mentorship, ORN, Essay and answer writing, Geography Optional, the 0 of 10 buy-intent set, plus the branded review. Weekly screenshot proof and a dashboard included.",
 };

@@ -17,7 +17,7 @@ export default function ReadinessQuickWins({
         index="05"
         label="Recommended fixes"
         title="Highest-leverage changes from this audit"
-        description="Prioritized by impact versus effort. These are findings from the scan — not a product pitch."
+        description="Prioritized by impact versus effort. These are findings from the scan, not a product pitch."
       />
       <ol>
         {report.quickWins.map((win, index) => (

@@ -9,9 +9,9 @@ import {
 } from "@/components/pages/compare/data/profound";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Anny vs Profound — AI visibility comparison";
+const title = "Anny vs Profound, AI visibility comparison";
 const description =
-  "Compare Anny and Profound as AI visibility peers — model coverage, citation boards, and GEO workflows for marketing teams.";
+  "Compare Anny and Profound as AI visibility peers, model coverage, citation boards, and GEO workflows for marketing teams.";
 
 export const metadata = pageMetadata({
   path: "/compare/profound",

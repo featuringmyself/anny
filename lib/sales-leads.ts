@@ -4,7 +4,7 @@ import { getDb } from "@/lib/mongodb";
 
 /**
  * Sales lead from a "Talk to sales" CTA.
- * Collection: `sales_leads` — one document per submission.
+ * Collection: `sales_leads`- one document per submission.
  *
  * Access pattern: insert on submit; list/filter by `createdAt` and `status`
  * for a sales queue; look up by `email` when following up.

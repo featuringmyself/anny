@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 
 /**
  * Explicit allow rules for AI search, citation, training, and agent crawlers.
- * Anny wants to be discoverable in AI answers — keep these allowed unless a
+ * Anny wants to be discoverable in AI answers, keep these allowed unless a
  * specific privacy/legal need requires opting out of one bot.
  *
  * OpenAI: GPTBot (training), OAI-SearchBot (ChatGPT search), ChatGPT-User (user fetches)

@@ -111,7 +111,7 @@ export default function SearchIsShifting() {
             <p className="max-w-md text-sm leading-snug text-balance text-zinc-500 sm:text-xl md:text-2xl">
               Monthly usage of standalone AI tools has grown to well over{" "}
               <span className="text-[#2462ff]">1 billion people</span> as of July
-              2026 — with ChatGPT at 1B MAU and Gemini at 950M.
+              2026, with ChatGPT at 1B MAU and Gemini at 950M.
             </p>
             <p className="text-xs tracking-wide text-zinc-400 uppercase">
               Updated August 2026

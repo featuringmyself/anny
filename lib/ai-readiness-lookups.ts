@@ -31,7 +31,7 @@ export type AiReadinessLookupWrite =
 
 /**
  * Domains scanned through the AI readiness checker.
- * Collection: `ai_readiness_lookups` — one document per domain.
+ * Collection: `ai_readiness_lookups`- one document per domain.
  *
  * Access pattern: upsert on each check; look up by `domain`;
  * list recent activity by `lastSeenAt`.

@@ -8,7 +8,7 @@ const panels = [
     logo: "/trackModel/ai_mode-logo.svg",
     query: "best CRM for growing B2B teams",
     summary:
-      "AI Mode synthesizes a longer answer with follow-ups. Your brand needs consistent coverage across related prompts — not a single SERP snippet.",
+      "AI Mode synthesizes a longer answer with follow-ups. Your brand needs consistent coverage across related prompts, not a single SERP snippet.",
     mentions: [
       { brand: "Attio", position: 1, present: true },
       { brand: "HubSpot", position: 2, present: true },
@@ -21,7 +21,7 @@ const panels = [
     logo: "/trackModel/ai_overview-logo.svg",
     query: "best CRM for growing B2B teams",
     summary:
-      "Overviews compress the answer into a short block above classic results. Visibility here is binary — you are in the overview, or you are not.",
+      "Overviews compress the answer into a short block above classic results. Visibility here is binary: you are in the overview, or you are not.",
     mentions: [
       { brand: "HubSpot", position: 1, present: true },
       { brand: "Salesforce", position: 2, present: true },

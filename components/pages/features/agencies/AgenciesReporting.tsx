@@ -1,7 +1,7 @@
 const outputs = [
   {
     title: "Monday deck, built overnight",
-    body: "One slide per client — visibility, share of voice, sentiment, week-over-week movement — waiting before your internal standup.",
+    body: "One slide per client, visibility, share of voice, sentiment, week-over-week movement, waiting before your internal standup.",
   },
   {
     title: "Slack summaries per client channel",
@@ -26,7 +26,7 @@ export default function AgenciesReporting() {
           Reporting that runs itself across the whole roster
         </h2>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-zinc-500">
-          Schedule it once through the API or MCP and every client gets reported every week — the
+          Schedule it once through the API or MCP and every client gets reported every week, the
           part of the retainer that usually burns analyst hours.
         </p>
       </div>

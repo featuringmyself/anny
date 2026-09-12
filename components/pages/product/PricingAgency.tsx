@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const perks = [
   "Multi-client workspaces under one account",
-  "Unlimited seats — no per-seat fees",
+  "Unlimited seats, no per-seat fees",
   "White-label reports and client-ready exports",
   "Pitch projects that sit outside client quota",
   "MCP-powered weekly client reporting",
@@ -21,7 +21,7 @@ export default function PricingAgency() {
             Heavily discounted agency pricing
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-400 text-balance">
-            Agency rates are built for multi-client retainers — not brand seats with an agency
+            Agency rates are built for multi-client retainers, not brand seats with an agency
             label. We don&apos;t publish numbers here; talk to sales for a quote sized to your
             roster.
           </p>
@@ -61,7 +61,7 @@ export default function PricingAgency() {
             ))}
           </ul>
           <p className="mt-8 text-sm text-zinc-500">
-            Volume, client projects, and SSO scale with your book of business — priced for agencies,
+            Volume, client projects, and SSO scale with your book of business, priced for agencies,
             quoted by sales.
           </p>
         </aside>

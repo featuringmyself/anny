@@ -20,7 +20,7 @@ export default function AiModeHero() {
       </h1>
       <p className="mt-4 max-w-xl text-lg text-zinc-500 text-balance">
         Google is splitting search answers across AI Mode and AI Overviews. Anny
-        shows both panels so you know where you appear — and where you disappear.
+        shows both panels so you know where you appear, and where you disappear.
       </p>
       <div className="mt-8">
         <TalkToSalesButton

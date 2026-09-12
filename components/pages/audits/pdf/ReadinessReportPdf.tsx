@@ -92,7 +92,7 @@ function CoverPage({ report }: { report: ReadinessReport }) {
 
       <View style={{ ...pdfStyles.row, marginTop: 28, gap: 10 }}>
         <MetaCell label="Prepared for" value={report.preparedFor} />
-        <MetaCell label="Role" value={report.role ?? "—"} />
+        <MetaCell label="Role" value={report.role ?? "-"} />
         <MetaCell label="Website" value={report.website} />
         <MetaCell label="Snapshot" value={report.dateLabel} />
       </View>
@@ -204,7 +204,7 @@ function InsightsPage({ report }: { report: ReadinessReport }) {
       <PdfHeader company={report.company} kind="readiness" />
       <Text style={pdfStyles.h2}>Key findings</Text>
       <Text style={pdfStyles.body}>
-        The gaps that keep answer engines from citing {report.company} — even
+        The gaps that keep answer engines from citing {report.company}, even
         when crawlers are allowed in.
       </Text>
 
@@ -521,7 +521,7 @@ function QuickWinsPage({ report }: { report: ReadinessReport }) {
       <PdfHeader company={report.company} kind="readiness" />
       <Text style={pdfStyles.h2}>Quick wins</Text>
       <Text style={{ ...pdfStyles.body, marginBottom: 14 }}>
-        Highest-leverage on-site fixes — ordered for impact inside the sprint.
+        Highest-leverage on-site fixes, ordered for impact inside the sprint.
       </Text>
 
       {report.quickWins.map((win, index) => (

@@ -1,7 +1,7 @@
 const included = [
   "Heavily discounted agency rate, quoted to your roster size",
   "Unlimited client workspaces with per-client data isolation",
-  "Unlimited team seats — analysts, AMs, and strategists",
+  "Unlimited team seats, analysts, AMs, and strategists",
   "Every AI model on every client, no per-channel upcharge",
   "Pitch workspaces that sit outside your client quota",
   "White-label reports, Looker templates, CSV and API",

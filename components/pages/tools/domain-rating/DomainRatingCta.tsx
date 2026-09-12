@@ -15,7 +15,7 @@ export function DomainRatingCta() {
       </h2>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 text-balance">
         Keep using this lookup whenever you need it. Anny tracks how often
-        ChatGPT, Gemini, and AI Mode talk about you — and which sites they
+        ChatGPT, Gemini, and AI Mode talk about you, and which sites they
         cite.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">

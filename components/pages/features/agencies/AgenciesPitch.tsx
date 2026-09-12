@@ -7,7 +7,7 @@ const steps = [
   {
     step: "02",
     title: "Walk in with their gap",
-    body: "Show the prompts where competitors get named and they don't — across ChatGPT, Gemini, and AI Mode.",
+    body: "Show the prompts where competitors get named and they don't, across ChatGPT, Gemini, and AI Mode.",
   },
   {
     step: "03",

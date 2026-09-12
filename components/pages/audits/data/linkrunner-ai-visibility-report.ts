@@ -15,9 +15,9 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
   scoreLabel: "Critical",
   private: true,
   tagline:
-    "Turn installs into insights with an AI driven MMP — 250+ growth teams, 25k free attributed installs, published per-install pricing.",
+    "Turn installs into insights with an AI driven MMP, 250+ growth teams, 25k free attributed installs, published per-install pricing.",
   summary:
-    "Paste linkrunner.io into ChatGPT and the answer is accurate: a mobile attribution and marketing analytics platform, channels named, positioning intact. The AEO work is real — llms.txt with markdown twins for 329 pages, robots.txt explicitly allowlisting nine AI crawlers, one H1, Organization and SoftwareApplication schema, FAQPage on pricing, lastmod on every sitemap URL. On-site readiness scores 82/100. It bought 2 of 14 shortlists. On the twelve prompts Linkrunner loses, the loss is on Linkrunner's own claims: “MMP with transparent per-install pricing” returns Tenjin, Singular, AppsFlyer and Airbridge — the one differentiator Linkrunner publishes and legacy MMPs hide. “MMP with fraud protection included, not as an add-on” returns AppsFlyer, Adjust and Singular, the exact three whose fraud is an upsell. “cheap MMP for startups” returns Singular and Tenjin, not the tool with 25,000 free installs. Ask for the best MMP for Indian apps and ChatGPT answers “For most Indian consumer apps: AppsFlyer.” Ask which MMP Playo uses — the flagship case study, 34% CPI cut, on the homepage — and it checks AppsFlyer, Adjust, Singular, Branch and Kochava, then says it cannot find one. Ask for a “Linkrunner review” and it reviews a NetAlly cable tester, 9/10. Even the friendly prompts hedge: asked whether Linkrunner is reliable, the model confirms the company, SOC 2 and ISO 27001, then brakes on thin independent proof — Gartner 5.0 from a single rating, one published G2 review. Understanding was never the gap. Being recommended is, and that is what the 90-day AI Visibility Sprint builds.",
+    "Paste linkrunner.io into ChatGPT and the answer is accurate: a mobile attribution and marketing analytics platform, channels named, positioning intact. The AEO work is real, llms.txt with markdown twins for 329 pages, robots.txt explicitly allowlisting nine AI crawlers, one H1, Organization and SoftwareApplication schema, FAQPage on pricing, lastmod on every sitemap URL. On-site readiness scores 82/100. It bought 2 of 14 shortlists. On the twelve prompts Linkrunner loses, the loss is on Linkrunner's own claims: “MMP with transparent per-install pricing” returns Tenjin, Singular, AppsFlyer and Airbridge, the one differentiator Linkrunner publishes and legacy MMPs hide. “MMP with fraud protection included, not as an add-on” returns AppsFlyer, Adjust and Singular, the exact three whose fraud is an upsell. “cheap MMP for startups” returns Singular and Tenjin, not the tool with 25,000 free installs. Ask for the best MMP for Indian apps and ChatGPT answers “For most Indian consumer apps: AppsFlyer.” Ask which MMP Playo uses, the flagship case study, 34% CPI cut, on the homepage, and it checks AppsFlyer, Adjust, Singular, Branch and Kochava, then says it cannot find one. Ask for a “Linkrunner review” and it reviews a NetAlly cable tester, 9/10. Even the friendly prompts hedge: asked whether Linkrunner is reliable, the model confirms the company, SOC 2 and ISO 27001, then brakes on thin independent proof, Gartner 5.0 from a single rating, one published G2 review. Understanding was never the gap. Being recommended is, and that is what the 90-day AI Visibility Sprint builds.",
   stats: [
     { label: "Growth teams", value: "250+" },
     { label: "Readiness score", value: "82/100" },
@@ -27,10 +27,10 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
   brandCrisisHeadline:
     "The model reads the site perfectly. It still will not vouch for you.",
   brandCrisisDek:
-    "Paste the domain and ChatGPT explains the product correctly — the markdown twins work. Ask for a review, a customer, or a switch verdict and it returns a cable tester, a shrug, and AppsFlyer.",
+    "Paste the domain and ChatGPT explains the product correctly, the markdown twins work. Ask for a review, a customer, or a switch verdict and it returns a cable tester, a shrug, and AppsFlyer.",
   queriesHeadline: "Prompt audit · 10 of 14 queries",
   queriesIntro:
-    "Fourteen prompts were audited and two cite Linkrunner; the ten that decide deals are below. They cover the shortlists growth teams build when shopping for an MMP, plus the four positioning claims Linkrunner sells on: rupee pricing, published per-install rates, fraud included, and no annual lock-in. AppsFlyer appears in thirteen of the fourteen. The four omitted here — best MMP for startups, Adjust alternatives, SKAN 4.0, and React Native deep linking — repeat the same pattern: absent, with AppsFlyer, Adjust, Singular or Branch taking the shelf.",
+    "Fourteen prompts were audited and two cite Linkrunner; the ten that decide deals are below. They cover the shortlists growth teams build when shopping for an MMP, plus the four positioning claims Linkrunner sells on: rupee pricing, published per-install rates, fraud included, and no annual lock-in. AppsFlyer appears in thirteen of the fourteen. The four omitted here, best MMP for startups, Adjust alternatives, SKAN 4.0, and React Native deep linking, repeat the same pattern: absent, with AppsFlyer, Adjust, Singular or Branch taking the shelf.",
   modelScores: [
     { model: "chatgpt", visibility: 14, cited: 2, total: 14, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -54,7 +54,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       id: "crisis-review-netally",
       query: "Linkrunner review",
       title: "Brand collision · the review is for a network cable tester",
-      body: "Asked for a “Linkrunner review,” ChatGPT reviews the NetAlly LinkRunner — a copper cable and PoE tester for IT technicians — and scores it 9/10 for network troubleshooting. A growth lead doing pre-demo diligence on the review keyword lands on hardware. The MMP is not mentioned.",
+      body: "Asked for a “Linkrunner review,” ChatGPT reviews the NetAlly LinkRunner, a copper cable and PoE tester for IT technicians, and scores it 9/10 for network troubleshooting. A growth lead doing pre-demo diligence on the review keyword lands on hardware. The MMP is not mentioned.",
       outcome: "Identity miss · NetAlly hardware replaces the MMP",
       screenshot: {
         src: `${SHOT}/crisis-linkrunner-review-netally.jpg`,
@@ -78,7 +78,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
       id: "crisis-switch-appsflyer",
       query: "should I switch from AppsFlyer to Linkrunner",
       title: "Branded switch prompt · the model defends AppsFlyer",
-      body: "Named directly, ChatGPT opens with “I wouldn’t switch from AppsFlyer blindly” and builds a scorecard where AppsFlyer is green on maturity, attribution, deep linking, integrations, fraud and raw data, amber only on India focus, red only on price. Linkrunner's whole thesis — fraud and exports included on every plan, not tiered — is scored as an AppsFlyer strength. The concession is price alone. This is the prompt a warm lead runs last, and it argues them back to the incumbent.",
+      body: "Named directly, ChatGPT opens with “I wouldn’t switch from AppsFlyer blindly” and builds a scorecard where AppsFlyer is green on maturity, attribution, deep linking, integrations, fraud and raw data, amber only on India focus, red only on price. Linkrunner's whole thesis, fraud and exports included on every plan, not tiered, is scored as an AppsFlyer strength. The concession is price alone. This is the prompt a warm lead runs last, and it argues them back to the incumbent.",
       outcome: "Switch verdict · AppsFlyer defended, price framed as the only difference",
       screenshot: {
         src: `${SHOT}/crisis-should-i-switch-from-appsflyer.jpg`,
@@ -91,7 +91,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q1",
       query: "best MMP for Indian apps",
-      intent: "Home turf — the India-first position Linkrunner is built on",
+      intent: "Home turf, the India-first position Linkrunner is built on",
       severity: "critical",
       tag: "Home turf",
       citedBrands: ["AppsFlyer", "Adjust", "Singular", "Airbridge", "Branch"],
@@ -107,14 +107,14 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "ChatGPT shortlists AppsFlyer (best for scale), Adjust (best for fraud prevention), Singular, Airbridge and Branch, then recommends AppsFlyer outright for most Indian consumer apps. Linkrunner — built in Bengaluru for exactly this buyer — is not named.",
+            "ChatGPT shortlists AppsFlyer (best for scale), Adjust (best for fraud prevention), Singular, Airbridge and Branch, then recommends AppsFlyer outright for most Indian consumer apps. Linkrunner, built in Bengaluru for exactly this buyer, is not named.",
         },
       ],
     },
     {
       id: "q3",
       query: "AppsFlyer alternatives",
-      intent: "Primary conquest query — Linkrunner ships a dedicated comparison page",
+      intent: "Primary conquest query, Linkrunner ships a dedicated comparison page",
       severity: "critical",
       tag: "Conquest",
       citedBrands: [
@@ -144,7 +144,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q5",
       query: "OneLink alternatives",
-      intent: "Deep-link conquest — Linkrunner ships /onelink-alternative",
+      intent: "Deep-link conquest, Linkrunner ships /onelink-alternative",
       severity: "high",
       tag: "Conquest",
       citedBrands: [
@@ -169,7 +169,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q6",
       query: "Firebase Dynamic Links replacement",
-      intent: "Migration demand — Linkrunner ships a dedicated FDL page",
+      intent: "Migration demand, Linkrunner ships a dedicated FDL page",
       severity: "high",
       tag: "Migration",
       citedBrands: [
@@ -194,7 +194,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q7",
       query: "cheap MMP for startups",
-      intent: "Pricing wedge — 25,000 free installs, then ₹1.00 / $0.01",
+      intent: "Pricing wedge, 25,000 free installs, then ₹1.00 / $0.01",
       severity: "critical",
       tag: "Own claim",
       citedBrands: ["Singular", "AppsFlyer", "Adjust", "Tenjin"],
@@ -217,7 +217,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q10",
       query: "best MMP for fintech apps in India",
-      intent: "Published vertical play — Stratzy, Fold Money, Pocketful are customers",
+      intent: "Published vertical play, Stratzy, Fold Money, Pocketful are customers",
       severity: "critical",
       tag: "Vertical miss",
       citedBrands: ["AppsFlyer", "Adjust", "Branch", "Singular", "Kochava"],
@@ -240,7 +240,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q11",
       query: "MMP with transparent per-install pricing",
-      intent: "The single sharpest differentiator — published rate card vs quote-only",
+      intent: "The single sharpest differentiator, published rate card vs quote-only",
       severity: "critical",
       tag: "Own claim",
       citedBrands: ["Tenjin", "Singular", "AppsFlyer", "Airbridge", "Kochava"],
@@ -263,7 +263,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q12",
       query: "MMP with fraud protection included, not as an add-on",
-      intent: "Direct contrast with Protect360 — fraud is on every Linkrunner plan",
+      intent: "Direct contrast with Protect360, fraud is on every Linkrunner plan",
       severity: "critical",
       tag: "Own claim",
       citedBrands: ["AppsFlyer", "Adjust", "Singular"],
@@ -279,7 +279,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "The prompt asks for fraud protection in the core product rather than an add-on, and the answer is AppsFlyer, Adjust and Singular — with AppsFlyer described as integrated, despite Protect360 being a premium add-on. The model then offers to narrow to MMPs where fraud is “genuinely included.” Linkrunner, which includes it at every tier, is not in the running.",
+            "The prompt asks for fraud protection in the core product rather than an add-on, and the answer is AppsFlyer, Adjust and Singular, with AppsFlyer described as integrated, despite Protect360 being a premium add-on. The model then offers to narrow to MMPs where fraud is “genuinely included.” Linkrunner, which includes it at every tier, is not in the running.",
         },
       ],
     },
@@ -303,7 +303,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
           cited: true,
           position: 1,
           excerpt:
-            "Linkrunner leads the table — free first 25K installs, then per attributed install, no annual lock-in — and the answer closes by quoting the postpaid, no-lock-in claim with linkrunner.io as the source. The one prompt phrased entirely in Linkrunner's own words.",
+            "Linkrunner leads the table, free first 25K installs, then per attributed install, no annual lock-in, and the answer closes by quoting the postpaid, no-lock-in claim with linkrunner.io as the source. The one prompt phrased entirely in Linkrunner's own words.",
           sources: ["linkrunner.io"],
         },
       ],
@@ -311,7 +311,7 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     {
       id: "q14",
       query: "MMP priced in rupees for Indian apps",
-      intent: "Rupee pricing — the reason the India page exists",
+      intent: "Rupee pricing, the reason the India page exists",
       severity: "standard",
       tag: "Cited last",
       citedBrands: [
@@ -344,13 +344,13 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
     duration: "90 days",
     headline:
       "Get Linkrunner named on the twelve MMP shortlists it already deserves",
-    body: "This is the unusual audit where the site is not the problem. Linkrunner's on-site AI readiness scores 82/100 — llms.txt with markdown twins across 329 pages, nine AI crawlers explicitly allowlisted, clean schema and headings. That work is why ChatGPT explains the product correctly when you paste the domain. It is also why more schema will not move these answers. Models build MMP shortlists from third-party ground truth: comparison listicles, G2 and Gartner profiles, Reddit and community threads, and case studies published somewhere other than linkrunner.io. That is where AppsFlyer, Adjust, Singular and even Tenjin and Ulinkly are winning, and where Linkrunner currently has one G2 review and one Gartner rating. We start with the claims Linkrunner already owns and should not be losing — transparent per-install pricing, fraud included, cheapest startup tier, India-first — then fix the NetAlly collision and get Playo attributed. You get a dashboard that re-tests this prompt set weekly with screenshot proof.",
+    body: "This is the unusual audit where the site is not the problem. Linkrunner's on-site AI readiness scores 82/100, llms.txt with markdown twins across 329 pages, nine AI crawlers explicitly allowlisted, clean schema and headings. That work is why ChatGPT explains the product correctly when you paste the domain. It is also why more schema will not move these answers. Models build MMP shortlists from third-party ground truth: comparison listicles, G2 and Gartner profiles, Reddit and community threads, and case studies published somewhere other than linkrunner.io. That is where AppsFlyer, Adjust, Singular and even Tenjin and Ulinkly are winning, and where Linkrunner currently has one G2 review and one Gartner rating. We start with the claims Linkrunner already owns and should not be losing, transparent per-install pricing, fraud included, cheapest startup tier, India-first, then fix the NetAlly collision and get Playo attributed. You get a dashboard that re-tests this prompt set weekly with screenshot proof.",
     outcomes: [
-      "Cited on transparent-pricing, fraud-included, and cheap-startup-MMP prompts — the three claims Linkrunner publishes and currently loses to AppsFlyer, Singular and Tenjin",
+      "Cited on transparent-pricing, fraud-included, and cheap-startup-MMP prompts, the three claims Linkrunner publishes and currently loses to AppsFlyer, Singular and Tenjin",
       "Named on “best MMP for Indian apps” and “best MMP for fintech apps in India”, where ChatGPT today recommends AppsFlyer outright",
       "On the AppsFlyer, Adjust, OneLink and Firebase Dynamic Links alternative shelves those comparison pages were built to win",
-      "“Linkrunner review” resolves to the MMP, not the NetAlly cable tester — and Playo, Matiks and CashBook attach to Linkrunner in answers, not just on the homepage",
-      "Third-party proof depth built where models actually read it: review profiles, comparison listicles, and community threads — moving the switch verdict off “I wouldn't switch blindly”",
+      "“Linkrunner review” resolves to the MMP, not the NetAlly cable tester, and Playo, Matiks and CashBook attach to Linkrunner in answers, not just on the homepage",
+      "Third-party proof depth built where models actually read it: review profiles, comparison listicles, and community threads, moving the switch verdict off “I wouldn't switch blindly”",
       "Weekly re-tests of this 14-prompt set with screenshot proof, plus a dashboard for model gaps, competitor share, and the next action each week",
     ],
   },
@@ -359,5 +359,5 @@ export const linkrunnerAiVisibilityReport: VisibilityReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "You built the AI-ready site. Let's get you the citations.",
   ctaBody:
-    "Book a short call. We will walk this ChatGPT snapshot: 2 of 14 discovery cites, the four positioning claims Linkrunner publishes and still loses, the NetAlly review collision, and Playo missing from an answer that considered five competitors. Then the 90-day plan to change it — third-party authority, not more schema. You get weekly proof and a dashboard.",
+    "Book a short call. We will walk this ChatGPT snapshot: 2 of 14 discovery cites, the four positioning claims Linkrunner publishes and still loses, the NetAlly review collision, and Playo missing from an answer that considered five competitors. Then the 90-day plan to change it, third-party authority, not more schema. You get weekly proof and a dashboard.",
 };

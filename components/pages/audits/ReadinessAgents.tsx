@@ -69,7 +69,7 @@ export default function ReadinessAgents({
                   }
                   aria-hidden
                 >
-                  {signal.found ? "✓" : "—"}
+                  {signal.found ? "✓" : "-"}
                 </span>
                 <span className="min-w-0">
                   <span className="font-medium text-zinc-800">
@@ -90,7 +90,7 @@ export default function ReadinessAgents({
         ) : (
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
             {missingDiscovery === report.discoverySignals.length
-              ? `MCP / agent-skill discovery files are missing — advanced agents have no advertised way to learn what ${report.company} can do.`
+              ? `MCP / agent-skill discovery files are missing, advanced agents have no advertised way to learn what ${report.company} can do.`
               : `${missingDiscovery} of ${report.discoverySignals.length} MCP / agent-skill discovery signals are missing.`}
           </p>
         )}
@@ -132,7 +132,7 @@ export default function ReadinessAgents({
             robots.txt · AI agents
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
-            {allowedCount}/{report.agents.length} AI agents allowed — major
+            {allowedCount}/{report.agents.length} AI agents allowed, major
             crawlers are not blocked. The gap is capability discovery, not
             crawl permission.
           </p>

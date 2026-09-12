@@ -7,7 +7,7 @@ import type { RegisterPlan } from "@/lib/plans";
 
 /**
  * Self-serve signup from `/register`.
- * Collection: `signups` — one document per email (upserted on resubmit).
+ * Collection: `signups`- one document per email (upserted on resubmit).
  *
  * Access pattern: upsert on submit; list/filter by `createdAt` and `status`
  * for a sales queue; look up by `email` when following up.

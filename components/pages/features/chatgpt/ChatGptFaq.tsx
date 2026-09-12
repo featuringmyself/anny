@@ -14,7 +14,7 @@ export const faqs = [
   {
     question: "What makes Anny unique at measuring ChatGPT visibility?",
     answer:
-      "Anny reveals the internal query expansions ChatGPT runs to formulate its answers — available in the dashboard, MCP and API. These query fanouts show you the exact sub-topics ChatGPT searches for, letting you include those terms in your content and improve how your brand shows up.",
+      "Anny reveals the internal query expansions ChatGPT runs to formulate its answers, available in the dashboard, MCP and API. These query fanouts show you the exact sub-topics ChatGPT searches for, letting you include those terms in your content and improve how your brand shows up.",
   },
   {
     question: "What makes ChatGPT different than other LLMs?",

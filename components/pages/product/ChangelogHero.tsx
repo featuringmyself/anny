@@ -6,7 +6,7 @@ export default function ChangelogHero() {
         What shipped in Anny
       </h1>
       <p className="mt-4 max-w-lg text-lg text-zinc-500 text-balance">
-        Product updates, model coverage, and visibility tooling — newest first.
+        Product updates, model coverage, and visibility tooling, newest first.
       </p>
     </section>
   );

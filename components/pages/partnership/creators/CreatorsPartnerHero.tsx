@@ -11,7 +11,7 @@ export default function CreatorsPartnerHero() {
         <span className="text-zinc-500">Earn when your audience tracks.</span>
       </h1>
       <p className="mt-4 text-center text-lg text-balance text-zinc-500">
-        Affiliate payouts plus a ready content kit — demos, talking points, and
+        Affiliate payouts plus a ready content kit, demos, talking points, and
         visuals for newsletters, YouTube, and LinkedIn.
       </p>
       <div className="mt-6 flex justify-center">

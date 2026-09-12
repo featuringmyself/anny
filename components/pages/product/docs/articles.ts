@@ -22,7 +22,7 @@ export const docArticles: DocArticle[] = [
         items: [
           "Starter plans include 1 project and 50 tracked prompts.",
           "Pro plans include 2 projects and 150 tracked prompts.",
-          "Invite teammates from day one — seats are unlimited on every paid plan.",
+          "Invite teammates from day one, seats are unlimited on every paid plan.",
         ],
       },
       { type: "h2", text: "2. Add your first brand" },
@@ -52,7 +52,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "4. Pick models and run" },
       {
         type: "p",
-        text: "On Starter and Pro, choose up to three engines. We recommend ChatGPT, Gemini, and Google AI Mode for most marketing teams. Click Run tracking — daily jobs begin within a few minutes, and your first full snapshot usually lands inside an hour.",
+        text: "On Starter and Pro, choose up to three engines. We recommend ChatGPT, Gemini, and Google AI Mode for most marketing teams. Click Run tracking, daily jobs begin within a few minutes, and your first full snapshot usually lands inside an hour.",
       },
       {
         type: "ol",
@@ -93,10 +93,10 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "Legal and product names — Acme Corporation, Acme Cloud",
-          "Common misspellings — Acmе with a Cyrillic е, Ackme",
-          "Former names after rebrands — BrightPath (acquired 2024)",
-          "Ticker or shorthand if analysts use it — ACME",
+          "Legal and product names, Acme Corporation, Acme Cloud",
+          "Common misspellings, Acmе with a Cyrillic е, Ackme",
+          "Former names after rebrands, BrightPath (acquired 2024)",
+          "Ticker or shorthand if analysts use it, ACME",
         ],
       },
       {
@@ -112,10 +112,10 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "Intercom — score 42.4% across shared prompts",
-          "Zendesk — score 31.1%",
-          "Freshdesk — score 18.6%",
-          "Your brand — score 14.2% (baseline after week one)",
+          "Intercom, score 42.4% across shared prompts",
+          "Zendesk, score 31.1%",
+          "Freshdesk, score 18.6%",
+          "Your brand, score 14.2% (baseline after week one)",
         ],
       },
       {
@@ -138,7 +138,7 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Prompt sets are the unit of measurement in Anny. A strong set mirrors the real questions buyers type into AI — not the keywords you optimize for classic search.",
+        text: "Prompt sets are the unit of measurement in Anny. A strong set mirrors the real questions buyers type into AI, not the keywords you optimize for classic search.",
       },
       { type: "h2", text: "Cover the full journey" },
       {
@@ -148,10 +148,10 @@ export const docArticles: DocArticle[] = [
       {
         type: "ol",
         items: [
-          "Awareness — category fears and objections (\"why do CRM projects fail\")",
-          "Consideration — best-of and segment variants (\"best CRM for agencies under 50 people\")",
-          "Evaluation — brand vs brand and \"is X worth it\"",
-          "Purchase — pricing, onboarding, and migration questions if you sell direct",
+          "Awareness, category fears and objections (\"why do CRM projects fail\")",
+          "Consideration, best-of and segment variants (\"best CRM for agencies under 50 people\")",
+          "Evaluation, brand vs brand and \"is X worth it\"",
+          "Purchase, pricing, onboarding, and migration questions if you sell direct",
         ],
       },
       { type: "h2", text: "Write prompts the way people talk" },
@@ -200,11 +200,11 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "ChatGPT — Bing + Google grounding with independent ranking; strong on product and profile pages",
-          "Gemini — source chips and multi-turn citation behavior",
-          "Google AI Mode — dual-panel with AI Overviews where available",
-          "Claude — more conservative citations; useful for B2B evaluation prompts",
-          "Perplexity — citation-heavy answers; strong for research-style queries",
+          "ChatGPT, Bing + Google grounding with independent ranking; strong on product and profile pages",
+          "Gemini, source chips and multi-turn citation behavior",
+          "Google AI Mode, dual-panel with AI Overviews where available",
+          "Claude, more conservative citations; useful for B2B evaluation prompts",
+          "Perplexity, citation-heavy answers; strong for research-style queries",
         ],
       },
       {
@@ -219,7 +219,7 @@ export const docArticles: DocArticle[] = [
       {
         type: "callout",
         title: "Fanouts",
-        text: "For ChatGPT, Anny also records internal query expansions (fanouts). Use them to see the sub-topics the model searched — then fold those phrases into your content.",
+        text: "For ChatGPT, Anny also records internal query expansions (fanouts). Use them to see the sub-topics the model searched, then fold those phrases into your content.",
       },
       { type: "h2", text: "Comparing engines" },
       {
@@ -229,21 +229,21 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "ChatGPT — 28% visibility, avg position 2.4, sentiment mildly positive",
-          "Gemini — 41% visibility, avg position 1.8, sentiment neutral",
-          "AI Mode — 19% visibility, avg position 3.1, sentiment mixed",
+          "ChatGPT, 28% visibility, avg position 2.4, sentiment mildly positive",
+          "Gemini, 41% visibility, avg position 1.8, sentiment neutral",
+          "AI Mode, 19% visibility, avg position 3.1, sentiment mixed",
         ],
       },
       {
         type: "p",
-        text: "Treat those as three different problems — not one \"AI SEO\" score.",
+        text: "Treat those as three different problems, not one \"AI SEO\" score.",
       },
     ],
   },
   {
     id: "mentions",
     title: "Mentions & sentiment",
-    dek: "Read every answer where your brand appears — and how the model frames you.",
+    dek: "Read every answer where your brand appears, and how the model frames you.",
     section: "Tracking",
     updatedAt: "Jul 22, 2026",
     body: [
@@ -259,15 +259,15 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "Recommended — you appear in the shortlist or as a primary suggestion",
-          "Mentioned — named without a clear recommendation",
-          "Absent — tracked for the prompt but your brand was not named",
+          "Recommended, you appear in the shortlist or as a primary suggestion",
+          "Mentioned, named without a clear recommendation",
+          "Absent, tracked for the prompt but your brand was not named",
         ],
       },
       { type: "h2", text: "Sentiment labels" },
       {
         type: "p",
-        text: "Anny classifies framing as positive, neutral, mixed, or negative. In B2B software samples, ChatGPT often frames brands less favorably than Gemini on evaluation prompts — so a high mention rate with negative sentiment still loses deals.",
+        text: "Anny classifies framing as positive, neutral, mixed, or negative. In B2B software samples, ChatGPT often frames brands less favorably than Gemini on evaluation prompts, so a high mention rate with negative sentiment still loses deals.",
       },
       {
         type: "quote",
@@ -295,24 +295,24 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Most brand mentions are earned through third-party pages the model retrieves — listicles, reviews, Reddit threads, Wikipedia — not your homepage. The Sources view shows which URLs shaped answers across your prompt set.",
+        text: "Most brand mentions are earned through third-party pages the model retrieves, listicles, reviews, Reddit threads, Wikipedia, not your homepage. The Sources view shows which URLs shaped answers across your prompt set.",
       },
       { type: "h2", text: "Source types Anny tags" },
       {
         type: "ul",
         items: [
-          "Editorial / listicles — \"best of\" roundups and comparison posts",
-          "Reviews — G2, Capterra, TrustRadius, and similar",
-          "Community — Reddit, forums, niche Slack/Discord archives when cited",
-          "Documentation — official docs and help centers",
-          "Owned — your domain and related domains",
-          "Video — YouTube and similar, especially influential on Google AI surfaces",
+          "Editorial / listicles, \"best of\" roundups and comparison posts",
+          "Reviews, G2, Capterra, TrustRadius, and similar",
+          "Community, Reddit, forums, niche Slack/Discord archives when cited",
+          "Documentation, official docs and help centers",
+          "Owned, your domain and related domains",
+          "Video, YouTube and similar, especially influential on Google AI surfaces",
         ],
       },
       { type: "h2", text: "Finding citation gaps" },
       {
         type: "p",
-        text: "Filter to prompts where a competitor is mentioned and you are absent. Sort sources by how often they appear across engines. Prioritize domains that show up in ChatGPT and Gemini — closing those gaps usually moves multiple surfaces at once.",
+        text: "Filter to prompts where a competitor is mentioned and you are absent. Sort sources by how often they appear across engines. Prioritize domains that show up in ChatGPT and Gemini, closing those gaps usually moves multiple surfaces at once.",
       },
       {
         type: "callout",
@@ -322,7 +322,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "Owned content still matters" },
       {
         type: "p",
-        text: "Anny also surfaces owned page types engines already ground on — product pages, how-tos, pricing, and comparison pages on your domain. If competitors' product pages appear and yours never do, crawlability and factual structure are usually the issue, not just authority.",
+        text: "Anny also surfaces owned page types engines already ground on, product pages, how-tos, pricing, and comparison pages on your domain. If competitors' product pages appear and yours never do, crawlability and factual structure are usually the issue, not just authority.",
       },
       {
         type: "ol",
@@ -343,16 +343,16 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Every paid Anny plan includes unlimited seats. Roles control what people can change — not whether they can log in.",
+        text: "Every paid Anny plan includes unlimited seats. Roles control what people can change, not whether they can log in.",
       },
       { type: "h2", text: "Roles" },
       {
         type: "ul",
         items: [
-          "Owner — billing, delete workspace, transfer ownership",
-          "Admin — manage brands, prompts, members, and integrations",
-          "Editor — edit prompt libraries and mark actions done",
-          "Viewer — read dashboards and exports; no edits",
+          "Owner, billing, delete workspace, transfer ownership",
+          "Admin, manage brands, prompts, members, and integrations",
+          "Editor, edit prompt libraries and mark actions done",
+          "Viewer, read dashboards and exports; no edits",
         ],
       },
       { type: "h2", text: "Inviting people" },
@@ -387,11 +387,11 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "Visibility drop — your Visibility % falls more than X points week over week on a tagged group",
-          "Competitor surge — a seeded competitor gains Y mentions on shared prompts",
-          "New citation — a high-traffic domain cites a competitor and not you",
-          "Sentiment shift — share of negative/mixed answers rises above a threshold",
-          "Model gap — you appear on one engine but stay absent on another for 3+ days",
+          "Visibility drop, your Visibility % falls more than X points week over week on a tagged group",
+          "Competitor surge, a seeded competitor gains Y mentions on shared prompts",
+          "New citation, a high-traffic domain cites a competitor and not you",
+          "Sentiment shift, share of negative/mixed answers rises above a threshold",
+          "Model gap, you appear on one engine but stay absent on another for 3+ days",
         ],
       },
       { type: "h2", text: "Channels" },
@@ -434,10 +434,10 @@ export const docArticles: DocArticle[] = [
       {
         type: "ul",
         items: [
-          "Mentions CSV — prompt, engine, date, excerpt, sentiment, position, competitors",
-          "Sources CSV — URL, domain, type, engines citing, competitor vs owned",
-          "Visibility scorecard PDF — weekly ladder vs competitors for one brand",
-          "White-label PDF — agency branding, client logo, no Anny chrome",
+          "Mentions CSV, prompt, engine, date, excerpt, sentiment, position, competitors",
+          "Sources CSV, URL, domain, type, engines citing, competitor vs owned",
+          "Visibility scorecard PDF, weekly ladder vs competitors for one brand",
+          "White-label PDF, agency branding, client logo, no Anny chrome",
         ],
       },
       { type: "h2", text: "API and MCP" },

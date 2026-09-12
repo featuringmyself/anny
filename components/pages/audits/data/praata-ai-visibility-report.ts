@@ -15,9 +15,9 @@ export const praataAiVisibilityReport: VisibilityReport = {
   scoreLabel: "Critical",
   private: true,
   tagline:
-    "LinkedIn — boutique personal investments and multi-family office",
+    "LinkedIn, boutique personal investments and multi-family office",
   summary:
-    "Ask ChatGPT for alternatives to praata.com in Gurgaon and it returns Zolo, Housr, and Commune — coliving, not a mutual fund distributor. Ask for an AMFI distributor near DLF and it names Clear Ocean in Two Horizon Centre, Praata’s own building, not Praata. On the eight Gurgaon distributor, SIP, and FinEdge-alternative prompts families already type, Praata is cited 0 of 8. This ChatGPT snapshot is the baseline. A 90-day sprint gets Praata on those shortlists, kills the coliving identity, and fixes the reviews caution.",
+    "Ask ChatGPT for alternatives to praata.com in Gurgaon and it returns Zolo, Housr, and Commune, coliving, not a mutual fund distributor. Ask for an AMFI distributor near DLF and it names Clear Ocean in Two Horizon Centre, Praata’s own building, not Praata. On the eight Gurgaon distributor, SIP, and FinEdge-alternative prompts families already type, Praata is cited 0 of 8. This ChatGPT snapshot is the baseline. A 90-day sprint gets Praata on those shortlists, kills the coliving identity, and fixes the reviews caution.",
   brandCrisisHeadline:
     "When someone checks Praata, AI either thinks coliving or says proceed with caution",
   brandCrisisDek:
@@ -50,7 +50,7 @@ export const praataAiVisibilityReport: VisibilityReport = {
       id: "crisis-alternatives",
       query: "alternatives to praata.com in gurgaon",
       title: "AI treats Praata as coliving",
-      body: "ChatGPT assumes praata.com is a managed-rental / co-living model — furnished rooms, housekeeping, flexible stays — then lists Housr, Commune, Zolo, Flock, Rentdoor, and FnF. Boutique personal investments never appear.",
+      body: "ChatGPT assumes praata.com is a managed-rental / co-living model, furnished rooms, housekeeping, flexible stays, then lists Housr, Commune, Zolo, Flock, Rentdoor, and FnF. Boutique personal investments never appear.",
       outcome: "Identity leak · coliving shortlist",
       screenshot: {
         src: `${SHOT}/01-alternatives-to-praata-gurgaon.png`,
@@ -137,7 +137,7 @@ export const praataAiVisibilityReport: VisibilityReport = {
     {
       id: "q3",
       query: "AMFI registered mutual fund distributor near DLF Gurgaon",
-      intent: "Geo + AMFI: distributors near DLF — including Praata’s own building",
+      intent: "Geo + AMFI: distributors near DLF, including Praata’s own building",
       severity: "critical",
       tag: "Same building",
       citedBrands: [
@@ -159,7 +159,7 @@ export const praataAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Prism Wealth, AS Anand Capital, Tanmay Financials, and MyownCFO fill the DLF list. Clear Ocean LLP is named at Two Horizon Centre, Golf Course Road — Praata’s building. Praata is not cited.",
+            "Prism Wealth, AS Anand Capital, Tanmay Financials, and MyownCFO fill the DLF list. Clear Ocean LLP is named at Two Horizon Centre, Golf Course Road, Praata’s building. Praata is not cited.",
           sources: [
             "Prism Wealth",
             "AS Anand Capital",
@@ -173,7 +173,7 @@ export const praataAiVisibilityReport: VisibilityReport = {
     {
       id: "q4",
       query: "financial planner in Gurgaon for salaried professionals",
-      intent: "Salaried ICP in Gurgaon — AI prefers fee-only RIAs over MFDs",
+      intent: "Salaried ICP in Gurgaon, AI prefers fee-only RIAs over MFDs",
       severity: "high",
       tag: "RIA preference",
       citedBrands: [
@@ -230,7 +230,7 @@ export const praataAiVisibilityReport: VisibilityReport = {
     {
       id: "q6",
       query: "SIP SWP advisor for retirement planning India",
-      intent: "Retirement SIP/SWP — AI routes this to fee-only RIAs, not MFDs",
+      intent: "Retirement SIP/SWP, AI routes this to fee-only RIAs, not MFDs",
       severity: "high",
       tag: "RIA gate",
       citedBrands: [

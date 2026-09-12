@@ -12,7 +12,7 @@ export default function Loading() {
             <div className="mt-10 h-11 w-full max-w-md animate-pulse bg-zinc-200" />
             <div className="mt-5 h-10 w-40 animate-pulse bg-zinc-200" />
           </div>
-          <AiReadinessInstrumentPending domain="—" />
+          <AiReadinessInstrumentPending domain="-" />
         </div>
       </section>
     </main>

@@ -30,7 +30,7 @@ export default function ReadinessReportView({
     <main className="overflow-anchor-none pb-16 md:pb-24">
       {report.private ? <ReportPrivateBanner /> : null}
 
-      {/* Cover — company, score, snapshot. Not marketing landing. */}
+      {/* Cover, company, score, snapshot. Not marketing landing. */}
       <header className="border-b bg-white">
         <ReadinessHeroLead report={report} />
       </header>
@@ -45,7 +45,7 @@ export default function ReadinessReportView({
         <ReadinessHeroBody report={report} mode={mode} />
       </section>
 
-      {/* Findings body — visually distinct from the cover so scroll reads as dossier, not landing. */}
+      {/* Findings body, visually distinct from the cover so scroll reads as dossier, not landing. */}
       <div className="border-b bg-zinc-50">
         <div className="border-b border-zinc-200/80 px-6 py-5 md:px-12">
           <p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase">

@@ -16,8 +16,8 @@ type DomainRatingInstrumentProps = {
 export function DomainRatingInstrumentIdle() {
   return (
     <InstrumentShell>
-      <GaugeBlock value={null} label="—" caption="Enter a domain to begin" />
-      <InstrumentMeta domain="—" rank={null} />
+      <GaugeBlock value={null} label="-" caption="Enter a domain to begin" />
+      <InstrumentMeta domain="-" rank={null} />
     </InstrumentShell>
   );
 }
@@ -32,7 +32,7 @@ export function DomainRatingInstrumentPending({
       <GaugeBlock
         value={null}
         pending
-        label="—"
+        label="-"
         caption="Checking the score…"
       />
       <InstrumentMeta domain={domain} rank={null} pending />
@@ -178,7 +178,7 @@ function InstrumentMeta({
         </dt>
         <dd className="mt-1 text-sm font-medium tabular-nums">
           {rank == null ? (
-            <span className="text-zinc-600">—</span>
+            <span className="text-zinc-600">-</span>
           ) : (
             `#${rank.toLocaleString()}`
           )}

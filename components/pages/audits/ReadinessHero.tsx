@@ -33,7 +33,7 @@ export function ReadinessHeroLead({ report }: { report: ReadinessReport }) {
             {report.company}
           </h1>
           <p className="mt-2 text-base text-zinc-500 text-balance">
-            On-site readiness for AI agents — schema, crawl access, automation,
+            On-site readiness for AI agents, schema, crawl access, automation,
             and HTML semantics.
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">

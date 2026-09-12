@@ -17,7 +17,7 @@ export function PostHogDistinctIdField() {
       const id = posthog.get_distinct_id();
       if (id) setDistinctId(id);
     } catch {
-      // SDK not ready / not initialized — leave empty.
+      // SDK not ready / not initialized, leave empty.
     }
   }, []);
 

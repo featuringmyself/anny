@@ -13,7 +13,7 @@ export const DOMAIN_RATING_CACHE_MS = 24 * 60 * 60 * 1000;
 
 /**
  * Sites looked up through the Domain Rating checker.
- * Collection: `domain_rating_lookups` — one document per domain.
+ * Collection: `domain_rating_lookups`- one document per domain.
  *
  * Access pattern: upsert on each check; list by `lastSeenAt` for recent
  * activity; look up by `domain`.

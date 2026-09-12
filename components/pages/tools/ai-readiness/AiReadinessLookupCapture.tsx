@@ -32,7 +32,7 @@ export function AiReadinessLookupCapture({
       if (sessionStorage.getItem(key)) return;
       sessionStorage.setItem(key, "1");
     } catch {
-      // Private mode — still capture.
+      // Private mode, still capture.
     }
 
     posthog.capture(

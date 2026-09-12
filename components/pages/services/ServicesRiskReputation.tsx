@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import { Star, StarHalf } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -109,27 +110,10 @@ function StarIcon({
   filled: boolean;
 }) {
   if (filled) {
-    return (
-      <svg viewBox="0 0 12 12" className={className} aria-hidden fill="currentColor">
-        <path d="M6 0.8l1.5 3.1 3.4.5-2.45 2.4.6 3.35L6 8.55 2.95 10.15l.6-3.35L1.1 4.4l3.4-.5L6 .8z" />
-      </svg>
-    );
+    return <Star className={className} fill="currentColor" strokeWidth={0} aria-hidden />;
   }
 
-  return (
-    <svg viewBox="0 0 12 12" className={className} aria-hidden>
-      <defs>
-        <linearGradient id="half-star">
-          <stop offset="50%" stopColor="currentColor" />
-          <stop offset="50%" stopColor="currentColor" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M6 0.8l1.5 3.1 3.4.5-2.45 2.4.6 3.35L6 8.55 2.95 10.15l.6-3.35L1.1 4.4l3.4-.5L6 .8z"
-        fill="url(#half-star)"
-      />
-    </svg>
-  );
+  return <StarHalf className={className} fill="currentColor" strokeWidth={0} aria-hidden />;
 }
 
 export default function ServicesRiskReputation() {

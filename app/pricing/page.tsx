@@ -8,9 +8,9 @@ import PricingTiers, {
 } from "@/components/pages/product/PricingTiers";
 import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Pricing — Anny";
+const title = "Pricing · Anny";
 const description =
-  "Anny plans for brands: Starter, Pro, and Advanced (custom). Agencies get heavily discounted multi-client pricing — talk to sales for a quote.";
+  "Anny plans for brands: Starter, Pro, and Advanced (custom). Agencies get heavily discounted multi-client pricing, talk to sales for a quote.";
 
 export const metadata = pageMetadata({
   path: "/pricing",

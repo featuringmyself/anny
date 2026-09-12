@@ -25,12 +25,12 @@ export async function generateMetadata({
   const role = getRoleBySlug(slug);
 
   if (!role) {
-    return { title: `Careers — ${SITE_NAME}` };
+    return { title: `Careers · ${SITE_NAME}` };
   }
 
   return pageMetadata({
     path: `/careers/${slug}`,
-    title: `${role.role} — Careers — ${SITE_NAME}`,
+    title: `${role.role}, Careers · ${SITE_NAME}`,
     description: role.summary,
   });
 }
@@ -43,7 +43,7 @@ export default async function CareerRolePage({ params }: PageProps) {
     notFound();
   }
 
-  const title = `${role.role} — Careers — ${SITE_NAME}`;
+  const title = `${role.role}, Careers · ${SITE_NAME}`;
 
   return (
     <main>

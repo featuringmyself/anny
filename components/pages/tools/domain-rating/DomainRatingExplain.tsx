@@ -22,7 +22,7 @@ export function DomainRatingExplain() {
         </h2>
         <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
           Use this when someone sends you a site, a guest-post offer, or a
-          competitor — and you want the number in a few seconds.
+          competitor, and you want the number in a few seconds.
         </p>
       </div>
       <ul className="grid md:grid-cols-3">

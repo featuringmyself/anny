@@ -56,7 +56,7 @@ export default function CareersApplyForm({
           tabIndex={-1}
           className="mt-3 text-2xl font-medium tracking-tight outline-none md:text-3xl"
         >
-          Thanks — we&apos;ll be in touch
+          Thanks, we&apos;ll be in touch
         </h2>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-500">
           Dummy confirmation for{" "}
@@ -89,7 +89,7 @@ export default function CareersApplyForm({
         Apply for {roleTitle}
       </h2>
       <p className="mt-2 max-w-sm text-sm text-zinc-500">
-        This is a demo form — submissions stay in the browser and show a
+        This is a demo form, submissions stay in the browser and show a
         success state so you can walk the full flow.
       </p>
 

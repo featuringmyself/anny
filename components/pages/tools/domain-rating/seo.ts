@@ -18,17 +18,17 @@ export const drCheckerFaqs = [
   {
     question: "What is Domain Rating?",
     answer:
-      "Domain Rating (DR) is a 0–100 score for how strong a website’s backlinks are. It looks at how many other sites link to the domain and how strong those sites are — not traffic or Google rankings.",
+      "Domain Rating (DR) is a 0–100 score for how strong a website’s backlinks are. It looks at how many other sites link to the domain and how strong those sites are, not traffic or Google rankings.",
   },
   {
     question: "Is this a real Domain Rating score?",
     answer:
-      "Yes. The number comes from the public Domain Rating API — not Moz Domain Authority or a score Anny invented.",
+      "Yes. The number comes from the public Domain Rating API, not Moz Domain Authority or a score Anny invented.",
   },
   {
     question: "What is a good Domain Rating?",
     answer:
-      "As a rough guide: under 30 is early, 30–49 is growing, 50–69 is a solid established site, 70–89 is strong, and 90+ is rare. Still check a few competitors in the same space — a 40 can be plenty in a small niche.",
+      "As a rough guide: under 30 is early, 30–49 is growing, 50–69 is a solid established site, 70–89 is strong, and 90+ is rare. Still check a few competitors in the same space, a 40 can be plenty in a small niche.",
   },
   {
     question: "Is Domain Rating the same as Domain Authority?",
@@ -53,7 +53,7 @@ export const drCheckerHowTo = {
   steps: [
     {
       name: "Enter a domain",
-      text: "Paste something like example.com. A full URL is fine — we use the domain.",
+      text: "Paste something like example.com. A full URL is fine, we use the domain.",
     },
     {
       name: "Check Domain Rating",

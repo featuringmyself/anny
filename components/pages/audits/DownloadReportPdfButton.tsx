@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Check, Download, Loader2 } from "lucide-react";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
@@ -9,7 +10,7 @@ import { cn } from "@/lib/utils";
 type DownloadReportPdfButtonProps = {
   slug: string;
   company: string;
-  /** Analytics only — API resolves report kind from slug. */
+  /** Analytics only, API resolves report kind from slug. */
   kind?: "visibility" | "readiness";
   className?: string;
 };
@@ -24,99 +25,38 @@ function DownloadGlyph({
   reduceMotion: boolean | null;
 }) {
   return (
-    <svg
-      viewBox="0 0 16 16"
-      className="size-3.5"
-      fill="none"
-      aria-hidden
+    <motion.span
+      className="inline-flex"
+      animate={
+        reduceMotion || !active
+          ? { y: 0 }
+          : { y: [0, 2.5, 0] }
+      }
+      transition={
+        reduceMotion || !active
+          ? { duration: 0.2 }
+          : { duration: 0.85, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
+      }
     >
-      <motion.path
-        d="M3 11.5v1.25c0 .69.56 1.25 1.25 1.25h7.5c.69 0 1.25-.56 1.25-1.25V11.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <motion.g
-        animate={
-          reduceMotion || !active
-            ? { y: 0 }
-            : { y: [0, 2.5, 0] }
-        }
-        transition={
-          reduceMotion || !active
-            ? { duration: 0.2 }
-            : { duration: 0.85, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }
-        }
-      >
-        <path
-          d="M8 2.5v7"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M5.25 7.25 8 10l2.75-2.75"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </motion.g>
-    </svg>
+      <Download className="size-3.5" strokeWidth={1.5} aria-hidden />
+    </motion.span>
   );
 }
 
 function SpinnerGlyph() {
-  return (
-    <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden>
-      <motion.g
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 0.7,
-          ease: "linear",
-          repeat: Number.POSITIVE_INFINITY,
-        }}
-        style={{ transformOrigin: "8px 8px" }}
-      >
-        <circle
-          cx="8"
-          cy="8"
-          r="5.5"
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity="0.25"
-          strokeWidth="1.5"
-        />
-        <circle
-          cx="8"
-          cy="8"
-          r="5.5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeDasharray="10 24"
-        />
-      </motion.g>
-    </svg>
-  );
+  return <Loader2 className="size-3.5 animate-spin" strokeWidth={1.5} aria-hidden />;
 }
 
 function CheckGlyph({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
-    <svg viewBox="0 0 16 16" className="size-3.5" fill="none" aria-hidden>
-      <motion.path
-        d="M3.5 8.25 6.75 11.5 12.5 4.5"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      />
-    </svg>
+    <motion.span
+      className="inline-flex"
+      initial={reduceMotion ? false : { scale: 0.6, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Check className="size-3.5" strokeWidth={1.75} aria-hidden />
+    </motion.span>
   );
 }
 

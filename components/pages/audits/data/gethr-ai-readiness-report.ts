@@ -15,11 +15,11 @@ export const gethrAiReadinessReport: ReadinessReport = {
   scoreLabel: "Poor",
   private: true,
   tagline:
-    "How ready 2gethr.com is for AI search — and what to fix inside the 90-day AI Visibility Sprint.",
+    "How ready 2gethr.com is for AI search, and what to fix inside the 90-day AI Visibility Sprint.",
   summary:
-    "Across five pages, 2gethr.com scores 38/100 — below the PropTech median. Crawlers are allowed in, but most of what 2gethr sells is trapped in pictures and silent video: 209 homepage images against roughly 600 words, 39 images with no alt, 151 with generic alt, two videos with no transcript, and zero JSON-LD. Heading hierarchy, schema completeness, and content freshness are where the industry’s top quartile pulls away. On-page 46, technical 47, authority 37, AI readiness 27. The shortest path up is text equivalents for media, one H1, Organization schema, and an FAQ agents can quote — included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
+    "Across five pages, 2gethr.com scores 38/100, below the PropTech median. Crawlers are allowed in, but most of what 2gethr sells is trapped in pictures and silent video: 209 homepage images against roughly 600 words, 39 images with no alt, 151 with generic alt, two videos with no transcript, and zero JSON-LD. Heading hierarchy, schema completeness, and content freshness are where the industry’s top quartile pulls away. On-page 46, technical 47, authority 37, AI readiness 27. The shortest path up is text equivalents for media, one H1, Organization schema, and an FAQ agents can quote, included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
   summaryTechnical:
-    "5-page AEO re-read (/, and commercial templates). Homepage: ~209 <img>, ~593 visible words, 0 <figcaption>, 2 <video> (Framer mp4s) with 0 <track>. 39 images missing alt; 151 generic/short/filename-style alts. FAQ: no FAQPage, 1 question heading (“Why 2gethr?”), 0 question sentences in body. 0 JSON-LD / Microdata on /, /gcc, /about-us, /managed-offices, /schedule-a-visit. 29 <h1> / 4 <h2> / 0 <h3> on /. robots.txt allows *; sitemap 64 URLs, 0 lastmod. Enquiry form: 7 real fields × 4 Framer copies unlabeled. /llms.txt and MCP/skills 404. Cohort: below median vs 36 PropTech sites; top quartile leads on freshness, heading hierarchy, and schema completeness. Pillars — on-page 46, technical 47, authority 37, AI readiness 27.",
+    "5-page AEO re-read (/, and commercial templates). Homepage: ~209 <img>, ~593 visible words, 0 <figcaption>, 2 <video> (Framer mp4s) with 0 <track>. 39 images missing alt; 151 generic/short/filename-style alts. FAQ: no FAQPage, 1 question heading (“Why 2gethr?”), 0 question sentences in body. 0 JSON-LD / Microdata on /, /gcc, /about-us, /managed-offices, /schedule-a-visit. 29 <h1> / 4 <h2> / 0 <h3> on /. robots.txt allows *; sitemap 64 URLs, 0 lastmod. Enquiry form: 7 real fields × 4 Framer copies unlabeled. /llms.txt and MCP/skills 404. Cohort: below median vs 36 PropTech sites; top quartile leads on freshness, heading hierarchy, and schema completeness. Pillars, on-page 46, technical 47, authority 37, AI readiness 27.",
   stats: [
     { label: "AI readiness", value: "27/100" },
     { label: "Homepage images", value: "209" },
@@ -30,7 +30,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
     {
       id: "insight-media",
       title: "The offer is trapped in images and video",
-      body: "AI search reads text, not pictures of space. The homepage is a gallery — two hundred images, about six hundred words, no captions — so GCC floors, managed-office layouts, and client proof stay invisible to answer engines. Two hero videos have no transcript. Until alt, captions, and copy carry the same facts as the photography, 2gethr cannot be cited for what the rooms actually are.",
+      body: "AI search reads text, not pictures of space. The homepage is a gallery, two hundred images, about six hundred words, no captions, so GCC floors, managed-office layouts, and client proof stay invisible to answer engines. Two hero videos have no transcript. Until alt, captions, and copy carry the same facts as the photography, 2gethr cannot be cited for what the rooms actually are.",
       bodyTechnical:
         "Homepage: 209 images vs ~593 words. 39 missing alt; 151 alt values generic, filename-like, or too short (gallery, GCC 1, CBD, client-mark one-liners). 0 <figure>/<figcaption>. 2 videos (framerusercontent …/6zPLJOPIcnPiAFug4YIM7dMjYM.mp4 and …/9vCVVJjhFc9QOMIYAOlwfZFonM.mp4), preload=none, 0 <track kind=\"captions|descriptions\">. Same pattern on /gcc (2 silent videos) and image-heavy /managed-offices and /coworking.",
     },
@@ -44,14 +44,14 @@ export const gethrAiReadinessReport: ReadinessReport = {
     {
       id: "insight-forms",
       title: "Enquiry form agents cannot complete",
-      body: "The tour / Let’s Connect form is the commercial path — and every real field is unlabeled. Placeholders like “John” and “xyz@xyz.com” are not names agents or assistive tech can trust, so the capture path leaks.",
+      body: "The tour / Let’s Connect form is the commercial path, and every real field is unlabeled. Placeholders like “John” and “xyz@xyz.com” are not names agents or assistive tech can trust, so the capture path leaks.",
       bodyTechnical:
-        "Homepage ships 4 copies of the same form (Framer SSR variants): First_Name, Last_Name, Company, Job_Title, Email, Phone_Number, Number_Of_Employees — 0 <label>, 0 aria-label, 0 autocomplete. 11 honeypot inputs per copy use autocomplete=\"one-time-code\". /schedule-a-visit adds unlabeled Source and Membership_Type <select>s. No CAPTCHA in static HTML.",
+        "Homepage ships 4 copies of the same form (Framer SSR variants): First_Name, Last_Name, Company, Job_Title, Email, Phone_Number, Number_Of_Employees, 0 <label>, 0 aria-label, 0 autocomplete. 11 honeypot inputs per copy use autocomplete=\"one-time-code\". /schedule-a-visit adds unlabeled Source and Membership_Type <select>s. No CAPTCHA in static HTML.",
     },
     {
       id: "insight-cite",
       title: "Nothing for answer engines to quote",
-      body: "There is no FAQ, no llms.txt, and almost no question-and-answer copy. We found one question heading — “Why 2gethr?” — and zero questions in the body. AI can crawl the site and still have no self-contained paragraph to lift.",
+      body: "There is no FAQ, no llms.txt, and almost no question-and-answer copy. We found one question heading, “Why 2gethr?”, and zero questions in the body. AI can crawl the site and still have no self-contained paragraph to lift.",
       bodyTechnical:
         "FAQ structure: none. Question headings: 1 (“Why 2gethr?”). Questions detected in content: 0. /llms.txt 404. Meta description 204 chars (over 50–160). Title 74 chars. No tel:/mailto: on /. Phones and sales@2gethr.co.in appear on /schedule-a-visit as plain text. Testimonials are images (e.g. Anil Goteti Scapia) without Review/AggregateRating schema.",
     },
@@ -62,7 +62,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       title: "Put the rooms into text AI can read",
       impact: "High",
       effort: "Medium",
-      body: "Write real alt and a one-line caption for space and testimonial images, add transcripts under the two homepage videos, and put the 8M+ / occupancy stats in HTML — not only in the picture.",
+      body: "Write real alt and a one-line caption for space and testimonial images, add transcripts under the two homepage videos, and put the 8M+ / occupancy stats in HTML, not only in the picture.",
       bodyTechnical:
         "Homepage: describe 39 missing alts; rewrite 151 generic/short alts (gallery, GCC 1, CBD). Add <figcaption> takeaways on gallery and testimonial frames (201 images currently have none). Provide <track kind=\"captions\"> (or a visible transcript) for the two Framer mp4 heroes. Repeat on /gcc videos. Keep named client-logo alts.",
     },
@@ -80,7 +80,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       title: "Collapse to one descriptive H1",
       impact: "High",
       effort: "Low",
-      body: "Keep a single H1 that names the offer — managed offices and GCC workspaces in Bangalore and Hyderabad — and turn stats and section titles into H2/H3 so agents can extract the page topic.",
+      body: "Keep a single H1 that names the offer, managed offices and GCC workspaces in Bangalore and Hyderabad, and turn stats and section titles into H2/H3 so agents can extract the page topic.",
       bodyTechnical:
         "One H1 (the current <title> intent is fine). Demote metric chips and duplicated section titles. Use H2/H3 for Solutions, Why 2gethr, locations, and testimonials. Stop emitting breakpoint copies of the same heading in the SSR HTML.",
     },
@@ -89,9 +89,9 @@ export const gethrAiReadinessReport: ReadinessReport = {
       title: "Add FAQ copy engines can lift",
       impact: "High",
       effort: "Low",
-      body: "Turn “Why 2gethr?” into a real Q&A block — GCC vs managed office vs coworking, Bangalore locations, tour SLA — with FAQPage schema so answer engines have something to cite.",
+      body: "Turn “Why 2gethr?” into a real Q&A block, GCC vs managed office vs coworking, Bangalore locations, tour SLA, with FAQPage schema so answer engines have something to cite.",
       bodyTechnical:
-        "Add visible question/answer pairs (not only an H1). Ship FAQPage JSON-LD on /, /gcc, and /managed-offices. /locations-cbd already has “Got Questions?” as an H1 with no answers underneath — fill it.",
+        "Add visible question/answer pairs (not only an H1). Ship FAQPage JSON-LD on /, /gcc, and /managed-offices. /locations-cbd already has “Got Questions?” as an H1 with no answers underneath, fill it.",
     },
     {
       id: "win-form-labels",
@@ -117,7 +117,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       id: "cat-site-files",
       title: "Site files",
       status: "needs-improvement",
-      body: "robots.txt is real and does not block AI crawlers. The sitemap lists sixty-four pages, but none carry a last-updated date. There is no llms.txt or agent-skills file — tools that look for those paths get a 404.",
+      body: "robots.txt is real and does not block AI crawlers. The sitemap lists sixty-four pages, but none carry a last-updated date. There is no llms.txt or agent-skills file, tools that look for those paths get a 404.",
       bodyTechnical:
         "robots.txt: User-agent: * Allow: / plus Sitemap. sitemap.xml: 64 loc, 0 lastmod (50 blog URLs). /llms.txt, /skill.md, /agents.md, /.well-known/agent-skills/index.json, mcp.json, webmcp/tools.json, mcp/server-card.json, and /.well-known/ucp all 404. No <link rel=\"mcp\">.",
       metrics: [
@@ -139,7 +139,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       id: "cat-freshness",
       title: "Content freshness",
       status: "needs-improvement",
-      body: "The marketing site itself is current — published this month, with a new Independence Day post. Against 36 PropTech sites, freshness is still a gap: the sitemap hides dates, and 2022-titled guides sit next to that new work. The industry top quartile leads here.",
+      body: "The marketing site itself is current, published this month, with a new Independence Day post. Against 36 PropTech sites, freshness is still a gap: the sitemap hides dates, and 2022-titled guides sit next to that new work. The industry top quartile leads here.",
       bodyTechnical:
         "Framer published Aug 19, 2026. Blog post /blog/independence-day-at-2gethr-… has <time datetime=\"2026-08-17\">. Sitemap has no lastmod. Live 2022-titled URLs remain (e.g. co-working-space-vs-managed-office-…-ultimate-guide-2022). No dateModified in schema. Cohort: below median vs 36 PropTech audits; top quartile leads on content freshness.",
       metrics: [
@@ -152,7 +152,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       id: "cat-schema",
       title: "Structured data (schema)",
       status: "poor",
-      body: "No structured data on the pages we checked — not the homepage, not locations, not the tour form, not the blog. Rich results and a clear entity for AI stay out of reach until JSON-LD lands in the HTML.",
+      body: "No structured data on the pages we checked, not the homepage, not locations, not the tour form, not the blog. Rich results and a clear entity for AI stay out of reach until JSON-LD lands in the HTML.",
       bodyTechnical:
         "0 application/ld+json blocks; no itemscope. Missing Organization, WebSite, LocalBusiness, Service, FAQPage, BreadcrumbList, Review/AggregateRating, and Article/BlogPosting. Location pages (e.g. /locations-cbd) have no NAP schema despite being local intent.",
       metrics: [
@@ -165,7 +165,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       id: "cat-content",
       title: "Content structure",
       status: "poor",
-      body: "The homepage does not have one topic heading. Stats, testimonials, and sections all shout at the same level. There is no FAQ structure — one question heading, zero questions in the copy — so engines have nothing to lift as a direct answer.",
+      body: "The homepage does not have one topic heading. Stats, testimonials, and sections all shout at the same level. There is no FAQ structure, one question heading, zero questions in the copy, so engines have nothing to lift as a direct answer.",
       bodyTechnical:
         "29 H1 / 4 H2 / 0 H3 on /. Duplicate SSR headings from Framer breakpoints. Question coverage: 1 heading (“Why 2gethr?”), 0 questions in body, no FAQPage. Visible copy ~593 words vs 209 images. Heading hierarchy is a top-quartile gap vs the PropTech cohort.",
     },
@@ -173,7 +173,7 @@ export const gethrAiReadinessReport: ReadinessReport = {
       id: "cat-linking",
       title: "Internal linking",
       status: "good",
-      body: "Nav, locations, solutions, blog, and the tour CTA stay on-site, with a few real social profiles outbound. That is a usable map for crawlers — denser in-content links on location and GCC pages would still help.",
+      body: "Nav, locations, solutions, blog, and the tour CTA stay on-site, with a few real social profiles outbound. That is a usable map for crawlers, denser in-content links on location and GCC pages would still help.",
       bodyTechnical:
         "Homepage anchors are relative (./about-us, ./gcc, ./managed-offices, ./locations-cbd|orr|hsr, ./blog, ./schedule-a-visit). Outbound: LinkedIn / X / YouTube / Instagram company profiles. No tel: or mailto: on /.",
     },
@@ -340,12 +340,12 @@ export const gethrAiReadinessReport: ReadinessReport = {
     duration: "90 days",
     headline:
       "Get 2gethr cited when enterprises ask AI for GCC and managed offices in Bangalore",
-    body: "When workplace leads ask ChatGPT, Perplexity, Google AI Overview, and other models for managed offices, GCC buildouts, or coworking in Bangalore and Hyderabad, 2gethr.com should clear the trust gate and own the shortlist — not only WeWork, Smartworks, or Awfis. We start by making the site parseable: text equivalents for the gallery and videos, Organization and location schema, one H1, FAQ answers, labeled tour fields, llms.txt. That closes the gap vs the PropTech top quartile on freshness, headings, and schema. On-site work from this audit is included in the same 90-day sprint so citation gains land on a site agents can quote. Not a separate product. You get a dashboard that re-tests the prompt set and surfaces what to do next.",
+    body: "When workplace leads ask ChatGPT, Perplexity, Google AI Overview, and other models for managed offices, GCC buildouts, or coworking in Bangalore and Hyderabad, 2gethr.com should clear the trust gate and own the shortlist, not only WeWork, Smartworks, or Awfis. We start by making the site parseable: text equivalents for the gallery and videos, Organization and location schema, one H1, FAQ answers, labeled tour fields, llms.txt. That closes the gap vs the PropTech top quartile on freshness, headings, and schema. On-site work from this audit is included in the same 90-day sprint so citation gains land on a site agents can quote. Not a separate product. You get a dashboard that re-tests the prompt set and surfaces what to do next.",
     outcomes: [
       "Cited on priority Bangalore / Hyderabad GCC and managed-office prompts that today route to larger flex brands",
       "On-site readiness included: Organization + LocalBusiness + Service JSON-LD, one H1, FAQPage copy, labeled enquiry fields, descriptive alt + captions, video transcripts, and a real /llms.txt",
       "Location pages (CBD, ORR, HSR) with NAP schema so map and answer engines can attach 2gethr to a place",
-      "Tour capture path agents can complete — labels, autocomplete, honeypots kept out of the interactive contract",
+      "Tour capture path agents can complete, labels, autocomplete, honeypots kept out of the interactive contract",
       "Weekly re-tests of the prompt set with a tracking dashboard for model gaps, competitor share, and next actions",
     ],
   },
@@ -355,5 +355,5 @@ export const gethrAiReadinessReport: ReadinessReport = {
   ctaHeadline:
     "Ready to get 2gethr cited on GCC and managed-office prompts?",
   ctaBody:
-    "Book a short call. We will map the 90-day plan from this audit: put the rooms into text AI can read, install schema and FAQ, fix headings and the tour form, then run citation work on the Bangalore / Hyderabad workspace prompts enterprises already ask AI — with on-site readiness included in the same engagement. You get a dashboard that re-tests this prompt set and suggests what to do next.",
+    "Book a short call. We will map the 90-day plan from this audit: put the rooms into text AI can read, install schema and FAQ, fix headings and the tour form, then run citation work on the Bangalore / Hyderabad workspace prompts enterprises already ask AI, with on-site readiness included in the same engagement. You get a dashboard that re-tests this prompt set and suggests what to do next.",
 };

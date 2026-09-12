@@ -14,9 +14,9 @@ export const rentokAiReadinessReport: ReadinessReport = {
   scoreLabel: "Poor",
   private: true,
   tagline:
-    "How ready rentok.com is for AI agents — and what to fix inside the 90-day AI Visibility Sprint.",
+    "How ready rentok.com is for AI agents, and what to fix inside the 90-day AI Visibility Sprint.",
   summary:
-    "RentOk already has solid SEO basics, current evergreen copy, and clean Corporation structured data — but the site is not ready for agents to understand or act. No robots.txt, zero semantic HTML, missing image alt text, thin internal linking, and thirty-two automation findings (sixteen critical) leave the readiness score at 44/100. llms.txt and skill.md exist; the agent-skills index and MCP discovery files do not. The shortest path up is robots.txt, alt text, labels on real form fields, and denser internal links — on-site work included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
+    "RentOk already has solid SEO basics, current evergreen copy, and clean Corporation structured data, but the site is not ready for agents to understand or act. No robots.txt, zero semantic HTML, missing image alt text, thin internal linking, and thirty-two automation findings (sixteen critical) leave the readiness score at 44/100. llms.txt and skill.md exist; the agent-skills index and MCP discovery files do not. The shortest path up is robots.txt, alt text, labels on real form fields, and denser internal links, on-site work included in the same 90-day AI Visibility Sprint as citation work, not a separate engagement.",
   summaryTechnical:
     "RentOk ships good title/meta, evergreen body copy aligned to 2026, and valid Corporation JSON-LD (contactPoint nested correctly; minor sameAs / availableLanguage polish still available). Gaps: no robots.txt; semantic ratio 0%; 9 owner-landing images without alt; 5/18 links internal; 32 automation issues (16 P1 missing labels on radios + mobile tel, 16 P2 missing autocomplete on the same set). llms.txt and skill.md found; no /.well-known/agent-skills/index.json and no MCP discovery signals. Fix robots, alt, form labels, and internal links inside the 90-day AI Visibility Sprint.",
   stats: [
@@ -29,14 +29,14 @@ export const rentokAiReadinessReport: ReadinessReport = {
     {
       id: "insight-automation-semantics",
       title: "Critical AI readiness & semantic structure",
-      body: "Sixteen critical automation blockers and essentially no meaningful HTML structure make it hard for AI agents to understand the page or complete real flows — especially forms and option pickers.",
+      body: "Sixteen critical automation blockers and essentially no meaningful HTML structure make it hard for AI agents to understand the page or complete real flows, especially forms and option pickers.",
       bodyTechnical:
         "16 P1 issues (mostly unlabeled radios and a tel input) plus a 0% semantic HTML ratio severely hinder agent parsing and form automation.",
     },
     {
       id: "insight-tech-gaps",
       title: "Fundamental technical gaps",
-      body: "There is no robots.txt to guide crawlers, and several images ship without alt text — weaker crawl control, accessibility, and machine understanding of visuals.",
+      body: "There is no robots.txt to guide crawlers, and several images ship without alt text, weaker crawl control, accessibility, and machine understanding of visuals.",
       bodyTechnical:
         "robots.txt is absent (inefficient crawl risk / no explicit allow-deny map). Missing alt on nine owner-landing / Equaro assets under the Azure CDN.",
     },
@@ -45,7 +45,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       title: "Underutilized internal linking",
       body: "Only a small share of links stay on-site. That limits navigation, authority flow, and how clearly AI can map relationships between RentOk pages.",
       bodyTechnical:
-        "5 of 18 links are internal — significant underutilization for crawl paths, equity, and content-relationship signals.",
+        "5 of 18 links are internal, significant underutilization for crawl paths, equity, and content-relationship signals.",
     },
   ],
   quickWins: [
@@ -54,7 +54,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       title: "Create a robots.txt file",
       impact: "High",
       effort: "Low",
-      body: "Add a robots.txt so crawlers get clear allow/deny rules — fewer wasted crawl cycles and better control over what should stay private.",
+      body: "Add a robots.txt so crawlers get clear allow/deny rules, fewer wasted crawl cycles and better control over what should stay private.",
       bodyTechnical:
         "Implement robots.txt to guide search and AI crawlers; prevent inefficient crawling and accidental indexing of private paths.",
     },
@@ -63,7 +63,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       title: "Add alt text to images",
       impact: "High",
       effort: "Medium",
-      body: "Write descriptive alt for owner-feature and brand images so screen readers and AI get real context — not empty visuals.",
+      body: "Write descriptive alt for owner-feature and brand images so screen readers and AI get real context, not empty visuals.",
       bodyTechnical:
         "Add alt on owner-feature-1…8.webp, owner-feature-new-7.webp, and equaro-brand-logo.jpeg (Azure CDN owner-landing paths).",
     },
@@ -72,7 +72,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       title: "Increase internal linking",
       impact: "High",
       effort: "Medium",
-      body: "Add more on-site links between product, trust, and category pages so users and agents can follow the story — and authority spreads beyond a handful of URLs.",
+      body: "Add more on-site links between product, trust, and category pages so users and agents can follow the story, and authority spreads beyond a handful of URLs.",
       bodyTechnical:
         "Raise internal link share above 5/18; deepen topical links so agents and crawlers map content relationships.",
     },
@@ -82,7 +82,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       id: "cat-site-files",
       title: "Site files",
       status: "poor",
-      body: "llms.txt and skill.md are present, but there is no robots.txt and no agent-skills index. MCP discovery files are also missing — crawlers lack explicit instructions and advanced agents lack a capability map.",
+      body: "llms.txt and skill.md are present, but there is no robots.txt and no agent-skills index. MCP discovery files are also missing, crawlers lack explicit instructions and advanced agents lack a capability map.",
       bodyTechnical:
         "No robots.txt. llms.txt found; skill.md found. Missing /.well-known/agent-skills/index.json and all MCP discovery signals (<link rel=\"mcp\">, webmcp/tools.json, mcp.json, server-card.json).",
       metrics: [
@@ -96,7 +96,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       id: "cat-seo",
       title: "SEO fundamentals",
       status: "good",
-      body: "Title and meta description clearly describe RentOk’s purpose and features — a strong first impression for search and click-through.",
+      body: "Title and meta description clearly describe RentOk’s purpose and features, a strong first impression for search and click-through.",
       bodyTechnical:
         "Title tag and meta description are well-optimized for purpose and key features.",
     },
@@ -117,7 +117,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       id: "cat-schema",
       title: "Structured data (schema)",
       status: "good",
-      body: "Corporation JSON-LD is in solid shape — name, logo, contact, and social profiles are present with no critical errors. A few polish items would make it even clearer for machines.",
+      body: "Corporation JSON-LD is in solid shape, name, logo, contact, and social profiles are present with no critical errors. A few polish items would make it even clearer for machines.",
       bodyTechnical:
         "Corporation JSON-LD well-structured (name, alternateName, url, logo, contactPoint, sameAs). No critical errors. Opportunities: ISO 639-1 for availableLanguage; drop redundant website URL from sameAs. Microdata absent (JSON-LD preferred).",
       metrics: [
@@ -132,7 +132,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       status: "good",
       body: "Headings are plentiful and sections are well-sized. Q&A-style headings help both scanners and agents pull direct answers.",
       bodyTechnical:
-        "≈40 H1–H3 headings; ~23 sections averaging ~48 words; Q&A-style headings present — strong for scan and answer extraction.",
+        "≈40 H1–H3 headings; ~23 sections averaging ~48 words; Q&A-style headings present, strong for scan and answer extraction.",
     },
     {
       id: "cat-linking",
@@ -140,14 +140,14 @@ export const rentokAiReadinessReport: ReadinessReport = {
       status: "needs-improvement",
       body: "Only five of eighteen links stay on-site. That underuses navigation, authority distribution, and how AI maps related RentOk content.",
       bodyTechnical:
-        "5/18 links internal — significant underutilization for navigation, equity, and agent content-relationship signals.",
+        "5/18 links internal, significant underutilization for navigation, equity, and agent content-relationship signals.",
       metrics: [{ label: "Internal links", value: "5 / 18" }],
     },
     {
       id: "cat-images",
       title: "Image accessibility",
       status: "needs-improvement",
-      body: "Multiple owner-feature and brand images lack alt text — weaker accessibility and weaker image understanding for search and AI.",
+      body: "Multiple owner-feature and brand images lack alt text, weaker accessibility and weaker image understanding for search and AI.",
       bodyTechnical:
         "Missing alt on nine CDN assets: owner-feature-1…6, owner-feature-new-7, owner-feature-8.webp, equaro-brand-logo.jpeg.",
       metrics: [{ label: "Missing alt (sampled)", value: "9" }],
@@ -158,7 +158,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
       status: "poor",
       body: "Semantic structure is effectively zero. Generic wrappers dominate, so agents struggle to map landmarks and hierarchy.",
       bodyTechnical:
-        "Semantic ratio 0% — almost no HTML5 semantic tags; content hierarchy hard for agents to infer.",
+        "Semantic ratio 0%, almost no HTML5 semantic tags; content hierarchy hard for agents to infer.",
       metrics: [{ label: "Semantic ratio", value: "0%" }],
     },
   ],
@@ -166,7 +166,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
     status: "poor",
     body: "Thirty-two automation issues: sixteen critical (mostly unlabeled form controls, including the mobile field) and sixteen reliability gaps (missing autocomplete). Agents cannot reliably name or fill those inputs until labels and autocomplete land on real fields.",
     bodyTechnical:
-      "32 issues: 16 P1 (programmatic label association on radios + tel), 16 P2 (missing autocomplete on the same control set). Grouped below — not every selector.",
+      "32 issues: 16 P1 (programmatic label association on radios + tel), 16 P2 (missing autocomplete on the same control set). Grouped below, not every selector.",
     totalIssues: 32,
     p1Count: 16,
     p2Count: 16,
@@ -177,7 +177,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
         title: "Missing label on real inputs",
         count: 1,
         summary:
-          "The mobile phone field has no associated label — agents and assistive tech cannot reliably know what to enter.",
+          "The mobile phone field has no associated label, agents and assistive tech cannot reliably know what to enter.",
         summaryTechnical:
           "tel input with placeholder “Enter mobile” (chakra-input) lacks a programmatic <label for>/id association.",
         examples: [
@@ -192,7 +192,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
         summary:
           "Product and feature radio options (including visually hidden ones) lack programmatic labels, so agents cannot map choice purpose.",
         summaryTechnical:
-          "15 radios without associated labels — clipped/hidden Chakra radios and feature radios (smart-living, community, online-rent-payment, digital-kyc, etc.).",
+          "15 radios without associated labels, clipped/hidden Chakra radios and feature radios (smart-living, community, online-rent-payment, digital-kyc, etc.).",
         examples: [
           '<input id="radio-:Rqj99m4n9f6:" type="radio" name="radio-:R79f6H1:">',
           '<input id="radio-:r1:" type="radio" name="radio-:r0:" hidden value="smart-living">',
@@ -220,7 +220,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
         summary:
           "The same radio set is flagged for missing autocomplete. Lower priority than labeling the real tel field; clean up when touching those components.",
         summaryTechnical:
-          "15 radios flagged for missing autocomplete — mostly UI chrome / hidden feature radios, not primary text entry.",
+          "15 radios flagged for missing autocomplete, mostly UI chrome / hidden feature radios, not primary text entry.",
         examples: [
           '<input id="radio-:R1aj99m4n9f6:" type="radio" name="radio-:R79f6H1:">',
           '<input id="radio-:r4:" type="radio" name="radio-:r0:" hidden value="digital-kyc">',
@@ -281,7 +281,7 @@ export const rentokAiReadinessReport: ReadinessReport = {
     name: "90-day AI Visibility Sprint",
     duration: "90 days",
     headline: "Get RentOk cited in AI answers within 90 days",
-    body: "When landlords and property managers ask ChatGPT, Perplexity, Google AI Overview, and other models for tools like yours, RentOk should show up — not smaller PG tools or WhatsApp-rent apps. We start with the trust failures that kill the demo: Rentokil brand collision and the rentok.com reliability warning. Then citation work on the category and feature prompts in the visibility audit. On-site readiness from this audit — robots.txt, image alt, form labels, denser internal links, clearer HTML — is included in that same 90-day sprint so citation gains land on a site agents can parse. Not a separate product. You also get a dashboard for model gaps, competitor share, and next actions each week.",
+    body: "When landlords and property managers ask ChatGPT, Perplexity, Google AI Overview, and other models for tools like yours, RentOk should show up, not smaller PG tools or WhatsApp-rent apps. We start with the trust failures that kill the demo: Rentokil brand collision and the rentok.com reliability warning. Then citation work on the category and feature prompts in the visibility audit. On-site readiness from this audit, robots.txt, image alt, form labels, denser internal links, clearer HTML, is included in that same 90-day sprint so citation gains land on a site agents can parse. Not a separate product. You also get a dashboard for model gaps, competitor share, and next actions each week.",
     outcomes: [
       "Brand and domain trust fixed so “is rentok reliable” stops returning pest control or a caution flag",
       "Cited on priority India PG / hostel / rent prompts across ChatGPT, Perplexity, Google AI Overview, Gemini, and Claude",
@@ -295,5 +295,5 @@ export const rentokAiReadinessReport: ReadinessReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "Ready to get RentOk cited?",
   ctaBody:
-    "Book a short call and we’ll map the 90-day plan: fix the Rentokil and rentok.com trust failures first, then run the citation work that puts RentOk on the shortlists owners already ask AI for — with on-site readiness (robots, alt, forms, linking) included in the same engagement. You’ll also have a dashboard to track progress and know what to do next.",
+    "Book a short call and we’ll map the 90-day plan: fix the Rentokil and rentok.com trust failures first, then run the citation work that puts RentOk on the shortlists owners already ask AI for, with on-site readiness (robots, alt, forms, linking) included in the same engagement. You’ll also have a dashboard to track progress and know what to do next.",
 };

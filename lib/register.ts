@@ -25,7 +25,7 @@ export const registerSchema = z.object({
       value && isRegisterPlan(value) ? value : undefined,
     ),
   /**
-   * Honeypot — real users leave this empty. Bots that fill it get a fake
+   * Honeypot, real users leave this empty. Bots that fill it get a fake
    * success without a DB write.
    */
   website: z.string().optional(),
@@ -56,7 +56,7 @@ function asStringFields(fields: Record<string, unknown>) {
 
 /**
  * Shared server-side validation for `/register` submissions.
- * Call from Server Actions — never trust the client alone.
+ * Call from Server Actions, never trust the client alone.
  */
 export function validateRegisterInput(
   fields: Record<string, FormDataEntryValue | unknown>,

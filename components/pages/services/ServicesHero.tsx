@@ -52,7 +52,7 @@ function HeroMist() {
       className="pointer-events-none absolute inset-0 overflow-hidden"
       aria-hidden
     >
-      {/* Mobile mist — exact mesh sampled from the reference screenshot */}
+      {/* Mobile mist, exact mesh sampled from the reference screenshot */}
       <div className="absolute inset-0 lg:hidden">
         <Image
           src="/services/hero-mobile-mist.webp"
@@ -65,7 +65,7 @@ function HeroMist() {
         <div className="absolute top-1/2 left-1/2 size-[min(42rem,145vw)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#c5cbc8]/80" />
       </div>
 
-      {/* Desktop mist — unchanged */}
+      {/* Desktop mist, unchanged */}
       <div className="absolute inset-0 hidden bg-[#f6f7f4] lg:block">
         <div className="absolute top-[-18%] right-[-14%] h-120 w-140 rounded-full bg-[#c5f247]/20 blur-[160px]" />
         <div className="absolute bottom-[-22%] left-[-16%] h-110 w-130 rounded-full bg-[#b6ef3a]/15 blur-[160px]" />
@@ -160,7 +160,7 @@ export default function ServicesHero() {
 
         <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">
           Anny is an award-winning AEO agency and the creator of the #1
-          open-source AI search optimization tool — a powerful alternative to
+          open-source AI search optimization tool, a powerful alternative to
           Profound, Semrush AI Toolkit, and Otterly AI.
         </p>
 

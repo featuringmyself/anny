@@ -36,7 +36,7 @@ function portableTextToMarkdown(body: unknown): string {
               .map((item, index) => `${index + 1}. ${item}`)
               .join("\n");
           case "quote":
-            return `> ${block.text}${block.cite ? `\n>\n> — ${block.cite}` : ""}`;
+            return `> ${block.text}${block.cite ? `\n>\n>- ${block.cite}` : ""}`;
           default:
             return block.text || "";
         }
@@ -102,7 +102,7 @@ export async function GET(_request: Request, { params }: RouteProps) {
     "",
     "---",
     "",
-    "Published on Anny — AI search visibility monitoring for marketing teams.",
+    "Published on Anny, AI search visibility monitoring for marketing teams.",
     `Site: ${SITE_URL}`,
   ]
     .filter((line) => line !== null)

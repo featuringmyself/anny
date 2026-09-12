@@ -93,8 +93,8 @@ function buildViewReport(
     slug: partial.slug ?? `ai-readiness-${reportId}`,
     company: partial.company ?? company,
     website: partial.website ?? domain,
-    industry: partial.industry ?? "—",
-    preparedFor: partial.preparedFor ?? "—",
+    industry: partial.industry ?? "-",
+    preparedFor: partial.preparedFor ?? "-",
     email: partial.email,
     dateLabel:
       partial.dateLabel ??
@@ -260,7 +260,7 @@ export function AiReadinessFullReportView({
                 {report.company}
               </h1>
               <p className="mt-2 text-base text-zinc-500 text-balance">
-                On-site readiness for AI agents — schema, crawl access, automation,
+                On-site readiness for AI agents, schema, crawl access, automation,
                 and HTML semantics.
               </p>
               <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
@@ -268,7 +268,7 @@ export function AiReadinessFullReportView({
                   <dt className="text-xs text-zinc-400">Prepared for</dt>
                   <dd className="mt-1 font-medium">
                     {report.preparedFor}
-                    {report.email && report.preparedFor === "—" ? (
+                    {report.email && report.preparedFor === "-" ? (
                       <span className="block font-normal text-zinc-500">
                         {report.email}
                       </span>

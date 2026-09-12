@@ -76,7 +76,7 @@ export default function AiReadinessCheckerPage({
             </Suspense>
           </div>
 
-          <Suspense fallback={<AiReadinessInstrumentPending domain="—" />}>
+          <Suspense fallback={<AiReadinessInstrumentPending domain="-" />}>
             <InstrumentFromSearchParams searchParams={searchParams} />
           </Suspense>
         </div>

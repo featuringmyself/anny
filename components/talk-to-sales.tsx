@@ -126,7 +126,7 @@ function SalesForm({ source }: TalkToSalesProps) {
     return (
       <>
         <DialogHeader>
-          <DialogTitle className="text-lg">Thanks — we&apos;ve got it</DialogTitle>
+          <DialogTitle className="text-lg">Thanks, we&apos;ve got it</DialogTitle>
           <DialogDescription>
             Someone from our team will reach out within one business day.
           </DialogDescription>

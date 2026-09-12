@@ -9,7 +9,7 @@ import {
 } from "@/components/pages/compare/data/semrush";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Anny vs Semrush — AI visibility comparison";
+const title = "Anny vs Semrush, AI visibility comparison";
 const description =
   "Semrush is an all-in-one marketing suite. Anny is purpose-built for AI answer visibility and GEO.";
 

@@ -6,7 +6,7 @@ let client: PostHog | null = null;
 
 /**
  * Shared posthog-node client for Server Actions / Route Handlers.
- * Production only — never returns a client in development.
+ * Production only, never returns a client in development.
  */
 export function getPostHogClient(): PostHog | null {
   if (process.env.NODE_ENV !== "production") {

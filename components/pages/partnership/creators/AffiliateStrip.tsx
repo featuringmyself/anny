@@ -16,7 +16,7 @@ const steps = [
   {
     label: "03",
     title: "Earn on paid plans",
-    body: "Recurring commission while their workspace stays active — transparent dashboard included.",
+    body: "Recurring commission while their workspace stays active, transparent dashboard included.",
   },
 ] as const;
 
