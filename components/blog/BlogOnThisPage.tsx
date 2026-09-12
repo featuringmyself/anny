@@ -201,7 +201,7 @@ export default function BlogOnThisPage({ headings }: { headings: TocHeading[] })
   return (
     <nav
       aria-label="On this page"
-      className="sticky top-16 z-20 -mx-5 mb-8 border-y bg-background/95 px-5 backdrop-blur-sm lg:static lg:top-24 lg:z-auto lg:col-start-2 lg:row-start-1 lg:mx-0 lg:mb-0 lg:self-start lg:border-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none"
+      className="sticky top-0 z-40 -mx-5 mb-8 border-y bg-background/95 px-5 backdrop-blur-sm lg:top-24 lg:z-auto lg:col-start-2 lg:row-start-1 lg:mx-0 lg:mb-0 lg:self-start lg:border-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none"
     >
       <div className="lg:hidden">
         <Accordion

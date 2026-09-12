@@ -4,6 +4,7 @@ import {
   startTransition,
   useEffect,
   useEffectEvent,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -170,6 +171,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const scrollHidden = useScrollHide();
   const hidden = scrollHidden && !open;
+
+  useLayoutEffect(() => {
+    document.documentElement.toggleAttribute("data-nav-hidden", hidden);
+    return () => document.documentElement.removeAttribute("data-nav-hidden");
+  }, [hidden]);
 
   return (
     <nav

@@ -25,7 +25,7 @@ function LegacyBlock({ block }: { block: BlogBlock }) {
       return (
         <h2
           id={slugify(block.text)}
-          className="mt-10 scroll-mt-28 text-xl font-medium tracking-tight text-zinc-900 md:mt-12 md:scroll-mt-24 md:text-2xl"
+          className="mt-10 scroll-mt-20 text-xl font-medium tracking-tight text-zinc-900 md:mt-12 md:scroll-mt-24 md:text-2xl"
         >
           {block.text}
         </h2>
@@ -34,7 +34,7 @@ function LegacyBlock({ block }: { block: BlogBlock }) {
       return (
         <h3
           id={slugify(block.text)}
-          className="mt-7 scroll-mt-28 text-lg font-medium tracking-tight text-zinc-900 md:mt-8 md:scroll-mt-24"
+          className="mt-7 scroll-mt-20 text-lg font-medium tracking-tight text-zinc-900 md:mt-8 md:scroll-mt-24"
         >
           {block.text}
         </h3>

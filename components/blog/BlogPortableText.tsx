@@ -10,7 +10,7 @@ const components: PortableTextComponents = {
       return (
         <h2
           id={slugify(text)}
-          className="mt-10 scroll-mt-28 text-xl font-medium tracking-tight text-zinc-900 md:mt-12 md:scroll-mt-24 md:text-2xl"
+          className="mt-10 scroll-mt-20 text-xl font-medium tracking-tight text-zinc-900 md:mt-12 md:scroll-mt-24 md:text-2xl"
         >
           {children}
         </h2>
@@ -21,7 +21,7 @@ const components: PortableTextComponents = {
       return (
         <h3
           id={slugify(text)}
-          className="mt-7 scroll-mt-28 text-lg font-medium tracking-tight text-zinc-900 md:mt-8 md:scroll-mt-24"
+          className="mt-7 scroll-mt-20 text-lg font-medium tracking-tight text-zinc-900 md:mt-8 md:scroll-mt-24"
         >
           {children}
         </h3>
