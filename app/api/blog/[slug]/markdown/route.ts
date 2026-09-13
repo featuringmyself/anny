@@ -6,44 +6,6 @@ type RouteProps = {
 };
 
 function portableTextToMarkdown(body: unknown): string {
-  if (
-    body &&
-    typeof body === "object" &&
-    "__legacy" in body &&
-    Array.isArray((body as { blocks?: unknown }).blocks)
-  ) {
-    const blocks = (
-      body as unknown as {
-        blocks: {
-          type: string;
-          text?: string;
-          items?: string[];
-          cite?: string;
-        }[];
-      }
-    ).blocks;
-    return blocks
-      .map((block) => {
-        switch (block.type) {
-          case "h2":
-            return `## ${block.text}`;
-          case "h3":
-            return `### ${block.text}`;
-          case "ul":
-            return (block.items || []).map((item) => `- ${item}`).join("\n");
-          case "ol":
-            return (block.items || [])
-              .map((item, index) => `${index + 1}. ${item}`)
-              .join("\n");
-          case "quote":
-            return `> ${block.text}${block.cite ? `\n>\n>- ${block.cite}` : ""}`;
-          default:
-            return block.text || "";
-        }
-      })
-      .join("\n\n");
-  }
-
   if (!Array.isArray(body)) return "";
 
   return body
@@ -79,7 +41,7 @@ function portableTextToMarkdown(body: unknown): string {
 
 export async function GET(_request: Request, { params }: RouteProps) {
   const { slug } = await params;
-  const { post } = await getBlogPost(slug);
+  const { post } = await getBlogPost(slug, false);
 
   if (!post) {
     return new Response("Not found", { status: 404 });

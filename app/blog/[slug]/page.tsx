@@ -30,7 +30,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { post } = await getBlogPost(slug);
+  const { post } = await getBlogPost(slug, false);
 
   if (!post) {
     return { title: `Blog · ${SITE_NAME}` };
@@ -83,18 +83,30 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const { post } = await getBlogPost(slug);
+  const [{ post: seoPost }, { post }] = await Promise.all([
+    getBlogPost(slug, false),
+    getBlogPost(slug, true),
+  ]);
+  const article = post ?? seoPost;
 
-  if (!post) {
+  if (!article) {
     notFound();
   }
 
-  const canonical = absoluteUrl(post.seo?.canonicalUrl || `/blog/${post.slug}`);
-  const image = ogImageUrl(post.seo?.image || post.coverImage, post.title);
-  const minutes = readingTimeMinutes(post.bodyText || post.excerpt);
-  const faqs = (post.faqs || []).filter((faq) => faq.question && faq.answer);
-  const wordCount = post.bodyText
-    ? post.bodyText.trim().split(/\s+/).length
+  const schemaPost = seoPost ?? article;
+  const canonical = absoluteUrl(
+    schemaPost.seo?.canonicalUrl || `/blog/${schemaPost.slug}`,
+  );
+  const image = ogImageUrl(
+    schemaPost.seo?.image || schemaPost.coverImage,
+    schemaPost.title,
+  );
+  const minutes = readingTimeMinutes(schemaPost.bodyText || schemaPost.excerpt);
+  const faqs = (schemaPost.faqs || []).filter(
+    (faq) => faq.question && faq.answer,
+  );
+  const wordCount = schemaPost.bodyText
+    ? schemaPost.bodyText.trim().split(/\s+/).length
     : undefined;
 
   return (
@@ -104,27 +116,27 @@ export default async function BlogPostPage({ params }: PageProps) {
           "@context": "https://schema.org",
           "@type": "BlogPosting",
           "@id": `${canonical}#article`,
-          headline: post.title,
-          description: post.excerpt || post.seo?.description || undefined,
-          datePublished: formatIso(post.publishedAt),
-          dateModified: formatIso(post.updatedAt || post.publishedAt),
+          headline: schemaPost.title,
+          description: schemaPost.excerpt || schemaPost.seo?.description || undefined,
+          datePublished: formatIso(schemaPost.publishedAt),
+          dateModified: formatIso(schemaPost.updatedAt || schemaPost.publishedAt),
           mainEntityOfPage: canonical,
           url: canonical,
           image,
           inLanguage: "en-US",
           wordCount,
           timeRequired: `PT${minutes}M`,
-          articleSection: post.categories?.[0]?.title || undefined,
-          keywords: post.categories
+          articleSection: schemaPost.categories?.[0]?.title || undefined,
+          keywords: schemaPost.categories
             ?.map((category) => category?.title)
             .filter(Boolean)
             .join(", "),
-          author: post.author?.name
+          author: schemaPost.author?.name
             ? {
                 "@type": "Person",
-                name: post.author.name,
-                description: post.author.bio || undefined,
-                sameAs: post.author.sameAs || undefined,
+                name: schemaPost.author.name,
+                description: schemaPost.author.bio || undefined,
+                sameAs: schemaPost.author.sameAs || undefined,
               }
             : { "@id": `${SITE_URL}#organization` },
           publisher: { "@id": `${SITE_URL}#organization` },
@@ -136,11 +148,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
           { name: "Blog", path: "/blog" },
-          { name: post.title, path: `/blog/${post.slug}` },
+          { name: schemaPost.title, path: `/blog/${schemaPost.slug}` },
         ])}
       />
       {faqs.length > 0 ? <JsonLd data={faqJsonLd(faqs as { question: string; answer: string }[])} /> : null}
-      <BlogPostView post={post} />
+      <BlogPostView post={article} />
     </main>
   );
 }

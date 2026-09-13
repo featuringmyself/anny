@@ -68,7 +68,7 @@ export default async function BlogPage() {
       />
       <BlogHero />
       <PatternStrip />
-      <BlogIndex />
+      <BlogIndex posts={posts} />
     </main>
   );
 }

@@ -15,7 +15,7 @@ export async function GET() {
     "",
     ...posts.map(
       (post) =>
-        `- [${post.title}](${SITE_URL}/blog/${post.slug}): ${post.excerpt || "Anny blog note on AI search and GEO"} ([markdown](${SITE_URL}/blog/${post.slug}.md))`,
+        `- [${post.title}](${SITE_URL}/blog/${post.slug})${post.excerpt ? `: ${post.excerpt}` : ""} ([markdown](${SITE_URL}/blog/${post.slug}.md))`,
     ),
     "",
     "## Feeds",

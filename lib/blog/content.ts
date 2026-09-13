@@ -1,16 +1,14 @@
 import "server-only";
 
-import type { BlogPost } from "@/components/pages/product/blog/types";
-import {
-  getAllPosts as getLegacyPosts,
-  getPostBySlug as getLegacyPostBySlug,
-  getPostSlugs as getLegacyPostSlugs,
-} from "@/components/pages/product/blog/posts";
+import { cache } from "react";
+import { stegaClean } from "next-sanity";
+
 import type {
   BlogPostArticle,
   BlogPostCard,
   SanityImageValue,
 } from "@/lib/blog/types";
+import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
 import {
   POST_QUERY,
@@ -41,11 +39,26 @@ type SanityPostArticle = SanityPostCard & {
   seo?: BlogPostArticle["seo"];
 };
 
-function asCard(post: SanityPostCard): BlogPostCard {
+type RenderablePost<T extends SanityPostCard = SanityPostCard> = T & {
+  title: string;
+  slug: string;
+};
+
+function isRenderablePost<T extends SanityPostCard>(
+  post: T,
+): post is RenderablePost<T> {
+  return Boolean(post.title && post.slug);
+}
+
+function asSlug(value: string) {
+  return stegaClean(value);
+}
+
+function asCard(post: RenderablePost): BlogPostCard {
   return {
     _id: post._id,
-    title: post.title || "Untitled",
-    slug: post.slug || "",
+    title: post.title,
+    slug: asSlug(post.slug),
     excerpt: post.excerpt,
     publishedAt: post.publishedAt,
     coverImage: post.coverImage,
@@ -55,49 +68,8 @@ function asCard(post: SanityPostCard): BlogPostCard {
   };
 }
 
-function legacyToCard(post: BlogPost): BlogPostCard {
-  return {
-    _id: `legacy-${post.slug}`,
-    title: post.title,
-    slug: post.slug,
-    excerpt: post.dek,
-    publishedAt: post.publishedAt,
-    categories: [{ title: post.category, slug: post.category }],
-    noIndex: false,
-  };
-}
-
-function legacyToArticle(post: BlogPost): BlogPostArticle {
-  const bodyText = post.body
-    .map((block) => {
-      if (block.type === "ul" || block.type === "ol") {
-        return block.items.join(" ");
-      }
-      return block.text;
-    })
-    .join(" ");
-
-  return {
-    ...legacyToCard(post),
-    updatedAt: post.publishedAt,
-    bodyText,
-    body: { __legacy: true, blocks: post.body },
-    faqs: [],
-    morePosts: getLegacyPosts()
-      .filter((item) => item.slug !== post.slug)
-      .slice(0, 3)
-      .map(legacyToCard),
-    seo: {
-      title: `${post.title} · Anny`,
-      description: post.dek,
-      noIndex: false,
-    },
-  };
-}
-
-export async function getBlogPosts(): Promise<{
+export const getBlogPosts = cache(async function getBlogPosts(): Promise<{
   posts: BlogPostCard[];
-  source: "sanity" | "legacy";
 }> {
   try {
     const { data } = await sanityFetch({
@@ -105,90 +77,82 @@ export async function getBlogPosts(): Promise<{
       stega: false,
     });
     const posts = (data ?? []) as SanityPostCard[];
-    if (posts.length > 0) {
-      return {
-        posts: posts
-          .filter((post) => post.title && post.slug)
-          .map((post) => asCard(post)),
-        source: "sanity",
-      };
-    }
+    return { posts: posts.filter(isRenderablePost).map(asCard) };
   } catch (error) {
     console.error("Failed to fetch blog posts from Sanity", error);
+    return { posts: [] };
   }
+});
 
-  return {
-    posts: getLegacyPosts().map(legacyToCard),
-    source: "legacy",
-  };
-}
-
-export async function getBlogPost(slug: string): Promise<{
-  post: BlogPostArticle | null;
-  source: "sanity" | "legacy" | "missing";
-}> {
+export const getBlogPost = cache(async function getBlogPost(
+  slug: string,
+  stega: boolean,
+): Promise<{ post: BlogPostArticle | null }> {
   try {
     const { data } = await sanityFetch({
       query: POST_QUERY,
       params: { slug },
-      stega: false,
+      stega,
     });
     const post = data as SanityPostArticle | null;
 
-    if (post?.title && post.slug) {
-      return {
-        source: "sanity",
-        post: {
-          _id: post._id,
-          title: post.title,
-          slug: post.slug,
-          excerpt: post.excerpt,
-          publishedAt: post.publishedAt,
-          updatedAt: post.updatedAt,
-          bodyText: post.bodyText,
-          coverImage: post.coverImage,
-          author: post.author,
-          categories: post.categories,
-          body: post.body,
-          faqs: post.faqs,
-          related: post.related
-            ?.filter(Boolean)
-            .map((item) => asCard(item)),
-          morePosts: post.morePosts?.map((item) => asCard(item)),
-          seo: post.seo,
-        },
-      };
+    if (!post || !isRenderablePost(post)) {
+      return { post: null };
     }
+
+    return {
+      post: {
+        _id: post._id,
+        title: post.title,
+        slug: asSlug(post.slug),
+        excerpt: post.excerpt,
+        publishedAt: post.publishedAt,
+        updatedAt: post.updatedAt,
+        bodyText: post.bodyText,
+        coverImage: post.coverImage,
+        author: post.author,
+        categories: post.categories,
+        body: post.body,
+        faqs: post.faqs,
+        related: post.related
+          ?.filter((item): item is RenderablePost =>
+            Boolean(item && isRenderablePost(item)),
+          )
+          .map(asCard),
+        morePosts: post.morePosts
+          ?.filter((item): item is RenderablePost =>
+            Boolean(item && isRenderablePost(item)),
+          )
+          .map(asCard),
+        seo: post.seo
+          ? {
+              ...post.seo,
+              canonicalUrl: post.seo.canonicalUrl
+                ? stegaClean(post.seo.canonicalUrl)
+                : post.seo.canonicalUrl,
+            }
+          : post.seo,
+      },
+    };
   } catch (error) {
     console.error("Failed to fetch blog post from Sanity", error);
+    return { post: null };
   }
-
-  const legacy = getLegacyPostBySlug(slug);
-  if (legacy) {
-    return { post: legacyToArticle(legacy), source: "legacy" };
-  }
-
-  return { post: null, source: "missing" };
-}
+});
 
 export async function getBlogPostSlugs(): Promise<string[]> {
   try {
-    const { data } = await sanityFetch({
-      query: POST_SLUGS_QUERY,
-      perspective: "published",
-      stega: false,
-    });
+    const data = await client
+      .withConfig({ useCdn: false, perspective: "published" })
+      .fetch(POST_SLUGS_QUERY);
     const slugs = (data ?? []) as { slug?: string | null }[];
-    if (slugs.length > 0) {
-      return slugs
-        .map((item) => item.slug)
-        .filter((slug): slug is string => Boolean(slug));
-    }
+    return slugs
+      .map((item) => item.slug)
+      .filter((slug): slug is string => Boolean(slug));
   } catch (error) {
     console.error("Failed to fetch blog slugs from Sanity", error);
+    return [];
   }
-
-  return getLegacyPostSlugs();
 }
 
 export async function getBlogSitemapEntries(): Promise<
@@ -204,19 +168,12 @@ export async function getBlogSitemapEntries(): Promise<
       _updatedAt?: string;
       publishedAt?: string;
     }[];
-    if (entries.length > 0) {
-      return entries.filter(
-        (entry): entry is { href: string; _updatedAt?: string; publishedAt?: string } =>
-          Boolean(entry.href),
-      );
-    }
+    return entries.filter(
+      (entry): entry is { href: string; _updatedAt?: string; publishedAt?: string } =>
+        Boolean(entry.href),
+    );
   } catch (error) {
     console.error("Failed to fetch blog sitemap entries from Sanity", error);
+    return [];
   }
-
-  return getLegacyPosts().map((post) => ({
-    href: `/blog/${post.slug}`,
-    publishedAt: post.publishedAt,
-    _updatedAt: post.publishedAt,
-  }));
 }

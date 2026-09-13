@@ -1,5 +1,4 @@
-import { getBlogPosts } from "@/lib/blog/content";
-import { client } from "@/lib/sanity/client";
+import { sanityFetch } from "@/lib/sanity/live";
 import { RSS_POSTS_QUERY } from "@/lib/sanity/queries";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -22,7 +21,11 @@ export async function GET() {
   }[] = [];
 
   try {
-    const data = (await client.fetch(RSS_POSTS_QUERY)) as
+    const { data } = await sanityFetch({
+      query: RSS_POSTS_QUERY,
+      stega: false,
+    });
+    const rows = (data ?? []) as
       | {
           title?: string | null;
           slug?: string | null;
@@ -32,7 +35,7 @@ export async function GET() {
           author?: { name?: string | null } | null;
         }[]
       | null;
-    posts = (data ?? [])
+    posts = (rows ?? [])
       .filter(
         (post): post is { title: string; slug: string } & typeof post =>
           Boolean(post.title && post.slug),
@@ -49,18 +52,6 @@ export async function GET() {
     posts = [];
   }
 
-  if (posts.length === 0) {
-    const { posts: fallback } = await getBlogPosts();
-    posts = fallback.map((post) => ({
-      title: post.title,
-      slug: post.slug,
-      description: post.excerpt,
-      excerpt: post.excerpt,
-      publishedAt: post.publishedAt,
-      author: post.author,
-    }));
-  }
-
   const items = posts
     .map((post) => {
       const url = `${SITE_URL}/blog/${post.slug}`;
@@ -69,7 +60,7 @@ export async function GET() {
       <title>${escapeXml(post.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${new Date(post.publishedAt || Date.now()).toUTCString()}</pubDate>
+      ${post.publishedAt ? `<pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>` : ""}
       <description>${escapeXml(post.description || post.excerpt || "")}</description>
       ${post.author?.name ? `<author>${escapeXml(post.author.name)}</author>` : ""}
     </item>`;

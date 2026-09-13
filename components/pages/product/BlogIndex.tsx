@@ -2,12 +2,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import BlogRowMotion from "@/components/pages/product/BlogRowMotion";
+import type { BlogPostCard } from "@/lib/blog/types";
 import { formatBlogDate } from "@/lib/blog/types";
-import { getBlogPosts } from "@/lib/blog/content";
 
-export default async function BlogIndex() {
-  const { posts } = await getBlogPosts();
-
+export default function BlogIndex({ posts }: { posts: BlogPostCard[] }) {
   if (posts.length === 0) {
     return (
       <section className="px-5 py-12 md:px-12 md:py-16">
@@ -25,7 +23,7 @@ export default async function BlogIndex() {
       <ul>
         {posts.map((post) => {
           const { date, year } = formatBlogDate(post.publishedAt);
-          const category = post.categories?.[0]?.title || "GEO";
+          const category = post.categories?.[0]?.title;
 
           return (
             <li key={post._id} className="border-b last:border-b-0">
@@ -44,9 +42,11 @@ export default async function BlogIndex() {
                       </p>
                     </div>
                     <div className="min-w-0 border-l border-zinc-200 pl-4 md:pl-10">
-                      <p className="text-xs font-medium tracking-wide text-zinc-400">
-                        {category}
-                      </p>
+                      {category ? (
+                        <p className="text-xs font-medium tracking-wide text-zinc-400">
+                          {category}
+                        </p>
+                      ) : null}
                       <h2 className="mt-1 text-lg font-medium tracking-tight text-balance group-hover:text-[#2462ff] md:text-2xl">
                         {post.title}
                       </h2>
