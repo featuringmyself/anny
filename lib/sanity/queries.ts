@@ -1,6 +1,6 @@
 import { defineQuery } from "next-sanity";
 
-const imageProjection = `
+const imageProjection = /* groq */ `
   asset->{
     _id,
     url,
@@ -14,7 +14,7 @@ const imageProjection = `
   crop
 `;
 
-const seoProjection = `
+const seoProjection = /* groq */ `
   "seo": {
     "title": coalesce(seo.title, title, ""),
     "description": coalesce(seo.description, excerpt, ""),
@@ -27,7 +27,7 @@ const seoProjection = `
   }
 `;
 
-export const POSTS_QUERY = defineQuery(`
+export const POSTS_QUERY = defineQuery(/* groq */ `
   *[_type == "post" && defined(slug.current) && publishedAt <= now() && seo.noIndex != true]
     | order(publishedAt desc) {
       _id,
@@ -50,13 +50,13 @@ export const POSTS_QUERY = defineQuery(`
     }
 `);
 
-export const POST_SLUGS_QUERY = defineQuery(`
+export const POST_SLUGS_QUERY = defineQuery(/* groq */ `
   *[_type == "post" && defined(slug.current) && publishedAt <= now() && seo.noIndex != true]{
     "slug": slug.current
   }
 `);
 
-export const POST_QUERY = defineQuery(`
+export const POST_QUERY = defineQuery(/* groq */ `
   *[_type == "post" && slug.current == $slug][0]{
     _id,
     _updatedAt,
@@ -121,7 +121,7 @@ export const POST_QUERY = defineQuery(`
   }
 `);
 
-export const SITEMAP_QUERY = defineQuery(`
+export const SITEMAP_QUERY = defineQuery(/* groq */ `
   *[_type == "post" && defined(slug.current) && publishedAt <= now() && seo.noIndex != true]{
     "href": "/blog/" + slug.current,
     _updatedAt,
@@ -129,7 +129,7 @@ export const SITEMAP_QUERY = defineQuery(`
   }
 `);
 
-export const REDIRECTS_QUERY = defineQuery(`
+export const REDIRECTS_QUERY = defineQuery(/* groq */ `
   *[_type == "redirect" && isEnabled == true && defined(source) && defined(destination)]{
     source,
     destination,
@@ -137,7 +137,7 @@ export const REDIRECTS_QUERY = defineQuery(`
   }
 `);
 
-export const RSS_POSTS_QUERY = defineQuery(`
+export const RSS_POSTS_QUERY = defineQuery(/* groq */ `
   *[_type == "post" && defined(slug.current) && publishedAt <= now() && seo.noIndex != true]
     | order(publishedAt desc)[0...50]{
       title,

@@ -41,7 +41,7 @@ function portableTextToMarkdown(body: unknown): string {
 
 export async function GET(_request: Request, { params }: RouteProps) {
   const { slug } = await params;
-  const { post } = await getBlogPost(slug);
+  const { post } = await getBlogPost(slug, false);
 
   if (!post) {
     return new Response("Not found", { status: 404 });

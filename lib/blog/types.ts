@@ -1,4 +1,5 @@
 import type { SanityImageSource } from "@sanity/image-url";
+import { stegaClean } from "next-sanity";
 
 import { absoluteUrl } from "@/lib/seo";
 import { urlFor } from "@/lib/sanity/image";
@@ -110,7 +111,7 @@ export function ogImageUrl(
   }
   return absoluteUrl(
     title
-      ? `/api/og?title=${encodeURIComponent(title)}`
+      ? `/api/og?title=${encodeURIComponent(stegaClean(title))}`
       : "/features/chatgpt/hero-dashboard.webp",
   );
 }

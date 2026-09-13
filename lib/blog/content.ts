@@ -1,10 +1,14 @@
 import "server-only";
 
+import { cache } from "react";
+import { stegaClean } from "next-sanity";
+
 import type {
   BlogPostArticle,
   BlogPostCard,
   SanityImageValue,
 } from "@/lib/blog/types";
+import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
 import {
   POST_QUERY,
@@ -35,17 +39,26 @@ type SanityPostArticle = SanityPostCard & {
   seo?: BlogPostArticle["seo"];
 };
 
-type RenderablePost = SanityPostCard & { title: string; slug: string };
+type RenderablePost<T extends SanityPostCard = SanityPostCard> = T & {
+  title: string;
+  slug: string;
+};
 
-function isRenderablePost(post: SanityPostCard): post is RenderablePost {
+function isRenderablePost<T extends SanityPostCard>(
+  post: T,
+): post is RenderablePost<T> {
   return Boolean(post.title && post.slug);
+}
+
+function asSlug(value: string) {
+  return stegaClean(value);
 }
 
 function asCard(post: RenderablePost): BlogPostCard {
   return {
     _id: post._id,
     title: post.title,
-    slug: post.slug,
+    slug: asSlug(post.slug),
     excerpt: post.excerpt,
     publishedAt: post.publishedAt,
     coverImage: post.coverImage,
@@ -55,7 +68,9 @@ function asCard(post: RenderablePost): BlogPostCard {
   };
 }
 
-export async function getBlogPosts(): Promise<{ posts: BlogPostCard[] }> {
+export const getBlogPosts = cache(async function getBlogPosts(): Promise<{
+  posts: BlogPostCard[];
+}> {
   try {
     const { data } = await sanityFetch({
       query: POSTS_QUERY,
@@ -67,16 +82,17 @@ export async function getBlogPosts(): Promise<{ posts: BlogPostCard[] }> {
     console.error("Failed to fetch blog posts from Sanity", error);
     return { posts: [] };
   }
-}
+});
 
-export async function getBlogPost(slug: string): Promise<{
-  post: BlogPostArticle | null;
-}> {
+export const getBlogPost = cache(async function getBlogPost(
+  slug: string,
+  stega: boolean,
+): Promise<{ post: BlogPostArticle | null }> {
   try {
     const { data } = await sanityFetch({
       query: POST_QUERY,
       params: { slug },
-      stega: false,
+      stega,
     });
     const post = data as SanityPostArticle | null;
 
@@ -88,7 +104,7 @@ export async function getBlogPost(slug: string): Promise<{
       post: {
         _id: post._id,
         title: post.title,
-        slug: post.slug,
+        slug: asSlug(post.slug),
         excerpt: post.excerpt,
         publishedAt: post.publishedAt,
         updatedAt: post.updatedAt,
@@ -108,22 +124,27 @@ export async function getBlogPost(slug: string): Promise<{
             Boolean(item && isRenderablePost(item)),
           )
           .map(asCard),
-        seo: post.seo,
+        seo: post.seo
+          ? {
+              ...post.seo,
+              canonicalUrl: post.seo.canonicalUrl
+                ? stegaClean(post.seo.canonicalUrl)
+                : post.seo.canonicalUrl,
+            }
+          : post.seo,
       },
     };
   } catch (error) {
     console.error("Failed to fetch blog post from Sanity", error);
     return { post: null };
   }
-}
+});
 
 export async function getBlogPostSlugs(): Promise<string[]> {
   try {
-    const { data } = await sanityFetch({
-      query: POST_SLUGS_QUERY,
-      perspective: "published",
-      stega: false,
-    });
+    const data = await client
+      .withConfig({ useCdn: false, perspective: "published" })
+      .fetch(POST_SLUGS_QUERY);
     const slugs = (data ?? []) as { slug?: string | null }[];
     return slugs
       .map((item) => item.slug)

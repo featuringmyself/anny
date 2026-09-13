@@ -2,12 +2,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import BlogRowMotion from "@/components/pages/product/BlogRowMotion";
+import type { BlogPostCard } from "@/lib/blog/types";
 import { formatBlogDate } from "@/lib/blog/types";
-import { getBlogPosts } from "@/lib/blog/content";
 
-export default async function BlogIndex() {
-  const { posts } = await getBlogPosts();
-
+export default function BlogIndex({ posts }: { posts: BlogPostCard[] }) {
   if (posts.length === 0) {
     return (
       <section className="px-5 py-12 md:px-12 md:py-16">
