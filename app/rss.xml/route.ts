@@ -1,4 +1,3 @@
-import { getBlogPosts } from "@/lib/blog/content";
 import { client } from "@/lib/sanity/client";
 import { RSS_POSTS_QUERY } from "@/lib/sanity/queries";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -47,18 +46,6 @@ export async function GET() {
       }));
   } catch {
     posts = [];
-  }
-
-  if (posts.length === 0) {
-    const { posts: fallback } = await getBlogPosts();
-    posts = fallback.map((post) => ({
-      title: post.title,
-      slug: post.slug,
-      description: post.excerpt,
-      excerpt: post.excerpt,
-      publishedAt: post.publishedAt,
-      author: post.author,
-    }));
   }
 
   const items = posts

@@ -25,7 +25,7 @@ export default async function BlogIndex() {
       <ul>
         {posts.map((post) => {
           const { date, year } = formatBlogDate(post.publishedAt);
-          const category = post.categories?.[0]?.title || "GEO";
+          const category = post.categories?.[0]?.title;
 
           return (
             <li key={post._id} className="border-b last:border-b-0">
@@ -44,9 +44,11 @@ export default async function BlogIndex() {
                       </p>
                     </div>
                     <div className="min-w-0 border-l border-zinc-200 pl-4 md:pl-10">
-                      <p className="text-xs font-medium tracking-wide text-zinc-400">
-                        {category}
-                      </p>
+                      {category ? (
+                        <p className="text-xs font-medium tracking-wide text-zinc-400">
+                          {category}
+                        </p>
+                      ) : null}
                       <h2 className="mt-1 text-lg font-medium tracking-tight text-balance group-hover:text-[#2462ff] md:text-2xl">
                         {post.title}
                       </h2>
