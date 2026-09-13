@@ -18,8 +18,8 @@ export default function Hero() {
         <span className="text-zinc-500">for marketing teams</span>
       </h1>
       <p className="mt-4 text-center text-base text-balance text-zinc-500 sm:text-lg">
-        See how often <AiFlip /> mentions your brand, which sources it cites,
-        and what to do to get mentioned more.
+        Anny monitors how often <AiFlip /> mentions your brand, which sources it
+        cites, and what to change so you get recommended more often.
       </p>
       <div className="mt-6 flex justify-center">
         <TalkToSalesButton className="p-4" size="lg" source="home-hero" />

@@ -20,7 +20,7 @@ export default function Faq({
 
   return (
     <>
-      <section id="faq" className="px-6 pt-20 pb-10 md:px-12 md:pt-28 pb-10">
+      <section id="faq" className="px-6 pt-20 pb-10 md:px-12 md:pt-28">
         <div className="mx-auto max-w-2xl text-center">
           <Heading className="text-4xl font-medium tracking-tight md:text-5xl">
             FAQs
@@ -30,6 +30,9 @@ export default function Faq({
           </p>
         </div>
 
+        {/*
+          Answers stay in HTML via Accordion's default hiddenUntilFound.
+        */}
         <Accordion
           defaultValue={["item-0"]}
           className="mx-auto mt-14 max-w-2xl"

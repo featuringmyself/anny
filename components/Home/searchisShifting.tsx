@@ -2,56 +2,47 @@ import { ArrowUp } from "lucide-react";
 
 import { PatternStrip } from "@/components/pages/shared/pattern-strip";
 
+/**
+ * Publicly attributed MAU figures only. Widths are relative to the largest
+ * value so the chart stays honest when numbers change.
+ *
+ * ChatGPT: Sensor Tower via Reuters (May 2026 app MAU).
+ * Gemini: Google (Aug 2026 monthly users announcement).
+ * Claude: Sensor Tower via Reuters (Q2 2026 app MAU).
+ */
 const mauData = [
   {
     name: "ChatGPT",
     logo: "/ai-logo/chatgptLogo.svg",
     value: "1B",
-    width: "92%",
+    mauMillions: 1000,
     color: "#10A37F",
     invert: true,
   },
   {
     name: "Gemini",
     logo: "/ai-logo/geminiLogo.svg",
-    value: "950M",
-    width: "87%",
+    value: "1B",
+    mauMillions: 1000,
     color: "#4B7BFF",
     invert: true,
   },
   {
     name: "Claude",
     logo: "/ai-logo/claudeLogo.svg",
-    value: "245M",
-    width: "23%",
+    value: "56M",
+    mauMillions: 56,
     color: "#E8784A",
     invert: true,
   },
-  {
-    name: "Grok",
-    logo: "/ai-logo/grokLogo.svg",
-    value: "117M",
-    width: "11%",
-    color: "#1A1A1A",
-    invert: true,
-  },
-  {
-    name: "DeepSeek",
-    logo: null,
-    value: "67M",
-    width: "6%",
-    color: "#4D6BFE",
-    invert: false,
-  },
-  {
-    name: "Perplexity",
-    logo: "/ai-logo/perplexityLogo.svg",
-    value: "45M",
-    width: "4%",
-    color: "#1AA8B8",
-    invert: true,
-  },
 ] as const;
+
+const maxMau = Math.max(...mauData.map((item) => item.mauMillions));
+
+const REUTERS_CHATGPT_MAU =
+  "https://www.reuters.com/technology/chatgpt-app-hits-1-billion-monthly-active-users-record-time-data-shows-2026-06-02/";
+const VERGE_GEMINI_MAU =
+  "https://www.theverge.com/ai-artificial-intelligence/978113/chatgpt-gemini-1-billion-users";
 
 const googleLetters = [
   { char: "G", color: "#4285F4" },
@@ -68,20 +59,6 @@ const stripeStyle = {
   backgroundImage:
     "repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.12) 3px, rgba(255,255,255,0.12) 4px)",
 };
-
-function DeepSeekMark() {
-  return (
-    <svg
-      viewBox="0 0 28 20"
-      fill="white"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-3.5 w-auto"
-      aria-hidden
-    >
-      <path d="M26.8051 1.67861C26.5182 1.53756 26.3946 1.80637 26.2268 1.94293C26.1694 1.98698 26.1209 2.04424 26.0723 2.09709C25.6529 2.54642 25.1629 2.84168 24.5228 2.80638C23.5869 2.75348 22.7878 3.04875 22.0815 3.76689C21.9314 2.88134 21.4325 2.35256 20.6732 2.01339C20.2759 1.83713 19.8742 1.66087 19.596 1.27755C19.4018 1.00448 19.3488 0.700459 19.2517 0.400842C19.1899 0.220231 19.1281 0.0351223 18.9206 0.00427084C18.6954 -0.0309327 18.6071 0.158431 18.5188 0.317137C18.1657 0.964824 18.0288 1.67857 18.042 2.40111C18.0729 4.0269 18.7572 5.32213 20.1169 6.24298C20.2714 6.34874 20.3111 6.4544 20.2626 6.6087C20.1699 6.92592 20.0595 7.23429 19.9624 7.55151C19.9006 7.75422 19.8078 7.79827 19.5916 7.71007C18.8455 7.39735 18.2009 6.93467 17.6314 6.37519C16.6646 5.43674 15.7905 4.40137 14.7002 3.59068C14.4441 3.40122 14.1881 3.22505 13.9232 3.05755C12.8107 1.97378 14.0689 1.08373 14.3602 0.978074C14.6648 0.867918 14.4662 0.488948 13.4817 0.493445C12.4972 0.497797 11.5967 0.828265 10.4489 1.26884C10.2812 1.33494 10.1045 1.38335 9.92351 1.423C8.88168 1.22479 7.80008 1.18064 6.66995 1.30849C4.54208 1.54636 2.84252 2.55532 1.59319 4.27802C0.0922557 6.34874 -0.260902 8.70138 0.171737 11.1555C0.626451 13.7416 1.94196 15.8828 3.96388 17.5571C6.06085 19.2929 8.47565 20.1433 11.2303 19.9803C12.9035 19.8834 14.7665 19.6587 16.8678 17.8744C17.3975 18.1387 17.9538 18.2444 18.8765 18.3237C19.5872 18.3898 20.2715 18.2885 20.8012 18.1784C21.6312 18.0021 21.5738 17.2311 21.2736 17.0901C18.8412 15.9534 19.3753 16.416 18.8897 16.0415C20.1258 14.5744 21.9888 13.0499 22.7172 8.11099C22.7746 7.71892 22.726 7.47216 22.7172 7.15494C22.7128 6.96112 22.7569 6.88627 22.9777 6.86417C23.5869 6.79367 24.1784 6.6263 24.7214 6.32669C26.2975 5.46319 26.9331 4.0445 27.0832 2.34385C27.1053 2.08389 27.0788 1.81508 26.8051 1.67861Z" />
-    </svg>
-  );
-}
 
 function Googling() {
   return (
@@ -109,32 +86,62 @@ export default function SearchIsShifting() {
               Search is Shifting from Search Engines to AI.
             </h2>
             <p className="max-w-md text-sm leading-snug text-balance text-zinc-500 sm:text-xl md:text-2xl">
-              Monthly usage of standalone AI tools has grown to well over{" "}
-              <span className="text-[#2462ff]">1 billion people</span> as of July
-              2026, with ChatGPT at 1B MAU and Gemini at 950M.
+              ChatGPT crossed{" "}
+              <span className="text-[#2462ff]">1 billion</span> monthly app
+              users in May 2026, and Google said Gemini reached the same
+              monthly scale by August—buyers are asking assistants, not only
+              search boxes.
             </p>
-            <p className="text-xs tracking-wide text-zinc-400 uppercase">
-              Updated August 2026
+            <p className="text-xs leading-relaxed text-zinc-400">
+              Sources:{" "}
+              <a
+                href={REUTERS_CHATGPT_MAU}
+                className="underline underline-offset-2 hover:text-zinc-600"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Reuters / Sensor Tower
+              </a>
+              {" · "}
+              <a
+                href={VERGE_GEMINI_MAU}
+                className="underline underline-offset-2 hover:text-zinc-600"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Google via The Verge
+              </a>
+              <span className="mt-1 block tracking-wide uppercase">
+                Updated September 2026
+              </span>
             </p>
           </header>
 
-          <figure className="mt-auto flex flex-col border-t" aria-label="Monthly active users by AI tool">
+          <figure
+            className="mt-auto flex flex-col border-t"
+            aria-label="Monthly active users by AI tool"
+          >
             <figcaption className="sr-only">
-              Monthly active users as of July 2026: ChatGPT 1B, Gemini 950M,
-              Claude 245M, Grok 117M, DeepSeek 67M, Perplexity 45M
+              Attributed monthly active users: ChatGPT 1B app MAU (Sensor Tower
+              via Reuters, May 2026), Gemini 1B monthly users (Google, August
+              2026), Claude 56M app MAU (Sensor Tower via Reuters, Q2 2026).
             </figcaption>
-            {mauData.map((item) => (
-              <div
-                key={item.name}
-                className="grid grid-cols-[2.75rem_minmax(0,1fr)_3.5rem] items-center border-b last:border-b-0"
-              >
+            {mauData.map((item) => {
+              const width = `${Math.max(
+                (item.mauMillions / maxMau) * 100,
+                4,
+              )}%`;
+              return (
                 <div
-                  className="grid h-12 place-items-center"
-                  style={{ backgroundColor: item.color, ...stripeStyle }}
+                  key={item.name}
+                  className="grid grid-cols-[2.75rem_minmax(0,1fr)_3.5rem] items-center border-b last:border-b-0"
                 >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
-                    {item.logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
+                  <div
+                    className="grid h-12 place-items-center"
+                    style={{ backgroundColor: item.color, ...stripeStyle }}
+                  >
+                    <span className="grid size-6 shrink-0 place-items-center rounded-md bg-white/20">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.logo}
                         alt={`${item.name} logo`}
@@ -143,29 +150,24 @@ export default function SearchIsShifting() {
                         className={`size-3.5 object-contain ${item.invert ? "brightness-0 invert" : ""}`}
                         draggable={false}
                       />
-                    ) : (
-                      <>
-                        <DeepSeekMark />
-                        <span className="sr-only">{item.name}</span>
-                      </>
-                    )}
+                    </span>
+                  </div>
+                  <div className="min-w-0 self-stretch">
+                    <div
+                      className="h-full min-h-12"
+                      style={{
+                        width,
+                        backgroundColor: item.color,
+                        ...stripeStyle,
+                      }}
+                    />
+                  </div>
+                  <span className="pr-3 text-right text-sm text-zinc-500 tabular-nums sm:pr-4">
+                    {item.value}
                   </span>
                 </div>
-                <div className="min-w-0 self-stretch">
-                  <div
-                    className="h-full min-h-12"
-                    style={{
-                      width: item.width,
-                      backgroundColor: item.color,
-                      ...stripeStyle,
-                    }}
-                  />
-                </div>
-                <span className="pr-3 text-right text-sm text-zinc-500 tabular-nums sm:pr-4">
-                  {item.value}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </figure>
         </article>
 

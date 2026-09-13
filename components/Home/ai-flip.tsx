@@ -82,7 +82,9 @@ export default function AiFlip() {
         </AnimatePresence>
       </span>
 
-      <span className="sr-only">{item.name}</span>
+      <span className="sr-only">
+        ChatGPT, Claude, Gemini, Grok, or Perplexity
+      </span>
     </span>
   );
 }

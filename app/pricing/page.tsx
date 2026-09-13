@@ -3,9 +3,8 @@ import JsonLd from "@/components/JsonLd";
 import PricingAgency from "@/components/pages/product/PricingAgency";
 import PricingFeatures from "@/components/pages/product/PricingFeatures";
 import PricingHero from "@/components/pages/product/PricingHero";
-import PricingTiers, {
-  pricingTiers,
-} from "@/components/pages/product/PricingTiers";
+import PricingTiers from "@/components/pages/product/PricingTiers";
+import { pricedOffers } from "@/lib/pricing";
 import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
 const title = "Pricing · Anny";
@@ -18,19 +17,15 @@ export const metadata = pageMetadata({
   description,
 });
 
-function pricingOffers() {
-  return pricingTiers.map((tier) => {
-    const numericPrice = tier.price.replace(/[^0-9.]/g, "");
-    return {
-      "@type": "Offer",
-      name: tier.name,
-      description: tier.description,
-      url: absoluteUrl(tier.href === "sales" ? "/pricing" : tier.href),
-      ...(numericPrice
-        ? { price: numericPrice, priceCurrency: "USD" }
-        : {}),
-    };
-  });
+function pricingOffersJsonLd() {
+  return pricedOffers().map((tier) => ({
+    "@type": "Offer",
+    name: tier.name,
+    description: tier.description,
+    url: absoluteUrl(tier.href),
+    price: tier.price,
+    priceCurrency: tier.priceCurrency,
+  }));
 }
 
 export default function PricingPage() {
@@ -39,7 +34,7 @@ export default function PricingPage() {
       <JsonLd
         data={{
           ...webpageJsonLd({ path: "/pricing", title, description }),
-          offers: pricingOffers(),
+          offers: pricingOffersJsonLd(),
         }}
       />
       <PricingHero />

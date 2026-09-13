@@ -99,6 +99,10 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 
 Free Ahrefs Domain Rating (DR) lookup. Paste a domain, get a 0–100 backlink-strength score. No account. Anny is the GEO product; this page is a public utility. Scores are Domain Rating by Ahrefs.
 
+### AI crawlability checker, https://anny.dodoxhq.com/tools/ai-crawlability-checker
+
+Free AI crawlability check. Paste a domain to see which major AI crawlers (OpenAI, Anthropic, Perplexity, Google, Apple, and more) are allowed or blocked in robots.txt, plus sitemap and llms.txt signals. Copy-paste fixes included. This is crawl access only, not Anny’s AI visibility / mention score.
+
 ### AI readiness checker, https://anny.dodoxhq.com/tools/ai-readiness-checker
 
 Free on-site AI readiness scan. Paste a domain to see if ChatGPT-class crawlers can fetch and identify the brand, then copy robots.txt, Organization JSON-LD, and sitemap snippets. llms.txt is optional and does not tank the score. This is not Anny’s AI visibility / mention score.

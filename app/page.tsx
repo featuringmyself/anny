@@ -3,6 +3,7 @@ import Demo from "@/components/Home/demo";
 import Metric from "@/components/Home/metric";
 import TrackModelsThatMatter from "@/components/Home/trackModelsThatMatter";
 import SearchIsShifting from "@/components/Home/searchisShifting";
+import CompareStrip from "@/components/Home/compareStrip";
 import Faq from "@/components/faq";
 import JsonLd from "@/components/JsonLd";
 import { faqs } from "@/lib/faqs";
@@ -33,6 +34,7 @@ export default function Home() {
       <Metric />
       <TrackModelsThatMatter />
       <SearchIsShifting />
+      <CompareStrip />
       <Faq />
     </main>
   );

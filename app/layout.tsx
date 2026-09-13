@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import { MarketingChrome } from "@/components/MarketingChrome";
 import JsonLd from "@/components/JsonLd";
+import { pricedOffers } from "@/lib/pricing";
+import { absoluteUrl } from "@/lib/seo";
 import { SanityLive } from "@/lib/sanity/live";
 import {
   SITE_DATE_MODIFIED,
@@ -15,8 +17,12 @@ import {
   SITE_LOGO_URL,
   SITE_NAME,
   SITE_SAME_AS,
+  SITE_SCREENSHOT_ALT,
+  SITE_SCREENSHOT_HEIGHT,
   SITE_SCREENSHOT_URL,
+  SITE_SCREENSHOT_WIDTH,
   SITE_URL,
+  SITE_X_HANDLE,
 } from "@/lib/site";
 
 const spaceGrotesk = Space_Grotesk({
@@ -34,21 +40,25 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
+    locale: "en_US",
     images: [
       {
         url: SITE_SCREENSHOT_URL,
-        alt: "Anny ChatGPT visibility dashboard overview",
+        width: SITE_SCREENSHOT_WIDTH,
+        height: SITE_SCREENSHOT_HEIGHT,
+        alt: SITE_SCREENSHOT_ALT,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: SITE_X_HANDLE,
     title: "Anny - AI Search Visibility Monitoring",
     description: SITE_DESCRIPTION,
     images: [
       {
         url: SITE_SCREENSHOT_URL,
-        alt: "Anny ChatGPT visibility dashboard overview",
+        alt: SITE_SCREENSHOT_ALT,
       },
     ],
   },
@@ -71,7 +81,7 @@ const organizationJsonLd = {
 
 const softwareJsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": ["SoftwareApplication", "WebApplication"],
   "@id": `${SITE_URL}#software`,
   name: SITE_NAME,
   url: SITE_URL,
@@ -80,16 +90,24 @@ const softwareJsonLd = {
   operatingSystem: "Web",
   datePublished: SITE_DATE_PUBLISHED,
   dateModified: SITE_DATE_MODIFIED,
-  // aggregateRating omitted: no verifiable review count / ratingValue in the repo.
+  // aggregateRating / review omitted: no verifiable public review count on-site.
+  // Google software rich results also require a rating or review; do not invent one.
   screenshot: {
     "@type": "ImageObject",
     contentUrl: SITE_SCREENSHOT_URL,
-    description: "Anny ChatGPT visibility dashboard overview",
+    width: SITE_SCREENSHOT_WIDTH,
+    height: SITE_SCREENSHOT_HEIGHT,
+    description: SITE_SCREENSHOT_ALT,
   },
-  offers: {
+  offers: pricedOffers().map((offer) => ({
     "@type": "Offer",
-    url: `${SITE_URL}/pricing`,
-  },
+    name: offer.name,
+    description: offer.description,
+    url: absoluteUrl(offer.href),
+    price: offer.price,
+    priceCurrency: offer.priceCurrency,
+    availability: "https://schema.org/InStock",
+  })),
 };
 
 const websiteJsonLd = {
@@ -99,6 +117,7 @@ const websiteJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
+  inLanguage: "en",
   datePublished: SITE_DATE_PUBLISHED,
   dateModified: SITE_DATE_MODIFIED,
   publisher: {

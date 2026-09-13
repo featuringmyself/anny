@@ -55,7 +55,7 @@ export default function TrackModelsThatMatter() {
         Track the models that matter
       </h2>
       <p className="mt-1 max-w-2xl px-6 text-center text-sm text-balance text-gray-500 md:px-0 md:text-base">
-        Ammy tracks ChatGPT, Claude, Gemini, Deepseek, Grok, Perplexity, Google
+        Anny tracks ChatGPT, Claude, Gemini, Deepseek, Grok, Perplexity, Google
         AI Overview and AI Mode for AI visibility
       </p>
 

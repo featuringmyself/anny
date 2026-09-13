@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 
-import { SITE_NAME, SITE_SCREENSHOT_URL, SITE_URL } from "@/lib/site";
+import {
+  SITE_DATE_MODIFIED,
+  SITE_DATE_PUBLISHED,
+  SITE_NAME,
+  SITE_SCREENSHOT_ALT,
+  SITE_SCREENSHOT_HEIGHT,
+  SITE_SCREENSHOT_URL,
+  SITE_SCREENSHOT_WIDTH,
+  SITE_URL,
+  SITE_X_HANDLE,
+} from "@/lib/site";
 
 export type PageMetadataInput = {
   path: string;
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   robots?: Metadata["robots"];
 };
 
@@ -45,10 +56,12 @@ export function pageMetadata({
   title,
   description,
   image,
+  imageAlt,
   robots,
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image ?? SITE_SCREENSHOT_URL;
+  const ogAlt = imageAlt ?? SITE_SCREENSHOT_ALT;
   const hasImage = Boolean(ogImage);
 
   return {
@@ -64,11 +77,15 @@ export function pageMetadata({
       url,
       siteName: SITE_NAME,
       type: "website",
+      locale: "en_US",
       ...(hasImage
         ? {
             images: [
               {
                 url: ogImage,
+                width: SITE_SCREENSHOT_WIDTH,
+                height: SITE_SCREENSHOT_HEIGHT,
+                alt: ogAlt,
               },
             ],
           }
@@ -76,9 +93,19 @@ export function pageMetadata({
     },
     twitter: {
       card: hasImage ? "summary_large_image" : "summary",
+      site: SITE_X_HANDLE,
       title,
       description,
-      ...(hasImage ? { images: [ogImage] } : {}),
+      ...(hasImage
+        ? {
+            images: [
+              {
+                url: ogImage,
+                alt: ogAlt,
+              },
+            ],
+          }
+        : {}),
     },
   };
 }
@@ -90,6 +117,7 @@ export function webpageJsonLd({
   image,
 }: WebpageJsonLdInput) {
   const url = absoluteUrl(path);
+  const primaryImage = image ?? SITE_SCREENSHOT_URL;
 
   return {
     "@context": "https://schema.org",
@@ -98,9 +126,20 @@ export function webpageJsonLd({
     url,
     name: title,
     description,
-    ...(image ? { image } : {}),
-    isPartOf: `${SITE_URL}#website`,
-    about: `${SITE_URL}#software`,
+    inLanguage: "en",
+    datePublished: SITE_DATE_PUBLISHED,
+    dateModified: SITE_DATE_MODIFIED,
+    isPartOf: { "@id": `${SITE_URL}#website` },
+    about: { "@id": `${SITE_URL}#software` },
+    publisher: { "@id": `${SITE_URL}#organization` },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: primaryImage,
+      width: SITE_SCREENSHOT_WIDTH,
+      height: SITE_SCREENSHOT_HEIGHT,
+      description: SITE_SCREENSHOT_ALT,
+    },
+    ...(image ? { image } : { image: primaryImage }),
   };
 }
 

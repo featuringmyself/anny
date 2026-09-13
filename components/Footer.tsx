@@ -34,6 +34,14 @@ const columns = [
       { label: "For agencies", href: "/features/agencies" },
     ],
   },
+  // {
+  //   title: "Compare",
+  //   links: [
+  //     { label: "Anny vs Ahrefs", href: "/compare/ahrefs" },
+  //     { label: "Anny vs Semrush", href: "/compare/semrush" },
+  //     { label: "Anny vs Profound", href: "/compare/profound" },
+  //   ],
+  // },
   {
     title: "Partnership",
     links: [
@@ -46,6 +54,7 @@ const columns = [
     title: "Free tools",
     links: [
       { label: "Domain Rating checker", href: "/tools/domain-rating-checker" },
+      { label: "AI crawlability checker", href: "/tools/ai-crawlability-checker" },
       { label: "AI readiness checker", href: "/tools/ai-readiness-checker" },
     ],
   },
@@ -93,7 +102,7 @@ export default function Footer() {
               Anny
             </Link>
             <p className="mt-4 max-w-44 text-sm leading-snug text-zinc-400">
-              AI search analytics for marketing teams
+              Anny monitors AI brand mentions for marketing teams
             </p>
           </div>
 

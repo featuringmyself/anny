@@ -2,80 +2,15 @@ import { Check } from "lucide-react";
 
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
+import {
+  pricingTiers,
+  type PricingTier as Tier,
+} from "@/lib/pricing";
 
+export { pricingTiers };
 const CheckIcon = () => (
   <Check className="mt-0.5 size-4 shrink-0 text-zinc-400" strokeWidth={1.75} aria-hidden />
 );
-
-type Tier = {
-  name: string;
-  price: string;
-  period: string;
-  description: string;
-  cta: string;
-  featured: boolean;
-  highlights: readonly string[];
-  highlightsIntro?: string;
-  href: "/register" | "sales";
-};
-
-const customHighlights = [
-  "Fully customisable prompt tracking",
-  "Choose from all models",
-  "Daily or weekly tracking frequency",
-  "Unlimited projects",
-  "Custom prompt setup",
-  "API access",
-  "Single Sign-on (SSO)",
-  "Up to 11 LLM models tracked",
-] as const;
-
-export const pricingTiers: Tier[] = [
-  {
-    name: "Starter",
-    price: "$99",
-    period: "/mo",
-    description: "For SEO and content managers getting started with AI Search visibility.",
-    cta: "Get started",
-    href: "/register",
-    featured: false,
-    highlights: [
-      "50 prompts",
-      "Choose 3 models",
-      "Unlimited users",
-      "Daily tracking frequency",
-      "1 project",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$249",
-    period: "/mo",
-    description: "For SEO teams that need sophisticated AI Search tracking and insights.",
-    cta: "Get started",
-    href: "/register",
-    featured: true,
-    highlights: [
-      "150 prompts",
-      "Choose 3 models",
-      "Unlimited users",
-      "Daily tracking frequency",
-      "2 projects",
-    ],
-  },
-  {
-    name: "Advanced",
-    price: "Custom",
-    period: "",
-    description: "For marketing teams and global brands who need custom coverage, integrations, and dedicated support.",
-    cta: "Talk to Sales",
-    href: "sales",
-    featured: false,
-    highlightsIntro: "Everything in Pro, plus:",
-    highlights: customHighlights,
-  },
-];
-
 export default function PricingTiers() {
   return (
     <section className="border-b">
