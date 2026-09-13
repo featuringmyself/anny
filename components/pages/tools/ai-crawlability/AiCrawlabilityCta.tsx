@@ -23,7 +23,7 @@ export function AiCrawlabilityCta() {
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
           Anny&apos;s GEO team builds the strategy, runs the work, and keeps
-          auditing performance — so your brand doesn&apos;t just get crawled, it
+          auditing performance, so your brand doesn&apos;t just get crawled, it
           gets cited.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

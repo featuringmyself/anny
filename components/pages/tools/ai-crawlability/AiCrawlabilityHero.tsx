@@ -42,7 +42,7 @@ export function AiCrawlabilityHero({
         {!compact ? (
           <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-500 text-balance sm:text-lg">
             See whether ChatGPT, Claude, Perplexity, and other AI crawlers can
-            access your site — and get clear fixes when they cannot.
+            access your site, and get clear fixes when they cannot.
           </p>
         ) : (
           <p className="mt-2 text-sm text-zinc-500">
