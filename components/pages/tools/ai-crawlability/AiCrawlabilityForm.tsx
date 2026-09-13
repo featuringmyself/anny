@@ -51,25 +51,8 @@ export function AiCrawlabilityForm({
         <ScanButton />
       </div>
       <p className="mt-3 text-sm text-zinc-500">
-        Free for any public domain. No account required.
+        Free for any domain. No sign-up required.
       </p>
-      <div className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-2 text-sm text-zinc-500">
-        <span>Examples:</span>
-        {EXAMPLE_DOMAINS.map((domain, index) => (
-          <span key={domain} className="inline-flex items-center">
-            {index > 0 ? <span className="mx-1 text-zinc-300">·</span> : null}
-            <Link
-              href={`${AI_CRAWL_PATH}?domain=${encodeURIComponent(domain)}`}
-              className="text-zinc-700 underline-offset-4 hover:text-[#2462ff] hover:underline"
-              onClick={() =>
-                posthog.capture("ai_crawlability_example_clicked", { domain })
-              }
-            >
-              {domain}
-            </Link>
-          </span>
-        ))}
-      </div>
     </Form>
   );
 }

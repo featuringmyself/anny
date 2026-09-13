@@ -16,34 +16,35 @@ export function AiCrawlabilityCta() {
       />
       <div className="relative mx-auto max-w-5xl text-white">
         <p className="text-sm font-medium text-[#7ea1ff]">
-          From crawl access to AI visibility
+          Crawl access is only the first step
         </p>
         <h2 className="mt-3 max-w-2xl text-3xl font-medium tracking-tight text-balance md:text-4xl">
-          Know when ChatGPT and other models mention your brand
+          Get a managed plan to show up in ChatGPT, Perplexity, and AI Overviews
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-          Anny helps marketing teams monitor AI search mentions, sources, and
-          competitors — so crawl fixes turn into measurable visibility.
+          Anny&apos;s GEO team builds the strategy, runs the work, and keeps
+          auditing performance — so your brand doesn&apos;t just get crawled, it
+          gets cited.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <TalkToSalesButton
-            size="lg"
-            className="bg-[#2462ff] px-5 text-white hover:bg-[#2462ff]/90"
-            source="ai-crawlability-checker"
-          />
           <Button
             size="lg"
-            variant="outline"
-            className="border-white/15 bg-transparent px-5 text-white hover:bg-white/5 hover:text-white"
-            render={<Link href="/pricing" />}
+            className="bg-[#2462ff] px-5 text-white hover:bg-[#2462ff]/90"
+            render={<Link href="/services" />}
             onClick={() =>
-              posthog.capture("ai_crawlability_pricing_clicked", {
+              posthog.capture("ai_crawlability_services_clicked", {
                 source: "ai-crawlability-checker",
               })
             }
           >
-            See pricing
+            Explore services
           </Button>
+          <TalkToSalesButton
+            size="lg"
+            variant="outline"
+            className="border-white/15 bg-transparent px-5 text-white hover:bg-white/5 hover:text-white"
+            source="ai-crawlability-checker"
+          />
         </div>
       </div>
     </section>
