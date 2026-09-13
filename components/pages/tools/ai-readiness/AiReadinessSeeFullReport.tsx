@@ -68,13 +68,17 @@ export function AiReadinessSeeFullReport({
 }: AiReadinessSeeFullReportProps) {
   return (
     <section
-      className="border-b bg-zinc-950 text-white"
+      className="relative overflow-hidden border-b border-zinc-800 bg-[#0c0c0e] text-white"
       aria-labelledby="ar-full-report-heading"
     >
-      <div className="px-6 py-10 md:px-12 md:py-14">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_0%,rgba(36,98,255,0.18),transparent_45%)]"
+      />
+      <div className="relative mx-auto max-w-5xl px-6 py-14 md:px-10 md:py-16">
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+            <p className="text-sm font-medium text-[#7ea1ff]">
               Full dossier · {domain}
             </p>
             <h2
@@ -91,9 +95,9 @@ export function AiReadinessSeeFullReport({
           </div>
 
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center md:flex-col md:items-end">
-            <div className="flex items-baseline gap-2 font-mono text-sm text-zinc-400">
-              <span>Preliminary score:</span>
-              <span className="text-xl font-semibold text-[#9dffd4] tabular-nums">
+            <div className="flex items-baseline gap-2 text-sm text-zinc-400">
+              <span>Preliminary score</span>
+              <span className="text-xl font-medium text-[#9dffd4] tabular-nums">
                 {score}
               </span>
               <span className="text-zinc-500">/100</span>
@@ -119,27 +123,22 @@ export function AiReadinessSeeFullReport({
             </form>
           </div>
         </div>
-      </div>
 
-      <div className="grid border-t border-zinc-800 sm:grid-cols-2 lg:grid-cols-4">
-        {REPORT_PILLARS.map((pillar, index) => (
-          <div
-            key={pillar.title}
-            className={`border-b border-zinc-800 px-6 py-8 last:border-b-0 sm:odd:border-r lg:border-r lg:border-b-0 lg:last:border-r-0 md:px-8 ${
-              index >= 2 ? "sm:border-b-0" : ""
-            }`}
-          >
-            <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
-              0{index + 1} · {pillar.eyebrow}
-            </p>
-            <h3 className="mt-2 text-base font-medium text-white">
-              {pillar.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              {pillar.description}
-            </p>
-          </div>
-        ))}
+        <div className="mt-12 grid gap-8 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {REPORT_PILLARS.map((pillar, index) => (
+            <div key={pillar.title}>
+              <p className="text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
+                0{index + 1} · {pillar.eyebrow}
+              </p>
+              <h3 className="mt-2 text-base font-medium text-white">
+                {pillar.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                {pillar.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

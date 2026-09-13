@@ -4,8 +4,10 @@ import Metric from "@/components/Home/metric";
 import TrackModelsThatMatter from "@/components/Home/trackModelsThatMatter";
 import SearchIsShifting from "@/components/Home/searchisShifting";
 import CompareStrip from "@/components/Home/compareStrip";
+import FreeToolsStrip from "@/components/Home/freeToolsStrip";
 import Faq from "@/components/faq";
 import JsonLd from "@/components/JsonLd";
+import { PatternStrip } from "@/components/pages/shared/pattern-strip";
 import { faqs } from "@/lib/faqs";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 import { SITE_DESCRIPTION } from "@/lib/site";
@@ -35,6 +37,8 @@ export default function Home() {
       <TrackModelsThatMatter />
       <SearchIsShifting />
       <CompareStrip />
+      <PatternStrip />
+      <FreeToolsStrip />
       <Faq />
     </main>
   );

@@ -95,6 +95,10 @@ Nope! No code, no plugins, no website changes needed. Just enter your URL and st
 
 ## Free tools
 
+### Tools index, https://anny.dodoxhq.com/tools
+
+Directory of Anny’s free public checkers for AI readiness, AI crawlability, and Domain Rating.
+
 ### Domain Rating checker, https://anny.dodoxhq.com/tools/domain-rating-checker
 
 Free Ahrefs Domain Rating (DR) lookup. Paste a domain, get a 0–100 backlink-strength score. No account. Anny is the GEO product; this page is a public utility. Scores are Domain Rating by Ahrefs.

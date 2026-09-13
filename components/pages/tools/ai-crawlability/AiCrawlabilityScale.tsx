@@ -1,6 +1,6 @@
-import { READINESS_BANDS } from "@/components/pages/tools/ai-readiness/bands";
+import { CRAWL_BANDS } from "@/components/pages/tools/ai-crawlability/bands";
 
-export function AiReadinessScale() {
+export function AiCrawlabilityScale() {
   return (
     <section className="border-b border-zinc-200 bg-white px-6 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-5xl">
@@ -9,12 +9,13 @@ export function AiReadinessScale() {
           What the score means
         </h2>
         <p className="mt-3 max-w-xl text-base leading-relaxed text-zinc-500 text-balance sm:text-lg">
-          AI readiness is 0 to 100. Higher means agents can fetch, name, and
-          parse the site. It is not a ChatGPT mention score.
+          AI crawlability is 0 to 100. Higher means more AI crawlers can fetch
+          the site and discovery files are in place. It is not a ChatGPT mention
+          score.
         </p>
 
         <div className="mt-12 space-y-0 border-t border-zinc-200">
-          {READINESS_BANDS.map((band) => (
+          {CRAWL_BANDS.map((band) => (
             <article
               key={band.label}
               className="grid gap-3 border-b border-zinc-200 py-6 sm:grid-cols-[7rem_10rem_1fr] sm:items-baseline sm:gap-8"

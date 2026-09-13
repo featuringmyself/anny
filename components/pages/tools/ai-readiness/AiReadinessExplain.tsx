@@ -1,3 +1,7 @@
+import Link from "next/link";
+
+import { AI_CRAWL_PATH } from "@/components/pages/tools/ai-crawlability/seo";
+
 const notes = [
   {
     title: "What it measures",
@@ -15,29 +19,35 @@ const notes = [
 
 export function AiReadinessExplain() {
   return (
-    <section className="border-b">
-      <div className="border-b px-6 py-10 md:px-12 md:py-14">
-        <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+    <section className="border-b border-zinc-200 bg-[#f6f7f4] px-6 py-16 md:px-10 md:py-24">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-sm font-medium text-[#2462ff]">Why this tool</p>
+        <h2 className="mt-2 max-w-2xl text-3xl font-medium tracking-tight text-zinc-900 md:text-4xl">
           Built to give you something to ship
         </h2>
-        <p className="mt-3 max-w-xl text-lg text-zinc-500 text-balance">
+        <p className="mt-3 max-w-xl text-base leading-relaxed text-zinc-500 text-balance sm:text-lg">
           Most “AI ready” checklists fail you for missing MCP cards. This one
-          scores what actually gates retrieval, then hands you the file.
-        </p>
-      </div>
-      <ul className="grid md:grid-cols-3">
-        {notes.map((note) => (
-          <li
-            key={note.title}
-            className="border-b px-6 py-8 last:border-b-0 md:border-r md:border-b-0 md:last:border-r-0 md:px-10 md:py-12"
+          scores what actually gates retrieval, then hands you the file. For
+          crawl access alone, start with the{" "}
+          <Link
+            href={AI_CRAWL_PATH}
+            className="font-medium text-zinc-800 underline-offset-4 hover:text-[#2462ff] hover:underline"
           >
-            <h3 className="text-lg font-medium">{note.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-500">
-              {note.body}
-            </p>
-          </li>
-        ))}
-      </ul>
+            AI crawlability checker
+          </Link>
+          .
+        </p>
+        <ul className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+          {notes.map((note) => (
+            <li key={note.title}>
+              <h3 className="text-lg font-medium text-zinc-900">{note.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+                {note.body}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

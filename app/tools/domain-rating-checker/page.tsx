@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import JsonLd from "@/components/JsonLd";
 import PatternStrip from "@/components/PatternStrip";
+import { PageBreadcrumbs } from "@/components/pages/shared/PageBreadcrumbs";
 import { DomainRatingCta } from "@/components/pages/tools/domain-rating/DomainRatingCta";
 import { DomainRatingExplain } from "@/components/pages/tools/domain-rating/DomainRatingExplain";
 import { DomainRatingFaq } from "@/components/pages/tools/domain-rating/DomainRatingFaq";
@@ -53,6 +54,14 @@ export default async function DomainRatingCheckerPage({
       <section>
         <div className="grid md:grid-cols-2">
           <div className="flex flex-col justify-center border-b px-6 py-14 md:border-r md:border-b-0 md:px-12 md:py-20">
+            <PageBreadcrumbs
+              className="mb-6"
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Tools", href: "/tools" },
+                { name: "Domain Rating checker" },
+              ]}
+            />
             <p className="text-sm font-medium tracking-wide text-[#2462ff]">
               Free tool
             </p>

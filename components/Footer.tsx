@@ -53,6 +53,7 @@ const columns = [
   {
     title: "Free tools",
     links: [
+      { label: "All free tools", href: "/tools" },
       { label: "Domain Rating checker", href: "/tools/domain-rating-checker" },
       { label: "AI crawlability checker", href: "/tools/ai-crawlability-checker" },
       { label: "AI readiness checker", href: "/tools/ai-readiness-checker" },

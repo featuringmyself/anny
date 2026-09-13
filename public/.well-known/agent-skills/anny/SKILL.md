@@ -81,6 +81,7 @@ Deep links: `/compare/ahrefs`, `/compare/semrush`, `/compare/profound`
 
 ## Free tools
 
+- Tools index: https://anny.dodoxhq.com/tools
 - Domain Rating checker (free Ahrefs DR, 0–100): https://anny.dodoxhq.com/tools/domain-rating-checker
 - AI crawlability checker (which AI bots can fetch a site + robots.txt fixes): https://anny.dodoxhq.com/tools/ai-crawlability-checker
 - AI readiness checker (can ChatGPT crawl/name a site + copy-paste fixes): https://anny.dodoxhq.com/tools/ai-readiness-checker

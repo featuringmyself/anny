@@ -6,7 +6,7 @@ import { getDb } from "@/lib/mongodb";
 
 /**
  * Sites looked up through the AI crawlability checker.
- * Collection: `ai_crawlability_lookups` — one document per domain.
+ * Collection: `ai_crawlability_lookups`. One document per domain.
  */
 export type AiCrawlabilityLookupDocument = {
   domain: string;

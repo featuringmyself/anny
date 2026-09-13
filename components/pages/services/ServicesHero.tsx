@@ -170,7 +170,7 @@ export default function ServicesHero() {
             className="h-12 rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
             render={<Link href={AI_READINESS_HREF} />}
           >
-            Free AI Visibility Audit
+            Free AI readiness check
           </Button>
           <Button
             size="lg"

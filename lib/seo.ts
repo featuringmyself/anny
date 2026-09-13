@@ -16,8 +16,11 @@ export type PageMetadataInput = {
   path: string;
   title: string;
   description: string;
-  image?: string;
+  /** Absolute or site-relative image URL. Pass `false` to omit (use file-based opengraph-image). */
+  image?: string | false;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   robots?: Metadata["robots"];
 };
 
@@ -26,6 +29,11 @@ export type WebpageJsonLdInput = {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  datePublished?: string;
+  dateModified?: string;
 };
 
 export type FaqJsonLdItem = {
@@ -57,11 +65,16 @@ export function pageMetadata({
   description,
   image,
   imageAlt,
+  imageWidth,
+  imageHeight,
   robots,
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
-  const ogImage = image ?? SITE_SCREENSHOT_URL;
+  const omitImage = image === false;
+  const ogImage = omitImage ? undefined : (image ?? SITE_SCREENSHOT_URL);
   const ogAlt = imageAlt ?? SITE_SCREENSHOT_ALT;
+  const ogWidth = imageWidth ?? SITE_SCREENSHOT_WIDTH;
+  const ogHeight = imageHeight ?? SITE_SCREENSHOT_HEIGHT;
   const hasImage = Boolean(ogImage);
 
   return {
@@ -78,13 +91,13 @@ export function pageMetadata({
       siteName: SITE_NAME,
       type: "website",
       locale: "en_US",
-      ...(hasImage
+      ...(hasImage && ogImage
         ? {
             images: [
               {
                 url: ogImage,
-                width: SITE_SCREENSHOT_WIDTH,
-                height: SITE_SCREENSHOT_HEIGHT,
+                width: ogWidth,
+                height: ogHeight,
                 alt: ogAlt,
               },
             ],
@@ -96,7 +109,7 @@ export function pageMetadata({
       site: SITE_X_HANDLE,
       title,
       description,
-      ...(hasImage
+      ...(hasImage && ogImage
         ? {
             images: [
               {
@@ -115,9 +128,17 @@ export function webpageJsonLd({
   title,
   description,
   image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  datePublished,
+  dateModified,
 }: WebpageJsonLdInput) {
   const url = absoluteUrl(path);
   const primaryImage = image ?? SITE_SCREENSHOT_URL;
+  const alt = imageAlt ?? SITE_SCREENSHOT_ALT;
+  const width = imageWidth ?? SITE_SCREENSHOT_WIDTH;
+  const height = imageHeight ?? SITE_SCREENSHOT_HEIGHT;
 
   return {
     "@context": "https://schema.org",
@@ -127,19 +148,19 @@ export function webpageJsonLd({
     name: title,
     description,
     inLanguage: "en",
-    datePublished: SITE_DATE_PUBLISHED,
-    dateModified: SITE_DATE_MODIFIED,
+    datePublished: datePublished ?? SITE_DATE_PUBLISHED,
+    dateModified: dateModified ?? SITE_DATE_MODIFIED,
     isPartOf: { "@id": `${SITE_URL}#website` },
     about: { "@id": `${SITE_URL}#software` },
     publisher: { "@id": `${SITE_URL}#organization` },
     primaryImageOfPage: {
       "@type": "ImageObject",
       url: primaryImage,
-      width: SITE_SCREENSHOT_WIDTH,
-      height: SITE_SCREENSHOT_HEIGHT,
-      description: SITE_SCREENSHOT_ALT,
+      width,
+      height,
+      description: alt,
     },
-    ...(image ? { image } : { image: primaryImage }),
+    image: primaryImage,
   };
 }
 

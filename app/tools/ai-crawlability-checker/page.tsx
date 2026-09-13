@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import JsonLd from "@/components/JsonLd";
+import { AiCrawlabilityChecks } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityChecks";
 import { AiCrawlabilityCta } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityCta";
+import { AiCrawlabilityExplain } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityExplain";
 import { AiCrawlabilityFaq } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityFaq";
 import { AiCrawlabilityHero } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityHero";
 import { AiCrawlabilityHowTo } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityHowTo";
@@ -10,6 +12,7 @@ import {
   AiCrawlabilityResults,
   AiCrawlabilityResultsPending,
 } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityResults";
+import { AiCrawlabilityScale } from "@/components/pages/tools/ai-crawlability/AiCrawlabilityScale";
 import {
   AI_CRAWL_DESCRIPTION,
   AI_CRAWL_PATH,
@@ -42,69 +45,40 @@ export async function generateMetadata({
   });
 }
 
-export default function AiCrawlabilityCheckerPage({
+export default async function AiCrawlabilityCheckerPage({
   searchParams,
 }: AiCrawlabilityCheckerPageProps) {
+  const domain = parseDomainParam((await searchParams).domain);
+
   return (
     <main className="bg-[#f6f7f4]">
-      <JsonLd data={aiCrawlJsonLd()} />
+      <JsonLd
+        data={aiCrawlJsonLd({ includeEducational: !domain })}
+      />
 
-      <Suspense fallback={<AiCrawlabilityHero defaultDomain="" />}>
-        <HeroFromSearchParams searchParams={searchParams} />
-      </Suspense>
+      <AiCrawlabilityHero
+        defaultDomain={domain ?? ""}
+        compact={Boolean(domain)}
+      />
 
-      <Suspense>
-        <ResultsFromSearchParams searchParams={searchParams} />
-      </Suspense>
+      {domain ? (
+        <Suspense fallback={<AiCrawlabilityResultsPending domain={domain} />}>
+          <AiCrawlabilityResults domain={domain} />
+        </Suspense>
+      ) : null}
 
-      <Suspense>
-        <BodyFromSearchParams searchParams={searchParams} />
-      </Suspense>
+      {domain ? (
+        <AiCrawlabilityCta />
+      ) : (
+        <>
+          <AiCrawlabilityHowTo />
+          <AiCrawlabilityChecks />
+          <AiCrawlabilityScale />
+          <AiCrawlabilityExplain />
+          <AiCrawlabilityFaq />
+          <AiCrawlabilityCta />
+        </>
+      )}
     </main>
-  );
-}
-
-async function HeroFromSearchParams({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const domain = parseDomainParam((await searchParams).domain);
-  return (
-    <AiCrawlabilityHero defaultDomain={domain} compact={Boolean(domain)} />
-  );
-}
-
-async function ResultsFromSearchParams({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const domain = parseDomainParam((await searchParams).domain);
-  if (!domain) return null;
-
-  return (
-    <Suspense fallback={<AiCrawlabilityResultsPending domain={domain} />}>
-      <AiCrawlabilityResults domain={domain} />
-    </Suspense>
-  );
-}
-
-async function BodyFromSearchParams({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const domain = parseDomainParam((await searchParams).domain);
-  if (domain) {
-    return <AiCrawlabilityCta />;
-  }
-
-  return (
-    <>
-      <AiCrawlabilityHowTo />
-      <AiCrawlabilityFaq />
-      <AiCrawlabilityCta />
-    </>
   );
 }

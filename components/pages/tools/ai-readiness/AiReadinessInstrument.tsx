@@ -119,19 +119,19 @@ function InstrumentShell({ children }: { children: ReactNode }) {
   return (
     <aside
       aria-label="AI readiness readout"
-      className="relative flex min-h-[32rem] flex-col overflow-hidden bg-zinc-950 text-white md:min-h-full"
+      className="relative flex min-h-136 flex-col overflow-hidden bg-[#0c0c0e] text-white md:min-h-full"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,rgba(36,98,255,0.18),transparent_55%),radial-gradient(ellipse_at_20%_90%,rgba(157,255,212,0.08),transparent_45%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_18%,rgba(36,98,255,0.22),transparent_52%),radial-gradient(ellipse_at_18%_92%,rgba(157,255,212,0.1),transparent_42%)]"
       />
       <header className="relative flex items-center justify-between border-b border-white/10 px-6 py-4 md:px-8">
         <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase">
           On-site agent scan
         </p>
-        <p className="text-xs font-medium tracking-wide text-[#9dffd4] uppercase">
+        <span className="rounded-full bg-[#9dffd4]/10 px-2.5 py-1 text-[10px] font-medium tracking-wide text-[#9dffd4] uppercase">
           Free
-        </p>
+        </span>
       </header>
       <div className="relative flex flex-1 flex-col">{children}</div>
     </aside>
@@ -152,9 +152,9 @@ function GaugeBlock({
   pending?: boolean;
 }) {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center px-6 py-6">
+    <div className="flex flex-1 flex-col items-center justify-center px-6 py-8">
       <AiReadinessGauge value={value} label={label} pending={pending} />
-      <p className="-mt-2 text-sm font-medium text-[#9dffd4]">{caption}</p>
+      <p className="-mt-1 text-sm font-medium text-[#9dffd4]">{caption}</p>
       {hint ? (
         <p className="mx-auto mt-2 max-w-[18rem] text-center text-xs leading-relaxed text-zinc-500">
           {hint}
@@ -179,10 +179,7 @@ function CategoryBars({
             ? 0
             : Math.round((category.score / category.max) * 100);
         return (
-          <li
-            key={category.id}
-            className="bg-zinc-950 px-5 py-4 md:px-6"
-          >
+          <li key={category.id} className="bg-[#0c0c0e] px-5 py-4 md:px-6">
             <div className="flex items-baseline justify-between gap-2">
               <p className="text-[11px] font-medium tracking-wide text-zinc-500 uppercase">
                 {category.label}
@@ -195,9 +192,11 @@ function CategoryBars({
                 {pending ? "-" : `${category.score}/${category.max}`}
               </p>
             </div>
-            <div className="mt-2 h-1 overflow-hidden bg-white/10">
+            <div className="mt-2.5 h-1 overflow-hidden rounded-full bg-white/10">
               <div
-                className="h-full bg-linear-to-r from-[#2462ff] to-[#9dffd4] transition-[width] duration-500"
+                className={`h-full rounded-full bg-linear-to-r from-[#2462ff] to-[#9dffd4] transition-[width] duration-500 ${
+                  pending ? "motion-safe:animate-pulse" : ""
+                }`}
                 style={{ width: pending ? "18%" : `${pct}%` }}
               />
             </div>

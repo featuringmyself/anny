@@ -12,6 +12,24 @@ export const AI_READINESS_TITLE = "Free AI Readiness Checker";
 export const AI_READINESS_DESCRIPTION =
   "See if ChatGPT can crawl and name a website. Get a 0–100 score plus copy-paste robots.txt, JSON-LD, and sitemap fixes. Quick scan is free; full dossier unlocks with email.";
 
+/** First public listing of this tool in sitemap/footer. */
+export const AI_READINESS_DATE_PUBLISHED = "2026-08-20";
+/** Bump when substantive on-page or entity content changes. */
+export const AI_READINESS_DATE_MODIFIED = "2026-09-13";
+
+export const AI_READINESS_OG_ALT =
+  "Free AI readiness checker by Anny: score whether ChatGPT can crawl and name a site";
+export const AI_READINESS_OG_WIDTH = 1200;
+export const AI_READINESS_OG_HEIGHT = 630;
+export const AI_READINESS_OG_IMAGE_PATH = `${AI_READINESS_PATH}/opengraph-image`;
+export const AI_READINESS_OG_IMAGE_URL = absoluteUrl(AI_READINESS_OG_IMAGE_PATH);
+
+export const AI_READINESS_BREADCRUMBS = [
+  { name: "Home", path: "/" },
+  { name: "Tools", path: "/tools" },
+  { name: "AI readiness checker", path: AI_READINESS_PATH },
+] as const;
+
 export const aiReadinessFaqs = [
   {
     question: "What is AI readiness?",
@@ -37,6 +55,11 @@ export const aiReadinessFaqs = [
     question: "Does this replace a full audit?",
     answer:
       "No. This is a homepage-level scan with files you can paste today. A full Anny engagement also covers citation gaps, competitor prompts, and content that actually gets mentioned.",
+  },
+  {
+    question: "Should I run the AI crawlability checker first?",
+    answer:
+      "Yes, if you only need to know whether AI bots can fetch the site. Use the free AI crawlability checker at https://anny.dodoxhq.com/tools/ai-crawlability-checker for robots.txt allow/block status, then use this readiness checker for brand identity, schema, and citation signals.",
   },
   {
     question: "Is the AI readiness checker free?",
@@ -70,56 +93,69 @@ function withoutContext<T extends { "@context": string }>(node: T) {
   return rest;
 }
 
-export function aiReadinessJsonLd() {
+export function aiReadinessJsonLd(options?: {
+  /** When true, omit FAQ/HowTo so markup matches visible content. */
+  domainPresent?: boolean;
+}) {
+  const domainPresent = Boolean(options?.domainPresent);
+
   const webpage = withoutContext(
     webpageJsonLd({
       path: AI_READINESS_PATH,
       title: AI_READINESS_TITLE,
       description: AI_READINESS_DESCRIPTION,
+      image: AI_READINESS_OG_IMAGE_URL,
+      imageAlt: AI_READINESS_OG_ALT,
+      imageWidth: AI_READINESS_OG_WIDTH,
+      imageHeight: AI_READINESS_OG_HEIGHT,
+      datePublished: AI_READINESS_DATE_PUBLISHED,
+      dateModified: AI_READINESS_DATE_MODIFIED,
     }),
   );
   const breadcrumb = withoutContext(
-    breadcrumbJsonLd([
-      { name: "Home", path: "/" },
-      { name: "AI readiness checker", path: AI_READINESS_PATH },
-    ]),
+    breadcrumbJsonLd([...AI_READINESS_BREADCRUMBS]),
   );
-  const faq = withoutContext(faqJsonLd(aiReadinessFaqs));
+
+  const graph: Record<string, unknown>[] = [
+    webpage,
+    {
+      "@type": "WebApplication",
+      "@id": `${AI_READINESS_URL}#webapp`,
+      name: "Free AI Readiness Checker",
+      description: AI_READINESS_DESCRIPTION,
+      url: AI_READINESS_URL,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Web",
+      isAccessibleForFree: true,
+      image: AI_READINESS_OG_IMAGE_URL,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+    breadcrumb,
+  ];
+
+  if (!domainPresent) {
+    graph.push(withoutContext(faqJsonLd(aiReadinessFaqs)));
+    graph.push({
+      "@type": "HowTo",
+      "@id": `${AI_READINESS_URL}#howto`,
+      name: aiReadinessHowTo.name,
+      description: aiReadinessHowTo.description,
+      url: AI_READINESS_URL,
+      step: aiReadinessHowTo.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+      })),
+    });
+  }
 
   return {
     "@context": "https://schema.org",
-    "@graph": [
-      webpage,
-      {
-        "@type": "WebApplication",
-        "@id": `${AI_READINESS_URL}#webapp`,
-        name: "Free AI Readiness Checker",
-        description: AI_READINESS_DESCRIPTION,
-        url: AI_READINESS_URL,
-        applicationCategory: "UtilitiesApplication",
-        operatingSystem: "Web",
-        isAccessibleForFree: true,
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
-        },
-      },
-      breadcrumb,
-      faq,
-      {
-        "@type": "HowTo",
-        "@id": `${AI_READINESS_URL}#howto`,
-        name: aiReadinessHowTo.name,
-        description: aiReadinessHowTo.description,
-        url: AI_READINESS_URL,
-        step: aiReadinessHowTo.steps.map((step, index) => ({
-          "@type": "HowToStep",
-          position: index + 1,
-          name: step.name,
-          text: step.text,
-        })),
-      },
-    ],
+    "@graph": graph,
   };
 }

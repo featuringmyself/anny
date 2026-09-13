@@ -22,6 +22,7 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://anny.dodoxhq.c
 
 ## Free tools
 
+- [Free tools index](https://anny.dodoxhq.com/tools): Directory of Anny’s public SEO and AI checkers.
 - [Domain Rating checker](https://anny.dodoxhq.com/tools/domain-rating-checker): Free Ahrefs Domain Rating (DR) lookup, 0–100, no signup.
 - [AI crawlability checker](https://anny.dodoxhq.com/tools/ai-crawlability-checker): Free check of which AI crawlers (GPTBot, ClaudeBot, PerplexityBot, and more) can fetch a site. Allow/block status plus robots.txt fixes. No signup.
 - [AI readiness checker](https://anny.dodoxhq.com/tools/ai-readiness-checker): Free on-site scan. Can ChatGPT crawl and name the site? Copy-paste robots.txt, JSON-LD, and sitemap fixes. No signup.

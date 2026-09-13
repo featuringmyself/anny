@@ -4,6 +4,7 @@ import {
   faqJsonLd,
   webpageJsonLd,
 } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 export const AI_CRAWL_PATH = "/tools/ai-crawlability-checker";
 export const AI_CRAWL_URL = absoluteUrl(AI_CRAWL_PATH);
@@ -12,21 +13,24 @@ export const AI_CRAWL_TITLE = "Free AI Crawlability Checker";
 export const AI_CRAWL_DESCRIPTION =
   "Check whether ChatGPT, Claude, Perplexity, and other AI crawlers can access your website. Free for marketing and SEO teams. No signup.";
 
+/** Short definition for above-the-fold AEO extractability. */
+export const AI_CRAWL_DEFINITION =
+  "AI crawlability means whether AI systems can fetch your pages. That starts with robots.txt rules for bots like GPTBot, ClaudeBot, and PerplexityBot, plus discovery files like sitemap.xml and llms.txt.";
+
 export const aiCrawlFaqs = [
   {
     question: "What is AI crawlability?",
-    answer:
-      "AI crawlability means whether AI systems can fetch your pages. That starts with robots.txt rules for bots like GPTBot, ClaudeBot, and PerplexityBot, plus discovery files like sitemap.xml and llms.txt.",
+    answer: AI_CRAWL_DEFINITION,
   },
   {
     question: "Which AI bots does this checker look at?",
     answer:
-      "We check major crawlers from OpenAI, Anthropic, Perplexity, Google, Apple, Amazon, Meta, Common Crawl, Cohere, and ByteDance, including training, search, and live-answer user agents.",
+      "We check major crawlers from OpenAI, Anthropic, Perplexity, Google, Apple, Amazon, Meta, Common Crawl, Cohere, and ByteDance, including training, search, and live-answer user agents such as GPTBot, ClaudeBot, PerplexityBot, and Google-Extended.",
   },
   {
     question: "Is this the same as the AI readiness checker?",
     answer:
-      "No. This tool only answers whether AI bots can crawl the site. The AI readiness checker also looks at brand identity, schema, and citation signals.",
+      "No. This tool only answers whether AI bots can crawl the site. The free AI readiness checker at https://anny.dodoxhq.com/tools/ai-readiness-checker also looks at brand identity, schema, and citation signals.",
   },
   {
     question: "If a bot is allowed, will ChatGPT cite my brand?",
@@ -70,7 +74,11 @@ function withoutContext<T extends { "@context": string }>(node: T) {
   return rest;
 }
 
-export function aiCrawlJsonLd() {
+export function aiCrawlJsonLd({
+  includeEducational = true,
+}: {
+  includeEducational?: boolean;
+} = {}) {
   const webpage = withoutContext(
     webpageJsonLd({
       path: AI_CRAWL_PATH,
@@ -81,45 +89,56 @@ export function aiCrawlJsonLd() {
   const breadcrumb = withoutContext(
     breadcrumbJsonLd([
       { name: "Home", path: "/" },
+      { name: "Tools", path: "/tools" },
       { name: "AI crawlability checker", path: AI_CRAWL_PATH },
     ]),
   );
-  const faq = withoutContext(faqJsonLd(aiCrawlFaqs));
+
+  const webapp = {
+    "@type": "WebApplication",
+    "@id": `${AI_CRAWL_URL}#webapp`,
+    name: "Free AI Crawlability Checker",
+    description: AI_CRAWL_DESCRIPTION,
+    url: AI_CRAWL_URL,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Web",
+    isAccessibleForFree: true,
+    provider: { "@id": `${SITE_URL}#organization` },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+
+  const graph: Record<string, unknown>[] = [
+    {
+      ...webpage,
+      mainEntity: { "@id": `${AI_CRAWL_URL}#webapp` },
+    },
+    webapp,
+    breadcrumb,
+  ];
+
+  if (includeEducational) {
+    graph.push(withoutContext(faqJsonLd(aiCrawlFaqs)));
+    graph.push({
+      "@type": "HowTo",
+      "@id": `${AI_CRAWL_URL}#howto`,
+      name: aiCrawlHowTo.name,
+      description: aiCrawlHowTo.description,
+      url: AI_CRAWL_URL,
+      step: aiCrawlHowTo.steps.map((step, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: step.name,
+        text: step.text,
+      })),
+    });
+  }
 
   return {
     "@context": "https://schema.org",
-    "@graph": [
-      webpage,
-      {
-        "@type": "WebApplication",
-        "@id": `${AI_CRAWL_URL}#webapp`,
-        name: "Free AI Crawlability Checker",
-        description: AI_CRAWL_DESCRIPTION,
-        url: AI_CRAWL_URL,
-        applicationCategory: "UtilitiesApplication",
-        operatingSystem: "Web",
-        isAccessibleForFree: true,
-        offers: {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
-        },
-      },
-      breadcrumb,
-      faq,
-      {
-        "@type": "HowTo",
-        "@id": `${AI_CRAWL_URL}#howto`,
-        name: aiCrawlHowTo.name,
-        description: aiCrawlHowTo.description,
-        url: AI_CRAWL_URL,
-        step: aiCrawlHowTo.steps.map((step, index) => ({
-          "@type": "HowToStep",
-          position: index + 1,
-          name: step.name,
-          text: step.text,
-        })),
-      },
-    ],
+    "@graph": graph,
   };
 }

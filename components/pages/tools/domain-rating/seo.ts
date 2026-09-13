@@ -82,6 +82,7 @@ export function drCheckerJsonLd() {
   const breadcrumb = withoutContext(
     breadcrumbJsonLd([
       { name: "Home", path: "/" },
+      { name: "Tools", path: "/tools" },
       { name: "Domain Rating checker", path: DR_CHECKER_PATH },
     ]),
   );

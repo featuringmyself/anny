@@ -12,12 +12,14 @@ export function CopySnippet({
   const [copied, setCopied] = useState(false);
 
   return (
-    <div className="mt-4 overflow-hidden border border-zinc-200 bg-zinc-950 text-white">
+    <div className="mt-4 overflow-hidden rounded-md border border-zinc-800 bg-[#0c0c0e] text-white">
       <div className="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-2">
-        <p className="truncate font-mono text-[11px] text-zinc-400">{filename}</p>
+        <p className="truncate font-mono text-[11px] text-zinc-400">
+          {filename}
+        </p>
         <button
           type="button"
-          className="shrink-0 text-[11px] font-medium tracking-wide text-[#9dffd4] uppercase"
+          className="shrink-0 rounded px-1.5 py-0.5 text-[11px] font-medium tracking-wide text-[#9dffd4] uppercase transition-colors hover:bg-white/5"
           onClick={async () => {
             try {
               await navigator.clipboard.writeText(code);
