@@ -18,6 +18,7 @@ import { zipfreshAiVisibilityReport } from "./zipfresh-ai-visibility-report";
 import { edukemyAiVisibilityReport } from "./edukemy-ai-visibility-report";
 import { gullakAiVisibilityReport } from "./gullak-ai-visibility-report";
 import { redactoAiVisibilityReport } from "./redacto-ai-visibility-report";
+import { quickreplyAiVisibilityReport } from "./quickreply-ai-visibility-report";
 
 export type ReportEntry =
   | { kind: "visibility"; report: VisibilityReport }
@@ -38,6 +39,7 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: edukemyAiVisibilityReport },
   { kind: "visibility", report: gullakAiVisibilityReport },
   { kind: "visibility", report: redactoAiVisibilityReport },
+  { kind: "visibility", report: quickreplyAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
   { kind: "readiness", report: trulivAiReadinessReport },
   { kind: "readiness", report: rentokAiReadinessReport },
