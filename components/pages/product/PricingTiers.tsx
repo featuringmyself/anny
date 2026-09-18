@@ -35,7 +35,7 @@ export default function PricingTiers() {
         >
           <span className="block">The product that earns mentions.</span>
           <span
-            className="mt-2 inline-block -rotate-2 rounded-md px-3.5 py-0.5 sm:mt-3"
+            className="mt-2 inline-block -rotate-1 rounded-md px-3.5 py-0.5 sm:mt-1"
             style={{ backgroundColor: "#fdf6ec", color: PRIMARY }}
           >
             Then keeps them.

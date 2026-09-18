@@ -139,7 +139,7 @@ export default function PricingFeatures() {
                 featured
                 href="/register"
                 cta="Get Agent + Monitoring · $300"
-                tier="SEO & GEO Agent + Monitoring"
+                tier="SEO & GEO Agent"
               />
               <PricingTierMotion
                 href="/register"

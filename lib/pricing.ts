@@ -26,7 +26,7 @@ export type PricingPlan = {
 export const agentPlans: PricingPlan[] = [
   {
     id: "seo-geo-agent",
-    name: "SEO & GEO Agent + Monitoring",
+    name: "SEO & GEO Agent",
     price: "$300",
     priceAmount: 300,
     period: "/mo",
