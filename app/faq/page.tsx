@@ -1,12 +1,11 @@
 import Faq from "@/components/faq";
 import JsonLd from "@/components/JsonLd";
-import PatternStrip from "@/components/PatternStrip";
 import { faqs } from "@/lib/faqs";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
 const title = "FAQ | Anny";
 const description =
-  "Answers to common questions about Anny, AI search visibility, GEO, and how response tracking works.";
+  "Answers to common questions about Anny, AI search visibility, GEO, and whether the Agent includes Monitoring.";
 
 export const metadata = pageMetadata({
   path: "/faq",
@@ -16,10 +15,9 @@ export const metadata = pageMetadata({
 
 export default function FaqPage() {
   return (
-    <main>
+    <main className="flex flex-col gap-3 px-3 pb-3 sm:gap-4 sm:px-4 sm:pb-4">
       <JsonLd data={webpageJsonLd({ path: "/faq", title, description })} />
       <JsonLd data={faqJsonLd(faqs)} />
-      <PatternStrip />
       <Faq headingLevel="h1" />
     </main>
   );

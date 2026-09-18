@@ -2,13 +2,13 @@
 
 import posthog from "posthog-js";
 
+import { brand } from "@/components/Home/brand";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { PatternStrip } from "./pages/shared/pattern-strip";
 import { faqs } from "@/lib/faqs";
 
 export default function Faq({
@@ -19,54 +19,59 @@ export default function Faq({
   const Heading = headingLevel;
 
   return (
-    <>
-      <section id="faq" className="px-6 pt-20 pb-10 md:px-12 md:pt-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <Heading className="text-4xl font-medium tracking-tight md:text-5xl">
-            FAQs
-          </Heading>
-          <p className="mx-auto mt-4 max-w-md text-lg leading-snug text-zinc-400 text-balance md:text-xl">
-            Get answers to the most common questions about AI search and Anny.
-          </p>
-        </div>
-
-        {/*
-          Answers stay in HTML via Accordion's default hiddenUntilFound.
-        */}
-        <Accordion
-          defaultValue={["item-0"]}
-          className="mx-auto mt-14 max-w-2xl"
-          onValueChange={(value) => {
-            const opened = Array.isArray(value) ? value : [value];
-            opened.forEach((v) => {
-              const index = parseInt(v.replace("item-", ""), 10);
-              if (!isNaN(index) && faqs[index]) {
-                posthog.capture("faq_item_expanded", {
-                  question: faqs[index].question,
-                  question_index: index,
-                });
-              }
-            });
-          }}
+    <section
+      id="faq"
+      className="w-full rounded-2xl bg-white px-6 py-16 sm:py-20 md:px-12"
+      aria-labelledby="faq-heading"
+    >
+      <div className="mx-auto max-w-2xl text-center">
+        <Heading
+          id="faq-heading"
+          className="text-[1.75rem] font-bold tracking-tight sm:text-3xl md:text-4xl"
+          style={{ color: brand.tertiary }}
         >
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={faq.question}
-              value={`item-${index}`}
-              className="border-b border-border"
-            >
-              <AccordionTrigger className="py-5 text-base font-medium hover:no-underline md:text-[17px]">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-[15px] leading-relaxed text-zinc-400">
-                <FaqAnswer answer={faq.answer} />
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </section>
-      <PatternStrip />
-    </>
+          FAQ
+        </Heading>
+        <p
+          className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed sm:text-lg"
+          style={{ color: brand.body }}
+        >
+          Short answers about Anny, GEO, and what each plan includes.
+        </p>
+      </div>
+
+      <Accordion
+        defaultValue={["item-0"]}
+        className="mx-auto mt-10 max-w-2xl"
+        onValueChange={(value) => {
+          const opened = Array.isArray(value) ? value : [value];
+          opened.forEach((v) => {
+            const index = parseInt(v.replace("item-", ""), 10);
+            if (!isNaN(index) && faqs[index]) {
+              posthog.capture("faq_item_expanded", {
+                question: faqs[index].question,
+                question_index: index,
+              });
+            }
+          });
+        }}
+      >
+        {faqs.map((faq, index) => (
+          <AccordionItem
+            key={faq.question}
+            value={`item-${index}`}
+            className="border-b border-border"
+          >
+            <AccordionTrigger className="cursor-pointer py-5 text-base font-semibold hover:no-underline md:text-[17px]">
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent className="pb-5 text-[15px] leading-relaxed font-medium text-zinc-600">
+              <FaqAnswer answer={faq.answer} />
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </section>
   );
 }
 

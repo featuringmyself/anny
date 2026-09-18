@@ -1,96 +1,106 @@
 import Image from "next/image";
 
-import { PatternStrip } from "@/components/pages/shared/pattern-strip";
-
+import { brand } from "@/components/Home/brand";
 import allAiGraph from "@/public/metrics/allAIGraph.webp";
 import aiSources from "@/public/metrics/aiSources.webp";
-import aiCrawl from "@/public/metrics/aiCrawl.webp";
-import searchQueries from "@/public/metrics/searchQueries.webp";
-import aiVisibility from "@/public/metrics/aiVisibility.webp";
 import brandMonitor from "@/public/metrics/brandMonitor.webp";
 
+/**
+ * One job: show what the product does.
+ * Three capabilities (Miller / chunking), alternating media, no card chrome
+ * unless needed for interaction.
+ */
+const features = [
+  {
+    title: "See your AI visibility",
+    body: "One view of how often ChatGPT, Claude, Gemini, and Perplexity mention you. Tracked daily so shifts are obvious.",
+    image: allAiGraph,
+    mediaFirst: false,
+  },
+  {
+    title: "Find the sources that skip you",
+    body: "AI cites specific pages. See which ones drive answers, who wrote them, and where competitors show up instead.",
+    image: aiSources,
+    mediaFirst: true,
+  },
+  {
+    title: "Read every word AI says",
+    body: "Full responses, sentiment, and mention history. Know the narrative before it hardens.",
+    image: brandMonitor,
+    mediaFirst: false,
+  },
+] as const;
+
 export default function Metric() {
-  const metricData = [
-    {
-      title: "Track your AI Visibility",
-      description:
-        "One dashboard shows how often ChatGPT, Claude, Gemini, and Perplexity mention your brand. Tracked daily so you catch changes fast.",
-      image: allAiGraph,
-    },
-    {
-      title: "Find the sources AI cites that don't mention you",
-      description:
-        "AI models pull from specific articles and websites when answering. See every source, who wrote it, and whether they mention your brand.",
-      image: aiSources,
-    },
-    {
-      title: "See when AI crawl your site",
-      description:
-        "Track AI bots visiting your website in real-time. Know which pages they read and how often they come back so you know your content is being indexed.",
-      image: aiCrawl,
-    },
-    {
-      title: "Discover the keywords AI actually searches",
-      description:
-        "When AI answers questions, it searches the web with specific queries. We capture those exact keywords so you can create content AI will find and cite.",
-      image: searchQueries,
-    },
-    {
-      title: "Compare your AI visibility against competitors",
-      description:
-        "See which competitors AI mentions for your target queries. Track their visibility score alongside yours and spot the gaps.",
-      image: aiVisibility,
-    },
-    {
-      title: "Read every word AI says about your brand",
-      description:
-        "Most businesses have no idea what AI says about them. Track every mention, read the full response, and understand the sentiment.",
-      image: brandMonitor,
-    },
-  ];
   return (
-    <section aria-labelledby="metrics-heading">
-      <PatternStrip />
-      <header className="my-10 flex flex-col items-center justify-center">
+    <section
+      className="w-full rounded-2xl bg-white py-16 sm:py-20 lg:py-24"
+      aria-labelledby="metrics-heading"
+    >
+      <div className="mx-auto max-w-3xl px-6 text-center">
         <h2
           id="metrics-heading"
-          className="text-center text-3xl font-semibold md:text-4xl"
+          className="text-[1.75rem] leading-tight font-bold tracking-tight sm:text-3xl md:text-[2.4rem]"
+          style={{ color: brand.tertiary }}
         >
-          Everything you need to <br />
-          <span className="text-zinc-400/90">win in AI search</span>
+          Monitoring that tells the truth
         </h2>
-        <p className="mt-4 max-w-lg px-4 text-center text-xs leading-tight text-zinc-700/90 md:mt-6 md:px-0 md:text-base">
-          Understand how AI models talk about your brand and optimise your
-          presence across every prompt and response
+        <p
+          className="mx-auto mt-4 max-w-lg text-base font-medium leading-relaxed sm:text-lg"
+          style={{ color: brand.body }}
+        >
+          Know what changed. Then decide what to ship next.
         </p>
-      </header>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {metricData.map((item, index) => (
-          <article
-            className={`flex h-full flex-col border-b ${
-              index % 2 === 0 ? "md:border-r" : ""
-            }`}
-            key={item.title}
+      </div>
+
+      <ul className="mx-auto mt-14 flex max-w-5xl flex-col gap-16 px-6 lg:mt-16 lg:gap-20">
+        {features.map((feature) => (
+          <li
+            key={feature.title}
+            className="grid items-center gap-8 md:grid-cols-2 md:gap-12"
           >
-            <div className="flex-1 p-6 md:p-10">
-              <h3 className="text-xl font-medium md:text-2xl">{item.title}</h3>
-              <p className="mt-2 max-w-full text-sm text-gray-500 md:max-w-[80%]">
-                {item.description}
+            <div
+              className={
+                feature.mediaFirst ? "order-2 md:order-1" : "order-2 md:order-2"
+              }
+            >
+              <figure
+                className="relative aspect-16/10 overflow-hidden rounded-2xl"
+                style={{ backgroundColor: brand.cream }}
+              >
+                <Image
+                  src={feature.image}
+                  alt=""
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <figcaption className="sr-only">{feature.body}</figcaption>
+              </figure>
+            </div>
+            <div
+              className={
+                feature.mediaFirst
+                  ? "order-1 md:order-2"
+                  : "order-1 md:order-1"
+              }
+            >
+              <h3
+                className="text-2xl font-bold tracking-tight sm:text-[1.75rem]"
+                style={{ color: brand.tertiary }}
+              >
+                {feature.title}
+              </h3>
+              <p
+                className="mt-3 max-w-md text-[15px] font-medium leading-relaxed sm:text-base"
+                style={{ color: brand.bodyStrong }}
+              >
+                {feature.body}
               </p>
             </div>
-            <figure className="relative aspect-16/10 w-full">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <figcaption className="sr-only">{item.description}</figcaption>
-            </figure>
-          </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

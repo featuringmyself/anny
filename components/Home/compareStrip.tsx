@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-import { PatternStrip } from "@/components/pages/shared/pattern-strip";
+const TERTIARY = "#025864";
+const PRIMARY = "#93E85F";
+const CREAM = "#f7f3ec";
+const PEACH = "#fcf0e7";
+const DARK = "#212529";
+const BODY = "#5c6b73";
 
 const compares = [
   {
@@ -22,43 +28,68 @@ const compares = [
 
 export default function CompareStrip() {
   return (
-    <>
-      <PatternStrip />
-      <section
-        aria-labelledby="compare-heading"
-        className="border-b px-6 py-16 md:px-12 md:py-20"
-      >
-        <div className="mx-auto max-w-2xl text-center">
-          <h2
-            id="compare-heading"
-            className="text-3xl font-medium tracking-tight md:text-4xl"
-          >
-            How Anny compares
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-base leading-snug text-balance text-zinc-500 md:text-lg">
-            Classic SEO tools track rankings and backlinks. Anny tracks whether
-            AI answers mention your brand.
-          </p>
-        </div>
+    <section
+      className="w-full rounded-2xl bg-white py-16 sm:py-20"
+      aria-labelledby="compare-heading"
+    >
+      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
+        <span
+          className="inline-flex items-center rounded-full border px-5 py-1.5 text-[11px] font-semibold tracking-[0.08em] uppercase sm:text-xs"
+          style={{ color: TERTIARY, borderColor: `${TERTIARY}55` }}
+        >
+          Compare
+        </span>
 
-        <ul className="mx-auto mt-12 max-w-2xl divide-y border-y">
-          {compares.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="group flex flex-col gap-1 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-              >
-                <span className="text-base font-medium tracking-tight group-hover:text-[#2462ff] md:text-lg">
+        <h2
+          id="compare-heading"
+          className="mt-7 text-[1.75rem] leading-tight font-bold tracking-tight sm:text-3xl"
+          style={{ color: TERTIARY }}
+        >
+          How Anny{" "}
+          <span
+            className="inline-block -rotate-1 rounded-lg px-3 py-0.5 align-baseline"
+            style={{ backgroundColor: TERTIARY, color: PRIMARY }}
+          >
+            compares
+          </span>
+        </h2>
+
+        <p
+          className="mt-5 max-w-md text-base font-medium leading-relaxed"
+          style={{ color: BODY }}
+        >
+          Classic SEO tools track rankings and backlinks. Anny tracks whether AI
+          answers mention your brand, then helps you change that.
+        </p>
+      </div>
+
+      <ul className="mx-auto mt-10 grid max-w-3xl gap-3 px-6">
+        {compares.map((item, index) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className="group flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 transition-transform hover:-translate-y-0.5"
+              style={{
+                backgroundColor: index % 2 === 0 ? CREAM : PEACH,
+                borderColor: DARK,
+              }}
+            >
+              <div className="text-left">
+                <p className="text-base font-bold tracking-tight text-zinc-900">
                   Anny vs {item.name}
-                </span>
-                <span className="text-sm text-zinc-500 sm:text-right">
+                </p>
+                <p className="mt-0.5 text-sm font-medium" style={{ color: BODY }}>
                   {item.framing}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
+                </p>
+              </div>
+              <ArrowUpRight
+                className="size-5 shrink-0 text-zinc-400 transition-colors group-hover:text-[#025864]"
+                aria-hidden
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

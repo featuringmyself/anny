@@ -1,4 +1,12 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
+const TERTIARY = "#025864";
+const PRIMARY = "#93E85F";
+const CREAM = "#f7f3ec";
+const PEACH = "#fcf0e7";
+const DARK = "#212529";
+const BODY = "#5c6b73";
 
 const tools = [
   {
@@ -14,48 +22,80 @@ const tools = [
   {
     href: "/tools/domain-rating-checker",
     name: "Domain Rating checker",
-    framing: "Free 0–100 Ahrefs Domain Rating lookup",
+    framing: "Free 0-100 Ahrefs Domain Rating lookup",
   },
 ] as const;
 
 export default function FreeToolsStrip() {
   return (
     <section
+      className="w-full rounded-2xl bg-white py-16 sm:py-20"
       aria-labelledby="free-tools-heading"
-      className="border-b px-6 py-16 md:px-12 md:py-20"
     >
-      <div className="mx-auto max-w-2xl text-center">
-        <h2
-          id="free-tools-heading"
-          className="text-3xl font-medium tracking-tight md:text-4xl"
+      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
+        <span
+          className="inline-flex items-center rounded-full border px-5 py-1.5 text-[11px] font-semibold tracking-[0.08em] uppercase sm:text-xs"
+          style={{ color: TERTIARY, borderColor: `${TERTIARY}55` }}
         >
           Free tools
+        </span>
+
+        <h2
+          id="free-tools-heading"
+          className="mt-7 text-[1.75rem] leading-tight font-bold tracking-tight sm:text-3xl"
+          style={{ color: TERTIARY }}
+        >
+          Start without an{" "}
+          <span
+            className="inline-block -rotate-1 rounded-lg px-3 py-0.5 align-baseline"
+            style={{ backgroundColor: TERTIARY, color: PRIMARY }}
+          >
+            account
+          </span>
         </h2>
-        <p className="mx-auto mt-4 max-w-md text-base leading-snug text-balance text-zinc-500 md:text-lg">
-          Check on-site AI access and Domain Rating without an Anny account.
+
+        <p
+          className="mt-5 max-w-md text-base font-medium leading-relaxed"
+          style={{ color: BODY }}
+        >
+          Check on-site AI access and Domain Rating in a few seconds.
         </p>
       </div>
 
-      <ul className="mx-auto mt-12 max-w-2xl divide-y border-y">
-        {tools.map((item) => (
+      <ul className="mx-auto mt-10 grid max-w-3xl gap-3 px-6">
+        {tools.map((item, index) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className="group flex flex-col gap-1 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+              className="group flex items-center justify-between gap-4 rounded-2xl border px-5 py-4 transition-transform hover:-translate-y-0.5"
+              style={{
+                backgroundColor: index % 2 === 0 ? CREAM : PEACH,
+                borderColor: DARK,
+              }}
             >
-              <span className="text-base font-medium tracking-tight group-hover:text-[#2462ff] md:text-lg">
-                {item.name}
-              </span>
-              <span className="text-sm text-zinc-500 sm:text-right">
-                {item.framing}
-              </span>
+              <div className="text-left">
+                <p className="text-base font-bold tracking-tight text-zinc-900">
+                  {item.name}
+                </p>
+                <p className="mt-0.5 text-sm font-medium" style={{ color: BODY }}>
+                  {item.framing}
+                </p>
+              </div>
+              <ArrowUpRight
+                className="size-5 shrink-0 text-zinc-400 transition-colors group-hover:text-[#025864]"
+                aria-hidden
+              />
             </Link>
           </li>
         ))}
       </ul>
 
-      <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-zinc-500">
-        <Link href="/tools" className="font-medium text-[#2462ff] hover:underline">
+      <p className="mx-auto mt-8 max-w-3xl px-6 text-center text-sm font-semibold">
+        <Link
+          href="/tools"
+          className="underline-offset-2 hover:underline"
+          style={{ color: TERTIARY }}
+        >
           Browse all free tools
         </Link>
       </p>

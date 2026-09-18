@@ -1,18 +1,17 @@
+import ExploreStrip from "@/components/Home/exploreStrip";
 import Hero from "@/components/Home/hero";
-import Demo from "@/components/Home/demo";
+import HomeCta from "@/components/Home/homeCta";
 import Metric from "@/components/Home/metric";
-import TrackModelsThatMatter from "@/components/Home/trackModelsThatMatter";
+import Products from "@/components/Home/products";
 import SearchIsShifting from "@/components/Home/searchisShifting";
-import CompareStrip from "@/components/Home/compareStrip";
-import FreeToolsStrip from "@/components/Home/freeToolsStrip";
+import TrackModelsThatMatter from "@/components/Home/trackModelsThatMatter";
 import Faq from "@/components/faq";
 import JsonLd from "@/components/JsonLd";
-import { PatternStrip } from "@/components/pages/shared/pattern-strip";
 import { faqs } from "@/lib/faqs";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 import { SITE_DESCRIPTION } from "@/lib/site";
 
-const title = "Anny - AI Search Visibility Monitoring";
+const title = "Anny - SEO & GEO Agent + AI Monitoring";
 
 export const metadata = pageMetadata({
   path: "/",
@@ -20,9 +19,20 @@ export const metadata = pageMetadata({
   description: SITE_DESCRIPTION,
 });
 
+/**
+ * Narrative flow (progressive disclosure):
+ * 1. Hero composition (brand + promise + product visual)
+ * 2. Problem (why AI search matters)
+ * 3. Capabilities (what you see)
+ * 4. Coverage (trust)
+ * 5. Offer (plans)
+ * 6. Explore (optional depth)
+ * 7. Convert
+ * 8. FAQ
+ */
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-3 px-3 pb-3 sm:gap-4 sm:px-4 sm:pb-4">
       <JsonLd
         data={webpageJsonLd({
           path: "/",
@@ -32,13 +42,12 @@ export default function Home() {
       />
       <JsonLd data={faqJsonLd(faqs)} />
       <Hero />
-      <Demo />
+      <SearchIsShifting />
       <Metric />
       <TrackModelsThatMatter />
-      <SearchIsShifting />
-      <CompareStrip />
-      <PatternStrip />
-      <FreeToolsStrip />
+      <Products />
+      <ExploreStrip />
+      <HomeCta />
       <Faq />
     </main>
   );

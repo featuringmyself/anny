@@ -7,7 +7,7 @@ export const faqs: FaqItem[] = [
   {
     question: "What does Anny actually do?",
     answer:
-      "Anny shows you if your company gets mentioned in AI answers when people ask AI assistants like ChatGPT, Claude, Gemini and more for recommendations. It shows you gaps and opportunities to improve your AI visibility. Think of it sort of like Ahrefs, but for AI answers.",
+      "Anny is an SEO & GEO Agent with AI Monitoring. It tracks whether ChatGPT, Claude, Gemini, Perplexity and more mention your brand, then helps you ship the content and citation work that earns more recommendations. Think Ahrefs energy, built for AI answers.",
   },
   {
     question: "What is GEO (Generative Engine Optimization)?",
@@ -15,14 +15,14 @@ export const faqs: FaqItem[] = [
       "GEO (Generative Engine Optimization) is the process of optimizing your content and strategy so AI platforms like ChatGPT, Claude, and Gemini mention your business when people ask for recommendations. Just like SEO helps you rank higher on Google, GEO helps you get recommended more often by AI/LLMs.",
   },
   {
-    question: "What is a response in Anny?",
+    question: "Does the Agent include Monitoring?",
     answer:
-      "Each time we generate an AI answer from any model (ChatGPT, Claude, Gemini, etc.), it counts as 1 response. All models use the same amount, 1 response per query, making it simple to track your usage.",
+      "Yes. The SEO & GEO Agent plan at $300/mo includes everything in AI Monitoring, plus the agent that ships SEO and GEO work. AI Monitoring alone is $150/mo if you only need tracking and alerts.",
   },
   {
     question: "Do I need to install anything or change my website?",
     answer:
-      "Nope! No code, no plugins, no website changes needed. Just enter your URL and start tracking.",
+      "Nope. No code, no plugins, no website changes required to start monitoring. Enter your URL and begin tracking. Managed services are optional if you want us to run the work for you.",
   },
   {
     question: "What's a good Visibility Score?",

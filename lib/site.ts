@@ -2,7 +2,7 @@ export const SITE_URL = "https://anny.dodoxhq.com";
 export const SITE_NAME = "Anny";
 
 export const SITE_DESCRIPTION =
-  "Track how often ChatGPT, Claude, Gemini, and Perplexity mention your brand. Monitor AI answers, sources, and competitor visibility in one dashboard.";
+  "Anny is an SEO & GEO Agent with AI Monitoring included. Track how ChatGPT, Claude, Gemini, and Perplexity mention your brand, then ship the work that earns more citations.";
 
 /** Brand mark served from /public/logo.png */
 export const SITE_LOGO_URL = `${SITE_URL}/logo.png`;
@@ -24,4 +24,4 @@ export const SITE_SAME_AS = [SITE_X_URL, SITE_LINKEDIN_URL] as const;
 /** ISO dates for WebPage / SoftwareApplication freshness signals */
 export const SITE_DATE_PUBLISHED = "2026-07-24";
 /** Bump only when substantive public content or entity facts change. */
-export const SITE_DATE_MODIFIED = "2026-09-13";
+export const SITE_DATE_MODIFIED = "2026-09-19";

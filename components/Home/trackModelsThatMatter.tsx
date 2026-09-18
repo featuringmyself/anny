@@ -1,4 +1,6 @@
 import Image from "next/image";
+
+import { brand } from "@/components/Home/brand";
 import chatgptLogo from "@/public/trackModel/openai-logo.svg";
 import claudeLogo from "@/public/trackModel/claude-logo.svg";
 import geminiLogo from "@/public/trackModel/gemini-logo.svg";
@@ -8,76 +10,50 @@ import perplexityLogo from "@/public/trackModel/perplexity-logo.svg";
 import googleLogo from "@/public/trackModel/ai_mode-logo.svg";
 import aiOverviewLogo from "@/public/trackModel/ai_overview-logo.svg";
 
+/** Thin trust strip. One job: coverage proof. No competing headline stack. */
+const modelData = [
+  { name: "ChatGPT", logo: chatgptLogo },
+  { name: "Claude", logo: claudeLogo },
+  { name: "Gemini", logo: geminiLogo },
+  { name: "Deepseek", logo: deepseekLogo },
+  { name: "Grok", logo: grokLogo },
+  { name: "Perplexity", logo: perplexityLogo },
+  { name: "Google AI Overview", logo: googleLogo },
+  { name: "AI Mode", logo: aiOverviewLogo },
+] as const;
+
 export default function TrackModelsThatMatter() {
-  const modelData = [
-    {
-      name: "ChatGPT",
-      logo: chatgptLogo,
-    },
-    {
-      name: "Claude",
-      logo: claudeLogo,
-    },
-    {
-      name: "Gemini",
-      logo: geminiLogo,
-    },
-    {
-      name: "Deepseek",
-      logo: deepseekLogo,
-    },
-    {
-      name: "Grok",
-      logo: grokLogo,
-    },
-    {
-      name: "Perplexity",
-      logo: perplexityLogo,
-    },
-    {
-      name: "Google AI Overview",
-      logo: googleLogo,
-    },
-    {
-      name: "AI Mode",
-      logo: aiOverviewLogo,
-    },
-  ];
   return (
     <section
+      className="w-full rounded-2xl px-6 py-10 sm:py-12"
+      style={{ backgroundColor: brand.cream }}
       aria-labelledby="track-models-heading"
-      className="mt-14 flex w-full flex-col items-center justify-center"
     >
-      <h2
-        id="track-models-heading"
-        className="px-6 text-center text-xl font-medium md:px-0 md:text-2xl"
-      >
-        Track the models that matter
-      </h2>
-      <p className="mt-1 max-w-2xl px-6 text-center text-sm text-balance text-gray-500 md:px-0 md:text-base">
-        Anny tracks ChatGPT, Claude, Gemini, Deepseek, Grok, Perplexity, Google
-        AI Overview and AI Mode for AI visibility
-      </p>
-
-      <ul className="mt-8 grid w-full list-none grid-cols-2 border-y md:grid-cols-4">
-        {modelData.map((item) => (
-          <li
-            key={item.name}
-            className="flex h-16 w-full items-center justify-center border-b border-r nth-[2n]:border-r-0 md:h-20 md:nth-[2n]:border-r md:nth-[4n]:border-r-0 nth-last-[-n+2]:border-b-0 md:nth-last-[-n+2]:border-b md:nth-last-[-n+4]:border-b-0"
-          >
-            <figure className="flex items-center justify-center">
+      <div className="mx-auto max-w-4xl text-center">
+        <h2
+          id="track-models-heading"
+          className="text-sm font-semibold tracking-[0.06em] uppercase"
+          style={{ color: brand.tertiary }}
+        >
+          Tracks the models buyers use
+        </h2>
+        <ul className="mt-6 grid grid-cols-4 gap-y-5 sm:grid-cols-8 sm:gap-y-0">
+          {modelData.map((item) => (
+            <li
+              key={item.name}
+              className="flex h-10 items-center justify-center px-1"
+            >
               <Image
                 src={item.logo}
-                alt={`${item.name} logo`}
-                width={100}
-                height={100}
-                className="h-7 w-auto max-w-[70%] object-contain md:h-8 md:max-w-full"
+                alt={item.name}
+                width={88}
+                height={28}
+                className="h-6 w-auto max-w-full object-contain opacity-90"
               />
-              <figcaption className="sr-only">{item.name}</figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

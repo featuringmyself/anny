@@ -321,7 +321,7 @@ export default function Demo({ variant = "full" }: DemoProps) {
         "mx-auto w-full",
         isEmbed
           ? "max-w-none px-0 pb-0"
-          : "mt-10 max-w-[1200px] px-4 pb-16 md:pb-8 lg:pb-0",
+          : "mt-0 max-w-[1200px] px-4 pb-10 md:pb-6 lg:pb-4",
       )}
     >
       <h2 id="product-demo-heading" className="sr-only">
