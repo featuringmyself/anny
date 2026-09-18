@@ -1,99 +1,123 @@
 /**
- * Canonical brand pricing tiers. Used by the pricing page UI and by
+ * Canonical pricing. Used by the pricing page UI and by
  * SoftwareApplication / Offer JSON-LD so visible prices and schema stay aligned.
  */
-export type PricingTier = {
+
+export type PricingCtaHref = "/register" | "/services" | "sales";
+
+export type PricingPlan = {
+  id: string;
   name: string;
-  /** Display string, e.g. "$99" or "Custom". */
+  /** Display string, e.g. "$300". */
   price: string;
+  /** Numeric USD for Schema.org Offer.price */
+  priceAmount: number;
   period: string;
   description: string;
   cta: string;
   featured: boolean;
+  badge?: string;
   highlights: readonly string[];
   highlightsIntro?: string;
-  href: "/register" | "sales";
+  href: PricingCtaHref;
 };
 
-const customHighlights = [
-  "Fully customisable prompt tracking",
-  "Choose from all models",
-  "Daily or weekly tracking frequency",
-  "Unlimited projects",
-  "Custom prompt setup",
-  "API access",
-  "Single Sign-on (SSO)",
-  "Up to 11 LLM models tracked",
-] as const;
-
-export const pricingTiers: PricingTier[] = [
+/** Main product: AI agents */
+export const agentPlans: PricingPlan[] = [
   {
-    name: "Starter",
-    price: "$99",
+    id: "seo-geo-agent",
+    name: "SEO & GEO Agent + Monitoring",
+    price: "$300",
+    priceAmount: 300,
     period: "/mo",
     description:
-      "For SEO and content managers getting started with AI Search visibility.",
-    cta: "Get started",
-    href: "/register",
-    featured: false,
-    highlights: [
-      "50 prompts",
-      "Choose 3 models",
-      "Unlimited users",
-      "Daily tracking frequency",
-      "1 project",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$249",
-    period: "/mo",
-    description:
-      "For SEO teams that need sophisticated AI Search tracking and insights.",
+      "SEO & GEO agent that ships the work, and full AI Monitoring included.",
     cta: "Get started",
     href: "/register",
     featured: true,
+    badge: "Includes Monitoring",
+    highlightsIntro: "Everything in AI Monitoring, plus:",
     highlights: [
-      "150 prompts",
-      "Choose 3 models",
-      "Unlimited users",
-      "Daily tracking frequency",
-      "2 projects",
+      "SEO & GEO content agent",
+      "Prompt and citation optimization",
+      "Competitor share-of-voice",
+      "Weekly action plans",
+      "Priority support",
     ],
   },
   {
-    name: "Advanced",
-    price: "Custom",
-    period: "",
+    id: "ai-monitoring",
+    name: "AI Monitoring",
+    price: "$150",
+    priceAmount: 150,
+    period: "/mo",
     description:
-      "For marketing teams and global brands who need custom coverage, integrations, and dedicated support.",
-    cta: "Talk to Sales",
-    href: "sales",
+      "Track how ChatGPT, Gemini, Perplexity, and AI Mode mention your brand, and get alerts when it changes.",
+    cta: "Get started",
+    href: "/register",
     featured: false,
-    highlightsIntro: "Everything in Pro, plus:",
-    highlights: customHighlights,
+    highlights: [
+      "Brand mention tracking",
+      "Citation & source monitoring",
+      "Sentiment signals",
+      "Visibility shift alerts",
+      "Shared team dashboard",
+      "Weekly digests",
+    ],
   },
 ];
 
-/** Numeric USD amounts for Schema.org Offer.price (Custom / sales omitted). */
+/** Managed services: compact callout, not the main grid */
+export const servicesOffer = {
+  name: "Managed Services",
+  price: "$250",
+  priceAmount: 250,
+  period: "/mo",
+  startingLabel: "Starting at",
+  description:
+    "Hands-on GEO, AEO, and AI visibility retainers. Strategy, audits, and execution sized to your brand.",
+  cta: "Explore services",
+  href: "/services" as const,
+  highlights: [
+    "Custom GEO & AEO strategy",
+    "Performance audits",
+    "Managed execution",
+    "Team training",
+  ],
+} as const;
+
+/** @deprecated Prefer agentPlans; kept for any leftover imports during migration. */
+export const pricingTiers = agentPlans;
+
+/** Numeric USD amounts for Schema.org Offer.price */
 export function pricedOffers(): {
   name: string;
   price: string;
   priceCurrency: "USD";
   description: string;
-  href: "/register" | "/pricing";
+  href: "/register" | "/services" | "/pricing";
 }[] {
-  return pricingTiers.flatMap((tier) => {
-    const numeric = tier.price.replace(/[^0-9.]/g, "");
-    if (!numeric) return [];
-    return [
-      {
-        name: tier.name,
-        price: numeric,
-        priceCurrency: "USD" as const,
-        description: tier.description,
-        href: tier.href === "sales" ? ("/pricing" as const) : tier.href,
-      },
-    ];
-  });
+  const agents = agentPlans.map((plan) => ({
+    name: plan.name,
+    price: String(plan.priceAmount),
+    priceCurrency: "USD" as const,
+    description: plan.description,
+    href:
+      plan.href === "sales"
+        ? ("/pricing" as const)
+        : plan.href === "/services"
+          ? ("/services" as const)
+          : ("/register" as const),
+  }));
+
+  return [
+    ...agents,
+    {
+      name: servicesOffer.name,
+      price: String(servicesOffer.priceAmount),
+      priceCurrency: "USD" as const,
+      description: servicesOffer.description,
+      href: "/services" as const,
+    },
+  ];
 }

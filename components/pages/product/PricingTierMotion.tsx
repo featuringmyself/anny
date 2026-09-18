@@ -27,7 +27,11 @@ export default function PricingTierMotion({
       <Button
         size="lg"
         variant={featured ? "default" : "outline"}
-        className="w-full px-5"
+        className={
+          featured
+            ? "h-12 w-full rounded-lg border border-zinc-900 bg-brand px-5 text-base font-semibold text-white hover:bg-emerald-50 hover:text-black"
+            : "h-12 w-full rounded-lg border-zinc-900 px-5 text-base font-semibold hover:bg-zinc-900 hover:text-white"
+        }
         render={
           <Link
             href={

@@ -23,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 const initialContactState: ContactActionState = {
   status: "idle",
@@ -41,6 +42,7 @@ type TalkToSalesProps = {
 export function TalkToSalesButton({
   children = "Talk to sales",
   source,
+  className,
   ...props
 }: React.ComponentProps<typeof Button> & TalkToSalesProps) {
   return (
@@ -51,7 +53,11 @@ export function TalkToSalesButton({
         }
       }}
     >
-      <DialogTrigger render={<Button {...props} />}>{children}</DialogTrigger>
+      <DialogTrigger
+        render={<Button className={cn("cursor-pointer", className)} {...props} />}
+      >
+        {children}
+      </DialogTrigger>
       <SalesDialogContent source={source} />
     </Dialog>
   );
