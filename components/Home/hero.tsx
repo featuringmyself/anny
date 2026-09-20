@@ -28,7 +28,7 @@ const LOGOS = [
 export default function Hero() {
   return (
     <header
-      className="relative w-full overflow-hidden rounded-2xl bg-white"
+      className="relative w-full overflow-hidden rounded-2xl bg-[#f6f7f4]"
       aria-labelledby="home-hero-heading"
     >
       <div
@@ -109,7 +109,18 @@ export default function Hero() {
       </div>
 
       <DemoReveal>
-        <Demo />
+        <div className="relative">
+          <Demo />
+          {/* Soft fade from the bottom-right of the demo into the hero ground */}
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36"
+            style={{
+              background:
+                "radial-gradient(120% 100% at 100% 100%, #f6f7f4 0%, rgba(246,247,244,0.85) 35%, rgba(246,247,244,0) 70%), linear-gradient(to top, #f6f7f4 0%, rgba(246,247,244,0.55) 45%, rgba(246,247,244,0) 100%)",
+            }}
+            aria-hidden
+          />
+        </div>
       </DemoReveal>
     </header>
   );

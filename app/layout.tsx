@@ -147,10 +147,10 @@ export default async function RootLayout({
             <Navbar />
           </MarketingChrome>
           {children}
+          <MarketingChrome>
+            <Footer />
+          </MarketingChrome>
         </div>
-        <MarketingChrome>
-          <Footer />
-        </MarketingChrome>
         <SanityLive />
         {isDraftMode ? <VisualEditing /> : null}
       </body>

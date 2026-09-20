@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6";
 
+import { brand } from "@/components/Home/brand";
 import logoImg from "@/public/logo.png";
-import { SITE_LINKEDIN_URL, SITE_X_URL } from "@/lib/site";
 
 const columns = [
   {
@@ -34,14 +33,6 @@ const columns = [
       { label: "For agencies", href: "/features/agencies" },
     ],
   },
-  // {
-  //   title: "Compare",
-  //   links: [
-  //     { label: "Anny vs Ahrefs", href: "/compare/ahrefs" },
-  //     { label: "Anny vs Semrush", href: "/compare/semrush" },
-  //     { label: "Anny vs Profound", href: "/compare/profound" },
-  //   ],
-  // },
   {
     title: "Partnership",
     links: [
@@ -61,20 +52,6 @@ const columns = [
   },
 ] as const;
 
-const socials = [
-  { label: "x.com", href: SITE_X_URL, icon: <FaXTwitter className="size-3.5" aria-hidden /> },
-  {
-    label: "LinkedIn",
-    href: SITE_LINKEDIN_URL,
-    icon: <FaLinkedinIn className="size-3.5" aria-hidden />,
-  },
-  {
-    label: "Youtube",
-    href: "https://youtube.com",
-    icon: <FaYoutube className="size-3.5" aria-hidden />,
-  },
-] as const;
-
 const legal = [
   { label: "Cookie Settings", href: "/cookies" },
   { label: "Privacy Policy", href: "/privacy" },
@@ -84,92 +61,77 @@ const legal = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-8 py-16 md:px-12 md:py-20">
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
-          {/* Brand */}
-          <div className="shrink-0 lg:w-52">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-xl font-medium tracking-tight"
-            >
-              <Image
-                src={logoImg}
-                alt="Anny"
-                width={28}
-                height={28}
-                className="size-7 brightness-0 invert"
-              />
-              Anny
-            </Link>
-            <p className="mt-4 max-w-44 text-sm leading-snug text-zinc-400">
-              Anny monitors AI brand mentions for marketing teams
-            </p>
-          </div>
+    <footer className="px-3 pb-3 sm:px-4 sm:pb-4">
+      <div
+        className="w-full overflow-hidden rounded-2xl text-white"
+        style={{ backgroundColor: brand.dark }}
+      >
+        <div className="px-6 py-12 md:px-10 md:py-16 lg:px-12">
+          <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
+            <div className="shrink-0 lg:w-52">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-xl font-medium tracking-tight text-white"
+              >
+                <Image
+                  src={logoImg}
+                  alt="Anny"
+                  width={28}
+                  height={28}
+                  className="size-7 brightness-0 invert"
+                />
+                Anny
+              </Link>
+              <p className="mt-4 max-w-52 text-sm font-medium leading-relaxed text-neutral-200/80">
+                Anny monitors AI brand mentions for marketing teams
+              </p>
+            </div>
 
-          {/* Link columns */}
-          <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-            {columns.map((column) => (
-              <div key={column.title}>
-                <h3 className="text-sm font-medium text-white">{column.title}</h3>
-                <ul className="mt-4 space-y-2.5">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-zinc-500 transition-colors hover:text-zinc-300 leading-tighter tracking-tight"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-
-            {/* <div>
-              <h3 className="text-sm font-medium text-white">Follow Us</h3>
-              <ul className="mt-4 space-y-2.5">
-                {socials.map((social) => (
-                  <li key={social.label}>
-                    <Link
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-300"
-                    >
-                      {social.icon}
-                      {social.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
+            <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+              {columns.map((column) => (
+                <div key={column.title}>
+                  <h3 className="text-sm font-semibold tracking-tight text-white">
+                    {column.title}
+                  </h3>
+                  <ul className="mt-4 space-y-2.5">
+                    {column.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          className="text-sm font-medium leading-snug tracking-tight text-white/55 transition-colors hover:text-white"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-8 py-6 md:flex-row md:items-center md:justify-between md:px-12">
-          <div className="space-y-1 text-xs text-zinc-500">
-            <p>
-              Anny is a top-rated AI search monitoring tool, regularly
-              recommended on Reddit.
-            </p>
-            <p>© {new Date().getFullYear()} Anny. All rights reserved.</p>
+        <div className="border-t border-white/10">
+          <div className="flex flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-10 lg:px-12">
+            <div className="space-y-1 text-xs font-medium text-white/45">
+              <p>
+                Anny is a top-rated AI search monitoring tool, regularly
+                recommended on Reddit.
+              </p>
+              <p>© {new Date().getFullYear()} Anny. All rights reserved.</p>
+            </div>
+            <nav className="flex flex-wrap gap-x-5 gap-y-2">
+              {legal.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-xs font-medium text-white/45 transition-colors hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
-          <nav className="flex flex-wrap gap-x-5 gap-y-2">
-            {legal.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-xs text-zinc-500 transition-colors hover:text-zinc-300"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </div>
     </footer>
