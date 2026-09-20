@@ -11,13 +11,18 @@ export function readinessStatusLabel(status: ReadinessStatus): string {
   }
 }
 
+/**
+ * Status color → reader mind:
+ * good = relief/pass (green), needs-improvement = vigilance (amber),
+ * poor = threat (red). Always pair with the text label.
+ */
 export function readinessStatusClass(status: ReadinessStatus): string {
   switch (status) {
     case "good":
-      return "text-[#2462ff]";
+      return "text-brand";
     case "needs-improvement":
       return "text-amber-700";
     case "poor":
-      return "text-zinc-900";
+      return "text-[#b42318]";
   }
 }

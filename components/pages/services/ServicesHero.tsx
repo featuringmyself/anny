@@ -155,7 +155,8 @@ export default function ServicesHero() {
           id="services-hero-heading"
           className="text-4xl font-bold text-balance text-[#225864] md:text-6xl"
         >
-          Monitor &amp; Boost Your Brand&apos;s Visibility on <AiFlip />
+          Monitor &amp; Boost Your Brand&apos;s Visibility on{" "}
+          <AiFlip />
         </h1>
 
         <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">

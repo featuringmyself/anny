@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { rt } from "./report-theme";
 import type { ReadinessAudienceMode } from "./types";
 
 type ReadinessModeToggleProps = {
@@ -22,7 +23,7 @@ export default function ReadinessModeToggle({
     <div className="flex items-center gap-3">
       <label
         htmlFor={id}
-        className="cursor-pointer select-none text-xs font-medium tracking-wide text-zinc-400 uppercase"
+        className={`cursor-pointer select-none text-xs font-medium tracking-wide uppercase ${rt.label}`}
       >
         Technical
       </label>
@@ -35,10 +36,10 @@ export default function ReadinessModeToggle({
         onClick={() => onChange(isTechnical ? "non-technical" : "technical")}
         className={cn(
           "relative inline-flex h-5.5 w-10 shrink-0 items-center border transition-colors duration-150",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2",
+          rt.focusRing,
           isTechnical
-            ? "border-zinc-900 bg-zinc-900"
-            : "border-zinc-300 bg-zinc-200",
+            ? "border-[#11333c] bg-[#11333c]"
+            : "border-[#225864]/25 bg-[#225864]/10",
         )}
       >
         <span
@@ -87,16 +88,19 @@ export function ReadinessModeBar({
       <div ref={sentinelRef} className="h-px w-full" aria-hidden />
       <div
         className={cn(
-          // Under the site nav (z-50); fills the top edge once nav hides on scroll
-          "sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur-sm",
+          // Under the site nav (z-50); fills the top edge once nav hides on scroll.
+          // Flat chrome (no radius) — reads as a toolbar, not another card.
+          "sticky top-0 z-40 -my-1.5 border border-[#225864]/12 bg-white/95 backdrop-blur-sm sm:-my-2",
           "transition-shadow duration-200",
-          stuck && "shadow-[0_1px_3px_rgba(0,0,0,0.06)]",
+          stuck && "shadow-[0_1px_3px_rgba(17,51,60,0.08)]",
         )}
       >
-        <div className="flex items-center justify-between gap-4 px-6 py-3 md:px-12">
-          <p className="min-w-0 truncate text-xs font-medium tracking-wide text-zinc-500">
-            <span className="text-zinc-900">{company}</span>
-            <span className="text-zinc-300"> · </span>
+        <div className="flex items-center justify-between gap-4 px-6 py-2 md:px-12">
+          <p
+            className={`min-w-0 truncate text-xs font-medium tracking-wide ${rt.body}`}
+          >
+            <span className={rt.heading}>{company}</span>
+            <span className="text-[#225864]/25"> · </span>
             <span>AI readiness report</span>
           </p>
           <ReadinessModeToggle mode={mode} onChange={onChange} />

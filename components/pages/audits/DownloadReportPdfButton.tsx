@@ -162,14 +162,14 @@ export default function DownloadReportPdfButton({
               : { type: "spring", stiffness: 480, damping: 22, mass: 0.6 }
         }
         className={cn(
-          "relative inline-flex h-8 items-center justify-center gap-2 overflow-hidden rounded-md px-3 text-xs font-medium text-white select-none",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2462ff]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F7]",
+          "relative inline-flex h-8 items-center justify-center gap-2 overflow-hidden rounded-md px-3 text-xs font-medium select-none",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#225864]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F7]",
           "disabled:cursor-wait",
           status === "error"
-            ? "bg-red-600"
+            ? "bg-red-600 text-white"
             : status === "done"
-              ? "bg-emerald-600"
-              : "bg-[#2462ff]",
+              ? "border border-zinc-900 bg-brand text-white"
+              : "border border-[#225864]/30 bg-white text-[#225864] hover:bg-[#225864]/5",
         )}
       >
         {/* Soft sweep on idle hover */}

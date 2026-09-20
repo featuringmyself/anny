@@ -9,6 +9,7 @@ import { readinessStatusLabel } from "@/components/pages/audits/readiness-status
 import { PdfFooter, PdfHeader } from "./PdfChrome";
 import {
   ACCENT,
+  BRAND,
   CRITICAL,
   INK,
   LINE,
@@ -16,15 +17,14 @@ import {
   WHITE,
   pdfStyles,
 } from "./styles";
+import { reportScoreHex } from "../report-theme";
 
 const AMBER = "#b45309";
-const GOOD = ACCENT;
+/** Pass / healthy only — not the informational teal. */
+const GOOD = BRAND;
 
 function scoreColor(score: number) {
-  if (score < 40) return CRITICAL;
-  if (score < 60) return AMBER;
-  if (score < 80) return "#a16207";
-  return GOOD;
+  return reportScoreHex(score);
 }
 
 function statusColor(status: ReadinessStatus) {
@@ -418,7 +418,7 @@ function AgentsPage({ report }: { report: ReadinessReport }) {
       <View style={{ ...pdfStyles.row, marginBottom: 14, gap: 8 }}>
         <View style={{ ...pdfStyles.card, flex: 1, padding: 10 }}>
           <Text style={pdfStyles.label}>Agents allowed</Text>
-          <Text style={{ marginTop: 4, fontSize: 20, fontWeight: 500, color: GOOD }}>
+          <Text style={{ marginTop: 4, fontSize: 20, fontWeight: 500, color: ACCENT }}>
             {allowed}/{report.agents.length}
           </Text>
         </View>
@@ -442,7 +442,7 @@ function AgentsPage({ report }: { report: ReadinessReport }) {
               marginTop: 4,
               fontSize: 14,
               fontWeight: 500,
-              color: report.llmsTxtFound ? GOOD : CRITICAL,
+              color: report.llmsTxtFound ? ACCENT : CRITICAL,
             }}
           >
             {report.llmsTxtFound ? "Found" : "404"}
@@ -474,7 +474,7 @@ function AgentsPage({ report }: { report: ReadinessReport }) {
               style={{
                 fontSize: 8,
                 fontWeight: 500,
-                color: signal.found ? GOOD : CRITICAL,
+                color: signal.found ? ACCENT : CRITICAL,
               }}
             >
               {signal.found ? "Found" : "Missing"}
@@ -617,7 +617,7 @@ function SprintPage({ report }: { report: ReadinessReport }) {
           padding: 18,
         }}
       >
-        <Text style={{ fontSize: 9, fontWeight: 500, color: "#7a9fff" }}>
+        <Text style={{ fontSize: 9, fontWeight: 500, color: BRAND }}>
           {report.ctaEyebrow ?? "Next step"}
         </Text>
         <Text
@@ -636,7 +636,7 @@ function SprintPage({ report }: { report: ReadinessReport }) {
             marginTop: 8,
             fontSize: 9,
             lineHeight: 1.5,
-            color: "#a1a1aa",
+            color: "#9aabae",
           }}
         >
           {report.ctaBody ??
@@ -647,7 +647,7 @@ function SprintPage({ report }: { report: ReadinessReport }) {
             marginTop: 14,
             fontSize: 10,
             fontWeight: 500,
-            color: ACCENT,
+            color: BRAND,
           }}
         >
           {report.ctaUrl

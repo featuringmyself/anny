@@ -5,6 +5,7 @@ import {
   readinessStatusClass,
   readinessStatusLabel,
 } from "@/components/pages/audits/readiness-status";
+import { reportScoreClass, rt } from "@/components/pages/audits/report-theme";
 import {
   aiReadinessAccentButtonClass,
   aiReadinessOutlineButtonClass,
@@ -127,21 +128,27 @@ export function AiReadinessReportPlaceholder({
               </dl>
             </div>
 
-            <aside
-              aria-label="Readiness score"
-              className="shrink-0 border border-zinc-300 bg-white px-6 py-5 md:min-w-[200px]"
-            >
-              <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
-                Score
-              </p>
-              <p className="mt-1 text-4xl font-medium tracking-tight tabular-nums">
-                {displayScore}
-                <span className="text-xl text-zinc-400">/100</span>
-              </p>
-              <p className="mt-1 text-sm font-medium text-zinc-800">
-                {displayBand}
-              </p>
-            </aside>
+              <aside
+                aria-label="Readiness score"
+                className={`shrink-0 border ${rt.hairlineStrong} ${rt.surface} px-6 py-5 md:min-w-[200px]`}
+              >
+                <p
+                  className={`font-mono text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+                >
+                  Score
+                </p>
+                <p
+                  className={`mt-1 text-4xl font-medium tracking-tight tabular-nums ${reportScoreClass(displayScore)}`}
+                >
+                  {displayScore}
+                  <span className={`text-xl ${rt.label}`}>/100</span>
+                </p>
+                <p
+                  className={`mt-1 text-sm font-medium ${reportScoreClass(displayScore)}`}
+                >
+                  {displayBand}
+                </p>
+              </aside>
           </div>
         </div>
       </header>

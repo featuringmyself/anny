@@ -17,6 +17,7 @@ import { ReadinessModeBar } from "@/components/pages/audits/ReadinessModeToggle"
 import ReadinessQuickWins from "@/components/pages/audits/ReadinessQuickWins";
 import ReadinessSprint from "@/components/pages/audits/ReadinessSprint";
 import ReportSectionHeader from "@/components/pages/audits/ReportSectionHeader";
+import { reportScoreClass, rt } from "@/components/pages/audits/report-theme";
 import type {
   ReadinessAudienceMode,
   ReadinessReport,
@@ -44,15 +45,19 @@ function SectionSkeleton({
   lines?: number;
 }) {
   return (
-    <div className="animate-pulse border-b border-zinc-200 px-6 py-7 md:px-10 md:py-8">
-      <p className="font-mono text-[11px] tracking-wide text-zinc-400 uppercase">
+    <div
+      className={`animate-pulse border-b ${rt.hairline} px-6 py-7 md:px-10 md:py-8`}
+    >
+      <p
+        className={`font-mono text-[11px] tracking-wide uppercase ${rt.label}`}
+      >
         {title}
       </p>
       <div className="mt-4 space-y-2">
         {Array.from({ length: lines }).map((_, index) => (
           <div
             key={index}
-            className="h-3 rounded bg-zinc-200/80"
+            className="h-3 rounded bg-[#225864]/10"
             style={{ width: `${88 - index * 12}%` }}
           />
         ))}
@@ -63,14 +68,16 @@ function SectionSkeleton({
 
 function StatsSkeleton() {
   return (
-    <div className="grid grid-cols-2 border-t border-zinc-200 md:grid-cols-4">
+    <div
+      className={`grid grid-cols-2 border-t ${rt.hairline} md:grid-cols-4`}
+    >
       {Array.from({ length: 4 }).map((_, index) => (
         <div
           key={index}
-          className="animate-pulse border-b border-r border-zinc-200 px-6 py-5 md:border-b-0 md:px-8"
+          className={`animate-pulse border-b border-r ${rt.hairline} px-6 py-5 md:border-b-0 md:px-8`}
         >
-          <div className="h-5 w-12 rounded bg-zinc-200/80" />
-          <div className="mt-2 h-3 w-20 rounded bg-zinc-100" />
+          <div className="h-5 w-12 rounded bg-[#225864]/10" />
+          <div className="mt-2 h-3 w-20 rounded bg-[#225864]/6" />
         </div>
       ))}
     </div>
@@ -150,7 +157,8 @@ function StreamingCategories({
 }) {
   const categoriesById = new Map(report.categories.map((c) => [c.id, c]));
   const allReady = CATEGORY_SECTIONS.every(
-    (section) => categoriesById.has(section.id) || phaseDone(completedPhases, section.phase),
+    (section) =>
+      categoriesById.has(section.id) || phaseDone(completedPhases, section.phase),
   );
 
   if (allReady && report.categories.length >= CATEGORY_SECTIONS.length) {
@@ -158,7 +166,7 @@ function StreamingCategories({
   }
 
   return (
-    <section className="border-t border-zinc-200">
+    <section>
       <ReportSectionHeader
         index="02"
         label="Categories"
@@ -171,10 +179,12 @@ function StreamingCategories({
             return (
               <article
                 key={section.id}
-                className="border-b border-zinc-200 px-6 py-7 last:border-b-0 md:px-10 md:py-8"
+                className={`border-b ${rt.hairline} px-6 py-7 last:border-b-0 md:px-10 md:py-8`}
               >
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h3 className="text-base font-medium tracking-tight">
+                  <h3
+                    className={`text-base font-medium tracking-tight ${rt.heading}`}
+                  >
                     {category.title}
                   </h3>
                   <p
@@ -183,15 +193,17 @@ function StreamingCategories({
                     {readinessStatusLabel(category.status)}
                   </p>
                 </div>
-                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">
+                <p className={`mt-2 max-w-3xl text-sm leading-relaxed ${rt.body}`}>
                   {readinessCopy(mode, category.body, category.bodyTechnical)}
                 </p>
                 {category.metrics?.length ? (
                   <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-sm">
                     {category.metrics.map((metric) => (
                       <div key={metric.label}>
-                        <dt className="text-xs text-zinc-400">{metric.label}</dt>
-                        <dd className="mt-0.5 font-medium">{metric.value}</dd>
+                        <dt className={`text-xs ${rt.label}`}>{metric.label}</dt>
+                        <dd className={`mt-0.5 font-medium ${rt.bodyStrong}`}>
+                          {metric.value}
+                        </dd>
                       </div>
                     ))}
                   </dl>
@@ -221,24 +233,34 @@ export function AiReadinessFullReportView({
   completedPhases,
 }: AiReadinessFullReportViewProps) {
   const [mode, setMode] = useState<ReadinessAudienceMode>("non-technical");
-  const report = buildViewReport(partial, domain, reportId, quickScore, quickBand);
+  const report = buildViewReport(
+    partial,
+    domain,
+    reportId,
+    quickScore,
+    quickBand,
+  );
 
   const synthesisReady = complete || phaseDone(completedPhases, "synthesis");
   const automationReady = complete || phaseDone(completedPhases, "automation");
   const agentsReady = complete || phaseDone(completedPhases, "agents");
   const insightsReady = synthesisReady && report.insights.length > 0;
-  const pagesScanned = partial.stats?.find((s) => s.label === "Pages scanned")?.value;
+  const pagesScanned = partial.stats?.find(
+    (s) => s.label === "Pages scanned",
+  )?.value;
 
   return (
-    <article>
-      <header className="border-b bg-white">
+    <article className={rt.stack}>
+      <header className={rt.panel}>
         <div className="px-6 pt-10 md:px-10 md:pt-12">
           <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+              <p
+                className={`font-mono text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+              >
                 Full report · AI readiness
               </p>
-              <p className="mt-1 text-sm text-zinc-500">
+              <p className={`mt-1 text-sm ${rt.body}`}>
                 Prepared {report.dateLabel}
                 {complete
                   ? " · deep scan complete"
@@ -256,40 +278,46 @@ export function AiReadinessFullReportView({
 
           <div className="flex flex-col gap-8 pb-10 md:flex-row md:items-end md:justify-between md:pb-12">
             <div className="max-w-2xl">
-              <h1 className="text-3xl font-medium tracking-tight text-balance md:text-4xl">
+              <h1
+                className={`text-3xl font-medium tracking-tight text-balance md:text-4xl ${rt.heading}`}
+              >
                 {report.company}
               </h1>
-              <p className="mt-2 text-base text-zinc-500 text-balance">
-                On-site readiness for AI agents, schema, crawl access, automation,
-                and HTML semantics.
+              <p className={`mt-2 text-base text-balance ${rt.body}`}>
+                On-site readiness for AI agents, schema, crawl access,
+                automation, and HTML semantics.
               </p>
               <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
                 <div>
-                  <dt className="text-xs text-zinc-400">Prepared for</dt>
-                  <dd className="mt-1 font-medium">
+                  <dt className={`text-xs ${rt.label}`}>Prepared for</dt>
+                  <dd className={`mt-1 font-medium ${rt.bodyStrong}`}>
                     {report.preparedFor}
                     {report.email && report.preparedFor === "-" ? (
-                      <span className="block font-normal text-zinc-500">
+                      <span className={`block font-normal ${rt.body}`}>
                         {report.email}
                       </span>
                     ) : null}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-zinc-400">Website</dt>
-                  <dd className="mt-1 font-medium">{report.website}</dd>
+                  <dt className={`text-xs ${rt.label}`}>Website</dt>
+                  <dd className={`mt-1 font-medium ${rt.bodyStrong}`}>
+                    {report.website}
+                  </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-zinc-400">Scan depth</dt>
-                  <dd className="mt-1 font-medium">
+                  <dt className={`text-xs ${rt.label}`}>Scan depth</dt>
+                  <dd className={`mt-1 font-medium ${rt.bodyStrong}`}>
                     {complete || pagesScanned
                       ? `${pagesScanned ?? partial.stats?.[0]?.value ?? "Multi"}-page scan`
                       : "Deep scan running"}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs text-zinc-400">Snapshot</dt>
-                  <dd className="mt-1 font-medium">{report.dateLabel}</dd>
+                  <dt className={`text-xs ${rt.label}`}>Snapshot</dt>
+                  <dd className={`mt-1 font-medium ${rt.bodyStrong}`}>
+                    {report.dateLabel}
+                  </dd>
                 </div>
               </dl>
             </div>
@@ -297,30 +325,38 @@ export function AiReadinessFullReportView({
             {synthesisReady ? (
               <aside
                 aria-label="Readiness score"
-                className="shrink-0 border border-zinc-300 bg-white px-6 py-5 md:min-w-[200px]"
+                className={`shrink-0 border ${rt.hairlineStrong} ${rt.surface} px-6 py-5 md:min-w-[200px]`}
               >
-                <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+                <p
+                  className={`font-mono text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+                >
                   Score
                 </p>
-                <p className="mt-1 text-4xl font-medium tracking-tight tabular-nums">
+                <p
+                  className={`mt-1 text-4xl font-medium tracking-tight tabular-nums ${reportScoreClass(report.overallScore)}`}
+                >
                   {report.overallScore}
-                  <span className="text-xl text-zinc-400">/100</span>
+                  <span className={`text-xl ${rt.label}`}>/100</span>
                 </p>
-                <p className="mt-1 text-sm font-medium text-zinc-800">
+                <p
+                  className={`mt-1 text-sm font-medium ${reportScoreClass(report.overallScore)}`}
+                >
                   {report.scoreLabel}
                 </p>
               </aside>
             ) : (
               <aside
                 aria-label="Readiness score"
-                className="shrink-0 border border-zinc-200 bg-zinc-50 px-6 py-5 md:min-w-[200px]"
+                className={`shrink-0 border ${rt.hairline} ${rt.surfaceMuted} px-6 py-5 md:min-w-[200px]`}
               >
-                <p className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+                <p
+                  className={`font-mono text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+                >
                   Score
                 </p>
-                <div className="mt-3 h-10 w-16 animate-pulse rounded bg-zinc-200/80" />
+                <div className="mt-3 h-10 w-16 animate-pulse rounded bg-[#225864]/10" />
                 {quickScore != null ? (
-                  <p className="mt-2 text-xs text-zinc-500">
+                  <p className={`mt-2 text-xs ${rt.body}`}>
                     Quick scan: {quickScore}/100
                   </p>
                 ) : null}
@@ -330,42 +366,52 @@ export function AiReadinessFullReportView({
         </div>
       </header>
 
-      <ReadinessModeBar company={report.company} mode={mode} onChange={setMode} />
+      <ReadinessModeBar
+        company={report.company}
+        mode={mode}
+        onChange={setMode}
+      />
 
-      <section className="border-b bg-white" aria-label="Executive summary">
+      <section className={rt.panel} aria-label="Executive summary">
         {synthesisReady ? (
           <ReadinessHeroBody report={report} mode={mode} />
         ) : (
           <>
             <StatsSkeleton />
-            <div className="border-t border-zinc-200 px-6 py-7 md:px-10">
+            <div className={`border-t ${rt.hairline} px-6 py-7 md:px-10`}>
               <SectionSkeleton title="Executive summary" lines={4} />
             </div>
           </>
         )}
       </section>
 
-      <div className="border-b bg-zinc-50">
-        <div className="border-b border-zinc-200/80 px-6 py-5 md:px-12">
-          <p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
-            Audit findings
-          </p>
-          <p className="mt-1 text-sm text-zinc-600 text-balance">
-            On-site readiness detail for {report.company}
-            {" · "}
-            <span className="font-medium text-zinc-800">{report.website}</span>
-            {complete
-              ? ". Scroll for insights, categories, agents, and quick wins."
-              : "."}
-          </p>
-        </div>
+      <div className={`${rt.panel} px-6 py-5 md:px-12`}>
+        <p
+          className={`text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+        >
+          Audit findings
+        </p>
+        <p className={`mt-1 text-sm text-balance ${rt.body}`}>
+          On-site readiness detail for {report.company}
+          {" · "}
+          <span className={`font-medium ${rt.bodyStrong}`}>
+            {report.website}
+          </span>
+          {complete
+            ? ". Scroll for insights, categories, agents, and quick wins."
+            : "."}
+        </p>
+      </div>
 
+      <div className={rt.panel}>
         {insightsReady ? (
           <ReadinessInsights report={report} mode={mode} />
         ) : (
           <SectionSkeleton title="Key insights" lines={5} />
         )}
+      </div>
 
+      <div className={rt.panel}>
         {complete ? (
           <ReadinessCategories report={report} mode={mode} />
         ) : (
@@ -375,19 +421,25 @@ export function AiReadinessFullReportView({
             completedPhases={completedPhases}
           />
         )}
+      </div>
 
+      <div className={rt.panel}>
         {automationReady ? (
           <ReadinessAutomation report={report} mode={mode} />
         ) : (
           <SectionSkeleton title="Form automation" lines={4} />
         )}
+      </div>
 
+      <div className={rt.panel}>
         {agentsReady && report.agents.length > 0 ? (
           <ReadinessAgents report={report} mode={mode} />
         ) : (
           <SectionSkeleton title="AI agent access" lines={4} />
         )}
+      </div>
 
+      <div className={rt.panel}>
         {synthesisReady && report.quickWins.length > 0 ? (
           <ReadinessQuickWins report={report} mode={mode} />
         ) : (
@@ -397,10 +449,12 @@ export function AiReadinessFullReportView({
 
       {complete ? (
         <>
-          <div className="border-b bg-white">
+          <div className={rt.panel}>
             <ReadinessSprint report={report} />
           </div>
-          <ReportCta report={report} />
+          <div className={rt.panel}>
+            <ReportCta report={report} />
+          </div>
         </>
       ) : null}
     </article>

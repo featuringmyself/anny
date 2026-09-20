@@ -15,6 +15,7 @@ import ReadinessInsights from "./ReadinessInsights";
 import { ReadinessModeBar } from "./ReadinessModeToggle";
 import ReadinessQuickWins from "./ReadinessQuickWins";
 import ReadinessSprint from "./ReadinessSprint";
+import { rt } from "./report-theme";
 import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessReportViewProps = {
@@ -27,11 +28,12 @@ export default function ReadinessReportView({
   const [mode, setMode] = useState<ReadinessAudienceMode>("non-technical");
 
   return (
-    <main className="overflow-anchor-none pb-16 md:pb-24">
+    <main
+      className={`overflow-anchor-none bg-background px-3 py-3 pb-16 sm:px-4 md:pb-24 ${rt.stack}`}
+    >
       {report.private ? <ReportPrivateBanner /> : null}
 
-      {/* Cover, company, score, snapshot. Not marketing landing. */}
-      <header className="border-b bg-white">
+      <header className={rt.panel}>
         <ReadinessHeroLead report={report} />
       </header>
 
@@ -41,40 +43,54 @@ export default function ReadinessReportView({
         onChange={setMode}
       />
 
-      <section className="border-b bg-white" aria-label="Executive summary">
+      <section className={rt.panel} aria-label="Executive summary">
         <ReadinessHeroBody report={report} mode={mode} />
       </section>
 
-      {/* Findings body, visually distinct from the cover so scroll reads as dossier, not landing. */}
-      <div className="border-b bg-zinc-50">
-        <div className="border-b border-zinc-200/80 px-6 py-5 md:px-12">
-          <p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
-            Audit findings
-          </p>
-          <p className="mt-1 text-sm text-zinc-600 text-balance">
-            On-site readiness detail for {report.company}
-            {report.website ? (
-              <>
-                {" "}
-                · <span className="font-medium text-zinc-800">{report.website}</span>
-              </>
-            ) : null}
-            . Scroll for insights, categories, agents, and quick wins.
-          </p>
-        </div>
+      <div className={`${rt.panel} px-6 py-5 md:px-12`}>
+        <p
+          className={`text-[11px] font-medium tracking-wide uppercase ${rt.label}`}
+        >
+          Audit findings
+        </p>
+        <p className={`mt-1 text-sm text-balance ${rt.body}`}>
+          On-site readiness detail for {report.company}
+          {report.website ? (
+            <>
+              {" "}
+              ·{" "}
+              <span className={`font-medium ${rt.bodyStrong}`}>
+                {report.website}
+              </span>
+            </>
+          ) : null}
+          . Scroll for insights, categories, agents, and quick wins.
+        </p>
+      </div>
 
+      <div className={rt.panel}>
         <ReadinessInsights report={report} mode={mode} />
+      </div>
+      <div className={rt.panel}>
         <ReadinessCategories report={report} mode={mode} />
+      </div>
+      <div className={rt.panel}>
         <ReadinessAutomation report={report} mode={mode} />
+      </div>
+      <div className={rt.panel}>
         <ReadinessAgents report={report} mode={mode} />
+      </div>
+      <div className={rt.panel}>
         <ReadinessQuickWins report={report} mode={mode} />
       </div>
 
-      <div className="border-b bg-white">
+      <div className={rt.panel}>
         <ReadinessSprint report={report} />
       </div>
 
-      <ReportCta report={report} />
+      <div className={rt.panel}>
+        <ReportCta report={report} />
+      </div>
     </main>
   );
 }

@@ -36,10 +36,10 @@ export default function PricingHero() {
 
         <h1
           id="pricing-hero-heading"
-          className="mt-8 max-w-4xl text-[2rem] leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-[3rem] md:leading-[1.12]"
+          className="mt-8 max-w-4xl text-[2rem] leading-[1.1] font-bold tracking-tight text-balance sm:text-4xl md:text-[3rem] md:leading-[1.12]"
           style={{ color: HEADING }}
         >
-          AI agents that get you cited in <br /><AiFlip />
+          AI agents that get you cited in <AiFlip />
         </h1>
 
         <p

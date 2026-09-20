@@ -4,6 +4,7 @@ import {
   readinessStatusLabel,
 } from "./readiness-status";
 import { readinessCopy } from "./readiness-copy";
+import { reportCountClass, rt } from "./report-theme";
 import type { ReadinessAudienceMode, ReadinessReport } from "./types";
 
 type ReadinessAutomationProps = {
@@ -19,7 +20,7 @@ export default function ReadinessAutomation({
   const isTechnical = mode === "technical";
 
   return (
-    <section className="border-t border-zinc-200">
+    <section>
       <ReportSectionHeader
         index="03"
         label="Automation"
@@ -38,22 +39,28 @@ export default function ReadinessAutomation({
         )}
       />
 
-      <dl className="grid grid-cols-3 border-b border-zinc-200 text-sm">
-        <div className="border-r border-zinc-200 px-6 py-5 md:px-10">
-          <dt className="text-xs text-zinc-400">Total issues</dt>
-          <dd className="mt-1 text-xl font-medium tabular-nums">
+      <dl className={`grid grid-cols-3 border-b ${rt.hairline} text-sm`}>
+        <div className={`border-r ${rt.hairline} px-6 py-5 md:px-10`}>
+          <dt className={`text-xs ${rt.label}`}>Total issues</dt>
+          <dd
+            className={`mt-1 text-xl font-medium tabular-nums ${reportCountClass(automation.totalIssues, "warning")}`}
+          >
             {automation.totalIssues}
           </dd>
         </div>
-        <div className="border-r border-zinc-200 px-6 py-5 md:px-10">
-          <dt className="text-xs text-zinc-400">P1 blockers</dt>
-          <dd className="mt-1 text-xl font-medium tabular-nums">
+        <div className={`border-r ${rt.hairline} px-6 py-5 md:px-10`}>
+          <dt className={`text-xs ${rt.label}`}>P1 blockers</dt>
+          <dd
+            className={`mt-1 text-xl font-medium tabular-nums ${reportCountClass(automation.p1Count, "critical")}`}
+          >
             {automation.p1Count}
           </dd>
         </div>
         <div className="px-6 py-5 md:px-10">
-          <dt className="text-xs text-zinc-400">P2 reliability</dt>
-          <dd className="mt-1 text-xl font-medium tabular-nums">
+          <dt className={`text-xs ${rt.label}`}>P2 reliability</dt>
+          <dd
+            className={`mt-1 text-xl font-medium tabular-nums ${reportCountClass(automation.p2Count, "warning")}`}
+          >
             {automation.p2Count}
           </dd>
         </div>
@@ -63,17 +70,21 @@ export default function ReadinessAutomation({
         {automation.groups.map((group) => (
           <li
             key={group.id}
-            className="border-b border-zinc-200 px-6 py-7 last:border-b-0 md:px-10 md:py-8"
+            className={`border-b ${rt.hairline} px-6 py-7 last:border-b-0 md:px-10 md:py-8`}
           >
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="font-mono text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
+              <span
+                className={`font-mono text-[11px] font-medium tracking-wide uppercase ${
+                  group.severity === "P1" ? rt.critical : rt.warning
+                }`}
+              >
                 {group.severity} · {group.count}
               </span>
-              <h3 className="text-base font-medium tracking-tight">
+              <h3 className={`text-base font-medium tracking-tight ${rt.heading}`}>
                 {group.title}
               </h3>
             </div>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-600">
+            <p className={`mt-2 max-w-3xl text-sm leading-relaxed ${rt.body}`}>
               {readinessCopy(mode, group.summary, group.summaryTechnical)}
             </p>
             {isTechnical && group.examples.length ? (
@@ -81,7 +92,7 @@ export default function ReadinessAutomation({
                 {group.examples.map((example) => (
                   <li
                     key={example}
-                    className="max-w-3xl overflow-x-auto border border-zinc-200 bg-white px-3 py-2 font-mono text-xs leading-relaxed text-zinc-700"
+                    className={`max-w-3xl overflow-x-auto border ${rt.hairline} ${rt.surface} px-3 py-2 font-mono text-xs leading-relaxed ${rt.bodyStrong}`}
                   >
                     {example}
                   </li>

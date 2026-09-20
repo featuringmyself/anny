@@ -1,13 +1,15 @@
 import { StyleSheet } from "@react-pdf/renderer";
 
-export const ACCENT = "#2462ff";
-export const INK = "#18181b";
-export const MUTED = "#71717a";
-export const FAINT = "#a1a1aa";
-export const LINE = "#e4e4e7";
+export const ACCENT = "#225864";
+export const BRAND = "#45ab8d";
+export const INK = "#11333c";
+export const MUTED = "#5c6b73";
+export const FAINT = "#8a9a9f";
+export const LINE = "#d5e0e3";
 export const PAPER = "#F7F7F7";
 export const WHITE = "#ffffff";
-export const CRITICAL = "#b91c1c";
+export const CRITICAL = "#b42318";
+export const WARNING = "#b45309";
 
 export const pdfStyles = StyleSheet.create({
   page: {
@@ -119,9 +121,14 @@ export const pdfStyles = StyleSheet.create({
     backgroundColor: "#fef2f2",
   },
   badgeAccent: {
-    borderColor: "#bfdbfe",
+    borderColor: "#b8cfd4",
     color: ACCENT,
-    backgroundColor: "#eff6ff",
+    backgroundColor: "#eef4f5",
+  },
+  badgeSuccess: {
+    borderColor: "#a8d9cb",
+    color: BRAND,
+    backgroundColor: "#e8f6f1",
   },
   screenshot: {
     width: "100%",

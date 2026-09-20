@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { reportScoreClass, rt } from "@/components/pages/audits/report-theme";
 import type { ReadinessReport } from "@/components/pages/audits/types";
 import { AiReadinessFullReportView } from "@/components/pages/tools/ai-readiness/AiReadinessFullReportView";
 import { AiReadinessReportGate } from "@/components/pages/tools/ai-readiness/AiReadinessReportGate";
@@ -86,17 +87,21 @@ function ReportContextBar({
 
   return (
     <div
-      className={`border-b bg-white/95 backdrop-blur-sm supports-backdrop-filter:bg-white/85 ${
+      className={`border-b border-[#225864]/12 bg-white/95 backdrop-blur-sm supports-backdrop-filter:bg-white/85 ${
         sticky ? "sticky top-0 z-20" : ""
       }`}
     >
       <div className="flex items-center justify-between gap-4 px-6 py-3 md:px-10">
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-zinc-900">{company}</p>
-          <p className="truncate text-xs text-zinc-500">{domain}</p>
+          <p className="truncate text-sm font-medium text-[#225864]">{company}</p>
+          <p className="truncate text-xs text-[#5c6b73]">{domain}</p>
         </div>
         {scoreLabel ? (
-          <p className="shrink-0 text-sm font-medium tabular-nums text-zinc-700">
+          <p
+            className={`shrink-0 text-sm font-medium tabular-nums ${
+              score != null ? reportScoreClass(score) : "text-[#2a3f44]"
+            }`}
+          >
             {scoreLabel}
           </p>
         ) : null}
@@ -294,8 +299,8 @@ export function AiReadinessReportExperience({
     <main
       className={
         locked
-          ? "flex h-dvh max-h-dvh min-h-dvh flex-col overflow-hidden"
-          : "min-h-dvh overflow-anchor-none pb-16 md:pb-24"
+          ? "flex h-dvh max-h-dvh min-h-dvh flex-col overflow-hidden bg-background"
+          : "min-h-dvh overflow-anchor-none bg-background px-3 py-3 pb-16 sm:px-4 md:pb-24"
       }
     >
       <ReportContextBar
@@ -327,7 +332,7 @@ export function AiReadinessReportExperience({
             ) : null}
           </>
         ) : (
-          <>
+          <div className={rt.stack}>
             <AiReadinessScanProgress
               domain={domain}
               progress={progress}
@@ -345,11 +350,14 @@ export function AiReadinessReportExperience({
               completedPhases={completedPhases}
             />
             {scanError ? (
-              <p className="px-6 py-4 text-sm text-red-600 md:px-10" role="alert">
+              <p
+                className="px-3 py-4 text-sm text-red-600 sm:px-0"
+                role="alert"
+              >
                 {scanError}
               </p>
             ) : null}
-          </>
+          </div>
         )}
       </div>
     </main>

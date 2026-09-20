@@ -51,10 +51,12 @@ export default function Hero() {
 
         <h1
           id="home-hero-heading"
-          className="mt-8 max-w-3xl text-[2rem] leading-[1.08] font-bold tracking-tight sm:text-4xl md:text-[3.1rem] md:leading-[1.08]"
+          className="mt-8 max-w-3xl text-[2rem] leading-[1.08] font-bold tracking-tight text-balance sm:text-4xl md:text-[3.1rem] md:leading-[1.08]"
           style={{ color: brand.heading }}
         >
-          Get cited in <AiFlip />
+          {/* Keep the stem together so the flip wraps as one unit on narrow
+              viewports — reserved Perplexity width makes that wrap consistent. */}
+          Get&nbsp;cited&nbsp;in <AiFlip />
           <span className="mt-1.5 block font-bold text-zinc-500">
             then keep the mention.
           </span>

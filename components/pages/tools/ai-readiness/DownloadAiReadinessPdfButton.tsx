@@ -77,14 +77,14 @@ export function DownloadAiReadinessPdfButton({
         aria-label={ready ? "Download PDF report" : "PDF available when scan completes"}
         className={cn(
           "relative inline-flex h-8 items-center justify-center gap-2 rounded-md px-3 text-xs font-medium select-none",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2462ff]/35 focus-visible:ring-offset-2",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#225864]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F7]",
           !ready || status === "pending"
-            ? "cursor-not-allowed bg-zinc-200 text-zinc-500"
+            ? "cursor-not-allowed border border-[#225864]/15 bg-[#225864]/8 text-[#5c6b73]"
             : status === "error"
               ? "bg-red-600 text-white"
               : status === "done"
-                ? "bg-emerald-600 text-white"
-                : "bg-[#2462ff] text-white",
+                ? "border border-zinc-900 bg-brand text-white"
+                : "border border-[#225864]/30 bg-white text-[#225864] hover:bg-[#225864]/5",
         )}
       >
         {status === "pending" ? <SpinnerGlyph /> : null}
