@@ -57,7 +57,21 @@ export default function RotatingModelName({ className }: Props) {
   useLayoutEffect(() => {
     const probe = probeRef.current;
     if (!probe) return;
-    setWidth(Math.ceil(probe.getBoundingClientRect().width));
+
+    const measure = () => {
+      setWidth(Math.ceil(probe.getBoundingClientRect().width));
+    };
+
+    measure();
+    void document.fonts?.ready.then(measure);
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(probe);
+    window.addEventListener("resize", measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, [index, reduceMotion]);
 
   useEffect(() => {
