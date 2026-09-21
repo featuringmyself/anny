@@ -4,7 +4,7 @@ const SHOT = "/audits/ringg";
 
 /**
  * Private outreach report for Ringg AI. ChatGPT snapshot, September 2026.
- * Sell: 0/10 baseline on peer-relevant India shelves — branded review names
+ * Sell: 0/10 baseline on peer-relevant India shelves. Branded review names
  * Ringg when asked directly, but cart recovery, insurance, Practo/PharmEasy,
  * India calling, KYC, pricing, mid-market support and Skit/Vapi alternatives
  * route to Edesy, Bolna, Sarvam, Tokki, Aarvox, Tapza and peers.
@@ -21,14 +21,14 @@ export const ringgAiVisibilityReport: VisibilityReport = {
   private: true,
   tagline: "Voice · Chat & WhatsApp · Browser · STT · Evals",
   summary:
-    "10 buy-intent prompts tied to Ringg’s real shelves: India calling, Shopify cart recovery, mid-market support, insurance, Practo-style booking, PharmEasy-style pharmacy calling, lead qualification, Hindi STT, pricing and fintech KYC. Cited on 0 of 10. Who appears instead: Edesy, Sarvam AI, Bolna, Tokki, Callsy, Aarvox, Tapza.ai, Kallix, Gnani, Exotel, Vapi and Retell AI — India-native and mid-market peers. One asymmetric win: Ringg AI is named and reviewed on the direct “Ringg AI review” prompt. This is the baseline.",
+    "10 buy-intent prompts tied to Ringg’s real shelves: India calling, Shopify cart recovery, mid-market support, insurance, Practo-style booking, PharmEasy-style pharmacy calling, lead qualification, Hindi STT, pricing and fintech KYC. Cited on 0 of 10. Who appears instead: Edesy, Sarvam AI, Bolna, Tokki, Callsy, Aarvox, Tapza.ai, Kallix, Gnani, Exotel, Vapi and Retell AI: India-native and mid-market peers. One asymmetric win: Ringg AI is named and reviewed on the direct “Ringg AI review” prompt. This is the baseline.",
   brandCrisisHeadline:
-    "India buyers shortlist peers — and still miss Ringg",
+    "India buyers shortlist peers, and still miss Ringg",
   brandCrisisDek:
     "When buyers ask for a Vapi/Retell alternative in India, or an insurance voice agent next to PolicyBazaar, the shelf fills with Edesy, Bolna, Sarvam, VoiceBrew and Kallix. Ringg’s branded review is a separate discovery gate.",
   queriesHeadline: "Prompt audit · 10 queries",
   queriesIntro:
-    "Buy-intent prompts mapped to ringg.ai use cases and logos — India calling, cart recovery, mid-market support, KYC, pricing, Practo-style appointments, PharmEasy-style pharmacy, Skit alternatives, Hindi STT (Parrot), and lead qualification. Ringg AI is cited on 0 of 10; shortlists are India peers, not Cognigy / Salesforce / Uniphore stacks.",
+    "Buy-intent prompts mapped to ringg.ai use cases and logos: India calling, cart recovery, mid-market support, KYC, pricing, Practo-style appointments, PharmEasy-style pharmacy, Skit alternatives, Hindi STT (Parrot), and lead qualification. Ringg AI is cited on 0 of 10; shortlists are India peers, not Cognigy / Salesforce / Uniphore stacks.",
   modelScores: [
     { model: "chatgpt", visibility: 0, cited: 0, total: 10, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -55,7 +55,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       id: "crisis-1",
       query: "Ringg AI (ringg.ai) review",
       title: "Ringg AI review",
-      body: "Ringg AI is described as an AI voice-agent platform with WhatsApp, chat and web agents, Indian-language support, workflow automation, pricing, customer examples and G2 reviews; the answer recommends testing it against 2–3 competitors.",
+      body: "Ringg AI is described as an AI voice-agent platform with WhatsApp, chat and web agents, Indian-language support, workflow automation, pricing, customer examples and G2 reviews; the answer recommends testing it against 2-3 competitors.",
       outcome: "Present · named and reviewed",
       screenshot: {
         src: `${SHOT}/crisis-ringg-ai-review.png`,
@@ -67,7 +67,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       id: "crisis-2",
       query: "Vapi alternative India / Retell AI alternative India",
       title: "India Vapi / Retell alternative shelf",
-      body: "The India alternative shortlist names Edesy, Bolna, Sarvam Samvaad, Vistara AI and Vio/Trikon — developer-friendly India-focused voice platforms. Ringg AI is not on the list.",
+      body: "The India alternative shortlist names Edesy, Bolna, Sarvam Samvaad, Vistara AI and Vio/Trikon: developer-friendly India-focused voice platforms. Ringg AI is not on the list.",
       outcome: "Absent · Edesy, Bolna and Sarvam named",
       screenshot: {
         src: `${SHOT}/crisis-vapi-retell-alternative-india.png`,
@@ -79,7 +79,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       id: "crisis-3",
       query: "best AI voice agent for insurance India or PolicyBazaar AI calling",
       title: "Insurance voice-agent shortlist",
-      body: "For outbound insurance calling the shortlist names VoiceBrew, Decibel Labs, Aitel, Edesy and Kallix; PolicyBazaar AI is framed as customer guidance, not outbound calling. No Ringg AI — despite PolicyBazaar being a Ringg case study.",
+      body: "For outbound insurance calling the shortlist names VoiceBrew, Decibel Labs, Aitel, Edesy and Kallix; PolicyBazaar AI is framed as customer guidance, not outbound calling. No Ringg AI, despite PolicyBazaar being a Ringg case study.",
       outcome: "Absent · VoiceBrew, Edesy and Kallix named",
       screenshot: {
         src: `${SHOT}/crisis-best-ai-voice-agent-insurance-india.png`,
@@ -172,7 +172,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       id: "q4",
       query: "best AI agent for fintech KYC calls",
       intent:
-        "Customer proof erasure: BFSI KYC / onboarding — a homepage Activate use case",
+        "Customer proof erasure: BFSI KYC / onboarding (a homepage Activate use case)",
       severity: "critical",
       tag: "Customer Proof Erasure",
       citedBrands: ["Exotel", "Sarvam AI", "Edesy", "Vapi", "Retell AI"],
@@ -221,7 +221,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       query:
         "companies offering AI voice agent for Practo-style appointment booking",
       intent:
-        "Customer proof erasure: Practo-adjacent healthcare booking — a homepage use case",
+        "Customer proof erasure: Practo-adjacent healthcare booking (a homepage use case)",
       severity: "critical",
       tag: "Customer Proof Erasure",
       citedBrands: [
@@ -252,7 +252,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
       id: "q7",
       query: "companies offering AI calling for PharmEasy like business",
       intent:
-        "Customer proof erasure: PharmEasy-adjacent pharmacy calling — a Ringg case-study shelf",
+        "Customer proof erasure: PharmEasy-adjacent pharmacy calling (a Ringg case-study shelf)",
       severity: "critical",
       tag: "Customer Proof Erasure",
       citedBrands: [
@@ -275,7 +275,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "India-focused options name Tapza.ai, Kallix, Nuvox and Edesy for pharmacy/refill reminders and patient outreach; no Ringg AI — despite PharmEasy being a Ringg case study.",
+            "India-focused options name Tapza.ai, Kallix, Nuvox and Edesy for pharmacy/refill reminders and patient outreach; no Ringg AI, despite PharmEasy being a Ringg case study.",
         },
       ],
     },
@@ -364,7 +364,7 @@ export const ringgAiVisibilityReport: VisibilityReport = {
     duration: "90 days",
     headline:
       "From this 0/10 baseline to cited on the enrolment prompts named below",
-    body: "We work the peer-relevant buy-intent set in this audit — Vapi/Retell and Skit alternatives, insurance and PolicyBazaar, Practo/PharmEasy shelves, Shopify cart recovery, India calling, mid-market support, KYC, pricing, and Parrot STT — while protecting the branded review citation already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
+    body: "We work the peer-relevant buy-intent set in this audit: Vapi/Retell and Skit alternatives, insurance and PolicyBazaar, Practo/PharmEasy shelves, Shopify cart recovery, India calling, mid-market support, KYC, pricing, and Parrot STT, while protecting the branded review citation already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
     outcomes: [
       "Get named on Vapi/Retell/Skit-alternative and India calling prompts that today list Edesy, Bolna, Sarvam AI, SquadStack, Exotel and Gnani",
       "Get named on insurance, Practo and PharmEasy prompts that today list VoiceBrew, Kallix, Aarvox, Vistara AI, Tapza.ai and Edesy",
@@ -376,5 +376,5 @@ export const ringgAiVisibilityReport: VisibilityReport = {
   ctaEyebrow: "90-day sprint",
   ctaHeadline: "Ready to get Ringg AI on those shortlists?",
   ctaBody:
-    "Book a short call. We map the 90-day plan from this audit: India alternatives, insurance, Practo/PharmEasy, cart recovery, support, KYC and Parrot STT — against peers like Edesy, Bolna, Tokki, Aarvox and Sarvam — plus the branded review already won, with weekly screenshot proof and a dashboard.",
+    "Book a short call. We map the 90-day plan from this audit: India alternatives, insurance, Practo/PharmEasy, cart recovery, support, KYC and Parrot STT, against peers like Edesy, Bolna, Tokki, Aarvox and Sarvam, plus the branded review already won, with weekly screenshot proof and a dashboard.",
 };
