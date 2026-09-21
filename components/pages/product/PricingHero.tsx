@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import AiFlip from "@/components/Home/ai-flip";
+import { AI_MODELS_PHRASE } from "@/components/Home/ai-models";
+import RotatingModelName from "@/components/Home/rotating-model-name";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
@@ -36,10 +37,15 @@ export default function PricingHero() {
 
         <h1
           id="pricing-hero-heading"
-          className="mt-8 max-w-4xl text-[2rem] leading-[1.1] font-bold tracking-tight text-balance sm:text-4xl md:text-[3rem] md:leading-[1.12]"
+          className="mt-8 max-w-4xl text-[2rem] leading-[1.1] font-bold tracking-tight sm:text-4xl md:text-[3rem] md:leading-[1.12]"
           style={{ color: HEADING }}
         >
-          AI agents that get you cited in <AiFlip />
+          <span className="sr-only">
+            AI agents that get you cited in {AI_MODELS_PHRASE}
+          </span>
+          <span aria-hidden="true">
+            AI agents that get you cited in <RotatingModelName />
+          </span>
         </h1>
 
         <p

@@ -2,7 +2,8 @@ import type { CSSProperties } from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
-import AiFlip from "@/components/Home/ai-flip";
+import { AI_MODELS_PHRASE } from "@/components/Home/ai-models";
+import RotatingModelName from "@/components/Home/rotating-model-name";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -155,8 +156,13 @@ export default function ServicesHero() {
           id="services-hero-heading"
           className="text-4xl font-bold text-balance text-[#225864] md:text-6xl"
         >
-          Monitor &amp; Boost Your Brand&apos;s Visibility on{" "}
-          <AiFlip />
+          <span className="sr-only">
+            Monitor and boost your brand&apos;s visibility on {AI_MODELS_PHRASE}
+          </span>
+          <span aria-hidden="true">
+            Monitor &amp; Boost Your Brand&apos;s Visibility on{" "}
+            <RotatingModelName />
+          </span>
         </h1>
 
         <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">

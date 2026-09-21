@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import AiFlip from "@/components/Home/ai-flip";
 import { brand } from "@/components/Home/brand";
 import Demo from "@/components/Home/demo";
 import DemoReveal from "@/components/Home/demoReveal";
+import HomeHeroHeadline from "@/components/Home/home-hero-headline";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
@@ -49,18 +49,7 @@ export default function Hero() {
           className="h-9 w-auto object-contain sm:h-10"
         />
 
-        <h1
-          id="home-hero-heading"
-          className="mt-8 max-w-3xl text-[2rem] leading-[1.08] font-bold tracking-tight text-balance sm:text-4xl md:text-[3.1rem] md:leading-[1.08]"
-          style={{ color: brand.heading }}
-        >
-          {/* Keep the stem together so the flip wraps as one unit on narrow
-              viewports — reserved Perplexity width makes that wrap consistent. */}
-          Get&nbsp;cited&nbsp;in <AiFlip />
-          <span className="mt-1.5 block font-bold text-zinc-500">
-            then keep the mention.
-          </span>
-        </h1>
+        <HomeHeroHeadline />
 
         <p
           className="mt-5 max-w-xl text-base leading-relaxed font-medium sm:mt-6 sm:text-lg"
