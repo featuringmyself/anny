@@ -23,7 +23,7 @@ const CHECKLIST = [
 ] as const;
 
 export default function ReportCta({ report }: ReportCtaProps) {
-  const eyebrow = report.ctaEyebrow ?? "Talk to Anny";
+  const eyebrow = report.ctaEyebrow ?? "Talk to Dodox";
   const headline =
     report.ctaHeadline ?? `Get ${report.company} cited in 90 days`;
   const body =

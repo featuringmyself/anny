@@ -11,9 +11,9 @@ import {
 } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
-const title = "Blog · Anny";
+const title = "Blog · Dodox";
 const description =
-  "Anny field notes on AI search, GEO, ChatGPT mentions, Gemini sources, citations, and agency visibility retainers.";
+  "Dodox field notes on AI search, GEO, ChatGPT mentions, Gemini sources, citations, and agency visibility retainers.";
 
 const baseMetadata = pageMetadata({
   path: "/blog",

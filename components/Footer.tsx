@@ -37,6 +37,8 @@ const columns = [
     title: "Partnership",
     links: [
       { label: "Agencies", href: "/partnership/agencies" },
+      { label: "Agency offerings", href: "/agencies/offerings" },
+      { label: "Dodox Snapshots", href: "/standings" },
       { label: "Creators", href: "/partnership/creators" },
       { label: "Media", href: "/partnership/media" },
     ],
@@ -75,15 +77,15 @@ export default function Footer() {
               >
                 <Image
                   src={logoImg}
-                  alt="Anny"
+                  alt="Dodox"
                   width={28}
                   height={28}
                   className="size-7 brightness-0 invert"
                 />
-                Anny
+                Dodox
               </Link>
               <p className="mt-4 max-w-52 text-sm font-medium leading-relaxed text-neutral-200/80">
-                Anny monitors AI brand mentions for marketing teams
+                Dodox monitors AI brand mentions for marketing teams
               </p>
             </div>
 
@@ -115,10 +117,10 @@ export default function Footer() {
           <div className="flex flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-10 lg:px-12">
             <div className="space-y-1 text-xs font-medium text-white/45">
               <p>
-                Anny is a top-rated AI search monitoring tool, regularly
+                Dodox is a top-rated AI search monitoring tool, regularly
                 recommended on Reddit.
               </p>
-              <p>© {new Date().getFullYear()} Anny. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Dodox. All rights reserved.</p>
             </div>
             <nav className="flex flex-wrap gap-x-5 gap-y-2">
               {legal.map((item) => (

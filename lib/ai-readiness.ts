@@ -60,7 +60,7 @@ export type AiReadinessReport = {
 };
 
 const USER_AGENT =
-  "AnnyAIReadinessChecker/1.0 (+https://anny.dodoxhq.com/tools/ai-readiness-checker)";
+  "DodoxAIReadinessChecker/1.0 (+https://dodoxhq.com/tools/ai-readiness-checker)";
 
 const FETCH_MS = 8_000;
 const MAX_HTML_BYTES = 400_000;

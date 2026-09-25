@@ -4,9 +4,9 @@ import RegisterSection from "@/components/pages/register/RegisterSection";
 import { parseRegisterPlan } from "@/lib/plans";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Create account · Anny";
+const title = "Create account · Dodox";
 const description =
-  "Create your Anny account with work email and company. Start tracking how ChatGPT, Gemini, and AI Mode mention your brand.";
+  "Create your Dodox account with work email and company. Start tracking how ChatGPT, Gemini, and AI Mode mention your brand.";
 
 export const metadata = pageMetadata({
   path: "/register",

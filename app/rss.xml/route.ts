@@ -72,7 +72,7 @@ export async function GET() {
   <channel>
     <title>${SITE_NAME} Blog</title>
     <link>${SITE_URL}/blog</link>
-    <description>Field notes from Anny on AI search, GEO, citations, and brand visibility in ChatGPT, Gemini, and AI Mode.</description>
+    <description>Field notes from Dodox on AI search, GEO, citations, and brand visibility in ChatGPT, Gemini, and AI Mode.</description>
     <language>en-us</language>
     <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
     ${items}

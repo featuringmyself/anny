@@ -5,11 +5,11 @@ const reasons = [
   },
   {
     title: "Consistent citations across engines",
-    body: "The same block helps ChatGPT, Claude, Gemini, and others describe Anny the way you intend.",
+    body: "The same block helps ChatGPT, Claude, Gemini, and others describe Dodox the way you intend.",
   },
   {
     title: "Pair with visibility tracking",
-    body: "Publish instructions, then use Anny to measure whether mentions and source quality actually improve.",
+    body: "Publish instructions, then use Dodox to measure whether mentions and source quality actually improve.",
   },
 ] as const;
 

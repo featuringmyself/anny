@@ -6,7 +6,7 @@ import TrackAcrossEngines from "@/components/pages/partnership/agencies/TrackAcr
 import WinBrandMentions from "@/components/pages/partnership/agencies/WinBrandMentions";
 import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Agency Partnership, GEO & AI Visibility for Marketing Agencies | Anny";
+const title = "Agency Partnership, GEO & AI Visibility for Marketing Agencies | Dodox";
 const description =
   "Productize GEO for every client. Multi-brand AI visibility reporting, audits, and action plans built for agency retainers across ChatGPT, Gemini, Perplexity, and more.";
 const ogImage = absoluteUrl("/partnership/agencies/feature-action-plans.webp");

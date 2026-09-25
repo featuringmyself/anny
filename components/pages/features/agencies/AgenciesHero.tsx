@@ -14,7 +14,7 @@ export default function AgenciesHero() {
   return (
     <section className="border-b">
       <div className="px-6 py-16 md:px-12 md:py-20">
-        <p className="mb-4 text-sm font-medium text-[#2462ff]">Anny for agencies</p>
+        <p className="mb-4 text-sm font-medium text-[#2462ff]">Dodox for agencies</p>
         <h1 className="max-w-3xl text-4xl font-medium tracking-tight text-balance md:text-5xl">
           Sell AI visibility as a retainer. Keep the margin.
         </h1>

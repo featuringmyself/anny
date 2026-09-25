@@ -36,7 +36,7 @@ export default function Faq({
           className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed sm:text-lg"
           style={{ color: brand.body }}
         >
-          Short answers about Anny, GEO, and what each plan includes.
+          Short answers about Dodox, GEO, and what each plan includes.
         </p>
       </div>
 

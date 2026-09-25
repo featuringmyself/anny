@@ -23,7 +23,7 @@ export const drCheckerFaqs = [
   {
     question: "Is this a real Domain Rating score?",
     answer:
-      "Yes. The number comes from the public Domain Rating API, not Moz Domain Authority or a score Anny invented.",
+      "Yes. The number comes from the public Domain Rating API, not Moz Domain Authority or a score Dodox invented.",
   },
   {
     question: "What is a good Domain Rating?",
@@ -38,7 +38,7 @@ export const drCheckerFaqs = [
   {
     question: "Does Domain Rating decide whether ChatGPT cites a site?",
     answer:
-      "No. DR is a backlink score. This tool only checks DR. Anny tracks whether ChatGPT, Gemini, and other models mention a brand.",
+      "No. DR is a backlink score. This tool only checks DR. Dodox tracks whether ChatGPT, Gemini, and other models mention a brand.",
   },
   {
     question: "Is the Domain Rating checker free?",

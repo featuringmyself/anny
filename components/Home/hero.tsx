@@ -42,7 +42,7 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pt-16 text-center sm:pt-20 lg:pt-24">
         <Image
           src={logoImg}
-          alt="Anny"
+          alt="Dodox"
           width={120}
           height={40}
           priority
@@ -55,7 +55,7 @@ export default function Hero() {
           className="mt-5 max-w-xl text-base leading-relaxed font-medium sm:mt-6 sm:text-lg"
           style={{ color: brand.body }}
         >
-          Anny is an SEO &amp; GEO Agent with AI Monitoring built in. Track what
+          Dodox is an SEO &amp; GEO Agent with AI Monitoring built in. Track what
           models say, then ship the work that changes it.
         </p>
 

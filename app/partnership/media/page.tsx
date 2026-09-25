@@ -5,7 +5,7 @@ import PressKit from "@/components/pages/partnership/media/PressKit";
 import QuoteRequest from "@/components/pages/partnership/media/QuoteRequest";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Media Partnership · Anny";
+const title = "Media Partnership · Dodox";
 const description =
   "Press kit, logos, and quote requests for journalists covering AI search and GEO.";
 

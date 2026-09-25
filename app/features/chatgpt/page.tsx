@@ -10,9 +10,9 @@ import ChatGptWhyMatters from "@/components/pages/features/chatgpt/ChatGptWhyMat
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 import { SITE_SCREENSHOT_URL } from "@/lib/site";
 
-const title = "ChatGPT Visibility Tracker · Anny";
+const title = "ChatGPT Visibility Tracker · Dodox";
 const description =
-  "Anny lets you measure your brand's performance on ChatGPT, visibility, sentiment, citations, and tips on how to improve.";
+  "Dodox lets you measure your brand's performance on ChatGPT, visibility, sentiment, citations, and tips on how to improve.";
 
 export const metadata = pageMetadata({
   path: "/features/chatgpt",

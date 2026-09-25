@@ -19,7 +19,7 @@ export default function AiModeHero() {
         Track AI Mode and AI Overview side by side
       </h1>
       <p className="mt-4 max-w-xl text-lg text-zinc-500 text-balance">
-        Google is splitting search answers across AI Mode and AI Overviews. Anny
+        Google is splitting search answers across AI Mode and AI Overviews. Dodox
         shows both panels so you know where you appear, and where you disappear.
       </p>
       <div className="mt-8">

@@ -83,7 +83,7 @@ function CoverPage({ report }: { report: ReadinessReport }) {
         }}
       />
 
-      <Text style={pdfStyles.eyebrow}>Anny · AI readiness audit</Text>
+      <Text style={pdfStyles.eyebrow}>Dodox · AI readiness audit</Text>
       <Text style={pdfStyles.h1}>{report.company}</Text>
       <Text style={{ ...pdfStyles.body, marginTop: 10, maxWidth: 420, fontSize: 11 }}>
         {report.tagline ??
@@ -652,7 +652,7 @@ function SprintPage({ report }: { report: ReadinessReport }) {
         >
           {report.ctaUrl
             ? report.ctaUrl.replace(/^https?:\/\//, "")
-            : "anny.dodoxhq.com · talk to sales"}
+            : "dodoxhq.com · talk to sales"}
         </Text>
       </View>
 
@@ -669,9 +669,9 @@ export function ReadinessReportPdf({ report }: ReadinessReportPdfProps) {
   return (
     <Document
       title={`${report.company} AI Readiness Report`}
-      author="Anny"
+      author="Dodox"
       subject={`AI readiness audit for ${report.company}`}
-      creator="Anny · anny.dodoxhq.com"
+      creator="Dodox · dodoxhq.com"
       keywords={`AI readiness, AEO, schema, ${report.company}`}
       language="en"
     >

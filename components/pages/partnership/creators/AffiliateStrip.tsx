@@ -11,7 +11,7 @@ const steps = [
   {
     label: "02",
     title: "Audience starts tracking",
-    body: "When they connect a brand in Anny, attribution sticks through the trial window.",
+    body: "When they connect a brand in Dodox, attribution sticks through the trial window.",
   },
   {
     label: "03",

@@ -6,9 +6,9 @@ import VsVerdict from "@/components/pages/compare/VsVerdict";
 import { ahrefsMatrix, ahrefsVerdict } from "@/components/pages/compare/data/ahrefs";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Anny vs Ahrefs, AI visibility comparison";
+const title = "Dodox vs Ahrefs, AI visibility comparison";
 const description =
-  "Ahrefs is SEO-first. Anny is built for AI answer visibility, citations, and GEO across ChatGPT, Claude, Gemini, and more.";
+  "Ahrefs is SEO-first. Dodox is built for AI answer visibility, citations, and GEO across ChatGPT, Claude, Gemini, and more.";
 
 export const metadata = pageMetadata({
   path: "/compare/ahrefs",
@@ -28,7 +28,7 @@ export default function CompareAhrefsPage() {
         headline={
           <>
             Ahrefs owns classic SEO.{" "}
-            <span className="text-zinc-500">Anny owns AI mentions.</span>
+            <span className="text-zinc-500">Dodox owns AI mentions.</span>
           </>
         }
         description="Backlinks and SERPs still matter, but when buyers ask ChatGPT, you need a different dashboard."
@@ -38,7 +38,7 @@ export default function CompareAhrefsPage() {
       <PatternStrip />
       <VsVerdict
         competitor="Ahrefs"
-        pickAnnyWhen={ahrefsVerdict.pickAnnyWhen}
+        pickDodoxWhen={ahrefsVerdict.pickDodoxWhen}
         pickCompetitorWhen={ahrefsVerdict.pickCompetitorWhen}
       />
     </>

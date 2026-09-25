@@ -10,12 +10,12 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "This guide walks you from an empty Anny account to your first visibility snapshot. You need a work email, one brand domain, and roughly ten minutes. No engineering setup required.",
+        text: "This guide walks you from an empty Dodox account to your first visibility snapshot. You need a work email, one brand domain, and roughly ten minutes. No engineering setup required.",
       },
       { type: "h2", text: "1. Create your workspace" },
       {
         type: "p",
-        text: "Sign up at anny.dodoxhq.com/register with your company email. Anny creates a workspace named after your domain (for example, northwind.com becomes Northwind). You can rename it later under Settings → Workspace.",
+        text: "Sign up at dodoxhq.com/register with your company email. Dodox creates a workspace named after your domain (for example, northwind.com becomes Northwind). You can rename it later under Settings → Workspace.",
       },
       {
         type: "ul",
@@ -28,7 +28,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "2. Add your first brand" },
       {
         type: "p",
-        text: "From the dashboard, click Add brand. Enter the primary domain (acme.com), display name (Acme), and up to five aliases such as Acme Inc, Acme Software, or former product names. Aliases help Anny catch mentions that don't use your exact legal name.",
+        text: "From the dashboard, click Add brand. Enter the primary domain (acme.com), display name (Acme), and up to five aliases such as Acme Inc, Acme Software, or former product names. Aliases help Dodox catch mentions that don't use your exact legal name.",
       },
       {
         type: "callout",
@@ -38,7 +38,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "3. Seed a starter prompt set" },
       {
         type: "p",
-        text: "Anny suggests 12–20 buying-intent prompts based on your category. Accept the defaults for your first run, then refine. A typical B2B SaaS starter set looks like:",
+        text: "Dodox suggests 12–20 buying-intent prompts based on your category. Accept the defaults for your first run, then refine. A typical B2B SaaS starter set looks like:",
       },
       {
         type: "ul",
@@ -65,25 +65,25 @@ export const docArticles: DocArticle[] = [
       {
         type: "quote",
         text: "Most teams see a usable baseline by the end of day one. Week-over-week trends become meaningful after 7–10 daily runs.",
-        cite: "Anny onboarding playbook",
+        cite: "Dodox onboarding playbook",
       },
     ],
   },
   {
     id: "connect-brand",
     title: "Connect a brand",
-    dek: "Domains, aliases, and competitor seeds Anny uses when scoring visibility.",
+    dek: "Domains, aliases, and competitor seeds Dodox uses when scoring visibility.",
     section: "Get started",
     updatedAt: "Jul 28, 2026",
     body: [
       {
         type: "p",
-        text: "A brand in Anny is more than a logo. It is the entity we look for in model answers, the domain we attribute owned citations to, and the center of your competitor ladder.",
+        text: "A brand in Dodox is more than a logo. It is the entity we look for in model answers, the domain we attribute owned citations to, and the center of your competitor ladder.",
       },
       { type: "h2", text: "Primary domain" },
       {
         type: "p",
-        text: "Use the marketing site root (example.com), not an app subdomain (app.example.com) unless that is how buyers know you. Anny normalizes www and trailing paths. If you operate regional sites (example.de, example.co.uk), add them as related domains so owned citations are not marked as third-party.",
+        text: "Use the marketing site root (example.com), not an app subdomain (app.example.com) unless that is how buyers know you. Dodox normalizes www and trailing paths. If you operate regional sites (example.de, example.co.uk), add them as related domains so owned citations are not marked as third-party.",
       },
       { type: "h2", text: "Aliases and spelling variants" },
       {
@@ -102,12 +102,12 @@ export const docArticles: DocArticle[] = [
       {
         type: "callout",
         title: "False positives",
-        text: "Avoid ultra-generic aliases like \"Pulse\" or \"Spark\" without a qualifier. Prefer \"Pulse CRM\" so Anny does not credit unrelated apps.",
+        text: "Avoid ultra-generic aliases like \"Pulse\" or \"Spark\" without a qualifier. Prefer \"Pulse CRM\" so Dodox does not credit unrelated apps.",
       },
       { type: "h2", text: "Competitor seeds" },
       {
         type: "p",
-        text: "Add 3–8 peers you expect to appear in the same answers. Anny builds a visibility ladder per prompt group. Example for a customer-support SaaS brand:",
+        text: "Add 3–8 peers you expect to appear in the same answers. Dodox builds a visibility ladder per prompt group. Example for a customer-support SaaS brand:",
       },
       {
         type: "ul",
@@ -138,7 +138,7 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Prompt sets are the unit of measurement in Anny. A strong set mirrors the real questions buyers type into AI, not the keywords you optimize for classic search.",
+        text: "Prompt sets are the unit of measurement in Dodox. A strong set mirrors the real questions buyers type into AI, not the keywords you optimize for classic search.",
       },
       { type: "h2", text: "Cover the full journey" },
       {
@@ -194,7 +194,7 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Visibility is not portable. A brand that leads in ChatGPT can disappear in AI Mode. Anny tracks each engine as a separate surface so you see the gaps that classic SEO tools miss.",
+        text: "Visibility is not portable. A brand that leads in ChatGPT can disappear in AI Mode. Dodox tracks each engine as a separate surface so you see the gaps that classic SEO tools miss.",
       },
       { type: "h2", text: "Supported engines" },
       {
@@ -211,7 +211,7 @@ export const docArticles: DocArticle[] = [
         type: "p",
         text: "Starter and Pro include three engines of your choice. Advanced plans unlock up to 11 models with custom schedules.",
       },
-      { type: "h2", text: "How often Anny runs prompts" },
+      { type: "h2", text: "How often Dodox runs prompts" },
       {
         type: "p",
         text: "Daily tracking is the default on paid plans. Each prompt is sent to each selected engine once per day in your brand's primary timezone. Weekly mode is available on Advanced for very large libraries.",
@@ -219,7 +219,7 @@ export const docArticles: DocArticle[] = [
       {
         type: "callout",
         title: "Fanouts",
-        text: "For ChatGPT, Anny also records internal query expansions (fanouts). Use them to see the sub-topics the model searched, then fold those phrases into your content.",
+        text: "For ChatGPT, Dodox also records internal query expansions (fanouts). Use them to see the sub-topics the model searched, then fold those phrases into your content.",
       },
       { type: "h2", text: "Comparing engines" },
       {
@@ -267,7 +267,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "Sentiment labels" },
       {
         type: "p",
-        text: "Anny classifies framing as positive, neutral, mixed, or negative. In B2B software samples, ChatGPT often frames brands less favorably than Gemini on evaluation prompts, so a high mention rate with negative sentiment still loses deals.",
+        text: "Dodox classifies framing as positive, neutral, mixed, or negative. In B2B software samples, ChatGPT often frames brands less favorably than Gemini on evaluation prompts, so a high mention rate with negative sentiment still loses deals.",
       },
       {
         type: "quote",
@@ -277,7 +277,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "Answer position" },
       {
         type: "p",
-        text: "When multiple brands appear, Anny records your ordinal position in the recommendation list (1 = first named). Track average position on evaluation prompts weekly. Moving from 3.2 to 1.9 usually correlates with stronger source coverage on comparison articles.",
+        text: "When multiple brands appear, Dodox records your ordinal position in the recommendation list (1 = first named). Track average position on evaluation prompts weekly. Moving from 3.2 to 1.9 usually correlates with stronger source coverage on comparison articles.",
       },
       { type: "h3", text: "Example week" },
       {
@@ -297,7 +297,7 @@ export const docArticles: DocArticle[] = [
         type: "p",
         text: "Most brand mentions are earned through third-party pages the model retrieves, listicles, reviews, Reddit threads, Wikipedia, not your homepage. The Sources view shows which URLs shaped answers across your prompt set.",
       },
-      { type: "h2", text: "Source types Anny tags" },
+      { type: "h2", text: "Source types Dodox tags" },
       {
         type: "ul",
         items: [
@@ -322,7 +322,7 @@ export const docArticles: DocArticle[] = [
       { type: "h2", text: "Owned content still matters" },
       {
         type: "p",
-        text: "Anny also surfaces owned page types engines already ground on, product pages, how-tos, pricing, and comparison pages on your domain. If competitors' product pages appear and yours never do, crawlability and factual structure are usually the issue, not just authority.",
+        text: "Dodox also surfaces owned page types engines already ground on, product pages, how-tos, pricing, and comparison pages on your domain. If competitors' product pages appear and yours never do, crawlability and factual structure are usually the issue, not just authority.",
       },
       {
         type: "ol",
@@ -343,7 +343,7 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Every paid Anny plan includes unlimited seats. Roles control what people can change, not whether they can log in.",
+        text: "Every paid Dodox plan includes unlimited seats. Roles control what people can change, not whether they can log in.",
       },
       { type: "h2", text: "Roles" },
       {
@@ -363,12 +363,12 @@ export const docArticles: DocArticle[] = [
       {
         type: "callout",
         title: "Agency workspaces",
-        text: "Agency plans isolate each client as a project. Switch brands from the project switcher without mixing prompt budgets. White-label dashboards hide Anny branding for client logins.",
+        text: "Agency plans isolate each client as a project. Switch brands from the project switcher without mixing prompt budgets. White-label dashboards hide Dodox branding for client logins.",
       },
       { type: "h2", text: "SSO" },
       {
         type: "p",
-        text: "SAML SSO is available on Advanced and agency enterprise contracts. Map IdP groups to Anny roles so SEO and brand teams land in the right permission set automatically.",
+        text: "SAML SSO is available on Advanced and agency enterprise contracts. Map IdP groups to Dodox roles so SEO and brand teams land in the right permission set automatically.",
       },
     ],
   },
@@ -428,7 +428,7 @@ export const docArticles: DocArticle[] = [
     body: [
       {
         type: "p",
-        text: "Anny is built for weekly operating rhythms. Exports let you leave the product without leaving the data behind.",
+        text: "Dodox is built for weekly operating rhythms. Exports let you leave the product without leaving the data behind.",
       },
       { type: "h2", text: "In-product exports" },
       {
@@ -437,7 +437,7 @@ export const docArticles: DocArticle[] = [
           "Mentions CSV, prompt, engine, date, excerpt, sentiment, position, competitors",
           "Sources CSV, URL, domain, type, engines citing, competitor vs owned",
           "Visibility scorecard PDF, weekly ladder vs competitors for one brand",
-          "White-label PDF, agency branding, client logo, no Anny chrome",
+          "White-label PDF, agency branding, client logo, no Dodox chrome",
         ],
       },
       { type: "h2", text: "API and MCP" },

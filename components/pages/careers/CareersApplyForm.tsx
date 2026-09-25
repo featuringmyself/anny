@@ -187,7 +187,7 @@ export default function CareersApplyForm({
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor={`${fieldId}-note`}>Why Anny?</Label>
+          <Label htmlFor={`${fieldId}-note`}>Why Dodox?</Label>
           <Textarea
             id={`${fieldId}-note`}
             name="note"

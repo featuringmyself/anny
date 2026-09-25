@@ -18,7 +18,7 @@ export const AI_READINESS_DATE_PUBLISHED = "2026-08-20";
 export const AI_READINESS_DATE_MODIFIED = "2026-09-13";
 
 export const AI_READINESS_OG_ALT =
-  "Free AI readiness checker by Anny: score whether ChatGPT can crawl and name a site";
+  "Free AI readiness checker by Dodox: score whether ChatGPT can crawl and name a site";
 export const AI_READINESS_OG_WIDTH = 1200;
 export const AI_READINESS_OG_HEIGHT = 630;
 export const AI_READINESS_OG_IMAGE_PATH = `${AI_READINESS_PATH}/opengraph-image`;
@@ -37,9 +37,9 @@ export const aiReadinessFaqs = [
       "Whether AI crawlers can fetch the site and attach a brand to it. That means robots.txt for training, search, and live-answer bots; a clear title and description; and Organization structured data. It is not whether ChatGPT already mentions you.",
   },
   {
-    question: "Is this the same as Anny’s AI visibility score?",
+    question: "Is this the same as Dodox’s AI visibility score?",
     answer:
-      "No. This checker is on-site: can models reach and identify the domain. Anny tracks whether ChatGPT, Gemini, and other models actually mention the brand in answers. You can be technically ready and still invisible.",
+      "No. This checker is on-site: can models reach and identify the domain. Dodox tracks whether ChatGPT, Gemini, and other models actually mention the brand in answers. You can be technically ready and still invisible.",
   },
   {
     question: "Does missing llms.txt tank the score?",
@@ -49,17 +49,17 @@ export const aiReadinessFaqs = [
   {
     question: "What should I do with the snippets?",
     answer:
-      "Copy them onto the live site: append the robots rules, paste JSON-LD in the homepage head, and point robots.txt at sitemap.xml. Then re-run the scan. After that, use Anny to see if models cite you.",
+      "Copy them onto the live site: append the robots rules, paste JSON-LD in the homepage head, and point robots.txt at sitemap.xml. Then re-run the scan. After that, use Dodox to see if models cite you.",
   },
   {
     question: "Does this replace a full audit?",
     answer:
-      "No. This is a homepage-level scan with files you can paste today. A full Anny engagement also covers citation gaps, competitor prompts, and content that actually gets mentioned.",
+      "No. This is a homepage-level scan with files you can paste today. A full Dodox engagement also covers citation gaps, competitor prompts, and content that actually gets mentioned.",
   },
   {
     question: "Should I run the AI crawlability checker first?",
     answer:
-      "Yes, if you only need to know whether AI bots can fetch the site. Use the free AI crawlability checker at https://anny.dodoxhq.com/tools/ai-crawlability-checker for robots.txt allow/block status, then use this readiness checker for brand identity, schema, and citation signals.",
+      "Yes, if you only need to know whether AI bots can fetch the site. Use the free AI crawlability checker at https://dodoxhq.com/tools/ai-crawlability-checker for robots.txt allow/block status, then use this readiness checker for brand identity, schema, and citation signals.",
   },
   {
     question: "Is the AI readiness checker free?",
@@ -71,7 +71,7 @@ export const aiReadinessFaqs = [
 export const aiReadinessHowTo = {
   name: "How to check AI readiness",
   description:
-    "Scan a public site, then copy the missing files. You do not need an Anny account.",
+    "Scan a public site, then copy the missing files. You do not need an Dodox account.",
   steps: [
     {
       name: "Enter a domain",

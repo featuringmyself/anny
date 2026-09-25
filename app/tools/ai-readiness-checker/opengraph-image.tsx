@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
               display: "flex",
             }}
           />
-          Anny
+          Dodox
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -96,7 +96,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>0–100 on-site score · No signup</span>
-          <span style={{ color: "#9dffd4" }}>anny.dodoxhq.com</span>
+          <span style={{ color: "#9dffd4" }}>dodoxhq.com</span>
         </div>
       </div>
     ),

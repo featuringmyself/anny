@@ -1,6 +1,6 @@
 import type { MatrixRow } from "@/components/pages/compare/VsMatrix";
 
-/** Semrush = all-in-one suite; Anny is purpose-built for AI answers. */
+/** Semrush = all-in-one suite; Dodox is purpose-built for AI answers. */
 export const semrushMatrix: readonly MatrixRow[] = [
   {
     capability: "Dedicated AI answer visibility dashboard",
@@ -40,7 +40,7 @@ export const semrushMatrix: readonly MatrixRow[] = [
 ] as const;
 
 export const semrushVerdict = {
-  pickAnnyWhen: [
+  pickDodoxWhen: [
     "AI search is a first-class channel, not one tile inside a mega-suite.",
     "You need crisp mention, source, and model coverage without suite bloat.",
     "Your team already has SEO tooling and wants a purpose-built GEO layer.",

@@ -24,6 +24,8 @@ const routes: {
   { path: "/tools/ai-crawlability-checker", changeFrequency: "monthly", priority: 0.7 },
   { path: "/tools/ai-readiness-checker", changeFrequency: "monthly", priority: 0.7 },
   { path: "/features/agencies", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/agencies/offerings", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/standings", changeFrequency: "weekly", priority: 0.85 },
   { path: "/features/chatgpt", changeFrequency: "monthly", priority: 0.7 },
   { path: "/features/gemini", changeFrequency: "monthly", priority: 0.7 },
   { path: "/features/ai-mode", changeFrequency: "monthly", priority: 0.7 },

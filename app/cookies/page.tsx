@@ -3,9 +3,9 @@ import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Cookie Settings | Anny";
+const title = "Cookie Settings | Dodox";
 const description =
-  "How Anny uses cookies and similar technologies on anny.dodoxhq.com.";
+  "How Dodox uses cookies and similar technologies on dodoxhq.com.";
 
 export const metadata = pageMetadata({
   path: "/cookies",
@@ -21,15 +21,15 @@ export default function CookiesPage() {
       <LegalProse
         title="Cookie Settings"
         lastUpdated="July 26, 2026"
-        intro="This page explains how Anny uses cookies and similar technologies when you visit our website and product. It is a concise placeholder policy and not legal advice."
+        intro="This page explains how Dodox uses cookies and similar technologies when you visit our website and product. It is a concise placeholder policy and not legal advice."
         sections={[
           {
             heading: "What we use",
-            body: "Anny may use essential cookies to keep the site secure and working, analytics cookies to understand product usage, and preference cookies to remember choices like language or dismissed notices.",
+            body: "Dodox may use essential cookies to keep the site secure and working, analytics cookies to understand product usage, and preference cookies to remember choices like language or dismissed notices.",
           },
           {
             heading: "Essential cookies",
-            body: "These are required for authentication, security, load balancing, and core navigation. You cannot opt out of essential cookies while using Anny.",
+            body: "These are required for authentication, security, load balancing, and core navigation. You cannot opt out of essential cookies while using Dodox.",
           },
           {
             heading: "Analytics & preferences",

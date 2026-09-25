@@ -18,9 +18,9 @@ const features: Feature[] = [
   {
     title: "Stop guessing which prompts to track",
     description:
-      "Anny surfaces the questions real users ask AI assistants about your clients’ categories and products. Start with smart prompt suggestions instead of building lists from scratch.",
+      "Dodox surfaces the questions real users ask AI assistants about your clients’ categories and products. Start with smart prompt suggestions instead of building lists from scratch.",
     image: promptTrackingImage,
-    alt: "Tracked Prompts table in Anny showing three prompts with visibility scores of 76%, 84%, and 67% for the United States, Canada, and Germany",
+    alt: "Tracked Prompts table in Dodox showing three prompts with visibility scores of 76%, 84%, and 67% for the United States, Canada, and Germany",
     caption: "Example tracked prompts with visibility and location",
     imageClassName: "mt-8 w-full",
   },
@@ -36,9 +36,9 @@ const features: Feature[] = [
   {
     title: "End manual AI SEO audits",
     description:
-      "No more copy-pasting prompts into ChatGPT, Perplexity, and Google AI one by one. Anny runs checks across all major engines daily and compiles results into client-ready dashboards.",
+      "No more copy-pasting prompts into ChatGPT, Perplexity, and Google AI one by one. Dodox runs checks across all major engines daily and compiles results into client-ready dashboards.",
     image: auditsImage,
-    alt: "Anny AI SEO audit results table with date, platform, mention status, position, and competing brand mentions across Gemini, Perplexity, and ChatGPT",
+    alt: "Dodox AI SEO audit results table with date, platform, mention status, position, and competing brand mentions across Gemini, Perplexity, and ChatGPT",
     caption: "Daily audit results across major AI engines",
     imageClassName: "mt-8 w-full",
   },
@@ -47,7 +47,7 @@ const features: Feature[] = [
     description:
       "Manage multiple clients and projects under one subscription, distribute prompts across any project, invite your team, and export white-label reports that plug straight into your retainers.",
     image: clientManagementImage,
-    alt: "Anny agency client workspace listing Amadora, Albato, and Ordemio with prompt counts, execution totals, and LLM coverage for ChatGPT, Claude, and Gemini",
+    alt: "Dodox agency client workspace listing Amadora, Albato, and Ordemio with prompt counts, execution totals, and LLM coverage for ChatGPT, Claude, and Gemini",
     caption: "Multi-client workspace with prompts, executions, and LLMs",
     imageClassName: "mt-8 w-full",
   },

@@ -103,7 +103,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
                 See what AI says about your brand
               </p>
               <p className="mt-2 text-[15px] leading-relaxed text-zinc-500">
-                Anny tracks visibility, answer position, sentiment, and sources
+                Dodox tracks visibility, answer position, sentiment, and sources
                 across ChatGPT, Gemini, AI Mode, and more, so you can close the
                 gaps that cost you recommendations.
               </p>

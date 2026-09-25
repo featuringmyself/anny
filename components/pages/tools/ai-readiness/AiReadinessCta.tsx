@@ -22,7 +22,7 @@ export function AiReadinessCta() {
           Mentions are the real score
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-          Use Anny to see whether ChatGPT, Gemini, and AI Mode actually talk
+          Use Dodox to see whether ChatGPT, Gemini, and AI Mode actually talk
           about the brand.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

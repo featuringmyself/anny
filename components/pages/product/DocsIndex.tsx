@@ -100,7 +100,7 @@ export default function DocsIndex() {
         <header className="max-w-2xl">
           <h2 className="text-2xl font-medium tracking-tight">Guides</h2>
           <p className="mt-2 text-sm text-zinc-500">
-            Core paths for marketing teams shipping GEO with Anny. Updated for the
+            Core paths for marketing teams shipping GEO with Dodox. Updated for the
             Aug 2026 product surface.
           </p>
         </header>

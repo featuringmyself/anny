@@ -26,7 +26,7 @@ export default function ContentKitStrip() {
             Content kit
           </h2>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400 text-balance">
-            Everything you need to ship a clear Anny segment without reinventing
+            Everything you need to ship a clear Dodox segment without reinventing
             the demo every week.
           </p>
         </div>

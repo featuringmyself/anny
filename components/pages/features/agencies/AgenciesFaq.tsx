@@ -12,9 +12,9 @@ export const faqs = [
       "Agencies get a separate, heavily discounted rate built around a roster instead of a single brand. Unlimited client workspaces, unlimited seats, all models, white-label reporting, and API access are included at every tier, only volume scales. We quote it on a call rather than publishing it.",
   },
   {
-    question: "Can I resell Anny under my own brand?",
+    question: "Can I resell Dodox under my own brand?",
     answer:
-      "Yes. Client-facing dashboards, reports, and exports carry your logo and live on your domain. Anny stays under the hood, never appears on your invoice, and we never contact your clients directly.",
+      "Yes. Client-facing dashboards, reports, and exports carry your logo and live on your domain. Dodox stays under the hood, never appears on your invoice, and we never contact your clients directly.",
   },
   {
     question: "What do agencies typically charge clients for this?",

@@ -3,8 +3,8 @@ import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Imprint | Anny";
-const description = "Legal imprint and company contact information for Anny (India).";
+const title = "Imprint | Dodox";
+const description = "Legal imprint and company contact information for Dodox (India).";
 
 export const metadata = pageMetadata({
   path: "/imprint",
@@ -20,11 +20,11 @@ export default function ImprintPage() {
       <LegalProse
         title="Imprint"
         lastUpdated="August 9, 2026"
-        intro="Information about the operator of Anny, provided for transparency and statutory disclosure under Indian law."
+        intro="Information about the operator of Dodox, provided for transparency and statutory disclosure under Indian law."
         sections={[
           {
             heading: "Operator",
-            body: "Anny, AI search analytics for marketing teams, operated from India. Website: anny.dodoxhq.com. Email: hello@dodoxhq.com.",
+            body: "Dodox, AI search analytics for marketing teams, operated from India. Website: dodoxhq.com. Email: hello@dodoxhq.com.",
           },
           {
             heading: "Registered address",
@@ -32,7 +32,7 @@ export default function ImprintPage() {
           },
           {
             heading: "Responsible for content",
-            body: "Editorial responsibility for this website rests with the Anny team. Product and marketing inquiries: hello@dodoxhq.com. Legal: legal@dodoxhq.com. Privacy: privacy@dodoxhq.com.",
+            body: "Editorial responsibility for this website rests with the Dodox team. Product and marketing inquiries: hello@dodoxhq.com. Legal: legal@dodoxhq.com. Privacy: privacy@dodoxhq.com.",
           },
           {
             heading: "Jurisdiction & dispute resolution",

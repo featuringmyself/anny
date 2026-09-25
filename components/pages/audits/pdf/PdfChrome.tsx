@@ -10,8 +10,8 @@ type PdfHeaderProps = {
 export function PdfHeader({ company, kind = "visibility" }: PdfHeaderProps) {
   const brand =
     kind === "readiness"
-      ? "Anny · AI readiness audit"
-      : "Anny · AI visibility audit";
+      ? "Dodox · AI readiness audit"
+      : "Dodox · AI visibility audit";
 
   return (
     <View style={pdfStyles.header} fixed>
@@ -31,7 +31,7 @@ export function PdfFooter({ privateReport }: PdfFooterProps) {
       <Text style={pdfStyles.footerText}>
         {privateReport
           ? "Private · prepared for outreach only · not for redistribution"
-          : "Prepared by Anny · anny.dodoxhq.com"}
+          : "Prepared by Dodox · dodoxhq.com"}
       </Text>
       <Text
         style={pdfStyles.footerText}

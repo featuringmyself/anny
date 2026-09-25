@@ -60,7 +60,7 @@ function CoverPage({ report }: { report: VisibilityReport }) {
         }}
       />
 
-      <Text style={pdfStyles.eyebrow}>Anny · AI visibility audit</Text>
+      <Text style={pdfStyles.eyebrow}>Dodox · AI visibility audit</Text>
       <Text style={pdfStyles.h1}>{report.company}</Text>
       <Text style={{ ...pdfStyles.body, marginTop: 10, maxWidth: 420, fontSize: 11 }}>
         {report.tagline ??
@@ -546,7 +546,7 @@ function SprintPage({ report }: { report: VisibilityReport }) {
         >
           {report.ctaUrl
             ? report.ctaUrl.replace(/^https?:\/\//, "")
-            : "anny.dodoxhq.com · talk to sales"}
+            : "dodoxhq.com · talk to sales"}
         </Text>
       </View>
 
@@ -569,9 +569,9 @@ export function VisibilityReportPdf({ report }: VisibilityReportPdfProps) {
   return (
     <Document
       title={`${report.company} AI Visibility Report`}
-      author="Anny"
+      author="Dodox"
       subject={`AI visibility audit for ${report.company}`}
-      creator="Anny · anny.dodoxhq.com"
+      creator="Dodox · dodoxhq.com"
       keywords={`AI visibility, GEO, ${report.company}, ChatGPT`}
       language="en"
     >

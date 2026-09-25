@@ -35,7 +35,7 @@ export default function GeminiCitationBoard() {
           Multi-turn citation board
         </h2>
         <p className="mt-1 max-w-lg text-sm text-zinc-500">
-          Gemini often revises recommendations across turns. Anny keeps the
+          Gemini often revises recommendations across turns. Dodox keeps the
           full thread and inline citation markers so you see where you appear.
         </p>
       </div>

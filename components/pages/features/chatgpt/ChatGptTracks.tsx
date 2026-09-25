@@ -29,7 +29,7 @@ const visualFeatures = [
     icon: TrendingUp,
     title: "Recommended actions",
     description:
-      "Anny ranks each recommendation by expected impact, letting you know exactly what content to create or optimize.",
+      "Dodox ranks each recommendation by expected impact, letting you know exactly what content to create or optimize.",
     image: recommendedActions,
     alt: "Recommended action card with impact score and Todo, Skip, Done controls",
     imageClassName: "mx-auto h-auto w-[92%] max-w-md",
@@ -50,13 +50,13 @@ const textFeatures = [
     icon: Zap,
     title: "Citation intelligence",
     description:
-      "ChatGPT pulls from specific websites when forming answers. Anny tracks sources that shape AI search results, letting you target domains for citations.",
+      "ChatGPT pulls from specific websites when forming answers. Dodox tracks sources that shape AI search results, letting you target domains for citations.",
   },
   {
     icon: Smile,
     title: "Sentiment Analysis",
     description:
-      "Our observations show that in the B2B software space, ChatGPT tends to mention brands less favorably than other AI models. Use Anny to see how ChatGPT portrays you.",
+      "Our observations show that in the B2B software space, ChatGPT tends to mention brands less favorably than other AI models. Use Dodox to see how ChatGPT portrays you.",
   },
   {
     icon: Link2,
@@ -93,7 +93,7 @@ export default function ChatGptTracks() {
     >
       <SectionIntro
         eyebrow={<SectionEyebrow>Overview</SectionEyebrow>}
-        title="What Anny tracks in ChatGPT"
+        title="What Dodox tracks in ChatGPT"
         titleId="chatgpt-tracks-heading"
         description="Query fanouts, opportunity scoring, smart filters, tailored recommendations, and transparent data. All in one place."
       />

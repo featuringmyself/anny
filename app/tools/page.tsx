@@ -9,7 +9,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata, webpageJsonLd } from "@/li
 export const TOOLS_PATH = "/tools";
 export const TOOLS_TITLE = "Free SEO and AI tools";
 export const TOOLS_DESCRIPTION =
-  "Free public tools from Anny: AI readiness checker, AI crawlability checker, and Domain Rating lookup. No signup.";
+  "Free public tools from Dodox: AI readiness checker, AI crawlability checker, and Domain Rating lookup. No signup.";
 
 const TOOLS_DATE_PUBLISHED = "2026-08-20";
 const TOOLS_DATE_MODIFIED = "2026-09-13";

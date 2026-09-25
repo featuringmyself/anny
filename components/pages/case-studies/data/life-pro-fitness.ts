@@ -17,9 +17,9 @@ export const lifeProFitnessCaseStudy: CaseStudy = {
     ],
   },
   approach: {
-    heading: "Anny’s structured optimisation for Rufus interpretability",
+    heading: "Dodox’s structured optimisation for Rufus interpretability",
     intro: [
-      "Anny applied an 11-point optimisation framework across LifePro’s key PDPs, designed to make each listing more retrievable, interpretable, and recommendable by Rufus.",
+      "Dodox applied an 11-point optimisation framework across LifePro’s key PDPs, designed to make each listing more retrievable, interpretable, and recommendable by Rufus.",
     ],
     steps: [
       {
@@ -131,7 +131,7 @@ export const lifeProFitnessCaseStudy: CaseStudy = {
     heading: "Looking ahead",
     body: [
       "LifePro’s results show what happens when product content is rebuilt around how AI shopping assistants actually work. Success on Amazon is no longer only about ranking for keywords - it is about being understood, matched to intent, and recommended by AI systems.",
-      "Anny helped LifePro make its PDPs easier to interpret, easier to match, and easier to recommend - and the commercial impact followed in weeks.",
+      "Dodox helped LifePro make its PDPs easier to interpret, easier to match, and easier to recommend - and the commercial impact followed in weeks.",
     ],
   },
 };

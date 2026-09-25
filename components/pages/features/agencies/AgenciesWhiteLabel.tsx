@@ -3,7 +3,7 @@ import { TalkToSalesButton } from "@/components/talk-to-sales";
 const points = [
   {
     title: "Your logo, your domain",
-    body: "Client-facing reports and dashboards carry your brand. Anny stays under the hood and off the invoice.",
+    body: "Client-facing reports and dashboards carry your brand. Dodox stays under the hood and off the invoice.",
   },
   {
     title: "No per-seat pricing",

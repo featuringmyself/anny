@@ -9,9 +9,9 @@ import {
 } from "@/components/pages/compare/data/semrush";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Anny vs Semrush, AI visibility comparison";
+const title = "Dodox vs Semrush, AI visibility comparison";
 const description =
-  "Semrush is an all-in-one marketing suite. Anny is purpose-built for AI answer visibility and GEO.";
+  "Semrush is an all-in-one marketing suite. Dodox is purpose-built for AI answer visibility and GEO.";
 
 export const metadata = pageMetadata({
   path: "/compare/semrush",
@@ -32,18 +32,18 @@ export default function CompareSemrushPage() {
           <>
             Suites sprawl.{" "}
             <span className="text-zinc-500">
-              Anny stays on AI answers.
+              Dodox stays on AI answers.
             </span>
           </>
         }
-        description="Keep Semrush for SEO and PPC. Add Anny when AI mentions need their own workflow."
+        description="Keep Semrush for SEO and PPC. Add Dodox when AI mentions need their own workflow."
       />
       <PatternStrip />
       <VsMatrix competitor="Semrush" rows={semrushMatrix} />
       <PatternStrip />
       <VsVerdict
         competitor="Semrush"
-        pickAnnyWhen={semrushVerdict.pickAnnyWhen}
+        pickDodoxWhen={semrushVerdict.pickDodoxWhen}
         pickCompetitorWhen={semrushVerdict.pickCompetitorWhen}
       />
     </>

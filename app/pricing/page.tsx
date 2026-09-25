@@ -6,7 +6,7 @@ import PricingTiers from "@/components/pages/product/PricingTiers";
 import { pricedOffers } from "@/lib/pricing";
 import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Pricing · Anny";
+const title = "Pricing · Dodox";
 const description =
   "AI agents from $150/mo: SEO & GEO Agent + Monitoring at $300 (includes Monitoring), AI Monitoring alone at $150. Managed services start at $250/mo.";
 

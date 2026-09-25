@@ -3,9 +3,9 @@ import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Privacy Policy | Anny";
+const title = "Privacy Policy | Dodox";
 const description =
-  "How Anny collects, uses, and protects personal data for AI search analytics.";
+  "How Dodox collects, uses, and protects personal data for AI search analytics.";
 
 export const metadata = pageMetadata({
   path: "/privacy",
@@ -21,12 +21,12 @@ export default function PrivacyPage() {
       <LegalProse
         title="Privacy Policy"
         lastUpdated="July 26, 2026"
-        intro='This Privacy Policy is issued by Anny (“Anny”, “we”, or “us”). For privacy questions, email privacy@dodoxhq.com. Formal notices should use the address on our Imprint page. We process data only as needed to provide and improve Anny, in a privacy-friendly way and in compliance with the EU General Data Protection Regulation (“GDPR”). This policy covers website visits, signup and onboarding, product use, communications, payments, and internal operations, including purposes, legal bases (Art. 6 GDPR), processors (Art. 28 GDPR), international transfers (Arts. 44 ff. GDPR), and your rights (Arts. 12–22 GDPR).'
+        intro='This Privacy Policy is issued by Dodox (“Dodox”, “we”, or “us”). For privacy questions, email privacy@dodoxhq.com. Formal notices should use the address on our Imprint page. We process data only as needed to provide and improve Dodox, in a privacy-friendly way and in compliance with the EU General Data Protection Regulation (“GDPR”). This policy covers website visits, signup and onboarding, product use, communications, payments, and internal operations, including purposes, legal bases (Art. 6 GDPR), processors (Art. 28 GDPR), international transfers (Arts. 44 ff. GDPR), and your rights (Arts. 12–22 GDPR).'
         sections={[
           {
             heading: "(1) When you visit our website",
             body: [
-              "In brief: We use our website to inform you about Anny, and we employ certain analytics and marketing tools to understand how the site is used and to reach interested users. We minimize personal data in this process. Our site is hosted by Vercel. We use cookies and similar technologies for analytics and advertising only with your consent.",
+              "In brief: We use our website to inform you about Dodox, and we employ certain analytics and marketing tools to understand how the site is used and to reach interested users. We minimize personal data in this process. Our site is hosted by Vercel. We use cookies and similar technologies for analytics and advertising only with your consent.",
               "Purpose: To load the website for you and ensure its security and performance. With your permission, we also collect analytics data (e.g. page views, clicks) to understand site usage and improve content.",
               "Data & cookies: When you visit, we (or our analytics tools) may collect information such as your IP address, browser type/version, device identifiers, and referring site. Essential cookies are only used to make the site function (e.g. load balancing, security) and do not require consent. For analytics or ads, we use cookies or similar identifiers only if you opt in via our cookie consent banner. You can adjust preferences later or block nonessential cookies in your browser. Declining analytics cookies will not affect basic use of the site.",
               "Legal basis: Delivering the website and securing it relies on our legitimate interest (Art. 6(1)(f) GDPR). Analytics or advertising cookies rely on your consent (Art. 6(1)(a) GDPR).",
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
           {
             heading: "(2) When you sign up or onboard",
             body: [
-              "In brief: When you register for an Anny account or join a waitlist or partner program (e.g. Agency & Creator Partner Program), we collect what we need to create and manage your account, typically email and an organization or team name. Authentication and account storage may use Firebase (Google Cloud). We keep registration data secure and only use it to provide the service.",
+              "In brief: When you register for an Dodox account or join a waitlist or partner program (e.g. Agency & Creator Partner Program), we collect what we need to create and manage your account, typically email and an organization or team name. Authentication and account storage may use Firebase (Google Cloud). We keep registration data secure and only use it to provide the service.",
               "Purpose: To create your account, authenticate you, set up your workspace, and manage waitlists.",
               "Data collected: Email (verified via login link or confirmation), name and/or organization name, an internal user ID, and technical data such as IP address and device/browser info used to deliver login verification and detect suspicious access.",
               "Legal basis: Contract (Art. 6(1)(b) GDPR), we need this data to provide the account and platform access you request.",
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           {
             heading: "(3) When you use our product",
             body: [
-              "In brief: Once you use Anny, we process data to deliver the product, monitor and improve it, and support you. That includes content you enter, usage analytics, and support communications.",
+              "In brief: Once you use Dodox, we process data to deliver the product, monitor and improve it, and support you. That includes content you enter, usage analytics, and support communications.",
               "Purpose: (A) Core product features; (B) product analytics and improvement; (C) customer support; (D) security and maintenance.",
               "Data collected: Information you provide or generate in the product (e.g. tracked domains, prompts, projects, results, metrics), usage events and error logs (typically tied to a user ID or aggregated), and in-app support messages and contact details if you use the support messenger.",
               "Legal basis: Mostly contract performance (Art. 6(1)(b) GDPR). Analytics and improvement may also rely on legitimate interest (Art. 6(1)(f) GDPR) in functionality, security, and usability.",
@@ -102,12 +102,12 @@ export default function PrivacyPage() {
             heading: "(9) Further information",
             body: [
               "Data security: We use appropriate technical and organizational measures, including encryption in transit (HTTPS) and at rest where applicable, secure credential management, software updates, and access limited to personnel who need it.",
-              "Other recipients: We do not share your data outside Anny except with processors and when legally required.",
+              "Other recipients: We do not share your data outside Dodox except with processors and when legally required.",
               "Processors and agreements: Processors operate under binding agreements and may only process data on our instructions.",
               "Automated decisions: We do not use personal data for automated decision-making (including profiling) with legal or similarly significant effects (Art. 22 GDPR).",
-              "Children’s data: Anny is not directed to children under 16. We do not knowingly collect their data. If we learn we have, we will delete it.",
+              "Children’s data: Dodox is not directed to children under 16. We do not knowingly collect their data. If we learn we have, we will delete it.",
               "Changes: We may update this policy to reflect product or legal changes. Material changes will be announced by email or a prominent notice. The “Last updated” date always reflects the latest revision. Continued use after a change means you accept the revised policy.",
-              "Contact: Questions about this Privacy Policy or how Anny handles data, privacy@dodoxhq.com.",
+              "Contact: Questions about this Privacy Policy or how Dodox handles data, privacy@dodoxhq.com.",
             ],
           },
         ]}

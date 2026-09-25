@@ -32,10 +32,10 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Anny - AI Search Visibility Monitoring",
+  title: "Dodox - AI Search Visibility Monitoring",
   description: SITE_DESCRIPTION,
   openGraph: {
-    title: "Anny - AI Search Visibility Monitoring",
+    title: "Dodox - AI Search Visibility Monitoring",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: SITE_X_HANDLE,
-    title: "Anny - AI Search Visibility Monitoring",
+    title: "Dodox - AI Search Visibility Monitoring",
     description: SITE_DESCRIPTION,
     images: [
       {

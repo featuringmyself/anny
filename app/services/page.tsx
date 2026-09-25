@@ -8,7 +8,7 @@ import ServicesGraphics from "@/components/pages/services/ServicesGraphics";
 import ServicesPutOnAIMap from "@/components/pages/services/ServicesPutOnAIMap";
 import ServicesRiskReputation from "@/components/pages/services/ServicesRiskReputation";
 
-const title = "Services: Managed AI Visibility & GEO | Anny";
+const title = "Services: Managed AI Visibility & GEO | Dodox";
 const description =
   "Managed GEO & AEO. Be the brand AI recommends when buyers ask who to trust.";
 const ogImage = absoluteUrl("/services/og.webp");

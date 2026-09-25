@@ -26,7 +26,7 @@ export default function QuoteRequest() {
               On-record quotes for ChatGPT / Gemini / AI Mode stories
             </li>
             <li className="pb-1">
-              Fact-check passes on Anny product claims
+              Fact-check passes on Dodox product claims
             </li>
           </ul>
           <div className="mt-10">

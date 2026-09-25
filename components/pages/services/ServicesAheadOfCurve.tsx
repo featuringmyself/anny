@@ -27,7 +27,7 @@ export default function ServicesAheadOfCurve() {
               className="inline-block -translate-y-px rounded-lg px-2.5 py-1 -rotate-2 align-baseline sm:px-2.5 sm:py-2"
               style={{ backgroundColor: HEADING, color: BADGE_FG }}
             >
-              Anny
+              Dodox
             </span>
           </span>
         </h2>
@@ -39,7 +39,7 @@ export default function ServicesAheadOfCurve() {
           <p>
             We began with a simple idea: growth shouldn&apos;t be complicated.
             Most businesses choose between hiring an agency for strategy or using
-            a tool for data. With Anny, you don&apos;t have to. We bring
+            a tool for data. With Dodox, you don&apos;t have to. We bring
             together the expertise of an agency and the precision of AI
             technology, delivering smarter insights, stronger visibility, and a
             future-proof digital strategy in one place.
@@ -48,7 +48,7 @@ export default function ServicesAheadOfCurve() {
             While others focus only on Google optimization, we&apos;re already
             helping clients get referenced and recommended by AI search platforms
             like ChatGPT and Google AI Overview. The result? Businesses working
-            with Anny grow 47% faster, not because we keep up with change, but
+            with Dodox grow 47% faster, not because we keep up with change, but
             because we stay ahead of it.
           </p>
         </div>

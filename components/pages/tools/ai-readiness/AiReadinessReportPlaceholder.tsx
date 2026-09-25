@@ -355,7 +355,7 @@ export function AiReadinessReportPlaceholder({
           On-site is the floor. Mentions are the score.
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-500">
-          Ship the fixes above, then use Anny to see whether ChatGPT, Gemini, and
+          Ship the fixes above, then use Dodox to see whether ChatGPT, Gemini, and
           AI Mode actually mention {company}.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">

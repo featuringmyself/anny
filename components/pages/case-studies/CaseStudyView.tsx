@@ -237,7 +237,7 @@ export default function CaseStudyView({ study }: CaseStudyViewProps) {
             Ready to move your AI visibility?
           </p>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-zinc-400 md:text-base">
-            Anny tracks visibility, answer position, sentiment, and sources
+            Dodox tracks visibility, answer position, sentiment, and sources
             across ChatGPT, Gemini, AI Mode, and more - so you can close the
             gaps that cost you recommendations.
           </p>

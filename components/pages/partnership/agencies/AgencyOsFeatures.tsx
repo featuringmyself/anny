@@ -175,7 +175,7 @@ export default function AgencyOsFeatures() {
               <figure>
                 <Image
                   src={actionPlansImage}
-                  alt="Anny GEO action plan table with high-impact objectives, deliverables, and impact ratings for agency clients"
+                  alt="Dodox GEO action plan table with high-impact objectives, deliverables, and impact ratings for agency clients"
                   width={900}
                   height={924}
                   className="h-auto w-full rounded-2xl border border-zinc-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
@@ -183,7 +183,7 @@ export default function AgencyOsFeatures() {
                   placeholder="blur"
                 />
                 <figcaption className="sr-only">
-                  Anny GEO action plan table with high-impact objectives,
+                  Dodox GEO action plan table with high-impact objectives,
                   deliverables, and impact ratings for agency clients
                 </figcaption>
               </figure>

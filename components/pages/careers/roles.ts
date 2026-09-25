@@ -44,11 +44,11 @@ export const roles: CareerRole[] = [
     summary:
       "Shape how marketers see AI visibility, dashboards, reports, and workflows that feel inevitable.",
     about:
-      "Anny turns opaque model behavior into decisions. You'll design the surfaces that make mention share, answer position, and citation gaps obvious, without looking like a BI tool from 2014.",
+      "Dodox turns opaque model behavior into decisions. You'll design the surfaces that make mention share, answer position, and citation gaps obvious, without looking like a BI tool from 2014.",
     responsibilities: [
       "Own product design from exploration through polished UI",
       "Prototype report and dashboard patterns for multi-engine data",
-      "Build a coherent visual system that matches Anny's marketing site",
+      "Build a coherent visual system that matches Dodox's marketing site",
       "Collaborate tightly with engineering on motion and interaction details",
     ],
     niceToHaves: [
@@ -64,13 +64,13 @@ export const roles: CareerRole[] = [
     type: "Full-time",
     team: "Go-to-market",
     summary:
-      "Help brands discover Anny the same way buyers discover brands in AI search, with evidence, not slogans.",
+      "Help brands discover Dodox the same way buyers discover brands in AI search, with evidence, not slogans.",
     about:
       "You'll run experiments across content, partnerships, and paid that turn GEO curiosity into trials. You understand SEO and modern AI search well enough to speak the customer's language.",
     responsibilities: [
       "Own acquisition loops: content, comparison pages, and partner channels",
       "Instrument funnels and report what actually converts",
-      "Ship campaigns that showcase Anny reports and brand audits",
+      "Ship campaigns that showcase Dodox reports and brand audits",
       "Collaborate with product on messaging for marketers and agencies",
     ],
     niceToHaves: [
@@ -88,7 +88,7 @@ export const roles: CareerRole[] = [
     summary:
       "Make sure every customer turns visibility data into a weekly action backlog, not another ignored dashboard.",
     about:
-      "You'll be the bridge between Anny's product and marketing teams who need to win mentions. Onboarding, QBRs, and playbooks that turn reports into outreach, content, and competitive moves.",
+      "You'll be the bridge between Dodox's product and marketing teams who need to win mentions. Onboarding, QBRs, and playbooks that turn reports into outreach, content, and competitive moves.",
     responsibilities: [
       "Own onboarding and ongoing success for brand and agency accounts",
       "Translate visibility gaps into prioritized action plans",
@@ -108,13 +108,13 @@ export const roles: CareerRole[] = [
     type: "Full-time / Contract",
     team: "General",
     summary:
-      "Don't see a listed role? Tell us what you'd build at Anny, we hire for judgment and taste.",
+      "Don't see a listed role? Tell us what you'd build at Dodox, we hire for judgment and taste.",
     about:
-      "We're a small team. If you have a sharp take on AI search, analytics, design, or GTM and want to work on Anny, send an open application. We'll route it to the right person.",
+      "We're a small team. If you have a sharp take on AI search, analytics, design, or GTM and want to work on Dodox, send an open application. We'll route it to the right person.",
     responsibilities: [
       "Describe the problem you'd own in your first 90 days",
       "Share work that shows how you think, not only where you've worked",
-      "Be specific about why Anny, and AI search, interests you",
+      "Be specific about why Dodox, and AI search, interests you",
     ],
     niceToHaves: [
       "A link to something you shipped",

@@ -15,7 +15,7 @@ const benchmarks = [
     value: "50–70%",
     unit: "gross margin",
     label: "Once you pass ~10 clients",
-    body: "Your Anny cost is flat and discounted; client revenue scales per account. The spread is yours.",
+    body: "Your Dodox cost is flat and discounted; client revenue scales per account. The spread is yours.",
   },
 ] as const;
 
@@ -28,7 +28,7 @@ export default function AgenciesEconomics() {
           GEO is the highest-margin line item you can add this quarter
         </h2>
         <p className="mt-3 max-w-lg text-sm leading-relaxed text-zinc-500">
-          You are already having the conversation with clients. Anny is the tooling layer that makes
+          You are already having the conversation with clients. Dodox is the tooling layer that makes
           it billable, priced so one client covers the platform and the rest is margin.
         </p>
       </div>
@@ -56,7 +56,7 @@ export default function AgenciesEconomics() {
       <div className="border-t px-6 py-5 md:px-12">
         <p className="max-w-2xl text-xs text-zinc-400">
           Ranges reflect published 2026 agency benchmarks for GEO and AI-visibility retainers. What
-          you charge is yours to set · Anny never appears on the client invoice.
+          you charge is yours to set · Dodox never appears on the client invoice.
         </p>
       </div>
     </section>

@@ -3,9 +3,9 @@ import JsonLd from "@/components/JsonLd";
 import { faqs } from "@/lib/faqs";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "FAQ | Anny";
+const title = "FAQ | Dodox";
 const description =
-  "Answers to common questions about Anny, AI search visibility, GEO, and whether the Agent includes Monitoring.";
+  "Answers to common questions about Dodox, AI search visibility, GEO, and whether the Agent includes Monitoring.";
 
 export const metadata = pageMetadata({
   path: "/faq",

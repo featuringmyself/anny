@@ -30,7 +30,7 @@ export default function ChatGptHero() {
             ChatGPT Visibility Tracker
           </h1>
           <p className="mt-4 max-w-md text-base leading-tight text-pretty text-zinc-500">
-            Anny shows you exactly how your brand appears in ChatGPT, with
+            Dodox shows you exactly how your brand appears in ChatGPT, with
             everything you need to track, understand, and improve your
             visibility.
           </p>
@@ -46,7 +46,7 @@ export default function ChatGptHero() {
         <figure className="relative min-w-0 overflow-hidden border border-border bg-white">
           <Image
             src={heroDashboard}
-            alt="Anny ChatGPT visibility dashboard showing brand overview, competitor trends, and sentiment"
+            alt="Dodox ChatGPT visibility dashboard showing brand overview, competitor trends, and sentiment"
             width={heroDashboard.width}
             height={heroDashboard.height}
             className="h-auto w-full"

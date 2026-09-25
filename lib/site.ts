@@ -1,8 +1,8 @@
-export const SITE_URL = "https://anny.dodoxhq.com";
-export const SITE_NAME = "Anny";
+export const SITE_URL = "https://dodoxhq.com";
+export const SITE_NAME = "Dodox";
 
 export const SITE_DESCRIPTION =
-  "Anny is an SEO & GEO Agent with AI Monitoring included. Track how ChatGPT, Claude, Gemini, and Perplexity mention your brand, then ship the work that earns more citations.";
+  "Dodox is an SEO & GEO Agent with AI Monitoring included. Track how ChatGPT, Claude, Gemini, and Perplexity mention your brand, then ship the work that earns more citations.";
 
 /** Brand mark served from /public/logo.png */
 export const SITE_LOGO_URL = `${SITE_URL}/logo.png`;
@@ -12,7 +12,7 @@ export const SITE_SCREENSHOT_URL = `${SITE_URL}/features/chatgpt/hero-dashboard.
 export const SITE_SCREENSHOT_WIDTH = 2048;
 export const SITE_SCREENSHOT_HEIGHT = 1121;
 export const SITE_SCREENSHOT_ALT =
-  "Anny ChatGPT visibility dashboard overview";
+  "Dodox ChatGPT visibility dashboard overview";
 
 /** Official social profiles for Organization.sameAs / footer links */
 export const SITE_X_URL = "https://x.com/Anny_analytics";

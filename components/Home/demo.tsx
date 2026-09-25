@@ -341,7 +341,7 @@ export default function Demo({ variant = "full" }: DemoProps) {
         }
       >
         <figcaption className="sr-only">
-          Anny dashboard showing AI visibility trends, competitor comparison,
+          Dodox dashboard showing AI visibility trends, competitor comparison,
           cited domains, and domain types for Attio
         </figcaption>
         <div

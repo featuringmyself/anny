@@ -46,7 +46,7 @@ export default function VsMatrix({ competitor, rows }: VsMatrixProps) {
         <div className="min-w-[36rem] md:min-w-xl">
           <div className="grid grid-cols-[1.4fr_1fr_1fr] border-b px-4 py-4 text-xs font-medium tracking-wide text-zinc-400 uppercase md:px-10">
             <span className="sticky left-0 bg-background pr-4">Capability</span>
-            <span className="text-center">Anny</span>
+            <span className="text-center">Dodox</span>
             <span className="text-center">{competitor}</span>
           </div>
           <ul>

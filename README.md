@@ -1,8 +1,8 @@
-# Anny
+# Dodox
 
 **AI search analytics for marketing teams.**
 
-Customers ask ChatGPT, Claude, Gemini, and Perplexity before they ask Google. Anny shows how often those models mention your brand, which sources they cite, how you compare to competitors, and what to do to get mentioned more.
+Customers ask ChatGPT, Claude, Gemini, and Perplexity before they ask Google. Dodox shows how often those models mention your brand, which sources they cite, how you compare to competitors, and what to do to get mentioned more.
 
 ## Product
 
@@ -11,7 +11,7 @@ Customers ask ChatGPT, Claude, Gemini, and Perplexity before they ask Google. An
 - Turn visibility gaps into concrete GEO actions
 - Built for marketing teams and agencies
 
-Website: [anny.dodoxhq.com](https://anny.dodoxhq.com)
+Website: [dodoxhq.com](https://dodoxhq.com)
 
 ## Contact
 
@@ -25,10 +25,10 @@ Website: [anny.dodoxhq.com](https://anny.dodoxhq.com)
 
 ## Links
 
-- [Pricing](https://anny.dodoxhq.com/pricing)
-- [Docs](https://anny.dodoxhq.com/docs)
-- [Blog](https://anny.dodoxhq.com/blog)
-- [Careers](https://anny.dodoxhq.com/careers)
-- [AI Instructions](https://anny.dodoxhq.com/ai-instructions)
+- [Pricing](https://dodoxhq.com/pricing)
+- [Docs](https://dodoxhq.com/docs)
+- [Blog](https://dodoxhq.com/blog)
+- [Careers](https://dodoxhq.com/careers)
+- [AI Instructions](https://dodoxhq.com/ai-instructions)
 
-© Anny. All rights reserved.
+© Dodox. All rights reserved.

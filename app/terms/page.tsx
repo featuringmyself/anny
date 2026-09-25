@@ -3,9 +3,9 @@ import JsonLd from "@/components/JsonLd";
 import LegalProse from "@/components/pages/LegalProse";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Terms of Service | Anny";
+const title = "Terms of Service | Dodox";
 const description =
-  "Terms governing use of the Anny website and AI search analytics product.";
+  "Terms governing use of the Dodox website and AI search analytics product.";
 
 export const metadata = pageMetadata({
   path: "/terms",
@@ -21,11 +21,11 @@ export default function TermsPage() {
       <LegalProse
         title="Terms of Service"
         lastUpdated="July 26, 2026"
-        intro="These placeholder terms govern access to Anny’s website and product. By using Anny, you agree to them. They are not a substitute for a reviewed commercial agreement."
+        intro="These placeholder terms govern access to Dodox’s website and product. By using Dodox, you agree to them. They are not a substitute for a reviewed commercial agreement."
         sections={[
           {
             heading: "The service",
-            body: "Anny monitors how AI assistants mention brands across models and surfaces. Features, limits, and pricing may change; we will communicate material changes to paid customers.",
+            body: "Dodox monitors how AI assistants mention brands across models and surfaces. Features, limits, and pricing may change; we will communicate material changes to paid customers.",
           },
           {
             heading: "Accounts",
@@ -33,7 +33,7 @@ export default function TermsPage() {
           },
           {
             heading: "Acceptable use",
-            body: "Do not misuse Anny, attempt to disrupt the service, scrape beyond permitted APIs, or use outputs to harass or deceive. We may suspend accounts that violate these terms.",
+            body: "Do not misuse Dodox, attempt to disrupt the service, scrape beyond permitted APIs, or use outputs to harass or deceive. We may suspend accounts that violate these terms.",
           },
           {
             heading: "Subscriptions & billing",
@@ -41,7 +41,7 @@ export default function TermsPage() {
           },
           {
             heading: "Disclaimer",
-            body: "Anny is provided “as is.” AI answers change frequently; visibility scores and mentions are estimates based on our sampling methods, not guarantees of ranking or citation.",
+            body: "Dodox is provided “as is.” AI answers change frequently; visibility scores and mentions are estimates based on our sampling methods, not guarantees of ranking or citation.",
           },
           {
             heading: "Contact",

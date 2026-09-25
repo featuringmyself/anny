@@ -40,7 +40,7 @@ export const profoundMatrix: readonly MatrixRow[] = [
 ] as const;
 
 export const profoundVerdict = {
-  pickAnnyWhen: [
+  pickDodoxWhen: [
     "You want marketing-team UX: clarity over research-lab complexity.",
     "Model coverage including Google AI Mode / Overview matters day one.",
     "Agencies need a clean multi-brand portfolio view for retainers.",

@@ -14,7 +14,7 @@ export function DomainRatingCta() {
         Want to know if AI mentions your brand?
       </h2>
       <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 text-balance">
-        Keep using this lookup whenever you need it. Anny tracks how often
+        Keep using this lookup whenever you need it. Dodox tracks how often
         ChatGPT, Gemini, and AI Mode talk about you, and which sites they
         cite.
       </p>

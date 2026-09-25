@@ -21,14 +21,14 @@ export const winnDixieCaseStudy: CaseStudy = {
     ],
   },
   approach: {
-    heading: "Anny's end-to-end AI visibility program",
+    heading: "Dodox's end-to-end AI visibility program",
     intro: [
-      "Anny deployed its Generative Engine Optimization (GEO) stack to rebuild Winn-Dixie's presence across ChatGPT, Gemini, and related answer surfaces - starting from how real shoppers talk about groceries, not from a keyword list.",
+      "Dodox deployed its Generative Engine Optimization (GEO) stack to rebuild Winn-Dixie's presence across ChatGPT, Gemini, and related answer surfaces - starting from how real shoppers talk about groceries, not from a keyword list.",
     ],
     steps: [
       {
         title: "Deep customer intelligence",
-        body: "Using Anny's prompt intelligence layer, the team analyzed millions of shopper prompts to understand how Winn-Dixie's target personas, particularly budget-conscious families in Florida, actually talk to AI about groceries.",
+        body: "Using Dodox's prompt intelligence layer, the team analyzed millions of shopper prompts to understand how Winn-Dixie's target personas, particularly budget-conscious families in Florida, actually talk to AI about groceries.",
         bullets: [
           "Meal prep and affordability",
           "Cooking skills and ingredient sourcing",
@@ -37,11 +37,11 @@ export const winnDixieCaseStudy: CaseStudy = {
       },
       {
         title: "Strategic content generation",
-        body: "Based on those insights, Anny guided hundreds of on-trend, AI-optimised recipes tailored to Winn-Dixie's brand voice and customer preferences. Each piece was designed to capture high-intent AI searches while showcasing Winn-Dixie's value proposition.",
+        body: "Based on those insights, Dodox guided hundreds of on-trend, AI-optimised recipes tailored to Winn-Dixie's brand voice and customer preferences. Each piece was designed to capture high-intent AI searches while showcasing Winn-Dixie's value proposition.",
       },
       {
         title: "Citation network building",
-        body: "Anny's visibility program strengthened Winn-Dixie's footprint across the web's most AI-cited sources, including high-authority references and blogs engines already retrieve, so models had credible places to cite the brand.",
+        body: "Dodox's visibility program strengthened Winn-Dixie's footprint across the web's most AI-cited sources, including high-authority references and blogs engines already retrieve, so models had credible places to cite the brand.",
         figure: {
           src: "/case-studies/winn-dixie/increasing-citations.jpg",
           alt: "Wikipedia article Cuisine of the Southern United States with Winn-Dixie highlighted under Southern food in grocery stores",
@@ -113,7 +113,7 @@ export const winnDixieCaseStudy: CaseStudy = {
     heading: "Why this matters for every retailer",
     body: [
       "Customers have already shifted grocery discovery into AI. The question is not whether to optimise for those surfaces, but how quickly a brand can catch up to where shoppers already are.",
-      "Anny is the AI visibility platform built for brands that need to control their narrative in ChatGPT, Gemini, Perplexity, and Google AI answers - with prompt tracking, citation work, and weekly proof that the channel is moving.",
+      "Dodox is the AI visibility platform built for brands that need to control their narrative in ChatGPT, Gemini, Perplexity, and Google AI answers - with prompt tracking, citation work, and weekly proof that the channel is moving.",
     ],
   },
 };

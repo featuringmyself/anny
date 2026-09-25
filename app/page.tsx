@@ -11,7 +11,7 @@ import { faqs } from "@/lib/faqs";
 import { faqJsonLd, pageMetadata, webpageJsonLd } from "@/lib/seo";
 import { SITE_DESCRIPTION } from "@/lib/site";
 
-const title = "Anny - SEO & GEO Agent + AI Monitoring";
+const title = "Dodox - SEO & GEO Agent + AI Monitoring";
 
 export const metadata = pageMetadata({
   path: "/",

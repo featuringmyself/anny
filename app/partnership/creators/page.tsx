@@ -5,7 +5,7 @@ import AffiliateStrip from "@/components/pages/partnership/creators/AffiliateStr
 import ContentKitStrip from "@/components/pages/partnership/creators/ContentKitStrip";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Creator Partnership · Anny";
+const title = "Creator Partnership · Dodox";
 const description =
   "Affiliate program and content kit for creators teaching GEO and AI search visibility.";
 

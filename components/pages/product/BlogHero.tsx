@@ -6,7 +6,7 @@ export default function BlogHero() {
         Notes on AI search & GEO
       </h1>
       <p className="mt-4 max-w-lg text-base text-zinc-500 text-balance md:text-lg">
-        Field notes from Anny on GEO, citations, fanouts, sentiment, and how brands
+        Field notes from Dodox on GEO, citations, fanouts, sentiment, and how brands
         show up or disappear inside AI answers.
       </p>
     </section>

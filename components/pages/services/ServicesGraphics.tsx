@@ -6,7 +6,7 @@ const features = [
     id: "benchmark",
     heading: "Benchmark Your Brand's Performance",
     subheading: "(Because Nobody Likes Coming in Last)",
-    body: "See exactly where your brand stands. Anny provides real-time insights that benchmark your performance against industry averages and competitors, helping you make smarter, data-driven decisions to stay ahead.",
+    body: "See exactly where your brand stands. Dodox provides real-time insights that benchmark your performance against industry averages and competitors, helping you make smarter, data-driven decisions to stay ahead.",
     video: {
       src: "/services/videos/benchmark.webm",
       width: 854,
@@ -20,7 +20,7 @@ const features = [
     id: "brand-visibility",
     heading: "Right Message, Right Place",
     subheading: "(Because Gut Feelings Aren't Always Right)",
-    body: "Your content deserves to be seen where it matters most. Anny analyzes AI-generated search results to ensure your brand shows up in the right answers, at the right time. Think of us as your AI-powered GPS for marketing, PR, and content strategy.",
+    body: "Your content deserves to be seen where it matters most. Dodox analyzes AI-generated search results to ensure your brand shows up in the right answers, at the right time. Think of us as your AI-powered GPS for marketing, PR, and content strategy.",
     video: {
       src: "/services/videos/brand-visibility.webm",
       width: 1080,
@@ -34,7 +34,7 @@ const features = [
     id: "sentiment",
     heading: "Perform Sentiment Analysis",
     subheading: "(Because Happy Customers = Happy Brand)",
-    body: "AI answers shape perception. Anny tracks positive and negative mentions across AI platforms, giving you a clear snapshot of customer sentiment. We'll separate the love letters from the hate mail and help you turn insights into action.",
+    body: "AI answers shape perception. Dodox tracks positive and negative mentions across AI platforms, giving you a clear snapshot of customer sentiment. We'll separate the love letters from the hate mail and help you turn insights into action.",
     video: {
       src: "/services/videos/sentiment.webm",
       width: 1080,
@@ -48,7 +48,7 @@ const features = [
     id: "comparison",
     heading: "AI Platform Comparison",
     subheading: "(Because All AI Engines Are Not Created Equal)",
-    body: "Not all AI platforms think alike and neither should your strategy. Anny delivers precise, platform-specific insights into your brand's visibility across ChatGPT, Google AI Overviews, Perplexity, Claude, Gemini, and beyond helping you win across every AI-driven discovery channel.",
+    body: "Not all AI platforms think alike and neither should your strategy. Dodox delivers precise, platform-specific insights into your brand's visibility across ChatGPT, Google AI Overviews, Perplexity, Claude, Gemini, and beyond helping you win across every AI-driven discovery channel.",
     video: {
       src: "/services/videos/comparison.webm",
       width: 854,
@@ -62,7 +62,7 @@ const features = [
     id: "open-source",
     heading: "The Open-Source Advantage",
     subheading: "(Because You Deserve Transparency in an AI-Driven World)",
-    body: "AI shouldn't feel like a black box. That's why Anny is 100% open-source, giving you full transparency into how it works and the flexibility to customize it to your needs. No vendor lock-ins, no hidden limitations, just complete control, privacy, and a community-driven platform built for brands like yours.",
+    body: "AI shouldn't feel like a black box. That's why Dodox is 100% open-source, giving you full transparency into how it works and the flexibility to customize it to your needs. No vendor lock-ins, no hidden limitations, just complete control, privacy, and a community-driven platform built for brands like yours.",
     video: {
       src: "/services/videos/open-source.webm",
       width: 854,
@@ -76,7 +76,7 @@ const features = [
     id: "local-seo",
     heading: "The Local SEO & GEO Advantage",
     subheading: "(Because Your Brand Deserves to Be Found Where Decisions Happen)",
-    body: "Your customers search locally, and AI now decides who gets found first. Anny helps your brand dominate region-based Local SEO and GEO, ensuring top visibility across ChatGPT, Google AI Overviews, Gemini, and Perplexity. Be discovered where decisions happen.",
+    body: "Your customers search locally, and AI now decides who gets found first. Dodox helps your brand dominate region-based Local SEO and GEO, ensuring top visibility across ChatGPT, Google AI Overviews, Gemini, and Perplexity. Be discovered where decisions happen.",
     video: {
       src: "/services/videos/local-seo.webm",
       width: 1920,

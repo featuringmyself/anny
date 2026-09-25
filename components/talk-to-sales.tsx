@@ -149,7 +149,7 @@ function SalesForm({ source }: TalkToSalesProps) {
       <DialogHeader>
         <DialogTitle className="text-lg">Talk to sales</DialogTitle>
         <DialogDescription>
-          Tell us about your brand and we&apos;ll show you how Anny tracks it
+          Tell us about your brand and we&apos;ll show you how Dodox tracks it
           across ChatGPT, Gemini, and AI Mode.
         </DialogDescription>
       </DialogHeader>

@@ -45,7 +45,7 @@ export default function CompareStrip() {
           className="mt-7 text-[1.75rem] leading-tight font-bold tracking-tight sm:text-3xl"
           style={{ color: TERTIARY }}
         >
-          How Anny{" "}
+          How Dodox{" "}
           <span
             className="inline-block -rotate-1 rounded-lg px-3 py-0.5 align-baseline"
             style={{ backgroundColor: TERTIARY, color: PRIMARY }}
@@ -58,7 +58,7 @@ export default function CompareStrip() {
           className="mt-5 max-w-md text-base font-medium leading-relaxed"
           style={{ color: BODY }}
         >
-          Classic SEO tools track rankings and backlinks. Anny tracks whether AI
+          Classic SEO tools track rankings and backlinks. Dodox tracks whether AI
           answers mention your brand, then helps you change that.
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function CompareStrip() {
             >
               <div className="text-left">
                 <p className="text-base font-bold tracking-tight text-zinc-900">
-                  Anny vs {item.name}
+                  Dodox vs {item.name}
                 </p>
                 <p className="mt-0.5 text-sm font-medium" style={{ color: BODY }}>
                   {item.framing}

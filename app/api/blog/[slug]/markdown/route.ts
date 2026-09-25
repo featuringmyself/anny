@@ -64,7 +64,7 @@ export async function GET(_request: Request, { params }: RouteProps) {
     "",
     "---",
     "",
-    "Published on Anny, AI search visibility monitoring for marketing teams.",
+    "Published on Dodox, AI search visibility monitoring for marketing teams.",
     `Site: ${SITE_URL}`,
   ]
     .filter((line) => line !== null)

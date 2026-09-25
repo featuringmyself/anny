@@ -22,13 +22,13 @@ const links = [
   },
   {
     href: "/compare/profound",
-    name: "Anny vs Profound",
+    name: "Dodox vs Profound",
     framing: "How we differ from peer AI visibility tools",
     group: "Compare",
   },
   {
     href: "/compare/ahrefs",
-    name: "Anny vs Ahrefs",
+    name: "Dodox vs Ahrefs",
     framing: "SEO rankings vs AI answer mentions",
     group: "Compare",
   },

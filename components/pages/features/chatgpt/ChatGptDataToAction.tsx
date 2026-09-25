@@ -16,7 +16,7 @@ const tabs = [
     summary:
       "Find opportunities to get featured in the sources shaping ChatGPT mentions.",
     description:
-      "Brand visibility in ChatGPT is heavily driven by external sources, review sites, Reddit conversations, Wikipedia pages, and more. Anny's Earned Media module tracks these opportunities, showing you which sources are already shaping ChatGPT's answers so you can get mentioned where it matters most.",
+      "Brand visibility in ChatGPT is heavily driven by external sources, review sites, Reddit conversations, Wikipedia pages, and more. Dodox's Earned Media module tracks these opportunities, showing you which sources are already shaping ChatGPT's answers so you can get mentioned where it matters most.",
     image: dataEarned,
     alt: "Earned media source cards for Reference, UGC, and Editorial with recommended outreach actions",
     // Full class names required so Tailwind can detect them at build time.
@@ -28,7 +28,7 @@ const tabs = [
     title: "Owned",
     summary: "Improve your content to appear more in ChatGPT answers.",
     description:
-      "Your own pages still matter. Anny surfaces the owned content types ChatGPT already grounds on, listicles, product pages, how-to guides, and more, so you can close gaps competitors already fill on your domain.",
+      "Your own pages still matter. Dodox surfaces the owned content types ChatGPT already grounds on, listicles, product pages, how-to guides, and more, so you can close gaps competitors already fill on your domain.",
     image: dataOwned,
     alt: "Owned content type list and recommended action for product pages cited by LLMs",
     panelClassName: "hidden group-has-[#dta-owned:checked]/dta:block",
@@ -65,7 +65,7 @@ export default function ChatGptDataToAction() {
         eyebrow={<SectionEyebrow>Data to Action</SectionEyebrow>}
         title="More than just a monitoring tool"
         titleId="chatgpt-data-heading"
-        description="Anny is the complete platform for tracking how your brand shows up in ChatGPT. Monitor visibility, mentions, and competitor performance, with actionable insights to help you improve."
+        description="Dodox is the complete platform for tracking how your brand shows up in ChatGPT. Monitor visibility, mentions, and competitor performance, with actionable insights to help you improve."
       />
 
       <div className="group/dta mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.35fr)] lg:gap-8">

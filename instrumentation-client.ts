@@ -6,7 +6,7 @@ const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
 // Only initialize in production builds, never on localhost / `next dev`.
 if (process.env.NODE_ENV === "production" && token) {
-  let siteHostname = "anny.dodoxhq.com";
+  let siteHostname = "dodoxhq.com";
   try {
     siteHostname = new URL(SITE_URL).hostname;
   } catch {

@@ -11,7 +11,7 @@ export default function ReportHero({ report }: ReportHeroProps) {
       <div className="px-6 pt-14 md:px-12 md:pt-20">
         <div className="mb-4 flex items-center justify-between gap-4">
           <p className="text-sm font-medium text-[#2462ff]">
-            Anny · AI visibility audit
+            Dodox · AI visibility audit
           </p>
           <DownloadReportPdfButton
             slug={report.slug}

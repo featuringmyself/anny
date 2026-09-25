@@ -4,9 +4,9 @@ import ChangelogHero from "@/components/pages/product/ChangelogHero";
 import ChangelogTimeline from "@/components/pages/product/ChangelogTimeline";
 import { pageMetadata, webpageJsonLd } from "@/lib/seo";
 
-const title = "Changelog · Anny";
+const title = "Changelog · Dodox";
 const description =
-  "Product updates from Anny: AI Mode tracking, competitor ladders, Gemini citations, Slack alerts, and agency workspaces.";
+  "Product updates from Dodox: AI Mode tracking, competitor ladders, Gemini citations, Slack alerts, and agency workspaces.";
 
 export const metadata = pageMetadata({
   path: "/changelog",

@@ -12,24 +12,24 @@ export const faqs = [
       "ChatGPT is the most popular LLM today, making it a critical platform to track for brand visibility. It frequently surfaces different results than other models because it uses data from both Bing and Google using its own independent ranking logic. Keep observing our content, as we will be publishing more about how to master these differences!",
   },
   {
-    question: "What makes Anny unique at measuring ChatGPT visibility?",
+    question: "What makes Dodox unique at measuring ChatGPT visibility?",
     answer:
-      "Anny reveals the internal query expansions ChatGPT runs to formulate its answers, available in the dashboard, MCP and API. These query fanouts show you the exact sub-topics ChatGPT searches for, letting you include those terms in your content and improve how your brand shows up.",
+      "Dodox reveals the internal query expansions ChatGPT runs to formulate its answers, available in the dashboard, MCP and API. These query fanouts show you the exact sub-topics ChatGPT searches for, letting you include those terms in your content and improve how your brand shows up.",
   },
   {
     question: "What makes ChatGPT different than other LLMs?",
     answer:
-      "ChatGPT differs from other AI models in three ways. First, it pulls from both Google and Bing during its grounding process and applies its own ranking logic on top. Second, our research shows it surfaces product pages, homepages, and profile pages more frequently than other models do. Third, these differences mean your visibility in ChatGPT can look very different from your visibility on Google Gemini or Claude. Anny compares your presence across all models and shows you which sources influence ChatGPT's answers the most.",
+      "ChatGPT differs from other AI models in three ways. First, it pulls from both Google and Bing during its grounding process and applies its own ranking logic on top. Second, our research shows it surfaces product pages, homepages, and profile pages more frequently than other models do. Third, these differences mean your visibility in ChatGPT can look very different from your visibility on Google Gemini or Claude. Dodox compares your presence across all models and shows you which sources influence ChatGPT's answers the most.",
   },
   {
     question: "Does ChatGPT rank brands the way Google search results do?",
     answer:
-      "No. ChatGPT doesn't produce a numbered results list. Visibility instead depends on how often your brand is surfaced and cited across its answers, and how it's framed relative to competitors. Anny converts this into a trackable visibility score with average positions.",
+      "No. ChatGPT doesn't produce a numbered results list. Visibility instead depends on how often your brand is surfaced and cited across its answers, and how it's framed relative to competitors. Dodox converts this into a trackable visibility score with average positions.",
   },
   {
     question: "Can agencies track ChatGPT visibility for multiple client brands?",
     answer:
-      "Yes. Anny lets agencies monitor ChatGPT visibility, sentiment, and source citations separately for each client account from a single dashboard, with data structured for client reporting.",
+      "Yes. Dodox lets agencies monitor ChatGPT visibility, sentiment, and source citations separately for each client account from a single dashboard, with data structured for client reporting.",
   },
   {
     question: "How can I improve my brand's visibility in ChatGPT?",

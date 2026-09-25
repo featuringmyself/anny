@@ -193,12 +193,12 @@ export default function Navbar() {
         >
           <Image
             src={logoImg}
-            alt="Anny"
+            alt="Dodox"
             width={30}
             height={30}
             preload
           />
-          <span>Anny</span>
+          <span>Dodox</span>
         </Link>
 
         <div className="hidden items-center gap-12 text-sm font-medium md:flex">

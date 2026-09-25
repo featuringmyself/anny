@@ -22,7 +22,7 @@ export function AiCrawlabilityCta() {
           Get a managed plan to show up in ChatGPT, Perplexity, and AI Overviews
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400">
-          Anny&apos;s GEO team builds the strategy, runs the work, and keeps
+          Dodox&apos;s GEO team builds the strategy, runs the work, and keeps
           auditing performance, so your brand doesn&apos;t just get crawled, it
           gets cited.
         </p>

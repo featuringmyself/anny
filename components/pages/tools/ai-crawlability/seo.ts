@@ -30,12 +30,12 @@ export const aiCrawlFaqs = [
   {
     question: "Is this the same as the AI readiness checker?",
     answer:
-      "No. This tool only answers whether AI bots can crawl the site. The free AI readiness checker at https://anny.dodoxhq.com/tools/ai-readiness-checker also looks at brand identity, schema, and citation signals.",
+      "No. This tool only answers whether AI bots can crawl the site. The free AI readiness checker at https://dodoxhq.com/tools/ai-readiness-checker also looks at brand identity, schema, and citation signals.",
   },
   {
     question: "If a bot is allowed, will ChatGPT cite my brand?",
     answer:
-      "Not automatically. Crawl access is the first requirement. Citation still depends on whether models trust and retrieve your content. Anny tracks whether ChatGPT and other models actually mention you.",
+      "Not automatically. Crawl access is the first requirement. Citation still depends on whether models trust and retrieve your content. Dodox tracks whether ChatGPT and other models actually mention you.",
   },
   {
     question: "What if I have no robots.txt?",

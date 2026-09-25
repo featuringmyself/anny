@@ -166,7 +166,7 @@ export default function ServicesHero() {
         </h1>
 
         <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">
-          Anny is an award-winning AEO agency and the creator of the #1
+          Dodox is an award-winning AEO agency and the creator of the #1
           open-source AI search optimization tool, a powerful alternative to
           Profound, Semrush AI Toolkit, and Otterly AI.
         </p>

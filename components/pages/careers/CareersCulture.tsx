@@ -20,7 +20,7 @@ export default function CareersCulture() {
             Don&apos;t see a fit?
           </h3>
           <p className="mt-3 max-w-sm text-sm text-zinc-400 text-balance">
-            Tell us what you&apos;d build at Anny. We hire for judgment and taste
+            Tell us what you&apos;d build at Dodox. We hire for judgment and taste
             as much as for title.
           </p>
         </div>
