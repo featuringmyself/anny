@@ -42,10 +42,11 @@ export default function Hero() {
         <Image
           src={logoImg}
           alt="Dodox"
-          width={120}
-          height={40}
+          width={logoImg.width}
+          height={logoImg.height}
           priority
           className="h-9 w-auto object-contain sm:h-10"
+          style={{ width: "auto" }}
         />
 
         <HomeHeroHeadline />
@@ -54,7 +55,7 @@ export default function Hero() {
           className="mt-5 max-w-2xl text-base leading- font-medium sm:mt-6 sm:text-lg text-balance"
           style={{ color: brand.body }}
         >
-          Track and earn AI citations with our agent. Managed GEO when
+          Track and earn AI citations with our agent. Managed GEO Services when
           you want us on it.
         </p>
 

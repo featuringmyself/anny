@@ -4,10 +4,10 @@ import { brand } from "@/components/Home/brand";
  * Report color psychology (reader mind, not decoration):
  *
  * - Cool teal (#225864): calm competence, trust, “this is analysis”
- * - Brand green: relief / pass — only when something is actually good, or a deliberate CTA
- * - Amber: vigilance without panic — soft risk, “needs work”
- * - Red: threat / fail — real gaps; use sparingly or the whole report feels hostile
- * - Deep teal (#11333c): authority / closing weight — chrome, not a status for “poor”
+ * - Brand green: relief / pass, only when something is actually good, or a deliberate CTA
+ * - Amber: vigilance without panic: soft risk, “needs work”
+ * - Red: threat / fail: real gaps; use sparingly or the whole report feels hostile
+ * - Deep teal (#11333c): authority / closing weight: chrome, not a status for “poor”
  * - Light paper: space to think; findings body stays documentary
  */
 export const reportBrand = {
@@ -27,11 +27,11 @@ export const reportBrand = {
 
 /** Hex for score so web + PDF share the same emotional mapping. */
 export function reportScoreHex(score: number): string {
-  if (score < 30) return reportBrand.critical; // threat — blocked
-  if (score < 50) return reportBrand.warning; // vigilance — weak
-  if (score < 70) return reportBrand.caution; // mild concern — crawlable
-  if (score < 85) return reportBrand.info; // calm competence — identifiable
-  return reportBrand.success; // relief — citation-ready
+  if (score < 30) return reportBrand.critical; // threat: blocked
+  if (score < 50) return reportBrand.warning; // vigilance: weak
+  if (score < 70) return reportBrand.caution; // mild concern: crawlable
+  if (score < 85) return reportBrand.info; // calm competence: identifiable
+  return reportBrand.success; // relief: citation-ready
 }
 
 /** Tailwind text class for overall score / band label. */
@@ -79,7 +79,7 @@ export const rt = {
   success: "text-brand",
   warning: "text-amber-700",
   critical: "text-[#b42318]",
-  /** Closing CTA — permission/growth after diagnosis, not a finding color. */
+  /** Closing CTA: permission/growth after diagnosis, not a finding color. */
   btnPrimary:
     "border border-zinc-900 bg-brand text-white shadow-sm hover:bg-emerald-50 hover:text-black",
   /** Secondary actions stay cool/info so they don’t feel like “all clear”. */
@@ -87,7 +87,7 @@ export const rt = {
     "border border-[#225864]/30 bg-white text-[#225864] hover:bg-[#225864]/5",
   focusRing:
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#225864]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F7F7]",
-  /** Stacked report section — breaks the continuous slab. */
+  /** Stacked report section: breaks the continuous slab. */
   panel: "overflow-hidden rounded-2xl border border-[#225864]/12 bg-white",
   stack: "flex flex-col gap-3 sm:gap-4",
 } as const;

@@ -18,7 +18,7 @@ type Demo = {
 const demos: readonly Demo[] = [
   {
     title: "Standing in one glance",
-    body: "Visibility by engine, the prompts they win, and the ones they lose — ready for the kickoff PDF.",
+    body: "Visibility by engine, the prompts they win, and the ones they lose, ready for the kickoff PDF.",
     mediaFirst: false,
     kind: "video",
     video: "/services/videos/brand-visibility.webm",

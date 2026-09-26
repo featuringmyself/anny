@@ -17,4 +17,4 @@ export const AI_MODELS_PHRASE =
   "ChatGPT, Claude, Gemini, Grok, and Perplexity";
 
 export const HOME_HERO_HEADLINE =
-  "Get cited in ChatGPT, Claude, Gemini, Grok, and Perplexity — then keep the mention.";
+  "Get cited in ChatGPT, Claude, Gemini, Grok, and Perplexity. Then keep the mention.";

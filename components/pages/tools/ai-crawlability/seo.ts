@@ -13,7 +13,7 @@ export const AI_CRAWL_TITLE = "Free AI Crawlability Checker";
 export const AI_CRAWL_DESCRIPTION =
   "Check whether ChatGPT, Claude, Perplexity, and other AI crawlers can access your website. Free for marketing and SEO teams. No signup.";
 
-/** Short definition for above-the-fold AEO extractability. */
+/** Short definition for above-the-fold GEO extractability. */
 export const AI_CRAWL_DEFINITION =
   "AI crawlability means whether AI systems can fetch your pages. That starts with robots.txt rules for bots like GPTBot, ClaudeBot, and PerplexityBot, plus discovery files like sitemap.xml and llms.txt.";
 

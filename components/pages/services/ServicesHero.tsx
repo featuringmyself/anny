@@ -60,7 +60,7 @@ function HeroMist() {
           alt=""
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 1023px) 100vw, 1px"
           className="object-cover object-center"
         />
         <div className="absolute top-1/2 left-1/2 size-[min(42rem,145vw)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#c5cbc8]/80" />
@@ -166,7 +166,7 @@ export default function ServicesHero() {
         </h1>
 
         <p className="max-w-4xl text-base leading-tight font-semibold text-balance text-zinc-800 md:text-lg">
-          Dodox is an award-winning AEO agency and the creator of the #1
+          Dodox is an award-winning GEO agency and the creator of the #1
           open-source AI search optimization tool, a powerful alternative to
           Profound, Semrush AI Toolkit, and Otterly AI.
         </p>

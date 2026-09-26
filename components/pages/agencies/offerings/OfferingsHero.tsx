@@ -37,10 +37,11 @@ export default function OfferingsHero() {
         <Image
           src={logoImg}
           alt="Dodox"
-          width={120}
-          height={40}
+          width={logoImg.width}
+          height={logoImg.height}
           priority
           className="h-9 w-auto object-contain sm:h-10"
+          style={{ width: "auto" }}
         />
 
         <p
@@ -62,7 +63,7 @@ export default function OfferingsHero() {
           className="mt-5 max-w-xl text-base leading-relaxed font-medium sm:mt-6 sm:text-lg"
           style={{ color: brand.body }}
         >
-          One-time standing snapshots and monthly visibility retainers — sold
+          One-time standing snapshots and monthly visibility retainers, sold
           under your brand, ready for SEO, PR, and digital agencies to put on a
           rate card.
         </p>

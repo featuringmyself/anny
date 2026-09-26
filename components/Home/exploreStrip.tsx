@@ -27,12 +27,6 @@ const links = [
     group: "Tools",
   },
   {
-    href: "/compare/profound",
-    name: "Dodox vs Profound",
-    framing: "How we differ from peer AI visibility tools",
-    group: "Compare",
-  },
-  {
     href: "/compare/ahrefs",
     name: "Dodox vs Ahrefs",
     framing: "SEO rankings vs AI answer mentions",

@@ -31,7 +31,7 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://dodoxhq.com/.w
 
 - [Agencies](https://dodoxhq.com/features/agencies): Multi-client AI visibility reporting for agencies
 - [Agency offerings](https://dodoxhq.com/agencies/offerings): Micro SaaS GEO packages for SEO, PR, and digital agencies (standing snapshots, audits, retainers)
-- [Dodox Snapshots](https://dodoxhq.com/standings): White-label AI visibility standing reports for agencies — ₹500 India / $10 worldwide, 25 prompts, ChatGPT + Perplexity + AI Overviews
+- [Dodox Snapshots](https://dodoxhq.com/standings): White-label AI visibility standing reports for agencies: ₹500 India / $10 worldwide, 25 prompts, ChatGPT + Perplexity + AI Overviews
 - [ChatGPT](https://dodoxhq.com/features/chatgpt): Track brand mentions in ChatGPT answers
 - [Gemini](https://dodoxhq.com/features/gemini): Monitor Gemini citations and sources
 - [AI Mode](https://dodoxhq.com/features/ai-mode): Visibility in Google AI Mode

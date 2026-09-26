@@ -7,7 +7,7 @@ export const faqs = [
   {
     question: "Will clients see another brand?",
     answer:
-      "No. Portals, PDFs, and exports carry your logo and domain only. You keep the relationship — nothing else shows up on the glass or the invoice.",
+      "No. Portals, PDFs, and exports carry your logo and domain only. You keep the relationship. Nothing else shows up on the glass or the invoice.",
   },
   {
     question: "What do agencies charge for a Standing Snapshot?",

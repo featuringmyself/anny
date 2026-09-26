@@ -89,7 +89,7 @@ export function ReadinessModeBar({
       <div
         className={cn(
           // Under the site nav (z-50); fills the top edge once nav hides on scroll.
-          // Flat chrome (no radius) — reads as a toolbar, not another card.
+          // Flat chrome (no radius): reads as a toolbar, not another card.
           "sticky top-0 z-40 -my-1.5 border border-[#225864]/12 bg-white/95 backdrop-blur-sm sm:-my-2",
           "transition-shadow duration-200",
           stuck && "shadow-[0_1px_3px_rgba(17,51,60,0.08)]",

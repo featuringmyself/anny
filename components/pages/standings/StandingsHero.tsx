@@ -36,10 +36,11 @@ export default function StandingsHero() {
         <Image
           src={logoImg}
           alt="Dodox"
-          width={110}
-          height={36}
+          width={logoImg.width}
+          height={logoImg.height}
           priority
           className="h-7 w-auto object-contain sm:h-9"
+          style={{ width: "auto" }}
         />
 
         <p

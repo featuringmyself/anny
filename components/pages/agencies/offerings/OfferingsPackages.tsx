@@ -24,7 +24,7 @@ export const packages: readonly PackageCard[] = [
     id: "geo-standing",
     billing: "One-time",
     name: "GEO Standing Snapshot",
-    blurb: "Where the client stands in AI answers today — score, gaps, PDF.",
+    blurb: "Where the client stands in AI answers today: score, gaps, PDF.",
     image: standingImg,
     featured: true,
   },
@@ -32,7 +32,7 @@ export const packages: readonly PackageCard[] = [
     id: "competitive-sov",
     billing: "One-time",
     name: "Competitive SOV Audit",
-    blurb: "Who AI names instead — prompts, citations, rivals.",
+    blurb: "Who AI names instead: prompts, citations, rivals.",
     image: competitiveImg,
   },
   {

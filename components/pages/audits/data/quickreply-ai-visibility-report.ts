@@ -4,7 +4,7 @@ const SHOT = "/audits/quickreply";
 
 /**
  * Private outreach report for QuickReply.ai. ChatGPT snapshot, September 2026.
- * Sell: 0/10 baseline — branded review is an 8.5/10 win when named, but every
+ * Sell: 0/10 baseline. Branded review is an 8.5/10 win when named, but every
  * buy-intent shelf (ecommerce, cart recovery, D2C, Shopify, GenAI, agency)
  * routes to Interakt, AiSensy, WATI and peers.
  */
@@ -346,7 +346,7 @@ export const quickreplyAiVisibilityReport: VisibilityReport = {
     duration: "90 days",
     headline:
       "From this 0/10 baseline to cited on the enrolment prompts named below",
-    body: "We work the buy-intent set in this audit — ecommerce chatbots and APIs, cart recovery, D2C and Shopify shelves, GenAI agents, lead generation, and agency white-label — while protecting the branded review citation already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
+    body: "We work the buy-intent set in this audit: ecommerce chatbots and APIs, cart recovery, D2C and Shopify shelves, GenAI agents, lead generation, and agency white-label, while protecting the branded review citation already won. Weekly re-tests on ChatGPT first, then Perplexity, Google AI Overview, Gemini, and Claude. You get screenshot proof and a dashboard.",
     outcomes: [
       "Get named on ecommerce chatbot and API prompts that today list Interakt, WATI, AiSensy, Gallabox, WatEase, Zoko, CK, BIK and Twilio",
       "Get named on D2C, Shopify and lead-generation prompts that today list Interakt, AiSensy, WATI, Zoko, Gallabox, BIK, RichAutomate and Gupshup",

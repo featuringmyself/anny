@@ -22,7 +22,7 @@ import {
 const PATH = "/agencies/offerings";
 const title = "Agency Offerings: GEO Packages for Marketing Agencies | Dodox";
 const description =
-  "White-label GEO packages for SEO, PR, and digital agencies — standing snapshots, competitive audits, pitch workspaces, and monthly visibility retainers under your brand.";
+  "White-label GEO packages for SEO, PR, and digital agencies: standing snapshots, competitive audits, pitch workspaces, and monthly visibility retainers under your brand.";
 
 export const metadata = pageMetadata({
   path: PATH,

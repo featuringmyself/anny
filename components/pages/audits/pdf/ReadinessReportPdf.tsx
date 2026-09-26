@@ -20,7 +20,7 @@ import {
 import { reportScoreHex } from "../report-theme";
 
 const AMBER = "#b45309";
-/** Pass / healthy only — not the informational teal. */
+/** Pass / healthy only, not the informational teal. */
 const GOOD = BRAND;
 
 function scoreColor(score: number) {
@@ -672,7 +672,7 @@ export function ReadinessReportPdf({ report }: ReadinessReportPdfProps) {
       author="Dodox"
       subject={`AI readiness audit for ${report.company}`}
       creator="Dodox · dodoxhq.com"
-      keywords={`AI readiness, AEO, schema, ${report.company}`}
+      keywords={`AI readiness, GEO, schema, ${report.company}`}
       language="en"
     >
       <CoverPage report={report} />

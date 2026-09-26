@@ -50,7 +50,7 @@ export default function Services() {
           className="mx-auto mt-4 max-w-lg text-base font-medium leading-relaxed sm:text-lg"
           style={{ color: brand.body }}
         >
-          Done-for-you GEO: strategy, execution, audits, and training—without
+          Done-for-you GEO: strategy, execution, audits, and training, without
           building a new team.
         </p>
       </div>
