@@ -5,7 +5,6 @@ import { brand } from "@/components/Home/brand";
 import Demo from "@/components/Home/demo";
 import DemoReveal from "@/components/Home/demoReveal";
 import HomeHeroHeadline from "@/components/Home/home-hero-headline";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
 import logoImg from "@/public/logo.png";
@@ -52,11 +51,11 @@ export default function Hero() {
         <HomeHeroHeadline />
 
         <p
-          className="mt-5 max-w-xl text-base leading-relaxed font-medium sm:mt-6 sm:text-lg"
+          className="mt-5 max-w-2xl text-base leading- font-medium sm:mt-6 sm:text-lg text-balance"
           style={{ color: brand.body }}
         >
-          Dodox is an SEO &amp; GEO Agent with AI Monitoring built in. Track what
-          models say, then ship the work that changes it.
+          Track and earn AI citations with our agent. Managed GEO when
+          you want us on it.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -67,14 +66,14 @@ export default function Hero() {
           >
             Get started
           </Button>
-          <TalkToSalesButton
+          <Button
             size="lg"
             variant="outline"
-            className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold hover:bg-zinc-900 hover:text-white"
-            source="home-hero"
+            className="h-12 cursor-pointer rounded-lg border-zinc-900 px-6 text-base font-semibold hover:bg-zinc-900 hover:text-white"
+            render={<Link href="/services" />}
           >
-            Talk to sales
-          </TalkToSalesButton>
+            Explore services
+          </Button>
         </div>
 
         <ul

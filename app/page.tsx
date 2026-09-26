@@ -4,6 +4,7 @@ import HomeCta from "@/components/Home/homeCta";
 import Metric from "@/components/Home/metric";
 import Products from "@/components/Home/products";
 import SearchIsShifting from "@/components/Home/searchisShifting";
+import Services from "@/components/Home/services";
 import TrackModelsThatMatter from "@/components/Home/trackModelsThatMatter";
 import Faq from "@/components/faq";
 import JsonLd from "@/components/JsonLd";
@@ -25,10 +26,11 @@ export const metadata = pageMetadata({
  * 2. Problem (why AI search matters)
  * 3. Capabilities (what you see)
  * 4. Coverage (trust)
- * 5. Offer (plans)
- * 6. Explore (optional depth)
- * 7. Convert
- * 8. FAQ
+ * 5. Services (done-for-you)
+ * 6. Offer / Plans (self-serve)
+ * 7. Explore (optional depth)
+ * 8. Convert
+ * 9. FAQ
  */
 export default function Home() {
   return (
@@ -45,6 +47,7 @@ export default function Home() {
       <SearchIsShifting />
       <Metric />
       <TrackModelsThatMatter />
+      <Services />
       <Products />
       <ExploreStrip />
       <HomeCta />

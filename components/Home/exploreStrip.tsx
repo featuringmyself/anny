@@ -9,6 +9,12 @@ import { brand } from "@/components/Home/brand";
  */
 const links = [
   {
+    href: "/services",
+    name: "Managed GEO services",
+    framing: "Done-for-you strategy, execution, audits, and training",
+    group: "Services",
+  },
+  {
     href: "/tools/ai-readiness-checker",
     name: "AI readiness checker",
     framing: "Free. Can models crawl and name your site?",

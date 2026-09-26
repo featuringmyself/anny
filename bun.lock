@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "anny",
+      "name": "dodox",
       "dependencies": {
         "@base-ui/react": "^1.6.0",
         "@react-pdf/renderer": "^4.6.1",
