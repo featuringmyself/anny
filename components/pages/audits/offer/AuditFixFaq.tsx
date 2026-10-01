@@ -61,8 +61,7 @@ export default function AuditFixFaq() {
           className="mx-auto mt-3 hidden max-w-md text-base font-medium leading-relaxed sm:mt-4 sm:block sm:text-lg"
           style={{ color: brand.body }}
         >
-          Scope, pricing, access, guarantees, and how this differs from
-          Snapshots or managed GEO.
+          Scope, pricing, turnaround, and what the Audit covers.
         </p>
       </div>
 

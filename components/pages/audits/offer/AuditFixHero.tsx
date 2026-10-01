@@ -6,7 +6,7 @@ import { brand } from "@/components/Home/brand";
 import RotatingModelName from "@/components/Home/rotating-model-name";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
-import { AUDIT_OFFER_NAME, auditFixProof } from "./content";
+import { AUDIT_OFFER_NAME, auditFixProof, AUDIT_TALK_TO_SALES_COPY } from "./content";
 
 import logoImg from "@/public/logo.png";
 
@@ -84,6 +84,7 @@ export default function AuditFixHero() {
             size="lg"
             className="h-11 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-5 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black sm:h-12 sm:px-6"
             source="audit-offer-hero"
+            copy={AUDIT_TALK_TO_SALES_COPY}
           >
             Get an Audit
           </TalkToSalesButton>

@@ -10,7 +10,7 @@ import {
   AUDIT_FIX_PROMPTS,
   AUDIT_FIX_TURNAROUND,
 } from "@/lib/audit-fix-pricing";
-import { AUDIT_OFFER_NAME } from "./content";
+import { AUDIT_OFFER_NAME, AUDIT_TALK_TO_SALES_COPY } from "./content";
 import { useAuditFixMarket } from "./AuditMarketContext";
 
 const INCLUDED = [
@@ -138,6 +138,7 @@ export default function AuditFixPricing() {
             size="lg"
             className="mt-7 h-12 w-full cursor-pointer rounded-lg border border-zinc-900 bg-brand text-base font-semibold text-white hover:bg-emerald-50 hover:text-black"
             source={`audit-offer-pricing-${market}`}
+            copy={AUDIT_TALK_TO_SALES_COPY}
           >
             Get an Audit · {active.priceLabel}
           </TalkToSalesButton>

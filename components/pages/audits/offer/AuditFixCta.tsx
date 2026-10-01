@@ -9,6 +9,7 @@ import {
   AUDIT_FIX_PROMPTS,
   AUDIT_FIX_TURNAROUND,
 } from "@/lib/audit-fix-pricing";
+import { AUDIT_TALK_TO_SALES_COPY } from "./content";
 import { useAuditFixMarket } from "./AuditMarketContext";
 
 export default function AuditFixCta() {
@@ -37,6 +38,7 @@ export default function AuditFixCta() {
             className="h-12 cursor-pointer rounded-lg border border-transparent px-6 text-base font-semibold text-[#11333c] hover:bg-white"
             style={{ backgroundColor: brand.lime }}
             source="audit-offer-footer-cta"
+            copy={AUDIT_TALK_TO_SALES_COPY}
           >
             Get an Audit · {pricing.priceLabel}
           </TalkToSalesButton>

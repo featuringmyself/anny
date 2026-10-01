@@ -30,9 +30,33 @@ const initialContactState: ContactActionState = {
   message: null,
 };
 
+type TalkToSalesCopy = {
+  title: string;
+  description: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitLabel: string;
+  successTitle: string;
+  successDescription: string;
+};
+
+const DEFAULT_SALES_COPY: TalkToSalesCopy = {
+  title: "Talk to sales",
+  description:
+    "Tell us about your brand and we'll show you how Dodox tracks it across ChatGPT, Gemini, and AI Mode.",
+  messageLabel: "What would you like to track?",
+  messagePlaceholder: "Brands, competitors, or markets you care about.",
+  submitLabel: "Request a demo",
+  successTitle: "Thanks, we've got it",
+  successDescription:
+    "Someone from our team will reach out within one business day.",
+};
+
 type TalkToSalesProps = {
   /** Identifies which CTA opened the dialog so leads can be attributed. */
   source: string;
+  /** Optional overlay copy. Defaults to the product-demo sales pitch. */
+  copy?: Partial<TalkToSalesCopy>;
 };
 
 /**
@@ -42,6 +66,7 @@ type TalkToSalesProps = {
 export function TalkToSalesButton({
   children = "Talk to sales",
   source,
+  copy,
   className,
   ...props
 }: React.ComponentProps<typeof Button> & TalkToSalesProps) {
@@ -58,7 +83,7 @@ export function TalkToSalesButton({
       >
         {children}
       </DialogTrigger>
-      <SalesDialogContent source={source} />
+      <SalesDialogContent source={source} copy={copy} />
     </Dialog>
   );
 }
@@ -71,6 +96,7 @@ export function TalkToSalesDialog({
   open,
   onOpenChange,
   source,
+  copy,
 }: TalkToSalesProps & {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -85,15 +111,15 @@ export function TalkToSalesDialog({
         onOpenChange(nextOpen);
       }}
     >
-      <SalesDialogContent source={source} />
+      <SalesDialogContent source={source} copy={copy} />
     </Dialog>
   );
 }
 
-function SalesDialogContent({ source }: TalkToSalesProps) {
+function SalesDialogContent({ source, copy }: TalkToSalesProps) {
   return (
     <DialogContent className="sm:max-w-lg">
-      <SalesForm source={source} />
+      <SalesForm source={source} copy={copy} />
     </DialogContent>
   );
 }
@@ -115,7 +141,11 @@ function FieldError({
 }
 
 // Rendered inside the popup so it unmounts on close, resetting the form.
-function SalesForm({ source }: TalkToSalesProps) {
+function SalesForm({ source, copy }: TalkToSalesProps) {
+  const dialogCopy: TalkToSalesCopy = {
+    ...DEFAULT_SALES_COPY,
+    ...copy,
+  };
   const fieldId = useId();
   const [state, formAction, pending] = useActionState(
     submitContact,
@@ -132,9 +162,9 @@ function SalesForm({ source }: TalkToSalesProps) {
     return (
       <>
         <DialogHeader>
-          <DialogTitle className="text-lg">Thanks, we&apos;ve got it</DialogTitle>
+          <DialogTitle className="text-lg">{dialogCopy.successTitle}</DialogTitle>
           <DialogDescription>
-            Someone from our team will reach out within one business day.
+            {dialogCopy.successDescription}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -147,11 +177,8 @@ function SalesForm({ source }: TalkToSalesProps) {
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-lg">Talk to sales</DialogTitle>
-        <DialogDescription>
-          Tell us about your brand and we&apos;ll show you how Dodox tracks it
-          across ChatGPT, Gemini, and AI Mode.
-        </DialogDescription>
+        <DialogTitle className="text-lg">{dialogCopy.title}</DialogTitle>
+        <DialogDescription>{dialogCopy.description}</DialogDescription>
       </DialogHeader>
 
       <form action={formAction} className="grid gap-4">
@@ -232,7 +259,7 @@ function SalesForm({ source }: TalkToSalesProps) {
 
         <div className="grid gap-2">
           <Label htmlFor={`${fieldId}-message`}>
-            What would you like to track?{" "}
+            {dialogCopy.messageLabel}{" "}
             <span className="font-normal text-muted-foreground">
               (optional)
             </span>
@@ -241,7 +268,7 @@ function SalesForm({ source }: TalkToSalesProps) {
             id={`${fieldId}-message`}
             name="message"
             rows={3}
-            placeholder="Brands, competitors, or markets you care about."
+            placeholder={dialogCopy.messagePlaceholder}
           />
         </div>
 
@@ -254,7 +281,7 @@ function SalesForm({ source }: TalkToSalesProps) {
         <DialogFooter className="mt-1">
           <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
           <Button type="submit" disabled={pending}>
-            {pending ? "Sending…" : "Request a demo"}
+            {pending ? "Sending…" : dialogCopy.submitLabel}
           </Button>
         </DialogFooter>
       </form>

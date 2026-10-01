@@ -9,6 +9,19 @@ import {
 
 export const AUDIT_OFFER_NAME = "Dodox Audit";
 
+/** Lead-form copy when CTAs open TalkToSales from /audit. */
+export const AUDIT_TALK_TO_SALES_COPY = {
+  title: `Get a ${AUDIT_OFFER_NAME}`,
+  description: `Share your site, competitors, and market. We'll lock the ${AUDIT_FIX_PROMPTS}-prompt set and deliver the report in ${AUDIT_FIX_TURNAROUND}.`,
+  messageLabel: "Brief notes",
+  messagePlaceholder:
+    "Competitors, market, or buyer prompts you already care about.",
+  submitLabel: "Request an Audit",
+  successTitle: "Thanks, we've got it",
+  successDescription:
+    "Someone from our team will confirm scope and start within one business day.",
+} as const;
+
 export const auditFixProof = [
   { value: String(AUDIT_FIX_PROMPTS), label: "Buyer prompts" },
   { value: "5", label: "AI engines" },
@@ -139,25 +152,21 @@ export function getAuditFixFaqs(market: AuditFixMarket) {
   return [
     {
       question: "What do I get?",
-      answer: `A ${AUDIT_OFFER_NAME} is a dated standing across ${AI_MODELS_PHRASE} on ${AUDIT_FIX_PROMPTS} prompts, plus why your content isn't getting cited, why competitor content is, the next pieces to publish, trust signals to capture, and a ranked backlog across site, content, and authority. Price is ${price.priceLabel} one-time for ${price.localeHint}.`,
+      answer: `A ${AUDIT_OFFER_NAME} is a dated standing across ${AI_MODELS_PHRASE} on ${AUDIT_FIX_PROMPTS} buyer prompts: who gets named, who wins instead, and the evidence behind each answer. You also get the full content and citation read, why your pages miss and theirs win, trust signals still open to you, the next pieces to publish, and a ranked backlog across site, content, and authority. Price is ${price.priceLabel} one-time for ${price.localeHint}.`,
     },
     {
       question: `How is ${AUDIT_OFFER_NAME} priced?`,
-      answer: `One Audit is ${price.priceLabel} (${price.periodLabel}) for ${price.localeHint}. Same scope everywhere: ${AUDIT_FIX_PROMPTS} prompts, content and citation analysis, publish list, and prioritized backlog. Switch markets with the toggle in the pricing section if you bill from a different region.`,
+      answer: `One Audit is ${price.priceLabel} (${price.periodLabel}) for ${price.localeHint}. Same scope everywhere: ${AUDIT_FIX_PROMPTS} prompts, content and citation analysis, publish priorities, and a ranked backlog. Switch markets with the toggle in the pricing section if you bill from a different region.`,
     },
     {
       question: "How deep does the content audit go?",
       answer:
-        "We look at your current pages and strategy, why they miss citations, why rival pages win, alignment with how buyers ask, trust signals to capture next, and the few content pieces that close the gap right now.",
+        "We review your live pages and the content strategy behind them. We explain why those pages fail to earn citations today, and why rival pages win the same prompts. We flag alignment issues between how buyers ask and how you answer, name the trust signals worth capturing next, and list the few content pieces that close the gap with competitors right now. This is a publish plan tied to evidence, not a vague theme list.",
     },
     {
       question: "What kinds of changes does the backlog cover?",
       answer:
-        "Whatever is blocking recommendations on your prompts: crawl and discovery (robots, llms.txt, schema, entity clarity), content rewrites and new answer-shaped pages, and authority moves on sources models already cite. Ranked by impact so your team knows the order of work.",
-    },
-    {
-      question: "Do you guarantee AI will recommend us?",
-      answer: `No honest product can. Models shift daily. We guarantee a dated audit across ${AI_MODELS_PHRASE}, prompt-level evidence, and a prioritized plan your team can verify. Treat the Audit as the baseline and playbook, not a permanent ranking promise.`,
+        "Site work that blocks models from learning clean facts about you: crawl access, robots, discovery files like llms.txt, schema, and entity clarity. Content work: rewrites on pages that already exist, plus new answer-shaped pages for the prompts you lose. Authority work: the third-party sources models already cite in your category, and which ones are still open for you. Every item is ranked by impact so your team knows what to do first.",
     },
     {
       question: "How long does it take?",
@@ -167,10 +176,6 @@ export function getAuditFixFaqs(market: AuditFixMarket) {
       question: "What do you need from us?",
       answer:
         "Site URL, competitors, market, and a shortlist of buyer prompts if you already have them. We can also propose the prompt set for your approval before the run.",
-    },
-    {
-      question: "How is this different from a Snapshot or managed services?",
-      answer: `Snapshots are white-label standing reports for agencies. Managed GEO is the ongoing retainer. ${AUDIT_OFFER_NAME} is the brand-facing audit: standing, content strategy, citation gaps, trust signals, publish list, and ranked backlog in one package.`,
     },
     {
       question: "Which engines are included?",
@@ -191,6 +196,6 @@ export const auditFixFaqsForSchema = [
   ),
   {
     question: `How is ${AUDIT_OFFER_NAME} priced?`,
-    answer: `India: ₹4,999 one-time. US and worldwide: $99 one-time. Same product across ${AI_MODELS_PHRASE}: standing, content strategy, citation gaps, trust signals, publish list, and prioritized backlog. Choose your market in the pricing section.`,
+    answer: `India: ₹4,999 one-time. US and worldwide: $99 one-time. Same product across ${AI_MODELS_PHRASE}: standing, content and citation analysis, publish priorities, and a ranked backlog. Choose your market in the pricing section.`,
   },
 ] as const;
