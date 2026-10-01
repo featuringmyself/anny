@@ -4,37 +4,37 @@ import type { MatrixRow } from "@/components/pages/compare/VsMatrix";
 export const semrushMatrix: readonly MatrixRow[] = [
   {
     capability: "Dedicated AI answer visibility dashboard",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Full SEO + PPC + social suite",
-    anny: "no",
+    dodox: "no",
     competitor: "yes",
   },
   {
     capability: "Citation tracking across LLM responses",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Daily multi-model mention monitoring",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Position tracking & domain overview",
-    anny: "no",
+    dodox: "no",
     competitor: "yes",
   },
   {
     capability: "Content / social scheduling tooling",
-    anny: "no",
+    dodox: "no",
     competitor: "yes",
   },
   {
     capability: "GEO-focused competitor mention gaps",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
 ] as const;

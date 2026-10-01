@@ -15,6 +15,12 @@ const links = [
     group: "Services",
   },
   {
+    href: "/audit",
+    name: "Dodox Audit",
+    framing: "Why AI skips you, and what needs to change",
+    group: "Services",
+  },
+  {
     href: "/tools/ai-readiness-checker",
     name: "AI readiness checker",
     framing: "Free. Can models crawl and name your site?",
@@ -25,12 +31,6 @@ const links = [
     name: "AI crawlability checker",
     framing: "Free. Which bots are allowed or blocked?",
     group: "Tools",
-  },
-  {
-    href: "/compare/ahrefs",
-    name: "Dodox vs Ahrefs",
-    framing: "SEO rankings vs AI answer mentions",
-    group: "Compare",
   },
 ] as const;
 

@@ -1,4 +1,4 @@
-import PatternStrip from "@/components/PatternStrip";
+import { brand } from "@/components/Home/brand";
 import JsonLd from "@/components/JsonLd";
 import CompareHero from "@/components/pages/compare/CompareHero";
 import VsMatrix from "@/components/pages/compare/VsMatrix";
@@ -31,16 +31,14 @@ export default function CompareProfoundPage() {
         headline={
           <>
             Same category.{" "}
-            <span className="text-zinc-500">
+            <span style={{ color: brand.body }}>
               Different fit for marketing teams.
             </span>
           </>
         }
         description="Both track AI mentions. Dodox prioritizes daily multi-model coverage and agency-ready GEO action."
       />
-      <PatternStrip />
       <VsMatrix competitor="Profound" rows={profoundMatrix} />
-      <PatternStrip />
       <VsVerdict
         competitor="Profound"
         pickDodoxWhen={profoundVerdict.pickDodoxWhen}

@@ -4,37 +4,37 @@ import type { MatrixRow } from "@/components/pages/compare/VsMatrix";
 export const profoundMatrix: readonly MatrixRow[] = [
   {
     capability: "Brand mention tracking in AI answers",
-    anny: "yes",
+    dodox: "yes",
     competitor: "yes",
   },
   {
     capability: "Competitor visibility side-by-side",
-    anny: "yes",
+    dodox: "yes",
     competitor: "yes",
   },
   {
     capability: "Source / citation board with brand presence",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Model breadth (incl. AI Mode / Overview)",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Agency multi-client workspace",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Actionable GEO gaps → content next steps",
-    anny: "yes",
+    dodox: "yes",
     competitor: "partial",
   },
   {
     capability: "Enterprise custom research programs",
-    anny: "partial",
+    dodox: "partial",
     competitor: "yes",
   },
 ] as const;

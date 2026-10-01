@@ -1,4 +1,4 @@
-import PatternStrip from "@/components/PatternStrip";
+import { brand } from "@/components/Home/brand";
 import JsonLd from "@/components/JsonLd";
 import CompareHero from "@/components/pages/compare/CompareHero";
 import VsMatrix from "@/components/pages/compare/VsMatrix";
@@ -31,16 +31,12 @@ export default function CompareSemrushPage() {
         headline={
           <>
             Suites sprawl.{" "}
-            <span className="text-zinc-500">
-              Dodox stays on AI answers.
-            </span>
+            <span style={{ color: brand.body }}>Dodox stays on AI answers.</span>
           </>
         }
         description="Keep Semrush for SEO and PPC. Add Dodox when AI mentions need their own workflow."
       />
-      <PatternStrip />
       <VsMatrix competitor="Semrush" rows={semrushMatrix} />
-      <PatternStrip />
       <VsVerdict
         competitor="Semrush"
         pickDodoxWhen={semrushVerdict.pickDodoxWhen}

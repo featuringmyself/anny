@@ -1,4 +1,4 @@
-import PatternStrip from "@/components/PatternStrip";
+import { brand } from "@/components/Home/brand";
 import JsonLd from "@/components/JsonLd";
 import CompareHero from "@/components/pages/compare/CompareHero";
 import VsMatrix from "@/components/pages/compare/VsMatrix";
@@ -28,14 +28,12 @@ export default function CompareAhrefsPage() {
         headline={
           <>
             Ahrefs owns classic SEO.{" "}
-            <span className="text-zinc-500">Dodox owns AI mentions.</span>
+            <span style={{ color: brand.body }}>Dodox owns AI mentions.</span>
           </>
         }
         description="Backlinks and SERPs still matter, but when buyers ask ChatGPT, you need a different dashboard."
       />
-      <PatternStrip />
       <VsMatrix competitor="Ahrefs" rows={ahrefsMatrix} />
-      <PatternStrip />
       <VsVerdict
         competitor="Ahrefs"
         pickDodoxWhen={ahrefsVerdict.pickDodoxWhen}

@@ -4,37 +4,37 @@ import type { MatrixRow } from "@/components/pages/compare/VsMatrix";
 export const ahrefsMatrix: readonly MatrixRow[] = [
   {
     capability: "AI mention / visibility score",
-    anny: "yes",
+    dodox: "yes",
     competitor: "no",
   },
   {
     capability: "Citation & source tracking in AI answers",
-    anny: "yes",
+    dodox: "yes",
     competitor: "no",
   },
   {
-    capability: "Multi-model coverage (ChatGPT, Claude, Gemini…)",
-    anny: "yes",
+    capability: "Multi-model coverage (ChatGPT, Claude, Gemini, and more)",
+    dodox: "yes",
     competitor: "no",
   },
   {
     capability: "Backlink & referring domain analysis",
-    anny: "no",
+    dodox: "no",
     competitor: "yes",
   },
   {
     capability: "Classic keyword research & SERP tracking",
-    anny: "partial",
+    dodox: "partial",
     competitor: "yes",
   },
   {
     capability: "Site audit / technical SEO crawler",
-    anny: "no",
+    dodox: "no",
     competitor: "yes",
   },
   {
     capability: "GEO playbooks from AI answer gaps",
-    anny: "yes",
+    dodox: "yes",
     competitor: "no",
   },
 ] as const;

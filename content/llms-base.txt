@@ -10,8 +10,8 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://dodoxhq.com/.w
 
 - [Home](https://dodoxhq.com/): Overview of Dodox AI search visibility monitoring
 - [Services](https://dodoxhq.com/services): Managed GEO/AEO engagements, done-for-you AI visibility (distinct from self-serve Dodox at /pricing)
+- [Dodox Audit](https://dodoxhq.com/audit): One-time AI visibility audit across ChatGPT, Claude, Gemini, Grok, and Perplexity, with a prioritized backlog across site, content, and authority footprint. ₹4,999 India / $99 worldwide
 - [Pricing](https://dodoxhq.com/pricing): Starter, Pro, Advanced, and agency plans
-- [Services](https://dodoxhq.com/services): Done-for-you managed GEO / AEO program
 - [Create account](https://dodoxhq.com/register): Start tracking AI brand mentions
 - [FAQ](https://dodoxhq.com/faq): Common questions about Dodox, GEO, and response tracking
 - [Docs](https://dodoxhq.com/docs): Product documentation for shipping GEO with Dodox
@@ -32,6 +32,7 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://dodoxhq.com/.w
 - [Agencies](https://dodoxhq.com/features/agencies): Multi-client AI visibility reporting for agencies
 - [Agency offerings](https://dodoxhq.com/agencies/offerings): Micro SaaS GEO packages for SEO, PR, and digital agencies (standing snapshots, audits, retainers)
 - [Dodox Snapshots](https://dodoxhq.com/standings): White-label AI visibility standing reports for agencies: ₹500 India / $10 worldwide, 25 prompts, ChatGPT + Perplexity + AI Overviews
+- [Dodox Audit](https://dodoxhq.com/audit): One-time AI visibility audit with a prioritized site, content, and authority backlog: ₹4,999 India / $99 worldwide
 - [ChatGPT](https://dodoxhq.com/features/chatgpt): Track brand mentions in ChatGPT answers
 - [Gemini](https://dodoxhq.com/features/gemini): Monitor Gemini citations and sources
 - [AI Mode](https://dodoxhq.com/features/ai-mode): Visibility in Google AI Mode

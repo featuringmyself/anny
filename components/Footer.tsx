@@ -11,6 +11,7 @@ const columns = [
       { label: "Home", href: "/" },
       { label: "Careers", href: "/careers" },
       { label: "Services", href: "/services" },
+      { label: "Dodox Audit", href: "/audit" },
       { label: "FAQ", href: "/faq" },
       { label: "AI Instructions", href: "/ai-instructions" },
     ],
