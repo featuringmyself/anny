@@ -90,6 +90,7 @@ Deep links: `/compare/ahrefs`, `/compare/semrush`, `/compare/profound`
 - Agencies: https://www.dodoxhq.com/features/agencies
 - Agency offerings: https://www.dodoxhq.com/agencies/offerings
 - Dodox Snapshots: https://www.dodoxhq.com/standings
+- Dodox Audit: https://www.dodoxhq.com/audit
 - Agency partnership: https://www.dodoxhq.com/partnership/agencies
 - ChatGPT tracking: https://www.dodoxhq.com/features/chatgpt
 - Gemini tracking: https://www.dodoxhq.com/features/gemini

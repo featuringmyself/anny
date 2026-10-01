@@ -18,7 +18,7 @@ const ENGINES = [
   { name: "Perplexity", src: "/ai-logo/perplexityLogo.svg" },
 ] as const;
 
-const AUDIT_HERO_HEADLINE = `Why ${AI_MODELS_PHRASE} don't recommend you. Diagnosed, with what to change.`;
+const AUDIT_HERO_HEADLINE = `Why ${AI_MODELS_PHRASE} don't recommend you. The diagnosis that gets you onto the shortlist.`;
 
 export default function AuditFixHero() {
   return (
@@ -66,7 +66,7 @@ export default function AuditFixHero() {
               doesn&apos;t recommend you
             </span>
             <span className="mt-1.5 block text-[0.8em] text-zinc-500 sm:mt-2 sm:text-[0.55em]">
-              Diagnosed, with what to change.
+              The diagnosis that gets you onto the shortlist.
             </span>
           </span>
         </h1>
@@ -75,8 +75,8 @@ export default function AuditFixHero() {
           className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-pretty sm:mt-5 sm:text-lg"
           style={{ color: brand.body }}
         >
-          A dated standing across the major AI engines, plus a ranked backlog
-          across site, content, and authority.
+          A complete read of how AI answers for your category, and the plan
+          that gets you named.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8">

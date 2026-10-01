@@ -73,6 +73,8 @@ together.
 **Revisit when:** `/audit` returns 200 on production and appears in the live
 sitemap.
 
+**Status:** Closed — `/audit` live; AEO restored (see entry below).
+
 ---
 
 ## 2026-10-01 — No invented volumes or backlink counts
@@ -153,6 +155,25 @@ uncommitted /audit offer as live”).
 **Revisit when:** `/audit` returns 200 on production — then restore offer links
 in llms + nav + sitemap together.
 
+**Status:** Closed — see “/audit live; AEO links restored” below.
+
+---
+
+## 2026-10-01 — /audit live; AEO links restored
+
+**Decision:** `/audit` is live on production. Restore Dodox Audit links in
+`llms-base` / `llms-full` (and agent skill deep links) with offer facts from the
+live page: ₹4,999 India / $99 worldwide, one-time. Sitemap, robots Allow, footer,
+and explore already pointed at `/audit`; leave those. Keep `/audits/` disallowed.
+
+**Chose over:** Leaving AEO files without `/audit` after the offer went live, or
+inventing new product copy.
+
+**Why:** Page + sitemap + llms must agree for crawl/AEO. Withholding links was
+only to avoid soft-404s while the offer 404’d.
+
+**Revisit when:** Closed.
+
 ---
 
 ## 2026-10-01 — YouTube citations post: INDEX (orphan was ISR/CDN skew)
@@ -183,4 +204,4 @@ clear the apex `seo.canonicalUrl` open flag below.
 | Creator affiliate disclosure wording | Affiliate language present; explicit “ad disclosure” phrasing not confirmed as sufficient | Legal pass when creator program is marketed widely |
 | Case studies stay noindex | Intentional for private proof; trades away public E-E-A-T | Decide if sanitized public versions should be indexable |
 | Soft-claim accuracy (Reddit / award-winning / #1 open-source) | Wording confirmed in templates; primary sources not verified this session | `verify-primary-source` pass before next services/footer edit |
-| llms-full dollar amounts | **Resolved** — synced to $150 / $300 / managed $250+; `/audit` links stripped until live | Drop after next AEO deploy confirms live files |
+| llms-full dollar amounts / `/audit` AEO | **Resolved** — pricing synced; `/audit` restored in llms after live 200 | Drop after next AEO deploy confirms live files |

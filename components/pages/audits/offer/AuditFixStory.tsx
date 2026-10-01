@@ -57,8 +57,8 @@ export default function AuditFixStory() {
           The idea in three frames
         </h2>
         <p className="mx-auto mt-3 max-w-lg text-sm font-medium leading-relaxed text-neutral-200/90 sm:mt-4 sm:text-lg">
-          AI already answers. The Audit shows why you are off the shortlist, and
-          what to change next.
+          AI already answers. The Audit shows who gets named, why, and what
+          moves you onto the list.
         </p>
       </div>
 

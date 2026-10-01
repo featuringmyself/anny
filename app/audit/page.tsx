@@ -34,8 +34,8 @@ const PATH = "/audit";
 const DATE_PUBLISHED = "2026-10-01";
 const DATE_MODIFIED = "2026-10-01";
 
-const title = `${AUDIT_OFFER_NAME}: Why AI Doesn't Recommend You, and What to Change`;
-const description = `AI visibility audit across ${AI_MODELS_PHRASE}. See why models skip you and what needs to change across site, content, and authority footprint. ₹4,999 India, $99 worldwide.`;
+const title = `${AUDIT_OFFER_NAME}: Why AI Doesn't Recommend You`;
+const description = `AI visibility audit across ${AI_MODELS_PHRASE}: who gets named, why competitor pages get cited, why yours don't, and what to publish next. 49 prompts, 5 days. ₹4,999 India, $99 worldwide.`;
 
 export const metadata = pageMetadata({
   path: PATH,
@@ -83,7 +83,7 @@ function auditOfferJsonLd() {
             priceCurrency: india.priceCurrency,
             availability: "https://schema.org/InStock",
             url: absoluteUrl(PATH),
-            description: `AI visibility audit across ${AI_MODELS_PHRASE} with a prioritized backlog across site, content, and authority. ${AUDIT_FIX_PROMPTS} prompts. India.`,
+            description: `AI visibility audit across ${AI_MODELS_PHRASE}: standing, why content gets or misses citations, what to publish next, and a ranked backlog. ${AUDIT_FIX_PROMPTS} prompts. India.`,
             eligibleRegion: { "@type": "Country", name: "IN" },
           },
           {
@@ -93,7 +93,7 @@ function auditOfferJsonLd() {
             priceCurrency: intl.priceCurrency,
             availability: "https://schema.org/InStock",
             url: absoluteUrl(PATH),
-            description: `AI visibility audit across ${AI_MODELS_PHRASE} with a prioritized backlog across site, content, and authority. ${AUDIT_FIX_PROMPTS} prompts. Worldwide.`,
+            description: `AI visibility audit across ${AI_MODELS_PHRASE}: standing, why content gets or misses citations, what to publish next, and a ranked backlog. ${AUDIT_FIX_PROMPTS} prompts. Worldwide.`,
             areaServed: { "@type": "Place", name: "Worldwide" },
           },
         ],

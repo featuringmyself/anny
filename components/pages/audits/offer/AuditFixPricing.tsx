@@ -15,10 +15,11 @@ import { useAuditFixMarket } from "./AuditMarketContext";
 
 const INCLUDED = [
   `${AUDIT_FIX_PROMPTS} buyer prompts across major AI engines`,
-  "Why you are missing + who wins instead",
-  "Prioritized change backlog",
-  "Site · content · authority priorities",
-  "Executive summary + prompt evidence",
+  "Visibility score + who wins instead",
+  "Why competitor content gets cited",
+  "Why yours doesn't, and what to publish next",
+  "Sources and trust signals worth winning",
+  "Ranked backlog for site, content, and authority",
 ] as const;
 
 export default function AuditFixPricing() {
@@ -39,7 +40,7 @@ export default function AuditFixPricing() {
           {active.priceLabel} one-time
         </h2>
         <p className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed text-neutral-200/90">
-          Audit and prioritized backlog across {AI_MODELS_PHRASE}. Typical
+          {AUDIT_FIX_PROMPTS} prompts across {AI_MODELS_PHRASE}. Typical
           turnaround {AUDIT_FIX_TURNAROUND} once prompts are locked.
         </p>
 

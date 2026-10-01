@@ -16,14 +16,14 @@ export default function AuditFixSurfaces() {
           className="text-[1.5rem] leading-tight font-bold tracking-tight sm:text-3xl md:text-[2.25rem]"
           style={{ color: brand.tertiary }}
         >
-          Three surfaces. One backlog.
+          Three places you win or lose
         </h2>
         <p
           className="mx-auto mt-3 max-w-lg text-sm font-medium leading-relaxed sm:mt-4 sm:text-lg"
           style={{ color: brand.body }}
         >
-          Recommendations come from what models can crawl, what they can cite,
-          and who already shapes the answer. The Audit ranks gaps on all three.
+          Site, content, and authority. We dig into all three, then rank what
+          closes the gap.
         </p>
       </div>
 

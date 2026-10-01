@@ -55,8 +55,8 @@ export default function AuditFixShow() {
           className="mx-auto mt-3 max-w-lg text-sm font-medium leading-relaxed sm:mt-4 sm:text-lg"
           style={{ color: brand.body }}
         >
-          Standing, competitors, sources, and the ranked backlog. Evidence
-          first, then priorities.
+          Scores, who wins instead, why their pages get cited, why yours
+          don&apos;t, and what to publish next.
         </p>
       </div>
 

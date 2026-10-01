@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { brand } from "@/components/Home/brand";
+import { AUDIT_FIX_TURNAROUND } from "@/lib/audit-fix-pricing";
 import { auditFixSteps } from "./content";
 
 const stepMedia = [
@@ -40,8 +41,7 @@ export default function AuditFixHow() {
           className="mx-auto mt-3 max-w-lg text-sm font-medium leading-relaxed sm:mt-4 sm:text-lg"
           style={{ color: brand.body }}
         >
-          Four steps. Typical turnaround 7-10 business days once prompts are
-          locked.
+          Four steps. {AUDIT_FIX_TURNAROUND} once prompts are locked.
         </p>
       </div>
 

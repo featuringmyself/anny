@@ -27,8 +27,8 @@ export const AUDIT_FIX_PRICING = {
   },
 } as const;
 
-export const AUDIT_FIX_PROMPTS = 20;
-export const AUDIT_FIX_TURNAROUND = "7-10 business days";
+export const AUDIT_FIX_PROMPTS = 49;
+export const AUDIT_FIX_TURNAROUND = "5 days";
 
 export const AUDIT_FIX_SURFACES = [
   "Site",

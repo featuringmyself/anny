@@ -5,6 +5,10 @@ import Link from "next/link";
 import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
+import {
+  AUDIT_FIX_PROMPTS,
+  AUDIT_FIX_TURNAROUND,
+} from "@/lib/audit-fix-pricing";
 import { useAuditFixMarket } from "./AuditMarketContext";
 
 export default function AuditFixCta() {
@@ -21,11 +25,11 @@ export default function AuditFixCta() {
           id="audit-offer-cta-heading"
           className="text-3xl leading-[1.12] font-bold tracking-tight text-white sm:text-4xl"
         >
-          Stop guessing why AI skips you
+          See what AI says about you
         </h2>
         <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-neutral-200/90 sm:text-lg">
-          {pricing.priceLabel} one-time. Diagnosis and a prioritized backlog
-          across site, content, and authority.
+          {pricing.priceLabel} one-time. {AUDIT_FIX_PROMPTS} prompts, full
+          audit, {AUDIT_FIX_TURNAROUND} turnaround.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <TalkToSalesButton
