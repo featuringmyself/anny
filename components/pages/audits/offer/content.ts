@@ -39,7 +39,7 @@ export const auditFixStory = [
     title: "You get the playbook",
     body: "Why they win, why you don't, and the next pages and sources that move you onto the list.",
     kind: "image" as const,
-    src: "/features/chatgpt/recommended-actions.webp",
+    src: "/partnership/agencies/feature-action-plans.webp",
     label: "Prioritized change backlog from the Audit",
   },
 ] as const;
@@ -82,8 +82,8 @@ export const auditFixShow = [
     title: "What to publish to close the gap",
     body: "The next pieces to ship, sources worth winning, and a ranked backlog across site, content, and authority.",
     kind: "image" as const,
-    src: "/features/chatgpt/recommended-actions.webp",
-    label: "Recommended actions backlog",
+    src: "/features/chatgpt/data-owned.webp",
+    label: "Owned content types and publish recommendations",
     mediaFirst: false,
   },
 ] as const;

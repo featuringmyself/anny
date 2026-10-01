@@ -15,7 +15,7 @@ const stepMedia = [
   },
   {
     kind: "image" as const,
-    src: "/features/chatgpt/recommended-actions.webp",
+    src: "/partnership/agencies/feature-action-plans.webp",
   },
   {
     kind: "image" as const,
