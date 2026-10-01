@@ -118,13 +118,69 @@ redirect/canonical noise.
 
 ---
 
+## 2026-10-01 — Preferred host locked to www
+
+**Decision:** Lock preferred host to `https://www.dodoxhq.com`. Updated
+`SITE_URL` in `lib/site.ts` and bumped `SITE_DATE_MODIFIED` to 2026-10-01 so
+canonicals, sitemap, robots, and AEO surfaces follow www.
+
+**Chose over:** Flipping Vercel / DNS to serve apex as primary while leaving
+code on apex declarations.
+
+**Why:** Live production already 308 apex → www. Aligning code to the live
+redirect avoids fighting the edge config and closes the P0 dual-host signal
+gap from the earlier preferred-host decision.
+
+**Revisit when:** Post-deploy GSC Coverage is clean for www; confirm no
+remaining apex canonicals in CMS or generated markup. See open flag on
+per-post `seo.canonicalUrl`.
+
+---
+
+## 2026-10-01 — AEO pricing synced; /audit links withheld
+
+**Decision:** Sync `llms-base` / `llms-full` (and related AEO surfaces) to
+current pricing ($150 / $300 / managed $250+). Strip `/audit` links from those
+surfaces until the offer is live.
+
+**Chose over:** Shipping WIP `/audit` nav/links alongside the pricing sync, or
+leaving stale dollar amounts until the offer ships.
+
+**Why:** Stale pricing misleads answer engines now; shipping `/audit` before
+the page is 200 creates crawl/soft-404 noise (same rationale as “Do not audit
+uncommitted /audit offer as live”).
+
+**Revisit when:** `/audit` returns 200 on production — then restore offer links
+in llms + nav + sitemap together.
+
+---
+
+## 2026-10-01 — YouTube citations post: INDEX (orphan was ISR/CDN skew)
+
+**Decision:** Keep `youtube-citations-google-ai-overviews` indexable. No CMS or
+GROQ change.
+
+**Chose over:** Forcing a Sanity republish or query tweak on the assumption the
+post was unpublished / `noIndex`.
+
+**Why:** Sanity already has `publishedAt` set and `seo.noIndex` false;
+`POSTS` / sitemap / RSS filters agree. Earlier “orphan” (in RSS/llms but missing
+from blog index + sitemap) was ISR/CDN skew. Live www surfaces now all include
+the post.
+
+**Revisit when:** After deploy, spot-check blog index + sitemap still list it;
+clear the apex `seo.canonicalUrl` open flag below.
+
+---
+
 ## Open flags
 
 | Flag | Why uncertain | Next check |
 |------|----------------|------------|
-| Full Google index inventory | GSC connected (owner-confirmed); inventory review still pending after www deploy. SERP may still show stale “Product Hub / Anny / Signal” homepage snippet | After www host alignment deploy — review Coverage for redirect/canonical noise |
-| YouTube post missing from blog index + sitemap but in RSS/llms | Likely CMS query/perspective mismatch; sitemap excludes `seo.noIndex` posts — check flags | Inspect Sanity publish state + `SITEMAP_QUERY` / blog listing query |
+| Full Google index inventory | GSC connected (owner-confirmed — see GSC verification entry); inventory review still pending after www deploy. SERP may still show stale “Product Hub / Anny / Signal” homepage snippet | After www host alignment deploy — review Coverage for redirect/canonical noise |
+| YouTube post orphan (blog index + sitemap) | **Resolved** — INDEX; ISR/CDN skew, not CMS/GROQ. Live www includes post. | Spot-check post-deploy; then drop this row |
+| Sanity `seo.canonicalUrl` on YouTube post still apex | Post canonical still `https://dodoxhq.com/blog/...` while `SITE_URL` is www | After deploy / CMS cleanup — set per-post canonicals to www |
 | Creator affiliate disclosure wording | Affiliate language present; explicit “ad disclosure” phrasing not confirmed as sufficient | Legal pass when creator program is marketed widely |
 | Case studies stay noindex | Intentional for private proof; trades away public E-E-A-T | Decide if sanitized public versions should be indexable |
 | Soft-claim accuracy (Reddit / award-winning / #1 open-source) | Wording confirmed in templates; primary sources not verified this session | `verify-primary-source` pass before next services/footer edit |
-| llms-full dollar amounts | Confirmed stale vs live pricing; treat as same P1 as llms.txt plan-name drift | Sync on next AEO content deploy |
+| llms-full dollar amounts | **Resolved** — synced to $150 / $300 / managed $250+; `/audit` links stripped until live | Drop after next AEO deploy confirms live files |
