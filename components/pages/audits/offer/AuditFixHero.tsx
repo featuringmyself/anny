@@ -9,7 +9,14 @@ import { Button } from "@/components/ui/button";
 import { AUDIT_OFFER_NAME, auditFixProof } from "./content";
 
 import logoImg from "@/public/logo.png";
-import heroVisual from "@/public/partnership/agencies/ws-audits.webp";
+
+const ENGINES = [
+  { name: "ChatGPT", src: "/ai-logo/chatgptLogo.svg" },
+  { name: "Claude", src: "/ai-logo/claudeLogo.svg" },
+  { name: "Gemini", src: "/ai-logo/geminiLogo.svg" },
+  { name: "Grok", src: "/ai-logo/grokLogo.svg" },
+  { name: "Perplexity", src: "/ai-logo/perplexityLogo.svg" },
+] as const;
 
 const AUDIT_HERO_HEADLINE = `Why ${AI_MODELS_PHRASE} don't recommend you. Diagnosed, with what to change.`;
 
@@ -58,7 +65,7 @@ export default function AuditFixHero() {
             <span className="mt-1.5 block text-balance sm:mt-2">
               doesn&apos;t recommend you
             </span>
-            <span className="mt-1.5 block whitespace-nowrap text-[0.8em] text-zinc-500 sm:mt-2 sm:text-[0.55em]">
+            <span className="mt-1.5 block text-[0.8em] text-zinc-500 sm:mt-2 sm:text-[0.55em]">
               Diagnosed, with what to change.
             </span>
           </span>
@@ -68,8 +75,8 @@ export default function AuditFixHero() {
           className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-pretty sm:mt-5 sm:text-lg"
           style={{ color: brand.body }}
         >
-          We show you why AI skips your brand and what needs to change across
-          your site, content, and authority footprint.
+          A dated standing across the major AI engines, plus a ranked backlog
+          across site, content, and authority.
         </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8">
@@ -84,26 +91,54 @@ export default function AuditFixHero() {
             size="lg"
             variant="outline"
             className="h-11 rounded-lg border-zinc-900 px-5 text-base font-semibold hover:bg-zinc-900 hover:text-white sm:h-12 sm:px-6"
-            render={<Link href="#pricing" />}
+            render={<Link href="#story" />}
           >
-            See pricing
+            See how it works
           </Button>
         </div>
+
+        <ul
+          className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:mt-8"
+          aria-label="Engines covered"
+        >
+          {ENGINES.map((engine) => (
+            <li
+              key={engine.name}
+              className="flex items-center gap-2 text-xs font-semibold text-zinc-600 sm:text-sm"
+            >
+              <Image
+                src={engine.src}
+                alt=""
+                width={28}
+                height={28}
+                className="size-5 object-contain sm:size-6"
+              />
+              {engine.name}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <div className="relative mx-auto mt-7 max-w-5xl px-4 sm:mt-12 sm:px-6">
+      {/* Product visual: standing dashboard, not a random workspace shot */}
+      <div className="relative mx-auto mt-8 max-w-5xl px-4 sm:mt-12 sm:px-6">
         <figure
           className="relative aspect-[5/3] overflow-hidden rounded-t-2xl ring-1 ring-black/5 sm:aspect-16/9"
           style={{ backgroundColor: brand.cream }}
         >
-          <Image
-            src={heroVisual}
-            alt={`AI visibility audit across ${AI_MODELS_PHRASE}`}
-            fill
-            priority
-            className="object-cover object-top"
-            sizes="(max-width: 1024px) 100vw, 64rem"
-          />
+          <video
+            className="h-full w-full object-cover object-top"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`AI visibility standing across ${AI_MODELS_PHRASE}`}
+          >
+            <source
+              src="/services/videos/brand-visibility.webm"
+              type="video/webm"
+            />
+          </video>
         </figure>
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-28"

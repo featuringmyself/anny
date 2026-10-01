@@ -6,9 +6,9 @@ import AuditFixCta from "@/components/pages/audits/offer/AuditFixCta";
 import AuditFixFaq from "@/components/pages/audits/offer/AuditFixFaq";
 import AuditFixHero from "@/components/pages/audits/offer/AuditFixHero";
 import AuditFixHow from "@/components/pages/audits/offer/AuditFixHow";
-import AuditFixIncluded from "@/components/pages/audits/offer/AuditFixIncluded";
 import AuditFixPricing from "@/components/pages/audits/offer/AuditFixPricing";
-import AuditFixProblem from "@/components/pages/audits/offer/AuditFixProblem";
+import AuditFixShow from "@/components/pages/audits/offer/AuditFixShow";
+import AuditFixStory from "@/components/pages/audits/offer/AuditFixStory";
 import AuditFixSurfaces from "@/components/pages/audits/offer/AuditFixSurfaces";
 import { AuditFixMarketProvider } from "@/components/pages/audits/offer/AuditMarketContext";
 import {
@@ -119,14 +119,13 @@ async function resolveMarket() {
 }
 
 /**
- * Narrative:
- * 1. Hero + proof
- * 2. Problem / three answers
- * 3. What's included
- * 4. Three surfaces we change
- * 5. How it works
- * 6. Pricing
- * 7. Convert + FAQ
+ * Narrative (visual-first):
+ * 1. Hero + product standing visual
+ * 2. Three-frame story
+ * 3. What the report shows (media)
+ * 4. Three surfaces
+ * 5. How
+ * 6. Pricing + convert + FAQ
  */
 export default async function AuditOfferPage() {
   const initialMarket = await resolveMarket();
@@ -137,8 +136,8 @@ export default async function AuditOfferPage() {
       <JsonLd data={faqJsonLd(auditFixFaqsForSchema)} />
       <AuditFixMarketProvider initialMarket={initialMarket}>
         <AuditFixHero />
-        <AuditFixProblem />
-        <AuditFixIncluded />
+        <AuditFixStory />
+        <AuditFixShow />
         <AuditFixSurfaces />
         <AuditFixHow />
         <AuditFixPricing />

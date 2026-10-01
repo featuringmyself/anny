@@ -3,22 +3,34 @@ import Image from "next/image";
 import { brand } from "@/components/Home/brand";
 import { auditFixSteps } from "./content";
 
-import promptTracking from "@/public/partnership/agencies/ws-prompt-tracking.webp";
-import audits from "@/public/partnership/agencies/ws-audits.webp";
-import actionPlans from "@/public/partnership/agencies/feature-action-plans.webp";
-import comparison from "@/public/metrics/allAIGraph.webp";
-
-const stepMedia = [promptTracking, audits, actionPlans, comparison] as const;
+const stepMedia = [
+  {
+    kind: "image" as const,
+    src: "/partnership/agencies/ws-prompt-tracking.webp",
+  },
+  {
+    kind: "video" as const,
+    src: "/services/videos/brand-visibility.webm",
+  },
+  {
+    kind: "image" as const,
+    src: "/features/chatgpt/recommended-actions.webp",
+  },
+  {
+    kind: "image" as const,
+    src: "/metrics/searchQueries.webp",
+  },
+] as const;
 
 export default function AuditFixHow() {
   return (
     <section
       className="w-full rounded-2xl bg-white py-10 sm:py-16 md:py-20"
-      aria-labelledby="audit-fix-how-heading"
+      aria-labelledby="audit-offer-how-heading"
     >
       <div className="mx-auto max-w-3xl px-6 text-center">
         <h2
-          id="audit-fix-how-heading"
+          id="audit-offer-how-heading"
           className="text-[1.5rem] font-bold tracking-tight sm:text-3xl md:text-[2.25rem]"
           style={{ color: brand.tertiary }}
         >
@@ -61,43 +73,60 @@ export default function AuditFixHow() {
       </ol>
 
       <ol className="mx-auto mt-12 hidden max-w-5xl gap-4 px-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-        {auditFixSteps.map((item, i) => (
-          <li
-            key={item.step}
-            className="overflow-hidden rounded-2xl border text-left"
-            style={{
-              backgroundColor: brand.cream,
-              borderColor: `${brand.ink}14`,
-            }}
-          >
-            <div className="relative aspect-16/10">
-              <Image
-                src={stepMedia[i]}
-                alt=""
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 640px) 100vw, 25vw"
-              />
-            </div>
-            <div className="p-5">
-              <span
-                className="text-xs font-bold tabular-nums"
-                style={{ color: brand.tertiary }}
-              >
-                {item.step}
-              </span>
-              <h3 className="mt-1.5 text-base font-bold tracking-tight text-zinc-900">
-                {item.title}
-              </h3>
-              <p
-                className="mt-2 text-sm font-medium leading-relaxed"
-                style={{ color: brand.body }}
-              >
-                {item.body}
-              </p>
-            </div>
-          </li>
-        ))}
+        {auditFixSteps.map((item, i) => {
+          const media = stepMedia[i];
+          return (
+            <li
+              key={item.step}
+              className="overflow-hidden rounded-2xl border text-left"
+              style={{
+                backgroundColor: brand.cream,
+                borderColor: `${brand.ink}14`,
+              }}
+            >
+              <div className="relative aspect-16/10">
+                {media.kind === "video" ? (
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-hidden
+                  >
+                    <source src={media.src} type="video/webm" />
+                  </video>
+                ) : (
+                  <Image
+                    src={media.src}
+                    alt=""
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 100vw, 25vw"
+                  />
+                )}
+              </div>
+              <div className="p-5">
+                <span
+                  className="text-xs font-bold tabular-nums"
+                  style={{ color: brand.tertiary }}
+                >
+                  {item.step}
+                </span>
+                <h3 className="mt-1.5 text-base font-bold tracking-tight text-zinc-900">
+                  {item.title}
+                </h3>
+                <p
+                  className="mt-2 text-sm font-medium leading-relaxed"
+                  style={{ color: brand.body }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </section>
   );

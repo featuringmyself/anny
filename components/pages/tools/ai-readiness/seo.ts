@@ -59,7 +59,7 @@ export const aiReadinessFaqs = [
   {
     question: "Should I run the AI crawlability checker first?",
     answer:
-      "Yes, if you only need to know whether AI bots can fetch the site. Use the free AI crawlability checker at https://dodoxhq.com/tools/ai-crawlability-checker for robots.txt allow/block status, then use this readiness checker for brand identity, schema, and citation signals.",
+      "Yes, if you only need to know whether AI bots can fetch the site. Use the free AI crawlability checker at https://www.dodoxhq.com/tools/ai-crawlability-checker for robots.txt allow/block status, then use this readiness checker for brand identity, schema, and citation signals.",
   },
   {
     question: "Is the AI readiness checker free?",

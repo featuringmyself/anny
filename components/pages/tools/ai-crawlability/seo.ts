@@ -30,7 +30,7 @@ export const aiCrawlFaqs = [
   {
     question: "Is this the same as the AI readiness checker?",
     answer:
-      "No. This tool only answers whether AI bots can crawl the site. The free AI readiness checker at https://dodoxhq.com/tools/ai-readiness-checker also looks at brand identity, schema, and citation signals.",
+      "No. This tool only answers whether AI bots can crawl the site. The free AI readiness checker at https://www.dodoxhq.com/tools/ai-readiness-checker also looks at brand identity, schema, and citation signals.",
   },
   {
     question: "If a bot is allowed, will ChatGPT cite my brand?",

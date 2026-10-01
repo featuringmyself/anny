@@ -16,87 +16,88 @@ export const auditFixProof = [
   { value: "7-10d", label: "Typical turnaround" },
 ] as const;
 
-export const auditFixIncluded = [
+/** Three-beat story: the whole offer at a glance. */
+export const auditFixStory = [
   {
-    group: "The diagnosis",
-    dek: `A dated standing across ${AI_MODELS_PHRASE} so you see exactly where models route demand away from you.`,
-    items: [
-      {
-        title: "Why models skip you",
-        body: `We run ${AUDIT_FIX_PROMPTS} category-aware buyer prompts across major AI engines and map where you are missing, misnamed, or outranked on the shortlist.`,
-      },
-      {
-        title: "Who wins instead",
-        body: "Share of voice vs named competitors, with answer excerpts you can verify yourself in each engine.",
-      },
-      {
-        title: "Citation & source map",
-        body: "The domains and pages models trust when they build an answer in your category.",
-      },
-      {
-        title: "Website readiness pass",
-        body: "Crawlability, robots, schema, and discovery gaps that block models from learning you correctly.",
-      },
-    ],
+    step: "01",
+    title: "Buyers ask AI",
+    body: "Someone asks who to trust in your category. The model answers with a shortlist.",
+    kind: "image" as const,
+    src: "/audits/sprentzo/01-best-pickleball-paddle-india.png",
+    label: "Example ChatGPT shortlist naming competitors",
   },
   {
-    group: "What needs to change",
-    dek: "Not a 40-page wishlist. A prioritized backlog ranked by impact on the prompts that lose you right now.",
-    items: [
-      {
-        title: "Prioritized change list",
-        body: "Impact × effort across site, content, and authority so eng, marketing, and founders know the order of work.",
-      },
-      {
-        title: "Answer-shaped content gaps",
-        body: "The comparison, FAQ, and entity pages AI already expects in your category and you are missing.",
-      },
-      {
-        title: "Entity & schema clarity",
-        body: "Organization, Offer, FAQ, and entity signals so models can retrieve facts instead of guessing.",
-      },
-      {
-        title: "Authority footprint gaps",
-        body: "Third-party sources that currently shape answers, and the placements your category already relies on.",
-      },
-    ],
+    step: "02",
+    title: "You are missing",
+    body: "Competitors take the recommendation. Your brand never makes the answer.",
+    kind: "video" as const,
+    src: "/services/videos/comparison.webm",
+    label: "Competitor share of voice across AI engines",
   },
   {
-    group: "How you use it",
-    dek: "A deliverable your team can act on: evidence, priorities, and clear next moves across the surfaces that move AI recommendations.",
-    items: [
-      {
-        title: "Site priorities",
-        body: "Robots and AI-bot access, llms.txt / discovery files, structured data, and on-page entity clarity where retrieval is blocked.",
-      },
-      {
-        title: "Content priorities",
-        body: "Answer-shaped pages and rewrites for the losing prompts: comparisons, FAQs, category explainers models can cite.",
-      },
-      {
-        title: "Authority priorities",
-        body: "Where to show up in the third-party sources already feeding AI answers in your niche.",
-      },
-      {
-        title: "Executive summary",
-        body: "A short outcome view for founders and CMOs, with the prompt tables underneath for the people doing the work.",
-      },
-    ],
+    step: "03",
+    title: "The Audit maps the fix list",
+    body: "Dated evidence across engines, then a ranked backlog across site, content, and authority.",
+    kind: "image" as const,
+    src: "/features/chatgpt/recommended-actions.webp",
+    label: "Prioritized change backlog from the Audit",
+  },
+] as const;
+
+/** What is inside the report, shown with product media. */
+export const auditFixShow = [
+  {
+    title: "Where you show up, engine by engine",
+    body: `Comparable standing across ${AI_MODELS_PHRASE} on the same ${AUDIT_FIX_PROMPTS} prompts.`,
+    kind: "video" as const,
+    src: "/services/videos/brand-visibility.webm",
+    label: "Brand visibility across AI engines",
+    mediaFirst: false,
+  },
+  {
+    title: "Who wins the shortlist instead",
+    body: "Share of voice and the exact prompts where rivals get named and you do not.",
+    kind: "video" as const,
+    src: "/services/videos/comparison.webm",
+    label: "Competitor comparison across AI platforms",
+    mediaFirst: true,
+  },
+  {
+    title: "The pages AI trusts",
+    body: "Citation and source map: the domains shaping answers in your category.",
+    kind: "image" as const,
+    src: "/metrics/aiSources.webp",
+    label: "AI citation sources",
+    mediaFirst: false,
+  },
+  {
+    title: "What needs to change next",
+    body: "A prioritized backlog across site, content, and authority, tied to the prompts you lose today.",
+    kind: "image" as const,
+    src: "/features/chatgpt/recommended-actions.webp",
+    label: "Recommended actions backlog",
+    mediaFirst: true,
   },
 ] as const;
 
 export const auditFixSurfaces = [
   {
     title: "Site",
-    body: "Make your domain crawlable and readable: bots, discovery files, schema, and entity pages that give models clean facts.",
+    body: "Crawlability, robots, schema, and entity clarity so models can learn clean facts.",
+    src: "/metrics/aiCrawl.webp",
+    label: "AI crawl and readiness signals",
   },
   {
     title: "Content",
-    body: "Publish and rewrite the answer-shaped pages AI already expects when buyers ask who to trust in your category.",
+    body: "Answer-shaped pages AI already expects: comparisons, FAQs, category explainers.",
+    src: "/features/chatgpt/mention-frequency.webp",
+    label: "Mention and content gap view",
   },
   {
-    title: "Authority footprint",
-    body: "Show up in the third-party sources models already cite, so recommendations are not built only from your competitors' pages.",
+    title: "Authority",
+    body: "Third-party sources models already cite, and where your footprint is thin.",
+    src: "/metrics/aiSources.webp",
+    label: "Authority and citation footprint",
   },
 ] as const;
 
@@ -120,21 +121,6 @@ export const auditFixSteps = [
     step: "04",
     title: "Hand off the report",
     body: "Dated standing, prioritized change list, and a clear next path if you want ongoing GEO after the Audit.",
-  },
-] as const;
-
-export const auditFixPromise = [
-  {
-    title: "Why you are missing",
-    body: `A dated audit across ${AI_MODELS_PHRASE} with prompts, competitors, citations, and readiness: the evidence, not a vibe check.`,
-  },
-  {
-    title: "What needs to change",
-    body: "A ranked backlog across site, content, and authority footprint tied to the prompts that lose you today.",
-  },
-  {
-    title: "What to do next",
-    body: "Clear priorities your team can act on, with the prompt evidence attached so the work stays grounded.",
   },
 ] as const;
 
