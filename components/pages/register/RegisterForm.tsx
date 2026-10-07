@@ -67,12 +67,10 @@ export default function RegisterForm({ plan }: { plan?: string }) {
     }
   }, [state.status, fieldErrors.email, fieldErrors.company]);
 
-  const panelPadding = "p-6 sm:p-8 md:p-10";
-
   if (state.status === "success") {
     return (
       <motion.div
-        className={`flex min-h-80 flex-col justify-center ${panelPadding}`}
+        className="mt-8 flex flex-col justify-center"
         initial={reduce ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -84,16 +82,17 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         >
           Request received
         </span>
-        <h2
+        <h1
           ref={successHeadingRef}
           tabIndex={-1}
+          id="register-heading"
           className="mt-4 text-2xl font-bold tracking-tight outline-none sm:text-3xl"
           style={{ color: brand.heading }}
         >
           We&apos;ve got your details
-        </h2>
+        </h1>
         <p
-          className="mt-3 max-w-sm text-sm leading-relaxed sm:text-base"
+          className="mt-3 max-w-md text-sm leading-relaxed sm:text-base"
           style={{ color: brand.body }}
         >
           Noted on{" "}
@@ -101,7 +100,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
             {state.email}
           </span>
           . We&apos;re accepting limited signups due to high demand; our sales
-          team will reach out soon.
+          team will reach out within one business day.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button
@@ -125,40 +124,41 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   }
 
   return (
-    <div className={`flex min-h-80 flex-col justify-center ${panelPadding}`}>
-      <div>
-        <h2
-          className="text-xl font-bold tracking-tight sm:text-2xl"
-          style={{ color: brand.heading }}
-        >
-          Start tracking AI mentions
-        </h2>
-        <p className="mt-2 max-w-sm text-sm leading-relaxed sm:text-[15px]" style={{ color: brand.body }}>
-          Work email and company — two fields, then we&apos;ll be in touch
-          {plan ? (
-            <>
-              {" "}
-              about{" "}
-              <span className="font-semibold" style={{ color: brand.bodyStrong }}>
-                {plan}
-              </span>
-            </>
-          ) : null}
-          .
-        </p>
+    <div className="mt-8 max-w-md">
+      <h1
+        id="register-heading"
+        className="text-2xl font-bold tracking-tight sm:text-[1.75rem]"
+        style={{ color: brand.heading }}
+      >
+        Create your Dodox account
+      </h1>
+      <p
+        className="mt-2 text-sm leading-relaxed sm:text-[15px]"
+        style={{ color: brand.body }}
+      >
+        Get started with AI visibility across ChatGPT, Gemini, Perplexity, and
+        Copilot.
         {plan ? (
-          <p
-            className="mt-3 inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold tracking-wide uppercase"
-            style={{ backgroundColor: brand.sticker, color: brand.dark }}
-          >
-            {plan} plan
-          </p>
+          <>
+            {" "}
+            You selected the{" "}
+            <span className="font-semibold" style={{ color: brand.bodyStrong }}>
+              {plan}
+            </span>{" "}
+            plan.
+          </>
         ) : null}
-      </div>
+      </p>
+      <p
+        className="mt-3 text-xs font-medium tracking-wide uppercase"
+        style={{ color: brand.bodyStrong }}
+      >
+        No credit card · Limited onboarding while demand is high
+      </p>
 
       <form
         action={formAction}
-        className="mt-7 grid gap-4"
+        className="mt-8 grid gap-4"
         noValidate
         aria-busy={pending}
       >
@@ -247,7 +247,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
           className="mt-1 h-12 w-full rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
           disabled={pending}
         >
-          {pending ? "Submitting…" : "Request access"}
+          {pending ? "Submitting…" : "Continue"}
         </Button>
 
         <p className="text-xs leading-relaxed" style={{ color: brand.body }}>
@@ -271,23 +271,17 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         </p>
       </form>
 
-      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-zinc-900/10 pt-6 text-sm">
-        <Link
-          href="/pricing"
-          className="font-medium underline underline-offset-4 hover:opacity-80"
-          style={{ color: brand.heading }}
-        >
-          Compare plans
-        </Link>
+      <p className="mt-6 text-sm" style={{ color: brand.body }}>
+        Want a demo first?{" "}
         <TalkToSalesButton
           variant="link"
-          className="h-auto p-0 font-medium underline-offset-4"
+          className="h-auto p-0 font-semibold underline-offset-4"
           style={{ color: brand.heading }}
           source="register-form"
         >
-          Talk to sales
+          Schedule a call with our team
         </TalkToSalesButton>
-      </div>
+      </p>
     </div>
   );
 }
