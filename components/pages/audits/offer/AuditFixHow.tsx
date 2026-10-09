@@ -26,26 +26,55 @@ const stepMedia = [
 export default function AuditFixHow() {
   return (
     <section
-      className="hidden w-full rounded-2xl bg-white py-10 sm:block sm:py-16 md:py-20"
+      className="w-full rounded-2xl bg-white py-6 sm:py-16 md:py-20"
       aria-labelledby="audit-offer-how-heading"
     >
-      <div className="mx-auto max-w-3xl px-6 text-center">
+      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2
           id="audit-offer-how-heading"
-          className="text-[1.5rem] font-bold tracking-tight sm:text-3xl md:text-[2.25rem]"
+          className="text-[1.25rem] font-bold tracking-tight sm:text-3xl md:text-[2.25rem]"
           style={{ color: brand.tertiary }}
         >
           From brief to report
         </h2>
         <p
-          className="mx-auto mt-3 max-w-lg text-sm font-medium leading-relaxed sm:mt-4 sm:text-lg"
+          className="mx-auto mt-1.5 max-w-lg text-[13px] font-medium leading-snug sm:mt-4 sm:text-lg sm:leading-relaxed"
           style={{ color: brand.body }}
         >
           Four steps. {AUDIT_FIX_TURNAROUND} once prompts are locked.
         </p>
       </div>
 
-      <ol className="mx-auto mt-12 grid max-w-5xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Mobile: dense numbered list — full copy, no tall media */}
+      <ol className="mx-auto mt-4 flex max-w-5xl flex-col px-4 sm:hidden">
+        {auditFixSteps.map((item) => (
+          <li
+            key={item.step}
+            className="flex gap-2.5 border-t border-zinc-900/10 py-2.5 first:border-t-0 first:pt-0"
+          >
+            <span
+              className="mt-0.5 shrink-0 text-[11px] font-bold tabular-nums"
+              style={{ color: brand.tertiary }}
+            >
+              {item.step}
+            </span>
+            <div className="min-w-0">
+              <h3 className="text-[13px] font-bold tracking-tight text-zinc-900">
+                {item.title}
+              </h3>
+              <p
+                className="mt-0.5 text-[12px] font-medium leading-snug"
+                style={{ color: brand.body }}
+              >
+                {item.body}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      {/* Desktop media cards */}
+      <ol className="mx-auto mt-12 hidden max-w-5xl gap-4 px-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
         {auditFixSteps.map((item, i) => {
           const media = stepMedia[i];
           return (
@@ -76,7 +105,7 @@ export default function AuditFixHow() {
                     alt=""
                     fill
                     className="object-cover object-top"
-                    sizes="(max-width: 640px) 100vw, 25vw"
+                    sizes="25vw"
                   />
                 )}
               </div>

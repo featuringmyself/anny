@@ -33,25 +33,20 @@ export default function AuditFixPricing() {
       style={{ backgroundColor: brand.dark }}
       aria-labelledby="audit-offer-pricing-heading"
     >
-      <div className="mx-auto max-w-xl px-5 pt-10 text-center sm:px-6 sm:pt-20">
+      <div className="mx-auto max-w-xl px-4 pt-8 text-center sm:px-6 sm:pt-20">
         <h2
           id="audit-offer-pricing-heading"
           className="text-2xl font-bold tracking-tight text-white sm:text-4xl"
         >
           {active.priceLabel} one-time
         </h2>
-        <p className="mx-auto mt-3 max-w-md text-sm font-medium leading-relaxed text-neutral-200/90 sm:mt-4 sm:text-base">
-          <span className="sm:hidden">
-            {AUDIT_FIX_PROMPTS} prompts · {AUDIT_FIX_TURNAROUND}
-          </span>
-          <span className="hidden sm:inline">
-            {AUDIT_FIX_PROMPTS} prompts across {AI_MODELS_PHRASE}. Typical
-            turnaround {AUDIT_FIX_TURNAROUND} once prompts are locked.
-          </span>
+        <p className="mx-auto mt-2 max-w-md text-[13px] font-medium leading-snug text-neutral-200/90 sm:mt-4 sm:text-base sm:leading-relaxed">
+          {AUDIT_FIX_PROMPTS} prompts across {AI_MODELS_PHRASE}. Typical
+          turnaround {AUDIT_FIX_TURNAROUND} once prompts are locked.
         </p>
 
         <div
-          className="mx-auto mt-5 flex max-w-sm rounded-xl p-1 ring-1 ring-white/15 sm:mt-8"
+          className="mx-auto mt-4 flex max-w-sm rounded-xl p-1 ring-1 ring-white/15 sm:mt-8"
           style={{ backgroundColor: "#0c242b" }}
           role="group"
           aria-label="Pricing market"
@@ -70,7 +65,7 @@ export default function AuditFixPricing() {
                 onClick={() => setMarket(option.id)}
                 aria-pressed={selected}
                 className={cn(
-                  "flex-1 cursor-pointer rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors",
+                  "flex-1 cursor-pointer rounded-lg px-3 py-2 text-sm font-semibold transition-colors sm:py-2.5",
                   selected
                     ? "text-[#11333c]"
                     : "text-white/55 hover:text-white",
@@ -84,10 +79,10 @@ export default function AuditFixPricing() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-md px-5 pt-5 pb-10 sm:px-6 sm:pt-8 sm:pb-20">
+      <div className="mx-auto max-w-md px-4 pt-4 pb-8 sm:px-6 sm:pt-8 sm:pb-20">
         <article
           key={market}
-          className="flex flex-col rounded-2xl border p-5 text-left sm:p-7"
+          className="flex flex-col rounded-xl border p-4 text-left sm:rounded-2xl sm:p-7"
           style={{
             backgroundColor: brand.cream,
             borderColor: brand.ink,
@@ -100,36 +95,40 @@ export default function AuditFixPricing() {
           >
             {AUDIT_OFFER_NAME}
           </p>
-          <p className="mt-1 text-sm font-medium" style={{ color: brand.body }}>
+          <p
+            className="mt-0.5 text-xs font-medium sm:mt-1 sm:text-sm"
+            style={{ color: brand.body }}
+          >
             {active.localeHint}
           </p>
 
-          <div className="mt-4 flex items-end gap-2 sm:mt-5">
+          <div className="mt-3 flex items-end gap-2 sm:mt-5">
             <span
-              className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"
+              className="text-3xl font-bold tracking-tight tabular-nums sm:text-5xl"
               style={{ color: brand.tertiary }}
             >
               {active.priceLabel}
             </span>
-            <span className="pb-1 text-sm font-semibold text-zinc-500 sm:pb-1.5">
+            <span className="pb-1 text-xs font-semibold text-zinc-500 sm:pb-1.5 sm:text-sm">
               one-time
             </span>
           </div>
           <p
-            className="mt-2 text-sm font-medium"
+            className="mt-1.5 text-[13px] font-medium leading-snug sm:mt-2 sm:text-sm sm:leading-normal"
             style={{ color: brand.bodyStrong }}
           >
-            Fee credits toward implementation if you book the sprint.
+            AI visibility audit + prioritized change backlog. Fee adjusts into
+            implementation if you book the sprint.
           </p>
 
-          <ul className="mt-4 flex flex-col gap-2 border-t border-zinc-900/10 pt-4 sm:mt-5 sm:gap-2.5 sm:pt-5">
+          <ul className="mt-3.5 flex flex-col gap-1.5 border-t border-zinc-900/10 pt-3.5 sm:mt-5 sm:gap-2.5 sm:pt-5">
             {INCLUDED.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2.5 text-sm font-medium text-zinc-800"
+                className="flex items-start gap-2 text-[13px] font-medium leading-snug text-zinc-800 sm:gap-2.5 sm:text-sm sm:leading-normal"
               >
                 <Check
-                  className="mt-0.5 size-4 shrink-0"
+                  className="mt-0.5 size-3.5 shrink-0 sm:size-4"
                   style={{ color: brand.tertiary }}
                   strokeWidth={2.5}
                   aria-hidden
@@ -141,7 +140,7 @@ export default function AuditFixPricing() {
 
           <AuditCheckoutButton
             size="lg"
-            className="mt-5 h-12 w-full cursor-pointer rounded-lg border border-zinc-900 bg-brand text-base font-semibold text-white hover:bg-emerald-50 hover:text-black sm:mt-7"
+            className="mt-4 h-10 w-full cursor-pointer rounded-lg border border-zinc-900 bg-brand text-sm font-semibold text-white hover:bg-emerald-50 hover:text-black sm:mt-7 sm:h-12 sm:text-base"
             market={market}
             source={`audit-offer-pricing-${market}`}
           >

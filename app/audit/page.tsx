@@ -131,14 +131,18 @@ async function resolveMarket() {
 
 /**
  * Narrative (visual-first):
- * Mobile: Hero → story beats → one finding → pricing → FAQ
- * Desktop: + surfaces, how, footer CTA, chapter explorer
+ * 1. Hero + product standing visual
+ * 2. Three-frame story
+ * 3. What a finding looks like (report media gallery)
+ * 4. Three surfaces
+ * 5. How
+ * 6. Pricing + convert + FAQ
  */
 export default async function AuditOfferPage() {
   const initialMarket = await resolveMarket();
 
   return (
-    <main className="flex flex-col gap-2 px-2 pb-2 sm:gap-4 sm:px-4 sm:pb-4">
+    <main className="flex flex-col gap-2 px-2.5 pb-2.5 sm:gap-4 sm:px-4 sm:pb-4">
       <JsonLd data={auditOfferJsonLd()} />
       <JsonLd data={faqJsonLd(auditFixFaqsForSchema)} />
       <AuditFixMarketProvider initialMarket={initialMarket}>

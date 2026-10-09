@@ -46,13 +46,13 @@ export default function AuditFixFaq() {
 
   return (
     <section
-      className="w-full rounded-2xl bg-white px-5 py-8 sm:px-6 sm:py-20 md:px-12"
+      className="w-full rounded-2xl bg-white px-4 py-6 sm:px-6 sm:py-20 md:px-12"
       aria-labelledby="audit-fix-faq-heading"
     >
       <div className="mx-auto max-w-2xl text-center">
         <h2
           id="audit-fix-faq-heading"
-          className="text-[1.35rem] font-bold tracking-tight sm:text-3xl md:text-4xl"
+          className="text-[1.25rem] font-bold tracking-tight sm:text-3xl md:text-4xl"
           style={{ color: brand.tertiary }}
         >
           Questions before you order
@@ -66,7 +66,7 @@ export default function AuditFixFaq() {
         </p>
       </div>
 
-      <div className="mx-auto mt-4 max-w-2xl sm:mt-10">
+      <div className="mx-auto mt-3 max-w-2xl sm:mt-10">
         {faqs.map((faq, index) => (
           <FaqAnalytics
             key={faq.question}
@@ -76,16 +76,15 @@ export default function AuditFixFaq() {
             <details
               name="audit-fix-faq"
               className="group border-b border-border"
-              open={false}
             >
               <summary
-                className="cursor-pointer list-none py-3.5 text-left text-[15px] font-semibold marker:content-none sm:py-5 sm:text-base [&::-webkit-details-marker]:hidden"
+                className="cursor-pointer list-none py-2.5 text-left text-[13px] font-semibold marker:content-none sm:py-5 sm:text-base [&::-webkit-details-marker]:hidden"
                 style={{ color: brand.tertiary }}
               >
-                <span className="flex items-start justify-between gap-4">
+                <span className="flex items-start justify-between gap-3 sm:gap-4">
                   {faq.question}
                   <span
-                    className="mt-1 shrink-0 text-zinc-400 transition group-open:rotate-45"
+                    className="mt-0.5 shrink-0 text-zinc-400 transition group-open:rotate-45"
                     aria-hidden
                   >
                     +
@@ -93,7 +92,7 @@ export default function AuditFixFaq() {
                 </span>
               </summary>
               <div
-                className="pb-3.5 text-sm leading-relaxed font-medium sm:pb-5 sm:text-[15px]"
+                className="pb-2.5 text-[13px] leading-snug font-medium sm:pb-5 sm:text-[15px] sm:leading-relaxed"
                 style={{ color: brand.body }}
               >
                 <p className="max-w-xl">{faq.answer}</p>

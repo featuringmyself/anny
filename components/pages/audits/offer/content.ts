@@ -214,7 +214,7 @@ export function getAuditFixFaqs(market: AuditFixMarket) {
     {
       question: "What do I walk away with?",
       answer:
-        "A clear picture of where your brand stands in AI answers, why competitors get recommended instead, what to fix, and how to prioritise the work. Scores, prompt-level proof, who wins each citation, and a ranked backlog—not a generic SEO checklist.",
+        "A clear picture of where your brand stands in AI answers, why competitors get recommended instead, what to fix, and how to prioritise the work. Scores, prompt-level proof, who wins each citation, and a ranked backlog, not a generic SEO checklist.",
     },
     {
       question: "How much does it cost?",
@@ -241,7 +241,7 @@ export function getAuditFixFaqs(market: AuditFixMarket) {
     {
       question: "Who is this for?",
       answer:
-        "Founders and marketing leads who need evidence for why AI skips them—and a concrete plan to get named. Agencies that need white-label-only snapshots should use Snapshots instead.",
+        "Founders and marketing leads who need evidence for why AI skips them, and a concrete plan to get named. Agencies that need white-label-only snapshots should use Snapshots instead.",
     },
   ] as const;
 }

@@ -10,10 +10,10 @@ export default function AuditFixHeroActions() {
   const { market } = useAuditFixMarket();
 
   return (
-    <div className="mt-5 flex w-full max-w-md flex-col items-stretch gap-2.5 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3">
+    <div className="mt-5 flex w-full max-w-xs flex-col items-center gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
       <AuditCheckoutButton
         size="lg"
-        className="h-11 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-5 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black sm:h-12 sm:px-6"
+        className="h-11 w-full cursor-pointer rounded-lg border border-zinc-900 bg-brand px-6 text-sm font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black sm:h-12 sm:w-auto sm:text-base"
         market={market}
         source="audit-offer-hero"
       >
@@ -27,6 +27,12 @@ export default function AuditFixHeroActions() {
       >
         See how it works
       </Button>
+      <Link
+        href="#story"
+        className="text-sm font-semibold text-zinc-600 underline-offset-4 hover:text-zinc-900 hover:underline sm:hidden"
+      >
+        See how it works
+      </Link>
     </div>
   );
 }
