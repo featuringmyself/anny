@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { auditFixReportChapters } from "./content";
 
 type Chapter = (typeof auditFixReportChapters)[number];
+type ChapterId = Chapter["id"];
 
 const mobileChapters = auditFixReportChapters.filter((c) => c.mobileHighlight);
 
@@ -54,7 +55,9 @@ function FindingMedia({
  * Mobile: same pages as a snap row — full info, far less vertical bulk.
  */
 export default function AuditFixShow() {
-  const [activeId, setActiveId] = useState(auditFixReportChapters[0].id);
+  const [activeId, setActiveId] = useState<ChapterId>(
+    auditFixReportChapters[0].id,
+  );
   const activeIndex = auditFixReportChapters.findIndex((c) => c.id === activeId);
   const active =
     auditFixReportChapters[activeIndex >= 0 ? activeIndex : 0] ??
