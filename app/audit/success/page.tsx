@@ -28,10 +28,21 @@ function first(value: string | string[] | undefined): string | undefined {
   return value;
 }
 
+function isSucceededStatus(status: string): boolean {
+  const s = status.toLowerCase();
+  return (
+    s === "succeeded" ||
+    s === "success" ||
+    s === "paid" ||
+    s === "complete" ||
+    s === "completed"
+  );
+}
+
 /**
  * Return URL after Dodo hosted checkout.
- * Confirms payment via API when payment_id is present.
- * Fulfillment still comes from webhooks — this page is customer UX.
+ * Paid confirmation requires a verified Dodo payment — never trust redirect query params.
+ * Fulfillment / DB writes still come only from webhooks.
  */
 export default async function AuditCheckoutSuccessPage({
   searchParams,
@@ -40,20 +51,19 @@ export default async function AuditCheckoutSuccessPage({
 }) {
   const params = await searchParams;
   const paymentId = first(params.payment_id);
-  const redirectStatus = (first(params.status) ?? "").toLowerCase();
-  const redirectEmail = first(params.email);
 
   const verified = paymentId ? await verifyAuditPayment(paymentId) : null;
 
-  const status = (verified?.status ?? redirectStatus).toLowerCase();
-  const email = verified?.email ?? redirectEmail;
-  const looksPaid =
-    status === "succeeded" ||
-    status === "success" ||
-    status === "paid" ||
-    status === "complete" ||
-    status === "completed" ||
-    (!status && Boolean(paymentId));
+  const paidConfirmed = Boolean(
+    verified &&
+      verified.isAuditOffer &&
+      isSucceededStatus(verified.status),
+  );
+
+  const email = paidConfirmed ? verified?.email : undefined;
+  const market = paidConfirmed ? verified?.market : undefined;
+  const invoiceUrl = paidConfirmed ? verified?.invoiceUrl : undefined;
+  const displayPaymentId = paidConfirmed ? verified?.paymentId : undefined;
 
   return (
     <main className="flex flex-col gap-3 px-3 pb-3 sm:gap-4 sm:px-4 sm:pb-4">
@@ -73,18 +83,20 @@ export default async function AuditCheckoutSuccessPage({
           className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
           style={{ color: brand.tertiary }}
         >
-          {looksPaid ? "You're in. We'll start soon." : "Checking your payment"}
+          {paidConfirmed
+            ? "You're in. We'll start soon."
+            : "Confirming your payment"}
         </h1>
         <p
           className="mx-auto mt-4 max-w-md text-base font-medium leading-relaxed"
           style={{ color: brand.body }}
         >
-          {looksPaid
-            ? `We'll lock your ${AUDIT_FIX_PROMPTS}-prompt set and deliver the report in ${AUDIT_FIX_TURNAROUND}. A confirmation email follows from Dodo Payments.`
-            : "If your bank is still authorizing, give it a minute — we'll email you once payment is confirmed."}
+          {paidConfirmed
+            ? `We'll lock your ${AUDIT_FIX_PROMPTS}-prompt set and deliver the report in ${AUDIT_FIX_TURNAROUND}. You'll get a payment receipt by email.`
+            : "We're still confirming with the payment provider. This usually takes a moment — you'll get a receipt by email once it clears."}
         </p>
 
-        {(email || paymentId || verified?.invoiceUrl) && (
+        {paidConfirmed && (email || displayPaymentId || invoiceUrl) ? (
           <dl className="mx-auto mt-8 max-w-sm space-y-2 rounded-xl border border-zinc-900/10 bg-white/60 px-4 py-4 text-left text-sm">
             {email ? (
               <div className="flex justify-between gap-3">
@@ -92,26 +104,26 @@ export default async function AuditCheckoutSuccessPage({
                 <dd className="font-semibold text-zinc-900">{email}</dd>
               </div>
             ) : null}
-            {verified?.market ? (
+            {market ? (
               <div className="flex justify-between gap-3">
                 <dt className="font-medium text-zinc-500">Market</dt>
                 <dd className="font-semibold capitalize text-zinc-900">
-                  {verified.market}
+                  {market}
                 </dd>
               </div>
             ) : null}
-            {paymentId ? (
+            {displayPaymentId ? (
               <div className="flex justify-between gap-3">
                 <dt className="font-medium text-zinc-500">Payment</dt>
                 <dd className="font-mono text-xs font-semibold text-zinc-900">
-                  {paymentId}
+                  {displayPaymentId}
                 </dd>
               </div>
             ) : null}
-            {verified?.invoiceUrl ? (
+            {invoiceUrl ? (
               <div className="pt-1">
                 <a
-                  href={verified.invoiceUrl}
+                  href={invoiceUrl}
                   className="text-sm font-semibold underline underline-offset-2"
                   style={{ color: brand.tertiary }}
                   target="_blank"
@@ -122,7 +134,7 @@ export default async function AuditCheckoutSuccessPage({
               </div>
             ) : null}
           </dl>
-        )}
+        ) : null}
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Button

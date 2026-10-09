@@ -1,7 +1,8 @@
 import "server-only";
 
-import { getDodoClient } from "@/lib/dodo/client";
 import { AUDIT_CHECKOUT_OFFER } from "@/lib/dodo/audit-catalog";
+import { getDodoClient } from "@/lib/dodo/client";
+import { isKnownAuditProductId } from "@/lib/dodo/config";
 
 export type VerifiedAuditPayment = {
   paymentId: string;
@@ -25,6 +26,12 @@ export async function verifyAuditPayment(
   try {
     const payment = await getDodoClient().payments.retrieve(paymentId);
     const metadata = (payment.metadata ?? {}) as Record<string, string>;
+    const productId =
+      metadata.product_id || payment.product_cart?.[0]?.product_id;
+    const isAuditOffer =
+      metadata.offer === AUDIT_CHECKOUT_OFFER ||
+      isKnownAuditProductId(productId);
+
     return {
       paymentId: payment.payment_id,
       status: String(payment.status ?? "unknown"),
@@ -34,8 +41,7 @@ export async function verifyAuditPayment(
       totalAmount: payment.total_amount,
       market: metadata.market,
       invoiceUrl: payment.invoice_url ?? undefined,
-      isAuditOffer:
-        !metadata.offer || metadata.offer === AUDIT_CHECKOUT_OFFER,
+      isAuditOffer,
     };
   } catch (error) {
     console.error("[audit-verify] payment retrieve failed", {

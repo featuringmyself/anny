@@ -91,8 +91,8 @@ export async function fulfillAuditPaymentSucceeded(
   const productId =
     metadata.product_id || payment.product_cart?.[0]?.product_id;
 
-  if (productId && !isKnownAuditProductId(productId)) {
-    console.error("[audit-fulfill] unexpected product_id", {
+  if (!productId || !isKnownAuditProductId(productId)) {
+    console.error("[audit-fulfill] missing or unexpected product_id", {
       paymentId: payment.payment_id,
       productId,
     });

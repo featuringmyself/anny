@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { createAuditCheckoutSession } from "@/lib/dodo/audit-checkout";
+import {
+  allowAuditCheckoutRequest,
+  clientIpFromRequest,
+} from "@/lib/dodo/checkout-rate-limit";
 import { isAuditCheckoutConfigured } from "@/lib/dodo/config";
 import { SITE_URL } from "@/lib/site";
 
@@ -15,45 +19,40 @@ const bodySchema = z.object({
     .regex(/^[a-z0-9][a-z0-9._-]{0,119}$/i, "Invalid source"),
 });
 
-function isAllowedOrigin(request: Request): boolean {
-  const origin = request.headers.get("origin");
-  if (!origin) {
-    // Same-origin navigations / some browsers omit Origin on POST from same site.
-    const referer = request.headers.get("referer");
-    if (!referer) return true;
-    try {
-      return new URL(referer).origin === new URL(SITE_URL).origin;
-    } catch {
-      return false;
-    }
+function allowedOrigins(): Set<string> {
+  const allowed = new Set([
+    new URL(SITE_URL).origin,
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+  ]);
+  if (process.env.VERCEL_URL) {
+    allowed.add(`https://${process.env.VERCEL_URL}`);
   }
+  return allowed;
+}
 
+function originFromHeader(value: string | null): string | null {
+  if (!value) return null;
   try {
-    const allowed = new Set([
-      new URL(SITE_URL).origin,
-      "http://localhost:3000",
-      "http://127.0.0.1:3000",
-    ]);
-    if (process.env.VERCEL_URL) {
-      allowed.add(`https://${process.env.VERCEL_URL}`);
-    }
-    return allowed.has(new URL(origin).origin);
+    return new URL(value).origin;
   } catch {
-    return false;
+    return null;
   }
 }
 
-function dodoPermissionHint(message: string): string | null {
-  if (message.includes("checkout_sessions:write")) {
-    return "Dodo API key is missing checkout_sessions:write. Create an Editor key in Developer → API Keys.";
-  }
-  if (message.includes("products:write")) {
-    return "Dodo API key is missing products:write.";
-  }
-  if (message.includes("403")) {
-    return "Dodo API key was rejected (403). Check scopes and environment (test_mode vs live_mode).";
-  }
-  return null;
+/**
+ * Require Origin or Referer and match an allowlist.
+ * Rejects anonymous POSTs (no Origin and no Referer) used for session spam.
+ */
+function isAllowedOrigin(request: Request): boolean {
+  const allowed = allowedOrigins();
+  const origin = originFromHeader(request.headers.get("origin"));
+  if (origin) return allowed.has(origin);
+
+  const refererOrigin = originFromHeader(request.headers.get("referer"));
+  if (refererOrigin) return allowed.has(refererOrigin);
+
+  return false;
 }
 
 /**
@@ -66,12 +65,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
+  const ip = clientIpFromRequest(request);
+  if (!allowAuditCheckoutRequest(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Try again in a moment." },
+      { status: 429 },
+    );
+  }
+
   if (!isAuditCheckoutConfigured()) {
     return NextResponse.json(
-      {
-        error:
-          "Checkout is not configured. Set DODO_PAYMENTS_API_KEY and both Audit product IDs (run scripts/setup-dodo-audit-products.mjs).",
-      },
+      { error: "Checkout is temporarily unavailable." },
       { status: 503 },
     );
   }
@@ -85,10 +89,7 @@ export async function POST(request: Request) {
 
   const parsed = bodySchema.safeParse(json);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Invalid request.", details: parsed.error.flatten() },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
   try {
@@ -99,7 +100,7 @@ export async function POST(request: Request) {
         sessionId: session.session_id,
       });
       return NextResponse.json(
-        { error: "Checkout session did not return a URL." },
+        { error: "Could not start checkout. Try again in a moment." },
         { status: 502 },
       );
     }
@@ -111,13 +112,9 @@ export async function POST(request: Request) {
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.error("[checkout/audit] failed to create session:", message, error);
-
-    const hint = dodoPermissionHint(message);
     return NextResponse.json(
-      {
-        error: hint ?? "Could not start checkout. Try again in a moment.",
-      },
-      { status: hint ? 503 : 502 },
+      { error: "Could not start checkout. Try again in a moment." },
+      { status: 502 },
     );
   }
 }
