@@ -39,7 +39,7 @@ export default function AuditFixCta() {
             market={pricing.market}
             source="audit-offer-footer-cta"
           >
-            Get an Audit · {pricing.priceLabel}
+            Get an Audit
           </AuditCheckoutButton>
           <Button
             size="lg"

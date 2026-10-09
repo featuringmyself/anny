@@ -33,7 +33,7 @@ export default function AuditFixHero() {
       </div>
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 pt-10 text-center sm:pt-20 lg:pt-24">
-        <Image
+        {/* <Image
           src={logoImg}
           alt="Dodox"
           width={logoImg.width}
@@ -41,14 +41,8 @@ export default function AuditFixHero() {
           priority
           className="h-7 w-auto object-contain sm:h-9"
           style={{ width: "auto" }}
-        />
+        /> */}
 
-        <p
-          className="mt-4 text-sm font-semibold tracking-[0.08em] uppercase sm:mt-6"
-          style={{ color: brand.tertiary }}
-        >
-          {AUDIT_OFFER_NAME}
-        </p>
 
         <h1
           id="audit-offer-hero-heading"

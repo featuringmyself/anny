@@ -140,7 +140,7 @@ export default function AuditFixPricing() {
             market={market}
             source={`audit-offer-pricing-${market}`}
           >
-            Get an Audit · {active.priceLabel}
+            Get an Audit
           </AuditCheckoutButton>
         </article>
       </div>

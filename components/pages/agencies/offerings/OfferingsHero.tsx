@@ -34,7 +34,7 @@ export default function OfferingsHero() {
       </div>
 
       <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pt-16 text-center sm:pt-20 lg:pt-24">
-        <Image
+        {/* <Image
           src={logoImg}
           alt="Dodox"
           width={logoImg.width}
@@ -42,7 +42,7 @@ export default function OfferingsHero() {
           priority
           className="h-9 w-auto object-contain sm:h-10"
           style={{ width: "auto" }}
-        />
+        /> */}
 
         <p
           className="mt-6 text-sm font-semibold tracking-[0.08em] uppercase"

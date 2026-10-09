@@ -7,7 +7,7 @@ import AuditCheckoutButton from "./AuditCheckoutButton";
 import { useAuditFixMarket } from "./AuditMarketContext";
 
 export default function AuditFixHeroActions() {
-  const { market, pricing } = useAuditFixMarket();
+  const { market } = useAuditFixMarket();
 
   return (
     <div className="mt-6 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
@@ -17,7 +17,7 @@ export default function AuditFixHeroActions() {
         market={market}
         source="audit-offer-hero"
       >
-        Get an Audit · {pricing.priceLabel}
+        Get an Audit
       </AuditCheckoutButton>
       <Button
         size="lg"
