@@ -7,7 +7,7 @@ import {
   type AuditFixMarket,
 } from "@/lib/audit-fix-pricing";
 
-export const AUDIT_OFFER_NAME = "Dodox Audit";
+export const AUDIT_OFFER_NAME = "AI Visibility Intelligence Report";
 
 /** Lead-form copy when CTAs open TalkToSales from /audit. */
 export const AUDIT_TALK_TO_SALES_COPY = {
