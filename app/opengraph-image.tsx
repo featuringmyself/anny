@@ -8,9 +8,17 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-async function loadAsset(relativePath: string, mime: string) {
-  const bytes = await readFile(join(process.cwd(), relativePath));
-  return `data:${mime};base64,${bytes.toString("base64")}`;
+async function loadLogo() {
+  // Paths must be string literals so Turbopack can trace only these files.
+  const bytes = await readFile(join(process.cwd(), "public/logo.png"));
+  return `data:image/png;base64,${bytes.toString("base64")}`;
+}
+
+async function loadDashboard() {
+  const bytes = await readFile(
+    join(process.cwd(), "public/og/product-dashboard.jpg"),
+  );
+  return `data:image/jpeg;base64,${bytes.toString("base64")}`;
 }
 
 /**
@@ -18,10 +26,7 @@ async function loadAsset(relativePath: string, mime: string) {
  * No app-module imports — OG routes must stay self-contained.
  */
 export default async function OpenGraphImage() {
-  const [logoSrc, dashSrc] = await Promise.all([
-    loadAsset("public/logo.png", "image/png"),
-    loadAsset("public/og/product-dashboard.jpg", "image/jpeg"),
-  ]);
+  const [logoSrc, dashSrc] = await Promise.all([loadLogo(), loadDashboard()]);
 
   return new ImageResponse(
     (
