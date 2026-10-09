@@ -2,14 +2,18 @@
 
 export type AuditFixMarket = "india" | "international";
 
+/**
+ * Display amounts must match the Dodo product:
+ * base INR + by_country localized USD (US).
+ */
 export const AUDIT_FIX_PRICING = {
   india: {
     market: "india" as const,
     currency: "INR",
     currencySymbol: "₹",
-    amount: 4999,
-    /** Display: ₹4,999 */
-    priceLabel: "₹4,999",
+    amount: 5000,
+    /** Display: ₹5,000 — Dodo base price */
+    priceLabel: "₹5,000",
     periodLabel: "one-time",
     priceCurrency: "INR",
     localeHint: "India",
@@ -18,9 +22,9 @@ export const AUDIT_FIX_PRICING = {
     market: "international" as const,
     currency: "USD",
     currencySymbol: "$",
-    amount: 99,
-    /** Display: $99 */
-    priceLabel: "$99",
+    amount: 100,
+    /** Display: $100 — Dodo by_country US localized price */
+    priceLabel: "$100",
     periodLabel: "one-time",
     priceCurrency: "USD",
     localeHint: "US & worldwide",

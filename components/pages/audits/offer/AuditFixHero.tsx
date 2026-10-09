@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { AI_MODELS_PHRASE } from "@/components/Home/ai-models";
 import { brand } from "@/components/Home/brand";
 import RotatingModelName from "@/components/Home/rotating-model-name";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
-import { Button } from "@/components/ui/button";
-import { AUDIT_OFFER_NAME, auditFixProof, AUDIT_TALK_TO_SALES_COPY } from "./content";
+import AuditFixHeroActions from "./AuditFixHeroActions";
+import { AUDIT_OFFER_NAME, auditFixProof } from "./content";
 
 import logoImg from "@/public/logo.png";
 
@@ -79,24 +77,7 @@ export default function AuditFixHero() {
           that gets you named.
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-8">
-          <TalkToSalesButton
-            size="lg"
-            className="h-11 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-5 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black sm:h-12 sm:px-6"
-            source="audit-offer-hero"
-            copy={AUDIT_TALK_TO_SALES_COPY}
-          >
-            Get an Audit
-          </TalkToSalesButton>
-          <Button
-            size="lg"
-            variant="outline"
-            className="h-11 rounded-lg border-zinc-900 px-5 text-base font-semibold hover:bg-zinc-900 hover:text-white sm:h-12 sm:px-6"
-            render={<Link href="#story" />}
-          >
-            See how it works
-          </Button>
-        </div>
+        <AuditFixHeroActions />
 
         <ul
           className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:mt-8"

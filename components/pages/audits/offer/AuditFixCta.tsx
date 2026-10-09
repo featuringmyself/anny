@@ -3,13 +3,12 @@
 import Link from "next/link";
 
 import { brand } from "@/components/Home/brand";
-import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import {
   AUDIT_FIX_PROMPTS,
   AUDIT_FIX_TURNAROUND,
 } from "@/lib/audit-fix-pricing";
-import { AUDIT_TALK_TO_SALES_COPY } from "./content";
+import AuditCheckoutButton from "./AuditCheckoutButton";
 import { useAuditFixMarket } from "./AuditMarketContext";
 
 export default function AuditFixCta() {
@@ -32,16 +31,16 @@ export default function AuditFixCta() {
           {pricing.priceLabel} one-time. {AUDIT_FIX_PROMPTS} prompts, full
           audit, {AUDIT_FIX_TURNAROUND} turnaround.
         </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <TalkToSalesButton
+        <div className="mt-9 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+          <AuditCheckoutButton
             size="lg"
             className="h-12 cursor-pointer rounded-lg border border-transparent px-6 text-base font-semibold text-[#11333c] hover:bg-white"
             style={{ backgroundColor: brand.lime }}
+            market={pricing.market}
             source="audit-offer-footer-cta"
-            copy={AUDIT_TALK_TO_SALES_COPY}
           >
             Get an Audit · {pricing.priceLabel}
-          </TalkToSalesButton>
+          </AuditCheckoutButton>
           <Button
             size="lg"
             variant="outline"

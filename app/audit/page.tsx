@@ -35,7 +35,7 @@ const DATE_PUBLISHED = "2026-10-01";
 const DATE_MODIFIED = "2026-10-01";
 
 const title = `${AUDIT_OFFER_NAME}: Why AI Doesn't Recommend You`;
-const description = `AI visibility audit across ${AI_MODELS_PHRASE}: who gets named, why competitor pages get cited, why yours don't, and what to publish next. 49 prompts, 5 days. ₹4,999 India, $99 worldwide.`;
+const description = `AI visibility audit across ${AI_MODELS_PHRASE}: who gets named, why competitor pages get cited, why yours don't, and what to publish next. 49 prompts, 5 days. ₹5,000 India, $100 worldwide.`;
 
 export const metadata = pageMetadata({
   path: PATH,

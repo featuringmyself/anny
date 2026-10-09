@@ -196,6 +196,6 @@ export const auditFixFaqsForSchema = [
   ),
   {
     question: `How is ${AUDIT_OFFER_NAME} priced?`,
-    answer: `India: ₹4,999 one-time. US and worldwide: $99 one-time. Same product across ${AI_MODELS_PHRASE}: standing, content and citation analysis, publish priorities, and a ranked backlog. Choose your market in the pricing section.`,
+    answer: `India: ${AUDIT_FIX_PRICING.india.priceLabel} one-time. US and worldwide: ${AUDIT_FIX_PRICING.international.priceLabel} one-time. Same product across ${AI_MODELS_PHRASE}: standing, content and citation analysis, publish priorities, and a ranked backlog. Choose your market in the pricing section.`,
   },
 ] as const;

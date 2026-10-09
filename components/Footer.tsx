@@ -20,7 +20,7 @@ const columns = [
     title: "Product",
     links: [
       { label: "Docs", href: "/docs" },
-      { label: "Blog", href: "/blog" },
+      { label: "Blog", href: "/blog" },             
       { label: "Pricing", href: "/pricing" },
       { label: "Changelog", href: "/changelog" },
     ],

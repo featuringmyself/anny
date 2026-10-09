@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dodo:setup-audit": "node scripts/setup-dodo-audit-products.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
+    "@dodopayments/nextjs": "^0.3.9",
     "@react-pdf/renderer": "^4.6.1",
     "@sanity/image-url": "^2.1.1",
     "axios": "^1.19.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cn": "^0.3.0",
+    "dodopayments": "^2.54.1",
     "lucide-react": "^1.26.0",
     "mongodb": "^7.5.0",
     "motion": "^12.42.2",
