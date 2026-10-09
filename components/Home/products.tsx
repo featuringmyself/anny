@@ -50,7 +50,7 @@ export default function Products() {
           >
             {plan.badge ? (
               <span
-                className="absolute top-5 right-5 inline-flex items-center rounded-md px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase"
+                className="mb-3 inline-flex w-fit items-center rounded-md px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase"
                 style={{ backgroundColor: brand.tertiary, color: brand.lime }}
               >
                 {plan.badge}
@@ -63,9 +63,9 @@ export default function Products() {
                 alt=""
                 width={48}
                 height={48}
-                className="size-11 rounded-xl bg-white p-1"
+                className="size-11 shrink-0 rounded-xl bg-white p-1"
               />
-              <h3 className="pr-24 text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl">
+              <h3 className="text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl">
                 {plan.name}
               </h3>
             </div>
