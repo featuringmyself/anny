@@ -18,6 +18,8 @@ export const metadata = pageMetadata({
   path: "/",
   title,
   description: SITE_DESCRIPTION,
+  /** Site-wide card from app/opengraph-image.tsx / twitter-image.tsx. */
+  image: false,
 });
 
 /**

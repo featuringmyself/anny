@@ -16,7 +16,7 @@ export default function AuditFixCta() {
 
   return (
     <section
-      className="w-full overflow-hidden rounded-2xl"
+      className="hidden w-full overflow-hidden rounded-2xl sm:block"
       style={{ backgroundColor: brand.dark }}
       aria-labelledby="audit-offer-cta-heading"
     >

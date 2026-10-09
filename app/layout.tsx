@@ -25,6 +25,8 @@ import {
   SITE_X_HANDLE,
 } from "@/lib/site";
 
+/** Social share cards come from app/opengraph-image.tsx + app/twitter-image.tsx. */
+
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk-family",
   subsets: ["latin"],
@@ -41,26 +43,12 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
-    images: [
-      {
-        url: SITE_SCREENSHOT_URL,
-        width: SITE_SCREENSHOT_WIDTH,
-        height: SITE_SCREENSHOT_HEIGHT,
-        alt: SITE_SCREENSHOT_ALT,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     site: SITE_X_HANDLE,
     title: "Dodox - SEO & GEO Agent + AI Monitoring",
     description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: SITE_SCREENSHOT_URL,
-        alt: SITE_SCREENSHOT_ALT,
-      },
-    ],
   },
 };
 

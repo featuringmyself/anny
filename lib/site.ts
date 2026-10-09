@@ -7,12 +7,15 @@ export const SITE_DESCRIPTION =
 /** Brand mark served from /public/logo.png */
 export const SITE_LOGO_URL = `${SITE_URL}/logo.png`;
 
-/** Product UI screenshot used in marketing OG / feature pages */
-export const SITE_SCREENSHOT_URL = `${SITE_URL}/features/chatgpt/hero-dashboard.webp`;
-export const SITE_SCREENSHOT_WIDTH = 2048;
-export const SITE_SCREENSHOT_HEIGHT = 1121;
+/**
+ * Product UI crop for schema / pages that still need a static image URL.
+ * Social cards use app/opengraph-image.tsx (same source crop).
+ */
+export const SITE_SCREENSHOT_URL = `${SITE_URL}/og/product-dashboard.jpg`;
+export const SITE_SCREENSHOT_WIDTH = 1200;
+export const SITE_SCREENSHOT_HEIGHT = 630;
 export const SITE_SCREENSHOT_ALT =
-  "Dodox ChatGPT visibility dashboard overview";
+  "Dodox AI visibility dashboard across ChatGPT and other engines";
 
 /** Official social profiles for Organization.sameAs / footer links */
 export const SITE_X_URL = "https://x.com/dodoxhq";

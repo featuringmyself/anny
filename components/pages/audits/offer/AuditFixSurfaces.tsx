@@ -6,7 +6,7 @@ import { auditFixSurfaces } from "./content";
 export default function AuditFixSurfaces() {
   return (
     <section
-      className="w-full overflow-hidden rounded-2xl"
+      className="hidden w-full overflow-hidden rounded-2xl sm:block"
       style={{ backgroundColor: brand.cream }}
       aria-labelledby="audit-offer-surfaces-heading"
     >

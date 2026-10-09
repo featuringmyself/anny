@@ -4,9 +4,7 @@ import { AI_MODELS_PHRASE } from "@/components/Home/ai-models";
 import { brand } from "@/components/Home/brand";
 import RotatingModelName from "@/components/Home/rotating-model-name";
 import AuditFixHeroActions from "./AuditFixHeroActions";
-import { AUDIT_OFFER_NAME, auditFixProof } from "./content";
-
-import logoImg from "@/public/logo.png";
+import { auditFixProof } from "./content";
 
 const ENGINES = [
   { name: "ChatGPT", src: "/ai-logo/chatgptLogo.svg" },
@@ -32,21 +30,10 @@ export default function AuditFixHero() {
         <div className="absolute bottom-[-24%] left-[-12%] h-90 w-110 rounded-full bg-[#45ab8d]/12 blur-[140px]" />
       </div>
 
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 pt-10 text-center sm:pt-20 lg:pt-24">
-        {/* <Image
-          src={logoImg}
-          alt="Dodox"
-          width={logoImg.width}
-          height={logoImg.height}
-          priority
-          className="h-7 w-auto object-contain sm:h-9"
-          style={{ width: "auto" }}
-        /> */}
-
-
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-5 pt-8 text-center sm:px-6 sm:pt-20 lg:pt-24">
         <h1
           id="audit-offer-hero-heading"
-          className="mt-2 w-full max-w-3xl text-[1.75rem] leading-[1.12] font-bold tracking-tight sm:mt-3 sm:text-5xl sm:leading-[1.08]"
+          className="w-full max-w-3xl text-[1.65rem] leading-[1.12] font-bold tracking-tight sm:text-5xl sm:leading-[1.08]"
           style={{ color: brand.tertiary }}
         >
           <span className="sr-only">{AUDIT_HERO_HEADLINE}</span>
@@ -54,17 +41,17 @@ export default function AuditFixHero() {
           <span aria-hidden="true" className="block">
             <span className="block sm:inline">Why </span>
             <RotatingModelName />
-            <span className="mt-1.5 block text-balance sm:mt-2">
+            <span className="mt-1 block text-balance sm:mt-2">
               doesn&apos;t recommend you
             </span>
-            <span className="mt-1.5 block text-[0.8em] text-zinc-500 sm:mt-2 sm:text-[0.55em]">
+            <span className="mt-1.5 block text-[0.72em] text-zinc-500 sm:mt-2 sm:text-[0.55em]">
               The diagnosis that gets you onto the shortlist.
             </span>
           </span>
         </h1>
 
         <p
-          className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-pretty sm:mt-5 sm:text-lg"
+          className="mt-3 hidden max-w-xl text-sm font-medium leading-relaxed text-pretty sm:mt-5 sm:block sm:text-lg"
           style={{ color: brand.body }}
         >
           A complete read of how AI answers for your category, and the plan
@@ -74,20 +61,20 @@ export default function AuditFixHero() {
         <AuditFixHeroActions />
 
         <ul
-          className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:mt-8"
+          className="mt-5 hidden flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:mt-8 sm:flex"
           aria-label="Engines covered"
         >
           {ENGINES.map((engine) => (
             <li
               key={engine.name}
-              className="flex items-center gap-2 text-xs font-semibold text-zinc-600 sm:text-sm"
+              className="flex items-center gap-2 text-sm font-semibold text-zinc-600"
             >
               <Image
                 src={engine.src}
                 alt=""
                 width={28}
                 height={28}
-                className="size-5 object-contain sm:size-6"
+                className="size-6 object-contain"
               />
               {engine.name}
             </li>
@@ -95,10 +82,10 @@ export default function AuditFixHero() {
         </ul>
       </div>
 
-      {/* Product visual: standing dashboard, not a random workspace shot */}
-      <div className="relative mx-auto mt-8 max-w-5xl px-4 sm:mt-12 sm:px-6">
+      {/* Desktop product visual — skip on mobile (findings section carries proof) */}
+      <div className="relative mx-auto mt-10 hidden max-w-5xl px-6 sm:mt-12 sm:block">
         <figure
-          className="relative aspect-[5/3] overflow-hidden rounded-t-2xl ring-1 ring-black/5 sm:aspect-16/9"
+          className="relative aspect-16/9 overflow-hidden rounded-t-2xl ring-1 ring-black/5"
           style={{ backgroundColor: brand.cream }}
         >
           <video
@@ -117,7 +104,7 @@ export default function AuditFixHero() {
           </video>
         </figure>
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-28"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28"
           style={{
             background:
               "linear-gradient(to top, #f6f7f4 0%, rgba(246,247,244,0) 100%)",
@@ -126,25 +113,23 @@ export default function AuditFixHero() {
         />
       </div>
 
-      <div className="relative grid grid-cols-2 border-t border-zinc-900/10 md:grid-cols-4">
+      <div className="relative mt-6 grid grid-cols-4 border-t border-zinc-900/10 sm:mt-0">
         {auditFixProof.map((item, index) => (
           <div
             key={item.label}
-            className={`px-3 py-3.5 text-center sm:px-5 sm:py-6 md:px-6 ${
-              index % 2 === 0 ? "border-r border-zinc-900/10" : ""
-            } ${index < 2 ? "border-b border-zinc-900/10 md:border-b-0" : ""} ${
+            className={`px-1.5 py-3 text-center sm:px-5 sm:py-6 md:px-6 ${
               index < auditFixProof.length - 1
-                ? "md:border-r md:border-zinc-900/10"
+                ? "border-r border-zinc-900/10"
                 : ""
             }`}
           >
             <p
-              className="text-base font-bold tracking-tight tabular-nums sm:text-lg"
+              className="text-sm font-bold tracking-tight tabular-nums sm:text-lg"
               style={{ color: brand.tertiary }}
             >
               {item.value}
             </p>
-            <p className="mt-0.5 text-[11px] font-medium text-zinc-500 sm:mt-1 sm:text-xs">
+            <p className="mt-0.5 text-[10px] leading-tight font-medium text-zinc-500 sm:mt-1 sm:text-xs">
               {item.label}
             </p>
           </div>

@@ -46,13 +46,13 @@ export default function AuditFixFaq() {
 
   return (
     <section
-      className="w-full rounded-2xl bg-white px-5 py-10 sm:px-6 sm:py-20 md:px-12"
+      className="w-full rounded-2xl bg-white px-5 py-8 sm:px-6 sm:py-20 md:px-12"
       aria-labelledby="audit-fix-faq-heading"
     >
       <div className="mx-auto max-w-2xl text-center">
         <h2
           id="audit-fix-faq-heading"
-          className="text-[1.5rem] font-bold tracking-tight sm:text-3xl md:text-4xl"
+          className="text-[1.35rem] font-bold tracking-tight sm:text-3xl md:text-4xl"
           style={{ color: brand.tertiary }}
         >
           Questions before you order
@@ -61,11 +61,12 @@ export default function AuditFixFaq() {
           className="mx-auto mt-3 hidden max-w-md text-base font-medium leading-relaxed sm:mt-4 sm:block sm:text-lg"
           style={{ color: brand.body }}
         >
-          Scope, pricing, turnaround, and what the Audit covers.
+          What&apos;s in the report, pricing, turnaround, and implementation
+          credit.
         </p>
       </div>
 
-      <div className="mx-auto mt-6 max-w-2xl sm:mt-10">
+      <div className="mx-auto mt-4 max-w-2xl sm:mt-10">
         {faqs.map((faq, index) => (
           <FaqAnalytics
             key={faq.question}
@@ -75,7 +76,7 @@ export default function AuditFixFaq() {
             <details
               name="audit-fix-faq"
               className="group border-b border-border"
-              open={index === 0}
+              open={false}
             >
               <summary
                 className="cursor-pointer list-none py-3.5 text-left text-[15px] font-semibold marker:content-none sm:py-5 sm:text-base [&::-webkit-details-marker]:hidden"

@@ -26,7 +26,7 @@ const stepMedia = [
 export default function AuditFixHow() {
   return (
     <section
-      className="w-full rounded-2xl bg-white py-10 sm:py-16 md:py-20"
+      className="hidden w-full rounded-2xl bg-white py-10 sm:block sm:py-16 md:py-20"
       aria-labelledby="audit-offer-how-heading"
     >
       <div className="mx-auto max-w-3xl px-6 text-center">
@@ -45,34 +45,7 @@ export default function AuditFixHow() {
         </p>
       </div>
 
-      <ol className="mx-auto mt-8 flex max-w-5xl flex-col gap-0 px-6 sm:hidden">
-        {auditFixSteps.map((item) => (
-          <li
-            key={item.step}
-            className="flex gap-3 border-t border-zinc-900/10 py-4 first:border-t-0 first:pt-0"
-          >
-            <span
-              className="mt-0.5 shrink-0 text-xs font-bold tabular-nums"
-              style={{ color: brand.tertiary }}
-            >
-              {item.step}
-            </span>
-            <div>
-              <h3 className="text-[15px] font-bold tracking-tight text-zinc-900">
-                {item.title}
-              </h3>
-              <p
-                className="mt-1 text-sm font-medium leading-snug"
-                style={{ color: brand.body }}
-              >
-                {item.body}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ol>
-
-      <ol className="mx-auto mt-12 hidden max-w-5xl gap-4 px-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mx-auto mt-12 grid max-w-5xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
         {auditFixSteps.map((item, i) => {
           const media = stepMedia[i];
           return (
