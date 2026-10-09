@@ -20,6 +20,7 @@ const INCLUDED = [
   "Why yours doesn't, and what to publish next",
   "Sources and trust signals worth winning",
   "Ranked backlog for site, content, and authority",
+  "Audit fee credited if you book implementation",
 ] as const;
 
 export default function AuditFixPricing() {
@@ -113,8 +114,8 @@ export default function AuditFixPricing() {
             className="mt-2 text-sm font-medium"
             style={{ color: brand.bodyStrong }}
           >
-            AI visibility audit + prioritized change backlog. No retainer
-            required.
+            AI visibility audit + prioritized change backlog. Fee adjusts into
+            implementation if you book the sprint.
           </p>
 
           <ul className="mt-5 flex flex-col gap-2.5 border-t border-zinc-900/10 pt-5">

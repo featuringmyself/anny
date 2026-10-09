@@ -16,8 +16,8 @@ const links = [
   },
   {
     href: "/audit",
-    name: "Dodox Audit",
-    framing: "Why AI skips you, and what needs to change",
+    name: "AI Visibility Intelligence Report",
+    framing: "Why AI skips you, and the plan that gets you named",
     group: "Services",
   },
   {
