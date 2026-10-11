@@ -1,5 +1,4 @@
-import { sanityFetch } from "@/lib/sanity/live";
-import { RSS_POSTS_QUERY } from "@/lib/sanity/queries";
+import { getBlogRssPosts } from "@/lib/blog/content";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 function escapeXml(value: string) {
@@ -21,21 +20,8 @@ export async function GET() {
   }[] = [];
 
   try {
-    const { data } = await sanityFetch({
-      query: RSS_POSTS_QUERY,
-      stega: false,
-    });
-    const rows = (data ?? []) as
-      | {
-          title?: string | null;
-          slug?: string | null;
-          description?: string | null;
-          excerpt?: string | null;
-          publishedAt?: string | null;
-          author?: { name?: string | null } | null;
-        }[]
-      | null;
-    posts = (rows ?? [])
+    const rows = await getBlogRssPosts();
+    posts = rows
       .filter(
         (post): post is { title: string; slug: string } & typeof post =>
           Boolean(post.title && post.slug),
@@ -82,7 +68,7 @@ export async function GET() {
   return new Response(xml, {
     headers: {
       "Content-Type": "application/rss+xml; charset=utf-8",
-      "Cache-Control": "s-maxage=600, stale-while-revalidate=86400",
+      "Cache-Control": "s-maxage=60, stale-while-revalidate=86400",
     },
   });
 }

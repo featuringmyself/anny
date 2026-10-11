@@ -74,7 +74,7 @@ export async function GET(_request: Request, { params }: RouteProps) {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "s-maxage=600, stale-while-revalidate=86400",
+      "Cache-Control": "s-maxage=60, stale-while-revalidate=86400",
     },
   });
 }

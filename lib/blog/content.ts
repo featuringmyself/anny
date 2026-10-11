@@ -14,8 +14,30 @@ import {
   POST_QUERY,
   POST_SLUGS_QUERY,
   POSTS_QUERY,
+  RSS_POSTS_QUERY,
   SITEMAP_QUERY,
 } from "@/lib/sanity/queries";
+
+const POST_LIST_TAGS = ["post", "author", "category"];
+
+/**
+ * Published blog queries are tagged so the Sanity webhook at
+ * /api/revalidate/tag can expire them immediately. The 60s TTL is the
+ * fallback when that webhook has not fired. Draft mode still uses
+ * `sanityFetch`, which is what Visual Editing needs.
+ */
+async function fetchPublished<T>(
+  query: string,
+  params: Record<string, string> = {},
+  tags: string[] = POST_LIST_TAGS,
+): Promise<T> {
+  return client.fetch<T>(query, params, {
+    perspective: "published",
+    useCdn: true,
+    stega: false,
+    next: { revalidate: 60, tags },
+  });
+}
 
 type SanityPostCard = {
   _id: string;
@@ -68,15 +90,21 @@ function asCard(post: RenderablePost): BlogPostCard {
   };
 }
 
-export const getBlogPosts = cache(async function getBlogPosts(): Promise<{
+export const getBlogPosts = cache(async function getBlogPosts(
+  draft = false,
+): Promise<{
   posts: BlogPostCard[];
 }> {
   try {
-    const { data } = await sanityFetch({
-      query: POSTS_QUERY,
-      stega: false,
-    });
-    const posts = (data ?? []) as SanityPostCard[];
+    const data = draft
+      ? ((
+          await sanityFetch({
+            query: POSTS_QUERY,
+            stega: false,
+          })
+        ).data as SanityPostCard[] | null)
+      : await fetchPublished<SanityPostCard[]>(POSTS_QUERY);
+    const posts = data ?? [];
     return { posts: posts.filter(isRenderablePost).map(asCard) };
   } catch (error) {
     console.error("Failed to fetch blog posts from Sanity", error);
@@ -89,12 +117,18 @@ export const getBlogPost = cache(async function getBlogPost(
   stega: boolean,
 ): Promise<{ post: BlogPostArticle | null }> {
   try {
-    const { data } = await sanityFetch({
-      query: POST_QUERY,
-      params: { slug },
-      stega,
-    });
-    const post = data as SanityPostArticle | null;
+    const post = stega
+      ? ((
+          await sanityFetch({
+            query: POST_QUERY,
+            params: { slug },
+            stega: true,
+          })
+        ).data as SanityPostArticle | null)
+      : await fetchPublished<SanityPostArticle | null>(POST_QUERY, { slug }, [
+          `post:${slug}`,
+          ...POST_LIST_TAGS,
+        ]);
 
     if (!post || !isRenderablePost(post)) {
       return { post: null };
@@ -144,8 +178,11 @@ export async function getBlogPostSlugs(): Promise<string[]> {
   try {
     const data = await client
       .withConfig({ useCdn: false, perspective: "published" })
-      .fetch(POST_SLUGS_QUERY);
-    const slugs = (data ?? []) as { slug?: string | null }[];
+      .fetch<{ slug?: string | null }[]>(POST_SLUGS_QUERY, {}, {
+        stega: false,
+        next: { revalidate: 60, tags: ["post"] },
+      });
+    const slugs = data ?? [];
     return slugs
       .map((item) => item.slug)
       .filter((slug): slug is string => Boolean(slug));
@@ -159,15 +196,14 @@ export async function getBlogSitemapEntries(): Promise<
   { href: string; _updatedAt?: string; publishedAt?: string }[]
 > {
   try {
-    const { data } = await sanityFetch({
-      query: SITEMAP_QUERY,
-      stega: false,
-    });
-    const entries = (data ?? []) as {
-      href?: string | null;
-      _updatedAt?: string;
-      publishedAt?: string;
-    }[];
+    const data = await fetchPublished<
+      {
+        href?: string | null;
+        _updatedAt?: string;
+        publishedAt?: string;
+      }[]
+    >(SITEMAP_QUERY, {}, ["post"]);
+    const entries = data ?? [];
     return entries.filter(
       (entry): entry is { href: string; _updatedAt?: string; publishedAt?: string } =>
         Boolean(entry.href),
@@ -176,4 +212,27 @@ export async function getBlogSitemapEntries(): Promise<
     console.error("Failed to fetch blog sitemap entries from Sanity", error);
     return [];
   }
+}
+
+export async function getBlogRssPosts(): Promise<
+  {
+    title?: string | null;
+    slug?: string | null;
+    description?: string | null;
+    excerpt?: string | null;
+    publishedAt?: string | null;
+    author?: { name?: string | null } | null;
+  }[]
+> {
+  const data = await fetchPublished<
+    {
+      title?: string | null;
+      slug?: string | null;
+      description?: string | null;
+      excerpt?: string | null;
+      publishedAt?: string | null;
+      author?: { name?: string | null } | null;
+    }[]
+  >(RSS_POSTS_QUERY, {}, ["post", "author"]);
+  return data ?? [];
 }

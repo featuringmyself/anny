@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const revalidate = 60;
+
 import { getRoleSlugs } from "@/components/pages/careers/roles";
 import { getBlogSitemapEntries } from "@/lib/blog/content";
 import { SITE_DATE_MODIFIED, SITE_URL } from "@/lib/site";

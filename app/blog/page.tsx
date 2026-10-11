@@ -1,3 +1,5 @@
+import { draftMode } from "next/headers";
+
 import PatternStrip from "@/components/PatternStrip";
 import JsonLd from "@/components/JsonLd";
 import BlogHero from "@/components/pages/product/BlogHero";
@@ -21,6 +23,8 @@ const baseMetadata = pageMetadata({
   description,
 });
 
+export const revalidate = 60;
+
 export const metadata = {
   ...baseMetadata,
   alternates: {
@@ -32,7 +36,8 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const { posts } = await getBlogPosts();
+  const { isEnabled: isDraft } = await draftMode();
+  const { posts } = await getBlogPosts(isDraft);
 
   return (
     <main>
