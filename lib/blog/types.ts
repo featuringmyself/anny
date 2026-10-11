@@ -117,7 +117,7 @@ export function ogImageUrl(
 }
 
 export function slugify(value: string) {
-  return value
+  return stegaClean(value)
     .toLowerCase()
     .trim()
     .replace(/['"]/g, "")

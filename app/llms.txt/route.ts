@@ -39,7 +39,7 @@ export async function GET() {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "s-maxage=600, stale-while-revalidate=86400",
+      "Cache-Control": "s-maxage=60, stale-while-revalidate=86400",
     },
   });
 }

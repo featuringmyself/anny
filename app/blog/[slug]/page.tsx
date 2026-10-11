@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 import JsonLd from "@/components/JsonLd";
@@ -20,6 +21,8 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const slugs = await getBlogPostSlugs();
@@ -83,10 +86,11 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const [{ post: seoPost }, { post }] = await Promise.all([
-    getBlogPost(slug, false),
-    getBlogPost(slug, true),
-  ]);
+  const { isEnabled: isDraft } = await draftMode();
+  const { post: seoPost } = await getBlogPost(slug, false);
+  const { post } = isDraft
+    ? await getBlogPost(slug, true)
+    : { post: seoPost };
   const article = post ?? seoPost;
 
   if (!article) {
