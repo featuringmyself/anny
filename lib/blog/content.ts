@@ -18,22 +18,25 @@ import {
   SITEMAP_QUERY,
 } from "@/lib/sanity/queries";
 
+const POST_LIST_TAGS = ["post", "author", "category"];
+
 /**
- * `sanityFetch` caches with `revalidate: false`. That cache only expires when
- * a browser is connected to SanityLive at publish time, and the default action
- * does not refresh the prerendered /blog HTML. Published reads use a 60s TTL
- * so new posts show up without a redeploy. Draft mode still uses `sanityFetch`.
+ * Published blog queries are tagged so the Sanity webhook at
+ * /api/revalidate/tag can expire them immediately. The 60s TTL is the
+ * fallback when that webhook has not fired. Draft mode still uses
+ * `sanityFetch`, which is what Visual Editing needs.
  */
 async function fetchPublished<T>(
   query: string,
   params: Record<string, string> = {},
+  tags: string[] = POST_LIST_TAGS,
 ): Promise<T> {
-  return client
-    .withConfig({ useCdn: false, perspective: "published" })
-    .fetch<T>(query, params, {
-      stega: false,
-      next: { revalidate: 60, tags: ["blog"] },
-    });
+  return client.fetch<T>(query, params, {
+    perspective: "published",
+    useCdn: true,
+    stega: false,
+    next: { revalidate: 60, tags },
+  });
 }
 
 type SanityPostCard = {
@@ -122,7 +125,10 @@ export const getBlogPost = cache(async function getBlogPost(
             stega: true,
           })
         ).data as SanityPostArticle | null)
-      : await fetchPublished<SanityPostArticle | null>(POST_QUERY, { slug });
+      : await fetchPublished<SanityPostArticle | null>(POST_QUERY, { slug }, [
+          `post:${slug}`,
+          ...POST_LIST_TAGS,
+        ]);
 
     if (!post || !isRenderablePost(post)) {
       return { post: null };
@@ -170,9 +176,12 @@ export const getBlogPost = cache(async function getBlogPost(
 
 export async function getBlogPostSlugs(): Promise<string[]> {
   try {
-    const data = await fetchPublished<{ slug?: string | null }[]>(
-      POST_SLUGS_QUERY,
-    );
+    const data = await client
+      .withConfig({ useCdn: false, perspective: "published" })
+      .fetch<{ slug?: string | null }[]>(POST_SLUGS_QUERY, {}, {
+        stega: false,
+        next: { revalidate: 60, tags: ["post"] },
+      });
     const slugs = data ?? [];
     return slugs
       .map((item) => item.slug)
@@ -193,7 +202,7 @@ export async function getBlogSitemapEntries(): Promise<
         _updatedAt?: string;
         publishedAt?: string;
       }[]
-    >(SITEMAP_QUERY);
+    >(SITEMAP_QUERY, {}, ["post"]);
     const entries = data ?? [];
     return entries.filter(
       (entry): entry is { href: string; _updatedAt?: string; publishedAt?: string } =>
@@ -224,6 +233,6 @@ export async function getBlogRssPosts(): Promise<
       publishedAt?: string | null;
       author?: { name?: string | null } | null;
     }[]
-  >(RSS_POSTS_QUERY);
+  >(RSS_POSTS_QUERY, {}, ["post", "author"]);
   return data ?? [];
 }
