@@ -1,3 +1,9 @@
+import Link from "next/link";
+
+import { TalkToSalesButton } from "@/components/talk-to-sales";
+import { Button } from "@/components/ui/button";
+
+import { rt } from "./report-theme";
 import type { VisibilityReport } from "./types";
 
 type ReportSprintProps = {
@@ -6,13 +12,15 @@ type ReportSprintProps = {
 
 export default function ReportSprint({ report }: ReportSprintProps) {
   const { sprint, schemaFindings } = report;
+  const ctaLabel = report.ctaLabel ?? "Talk to Dodox";
+  const isInternalCta = Boolean(report.ctaUrl?.startsWith("/"));
 
   return (
     <section className="border-b">
       <div className="grid md:grid-cols-2">
         <div className="border-b px-6 py-12 md:border-r md:border-b-0 md:px-12 md:py-16">
           <p className="mb-3 text-sm font-medium text-[#2462ff]">
-            What now?
+            {sprint.sectionEyebrow ?? "What now?"}
           </p>
           <h2 className="max-w-md text-3xl font-medium tracking-tight text-balance md:text-4xl">
             {sprint.headline}
@@ -22,14 +30,47 @@ export default function ReportSprint({ report }: ReportSprintProps) {
           </p>
           <dl className="mt-8 flex gap-8 text-sm">
             <div>
-              <dt className="text-zinc-400">Engagement</dt>
+              <dt className="text-zinc-400">
+                {sprint.nameLabel ?? "Engagement"}
+              </dt>
               <dd className="mt-1 font-medium">{sprint.name}</dd>
             </div>
             <div>
-              <dt className="text-zinc-400">Length</dt>
+              <dt className="text-zinc-400">
+                {sprint.durationLabel ?? "Length"}
+              </dt>
               <dd className="mt-1 font-medium">{sprint.duration}</dd>
             </div>
           </dl>
+
+          <div className="mt-8">
+            {report.ctaUrl ? (
+              <Button
+                size="lg"
+                variant="outline"
+                className={`h-10 rounded-lg px-4 text-sm font-medium ${rt.btnSecondary}`}
+                render={
+                  <Link
+                    href={report.ctaUrl}
+                    {...(isInternalCta
+                      ? {}
+                      : { target: "_blank", rel: "noopener noreferrer" })}
+                  />
+                }
+              >
+                {ctaLabel}
+              </Button>
+            ) : (
+              <TalkToSalesButton
+                size="lg"
+                variant="outline"
+                className={`h-10 rounded-lg px-4 text-sm font-medium ${rt.btnSecondary}`}
+                source={`audit-report-sprint-${report.slug}`}
+              >
+                {ctaLabel}
+              </TalkToSalesButton>
+            )}
+          </div>
         </div>
 
         <aside

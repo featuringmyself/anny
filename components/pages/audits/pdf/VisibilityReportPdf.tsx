@@ -465,19 +465,25 @@ function SprintPage({ report }: { report: VisibilityReport }) {
   return (
     <Page size="A4" style={pdfStyles.page}>
       <PdfHeader company={report.company} />
-      <Text style={pdfStyles.eyebrow}>Services · not SaaS</Text>
+      <Text style={pdfStyles.eyebrow}>
+        {sprint.sectionEyebrow ?? "Services · not SaaS"}
+      </Text>
       <Text style={pdfStyles.h2}>{sprint.headline}</Text>
       <Text style={{ ...pdfStyles.body, marginBottom: 14 }}>{sprint.body}</Text>
 
       <View style={{ ...pdfStyles.row, marginBottom: 16 }}>
         <View style={{ ...pdfStyles.card, flex: 1 }}>
-          <Text style={pdfStyles.label}>Engagement</Text>
+          <Text style={pdfStyles.label}>
+            {sprint.nameLabel ?? "Engagement"}
+          </Text>
           <Text style={{ marginTop: 6, fontSize: 11, fontWeight: 500 }}>
             {sprint.name}
           </Text>
         </View>
         <View style={{ ...pdfStyles.card, flex: 1 }}>
-          <Text style={pdfStyles.label}>Length</Text>
+          <Text style={pdfStyles.label}>
+            {sprint.durationLabel ?? "Length"}
+          </Text>
           <Text style={{ marginTop: 6, fontSize: 11, fontWeight: 500 }}>
             {sprint.duration}
           </Text>
@@ -545,7 +551,9 @@ function SprintPage({ report }: { report: VisibilityReport }) {
           }}
         >
           {report.ctaUrl
-            ? report.ctaUrl.replace(/^https?:\/\//, "")
+            ? report.ctaUrl.startsWith("/")
+              ? `dodoxhq.com${report.ctaUrl}`
+              : report.ctaUrl.replace(/^https?:\/\//, "")
             : "dodoxhq.com · talk to sales"}
         </Text>
       </View>

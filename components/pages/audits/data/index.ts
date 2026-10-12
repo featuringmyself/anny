@@ -20,6 +20,7 @@ import { gullakAiVisibilityReport } from "./gullak-ai-visibility-report";
 import { redactoAiVisibilityReport } from "./redacto-ai-visibility-report";
 import { quickreplyAiVisibilityReport } from "./quickreply-ai-visibility-report";
 import { ringgAiVisibilityReport } from "./ringg-ai-visibility-report";
+import { foxoAiVisibilityReport } from "./foxo-ai-visibility-report";
 
 export type ReportEntry =
   | { kind: "visibility"; report: VisibilityReport }
@@ -42,6 +43,7 @@ const entries: ReportEntry[] = [
   { kind: "visibility", report: redactoAiVisibilityReport },
   { kind: "visibility", report: quickreplyAiVisibilityReport },
   { kind: "visibility", report: ringgAiVisibilityReport },
+  { kind: "visibility", report: foxoAiVisibilityReport },
   { kind: "readiness", report: sprentzoAiReadinessReport },
   { kind: "readiness", report: trulivAiReadinessReport },
   { kind: "readiness", report: rentokAiReadinessReport },

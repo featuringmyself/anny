@@ -78,6 +78,12 @@ export type BrandCrisisFinding = {
 export type SprintOffer = {
   name: string;
   duration: string;
+  /** Label above name (default: Engagement). Use Product for audit offers. */
+  nameLabel?: string;
+  /** Label above duration (default: Length). Use Turnaround for audit offers. */
+  durationLabel?: string;
+  /** Section eyebrow in web/PDF (default: Services · not SaaS on PDF). */
+  sectionEyebrow?: string;
   headline: string;
   body: string;
   outcomes: string[];
@@ -138,6 +144,14 @@ export type VisibilityReport = {
   ctaEyebrow?: string;
   ctaHeadline?: string;
   ctaBody?: string;
+  /** Override CTA aside checklist (default: sprint-style proof items). */
+  ctaChecklist?: string[];
+  /** Aside board title (default: Citation board). */
+  ctaAsideTitle?: string;
+  /** Aside board meta (default: Day 90 preview). */
+  ctaAsideMeta?: string;
+  /** Floating chip on the CTA aside (default: + shortlist win). */
+  ctaAsideChip?: string;
   private?: boolean;
 };
 
@@ -150,6 +164,10 @@ export type ReportCtaFields = {
   ctaEyebrow?: string;
   ctaHeadline?: string;
   ctaBody?: string;
+  ctaChecklist?: string[];
+  ctaAsideTitle?: string;
+  ctaAsideMeta?: string;
+  ctaAsideChip?: string;
 };
 
 export type ReadinessStatus = "good" | "needs-improvement" | "poor";

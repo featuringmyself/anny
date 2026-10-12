@@ -16,7 +16,7 @@ const MODEL_ROWS = [
   { name: "AI Overview", width: "36%" },
 ] as const;
 
-const CHECKLIST = [
+const DEFAULT_CHECKLIST = [
   "Cited on buy-intent shelves",
   "Weekly screenshot proof",
   "Competitor gap dashboard",
@@ -30,6 +30,11 @@ export default function ReportCta({ report }: ReportCtaProps) {
     report.ctaBody ??
     `Book a call to start the AI Visibility Sprint: citation work across ChatGPT, Perplexity, and Google AI Overview, plus a dashboard to track gaps, competitors, and the next actions each week.`;
   const label = report.ctaLabel ?? "Book a call";
+  const checklist = report.ctaChecklist ?? [...DEFAULT_CHECKLIST];
+  const asideTitle = report.ctaAsideTitle ?? "Citation board";
+  const asideMeta = report.ctaAsideMeta ?? "Day 90 preview";
+  const asideChip = report.ctaAsideChip ?? "+ shortlist win";
+  const isInternalCta = Boolean(report.ctaUrl?.startsWith("/"));
 
   return (
     <section className={`${rt.dark} overflow-hidden text-white`}>
@@ -52,8 +57,9 @@ export default function ReportCta({ report }: ReportCtaProps) {
                 render={
                   <Link
                     href={report.ctaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(isInternalCta
+                      ? {}
+                      : { target: "_blank", rel: "noopener noreferrer" })}
                   />
                 }
               >
@@ -99,11 +105,11 @@ export default function ReportCta({ report }: ReportCtaProps) {
               <div className="flex items-center gap-2">
                 <span className="size-2 rounded-full bg-brand" />
                 <span className="text-[11px] font-medium tracking-wide text-white/70 uppercase">
-                  Citation board
+                  {asideTitle}
                 </span>
               </div>
               <span className="font-mono text-[10px] text-white/40">
-                Day 90 preview
+                {asideMeta}
               </span>
             </div>
 
@@ -117,10 +123,10 @@ export default function ReportCta({ report }: ReportCtaProps) {
                     <span className="text-brand">cited</span>
                   </p>
                 </div>
-                  <p className="max-w-36 text-right text-[11px] leading-snug text-white/40">
-                    {report.company} on the shelves that matter
-                  </p>
-                </div>
+                <p className="max-w-36 text-right text-[11px] leading-snug text-white/40">
+                  {report.company} on the shelves that matter
+                </p>
+              </div>
 
               <div className="space-y-2.5">
                 {MODEL_ROWS.map((row) => (
@@ -140,10 +146,10 @@ export default function ReportCta({ report }: ReportCtaProps) {
 
               <div className="rounded-xl border border-white/10 bg-white/4 px-3 py-3">
                 <p className="mb-2 text-[10px] font-medium tracking-wide text-white/40 uppercase">
-                  Sprint proof
+                  What you get
                 </p>
                 <ul className="space-y-2">
-                  {CHECKLIST.map((item) => (
+                  {checklist.map((item) => (
                     <li
                       key={item}
                       className="flex items-start gap-2 text-[12px] leading-snug text-white/75"
@@ -164,7 +170,7 @@ export default function ReportCta({ report }: ReportCtaProps) {
             {/* Floating chip */}
             <div className="absolute -right-2 top-14 rotate-3 rounded-lg border border-brand/40 bg-[#11333c] px-2.5 py-1.5 shadow-lg md:right-3">
               <p className="font-mono text-[10px] font-medium text-brand">
-                + shortlist win
+                {asideChip}
               </p>
             </div>
           </div>
