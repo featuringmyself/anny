@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import { brand } from "@/components/Home/brand";
+import { RegisterCtaLink } from "@/components/register-cta-link";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 
@@ -29,7 +28,9 @@ export default function HomeCta() {
             size="lg"
             className="h-12 cursor-pointer rounded-lg border border-transparent px-6 text-base font-semibold text-[#11333c] hover:bg-white"
             style={{ backgroundColor: brand.lime }}
-            render={<Link href="/register" />}
+            render={
+              <RegisterCtaLink href="/register" source="home-cta" />
+            }
           >
             Get started
           </Button>

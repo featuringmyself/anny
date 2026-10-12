@@ -7,6 +7,10 @@ import {
   clientIpFromRequest,
 } from "@/lib/dodo/checkout-rate-limit";
 import { isAuditCheckoutConfigured } from "@/lib/dodo/config";
+import {
+  readAnonymousDistinctId,
+  readAnonymousDistinctIdFromHeaders,
+} from "@/lib/posthog-identity";
 import { SITE_URL } from "@/lib/site";
 
 const bodySchema = z.object({
@@ -17,6 +21,7 @@ const bodySchema = z.object({
     .min(1)
     .max(120)
     .regex(/^[a-z0-9][a-z0-9._-]{0,119}$/i, "Invalid source"),
+  ph_distinct_id: z.string().trim().min(1).max(200).optional(),
 });
 
 function allowedOrigins(): Set<string> {
@@ -92,8 +97,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  const phDistinctId =
+    readAnonymousDistinctId(parsed.data) ??
+    readAnonymousDistinctIdFromHeaders(request.headers);
+
   try {
-    const session = await createAuditCheckoutSession(parsed.data);
+    const session = await createAuditCheckoutSession({
+      market: parsed.data.market,
+      source: parsed.data.source,
+      phDistinctId,
+    });
 
     if (!session.checkout_url) {
       console.error("[checkout/audit] session missing checkout_url", {

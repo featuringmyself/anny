@@ -18,6 +18,10 @@ export default function PricingTierMotion({
   tier: string;
 }) {
   const reduce = useReducedMotion();
+  const destination =
+    href === "/register"
+      ? `/register?plan=${encodeURIComponent(tier)}`
+      : href;
 
   return (
     <motion.div
@@ -34,19 +38,15 @@ export default function PricingTierMotion({
         }
         render={
           <Link
-            href={
-              href === "/register"
-                ? `/register?plan=${encodeURIComponent(tier)}`
-                : href
+            href={destination}
+            onClick={() =>
+              posthog.capture("pricing_tier_cta_clicked", {
+                tier,
+                cta,
+                featured: Boolean(featured),
+              })
             }
           />
-        }
-        onClick={() =>
-          posthog.capture("pricing_tier_cta_clicked", {
-            tier,
-            cta,
-            featured: Boolean(featured),
-          })
         }
       >
         {cta}

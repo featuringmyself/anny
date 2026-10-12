@@ -14,6 +14,7 @@ import { insertSalesLead } from "@/lib/sales-leads";
 import {
   identifyProperties,
   personlessProperties,
+  readAnonymousDistinctId,
 } from "@/lib/posthog-identity";
 import { getPostHogClient } from "@/lib/posthog-server";
 
@@ -171,13 +172,17 @@ export async function fulfillAuditPaymentSucceeded(
 
     const posthog = getPostHogClient();
     if (posthog) {
+      const anonymousDistinctId = readAnonymousDistinctId(metadata);
       posthog.identify({
         distinctId: order.paymentId,
-        properties: identifyProperties({
-          email: order.email,
-          name: order.customerName,
-          company: order.company,
-        }),
+        properties: identifyProperties(
+          {
+            email: order.email,
+            name: order.customerName,
+            company: order.company,
+          },
+          anonymousDistinctId,
+        ),
       });
       posthog.capture({
         distinctId: order.paymentId,

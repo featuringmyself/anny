@@ -5,9 +5,9 @@ import { brand } from "@/components/Home/brand";
 import Demo from "@/components/Home/demo";
 import DemoReveal from "@/components/Home/demoReveal";
 import HomeHeroHeadline from "@/components/Home/home-hero-headline";
+import { RegisterCtaLink } from "@/components/register-cta-link";
 import { Button } from "@/components/ui/button";
 
-import logoImg from "@/public/logo.png";
 import chatgptLogo from "@/public/services/orbit/chatgpt.webp";
 import geminiLogo from "@/public/services/orbit/gemini.webp";
 import perplexityLogo from "@/public/services/orbit/perplexity.webp";
@@ -63,7 +63,9 @@ export default function Hero() {
           <Button
             size="lg"
             className="h-12 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
-            render={<Link href="/register" />}
+            render={
+              <RegisterCtaLink href="/register" source="home-hero" />
+            }
           >
             Get started
           </Button>

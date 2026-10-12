@@ -1,18 +1,16 @@
 # PostHog setup report
 
-PostHog analytics was initialized for the Next.js App Router app, nine events were instrumented or documented, lead identification and error tracking were added, and a starter dashboard was created.
+PostHog analytics is initialized for the Next.js App Router app across browser and server. Traffic is split across `www.dodoxhq.com` and `anny.dodoxhq.com`; tracing headers cover both (plus apex and the live `window` host).
 
 ## What was set up
 
-- **Installed:** `posthog-js` (`^1.407.2`, resolved as 1.407.7) and `posthog-node` (`^5.46.1`, resolved as 5.46.1) were already declared in `package.json` and present in `bun.lock`; no dependency changes were needed.
-- **Browser initialization:** `instrumentation-client.ts` initializes the shared `posthog-js` client with `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST`. Default capture behavior was preserved, and no provider or duplicate initialization was added.
-- **Server initialization:** `lib/posthog-server.ts` uses the environment-backed server configuration, safely returns `null` when configuration is absent, and enables server exception autocapture. Server handlers flush before returning.
-- **Proxy:** Existing `next.config.ts` rewrites for `/ingest`, `/ingest/static`, and `/ingest/array` were retained.
-- **Environment:** `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` were added to `.env.example` and configured in `.env`. Deployment environments still need these values configured.
+- **Installed:** `posthog-js` and `posthog-node` (see `package.json` / `bun.lock`).
+- **Browser initialization:** `instrumentation-client.ts` initializes the shared `posthog-js` client with `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`. Client events post via `/ingest`. `tracing_headers` includes `www.dodoxhq.com`, `anny.dodoxhq.com`, `dodoxhq.com`, and `window.location.hostname`.
+- **Server initialization:** `lib/posthog-server.ts` uses env-backed config, returns `null` when absent, and flushes before returning from handlers.
+- **Privacy:** Product analytics may run on visit under legitimate interest. There is no CMP / consent-banner gate and no `opt_in_capturing` gate in code (see `/privacy` section 1).
+- **Environment:** Documented in `.env.example` (`NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`, `NEXT_PUBLIC_POSTHOG_HOST`, plus `DB_URI` / optional `DB_NAME`, `AHREF_API_KEY`).
 
 ## Events instrumented
-
-The event plan records these nine core events. The run verified their source locations and capture contracts through source review; it did **not** observe events arriving in PostHog.
 
 | Event | What it measures | File |
 |---|---|---|
@@ -21,43 +19,35 @@ The event plan records these nine core events. The run verified their source loc
 | `contact_submission_failed` | Primary sales-lead submission fails after validation succeeds. | `app/actions/contact.ts` |
 | `contact_api_submitted` | Validated sales lead is persisted through the programmatic contact API. | `app/api/v1/contact/route.tsx` |
 | `pricing_tier_cta_clicked` | Visitor selects a pricing-tier call to action. | `components/pages/product/PricingTierMotion.tsx` |
+| `register_cta_clicked` | Visitor clicks Register / Get started (Navbar, home hero/CTA, home plans). | `components/register-cta-link.tsx` (+ Navbar/Home) |
+| `register_submitted` / `register_submission_failed` | `/register` signup persisted or failed. | `app/actions/register.ts` |
 | `faq_item_expanded` | Visitor expands an FAQ answer while evaluating the product. | `components/faq.tsx` |
 | `press_email_clicked` | Media visitor starts an email quote request. | `components/pages/partnership/media/QuoteRequest.tsx` |
-| `agency_partner_email_clicked` | Agency visitor starts a partnership email conversation. | `components/pages/partnership/agencies/AgenciesPartnerHero.tsx` |
 | `ai_instructions_copied` | Visitor copies the AI-assistant brand instruction template. | `components/pages/ai-instructions/AiInstructionsBlock.tsx` |
+| `audit_checkout_started` / `audit_checkout_paid` / `audit_checkout_*` | Audit checkout funnel (client start + webhook fulfill). | `AuditCheckoutButton.tsx`, `fulfill-audit-payment.ts` |
+| Tool lookups (`ai_readiness_*`, `ai_crawlability_*`, `domain_rating_*`) | Tool page/API checks; personless UUID capture when tracing header missing. | `lib/*-analytics.ts` |
+
+Removed / not instrumented: `agency_partner_email_clicked` (dead event from an earlier wizard pass).
 
 ## Identification and attribution
 
-Identification was wired for successful server-side contact submissions after the lead is persisted. The MongoDB-generated lead ObjectId is used as the stable distinct ID; email, name, and company are person properties rather than event properties. Failed submissions use a per-failure anonymous identity and bounded error information.
-
-Browser-side identification was skipped because this marketing app has no implemented login, registration, session, or logout flow. Browser CTA events therefore remain anonymous. Production event delivery and attribution were not browser-exercised, so the run cannot confirm that events flow or that server-side lead events arrive with the expected identity.
+- Contact / register server actions merge the browser anonymous id via `$anon_distinct_id` when `ph_distinct_id` is present (`PostHogDistinctIdField` polls until ready).
+- Audit checkout passes `ph_distinct_id` through Dodo session metadata so `payment.succeeded` identify can merge the browser journey.
+- Tool API routes capture even when `X-POSTHOG-DISTINCT-ID` is missing (generated UUID + `personlessProperties`).
+- **Deferred:** do not unify `lead.id` / `signup.id` / `paymentId` distinct IDs across funnels in this pass.
 
 ## Error tracking
 
-- `app/global-error.tsx` was added as the App Router global error boundary and captures the boundary error once with `captureException`, while preserving the reset action.
-- `instrumentation-client.ts` already enables client exception capture.
+- `app/global-error.tsx` captures boundary errors with `captureException`.
+- `instrumentation-client.ts` enables client exception capture.
 - `lib/posthog-server.ts` enables `posthog-node` exception autocapture.
-
-The run verified these code paths by source review and a successful build, but did not trigger a production browser or server exception to confirm delivery.
 
 ## Dashboard
 
 [Analytics basics (wizard)](https://us.posthog.com/project/528755/dashboard/1924326)
 
-The dashboard contains five saved insights covering sales conversion, lead events over time, pricing CTA activity, content engagement, and partnership interest. The dashboard and insights are live, but are expected to remain empty until matching events arrive; the run did not observe populated event data.
+## Hosts / ops notes
 
-## Verification and conflicts
-
-- `bun install` completed successfully with 613 installs checked and no lockfile changes.
-- `bun run build` passed, including TypeScript checks and static page generation.
-- `bun run lint` completed with zero errors and one existing warning in untouched `components/Footer.tsx`: `socials` is assigned but never used.
-- No event delivery, app startup, test suite, or production browser exercise was performed. A passing build proves compilation, not event capture.
-
-## Before you merge
-
-- [ ] Run a full production build and fix any lint or type errors introduced by the integration; the run passed `bun run build`, while lint retained the pre-existing warning in `components/Footer.tsx` (`socials` is assigned but never used).
-- [ ] Run the test suite and update any mocks or fixtures affected by the instrumented call sites.
-- [ ] Confirm `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` are present in `.env.example` and configured in every deployment environment, not only local `.env`.
-- [ ] Exercise the instrumented CTA, contact success/failure, FAQ, partnership, and AI-instructions paths in a deployed environment and confirm the expected events arrive in PostHog.
-- [ ] Trigger a representative browser and server error in a safe environment and confirm exception events arrive in PostHog.
-- [ ] Review `instrumentation-client.ts`, `app/actions/contact.ts`, and `app/api/v1/contact/route.tsx` to confirm the deployed configuration and stable lead ID attribution match the intended production setup.
+- Expect pageviews on both `www` and `anny` hosts; same-origin fetch tracing must list both.
+- Zero-volume for some events is often traffic (e.g. Domain Rating / press pages), not a missing token. Register arrivals without `?plan=` usually come from Navbar/home CTAs — those now emit `register_cta_clicked`.
+- After deploy: one prod click each for pricing tier CTA, Talk-to-sales submit, DR check; compare Mongo leads/signups/audit orders to PostHog if server events still look missing.

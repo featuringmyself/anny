@@ -20,17 +20,17 @@ export default function PrivacyPage() {
       <PatternStrip />
       <LegalProse
         title="Privacy Policy"
-        lastUpdated="July 26, 2026"
+        lastUpdated="October 9, 2026"
         intro='This Privacy Policy is issued by Dodox (“Dodox”, “we”, or “us”). For privacy questions, email privacy@dodoxhq.com. Formal notices should use the address on our Imprint page. We process data only as needed to provide and improve Dodox, in a privacy-friendly way and in compliance with the EU General Data Protection Regulation (“GDPR”). This policy covers website visits, signup and onboarding, product use, communications, payments, and internal operations, including purposes, legal bases (Art. 6 GDPR), processors (Art. 28 GDPR), international transfers (Arts. 44 ff. GDPR), and your rights (Arts. 12–22 GDPR).'
         sections={[
           {
             heading: "(1) When you visit our website",
             body: [
-              "In brief: We use our website to inform you about Dodox, and we employ certain analytics and marketing tools to understand how the site is used and to reach interested users. We minimize personal data in this process. Our site is hosted by Vercel. We use cookies and similar technologies for analytics and advertising only with your consent.",
-              "Purpose: To load the website for you and ensure its security and performance. With your permission, we also collect analytics data (e.g. page views, clicks) to understand site usage and improve content.",
-              "Data & cookies: When you visit, we (or our analytics tools) may collect information such as your IP address, browser type/version, device identifiers, and referring site. Essential cookies are only used to make the site function (e.g. load balancing, security) and do not require consent. For analytics or ads, we use cookies or similar identifiers only if you opt in via our cookie consent banner. You can adjust preferences later or block nonessential cookies in your browser. Declining analytics cookies will not affect basic use of the site.",
-              "Legal basis: Delivering the website and securing it relies on our legitimate interest (Art. 6(1)(f) GDPR). Analytics or advertising cookies rely on your consent (Art. 6(1)(a) GDPR).",
-              "Processors: We use Vercel to host the website. For analytics we may use Google Analytics 4 (Google Ireland Ltd.) with IP truncation in the EU, Google Tag Manager to load tracking scripts, Microsoft Clarity (with consent) to understand interaction patterns, Google Ads for conversion measurement and remarketing (with consent), and PostHog for product analytics. These providers act as processors under GDPR. Some may transfer data to third countries (see section 7).",
+              "In brief: We use our website to inform you about Dodox and to understand how the site is used so we can improve it. Visiting the site means product analytics may run (including PostHog). We minimize personal data in this process. Our site is hosted by Vercel. We do not show a cookie consent banner or gate analytics behind an opt-in.",
+              "Purpose: To load the website for you, ensure its security and performance, and collect analytics data (e.g. page views, clicks, and product events) to understand site usage and improve content.",
+              "Data & cookies: When you visit, we (or our analytics tools) may collect information such as your IP address, browser type/version, device identifiers, referring site, and interaction events. Essential cookies are used to make the site function (e.g. load balancing, security). Product analytics may also use cookies or similar identifiers. You can block or clear cookies in your browser; doing so may limit some analytics while basic use of the site remains available.",
+              "Legal basis: Delivering the website, securing it, and running product analytics rely on our legitimate interest (Art. 6(1)(f) GDPR) in understanding and improving how visitors use Dodox.",
+              "Processors: We use Vercel to host the website. For product analytics we use PostHog. We may also use related measurement tools as described elsewhere in this policy. These providers act as processors under GDPR. Some may transfer data to third countries (see section 7).",
             ],
           },
           {

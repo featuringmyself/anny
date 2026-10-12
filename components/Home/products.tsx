@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 
 import { brand } from "@/components/Home/brand";
+import { RegisterCtaLink } from "@/components/register-cta-link";
 import { Button } from "@/components/ui/button";
 import { agentPlans } from "@/lib/pricing";
 
@@ -129,8 +130,10 @@ export default function Products() {
                 }
                 variant={plan.featured ? "default" : "outline"}
                 render={
-                  <Link
+                  <RegisterCtaLink
                     href={`/register?plan=${encodeURIComponent(plan.name)}`}
+                    source="home-products"
+                    plan={plan.name}
                   />
                 }
               >

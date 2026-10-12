@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import logoImg from "@/public/logo.png";
+import { RegisterCtaLink } from "@/components/register-cta-link";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -222,7 +223,12 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Button className="px-3" render={<Link href="/register" />}>
+          <Button
+            className="px-3"
+            render={
+              <RegisterCtaLink href="/register" source="navbar" />
+            }
+          >
             Register
           </Button>
         </div>
@@ -270,7 +276,9 @@ export default function Navbar() {
               <Button
                 className="w-full"
                 size="lg"
-                render={<Link href="/register" />}
+                render={
+                  <RegisterCtaLink href="/register" source="navbar-mobile" />
+                }
               >
                 Register
               </Button>

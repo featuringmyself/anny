@@ -4,6 +4,7 @@ import Form from "next/form";
 import { useFormStatus } from "react-dom";
 import posthog from "posthog-js";
 
+import { DR_CHECKER_PATH } from "@/components/pages/tools/domain-rating/seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +17,7 @@ export function DomainRatingForm({
 }) {
   return (
     <Form
-      action=""
+      action={DR_CHECKER_PATH}
       scroll={false}
       className="mt-10 max-w-md"
       onSubmit={(event) => {

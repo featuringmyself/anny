@@ -35,11 +35,25 @@ export default function AuditCheckoutButton({
 
     posthog.capture("audit_checkout_started", { market, source });
 
+    let phDistinctId: string | undefined;
+    try {
+      if (typeof posthog.get_distinct_id === "function") {
+        const id = posthog.get_distinct_id();
+        if (id) phDistinctId = id;
+      }
+    } catch {
+      // SDK not ready — checkout still proceeds without anon merge.
+    }
+
     try {
       const res = await fetch("/api/checkout/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ market, source }),
+        body: JSON.stringify({
+          market,
+          source,
+          ...(phDistinctId ? { ph_distinct_id: phDistinctId } : {}),
+        }),
       });
 
       const data = (await res.json().catch(() => null)) as {

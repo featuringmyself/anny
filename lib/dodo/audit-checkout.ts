@@ -15,6 +15,8 @@ export type CreateAuditCheckoutInput = {
   market: AuditFixMarket;
   /** CTA attribution, e.g. audit-offer-pricing-india */
   source: string;
+  /** Browser PostHog distinct id for webhook anon merge */
+  phDistinctId?: string;
 };
 
 export type AuditCheckoutSession = Awaited<
@@ -48,6 +50,9 @@ export async function createAuditCheckoutSession(
       product_id: productId,
       sku: catalog.sku,
       billing_country: catalog.billingCountry,
+      ...(input.phDistinctId
+        ? { ph_distinct_id: input.phDistinctId }
+        : {}),
     },
     custom_fields: [
       {

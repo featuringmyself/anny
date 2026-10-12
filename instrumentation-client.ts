@@ -1,18 +1,9 @@
 import posthog from "posthog-js";
 
-import { SITE_URL } from "@/lib/site";
-
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 
 // Only initialize in production builds, never on localhost / `next dev`.
 if (process.env.NODE_ENV === "production" && token) {
-  let siteHostname = "dodoxhq.com";
-  try {
-    siteHostname = new URL(SITE_URL).hostname;
-  } catch {
-    // keep fallback
-  }
-
   posthog.init(token, {
     api_host: "/ingest",
     ui_host: "https://us.posthog.com",
@@ -24,7 +15,13 @@ if (process.env.NODE_ENV === "production" && token) {
       capture_console_errors: false,
     },
     feature_flag_request_timeout_ms: 10000,
-    tracing_headers: [siteHostname],
+    // Cover www + anny + apex; also include the live host for previews/custom domains.
+    tracing_headers: [
+      "www.dodoxhq.com",
+      "anny.dodoxhq.com",
+      "dodoxhq.com",
+      ...(typeof window !== "undefined" ? [window.location.hostname] : []),
+    ],
     loaded: (ph) => {
       const host = window.location.hostname;
       if (host === "localhost" || host === "127.0.0.1") {
