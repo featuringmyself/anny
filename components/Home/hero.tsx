@@ -55,8 +55,8 @@ export default function Hero() {
           className="mt-5 max-w-2xl text-base leading- font-medium sm:mt-6 sm:text-lg text-balance"
           style={{ color: brand.body }}
         >
-          Track and earn AI citations with our agent. Managed GEO Services when
-          you want us on it.
+          Track and earn AI citations — on your site, Reddit, LinkedIn, and
+          wherever models look. Agent or managed GEO when you want us on it.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

@@ -86,7 +86,7 @@ export default function Footer() {
                 Dodox
               </Link>
               <p className="mt-4 max-w-52 text-sm font-medium leading-relaxed text-neutral-200/80">
-                Dodox monitors AI brand mentions for marketing teams
+                SEO &amp; GEO Agent with AI monitoring. Earn citations where models look.
               </p>
             </div>
 
@@ -118,8 +118,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-10 lg:px-12">
             <div className="space-y-1 text-xs font-medium text-white/45">
               <p>
-                Dodox is a top-rated AI search monitoring tool, regularly
-                recommended on Reddit.
+                Track and earn AI citations on your site, and
+                wherever else models look — regularly recommended on Reddit.
               </p>
               <p>© {new Date().getFullYear()} Dodox. All rights reserved.</p>
             </div>

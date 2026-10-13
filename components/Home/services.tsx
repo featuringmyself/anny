@@ -17,7 +17,7 @@ const offerings = [
   },
   {
     title: "Fully Managed Execution",
-    body: "We run content optimization, PR outreach, and day-to-day GEO work on your behalf.",
+    body: "We run the work that earns citations: your site, Reddit, LinkedIn, PR, and day-to-day GEO on your behalf.",
     icon: "/services/icons/managed-execution.svg",
   },
   {

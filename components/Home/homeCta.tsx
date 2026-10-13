@@ -19,8 +19,8 @@ export default function HomeCta() {
           Ready to show up in AI answers?
         </h2>
         <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-neutral-200/90 sm:text-lg">
-          Start with Monitoring or the Agent, or let our team run managed GEO
-          for you.
+          Start with Monitoring or the Agent — or let our team run citation
+          work across your site, Reddit, LinkedIn, and beyond.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">

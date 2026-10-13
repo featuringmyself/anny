@@ -7,7 +7,7 @@ export const faqs: FaqItem[] = [
   {
     question: "What does Dodox actually do?",
     answer:
-      "Dodox is an SEO & GEO Agent with AI Monitoring. It tracks whether ChatGPT, Claude, Gemini, Perplexity and more mention your brand, then helps you ship the content and citation work that earns more recommendations. Think Ahrefs energy, built for AI answers.",
+      "Dodox is an SEO & GEO Agent with AI Monitoring. It tracks whether ChatGPT, Claude, Gemini, Perplexity and more mention your brand, then helps you earn citations wherever models look — your site, Reddit, LinkedIn, reviews, press, and more. Agent for shipping the work, or managed GEO if you want our team on it.",
   },
   {
     question: "What is GEO (Generative Engine Optimization)?",

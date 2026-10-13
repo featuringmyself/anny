@@ -1,3 +1,4 @@
+import BeyondYourSite from "@/components/Home/beyondYourSite";
 import ExploreStrip from "@/components/Home/exploreStrip";
 import Hero from "@/components/Home/hero";
 import HomeCta from "@/components/Home/homeCta";
@@ -27,12 +28,13 @@ export const metadata = pageMetadata({
  * 1. Hero composition (brand + promise + product visual)
  * 2. Problem (why AI search matters)
  * 3. Capabilities (what you see)
- * 4. Coverage (trust)
- * 5. Services (done-for-you)
- * 6. Offer / Plans (self-serve)
- * 7. Explore (optional depth)
- * 8. Convert
- * 9. FAQ
+ * 4. Breadth (beyond website + agent — Reddit, LinkedIn, etc.)
+ * 5. Coverage (trust)
+ * 6. Services (done-for-you)
+ * 7. Offer / Plans (self-serve)
+ * 8. Explore (optional depth)
+ * 9. Convert
+ * 10. FAQ
  */
 export default function Home() {
   return (
@@ -48,6 +50,7 @@ export default function Home() {
       <Hero />
       <SearchIsShifting />
       <Metric />
+      <BeyondYourSite />
       <TrackModelsThatMatter />
       <Services />
       <Products />
