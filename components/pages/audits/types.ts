@@ -152,6 +152,17 @@ export type VisibilityReport = {
   ctaAsideMeta?: string;
   /** Floating chip on the CTA aside (default: + shortlist win). */
   ctaAsideChip?: string;
+  /**
+   * Optional pitch video shown under the hero (YouTube watch/share or embed URL).
+   * Used for private outreach to frame the snapshot before the exhibits.
+   */
+  pitchVideo?: {
+    url: string;
+    title?: string;
+    dek?: string;
+    /** Optional local public path for PDF thumbnail (e.g. /audits/portl/pitch-video-thumb.jpg). */
+    thumbnailSrc?: string;
+  };
   private?: boolean;
 };
 

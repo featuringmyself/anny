@@ -1,6 +1,12 @@
-import { Document, Image, Page, Text, View } from "@react-pdf/renderer";
+import { existsSync } from "fs";
+
+import { Document, Image, Link, Page, Text, View } from "@react-pdf/renderer";
 
 import { publicAssetPath } from "@/lib/audits/pdf/assets";
+import {
+  toYouTubeThumbnailUrl,
+  toYouTubeWatchUrl,
+} from "@/lib/audits/youtube";
 import { MODEL_META } from "@/components/pages/audits/models";
 import type {
   BrandCrisisFinding,
@@ -29,7 +35,8 @@ function scoreColor(score: number) {
 function assetSrc(src?: string) {
   if (!src) return null;
   try {
-    return publicAssetPath(src);
+    const resolved = publicAssetPath(src);
+    return existsSync(resolved) ? resolved : null;
   } catch {
     return null;
   }
@@ -40,6 +47,88 @@ function MetaCell({ label, value }: { label: string; value: string }) {
     <View style={{ flex: 1, minWidth: "22%" }}>
       <Text style={pdfStyles.label}>{label}</Text>
       <Text style={{ marginTop: 4, fontSize: 9, fontWeight: 500 }}>{value}</Text>
+    </View>
+  );
+}
+
+function PitchVideoCard({ report }: { report: VisibilityReport }) {
+  const pitch = report.pitchVideo;
+  if (!pitch?.url) return null;
+
+  const watchUrl = toYouTubeWatchUrl(pitch.url) ?? pitch.url;
+  const localThumb = assetSrc(pitch.thumbnailSrc);
+  const remoteThumb = toYouTubeThumbnailUrl(pitch.url);
+  const thumbSrc = localThumb ?? remoteThumb;
+  const title =
+    pitch.title ?? `Watch: why this ${report.company} snapshot matters`;
+  const dek =
+    pitch.dek ??
+    "Watch before you scroll the exhibits. Then get the full AI Visibility Intelligence Report.";
+
+  return (
+    <View
+      style={{
+        marginTop: 14,
+        borderWidth: 1,
+        borderColor: LINE,
+        backgroundColor: WHITE,
+        padding: 12,
+        flexDirection: "row",
+        gap: 12,
+        alignItems: "stretch",
+      }}
+    >
+      {thumbSrc ? (
+        <Link src={watchUrl} style={{ width: 148 }}>
+          {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image */}
+          <Image
+            src={thumbSrc}
+            style={{
+              width: 148,
+              height: 84,
+              objectFit: "cover",
+              backgroundColor: INK,
+            }}
+          />
+        </Link>
+      ) : null}
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <Text style={{ ...pdfStyles.label, color: ACCENT }}>
+          Watch before you scroll
+        </Text>
+        <Text
+          style={{
+            marginTop: 6,
+            fontSize: 11,
+            fontWeight: 500,
+            lineHeight: 1.35,
+          }}
+        >
+          {title}
+        </Text>
+        <Text
+          style={{
+            marginTop: 6,
+            fontSize: 8.5,
+            color: MUTED,
+            lineHeight: 1.45,
+          }}
+        >
+          {dek}
+        </Text>
+        <Link
+          src={watchUrl}
+          style={{
+            marginTop: 8,
+            fontSize: 9,
+            fontWeight: 500,
+            color: ACCENT,
+            textDecoration: "none",
+          }}
+        >
+          Open video on YouTube → {watchUrl}
+        </Link>
+      </View>
     </View>
   );
 }
@@ -156,6 +245,10 @@ function CoverPage({ report }: { report: VisibilityReport }) {
           {report.summary}
         </Text>
       </View>
+
+      {report.pitchVideo?.url ? (
+        <PitchVideoCard report={report} />
+      ) : null}
 
       {report.brandCrisisHeadline ? (
         <View
@@ -494,6 +587,7 @@ function SprintPage({ report }: { report: VisibilityReport }) {
       {sprint.outcomes.map((outcome, i) => (
         <View
           key={outcome}
+          wrap={false}
           style={{
             flexDirection: "row",
             gap: 10,
@@ -510,11 +604,39 @@ function SprintPage({ report }: { report: VisibilityReport }) {
         </View>
       ))}
 
+      <PdfFooter privateReport={report.private} />
+    </Page>
+  );
+}
+
+/** Closing CTA always starts on its own page so the pitch never splits mid-block. */
+function CtaPage({ report }: { report: VisibilityReport }) {
+  const checklist = report.ctaChecklist ?? [];
+  const href = report.ctaUrl
+    ? report.ctaUrl.startsWith("/")
+      ? `https://dodoxhq.com${report.ctaUrl}`
+      : report.ctaUrl
+    : "https://dodoxhq.com/audit";
+  const hrefLabel = report.ctaUrl
+    ? report.ctaUrl.startsWith("/")
+      ? `dodoxhq.com${report.ctaUrl}`
+      : report.ctaUrl.replace(/^https?:\/\//, "")
+    : "dodoxhq.com/audit";
+
+  return (
+    <Page size="A4" style={pdfStyles.page} wrap={false}>
+      <PdfHeader company={report.company} />
+      <Text style={pdfStyles.eyebrow}>
+        {report.ctaEyebrow ?? "AI Visibility Intelligence Report"}
+      </Text>
+
       <View
         style={{
-          marginTop: 24,
+          marginTop: 8,
           backgroundColor: INK,
-          padding: 18,
+          padding: 22,
+          flexGrow: 1,
+          justifyContent: "center",
         }}
       >
         <Text style={{ fontSize: 9, fontWeight: 500, color: "#7a9fff" }}>
@@ -522,40 +644,53 @@ function SprintPage({ report }: { report: VisibilityReport }) {
         </Text>
         <Text
           style={{
-            marginTop: 8,
-            fontSize: 16,
+            marginTop: 10,
+            fontSize: 20,
             fontWeight: 500,
             color: WHITE,
-            letterSpacing: -0.3,
+            letterSpacing: -0.4,
+            lineHeight: 1.25,
           }}
         >
           {report.ctaHeadline ?? `Get ${report.company} cited in 90 days`}
         </Text>
         <Text
           style={{
-            marginTop: 8,
-            fontSize: 9,
-            lineHeight: 1.5,
+            marginTop: 12,
+            fontSize: 10,
+            lineHeight: 1.55,
             color: "#a1a1aa",
           }}
         >
           {report.ctaBody ??
             "Book a call to start the AI Visibility Sprint across ChatGPT, Perplexity, and Google AI Overview."}
         </Text>
-        <Text
+
+        {checklist.length ? (
+          <View style={{ marginTop: 18, gap: 8 }}>
+            {checklist.map((item) => (
+              <Text
+                key={item}
+                style={{ fontSize: 9.5, color: WHITE, lineHeight: 1.4 }}
+              >
+                · {item}
+              </Text>
+            ))}
+          </View>
+        ) : null}
+
+        <Link
+          src={href}
           style={{
-            marginTop: 14,
-            fontSize: 10,
+            marginTop: 22,
+            fontSize: 12,
             fontWeight: 500,
             color: ACCENT,
+            textDecoration: "none",
           }}
         >
-          {report.ctaUrl
-            ? report.ctaUrl.startsWith("/")
-              ? `dodoxhq.com${report.ctaUrl}`
-              : report.ctaUrl.replace(/^https?:\/\//, "")
-            : "dodoxhq.com · talk to sales"}
-        </Text>
+          {hrefLabel}
+        </Link>
       </View>
 
       <PdfFooter privateReport={report.private} />
@@ -604,6 +739,7 @@ export function VisibilityReportPdf({ report }: VisibilityReportPdfProps) {
         />
       ))}
       <SprintPage report={report} />
+      <CtaPage report={report} />
     </Document>
   );
 }

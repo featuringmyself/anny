@@ -4,6 +4,7 @@ import ReportBrandCrisis from "./ReportBrandCrisis";
 import ReportCompetitors from "./ReportCompetitors";
 import ReportCta from "./ReportCta";
 import ReportHero from "./ReportHero";
+import ReportPitchVideo from "./ReportPitchVideo";
 import ReportPrivateBanner from "./ReportPrivateBanner";
 import ReportQueries from "./ReportQueries";
 import ReportScoreStrip from "./ReportScoreStrip";
@@ -19,6 +20,12 @@ export default function ReportView({ report }: ReportViewProps) {
     <main className="pb-16 md:pb-24">
       {report.private ? <ReportPrivateBanner /> : null}
       <ReportHero report={report} />
+      {report.pitchVideo ? (
+        <>
+          <PatternStrip />
+          <ReportPitchVideo report={report} />
+        </>
+      ) : null}
       <PatternStrip />
       <ReportBrandCrisis report={report} />
       {report.brandCrisis?.length ? <PatternStrip /> : null}

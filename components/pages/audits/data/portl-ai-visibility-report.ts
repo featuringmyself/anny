@@ -12,7 +12,7 @@ const SHOT = "/audits/portl";
  * Private outreach baseline for Portl (portl.co). ChatGPT snapshot, October 2026.
  * Sell: this 3/10 discovery failure is the door; the full AI Visibility Intelligence
  * Report (/audit) is the product. Not a services sprint CTA.
- * Brand-vs and ultra-narrow product prompts are excluded from the score — they
+ * Brand-vs and ultra-narrow product prompts are excluded from the score: they
  * inflate visibility without proving category discovery.
  */
 export const portlAiVisibilityReport: VisibilityReport = {
@@ -27,17 +27,23 @@ export const portlAiVisibilityReport: VisibilityReport = {
   overallScore: 30,
   scoreLabel: "Weak · discovery failing",
   private: true,
+  pitchVideo: {
+    url: "https://youtu.be/TyFqcacTbTs",
+    title: "Armaan: why 3/10 is still a discovery failure",
+    dek: "Ninety seconds on the India shortlist Portl is missing, why the three citations don’t convert, and what the full AI Visibility Intelligence Report covers.",
+    thumbnailSrc: "/audits/portl/pitch-video-thumb.jpg",
+  },
   tagline:
     "Aroleap, Speediance and Vitruvian own the India smart-gym shortlists Portl should win",
   summary:
-    "Cited on 3 of 10 buy-intent prompts. Visibility score: 30 (Weak). On the prompts that create demand — best smart home gym in India, Tonal alternative, all-in-one, digital resistance, apartments, form correction, trainer replacement, real-time feedback — Portl is absent 7 times. Aroleap, Speediance, Vitruvian, Tempo and Tonal take those buyers. The 3 citations are not proof Portl is fine: Studio ranks first then marked sold out; UltraGym is the weaker high-resistance option behind Vitruvian; in Hyderabad Portl is second to Aroleap with delivery caveats. Showing up when already named, or on an ultra-narrow product phrase, does not fix category discovery. This ChatGPT snapshot only proves the bleed. The AI Visibility Intelligence Report is what maps every engine, explains why rivals win, and gives the ranked plan to take those shortlists back.",
+    "Cited on 3 of 10 buy-intent prompts. Visibility score: 30 (Weak). On the prompts that create demand (best smart home gym in India, Tonal alternative, all-in-one, digital resistance, apartments, form correction, trainer replacement, real-time feedback), Portl is absent 7 times. Aroleap, Speediance, Vitruvian, Tempo and Tonal take those buyers. The 3 citations are not proof Portl is fine: Studio ranks first then marked sold out; UltraGym is the weaker high-resistance option behind Vitruvian; in Hyderabad Portl is second to Aroleap with delivery caveats. Showing up when already named, or on an ultra-narrow product phrase, does not fix category discovery. This ChatGPT snapshot only proves the bleed. The AI Visibility Intelligence Report is what maps every engine, explains why rivals win, and gives the ranked plan to take those shortlists back.",
   brandCrisisHeadline:
     "Portl is losing the prompts that create purchases",
   brandCrisisDek:
-    "Category demand goes to Aroleap and Speediance. Brand mentions that cannot convert — sold out, second place, delivery risk — are not visibility. They are leakage.",
+    "Category demand goes to Aroleap and Speediance. Brand mentions that cannot convert (sold out, second place, delivery risk) are not visibility. They are leakage.",
   queriesHeadline: "Prompt audit · 10 buyer queries",
   queriesIntro:
-    "Scored on discovery and buy-intent prompts only. Brand-vs matchups are excluded from the score — they only fire when someone already knows Portl. Result: 7 absences, 3 leaky citations. Rivals own the shelf.",
+    "Scored on discovery and buy-intent prompts only. Brand-vs matchups are excluded from the score: they only fire when someone already knows Portl. Result: 7 absences, 3 leaky citations. Rivals own the shelf.",
   modelScores: [
     { model: "chatgpt", visibility: 30, cited: 3, total: 10, audited: true },
     { model: "perplexity", visibility: 0, cited: 0, total: 0, audited: false },
@@ -58,8 +64,8 @@ export const portlAiVisibilityReport: VisibilityReport = {
     {
       id: "crisis-1",
       query: "best smart home gym in India",
-      title: "India category demand — Portl erased",
-      body: "The core India smart-gym prompt names Aroleap first, then Speediance and Vitruvian. Portl does not appear. This is the shelf Portl sells into — and AI is routing it elsewhere.",
+      title: "India category demand: Portl erased",
+      body: "The core India smart-gym prompt names Aroleap first, then Speediance and Vitruvian. Portl does not appear. This is the shelf Portl sells into, and AI is routing it elsewhere.",
       outcome: "Absent · Aroleap owns the India shortlist",
       screenshot: {
         src: `${SHOT}/crisis-best-smart-home-gym-india.png`,
@@ -70,8 +76,8 @@ export const portlAiVisibilityReport: VisibilityReport = {
     {
       id: "crisis-2",
       query: "Portl (portl.co) review",
-      title: "Known by name — still not a buy",
-      body: "When buyers ask about Portl directly, the answer lists prices and a review, then blocks purchase: check delivery, warranty, service and reliability. Studio is sold out. Evaluated, not endorsed — trust and availability kill the close.",
+      title: "Known by name: still not a buy",
+      body: "When buyers ask about Portl directly, the answer lists prices and a review, then blocks purchase: check delivery, warranty, service and reliability. Studio is sold out. Evaluated, not endorsed. Trust and availability kill the close.",
       outcome: "Nuanced · reviewed, not recommended",
       screenshot: {
         src: `${SHOT}/crisis-portl-review.png`,
@@ -82,12 +88,12 @@ export const portlAiVisibilityReport: VisibilityReport = {
     {
       id: "crisis-3",
       query: "Portl UltraGym vs Aroleap",
-      title: "Comparisons only happen after discovery — and discovery is broken",
-      body: "Head-to-head vs Aroleap only appears when the buyer already typed Portl. UltraGym is framed as portable/budget; Aroleap as the higher-end dedicated gym. Most buyers never get here — they ask for the best smart gym in India and get Aroleap instead.",
+      title: "Comparisons only happen after discovery, and discovery is broken",
+      body: "Head-to-head vs Aroleap only appears when the buyer already typed Portl. UltraGym is framed as portable/budget; Aroleap as the higher-end dedicated gym. Most buyers never get here. They ask for the best smart gym in India and get Aroleap instead.",
       outcome: "Named matchup · not a discovery win",
       screenshot: {
         src: `${SHOT}/crisis-ultragym-vs-aroleap.png`,
-        alt: "ChatGPT Portl UltraGym vs Aroleap — only when Portl is already named",
+        alt: "ChatGPT Portl UltraGym vs Aroleap: only when Portl is already named",
         model: "chatgpt",
       },
     },
@@ -113,7 +119,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Aroleap X is named the best Tonal alternative in India for wall-mounted digital resistance with local installation and support. Speediance Gym Monster 2 is the freestanding option; Vitruvian Trainer+ for maximum digital resistance in a compact setup. Portl (portl.co) is not listed — high-intent substitute demand goes to rivals.",
+            "Aroleap X is named the best Tonal alternative in India for wall-mounted digital resistance with local installation and support. Speediance Gym Monster 2 is the freestanding option; Vitruvian Trainer+ for maximum digital resistance in a compact setup. Portl (portl.co) is not listed. High-intent substitute demand goes to rivals.",
         },
       ],
     },
@@ -185,7 +191,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: false,
           excerpt:
-            "Speediance, Vitruvian and Aroleap take the apartment shortlist; Aroleap gets the India recommendation. Portl UltraGym — built for compact homes — is not named.",
+            "Speediance, Vitruvian and Aroleap take the apartment shortlist; Aroleap gets the India recommendation. Portl UltraGym (built for compact homes) is not named.",
         },
       ],
     },
@@ -264,12 +270,12 @@ export const portlAiVisibilityReport: VisibilityReport = {
     {
       id: "q8",
       query: "best AI fitness mirror in India",
-      intent: "Own claim theft: Studio AI fitness mirror — cited but blocked from purchase",
+      intent: "Own claim theft: Studio AI fitness mirror: cited but blocked from purchase",
       severity: "critical",
       tag: "Own Claim Theft",
       citedBrands: ["Portl", "AEKE", "Echelon"],
       rentokStatus: "cited",
-      outcome: "Leaky · #1 then sold out — demand diverted",
+      outcome: "Leaky · #1 then sold out: demand diverted",
       screenshot: {
         src: `${SHOT}/02-best-ai-fitness-mirror-india.png`,
         alt: "ChatGPT AI fitness mirror: Portl Studio first but sold out",
@@ -281,7 +287,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
           cited: true,
           position: 1,
           excerpt:
-            "Portl Studio is ranked first for India — then marked sold out, with advice to confirm delivery before payment. AEKE and Echelon sit as ready alternatives. A #1 that cannot ship is lost revenue, not a visibility win.",
+            "Portl Studio is ranked first for India, then marked sold out, with advice to confirm delivery before payment. AEKE and Echelon sit as ready alternatives. A #1 that cannot ship is lost revenue, not a visibility win.",
         },
       ],
     },
@@ -289,7 +295,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
       id: "q9",
       query: "best smart home gym with high resistance",
       intent:
-        "Competitor conquest: high-resistance buyers — Portl named as the weaker option",
+        "Competitor conquest: high-resistance buyers: Portl named as the weaker option",
       severity: "high",
       tag: "Competitor Conquest",
       citedBrands: ["Vitruvian", "Speediance", "Tonal", "Portl"],
@@ -305,14 +311,14 @@ export const portlAiVisibilityReport: VisibilityReport = {
           model: "chatgpt",
           cited: true,
           excerpt:
-            "Vitruvian leads max resistance; Speediance and Tonal follow. Portl UltraGym appears as an India-market option at ~70 kg — shortlisted as the weaker fit. Mention without preference still loses the buyer.",
+            "Vitruvian leads max resistance; Speediance and Tonal follow. Portl UltraGym appears as an India-market option at ~70 kg, shortlisted as the weaker fit. Mention without preference still loses the buyer.",
         },
       ],
     },
     {
       id: "q10",
       query: "best smart home gym available in Hyderabad",
-      intent: "Home turf: Hyderabad — second place with delivery risk",
+      intent: "Home turf: Hyderabad: second place with delivery risk",
       severity: "critical",
       tag: "Home Turf",
       citedBrands: [
@@ -335,7 +341,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
           cited: true,
           position: 2,
           excerpt:
-            "Aroleap X is ranked best overall. Portl UltraGym is second as a lower-budget compact option — then buyers must confirm batch dispatch and Hyderabad delivery. On home turf, runner-up with an open risk that diverts purchase.",
+            "Aroleap X is ranked best overall. Portl UltraGym is second as a lower-budget compact option, then buyers must confirm batch dispatch and Hyderabad delivery. On home turf, runner-up with an open risk that diverts purchase.",
         },
       ],
     },
@@ -348,9 +354,9 @@ export const portlAiVisibilityReport: VisibilityReport = {
     sectionEyebrow: "What this snapshot cannot do",
     headline:
       "3/10 on ChatGPT is the warning. The full report is how Portl takes the shortlists back.",
-    body: `This page is a teaser: one engine, ten prompts, enough to prove Aroleap and Speediance are taking Portl’s buyers. It does not tell you why they win on every surface, what to publish, which sources models already trust, or the ranked backlog to displace them. That is the ${AUDIT_OFFER_NAME} — ${AUDIT_FIX_PROMPTS} buyer prompts across the major AI engines, competitive analysis, citation map, technical readiness, content and authority gaps, and a 30-60-90 plan. ${AUDIT_FIX_PRICING.india.priceLabel} India · ${AUDIT_FIX_PRICING.international.priceLabel} worldwide. Fee credited toward implementation.`,
+    body: `This page is a teaser: one engine, ten prompts, enough to prove Aroleap and Speediance are taking Portl’s buyers. It does not tell you why they win on every surface, what to publish, which sources models already trust, or the ranked backlog to displace them. That is the ${AUDIT_OFFER_NAME}: ${AUDIT_FIX_PROMPTS} buyer prompts across the major AI engines, competitive analysis, citation map, technical readiness, content and authority gaps, and a 30-60-90 plan. ${AUDIT_FIX_PRICING.india.priceLabel} India · ${AUDIT_FIX_PRICING.international.priceLabel} worldwide. Fee credited toward implementation.`,
     outcomes: [
-      "Multi-engine truth: Portl’s real score on ChatGPT, Perplexity, Gemini, Claude and Google AI — not a one-engine teaser",
+      "Multi-engine truth: Portl’s real score on ChatGPT, Perplexity, Gemini, Claude and Google AI, not a one-engine teaser",
       "Why Aroleap, Speediance and Vitruvian win: pages, sources, proof and positioning Portl lacks on each prompt they own",
       "How to steal those shortlists: concrete moves on Tonal-alternative, all-in-one, digital-resistance and apartment demand",
       "Stop leaky citations: sold-out, delivery and trust signals that turn a Portl mention into a deferred or diverted buy",
@@ -358,7 +364,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
       "Technical readiness: crawl, schema, entity clarity so models can learn clean facts about portl.co",
       "Content that wins discovery: comparison, proof and product pages missing from the prompts that create purchases",
       "Authority AI needs: reviews, directories and reputation signals that move Portl from “check delivery” to recommended",
-      "Ranked 30-60-90 backlog: site, content and authority work sequenced by impact — not a vague SEO list",
+      "Ranked 30-60-90 backlog: site, content and authority work sequenced by impact, not a vague SEO list",
       "Measurement: re-runnable prompt set so citation gains are tracked after the work ships",
     ],
   },
@@ -369,7 +375,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
     "You’re losing category demand to Aroleap and Speediance. This is the report that reverses it.",
   ctaBody: `This snapshot only shows the bleed on ChatGPT. The ${AUDIT_OFFER_NAME} is the full diagnostic and plan: ${AUDIT_FIX_PROMPTS} prompts, every major AI engine, why rivals win and how to take their spots, brand perception, citation map, technical readiness, content gaps, authority, ranked backlog and measurement. ${AUDIT_FIX_TURNAROUND}. ${AUDIT_FIX_PRICING.india.priceLabel} India · ${AUDIT_FIX_PRICING.international.priceLabel} worldwide. Fee credited toward implementation.`,
   ctaChecklist: [
-    "Where Portl is absent — and who takes the deal",
+    "Where Portl is absent, and who takes the deal",
     "Why Aroleap / Speediance win those shortlists",
     "The ranked plan to take them back",
     "Fee credited toward implementation",
