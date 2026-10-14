@@ -8,7 +8,9 @@ import {
   type RegisterActionState,
   submitRegister,
 } from "@/app/actions/register";
+import { brand } from "@/components/Home/brand";
 import { PostHogDistinctIdField } from "@/components/posthog-distinct-id-field";
+import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -68,31 +70,53 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   if (state.status === "success") {
     return (
       <motion.div
-        className="flex min-h-72 flex-col justify-center p-8 md:min-h-96 md:p-12"
+        className="mt-8 flex flex-col justify-center"
         initial={reduce ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         aria-live="polite"
       >
-        <p className="text-sm font-medium tracking-wide text-[#2462ff]">
-          Noted
-        </p>
-        <h2
+        <span
+          className="inline-flex w-fit items-center rounded-full border px-4 py-1 text-[11px] font-semibold tracking-[0.08em] uppercase"
+          style={{ color: brand.heading, borderColor: `${brand.heading}80` }}
+        >
+          Request received
+        </span>
+        <h1
           ref={successHeadingRef}
           tabIndex={-1}
-          className="mt-3 text-2xl font-medium tracking-tight outline-none md:text-3xl"
+          id="register-heading"
+          className="mt-4 text-2xl font-bold tracking-tight outline-none sm:text-3xl"
+          style={{ color: brand.heading }}
         >
           We&apos;ve got your details
-        </h2>
-        <p className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-500">
+        </h1>
+        <p
+          className="mt-3 max-w-md text-sm leading-relaxed sm:text-base"
+          style={{ color: brand.body }}
+        >
           Noted on{" "}
-          <span className="font-medium text-zinc-800">{state.email}</span>.
-          We&apos;re accepting limited signups due to high demand, our sales
-          team will reach out soon.
+          <span className="font-semibold" style={{ color: brand.bodyStrong }}>
+            {state.email}
+          </span>
+          . We&apos;re accepting limited signups due to high demand; our sales
+          team will reach out within one business day.
         </p>
-        <div className="mt-8">
-          <Button size="lg" className="px-5" render={<Link href="/" />}>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button
+            size="lg"
+            className="h-12 rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
+            render={<Link href="/" />}
+          >
             Back to home
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold hover:bg-zinc-900 hover:text-white"
+            render={<Link href="/pricing" />}
+          >
+            View pricing
           </Button>
         </div>
       </motion.div>
@@ -100,26 +124,37 @@ export default function RegisterForm({ plan }: { plan?: string }) {
   }
 
   return (
-    <div className="flex min-h-72 flex-col justify-center p-8 md:min-h-96 md:p-12">
-      <div>
-        <p className="text-sm font-medium tracking-wide text-[#2462ff]">
-          Create account
-        </p>
-        <h2 className="mt-2 text-2xl font-medium tracking-tight md:text-3xl">
-          Start tracking AI mentions
-        </h2>
-        <p className="mt-2 max-w-sm text-sm text-zinc-500">
-          Enter your work email and company to get started
-          {plan ? (
-            <>
-              {" "}
-              on{" "}
-              <span className="font-medium text-zinc-800">{plan}</span>
-            </>
-          ) : null}
-          .
-        </p>
-      </div>
+    <div className="mt-8 max-w-md">
+      <h1
+        id="register-heading"
+        className="text-2xl font-bold tracking-tight sm:text-[1.75rem]"
+        style={{ color: brand.heading }}
+      >
+        Create your Dodox account
+      </h1>
+      <p
+        className="mt-2 text-sm leading-relaxed sm:text-[15px]"
+        style={{ color: brand.body }}
+      >
+        Get started with AI visibility across ChatGPT, Gemini, Perplexity, and
+        Copilot.
+        {plan ? (
+          <>
+            {" "}
+            You selected the{" "}
+            <span className="font-semibold" style={{ color: brand.bodyStrong }}>
+              {plan}
+            </span>{" "}
+            plan.
+          </>
+        ) : null}
+      </p>
+      <p
+        className="mt-3 text-xs font-medium tracking-wide uppercase"
+        style={{ color: brand.bodyStrong }}
+      >
+        No credit card · Limited onboarding while demand is high
+      </p>
 
       <form
         action={formAction}
@@ -130,7 +165,6 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         {plan ? <input type="hidden" name="plan" value={plan} /> : null}
         <PostHogDistinctIdField />
 
-        {/* Honeypot, hidden from users, filled by many bots */}
         <div
           className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
           aria-hidden="true"
@@ -146,7 +180,9 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor={`${fieldId}-email`}>Work email</Label>
+          <Label htmlFor={`${fieldId}-email`} className="font-medium text-zinc-800">
+            Work email
+          </Label>
           <Input
             ref={emailRef}
             id={`${fieldId}-email`}
@@ -162,6 +198,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
             aria-describedby={
               fieldErrors.email ? `${fieldId}-email-error` : undefined
             }
+            className="h-11 rounded-lg border-zinc-900/15 bg-white px-3 text-base shadow-xs focus-visible:border-zinc-900/40 md:text-base"
           />
           <FieldError
             id={`${fieldId}-email-error`}
@@ -170,7 +207,9 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor={`${fieldId}-company`}>Company</Label>
+          <Label htmlFor={`${fieldId}-company`} className="font-medium text-zinc-800">
+            Company
+          </Label>
           <Input
             ref={companyRef}
             id={`${fieldId}-company`}
@@ -184,6 +223,7 @@ export default function RegisterForm({ plan }: { plan?: string }) {
             aria-describedby={
               fieldErrors.company ? `${fieldId}-company-error` : undefined
             }
+            className="h-11 rounded-lg border-zinc-900/15 bg-white px-3 text-base shadow-xs focus-visible:border-zinc-900/40 md:text-base"
           />
           <FieldError
             id={`${fieldId}-company-error`}
@@ -204,30 +244,44 @@ export default function RegisterForm({ plan }: { plan?: string }) {
         <Button
           type="submit"
           size="lg"
-          className="mt-2 w-full px-5"
+          className="mt-1 h-12 w-full rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
           disabled={pending}
         >
-          {pending ? "Submitting…" : "Create account"}
+          {pending ? "Submitting…" : "Continue"}
         </Button>
 
-        <p className="text-xs leading-relaxed text-zinc-400">
+        <p className="text-xs leading-relaxed" style={{ color: brand.body }}>
           By continuing you agree to our{" "}
           <Link
             href="/terms"
-            className="underline underline-offset-2 hover:text-zinc-600"
+            className="font-medium underline underline-offset-2 hover:text-zinc-900"
+            style={{ color: brand.bodyStrong }}
           >
             Terms
           </Link>{" "}
           and{" "}
           <Link
             href="/privacy"
-            className="underline underline-offset-2 hover:text-zinc-600"
+            className="font-medium underline underline-offset-2 hover:text-zinc-900"
+            style={{ color: brand.bodyStrong }}
           >
             Privacy Policy
           </Link>
           .
         </p>
       </form>
+
+      <p className="mt-6 text-sm" style={{ color: brand.body }}>
+        Want a demo first?{" "}
+        <TalkToSalesButton
+          variant="link"
+          className="h-auto p-0 font-semibold underline-offset-4"
+          style={{ color: brand.heading }}
+          source="register-form"
+        >
+          Schedule a call with our team
+        </TalkToSalesButton>
+      </p>
     </div>
   );
 }
