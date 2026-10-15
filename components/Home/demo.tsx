@@ -348,7 +348,7 @@ export default function Demo({ variant = "full" }: DemoProps) {
           className={cn(
             "relative bg-[#f8f8f8] text-zinc-700",
             isEmbed
-              ? "min-h-[320px] w-full sm:min-h-[360px]"
+              ? "w-full"
               : "min-h-[360px] w-[640px] md:aspect-[2/1] md:min-h-[500px] md:w-full",
           )}
         >
@@ -434,7 +434,7 @@ export default function Demo({ variant = "full" }: DemoProps) {
               <section
                 className={cn(
                   "overflow-hidden rounded-xl border border-zinc-200 bg-white",
-                  isEmbed ? "min-h-[220px] sm:min-h-[240px]" : "h-[218px]",
+                  isEmbed ? undefined : "h-[218px]",
                 )}
               >
                 <div className="flex h-[43px] items-center justify-between px-3">

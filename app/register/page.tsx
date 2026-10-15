@@ -1,4 +1,3 @@
-import PatternStrip from "@/components/PatternStrip";
 import JsonLd from "@/components/JsonLd";
 import RegisterSection from "@/components/pages/register/RegisterSection";
 import { parseRegisterPlan } from "@/lib/plans";
@@ -25,9 +24,7 @@ export default async function RegisterPage({ searchParams }: RegisterPageProps) 
   return (
     <main>
       <JsonLd data={webpageJsonLd({ path: "/register", title, description })} />
-      <PatternStrip />
       <RegisterSection plan={plan} />
-      <PatternStrip />
     </main>
   );
 }
