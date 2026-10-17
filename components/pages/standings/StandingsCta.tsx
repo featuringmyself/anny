@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { Download } from "lucide-react";
 
 import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import { useSnapshotMarket } from "./SnapshotMarketContext";
+import { SNAPSHOT_SAMPLE_PDF } from "./sample";
 
 export default function StandingsCta() {
   const { pricing } = useSnapshotMarket();
@@ -40,11 +42,27 @@ export default function StandingsCta() {
             size="lg"
             variant="outline"
             className="h-12 rounded-lg border-white/80 bg-transparent px-6 text-base font-semibold text-white hover:bg-white hover:text-[#11333c]"
-            render={<Link href="/agencies/offerings" />}
+            render={
+              <a
+                href={SNAPSHOT_SAMPLE_PDF}
+                download="dodox-snapshot-sample-ai-visibility-report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
           >
-            All agency offerings
+            <Download data-icon="inline-start" aria-hidden />
+            Download a sample
           </Button>
         </div>
+        <p className="mt-4 text-sm font-medium text-white/55">
+          <Link
+            href="/agencies/offerings"
+            className="underline-offset-4 hover:text-white hover:underline"
+          >
+            All agency offerings
+          </Link>
+        </p>
       </div>
     </section>
   );

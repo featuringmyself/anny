@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Download } from "lucide-react";
 
 import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import { snapshotProof } from "./content";
+import { SNAPSHOT_SAMPLE_PDF } from "./sample";
 
 import logoImg from "@/public/logo.png";
 import chatgptLogo from "@/public/services/orbit/chatgpt.webp";
@@ -79,11 +81,27 @@ export default function StandingsHero() {
             size="lg"
             variant="outline"
             className="h-11 rounded-lg border-zinc-900 px-5 text-base font-semibold hover:bg-zinc-900 hover:text-white sm:h-12 sm:px-6"
-            render={<Link href="#pricing" />}
+            render={
+              <a
+                href={SNAPSHOT_SAMPLE_PDF}
+                download="dodox-snapshot-sample-ai-visibility-report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            }
           >
-            See pricing
+            <Download data-icon="inline-start" aria-hidden />
+            Download a sample
           </Button>
         </div>
+        <p className="mt-3 text-sm font-medium text-zinc-500">
+          <Link
+            href="#pricing"
+            className="underline-offset-4 hover:text-zinc-800 hover:underline"
+          >
+            See pricing
+          </Link>
+        </p>
 
         <ul
           className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:mt-10 sm:gap-x-6 sm:gap-y-3"
