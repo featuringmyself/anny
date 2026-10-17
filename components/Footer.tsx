@@ -37,8 +37,7 @@ const columns = [
   {
     title: "Partnership",
     links: [
-      { label: "Agencies", href: "/partnership/agencies" },
-      { label: "Agency offerings", href: "/agencies/offerings" },
+      { label: "Agencies", href: "/agencies/offerings" },
       { label: "Dodox Snapshots", href: "/standings" },
       { label: "Creators", href: "/partnership/creators" },
       { label: "Media", href: "/partnership/media" },
