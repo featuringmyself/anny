@@ -6,6 +6,7 @@ import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { cn } from "@/lib/utils";
 import { SNAPSHOT_INCLUDED_PROMPTS } from "@/lib/snapshots-pricing";
+import { SNAPSHOT_TALK_TO_SALES_COPY } from "./content";
 import { useSnapshotMarket } from "./SnapshotMarketContext";
 
 const INCLUDED = [
@@ -132,6 +133,7 @@ export default function StandingsPricing() {
             size="lg"
             className="mt-7 h-12 w-full cursor-pointer rounded-lg border border-zinc-900 bg-brand text-base font-semibold text-white hover:bg-emerald-50 hover:text-black"
             source={`standings-pricing-${market}`}
+            copy={SNAPSHOT_TALK_TO_SALES_COPY}
           >
             Order · {active.priceLabel}
           </TalkToSalesButton>

@@ -6,6 +6,7 @@ import { Download } from "lucide-react";
 import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
+import { SNAPSHOT_TALK_TO_SALES_COPY } from "./content";
 import { useSnapshotMarket } from "./SnapshotMarketContext";
 import { SNAPSHOT_SAMPLE_PDF } from "./sample";
 
@@ -35,6 +36,7 @@ export default function StandingsCta() {
             className="h-12 cursor-pointer rounded-lg border border-transparent px-6 text-base font-semibold text-[#11333c] hover:bg-white"
             style={{ backgroundColor: brand.lime }}
             source="standings-footer-cta"
+            copy={SNAPSHOT_TALK_TO_SALES_COPY}
           >
             Order · {pricing.priceLabel}
           </TalkToSalesButton>
@@ -45,7 +47,7 @@ export default function StandingsCta() {
             render={
               <a
                 href={SNAPSHOT_SAMPLE_PDF}
-                download="dodox-snapshot-sample-ai-visibility-report.pdf"
+                download="dodox-snapshot-sample-ai-visibility-snapshot.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               />

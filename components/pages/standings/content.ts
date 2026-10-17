@@ -5,6 +5,19 @@ import {
   type SnapshotMarket,
 } from "@/lib/snapshots-pricing";
 
+/** Lead-form copy when CTAs open TalkToSales from /standings. */
+export const SNAPSHOT_TALK_TO_SALES_COPY = {
+  title: "Order a Snapshot",
+  description: `Share the client brand, competitors, and your agency branding. We'll run ${SNAPSHOT_INCLUDED_PROMPTS} prompts across ${SNAPSHOT_ENGINES.join(", ")} and deliver a white-label PDF.`,
+  messageLabel: "Client brief",
+  messagePlaceholder:
+    "Client site, competitors, market, and any logo or brand colors for white-label.",
+  submitLabel: "Order Snapshot",
+  successTitle: "Thanks, order received",
+  successDescription:
+    "Someone from our team will confirm the brief and start your Snapshot within one business day.",
+} as const;
+
 export const snapshotProof = [
   { value: "25", label: "Prompts per Snapshot" },
   { value: "3", label: "AI engines covered" },

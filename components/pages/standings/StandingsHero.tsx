@@ -5,7 +5,7 @@ import { Download } from "lucide-react";
 import { brand } from "@/components/Home/brand";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
-import { snapshotProof } from "./content";
+import { SNAPSHOT_TALK_TO_SALES_COPY, snapshotProof } from "./content";
 import { SNAPSHOT_SAMPLE_PDF } from "./sample";
 
 import logoImg from "@/public/logo.png";
@@ -74,6 +74,7 @@ export default function StandingsHero() {
             size="lg"
             className="h-11 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-5 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black sm:h-12 sm:px-6"
             source="standings-hero"
+            copy={SNAPSHOT_TALK_TO_SALES_COPY}
           >
             Order a Snapshot
           </TalkToSalesButton>
@@ -84,7 +85,7 @@ export default function StandingsHero() {
             render={
               <a
                 href={SNAPSHOT_SAMPLE_PDF}
-                download="dodox-snapshot-sample-ai-visibility-report.pdf"
+                download="dodox-snapshot-sample-ai-visibility-snapshot.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               />
