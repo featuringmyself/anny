@@ -11,7 +11,7 @@ const SHOT = "/audits/portl";
 /**
  * Private outreach baseline for Portl (portl.co). ChatGPT snapshot, October 2026.
  * Sell: this 3/10 discovery failure is the door; the full AI Visibility Intelligence
- * Report (/audit) is the product. Not a services sprint CTA.
+ * Report (/aeo-audit) is the product. Not a services sprint CTA.
  * Brand-vs and ultra-narrow product prompts are excluded from the score: they
  * inflate visibility without proving category discovery.
  */
@@ -368,7 +368,7 @@ export const portlAiVisibilityReport: VisibilityReport = {
       "Measurement: re-runnable prompt set so citation gains are tracked after the work ships",
     ],
   },
-  ctaUrl: "/audit",
+  ctaUrl: "/aeo-audit",
   ctaLabel: "Get the AI Visibility Intelligence Report",
   ctaEyebrow: AUDIT_OFFER_NAME,
   ctaHeadline:

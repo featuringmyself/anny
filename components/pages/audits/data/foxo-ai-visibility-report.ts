@@ -11,7 +11,7 @@ const SHOT = "/audits/foxo";
 /**
  * Private outreach baseline for Foxo (foxo.club). ChatGPT snapshot, October 2026.
  * Sell: this 0/10 snapshot is the door; the full AI Visibility Intelligence
- * Report (/audit) is the product. Not a services sprint CTA.
+ * Report (/aeo-audit) is the product. Not a services sprint CTA.
  */
 export const foxoAiVisibilityReport: VisibilityReport = {
   slug: "foxo-ai-visibility-report",
@@ -390,7 +390,7 @@ export const foxoAiVisibilityReport: VisibilityReport = {
       "Prove it worked: a measurement framework and re-runnable prompt set so citation gains are tracked, not guessed",
     ],
   },
-  ctaUrl: "/audit",
+  ctaUrl: "/aeo-audit",
   ctaLabel: "Get the AI Visibility Intelligence Report",
   ctaEyebrow: AUDIT_OFFER_NAME,
   ctaHeadline:

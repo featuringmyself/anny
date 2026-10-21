@@ -69,11 +69,13 @@ Sign up: https://www.dodoxhq.com/register
 Pricing page: https://www.dodoxhq.com/pricing
 Managed services: https://www.dodoxhq.com/services
 
-## AI Visibility Intelligence Report (one-time AI visibility audit)
+## AI Visibility Intelligence Report (one-time AEO / GEO / AI SEO audit)
 
-Page: https://www.dodoxhq.com/audit
+Page: https://www.dodoxhq.com/aeo-audit
 
-The AI Visibility Intelligence Report is a one-time brand-facing audit for brands missing from AI recommendations. It covers ChatGPT, Claude, Gemini, Grok, and Perplexity. It is not a white-label agency Snapshot and not a managed GEO retainer.
+Also reached via permanent redirects: /audit, /geo-audit, /aiseo-audit, /ai-seo-audit, /llm-seo-audit, /generative-engine-optimization-audit.
+
+The AI Visibility Intelligence Report is a one-time brand-facing AEO / GEO / AI SEO audit for brands missing from AI recommendations. Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), and AI SEO refer to the same work here. It covers ChatGPT, Claude, Gemini, Grok, and Perplexity. It is not a white-label agency Snapshot and not a managed GEO retainer.
 
 What you get:
 - Dated standing across 49 buyer prompts (why you are missing, who wins instead)

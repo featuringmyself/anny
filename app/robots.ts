@@ -47,7 +47,7 @@ const DISALLOW = ["/api/", "/audits/", ...CASE_STUDY_DISALLOW] as const;
  * Extra Allow prefixes for AI bots are signals (GEO / citation surfaces), not a
  * whitelist. The real crawl policy is Allow: / plus the shared disallows.
  * `/audits/` stays disallowed for private outreach reports and screenshot assets.
- * Public offer: `/audit`.
+ * Public offer: `/aeo-audit` (legacy `/audit` 301s here).
  */
 const AI_BOT_ALLOW_SIGNALS = [
   "/",
@@ -57,7 +57,7 @@ const AI_BOT_ALLOW_SIGNALS = [
   "/blog",
   "/rss.xml",
   "/tools/",
-  "/audit",
+  "/aeo-audit",
   "/services",
   "/standings",
   "/.well-known/agent-skills/",

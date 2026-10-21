@@ -11,7 +11,7 @@ import { verifyAuditPayment } from "@/lib/dodo/verify-audit-payment";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  path: "/audit/success",
+  path: "/aeo-audit/success",
   title: `Payment received · ${AUDIT_OFFER_NAME}`,
   description: `Thanks for ordering a ${AUDIT_OFFER_NAME}. We'll confirm payment and start within one business day.`,
   robots: { index: false, follow: false },
@@ -148,7 +148,7 @@ export default async function AuditCheckoutSuccessPage({
             size="lg"
             variant="outline"
             className="h-12 rounded-lg border-zinc-900 px-6 text-base font-semibold"
-            render={<Link href="/audit" />}
+            render={<Link href="/aeo-audit" />}
           >
             Back to Audit
           </Button>

@@ -11,6 +11,57 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Canonical offer URL rename (preserve equity + bookmarks)
+      {
+        source: "/audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+      {
+        source: "/audit/success",
+        destination: "/aeo-audit/success",
+        permanent: true,
+      },
+      {
+        source: "/audit/opengraph-image",
+        destination: "/aeo-audit/opengraph-image",
+        permanent: true,
+      },
+      {
+        source: "/audit/twitter-image",
+        destination: "/aeo-audit/twitter-image",
+        permanent: true,
+      },
+      // Synonym vanity URLs → one canonical (avoid duplicate-intent doorways)
+      {
+        source: "/geo-audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+      {
+        source: "/aiseo-audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+      {
+        source: "/ai-seo-audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+      {
+        source: "/llm-seo-audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+      {
+        source: "/generative-engine-optimization-audit",
+        destination: "/aeo-audit",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

@@ -55,8 +55,7 @@ export default function Hero() {
           className="mt-5 max-w-2xl text-base leading- font-medium sm:mt-6 sm:text-lg text-balance"
           style={{ color: brand.body }}
         >
-          Track and earn AI citations — on your site, Reddit, LinkedIn, and
-          wherever models look. Agent or managed GEO when you want us on it.
+          {"Most AI citations aren't from your site. An agent that wins your Blogs, Reddit, and LinkedIn too."}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -67,15 +66,15 @@ export default function Hero() {
               <RegisterCtaLink href="/register" source="home-hero" />
             }
           >
-            Get started
+            Start tracking
           </Button>
           <Button
             size="lg"
             variant="outline"
             className="h-12 cursor-pointer rounded-lg border-zinc-900 px-6 text-base font-semibold hover:bg-zinc-900 hover:text-white"
-            render={<Link href="/services" />}
+            render={<Link href="/aeo-audit" />}
           >
-            Explore services
+            Get the AI audit
           </Button>
         </div>
 

@@ -15,9 +15,9 @@ const links = [
     group: "Services",
   },
   {
-    href: "/audit",
+    href: "/aeo-audit",
     name: "AI Visibility Intelligence Report",
-    framing: "Why AI skips you, and the plan that gets you named",
+    framing: "AEO / GEO audit: why AI skips you, and the plan that gets you named",
     group: "Services",
   },
   {

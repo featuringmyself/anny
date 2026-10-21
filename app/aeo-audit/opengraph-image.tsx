@@ -101,7 +101,7 @@ export default async function OpenGraphImage() {
         >
           <span>49 prompts · 5 days · ₹5,000 / $100</span>
           <span style={{ color: "#025864", fontWeight: 600 }}>
-            dodoxhq.com/audit
+            dodoxhq.com/aeo-audit
           </span>
         </div>
       </div>

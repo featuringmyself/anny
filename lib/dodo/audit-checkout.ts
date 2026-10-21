@@ -37,8 +37,8 @@ export async function createAuditCheckoutSession(
 
   return client.checkoutSessions.create({
     product_cart: [{ product_id: productId, quantity: 1 }],
-    return_url: absoluteUrl("/audit/success"),
-    cancel_url: absoluteUrl("/audit#pricing"),
+    return_url: absoluteUrl("/aeo-audit/success"),
+    cancel_url: absoluteUrl("/aeo-audit#pricing"),
     billing_currency: catalog.currency,
     billing_address: {
       country: catalog.billingCountry,

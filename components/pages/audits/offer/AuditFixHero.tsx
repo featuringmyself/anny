@@ -51,11 +51,12 @@ export default function AuditFixHero() {
           style={{ color: brand.body }}
         >
           <span className="sm:hidden">
-            How AI answers for your category, and the plan that gets you named.
+            AEO / GEO audit: how AI answers for your category, and the plan that
+            gets you named.
           </span>
           <span className="hidden sm:inline">
-            A complete read of how AI answers for your category, and the plan
-            that gets you named.
+            An AEO / GEO (AI SEO) audit: how models answer for your category,
+            and the plan that gets you named.
           </span>
         </p>
 

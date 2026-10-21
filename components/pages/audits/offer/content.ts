@@ -9,7 +9,7 @@ import {
 
 export const AUDIT_OFFER_NAME = "AI Visibility Intelligence Report";
 
-/** Lead-form copy when CTAs open TalkToSales from /audit. */
+/** Lead-form copy when CTAs open TalkToSales from /aeo-audit. */
 export const AUDIT_TALK_TO_SALES_COPY = {
   title: `Get a ${AUDIT_OFFER_NAME}`,
   description: `Share your site, competitors, and market. We'll lock the ${AUDIT_FIX_PROMPTS}-prompt set and deliver the report in ${AUDIT_FIX_TURNAROUND}.`,
@@ -207,6 +207,11 @@ export function getAuditFixFaqs(market: AuditFixMarket) {
   const price = AUDIT_FIX_PRICING[market];
 
   return [
+    {
+      question: "Is this an AEO, GEO, or AI SEO audit?",
+      answer:
+        "Yes — those labels describe the same work. Answer Engine Optimization (AEO), Generative Engine Optimization (GEO), and AI SEO all mean optimizing so ChatGPT, Claude, Gemini, and similar models name and cite you. This report is that audit: visibility, citations, gaps, and a ranked plan — not a classic Google-only SEO checklist.",
+    },
     {
       question: "What is in the report?",
       answer: `A full ${AUDIT_OFFER_NAME}: AI visibility across ${AI_MODELS_PHRASE}, competitive intelligence, brand perception, citation and source analysis, technical website audit, content gap analysis, authority and reputation audit, a prioritised action plan with a 30–60–90 day roadmap, and a measurement framework to track progress. Built from ${AUDIT_FIX_PROMPTS} buyer prompts with evidence for each finding.`,

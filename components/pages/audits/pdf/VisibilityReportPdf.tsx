@@ -616,12 +616,12 @@ function CtaPage({ report }: { report: VisibilityReport }) {
     ? report.ctaUrl.startsWith("/")
       ? `https://dodoxhq.com${report.ctaUrl}`
       : report.ctaUrl
-    : "https://dodoxhq.com/audit";
+    : "https://dodoxhq.com/aeo-audit";
   const hrefLabel = report.ctaUrl
     ? report.ctaUrl.startsWith("/")
       ? `dodoxhq.com${report.ctaUrl}`
       : report.ctaUrl.replace(/^https?:\/\//, "")
-    : "dodoxhq.com/audit";
+    : "dodoxhq.com/aeo-audit";
 
   return (
     <Page size="A4" style={pdfStyles.page} wrap={false}>

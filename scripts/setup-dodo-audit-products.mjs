@@ -141,8 +141,8 @@ try {
         product_cart: [{ product_id: product.product_id, quantity: 1 }],
         billing_currency: market.currency,
         billing_address: { country: market.country },
-        return_url: "https://www.dodoxhq.com/audit/success",
-        cancel_url: "https://www.dodoxhq.com/audit#pricing",
+        return_url: "https://www.dodoxhq.com/aeo-audit/success",
+        cancel_url: "https://www.dodoxhq.com/aeo-audit#pricing",
         metadata: { offer: "audit", market: market.label, source: "setup-script" },
         feature_flags: { allow_currency_selection: false },
       });
@@ -156,7 +156,7 @@ try {
       );
       if (String(error?.message || "").includes("checkout_sessions:write")) {
         console.error(
-          "\nGrant checkout_sessions:write on the API key (Editor), then re-test /audit.\n",
+          "\nGrant checkout_sessions:write on the API key (Editor), then re-test /aeo-audit.\n",
         );
       }
     }
