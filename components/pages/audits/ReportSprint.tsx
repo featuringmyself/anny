@@ -47,8 +47,7 @@ export default function ReportSprint({ report }: ReportSprintProps) {
             {report.ctaUrl ? (
               <Button
                 size="lg"
-                variant="outline"
-                className={`h-10 rounded-lg px-4 text-sm font-medium ${rt.btnSecondary}`}
+                className={`h-10 rounded-lg px-4 text-sm font-semibold ${rt.btnPrimary}`}
                 render={
                   <Link
                     href={report.ctaUrl}
@@ -63,8 +62,7 @@ export default function ReportSprint({ report }: ReportSprintProps) {
             ) : (
               <TalkToSalesButton
                 size="lg"
-                variant="outline"
-                className={`h-10 rounded-lg px-4 text-sm font-medium ${rt.btnSecondary}`}
+                className={`h-10 rounded-lg px-4 text-sm font-semibold ${rt.btnPrimary}`}
                 source={`audit-report-sprint-${report.slug}`}
               >
                 {ctaLabel}
