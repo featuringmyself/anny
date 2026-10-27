@@ -15,10 +15,10 @@ if (process.env.NODE_ENV === "production" && token) {
       capture_console_errors: false,
     },
     feature_flag_request_timeout_ms: 10000,
-    // Cover www + anny + apex; also include the live host for previews/custom domains.
+    // Cover www + dodox + apex; also include the live host for previews/custom domains.
     tracing_headers: [
       "www.dodoxhq.com",
-      "anny.dodoxhq.com",
+      "dodox.dodoxhq.com",
       "dodoxhq.com",
       ...(typeof window !== "undefined" ? [window.location.hostname] : []),
     ],

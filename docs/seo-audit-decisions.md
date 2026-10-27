@@ -194,14 +194,35 @@ clear the apex `seo.canonicalUrl` open flag below.
 
 ---
 
+## 2026-10-27 — llms / agent-skill synced to current public pages
+
+**Decision:** Refresh `llms-base`, `llms-full`, and the agent skill so they match
+the live public route map (sitemap + footer + offer pricing). Rename the skill
+path from `anny` → `dodox`. Keep `/audits/`, private case studies, checkout
+success, and readiness report deep links out of the curated maps.
+
+**Chose over:** Leaving production skill URLs on `/anny/` after the Anny→Dodox
+rebrand, or inventing pages that are noindex/disallowed.
+
+**Why:** Answer engines and agents should discover the same commercial URLs as
+`sitemap.ts` / nav. FAQ in `llms-full` had drifted from `lib/faqs.ts`. Snapshots
+and agency offerings were only thin “Other pages” links despite being priced
+products. Skill folder `anny` + index pointing at `dodox` (or the reverse) would
+404 one of the two declared paths.
+
+**Revisit when:** A new indexable marketing page ships, or offer pricing/prompt
+counts change in `audit-fix-pricing` / `snapshots-pricing`.
+
+---
+
 ## Open flags
 
 | Flag | Why uncertain | Next check |
 |------|----------------|------------|
-| Full Google index inventory | GSC connected (owner-confirmed — see GSC verification entry); inventory review still pending after www deploy. SERP may still show stale “Product Hub / Anny / Signal” homepage snippet | After www host alignment deploy — review Coverage for redirect/canonical noise |
+| Full Google index inventory | GSC connected (owner-confirmed — see GSC verification entry); inventory review still pending after www deploy. SERP may still show stale “Product Hub / dodox / Signal” homepage snippet | After www host alignment deploy — review Coverage for redirect/canonical noise |
 | YouTube post orphan (blog index + sitemap) | **Resolved** — INDEX; ISR/CDN skew, not CMS/GROQ. Live www includes post. | Spot-check post-deploy; then drop this row |
 | Sanity `seo.canonicalUrl` on YouTube post still apex | Post canonical still `https://dodoxhq.com/blog/...` while `SITE_URL` is www | After deploy / CMS cleanup — set per-post canonicals to www |
 | Creator affiliate disclosure wording | Affiliate language present; explicit “ad disclosure” phrasing not confirmed as sufficient | Legal pass when creator program is marketed widely |
 | Case studies stay noindex | Intentional for private proof; trades away public E-E-A-T | Decide if sanitized public versions should be indexable |
 | Soft-claim accuracy (Reddit / award-winning / #1 open-source) | Wording confirmed in templates; primary sources not verified this session | `verify-primary-source` pass before next services/footer edit |
-| llms-full dollar amounts / `/audit` AEO | **Resolved** — pricing synced; `/audit` restored in llms after live 200 | Drop after next AEO deploy confirms live files |
+| llms-full dollar amounts / `/audit` AEO | **Resolved** — pricing synced; `/aeo-audit` is canonical; skill path now `dodox` | Drop after deploy confirms `/llms.txt` + `/.well-known/agent-skills/dodox/SKILL.md` 200 |
