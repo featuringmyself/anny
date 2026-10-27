@@ -4,16 +4,16 @@
 
 For a long-form expansion of this site (product, pricing, FAQ, features, and comparisons), see [llms-full.txt](https://www.dodoxhq.com/llms-full.txt).
 
-Agent skill (site capabilities for AI agents): [SKILL.md](https://www.dodoxhq.com/.well-known/agent-skills/dodox/SKILL.md) · [index](https://www.dodoxhq.com/.well-known/agent-skills/index.json)
+Agent skill (site capabilities for AI agents): [SKILL.md](https://www.dodoxhq.com/.well-known/agent-skills/anny/SKILL.md) · [index](https://www.dodoxhq.com/.well-known/agent-skills/index.json)
 
 ## Product
 
 - [Home](https://www.dodoxhq.com/): Overview of Dodox SEO & GEO Agent + AI Monitoring
 - [Services](https://www.dodoxhq.com/services): Managed GEO/AEO engagements, done-for-you AI visibility (distinct from self-serve Dodox at /pricing)
-- [AI Visibility Intelligence Report](https://www.dodoxhq.com/aeo-audit): One-time AEO / GEO / AI SEO audit across ChatGPT, Claude, Gemini, Grok, and Perplexity: who gets named, why content gets or misses citations, what to publish next, and a ranked backlog. 49 prompts, 5-day turnaround. ₹5,000 India / $100 worldwide. Synonym URLs (/audit, /geo-audit, /ai-seo-audit, etc.) redirect here.
+- [AI Visibility Intelligence Report](https://www.dodoxhq.com/aeo-audit): One-time AEO / GEO / AI SEO audit across ChatGPT, Claude, Gemini, Grok, and Perplexity: who gets named, why content gets or misses citations, what to publish next, and a ranked backlog. 49 prompts, 5-day turnaround. ₹5,000 India / $100 worldwide. Synonym URLs (/geo-audit, /ai-seo-audit, etc.) redirect here.
 - [Pricing](https://www.dodoxhq.com/pricing): AI Monitoring $150/mo, SEO & GEO Agent $300/mo (includes Monitoring), managed services from $250+/mo
 - [Create account](https://www.dodoxhq.com/register): Start tracking AI brand mentions
-- [FAQ](https://www.dodoxhq.com/faq): Common questions about Dodox, GEO, and Agent vs Monitoring
+- [FAQ](https://www.dodoxhq.com/faq): Common questions about Dodox, GEO, and response tracking
 - [Docs](https://www.dodoxhq.com/docs): Product documentation for shipping GEO with Dodox
 - [AI Instructions](https://www.dodoxhq.com/ai-instructions): Pasteable brand copy so AI assistants describe Dodox accurately
 - [Blog](https://www.dodoxhq.com/blog): Notes on AI search and GEO
@@ -30,8 +30,8 @@ Agent skill (site capabilities for AI agents): [SKILL.md](https://www.dodoxhq.co
 ## Features
 
 - [Agencies](https://www.dodoxhq.com/features/agencies): Multi-client AI visibility reporting for agencies
-- [Agency offerings](https://www.dodoxhq.com/agencies/offerings): White-label GEO packages for SEO, PR, and digital agencies (standing snapshots, competitive SOV audits, pitch workspaces, visibility retainers)
-- [Dodox Snapshots](https://www.dodoxhq.com/standings): White-label AI visibility standing reports for agencies: ₹500 India / $10 worldwide, 25 prompts, ChatGPT + Perplexity + Google AI Overviews
+- [Agency offerings](https://www.dodoxhq.com/agencies/offerings): Micro SaaS GEO packages for SEO, PR, and digital agencies (standing snapshots, audits, retainers)
+- [Dodox Snapshots](https://www.dodoxhq.com/standings): White-label AI visibility standing reports for agencies: ₹500 India / $10 worldwide, 25 prompts, ChatGPT + Perplexity + AI Overviews
 - [AI Visibility Intelligence Report](https://www.dodoxhq.com/aeo-audit): One-time AEO / GEO / AI SEO audit with content, citation, and publish priorities: 49 prompts, 5-day turnaround, ₹5,000 India / $100 worldwide
 - [ChatGPT](https://www.dodoxhq.com/features/chatgpt): Track brand mentions in ChatGPT answers
 - [Gemini](https://www.dodoxhq.com/features/gemini): Monitor Gemini citations and sources
