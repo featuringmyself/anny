@@ -9,16 +9,20 @@ if (process.env.NODE_ENV === "production" && token) {
     ui_host: "https://us.posthog.com",
     defaults: "2026-05-30",
     person_profiles: "identified_only",
+    // Share anonymous id with product app on app.dodoxhq.com
+    cross_subdomain_cookie: true,
+    persistence: "localStorage+cookie",
     capture_exceptions: {
       capture_unhandled_errors: true,
       capture_unhandled_rejections: true,
       capture_console_errors: false,
     },
     feature_flag_request_timeout_ms: 10000,
-    // Cover www + anny + apex; also include the live host for previews/custom domains.
+    // Cover marketing + product hosts; also include the live host for previews.
     tracing_headers: [
       "www.dodoxhq.com",
       "anny.dodoxhq.com",
+      "app.dodoxhq.com",
       "dodoxhq.com",
       ...(typeof window !== "undefined" ? [window.location.hostname] : []),
     ],

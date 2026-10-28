@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import posthog from "posthog-js";
 
 import { Button } from "@/components/ui/button";
+import { PRODUCT_REGISTER_URL } from "@/lib/site";
 
 export default function PricingTierMotion({
   featured,
@@ -19,8 +20,8 @@ export default function PricingTierMotion({
 }) {
   const reduce = useReducedMotion();
   const destination =
-    href === "/register"
-      ? `/register?plan=${encodeURIComponent(tier)}`
+    href === PRODUCT_REGISTER_URL || href === "/register"
+      ? `${PRODUCT_REGISTER_URL}?plan=${encodeURIComponent(tier)}`
       : href;
 
   return (

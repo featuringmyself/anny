@@ -131,7 +131,6 @@ export default function Products() {
                 variant={plan.featured ? "default" : "outline"}
                 render={
                   <RegisterCtaLink
-                    href={`/register?plan=${encodeURIComponent(plan.name)}`}
                     source="home-products"
                     plan={plan.name}
                   />

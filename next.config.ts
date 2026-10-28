@@ -13,6 +13,17 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Auth lives on the product app
+      {
+        source: "/register",
+        destination: "https://app.dodoxhq.com/register",
+        permanent: true,
+      },
+      {
+        source: "/login",
+        destination: "https://app.dodoxhq.com/login",
+        permanent: true,
+      },
       // Canonical offer URL rename (preserve equity + bookmarks)
       {
         source: "/audit",

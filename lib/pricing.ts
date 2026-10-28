@@ -3,7 +3,12 @@
  * SoftwareApplication / Offer JSON-LD so visible prices and schema stay aligned.
  */
 
-export type PricingCtaHref = "/register" | "/services" | "sales";
+import { PRODUCT_REGISTER_URL } from "@/lib/site";
+
+export type PricingCtaHref =
+  | typeof PRODUCT_REGISTER_URL
+  | "/services"
+  | "sales";
 
 export type PricingPlan = {
   id: string;
@@ -33,7 +38,7 @@ export const agentPlans: PricingPlan[] = [
     description:
       "SEO & GEO agent that ships the work, and full AI Monitoring included.",
     cta: "Get started",
-    href: "/register",
+    href: PRODUCT_REGISTER_URL,
     featured: true,
     badge: "Includes Monitoring",
     highlightsIntro: "Everything in AI Monitoring, plus:",
@@ -54,7 +59,7 @@ export const agentPlans: PricingPlan[] = [
     description:
       "Track how ChatGPT, Gemini, Perplexity, and AI Mode mention your brand, and get alerts when it changes.",
     cta: "Get started",
-    href: "/register",
+    href: PRODUCT_REGISTER_URL,
     featured: false,
     highlights: [
       "Brand mention tracking",
@@ -95,7 +100,7 @@ export function pricedOffers(): {
   price: string;
   priceCurrency: "USD";
   description: string;
-  href: "/register" | "/services" | "/pricing";
+  href: typeof PRODUCT_REGISTER_URL | "/services" | "/pricing";
 }[] {
   const agents = agentPlans.map((plan) => ({
     name: plan.name,
@@ -107,7 +112,7 @@ export function pricedOffers(): {
         ? ("/pricing" as const)
         : plan.href === "/services"
           ? ("/services" as const)
-          : ("/register" as const),
+          : PRODUCT_REGISTER_URL,
   }));
 
   return [

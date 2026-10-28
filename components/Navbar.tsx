@@ -226,7 +226,7 @@ export default function Navbar() {
           <Button
             className="px-3"
             render={
-              <RegisterCtaLink href="/register" source="navbar" />
+              <RegisterCtaLink source="navbar" />
             }
           >
             Register
@@ -277,7 +277,7 @@ export default function Navbar() {
                 className="w-full"
                 size="lg"
                 render={
-                  <RegisterCtaLink href="/register" source="navbar-mobile" />
+                  <RegisterCtaLink source="navbar-mobile" />
                 }
               >
                 Register

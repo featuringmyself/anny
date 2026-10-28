@@ -11,6 +11,7 @@ import SanityImage from "@/components/blog/SanityImage";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import type { BlogPostArticle } from "@/lib/blog/types";
 import { formatBlogDate, readingTimeMinutes } from "@/lib/blog/types";
+import { PRODUCT_REGISTER_URL } from "@/lib/site";
 
 export default function BlogPostView({ post }: { post: BlogPostArticle }) {
   const { date, year, long } = formatBlogDate(post.publishedAt);
@@ -109,7 +110,7 @@ export default function BlogPostView({ post }: { post: BlogPostArticle }) {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href="/register"
+                  href={PRODUCT_REGISTER_URL}
                   className="inline-flex h-11 w-full items-center justify-center rounded-md bg-[#2462ff] px-4 text-sm font-medium text-white hover:bg-[#1d4ed8] sm:h-10 sm:w-auto"
                 >
                   Start free trial

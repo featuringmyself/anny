@@ -63,7 +63,7 @@ export default function Hero() {
             size="lg"
             className="h-12 cursor-pointer rounded-lg border border-zinc-900 bg-brand px-6 text-base font-semibold text-white shadow-sm hover:bg-emerald-50 hover:text-black"
             render={
-              <RegisterCtaLink href="/register" source="home-hero" />
+              <RegisterCtaLink source="home-hero" />
             }
           >
             Start tracking

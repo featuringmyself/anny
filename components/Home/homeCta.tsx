@@ -29,7 +29,7 @@ export default function HomeCta() {
             className="h-12 cursor-pointer rounded-lg border border-transparent px-6 text-base font-semibold text-[#11333c] hover:bg-white"
             style={{ backgroundColor: brand.lime }}
             render={
-              <RegisterCtaLink href="/register" source="home-cta" />
+              <RegisterCtaLink source="home-cta" />
             }
           >
             Get started

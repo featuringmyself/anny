@@ -4,6 +4,7 @@ import Link from "next/link";
 import { TalkToSalesButton } from "@/components/talk-to-sales";
 import { Button } from "@/components/ui/button";
 import PricingTierMotion from "@/components/pages/product/PricingTierMotion";
+import { PRODUCT_REGISTER_URL } from "@/lib/site";
 
 const TERTIARY = "#025864";
 const PRIMARY = "#93E85F";
@@ -137,12 +138,12 @@ export default function PricingFeatures() {
             >
               <PricingTierMotion
                 featured
-                href="/register"
+                href={PRODUCT_REGISTER_URL}
                 cta="Get Agent + Monitoring · $300"
                 tier="SEO & GEO Agent"
               />
               <PricingTierMotion
-                href="/register"
+                href={PRODUCT_REGISTER_URL}
                 cta="Get Monitoring · $150"
                 tier="AI Monitoring"
               />

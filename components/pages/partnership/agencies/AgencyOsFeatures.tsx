@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 import CitationTypesCard from "@/components/pages/partnership/agencies/CitationTypesCard";
 import VisibilityScoreCard from "@/components/pages/partnership/agencies/VisibilityScoreCard";
+import { PRODUCT_REGISTER_URL } from "@/lib/site";
 import actionPlansImage from "@/public/partnership/agencies/feature-action-plans.webp";
 
 type FeatureItem = {
@@ -52,7 +53,7 @@ function FeatureCopy({
         ))}
       </ul>
       <Link
-        href="/register"
+        href={PRODUCT_REGISTER_URL}
         className="mt-8 inline-flex w-fit items-center gap-1 text-sm font-medium text-zinc-900 underline underline-offset-4 transition-opacity hover:opacity-70"
       >
         Try for free
