@@ -94,26 +94,35 @@ export const servicesOffer = {
 /** @deprecated Prefer agentPlans; kept for any leftover imports during migration. */
 export const pricingTiers = agentPlans;
 
+type PricedOfferHref =
+  | typeof PRODUCT_REGISTER_URL
+  | "/services"
+  | "/pricing";
+
 /** Numeric USD amounts for Schema.org Offer.price */
 export function pricedOffers(): {
   name: string;
   price: string;
   priceCurrency: "USD";
   description: string;
-  href: typeof PRODUCT_REGISTER_URL | "/services" | "/pricing";
+  href: PricedOfferHref;
 }[] {
-  const agents = agentPlans.map((plan) => ({
-    name: plan.name,
-    price: String(plan.priceAmount),
-    priceCurrency: "USD" as const,
-    description: plan.description,
-    href:
+  const agents = agentPlans.map((plan) => {
+    const href: PricedOfferHref =
       plan.href === "sales"
-        ? ("/pricing" as const)
+        ? "/pricing"
         : plan.href === "/services"
-          ? ("/services" as const)
-          : PRODUCT_REGISTER_URL,
-  }));
+          ? "/services"
+          : PRODUCT_REGISTER_URL;
+
+    return {
+      name: plan.name,
+      price: String(plan.priceAmount),
+      priceCurrency: "USD" as const,
+      description: plan.description,
+      href,
+    };
+  });
 
   return [
     ...agents,
@@ -122,7 +131,7 @@ export function pricedOffers(): {
       price: String(servicesOffer.priceAmount),
       priceCurrency: "USD" as const,
       description: servicesOffer.description,
-      href: "/services" as const,
+      href: "/services",
     },
   ];
 }

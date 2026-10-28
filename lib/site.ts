@@ -1,8 +1,9 @@
 export const SITE_URL = "https://www.dodoxhq.com";
 /** Product app (auth, workspace). Marketing /register and /login redirect here. */
-export const PRODUCT_APP_URL = "https://app.dodoxhq.com";
-export const PRODUCT_REGISTER_URL = `${PRODUCT_APP_URL}/register`;
-export const PRODUCT_LOGIN_URL = `${PRODUCT_APP_URL}/login`;
+export const PRODUCT_APP_URL = "https://app.dodoxhq.com" as const;
+export const PRODUCT_REGISTER_URL =
+  `${PRODUCT_APP_URL}/register` as const;
+export const PRODUCT_LOGIN_URL = `${PRODUCT_APP_URL}/login` as const;
 export const SITE_NAME = "Dodox";
 
 export const SITE_DESCRIPTION =
