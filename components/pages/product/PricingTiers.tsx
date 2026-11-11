@@ -44,7 +44,8 @@ export default function PricingTiers() {
 
         <p className="mt-7 max-w-xl text-base font-medium leading-snug text-neutral-200/90 sm:text-lg">
           SEO &amp; GEO Agent + Monitoring at $300/mo. Monitoring alone at
-          $150/mo. The Agent plan includes everything in Monitoring.
+          $80/mo — $25 first month. The Agent plan includes everything in
+          Monitoring.
         </p>
       </div>
 
@@ -71,12 +72,12 @@ function AgentCard({ plan }: { plan: PricingPlan }) {
         borderColor: DARK,
       }}
     >
-      {plan.badge ? (
+      {plan.badge || plan.offerBadge ? (
         <span
           className="absolute top-5 right-5 inline-flex -rotate-2 items-center rounded-md px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase"
           style={{ backgroundColor: TERTIARY, color: PRIMARY }}
         >
-          {plan.badge}
+          {plan.offerBadge ?? plan.badge}
         </span>
       ) : null}
 
@@ -99,20 +100,42 @@ function AgentCard({ plan }: { plan: PricingPlan }) {
         {plan.description}
       </p>
 
-      <div className="mt-8 flex items-end gap-1.5">
-        <span
-          className="text-5xl font-bold tracking-tight tabular-nums"
-          style={{ color: TERTIARY }}
-        >
-          {plan.price}
-        </span>
-        <span className="pb-2 text-sm font-semibold text-zinc-500">
-          {plan.period}
-        </span>
-      </div>
-      <p className="mt-1 text-sm font-medium text-zinc-500">
-        Billed monthly · cancel anytime
-      </p>
+      {plan.introPrice ? (
+        <>
+          <div className="mt-8 flex items-end gap-1.5">
+            <span
+              className="text-5xl font-bold tracking-tight tabular-nums"
+              style={{ color: TERTIARY }}
+            >
+              {plan.introPrice}
+            </span>
+            <span className="pb-2 text-sm font-semibold text-zinc-500">
+              {plan.introLabel ?? "first month"}
+            </span>
+          </div>
+          <p className="mt-1 text-sm font-medium text-zinc-500">
+            Then {plan.price}
+            {plan.period} · cancel anytime
+          </p>
+        </>
+      ) : (
+        <>
+          <div className="mt-8 flex items-end gap-1.5">
+            <span
+              className="text-5xl font-bold tracking-tight tabular-nums"
+              style={{ color: TERTIARY }}
+            >
+              {plan.price}
+            </span>
+            <span className="pb-2 text-sm font-semibold text-zinc-500">
+              {plan.period}
+            </span>
+          </div>
+          <p className="mt-1 text-sm font-medium text-zinc-500">
+            Billed monthly · cancel anytime
+          </p>
+        </>
+      )}
 
       <div className="mt-7 border-t border-zinc-900/10 pt-6">
         {plan.highlightsIntro ? (

@@ -49,12 +49,12 @@ export default function Products() {
               outlineOffset: plan.featured ? 0 : undefined,
             }}
           >
-            {plan.badge ? (
+            {plan.badge || plan.offerBadge ? (
               <span
                 className="mb-3 inline-flex w-fit items-center rounded-md px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase"
                 style={{ backgroundColor: brand.tertiary, color: brand.lime }}
               >
-                {plan.badge}
+                {plan.offerBadge ?? plan.badge}
               </span>
             ) : null}
 
@@ -78,17 +78,37 @@ export default function Products() {
               {plan.description}
             </p>
 
-            <div className="mt-6 flex items-end gap-1.5">
-              <span
-                className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"
-                style={{ color: brand.tertiary }}
-              >
-                {plan.price}
-              </span>
-              <span className="pb-1.5 text-sm font-semibold text-zinc-500">
-                {plan.period}
-              </span>
-            </div>
+            {plan.introPrice ? (
+              <>
+                <div className="mt-6 flex items-end gap-1.5">
+                  <span
+                    className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"
+                    style={{ color: brand.tertiary }}
+                  >
+                    {plan.introPrice}
+                  </span>
+                  <span className="pb-1.5 text-sm font-semibold text-zinc-500">
+                    {plan.introLabel ?? "first month"}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm font-medium text-zinc-500">
+                  Then {plan.price}
+                  {plan.period}
+                </p>
+              </>
+            ) : (
+              <div className="mt-6 flex items-end gap-1.5">
+                <span
+                  className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl"
+                  style={{ color: brand.tertiary }}
+                >
+                  {plan.price}
+                </span>
+                <span className="pb-1.5 text-sm font-semibold text-zinc-500">
+                  {plan.period}
+                </span>
+              </div>
+            )}
 
             <div className="mt-6 border-t border-zinc-900/10 pt-5">
               {plan.highlightsIntro ? (

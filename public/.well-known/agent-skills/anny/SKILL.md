@@ -56,7 +56,7 @@ Agent skills index: https://www.dodoxhq.com/.well-known/agent-skills/index.json
 
 AI agents for self-serve tracking and optimization. Agencies get a separate multi-client rate (talk to sales). Managed retainers start at $250+/mo.
 
-- **AI Monitoring, $150/mo**, brand mention tracking across ChatGPT, Gemini, Perplexity, and AI Mode; citation monitoring; alerts; team dashboard
+- **AI Monitoring, $80/mo ($25 first month)**, brand mention tracking across ChatGPT, Gemini, Perplexity, and AI Mode; citation monitoring; alerts; team dashboard
 - **SEO & GEO Agent, $300/mo** (includes Monitoring), content agent, prompt/citation optimization, share-of-voice, weekly action plans
 - **Managed Services, from $250+/mo**, hands-on GEO/AEO retainers — strategy, audits, and execution
 

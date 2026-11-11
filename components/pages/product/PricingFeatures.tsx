@@ -109,7 +109,7 @@ export default function PricingFeatures() {
               <p className="text-center text-sm font-bold" style={{ color: TERTIARY }}>
                 Monitoring
                 <span className="mt-0.5 block text-xs font-semibold text-zinc-500">
-                  $150/mo
+                  $25 first mo · then $80/mo
                 </span>
               </p>
             </div>
@@ -144,7 +144,7 @@ export default function PricingFeatures() {
               />
               <PricingTierMotion
                 href={PRODUCT_REGISTER_URL}
-                cta="Get Monitoring · $150"
+                cta="Get Monitoring · $25 first mo"
                 tier="AI Monitoring"
               />
             </div>

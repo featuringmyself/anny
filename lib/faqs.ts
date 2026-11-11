@@ -17,7 +17,7 @@ export const faqs: FaqItem[] = [
   {
     question: "Does the Agent include Monitoring?",
     answer:
-      "Yes. The SEO & GEO Agent plan at $300/mo includes everything in AI Monitoring, plus the agent that ships SEO and GEO work. AI Monitoring alone is $150/mo if you only need tracking and alerts.",
+      "Yes. The SEO & GEO Agent plan at $300/mo includes everything in AI Monitoring, plus the agent that ships SEO and GEO work. AI Monitoring alone is $80/mo ($25 for the first month) if you only need tracking and alerts.",
   },
   {
     question: "Do I need to install anything or change my website?",

@@ -8,7 +8,7 @@ import { absoluteUrl, pageMetadata, webpageJsonLd } from "@/lib/seo";
 
 const title = "Pricing · Dodox";
 const description =
-  "AI agents from $150/mo: SEO & GEO Agent + Monitoring at $300 (includes Monitoring), AI Monitoring alone at $150. Managed services start at $250/mo.";
+  "AI agents from $25 first month: AI Monitoring at $80/mo ($25 first month), SEO & GEO Agent + Monitoring at $300 (includes Monitoring). Managed services start at $250/mo.";
 
 export const metadata = pageMetadata({
   path: "/pricing",

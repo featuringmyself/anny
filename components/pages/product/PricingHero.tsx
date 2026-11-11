@@ -53,7 +53,8 @@ export default function PricingHero() {
           style={{ color: BODY }}
         >
           SEO &amp; GEO Agent + Monitoring at $300/mo. AI Monitoring alone at
-          $150/mo. Managed services from $250 if you want hands-on help.
+          $80/mo — $25 first month. Managed services from $250 if you want
+          hands-on help.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">

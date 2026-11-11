@@ -25,6 +25,13 @@ export type PricingPlan = {
   highlights: readonly string[];
   highlightsIntro?: string;
   href: PricingCtaHref;
+  /** First-month (or intro) offer display, e.g. "$25". */
+  introPrice?: string;
+  introPriceAmount?: number;
+  /** Short label under the intro price, e.g. "first month". */
+  introLabel?: string;
+  /** Offer ribbon / badge, e.g. "First month $25". */
+  offerBadge?: string;
 };
 
 /** Main product: AI agents */
@@ -53,9 +60,13 @@ export const agentPlans: PricingPlan[] = [
   {
     id: "ai-monitoring",
     name: "AI Monitoring",
-    price: "$150",
-    priceAmount: 150,
+    price: "$80",
+    priceAmount: 80,
     period: "/mo",
+    introPrice: "$25",
+    introPriceAmount: 25,
+    introLabel: "first month",
+    offerBadge: "First month $25",
     description:
       "Track how ChatGPT, Gemini, Perplexity, and AI Mode mention your brand, and get alerts when it changes.",
     cta: "Get started",
@@ -115,11 +126,16 @@ export function pricedOffers(): {
           ? "/services"
           : PRODUCT_REGISTER_URL;
 
+    const description =
+      plan.introPrice && plan.introLabel
+        ? `${plan.description} ${plan.introPrice} ${plan.introLabel}, then ${plan.price}${plan.period}.`
+        : plan.description;
+
     return {
       name: plan.name,
       price: String(plan.priceAmount),
       priceCurrency: "USD" as const,
-      description: plan.description,
+      description,
       href,
     };
   });
